@@ -120,7 +120,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 /*pager css*/
 .num{ max-width:803px; height:25px; text-align:center; padding-top:15px; margin:0px auto;}
 .num span{ color:#666; display:block; float: left; margin-right:5px; line-height:20px;}
-
+.num a{ display:block; float:left; margin:0px 6px; border:1px solid #eee; border-radius:2px; background-color:#dedede; padding:0px 8px; color:#333; line-height:20px; text-align:center; }
+.num a:hover{ background-color:#aaa; color:#fff; border-color:#dedede;}
 
 .pageNum{  margin:0px auto; width:500px;}
 .pageNum a{ display:block; float:left; margin:0px 6px; border:1px solid #eee; border-radius:2px; background-color:#dedede; padding:0px 8px; color:#333; line-height:20px; text-align:center; }
