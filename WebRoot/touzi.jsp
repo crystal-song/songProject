@@ -60,8 +60,31 @@ function jumpPage(pag){
 }
 
 
+window.onload=function(e) {
+	pagerInit(${page.totalPage},${page.pageNo});//${page.totalPage},${page.pageNo}
+}
    
-
+function pagerInit(a,b){//${page.totalPage},${page.pageNo}
+	var totalPages=a;
+	var curPage=b;
+	if(curPage>totalPages)return false;
+	var endPage=curPage+5>totalPages-1?totalPages-1:curPage+5;
+	var startPage=endPage-7>2?endPage-7:2;
+	endPage=startPage+7>totalPages?totalPages:startPage+7;
+	console.log(startPage+"/"+endPage+"/"+curPage);
+	var str='';
+	var spl='<span>...</span>';
+	$(".pageNum").html('<a href="javascript:jumpPage(1)" class="pager">1</a>');
+	if(startPage>2){$(".pageNum").html($(".pageNum").html()+spl);}
+      for(i=startPage;i<endPage;i++){
+    	  str='<a href="javascript:jumpPage('+i+')" class="pager">'+i+'</a>';
+    	  $(".pageNum").html($(".pageNum").html()+str);
+		}
+      if(endPage<totalPages-1){$(".pageNum").html($(".pageNum").html()+spl);}
+    $(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
+    $(".pager").eq(curPage-startPage+1).addClass("pageNumCur");
+	$(".pageNumCur").attr("href","javascript:;");	
+}
    
                 
            
@@ -217,27 +240,22 @@ function jumpPage(pag){
 	 
         </c:if>
         
-        
-      
-       
-        <div>
+<div class="clear_height"></div>
+	<div>
+        <div class="num">
          
-								 第${page.pageNo}页, 共 ${page.totalPage}  页  
-								<a href="javascript:jumpPage(1)">首页</a>
+								<%-- <span> 第${page.pageNo}页, 共${page.totalPage}页  </span> --%>
+								<!-- <a href="javascript:jumpPage(1)">首页</a> -->
 								<c:if test=""></c:if>
-								 <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
-								   <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if> 
+								 <%-- <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if>  --%>
+								 <div class="pageNum"></div>
+								   <%-- <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if> --%> 
 								<%--  <a href="#" onclick="jumpPage(${current-1})" class="org">上一页</a> --%>
-								<a href="javascript:jumpPage(${page.totalPage})">末页</a> 
+								<%-- <a href="javascript:jumpPage(${page.totalPage})">末页</a> --%> 
 							</div> 
 			
-			
-			
-						
-        <div class="clear_height"></div>
-        <div class="num"><img src="<%=path%>/images/touzi_11.jpg"></div>
     
-    
+    </div>
     </div>
     <div class="tz_right">
     	<div class="cr_bg">

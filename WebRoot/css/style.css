@@ -116,7 +116,19 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .tz_one_right{ float:right; width:689px; height:24px;}
 .tz_one_right ul li{ float:left; line-height:24px; margin-left:10px; text-align:center; width:75px;}
 .dq{ width:75px; height:24px; background:url(../images/touzi_07.jpg) no-repeat; color:#FFF;}
-.num{ width:803px; height:25px; text-align:center; padding-top:15px;}
+
+/*pager css*/
+.num{ max-width:803px; height:25px; text-align:center; padding-top:15px; margin:0px auto;}
+.num span{ color:#666; display:block; float: left; margin-right:5px; line-height:20px;}
+
+
+.pageNum{  margin:0px auto; width:500px;}
+.pageNum a{ display:block; float:left; margin:0px 6px; border:1px solid #eee; border-radius:2px; background-color:#dedede; padding:0px 8px; color:#333; line-height:20px; text-align:center; }
+.pageNum a:hover{ background-color:#aaa; color:#fff; border-color:#dedede;}
+.pageNum span{display:block; float:left; margin:0px 1px; border:none; background-color:none; padding:0px; color:#ddd; line-height:20px; text-align:center;}
+.pageNumCur{ background-color:#b11414!important; color:#fff!important; cursor:default;}
+/*pager end*/
+
 .juli{ padding-left:20px;}
 .tz_right{ width:286px; height:auto; float:right;}
 
