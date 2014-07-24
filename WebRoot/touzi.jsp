@@ -16,10 +16,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <%--  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  --%>
 
-<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
 
 
 <script type="text/javascript" >
+
+$(document).ready(function(){
+    var a=[];
+	var n=0;
+	var num1;	
+$('.tz_nr li').click(function(){
+ $(this).addClass('dq').siblings().removeClass('dq');     
+	$('.tz_nr .dq').each(function(){
+		var param=[];
+		var b=['a','b','c','d','e'];
+		param.push($(this).val());	
+		alert(b[n]+'='+param);
+		n++;			 
+		});
+	
+	});
+
+});	
 
 
 function jumpPage(pag){
@@ -27,6 +45,8 @@ function jumpPage(pag){
 	   
 	    $('#pageNo').val(pag); 
 	$("#form" ).submit();
+
+	
 	
 	
 
@@ -114,10 +134,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">融资年利率：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li class="dq">全部</li>
-                            <li>10%以下</li>
-                            <li>10%-15%</li>
-                            <li>15%-20%</li>
+                        	<li class="dq" value="1">全部</li>
+                            <li value="2">10%以下</li>
+                            <li value="3">10%-15%</li>
+                            <li value="4">15%-20%</li>
                         </ul>
                     </div>
                 </div>
@@ -125,10 +145,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">存续时间：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li class="dq">全部</li>
-                            <li>60天以下</li>
-                            <li>60-180天</li>
-                            <li>180-360天</li>
+                        	<li class="dq" value="11">全部</li>
+                            <li value="12">60天以下</li>
+                            <li value="13">60-180天</li>
+                            <li value="14">180-360天</li>
                         </ul>
                     </div>
                 </div>
@@ -136,11 +156,11 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">项目规模：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li>全部</li>
-                            <li>200万以下</li>
-                            <li>200-500万</li>
-                            <li class="dq">500-1000万</li>
-                            <li>1000万以上</li>
+                        	<li value="21">全部</li>
+                            <li value="22">200万以下</li>
+                            <li value="23">200-500万</li>
+                            <li class="dq" value="24">500-1000万</li>
+                            <li value="25">1000万以上</li>
                         </ul>
                     </div>
                 </div>
@@ -148,10 +168,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">融资进度：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li class="dq">全部</li>
-                            <li>50%以下</li>
-                            <li>50%-80%</li>
-                            <li>80以上</li>
+                        	<li class="dq" value="31">全部</li>
+                            <li value="32">50%以下</li>
+                            <li value="33">50%-80%</li>
+                            <li value="34">80以上</li>
                         </ul>
                     </div>
                 </div>
@@ -159,10 +179,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">项目状态：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li>全部</li>
-                            <li>未满在投</li>
-                            <li class="dq">企业还款中</li>
-                            <li>企业已还款</li>
+                        	<li value="41">全部</li>
+                            <li value="42">未满在投</li>
+                            <li class="dq" value="43">企业还款中</li>
+                            <li value="44">企业已还款</li>
                         </ul>
                     </div>
                 </div>
