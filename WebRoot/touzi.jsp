@@ -3,7 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ include file="/includes/taglibs.jsp" %>
+ <%@ include file="/includes/taglibs.jsp" %> 
+
 
   <%-- <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,6 +14,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>我要投资</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 
+<%--  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  --%>
+
+<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
 
 
 <script type="text/javascript" >
@@ -20,23 +24,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 function jumpPage(pag){
 	alert("ccccccccccc"+pag);
+	   
+	    $('#pageNo').val(pag); 
+	$("#form" ).submit();
 	
-	/* $('#pageNo').val(pageNo);  */
+	
 
 	
-	 var pageNo=1;
+	/*  var pageNo=1;
 	 var  pageSize=2;
 	 var  name="ddddd";
-	 
+	  */
 	
  	/* window.open('<c:url value="/product/allProduct"/>', '_self');   */
  /* 	$.post("/product/allProduct", { name: "name"} ); */
 /*  if($('#pageNo').val() != ''){
 	 alert("ddddddddddd");
 	 alert("ccccc"+$('#pageNo').val()); */
-            $.ajax({
+            /* $.ajax({
                 type: 'POST',
-                url: '<c:url value="/product/session"/>', 
+                url: '<c:url value="/product/session"/>',  */
                /*  data: 'pageNo='+$('#pageNo').val(),
                 dataType: 'text',
                 success: function(data) {
@@ -44,31 +51,16 @@ function jumpPage(pag){
                 	alert("dd"+data+'"success"');
                    
                 } */
-            });  
+          /*   });   */
 /*  }   */  
           
-/* 
-          $.ajax({  
-              type: 'POST',
-              url:  '<c:url value="/product/allProduct"/>',
-              data: 'name='+name,
-            
-             	dataType:'text',
-             	 async:false, 
-              success: function(data){  
-             
-              
-              }  
-          });  
-     
-	 */
+
+        
 	
 }
 
 
    
-
-
 
    
                 
@@ -155,18 +147,27 @@ function jumpPage(pag){
         </div>
         
         
-      <!--   style="display:'none'" -->
-        <!-- <div class="clear_height"></div> -->
+     
 
-<div id="hidden" align="center" >
- <form action="<%=path%>/product/allProduct"   id="form" method="post">
 
-        	<div><input name="pageNo"  id="pageNo" type="text" class="zh_wby" /></div>
-            <div><input name="pageSize" id="pageSize"  type="text" value="4" class="zh_wby" /></div>
-            <div><input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" /></div>
-       
+ <div id="bodyframe" style="VISIBILITY: hidden"> 
+<!--  <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px">    -->
+<form  action="<%=path%>/product/allProduct" id="form" method="post"   class="box"  style="display:'none'"   >
+<input type="text"   name="pageNo" id="pageNo"  />
+<!-- <input type="text"   name="name" />
+<input type="text"   name="name" /> -->
+<input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
+<button id="update" ></button>
 </form>
-</div>
+ <!--  </IFRAME>   -->
+</div>  
+<!-- <div onclick="document.all.bodyframe.style.visibility='visible'" style="background-color: red; cursor: hand; height: 22; left: 300; position: absolute; top: 137; width: 74; z-index: 1"> 
+<font color="#ffffff">显示iFrame</font></p> 
+</div> 
+<div onclick="document.all.bodyframe.style.visibility='hidden'" style="background-color: red; cursor: hand; height: 22; left: 400; position: absolute; top: 137; width: 74; z-index: 1"> 
+<font color="#ffffff">隐藏iFrame</font> 
+</div> 555555 -->
+ 
 
         
         
@@ -217,20 +218,21 @@ function jumpPage(pag){
         </c:if>
         
         
+      
        
-        
         <div>
-         <a href="#" onclick="jumpPage(${page.pageNo+1})" >上一页</a>
-        <li><a href="<%=path%>/product/allProduct?pageNo=">我要投资</a></li>
-								第${page.pageNo}页, 共pageNo <%-- <s:if test="page.totalPages==0">1</s:if><s:else> ${page.totalPages} </s:else> 页 --%>
+         
+								 第${page.pageNo}页, 共 ${page.totalPage}  页  
 								<a href="javascript:jumpPage(1)">首页</a>
-								 <%-- <c:if test="${page.pageNo}"> --%><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a> <%-- </c:if> --%>
-								 <%-- <c:if test="page.pageNo"> --%> <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a> <%-- </c:if> --%>
+								<c:if test=""></c:if>
+								 <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
+								   <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if> 
 								<%--  <a href="#" onclick="jumpPage(${current-1})" class="org">上一页</a> --%>
-								<%-- <a href="javascript:jumpPage(${page.totalPages})">末页</a> --%>
+								<a href="javascript:jumpPage(${page.totalPage})">末页</a> 
 							</div> 
-							
-							
+			
+			
+			
 						
         <div class="clear_height"></div>
         <div class="num"><img src="<%=path%>/images/touzi_11.jpg"></div>
