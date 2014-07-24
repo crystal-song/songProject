@@ -244,14 +244,14 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 	<div>
         <div class="num">
          
-								<%-- <span> 第${page.pageNo}页, 共${page.totalPage}页  </span> --%>
-								<!-- <a href="javascript:jumpPage(1)">首页</a> -->
+								 <%-- <span> 第${page.pageNo}页, 共${page.totalPage}页  </span>  --%>
+								 <a href="javascript:jumpPage(1)">首页</a> 
 								<c:if test=""></c:if>
-								 <%-- <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if>  --%>
+								 <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
 								 <div class="pageNum"></div>
-								   <%-- <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if> --%> 
+								   <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  
 								<%--  <a href="#" onclick="jumpPage(${current-1})" class="org">上一页</a> --%>
-								<%-- <a href="javascript:jumpPage(${page.totalPage})">末页</a> --%> 
+								<a href="javascript:jumpPage(${page.totalPage})">末页</a> 
 							</div> 
 			
     
