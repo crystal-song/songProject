@@ -22,9 +22,9 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 		
 		
 		
-		
-		/*Map<String, Object> result = new HashMap<String, Object>(2);
-		String countQuery = "select count(*) from THotel thotel";
+		String countQuery = "select count(*) from TProduct TProduct";
+		Map<String, Object> result = new HashMap<String, Object>(2);
+		/*String countQuery = "select count(*) from THotel thotel";
 		String fullQuery = "select new map(thotel as thotel, thotel.id as uid) from THotel thotel";*/
 		
 		String hql = "from TProduct ";
@@ -95,6 +95,7 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 		// int total = ((Long)totalList.iterator().next()).intValue();
 
 		/*Query queryTotal = getSession().createQuery(countQuery + sb.toString());*/
+		Query queryTotal = getSession().createQuery(countQuery);
 		Query queryList = getSession()
 				/*.createQuery(fullQuery + sb.toString() + orderString)*/
 				.createQuery(hql)
@@ -110,10 +111,12 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 			}
 		}
 		int total = ((Long) queryTotal.uniqueResult()).intValue();*/ // 这里必须先转成Long再取intValue，不能转成Integer
-
+		int total = ((Long) queryTotal.uniqueResult()).intValue();
+		page.setTotalRecord(total);
+		
 		List list = queryList.list();
-		/*result.put("total", total);*/
-		/*result.put("rows", list);*/
+		result.put("total", total);
+		result.put("rows", list);
 
 		return list;
 		
