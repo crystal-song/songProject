@@ -21,6 +21,103 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" >
 
+var myFilter=new Array();
+
+function filterChange(){
+	var filterIndex= new Array();
+	switch (myFilter[0]){
+	case 10:
+		filterIndex[0]=1;
+		break;
+	case 15:
+		filterIndex[0]=2;
+		break;
+	case 20:
+		filterIndex[0]=3;
+		break;
+		break;
+	default:
+		filterIndex[0]=0;
+	}
+	switch (myFilter[1]){
+	case 60:
+		filterIndex[1]=1;
+		break;
+	case 180:
+		filterIndex[1]=2;
+		break;
+	case 360:
+		filterIndex[1]=3;
+		break;
+	default:
+		filterIndex[1]=0;
+	}
+	switch (myFilter[2]){
+	case 200:
+		filterIndex[2]=1;
+		break;
+	case 500:
+		filterIndex[2]=2;
+		break;
+	case 1000:
+		filterIndex[2]=3;
+		break;
+	case 2000:
+		filterIndex[2]=4;
+		break;
+	default:
+		filterIndex[2]=0;
+	}
+	switch (myFilter[3]){
+	case 50:
+		filterIndex[3]=1;
+		break;
+	case 80:
+		filterIndex[3]=2;
+		break;
+	case 100:
+		filterIndex[3]=3;
+		break;
+	default:
+		filterIndex[3]=0;
+	}
+
+	switch (myFilter[4]){
+	case 2:
+		filterIndex[4]=1;
+		break;
+	case 3:
+		filterIndex[4]=2;
+		break;
+	case 4:
+		filterIndex[4]=3;
+		break;
+	default:
+		filterIndex[4]=0;
+	}
+	$(".filter li").removeClass("dq");
+	for(i=0;i<5;i++){
+		$(".filter").eq(i).children("li").eq(filterIndex[i]).addClass("dq");
+	}
+}
+
+function pa(clicked){
+	myFilter[clicked.parent().index(".filter")]=clicked.attr("value");
+/* 	for(i=0;i<5;i++){
+		$("#form input").eq(i).val(myFilter[i]);
+		console.log(i+">>"+$("#form input").eq(i).val());
+	} */
+	$("#yearIncome").val(myFilter[0]);
+	$("#financingPeriod").val(myFilter[1]);
+	$("#financingMoney").val(myFilter[2]);
+	$("#financingProgress").val(myFilter[3]);
+	$("#projectStatus").val(myFilter[4]);
+	console.log(myFilter);
+	//alert("avd");
+	
+	$("#form" ).submit();
+}
+
  /*  $(document).ready(function(){
     
 $('.tz_nr li').click(function(){
@@ -53,7 +150,7 @@ $('.tz_nr li').click(function(){
  
 
     /*  function pa(){   */
- $(document).ready(function(){ 
+/*  $(document).ready(function(){ 
 	 
 	    $('.tz_nr li').click(function(){    
 			
@@ -63,12 +160,12 @@ $('.tz_nr li').click(function(){
 				
 				var param=[];
 				var b=['a','b','c','d','e'];
-				param.push($(this).val());	
+				param.push($(this).val()); */	
 				
 				/*  alert(b[n]+'='+param);  */
 				/*  alert("n"+n);
 				 alert("param"+param); */
-				 if(n==0){
+/* 				 if(n==0){
 			     $('#yearIncome').val(param); 
 				 }if(n==1){
 					 $('#financingPeriod').val(param);
@@ -79,19 +176,19 @@ $('.tz_nr li').click(function(){
 				 }if(n==4){
 					 $('#projectStatus').val(param);
 				 }
-				n++;		
+				n++;	 */	
 				/* alert(b[0]); */
 				/* alert(param); */
 				 
 				
 				
-				});
+/* 				});
 			alert("avd");
 			
 			 $("#form" ).submit();
 			
 	  	});
-			 });    
+			 });     */
 
 /*   }    */
   
@@ -143,6 +240,15 @@ function jumpPage(pag){
 
 window.onload=function(e) {
 	pagerInit(${page.totalPage},${page.pageNo});//${page.totalPage},${page.pageNo}
+	myFilter=[${product.yearIncome},${product.financingPeriod},${product.financingMoney},${product.financingProgress},${product.projectStatus}]
+	if(myFilter[0]==null){
+		myFilter=[1,1,1,1,1];
+	}
+	console.log(myFilter);
+	filterChange();
+	$(".filter li").bind("click",function(e){
+		pa($(this));
+	});
 }
    
 function pagerInit(a,b){//${page.totalPage},${page.pageNo}
@@ -162,7 +268,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
     	  $(".pageNum").html($(".pageNum").html()+str);
 		}
       if(endPage<totalPages-1){$(".pageNum").html($(".pageNum").html()+spl);}
-    $(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
+    if(totalPages>1)$(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
     $(".pager").eq(curPage-startPage+1).addClass("pageNumCur");
 	$(".pageNumCur").attr("href","javascript:;");	
 }
@@ -194,56 +300,56 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
             	<div class="tz_one">
                 	<div class="tz_one_left">融资年利率：</div>
                     <div class="tz_one_right">
-                    	<ul>
-                        	<li class="dq" value="1" onclick="pa()" >全部</li>
-                            <li value="10"  onclick="pa()" >10%以下</li>
-                            <li value="15"  onclick="pa()" >10%-15%</li>
-                            <li value="20"  onclick="pa()"  >15%-20%</li>
+                    	<ul class="filter">
+                        	<li class="dq" value="1" >全部</li>
+                            <li value="10"  >10%以下</li>
+                            <li value="15"  >10%-15%</li>
+                            <li value="20"   >15%-20%</li>
                         </ul>
                     </div>
                 </div>
                 <div class="tz_one">
                 	<div class="tz_one_left">存续时间：</div>
                     <div class="tz_one_right">
-                    	<ul>
-                        	<li class="dq" value="1" onclick="pa()"  >全部</li>
-                            <li value="60" onclick="pa()" >60天以下</li>
-                            <li value="180" onclick="pa()" >60-180天</li>
-                            <li value="360" onclick="pa()" >180-360天</li>
+                    	<ul class="filter">
+                        	<li class="dq" value="1"  >全部</li>
+                            <li value="60" >60天以下</li>
+                            <li value="180" >60-180天</li>
+                            <li value="360" >180-360天</li>
                         </ul>
                     </div>
                 </div>
                 <div class="tz_one">
                 	<div class="tz_one_left">项目规模：</div>
                     <div class="tz_one_right">
-                    	<ul>
-                        	<li value="1" onclick="pa()" >全部</li>
-                            <li value="200" onclick="pa()" >200万以下</li>
-                            <li value="500" onclick="pa()" >200-500万</li>
-                            <li class="dq" value="1000" onclick="pa()" >500-1000万</li>
-                            <li value="2000" onclick="pa()" >1000万以上</li>
+                    	<ul class="filter">
+                        	<li value="1" >全部</li>
+                            <li value="200" >200万以下</li>
+                            <li value="500" >200-500万</li>
+                            <li class="dq" value="1000" >500-1000万</li>
+                            <li value="2000" >1000万以上</li>
                         </ul>
                     </div>
                 </div>
                 <div class="tz_one">
                 	<div class="tz_one_left">融资进度：</div>
                     <div class="tz_one_right">
-                    	<ul>
-                        	<li class="dq" value="1" onclick="pa()"  >全部</li>
-                            <li value="50"  onclick="pa()" >50%以下</li>
-                            <li value="80" onclick="pa()"  >50%-80%</li>
-                            <li value="100"  onclick="pa()" >80以上</li>
+                    	<ul class="filter">
+                        	<li class="dq" value="1"  >全部</li>
+                            <li value="50"  >50%以下</li>
+                            <li value="80"  >50%-80%</li>
+                            <li value="100"  >80以上</li>
                         </ul>
                     </div>
                 </div>
                 <div class="tz_one">
                 	<div class="tz_one_left">项目状态：</div>
                     <div class="tz_one_right">
-                    	<ul>
-                        	<li value="1" onclick="pa()"  >全部</li>
-                            <li value="2" onclick="pa()"  >未满在投</li>
-                            <li class="dq" value="3" onclick="pa()"  >企业还款中</li>
-                            <li value="4"  onclick="pa()" >企业已还款</li>
+                    	<ul class="filter">
+                        	<li value="1"  >全部</li>
+                            <li value="2"  >未满在投</li>
+                            <li class="dq" value="3"  >企业还款中</li>
+                            <li value="4"  >企业已还款</li>
                         </ul>
                     </div>
                 </div>
