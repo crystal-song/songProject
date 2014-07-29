@@ -14,39 +14,90 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>我要投资</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 
-<%--  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  --%>
+ <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
+<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>  -->
 
 
 <script type="text/javascript" >
 
-$(document).ready(function(){
-    var a=[];
-	var n=0;
-	var num1;	
+ /*  $(document).ready(function(){
+    
 $('.tz_nr li').click(function(){
+	
+	var n=0;
  $(this).addClass('dq').siblings().removeClass('dq');     
 	$('.tz_nr .dq').each(function(){
 		var param=[];
 		var b=['a','b','c','d','e'];
 		param.push($(this).val());	
 		alert(b[n]+'='+param);
-		n++;			 
+		n++;		
+		
+		
 		});
 	
 	});
 
-});	
+});	   */
+ 
 
+     function pa(){  
+ /* $(document).ready(function(){ 
+	 
+	    $('.tz_nr li').click(function(){    */
+			
+			var n=0;
+		 $(this).addClass('dq').siblings().removeClass('dq');     
+			$('.tz_nr .dq').each(function(){
+				
+				var param=[];
+				var b=['a','b','c','d','e'];
+				param.push($(this).val());	
+				
+				/*  alert(b[n]+'='+param);  */
+				/*  alert("n"+n);
+				 alert("param"+param); */
+				 if(n==0){
+			     $('#yearIncome').val(param); 
+				 }if(n==1){
+					 $('#financingPeriod').val(param);
+				 }if(n==2){
+					 $('#financingMoney').val(param);
+				 }if(n==3){
+					 $('#financingProgress').val(param);
+				 }if(n==4){
+					 $('#repaymentWay').val(param);
+				 }
+				n++;		
+				/* alert(b[0]); */
+				/* alert(param); */
+				 
+				
+				
+				});
+			alert("avd");
+			
+			 $("#form" ).submit();
+			
+	 /* 	});
+			 });    */
+
+  }   
+  
 
 function jumpPage(pag){
 	alert("ccccccccccc"+pag);
 	   
 	    $('#pageNo').val(pag); 
-	$("#form" ).submit();
+	    
+	    pa();
+	    
+	    
+	    
+	/* $("#form" ).submit(); */
 
-	
+ }
 	
 	
 
@@ -77,7 +128,7 @@ function jumpPage(pag){
 
         
 	
-}
+
 
 
 window.onload=function(e) {
@@ -134,10 +185,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">融资年利率：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li class="dq" value="1">全部</li>
-                            <li value="2">10%以下</li>
-                            <li value="3">10%-15%</li>
-                            <li value="4">15%-20%</li>
+                        	<li class="dq" value="1" onclick="pa()" >全部</li>
+                            <li value="10"  onclick="pa()" >10%以下</li>
+                            <li value="15"  onclick="pa()" >10%-15%</li>
+                            <li value="20"  onclick="pa()"  >15%-20%</li>
                         </ul>
                     </div>
                 </div>
@@ -145,10 +196,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">存续时间：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li class="dq" value="11">全部</li>
-                            <li value="12">60天以下</li>
-                            <li value="13">60-180天</li>
-                            <li value="14">180-360天</li>
+                        	<li class="dq" value="1" onclick="pa()"  >全部</li>
+                            <li value="60" onclick="pa()" >60天以下</li>
+                            <li value="180" onclick="pa()" >60-180天</li>
+                            <li value="360" onclick="pa()" >180-360天</li>
                         </ul>
                     </div>
                 </div>
@@ -156,11 +207,11 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">项目规模：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li value="21">全部</li>
-                            <li value="22">200万以下</li>
-                            <li value="23">200-500万</li>
-                            <li class="dq" value="24">500-1000万</li>
-                            <li value="25">1000万以上</li>
+                        	<li value="1" onclick="pa()" >全部</li>
+                            <li value="200" onclick="pa()" >200万以下</li>
+                            <li value="500" onclick="pa()" >200-500万</li>
+                            <li class="dq" value="1000" onclick="pa()" >500-1000万</li>
+                            <li value="2000" onclick="pa()" >1000万以上</li>
                         </ul>
                     </div>
                 </div>
@@ -168,10 +219,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">融资进度：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li class="dq" value="31">全部</li>
-                            <li value="32">50%以下</li>
-                            <li value="33">50%-80%</li>
-                            <li value="34">80以上</li>
+                        	<li class="dq" value="1" onclick="pa()"  >全部</li>
+                            <li value="50"  onclick="pa()" >50%以下</li>
+                            <li value="80" onclick="pa()"  >50%-80%</li>
+                            <li value="100"  onclick="pa()" >80以上</li>
                         </ul>
                     </div>
                 </div>
@@ -179,10 +230,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 	<div class="tz_one_left">项目状态：</div>
                     <div class="tz_one_right">
                     	<ul>
-                        	<li value="41">全部</li>
-                            <li value="42">未满在投</li>
-                            <li class="dq" value="43">企业还款中</li>
-                            <li value="44">企业已还款</li>
+                        	<li value="1" onclick="pa()"  >全部</li>
+                            <li value="2" onclick="pa()"  >未满在投</li>
+                            <li class="dq" value="3" onclick="pa()"  >企业还款中</li>
+                            <li value="4"  onclick="pa()" >企业已还款</li>
                         </ul>
                     </div>
                 </div>
@@ -193,17 +244,25 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
      
 
 
- <div id="bodyframe" style="VISIBILITY: hidden"> 
+ <!-- <div id="bodyframe" style="VISIBILITY: hidden">  -->
 <!--  <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px">    -->
 <form  action="<%=path%>/product/allProduct" id="form" method="post"   class="box"  style="display:'none'"   >
-<input type="text"   name="pageNo" id="pageNo"  />
-<!-- <input type="text"   name="name" />
-<input type="text"   name="name" /> -->
+<!-- <input type="text"   name="pageNo" id="pageNo"  /> -->
+ <input type="text"   name="yearIncome" id="yearIncome"  />
+<input type="text"   name="financingMoney" id="financingMoney"  />
+<input type="text"   name="financingPeriod" id="financingPeriod"  />
+<input type="text"   name="financingProgress" id="financingProgress"  /> 
+<input type="text"   name="projectStatus" id="projectStatus"  /> 
+
 <input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
-<button id="update" ></button>
+<!-- <button id="update" ></button> -->
 </form>
  <!--  </IFRAME>   -->
-</div>  
+<!-- </div>   -->
+
+
+
+
 <!-- <div onclick="document.all.bodyframe.style.visibility='visible'" style="background-color: red; cursor: hand; height: 22; left: 300; position: absolute; top: 137; width: 74; z-index: 1"> 
 <font color="#ffffff">显示iFrame</font></p> 
 </div> 
