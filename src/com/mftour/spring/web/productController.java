@@ -52,6 +52,7 @@ public class productController {
 		  
 		  model.addAttribute("list", list);
 		  model.addAttribute("page", page);
+		  model.addAttribute("product", product);
 		
 		return "touzi";
 		
