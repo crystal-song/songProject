@@ -40,12 +40,22 @@ $('.tz_nr li').click(function(){
 	});
 
 });	   */
+
+
+
+	    
+	    
+	/* $("#form" ).submit(); */
+
+/*  }
+	 */
+ 
  
 
-     function pa(){  
- /* $(document).ready(function(){ 
+    /*  function pa(){   */
+ $(document).ready(function(){ 
 	 
-	    $('.tz_nr li').click(function(){    */
+	    $('.tz_nr li').click(function(){    
 			
 			var n=0;
 		 $(this).addClass('dq').siblings().removeClass('dq');     
@@ -67,7 +77,7 @@ $('.tz_nr li').click(function(){
 				 }if(n==3){
 					 $('#financingProgress').val(param);
 				 }if(n==4){
-					 $('#repaymentWay').val(param);
+					 $('#projectStatus').val(param);
 				 }
 				n++;		
 				/* alert(b[0]); */
@@ -80,10 +90,10 @@ $('.tz_nr li').click(function(){
 			
 			 $("#form" ).submit();
 			
-	 /* 	});
-			 });    */
+	  	});
+			 });    
 
-  }   
+/*   }    */
   
 
 function jumpPage(pag){
@@ -248,11 +258,11 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 <!--  <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px">    -->
 <form  action="<%=path%>/product/allProduct" id="form" method="post"   class="box"  style="display:'none'"   >
 <!-- <input type="text"   name="pageNo" id="pageNo"  /> -->
- <input type="text"   name="yearIncome" id="yearIncome"  />
-<input type="text"   name="financingMoney" id="financingMoney"  />
-<input type="text"   name="financingPeriod" id="financingPeriod"  />
-<input type="text"   name="financingProgress" id="financingProgress"  /> 
-<input type="text"   name="projectStatus" id="projectStatus"  /> 
+ <input type="text"   name="yearIncome" id="yearIncome"   value="${product.yearIncome}"   />
+<input type="text"   name="financingMoney" id="financingMoney"  value="${product.financingMoney}" />
+<input type="text"   name="financingPeriod" id="financingPeriod" value="${product.financingPeriod}" />
+<input type="text"   name="financingProgress" id="financingProgress" value="${product.financingProgress}" /> 
+<input type="text"   name="projectStatus" id="projectStatus" value="${product.projectStatus}" /> 
 
 <input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
 <!-- <button id="update" ></button> -->
