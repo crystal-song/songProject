@@ -40,6 +40,8 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 		 int projectStatus1=1;
 		 int projectStatus2=2;
 		 int projectStatus3=3;
+		 int projectStatus4=4;
+		 
 		
 		
 		String countQuery = "select count(*) from TProduct product";
@@ -237,12 +239,12 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 					sb.append(" where");
 				}
 				
-				if(product.getProjectStatus()==1){
+			/*	if(product.getProjectStatus()==1){
 					
 				
 				sb.append(" product.projectStatus = :projectStatus1 ");
 				params.put("projectStatus1", projectStatus1);
-				}
+				}*/
 				
 			    if(product.getProjectStatus()==2){
 					
@@ -257,6 +259,13 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 				sb.append(" product.projectStatus = :projectStatus3 ");
 				params.put("projectStatus3", projectStatus3);
 					}
+				
+				if(product.getProjectStatus()==4){
+					
+					
+					sb.append(" product.projectStatus = :projectStatus4 ");
+					params.put("projectStatus4", projectStatus4);
+						}
 			}
 			
 			
