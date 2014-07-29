@@ -28,18 +28,60 @@
         <property name="repaymentWay" type="java.lang.String">
             <column name="repaymentWay" length="50" />
         </property>
-        <property name="financingMoney" type="java.lang.String">
+        <property name="financingMoney" type="java.lang.Integer">
             <column name="financingMoney" length="50" />
         </property>
-        <property name="financingProgress" type="java.lang.String">
+        <property name="financingPeriod" type="java.lang.Integer">
+            <column name="financingPeriod" length="50" />
+        </property>
+        <property name="financingProgress" type="java.lang.Integer">
             <column name="financingProgress" length="50" />
+        </property>
+        <property name="projectIntroduce" type="java.lang.String">
+            <column name="projectIntroduce" length="200" />
+        </property>
+        
+         <property name="projectStatus" type="java.lang.Integer">
+            <column name="projectStatus" length="20" />
         </property>
         <property name="companyProfile" type="java.lang.String">
             <column name="companyProfile" length="500" />
         </property>
         <property name="enterpriseCertificate" type="java.lang.String">
-            <column name="enterpriseCertificate" length="50" />
+            <column name="enterpriseCertificate" length="200" />
         </property>
+         
+        
+        
+        
+         <property name="guaranteeInstitution" type="java.lang.String">
+            <column name="guaranteeInstitution" length="200" />
+        </property>
+         <property name="CollateralOpinion" type="java.lang.String">
+            <column name="CollateralOpinion" length="200" />
+        </property>
+         <property name="fundUse" type="java.lang.String">
+            <column name="fundUse" length="200" />
+        </property>
+         <property name="repaymentSource" type="java.lang.String">
+            <column name="repaymentSource" length="200" />
+        </property>
+         <property name="guarantee" type="java.lang.String">
+            <column name="guarantee" length="200" />
+        </property>
+         <property name="riskControl" type="java.lang.String">
+            <column name="riskControl" length="200" />
+        </property>
+         <property name="businessScope" type="java.lang.String">
+            <column name="businessScope" length="200" />
+        </property>
+         <property name="stateOfOperation" type="java.lang.String">
+            <column name="stateOfOperation" length="200" />
+        </property>
+         <property name="guaranteeInstitutionIntroduce" type="java.lang.String">
+            <column name="guaranteeInstitutionIntroduce" length="200" />
+        </property>
+        
         
        
     </class>

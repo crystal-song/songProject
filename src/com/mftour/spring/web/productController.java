@@ -32,10 +32,10 @@ public class productController {
 	
 	@RequestMapping(value = "/allProduct", method = {RequestMethod.POST, RequestMethod.GET})
 	public String allProduct( @RequestParam(value = "pageNo",required=false, defaultValue= "1") int pageNo,
-			@RequestParam(value = "pageSize",required=false, defaultValue= "4") int pageSize,
+			@RequestParam(value = "pageSize",required=false, defaultValue= "6") int pageSize,
 			@RequestParam(value = "name",required=false,defaultValue="") String name,
-			Model model
-			/*TProduct product*/) throws Exception {
+			Model model,
+			TProduct product) throws Exception {
 		
 		
 		 Page page = Page.newBuilder(pageNo, pageSize, "allProduct");
@@ -48,7 +48,7 @@ public class productController {
 				}*/
 				
 		 
-		 List<TProduct> list=productService.getProduct(page);
+		 List<TProduct> list=productService.getProduct(page,product);
 		  
 		  model.addAttribute("list", list);
 		  model.addAttribute("page", page);

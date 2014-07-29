@@ -8,7 +8,7 @@ import com.mftour.spring.util.Page;
 
 public interface IProductService {
 	
-	public List<TProduct> getProduct(Page page)throws Exception;
+	public List<TProduct> getProduct(Page page,TProduct product)throws Exception;
 	
 	 public TProduct getProductById(Long id);
 

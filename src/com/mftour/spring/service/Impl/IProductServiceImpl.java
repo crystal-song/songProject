@@ -22,8 +22,8 @@ public class IProductServiceImpl implements  IProductService {
 	
 
 	@Override
-	public List<TProduct> getProduct(Page page) throws Exception {
-		return  productDao.getProduct(page);
+	public List<TProduct> getProduct(Page page,TProduct product) throws Exception {
+		return  productDao.getProduct(page,product);
 	}
 
 
