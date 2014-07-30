@@ -32,13 +32,14 @@ public class productController {
 	
 	@RequestMapping(value = "/allProduct", method = {RequestMethod.POST, RequestMethod.GET})
 	public String allProduct( @RequestParam(value = "pageNo",required=false, defaultValue= "1") int pageNo,
-			@RequestParam(value = "pageSize",required=false, defaultValue= "6") int pageSize,
+			@RequestParam(value = "pageSize",required=false, defaultValue= "2") int pageSize,
 			@RequestParam(value = "name",required=false,defaultValue="") String name,
 			Model model,
 			TProduct product) throws Exception {
-		
+		    /*int pageNo=product.getPageNo();*/
 		
 		 Page page = Page.newBuilder(pageNo, pageSize, "allProduct");
+		
 		 
 		 
 			//加入分页元素
