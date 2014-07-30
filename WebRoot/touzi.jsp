@@ -407,8 +407,8 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 
                     <div class="tj_left">推荐项目:<span class="hong"><a href="getProductByid?id=${s.id}">${s.projectName}</a></span></div>
                     <div class="tj_right">
-                        <div class="tj_jd">融资进度：${s.financingProgress}</div>
-                        <div class="tj_jd_pic"><img src="<%=path%>/images/sy_76.jpg"></div>
+                        <div class="tj_jd">融资进度：${s.financingProgress}%</div>
+                        <div class="tj_jd_pic"><div class="progress_80"><div class="progress_bar" style="width:${s.financingProgress<100?s.financingProgress:100}%" title="融资进度：${s.financingProgress}%"></div></div></div>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -427,7 +427,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                     </div>
                     <div class="xq04">
                         <div class="xq01_tit">企业等级</div>
-                        <div class="xq04_nr"><img src="<%=path%>/images/sy_66.jpg"></div>
+                        <div class="xq04_nr"><img src="<%=path%>/images/qualityRate_4.jpg" style="margin-bottom:-3px;"></div>
                     </div>
                 </div>
             </div>

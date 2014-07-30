@@ -33,9 +33,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	<div class="xxo_one">
                         	<div class="xxo_font">项目名称：<span class="ckxq_red">${product1.projectName}</span></div>
                             <div class="xxo_font">企业编号：${product1.enterpriseNumber}</div>
-                            <div class="xxo_font">信用等级：<img src="<%=path%>/images/xx_06.jpg"><span style="padding-left:160px;">分享到：<img src="<%=path%>/images/xx_09.jpg">&nbsp;<img src="<%=path%>/images/xx_11.jpg">&nbsp;<img src="<%=path%>/images/xx_13.jpg"></span></div>
+                            <div class="xxo_font">信用等级：<img src="<%=path%>/images/qualityRate_4.jpg" style="margin-bottom:-3px;"><span style="padding-left:120px;">分享到：<img src="<%=path%>/images/xx_09.jpg">&nbsp;<img src="<%=path%>/images/xx_11.jpg">&nbsp;<img src="<%=path%>/images/xx_13.jpg"></span></div>
                         </div>
-                        <div class="xx_font">年化收益：<span class="ckxq_red1">${product1.yearIncome}%</span>&nbsp;还款日期:<span class="ckxq_red1">${product1.repaymentTime}</span>&nbsp;还款方式：<span class="zi14">${product1.repaymentWay}</span></div>
+                        <div class="xx_font">年化收益：<span class="ckxq_red1">${product1.yearIncome}%</span>&nbsp;&nbsp;还款日期:<span class="ckxq_red1">${product1.repaymentTime}</span>&nbsp;&nbsp;还款方式：<span class="zi14">${product1.repaymentWay}</span></div>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -47,11 +47,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 企业生产经营正常，还款正常
                     </div>
                     <div class="tzxx_right">
-                    	融资金额:<span class="cu">${product1.financingMoney}万</span><br>
-融资进度：<span class="cu">${product1.financingProgress}</span><br>
-<img src="<%=path%>/images/sy_71.jpg"><br>
-融资金额:<span class="cu hong">1000万</span><br>
-融资进度：<span class="cu hong">1000万</span>
+                    	融资金额:<span class="cu hong">${product1.financingMoney}万</span><br>
+融资进度：<span class="cu hong">${product1.financingProgress}%</span><br>
+<div class="progress_160"><div class="progress_bar" style="width:${product1.financingProgress<100?product1.financingProgress:100}%"></div></div>
+
                     </div>
                 </div>
             </div>

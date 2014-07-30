@@ -250,3 +250,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .profile_l .user_info .user_safetag div{ float:left; width: 29px; height:30px; padding:1px; margin:0px 2px; cursor:pointer;}
 
 .btm_border{ border-bottom: 1px solid #E4E4E4;}
+
+.progress_80{ width:80px; height:10px; background:url(../images/progress_bg_80px.jpg) center no-repeat; margin:1px;}
+.progress_160{ width:160px; height:10px; background:url(../images/progress_bg_160px.jpg) center no-repeat; margin:1px;}
+.progress_bar{ height:10px; background:url(../images/progress_bar.jpg) repeat-x;}
