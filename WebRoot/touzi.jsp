@@ -112,6 +112,7 @@ function pa(clicked){
 	$("#financingMoney").val(myFilter[2]);
 	$("#financingProgress").val(myFilter[3]);
 	$("#projectStatus").val(myFilter[4]);
+	$("#pageNo").val(1);
 	console.log(myFilter);
 	//alert("avd");
 	
@@ -198,11 +199,16 @@ function jumpPage(pag){
 	   
 	    $('#pageNo').val(pag); 
 	    
-	    pa();
+	   /*  pa(); */
+	    
+	   $("#yearIncome").val(myFilter[0]);
+	$("#financingPeriod").val(myFilter[1]);
+	$("#financingMoney").val(myFilter[2]);
+	$("#financingProgress").val(myFilter[3]);
+	$("#projectStatus").val(myFilter[4]);
 	    
 	    
-	    
-	/* $("#form" ).submit(); */
+	 $("#form" ).submit(); 
 
  }
 	
@@ -360,21 +366,21 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
      
 
 
- <!-- <div id="bodyframe" style="VISIBILITY: hidden">  -->
+ <div id="bodyframe" style="VISIBILITY: hidden">  
 <!--  <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px">    -->
 <form  action="<%=path%>/product/allProduct" id="form" method="post"   class="box"  style="display:'none'"   >
-<!-- <input type="text"   name="pageNo" id="pageNo"  /> -->
- <input type="text"   name="yearIncome" id="yearIncome"   value="${product.yearIncome}"   />
-<input type="text"   name="financingMoney" id="financingMoney"  value="${product.financingMoney}" />
-<input type="text"   name="financingPeriod" id="financingPeriod" value="${product.financingPeriod}" />
-<input type="text"   name="financingProgress" id="financingProgress" value="${product.financingProgress}" /> 
-<input type="text"   name="projectStatus" id="projectStatus" value="${product.projectStatus}" /> 
+ <input type="hidden"   name="pageNo" id="pageNo" value="${pageNo}"   /> 
+ <input type="hidden"   name="yearIncome" id="yearIncome"   value="${product.yearIncome}"   />
+<input type="hidden"   name="financingMoney" id="financingMoney"  value="${product.financingMoney}" />
+<input type="hidden"   name="financingPeriod" id="financingPeriod" value="${product.financingPeriod}" />
+<input type="hidden"   name="financingProgress" id="financingProgress" value="${product.financingProgress}" /> 
+<input type="hidden"   name="projectStatus" id="projectStatus" value="${product.projectStatus}" /> 
 
 <input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
 <!-- <button id="update" ></button> -->
 </form>
  <!--  </IFRAME>   -->
-<!-- </div>   -->
+ </div>   
 
 
 
