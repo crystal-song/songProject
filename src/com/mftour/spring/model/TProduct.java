@@ -14,7 +14,7 @@ public class TProduct implements java.io.Serializable{
 	    private String repaymentWay;    //还款方式          5
 	    private Integer financingMoney;   //融资金额         3
 	    private Integer financingPeriod; //融资周期         2
-	    private Integer financingProgress; //融资进度        4
+	    private Double financingProgress; //融资进度        4
 	    private String projectIntroduce;  //项目介绍
 	    private Integer projectStatus;  //项目状态
 	    private String companyProfile;    //公司介绍
@@ -104,10 +104,11 @@ public class TProduct implements java.io.Serializable{
 		public void setFinancingMoney(Integer financingMoney) {
 			this.financingMoney = financingMoney;
 		}
-		public Integer getFinancingProgress() {
+		
+		public Double getFinancingProgress() {
 			return financingProgress;
 		}
-		public void setFinancingProgress(Integer financingProgress) {
+		public void setFinancingProgress(Double financingProgress) {
 			this.financingProgress = financingProgress;
 		}
 		public String getCompanyProfile() {

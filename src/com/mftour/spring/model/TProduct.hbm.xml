@@ -34,7 +34,7 @@
         <property name="financingPeriod" type="java.lang.Integer">
             <column name="financingPeriod" length="50" />
         </property>
-        <property name="financingProgress" type="java.lang.Integer">
+        <property name="financingProgress" type="java.lang.Double">
             <column name="financingProgress" length="50" />
         </property>
         <property name="projectIntroduce" type="java.lang.String">
