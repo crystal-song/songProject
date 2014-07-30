@@ -279,7 +279,7 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 		// int total = ((Long)totalList.iterator().next()).intValue();
 
 		/*Query queryTotal = getSession().createQuery(countQuery + sb.toString());*/
-		Query queryTotal = getSession().createQuery(countQuery);
+		Query queryTotal = getSession().createQuery(countQuery + sb.toString());
 		Query queryList = getSession()
 				/*.createQuery(fullQuery + sb.toString() + orderString)*/
 				.createQuery(hql + sb.toString())
@@ -290,7 +290,7 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 			Iterator<String> it = params.keySet().iterator();
 			while (it.hasNext()) {
 				String key = it.next();
-				/*queryTotal.setParameter(key, params.get(key));*/
+				queryTotal.setParameter(key, params.get(key));
 				queryList.setParameter(key, params.get(key));
 			}
 		}

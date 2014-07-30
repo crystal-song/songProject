@@ -57,8 +57,8 @@
          <property name="guaranteeInstitution" type="java.lang.String">
             <column name="guaranteeInstitution" length="200" />
         </property>
-         <property name="CollateralOpinion" type="java.lang.String">
-            <column name="CollateralOpinion" length="200" />
+         <property name="collateralOpinion" type="java.lang.String">
+            <column name="collateralOpinion" length="200" />
         </property>
          <property name="fundUse" type="java.lang.String">
             <column name="fundUse" length="200" />

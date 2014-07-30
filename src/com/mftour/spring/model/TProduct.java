@@ -21,7 +21,7 @@ public class TProduct implements java.io.Serializable{
 	    private String enterpriseCertificate;  //企业证书
 	    
 	    private String guaranteeInstitution;  //担保机构
-	    private String CollateralOpinion;   //担保意见
+	    private String collateralOpinion;   //担保意见
 	    private String guaranteeInstitutionIntroduce; //担保机构介绍
 	    private String fundUse;    //资金用途
 	    private String repaymentSource;  //偿还来源
@@ -29,6 +29,7 @@ public class TProduct implements java.io.Serializable{
 	    private String riskControl; //风险控制
 	    private String businessScope; //营业范围
 	    private String stateOfOperation; //经营状况
+	   
 	  
 	   
 	    
@@ -127,11 +128,12 @@ public class TProduct implements java.io.Serializable{
 		public void setGuaranteeInstitution(String guaranteeInstitution) {
 			this.guaranteeInstitution = guaranteeInstitution;
 		}
+		
 		public String getCollateralOpinion() {
-			return CollateralOpinion;
+			return collateralOpinion;
 		}
 		public void setCollateralOpinion(String collateralOpinion) {
-			CollateralOpinion = collateralOpinion;
+			this.collateralOpinion = collateralOpinion;
 		}
 		public String getFundUse() {
 			return fundUse;
@@ -176,6 +178,9 @@ public class TProduct implements java.io.Serializable{
 				String guaranteeInstitutionIntroduce) {
 			this.guaranteeInstitutionIntroduce = guaranteeInstitutionIntroduce;
 		}
+		
+		
+		
 		
 		
 	    
