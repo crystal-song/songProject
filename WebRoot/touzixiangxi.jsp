@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     	<div class="xxo_one">
                         	<div class="xxo_font">项目名称：<span class="ckxq_red">${product1.projectName}</span></div>
                             <div class="xxo_font">企业编号：${product1.enterpriseNumber}</div>
-                            <div class="xxo_font">信用等级：<img src="<%=path%>/images/qualityRate_4.jpg" style="margin-bottom:-3px;"><span style="padding-left:120px;">分享到：<img src="<%=path%>/images/xx_09.jpg">&nbsp;<img src="<%=path%>/images/xx_11.jpg">&nbsp;<img src="<%=path%>/images/xx_13.jpg"></span></div>
+                            <div class="xxo_font">信用等级：<img src="<%=path%>/images/qualityRate_${product1.qualityRating}.jpg" style="margin-bottom:-3px;"><span style="padding-left:120px;">分享到：<img src="<%=path%>/images/xx_09.jpg">&nbsp;<img src="<%=path%>/images/xx_11.jpg">&nbsp;<img src="<%=path%>/images/xx_13.jpg"></span></div>
                         </div>
                         <div class="xx_font">年化收益：<span class="ckxq_red1">${product1.yearIncome}%</span>&nbsp;&nbsp;还款日期:<span class="ckxq_red1">${product1.repaymentTime}</span>&nbsp;&nbsp;还款方式：<span class="zi14">${product1.repaymentWay}</span></div>
                     </div>

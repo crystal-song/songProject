@@ -427,7 +427,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                     </div>
                     <div class="xq04">
                         <div class="xq01_tit">企业等级</div>
-                        <div class="xq04_nr"><img src="<%=path%>/images/qualityRate_4.jpg" style="margin-bottom:-3px;"></div>
+                        <div class="xq04_nr"><img src="<%=path%>/images/qualityRate_${s.qualityRating}.jpg" style="margin-bottom:-3px;"></div>
                     </div>
                 </div>
             </div>
