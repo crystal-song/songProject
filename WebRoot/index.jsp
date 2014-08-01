@@ -3,6 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
+ <%@ include file="/includes/taglibs.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,6 +12,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>中投汇</title>
 
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+
+<script type="text/javascript" >
+
+
+/*  $(document).ready(function(){ 
+	alert("ccccccccccc");
+ 
+	
+    
+            $.ajax({
+                type: 'POST',
+                url: '<c:url value="/product/recommend?type=1"/>', */
+              /*   data: 'type=1', */
+              /*   dataType: 'text', */
+               /*  success: function() {
+                	alert("dd"+data+'"success"');
+                   
+                } */
+  /*           });
+      
+	
+	
+	
+});   */
+
+
+
+   
+                
+           
+
+</script>
+
 </head>
 
 <body>
@@ -82,8 +118,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="content">
 	<div class="content_fra">
     	<div class="cont_left">
+    	
+    	
+    	<%--  <c:if test="${ not empty list}">
+        <c:forEach var="s" items="${list}" varStatus="i">
         	<div class="ckxq">
-            	<div class="ckxq_bg">推荐项目:<span class="ckxq_red"><a href="<%=path%>/index.jsp">建筑工程企业建筑材料采购</a></span></div>
+            	<div class="ckxq_bg">推荐项目:<span class="ckxq_red"><a href="<%=path%>/index.jsp">${s.projectName}</a></span></div>
                 <div class="xq_tab">
                 	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
                     <div class="xq_right">
@@ -123,35 +163,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
 			</div>
+			 </c:forEach>
+      
+	 
+        </c:if>
+			 --%>
+			 
 			
-			
-		
-	  
+			 
+			 
+		 
+	   <c:if test="${ not empty list}">
+        <c:forEach var="s" items="${list}" varStatus="i">
 	  
 			<div class="clear_height"></div>
             <div class="ind_list">
             	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
                 <div class="ind_right">
                 	<div class="tuijian">
-                    	<div class="tj_left">推荐项目:<span class="hong">建筑工程企业建筑材料采购</span></div>
+                    	<div class="tj_left">推荐项目:<span class="hong">${s.projectName}</span></div>
                         <div class="tj_right">
-                        	<div class="tj_jd">融资进度：80%</div>
+                        	<div class="tj_jd">融资进度：${s.financingProgress}%</div>
                             <div class="tj_jd_pic"><img src="<%=path%>/images/sy_76.jpg"></div>
                         </div>
                     </div>
                     <div class="clear"></div>
                     <div class="xq_table">
+                    .
                         <div class="xq01">
                             <div class="xq01_tit">年化收益</div>
-                            <div class="xq01_nr hong">14.50%</div>
+                            <div class="xq01_nr hong">${s.yearIncome}</div>
                         </div>
                         <div class="xq02">
                             <div class="xq01_tit">融资金额</div>
-                            <div class="xq01_nr">1000万</div>
+                            <div class="xq01_nr">${s.financingMoney}万</div>
                         </div>
                         <div class="xq03">
                             <div class="xq01_tit">还款日期</div>
-                            <div class="xq01_nr">2015-06-04</div>
+                            <div class="xq01_nr">${s.repaymentTime}</div>
                         </div>
                         <div class="xq04">
                             <div class="xq01_tit">企业等级</div>
@@ -160,7 +209,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                 </div>
             </div>
-            <div class="clear_height"></div>
+            </c:forEach>
+      
+	 
+        </c:if>
+             
+            
+            
+       <div class="clear_height"></div>
             <div class="ind_list">
             	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
                 <div class="ind_right">
@@ -191,8 +247,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="clear_height"></div>
+            </div>  
+           <%--  <div class="clear_height"></div>
             <div class="ind_list">
             	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
                 <div class="ind_right">
@@ -223,8 +279,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </div>
                 </div>
-            </div>
-		</div>
+            </div> --%>
+		</div> 
 		<div class="cont_right">
         	<div class="cr_bg">
             	<div class="cr_tit">
