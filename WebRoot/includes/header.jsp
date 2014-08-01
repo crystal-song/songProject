@@ -18,7 +18,8 @@
 	<div class="logo"><a href="<%=path%>/index.html"><img src="<%=path%>/images/sy_17.jpg"></a></div>
     <div class="nav">
     	<ul>
-        	<li><a href="<%=path%>/index.jsp">首页</a></li>
+        	<%-- <li><a href="<%=path%>/index.jsp">首页</a></li> --%>
+        	<li><a href="<%=path%>/wel">首页</a></li>
             <li><a href="<%=path%>/product/allProduct">我要投资</a></li>
             <li><a href="<%=path%>/profile.jsp">我的账户</a></li>
             <li><a href="<%=path%>/baozhang.jsp">安全保障</a></li>
