@@ -28,7 +28,7 @@
 		<!-- 约定优于配置，约定优于配置 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-		<property name="jdbcUrl" value="jdbc:mysql://192.168.1.225:3306/zt?useUnicode=true&amp;characterEncoding=UTF8"/>
+		<property name="jdbcUrl" value="jdbc:mysql://192.168.1.156:3306/zt?useUnicode=true&amp;characterEncoding=UTF8"/>
 		<property name="user" value="root"/>
         <property name="password" value="123"/>
 		<property name="minPoolSize" value="5"/>
