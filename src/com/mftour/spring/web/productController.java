@@ -23,7 +23,7 @@ import com.mftour.spring.util.Page;
 
 
 
-@Controller
+@Controller                                 
 @RequestMapping("/product")
 public class productController {
 	
@@ -115,6 +115,26 @@ public class productController {
 		 model.addAttribute("product1", product1);
 		
 		return "touzixiangxi";
+		
+	}
+	
+	
+	
+	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
+	/*@ResponseBody*/
+	public String recommend( Model model,@RequestParam("type") String type ) throws Exception {
+		int recommendType=Integer.parseInt(type);
+		List<TProduct> list=productService.queryProductByType(recommendType);
+		
+		model.addAttribute("list", list);
+	
+	
+	
+	   /*System.out.println(user1.getName()+"www"+user1.getPassword());*/
+	    
+	   return "index";
+/*	    return "user/chpasswd";*/
+	    
 		
 	}
 

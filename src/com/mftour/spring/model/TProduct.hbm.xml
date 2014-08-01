@@ -82,6 +82,10 @@
             <column name="guaranteeInstitutionIntroduce" length="200" />
         </property>
         
+         <property name="recommendType" type="java.lang.Integer">
+            <column name="recommendType" length="20" />
+        </property>
+        
         
        
     </class>

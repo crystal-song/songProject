@@ -36,6 +36,17 @@ public class IProductServiceImpl implements  IProductService {
 
 
 
+	@Override
+	public List<TProduct> queryProductByType(Integer type) {
+		
+		return productDao.queryProductByType(type);
+	}
+
+	
+	
+	
+
+
 	
 	
 	

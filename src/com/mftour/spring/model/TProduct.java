@@ -29,6 +29,8 @@ public class TProduct implements java.io.Serializable{
 	    private String riskControl; //风险控制
 	    private String businessScope; //营业范围
 	    private String stateOfOperation; //经营状况
+	    private Integer recommendType;
+	    
 	   
 	  
 	   
@@ -178,6 +180,12 @@ public class TProduct implements java.io.Serializable{
 		public void setGuaranteeInstitutionIntroduce(
 				String guaranteeInstitutionIntroduce) {
 			this.guaranteeInstitutionIntroduce = guaranteeInstitutionIntroduce;
+		}
+		public Integer getRecommendType() {
+			return recommendType;
+		}
+		public void setRecommendType(Integer recommendType) {
+			this.recommendType = recommendType;
 		}
 		
 		
