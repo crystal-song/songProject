@@ -254,3 +254,19 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .progress_80{ width:80px; height:10px; background:url(../images/progress_bg_80px.jpg) center no-repeat; margin:1px;}
 .progress_160{ width:160px; height:10px; background:url(../images/progress_bg_160px.jpg) center no-repeat; margin:1px;}
 .progress_bar{ height:10px; background:url(../images/progress_bar.jpg) repeat-x;}
+
+
+
+
+.con_nav{width:798px; height:70px; background:#f5f5f5; margin:0 auto; border-bottom:1px solid #c4c3c3;}
+.con_nav li{float:left; width:99px; height:67px; text-align:center; line-height:70px; font-size:16px; cursor:pointer;}
+.con_nav li a:hover{color:red;}
+.con_nav .nav_first{ background:#fff; border-right:1px solid #c4c3c3; border-top:4px solid red; border-left:1px solid #c4c3c3; line-height:62px;}
+.con_nav_01{width:1000px; height:70px; background:#f5f5f5; margin:0 auto;}
+.btn_bottom{width:100px; height:40px; background:url(../images/top_r2_c2.jpg) no-repeat; float:right; margin-top:-41px; margin-right:-101px;}
+.text{position:fixed; top:0;  height:70px; margin:0 auto; border:1px solid #ddd;}
+.zheng_btn{width:80px; height:30px; background:#fc6e00; border-radius:3px; line-height:30px; border:1px solid #F30; color:#fff; margin-left:360px; 
+          cursor:pointer; margin-top:20px;}
+.table_xiangqing{width:762px; height:250px; overflow:auto;}
+
+
