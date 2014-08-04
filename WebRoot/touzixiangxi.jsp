@@ -16,21 +16,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 $(document).ready(function(){
+	var scroplltop=$(window).scrollTop();
 	var nav_height=parseInt($('.con_nav').offset().top);
 	$('.con_nav li').click(function(){
 		var nav_height=parseInt($('.con_nav').height());
 		var i=$(this).index();
-		var zheng=$(this).hasClass('zheng');
-		
-		if(zheng){
-		$("#a1").css("display",'block');
-		$("#a2").css("display",'block');			
-		}else{
-		$("#a1").css("display",'none');
-		$("#a2").css("display",'none');
-		$(".wz_one:not('#a1')").css("display",'block');
-		$(".wz_nr:not('#a2')").css("display",'block');
-			}
 		checkText();
 		$(this).addClass('nav_first').siblings().removeClass('nav_first');
 		
@@ -41,9 +31,16 @@ $(document).ready(function(){
 		$(window).on('scroll', function(){
 				checkText();
 			});
+	$('.btn_bottom').hide()	;		
 	function checkText(){
 			
 			var top = parseInt($(this).scrollTop());
+			if(top>500){			
+				$('.btn_bottom').show();
+				}else{
+					
+				$('.btn_bottom').hide()	;
+					}	
 			var text=$('.con_nav');
 			//console.log(top+"//"+nav_height);
 			if(top>nav_height){ 
@@ -56,13 +53,7 @@ $(document).ready(function(){
 		}			
 		$('.btn_bottom').click(function(){
 			$("html,body").animate({scrollTop:0},500);	
-		});	
-		$(".zheng_btn").click(function(){		
-			$(".wz_one").css("display",'none');
-		    $(".wz_nr").css("display",'none');
-			$("#a1").css("display",'block');
-		    $("#a2").css("display",'block');
-			});						
+		    });
 		});
 </script>
 </head>
@@ -120,8 +111,9 @@ $(document).ready(function(){
                    <li><a>风险控制</a></li>
                    <li><a>企业背景</a></li>
                    <li><a>企业信息</a></li>
-                   <li class="zheng"><a>相关证件</a></li>
+  
                    <li class="shu"><a>投资详情</a></li>
+                   <li class="zheng"><a>相关证件</a></li>
                  </ul>
                 </div>
             	<div class="wz_one">项目描述</div>
@@ -146,14 +138,7 @@ $(document).ready(function(){
                 <div class="wz_nr"><span class="cu">营业范围：</span>${product1.businessScope}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">经营状况：</span>&nbsp;&nbsp;${product1.stateOfOperation}<br>
 </div>
-            <div id="a1" class="wz_one" style="display:none"><a>相关证件</a></div>
-                    <div id="a2" class="wz_nr" style="display:none"><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">他项权证：</span><br>
-                    <img src="<%=path%>/images/20140708132140144014.jpg" width="581" height="800" />
-                    <img src="<%=path%>/images/20140708132035433543.jpg" width="720" height="523" />
-                    <img src="<%=path%>/images/20140708132013601360.jpg" width="720" height="989" />  
-                    </div>
-                    <div class="wz_one" ><a>投资详情</a></div>
+           <div class="wz_one" ><a>投资详情</a></div>
                     <div class="wz_nr" ><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">具体信息：</span><br>
                     <div class="table_xiangqing">
@@ -433,8 +418,17 @@ $(document).ready(function(){
                           </table>
                     </div>
                     </div>
-                    <div class="zheng_btn">查看相关证件</div> 
-                   </div>  
+
+
+            <div  class="wz_one" ><a>相关证件</a></div>
+                    <div class="wz_nr" ><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">他项权证：</span><br>
+                    <img src="<%=path%>/images/20140708132140144014.jpg" width="581" height="800" />
+                    <img src="<%=path%>/images/20140708132035433543.jpg" width="720" height="523" />
+                    <img src="<%=path%>/images/20140708132013601360.jpg" width="720" height="989" />  
+                    </div>
+                    
+                    
                    
            <div class="btn_bottom"></div>
             </div>

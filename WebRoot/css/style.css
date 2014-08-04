@@ -155,7 +155,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .bzr_nr{ width:806px; padding-top:18px; height:auto; margin:0 auto;}
 .bzr_nr ul li{ text-align:left; width:781px; line-height:46px; border-bottom:1px dashed #dedede; font-size:14px; font-weight:600; background:url(../images/help_15.jpg) no-repeat 10px 20px; padding-left:25px;}
 
-.xx{ width:100%; height:1620px; background:#dbdada; padding:8px 0px;}
+.xx{ width:100%; height:4318px; background:#dbdada; padding:8px 0px;}
 .xx_fra{ width:1100px; height:auto; margin:0 auto;}
 .xx_left{ float:left; width:800px; height:auto;}
 .xx_one{ width:798px; height:320px; border:1px solid #c4c3c3; background:#FFF;}
@@ -263,10 +263,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .con_nav li a:hover{color:red;}
 .con_nav .nav_first{ background:#fff; border-right:1px solid #c4c3c3; border-top:4px solid red; border-left:1px solid #c4c3c3; line-height:62px;}
 .con_nav_01{width:1000px; height:70px; background:#f5f5f5; margin:0 auto;}
-.btn_bottom{width:100px; height:40px; background:url(../images/top_r2_c2.jpg) no-repeat; float:right; margin-top:-41px; margin-right:-101px;}
+.btn_bottom{width:100px; height:40px; background:url(../images/top_r2_c2.jpg) no-repeat;  position:fixed; right:0px; bottom:180px;}
 .text{position:fixed; top:0;  height:70px; margin:0 auto; border:1px solid #ddd;}
-.zheng_btn{width:80px; height:30px; background:#fc6e00; border-radius:3px; line-height:30px; border:1px solid #F30; color:#fff; margin-left:360px; 
-          cursor:pointer; margin-top:20px;}
 .table_xiangqing{width:762px; height:250px; overflow:auto;}
 
 
