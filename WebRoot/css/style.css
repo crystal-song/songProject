@@ -23,7 +23,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 #dangqian{ width:95px; height:69px; background:url(../images/sy_20.jpg); color:#FFF;}
 
 .banner_bg{ width:100%; height:300px; background:url(../images/sy_bg.jpg);}
-.banner_fra{ width:1100px; height:300px; margin:0 auto;}
+.banner_fra{ width:1400px; height:300px; margin:0 auto; overflow:hidden;}
 
 .one{ width:100%; height:31px; background:url(../images/sy_26.jpg);}
 .one_fra{ width:1100px; height:31px; margin:0 auto; text-align:left; line-height:31px;}
@@ -270,16 +270,145 @@ ul{ margin:0px; padding:0px; list-style:none;}
 
 /*banner*/
 .ban_show{width:4400px; height:300px; background:pink}
-.ban_show li{width:1400px; height:300px; float:left; background:#ccc;}
+.ban_show li{width:1400px; height:300px; float:left; background:#ccc; }
 .ban_show li img{display:block;}
-.banner_fra ol{width:90px; height:30px; position:absolute; top:250px; left:1100px;}
+.banner_fra ol{width:90px; height:30px; position:absolute; top:350px; left:1100px;}
 .banner_fra ol li{width:12px; height:12px; margin:3px 5px;; float:left; list-style:none; border-radius:15px; border:1px solid #999; 
-                  background:#ccc; box-shadow: -2px -2px 2px #999 inset;}
+                  background:#ccc; box-shadow: -2px -2px 2px #999 inset; cursor:pointer;}
 .banner_fra ol .current{background:#F00; border:1px solid #903; box-shadow: -2px -2px 2px #b20d0d inset;}
-.ban_left{width:45px; height:45px; background:url(../img/zuo.png) no-repeat; position:absolute; top:130px; left:130px;}
-.ban_right{width:45px; height:45px; background:url(../img/you.png) no-repeat; position:absolute; top:130px; right:130px;}
+.ban_left{width:45px; height:45px; background:url(../img/zuo.png) no-repeat; position:absolute; top:240px; left:130px; cursor:pointer;}
+.ban_right{width:45px; height:45px; background:url(../img/you.png) no-repeat; position:absolute; top:240px; right:130px; cursor:pointer;}
 /*banner over*/
 
+/*yonghuzhongxin */
+.msg_con{width:1100px; height:auto;  margin:0 auto; margin-top:50px;}
+.msg_left{width:200px; height:550px; float:left; margin-right:12px;}
+.msg_right{width:880px; height:auto;  float:left;}
+.msg_left_top{width:200px; height:160px; border:1px solid #ccc; border-radius:5px;}
+.name{width:200px; height:70px; border-bottom:1px solid #dddddd; position:relative; }
+.pic{width:57px; height:57px; background:red; position:absolute; top:-10px; left:10px;
+    background:#FFF;   border:1px solid #dddddd; border-radius:5px; padding:2px;}
+.pic h3{width:54px; height:54px;  background:url(../img/tubiao-111.jpg) 2px 2px no-repeat; margin:0;}	  
+.name span{width:110px; height:55px; float:right; line-height:60px; text-align:center; font-size:16px; color:#3e3e3e;}
+.left_btm{width:179px; height:32px;  padding:10px;}
+.sp1{width:30px; height:30px;  float:left; margin-left:22px; background:#ebebeb; border-radius:5px;}
+.sp1 a{width:20px; height:20px; background:url(../img/tubiao0.png) no-repeat; display:inline-block; margin-top:5px;}
+.sp2{width:30px; height:30px;  float:left; margin-left:5px; background:#ebebeb; border-radius:5px;}
+.sp2 a{width:20px; height:20px; background:url(../img/tubiao1.png) no-repeat; display:inline-block; margin-top:5px;}
+.sp3{width:30px; height:30px;  float:left; margin-left:5px; background:#ebebeb; border-radius:5px;}
+.sp3 a{width:20px; height:20px; background:url(../img/tubiao7.png) no-repeat; display:inline-block; margin-top:4px;}
+.sp4{width:30px; height:30px;  float:left; margin-left:5px; background:#ebebeb; border-radius:5px;}
+.sp4 a{width:20px; height:20px; background:url(../img/tubiao8.png) no-repeat; display:inline-block; margin-top:4px;}
+.loadbar{width:138px; height:8px; background:#ebebeb; margin:0 auto; border-radius:5px;}
+.red_bar{width:138px; height:8px; border-radius:5px; background:#990000;}
+.view{width:138px; height:28px;  margin:0 auto; line-height:28px;}
+.view span{float:left;}
+.view strong{color:#990000;}
+.view a{float:right; color:#3d68ef;}
+.msg_left_cent{width:194px; height:auto; margin-top:14px; padding:3px;  border:1px solid #ccc; border-radius:5px;}
+.select_nav{width:194px; height:auto;}
+.select_nav ul{display:none;}
+.select_nav li{width:194; height:40px; background:#FFF; line-height:40px; border-bottom:1px solid #ddd; cursor:pointer;}
+
+.msg_nav{background:#f4f4f4; width:194px; height:40px; line-height:40px; margin-bottom:3px; display:inline-block;}
+.msg_nav span{width:50px;  padding-top:2px; cursor:pointer; height:22px; display:inline-block; margin:8px 0 0 5px;; line-height:22px; float:left}
+.msg_nav i{width:20px; height:22px; display:inline-block; float:left; margin:8px 0 0 50px}
+.msg_nav:hover i{animation: donghua 0.5s ease;-moz-animation: donghua 0.5s ease; -webkit-animation: donghua 0.5s ease; -o-animation: donghua 0.5s ease;}
+@keyframes donghua{
+0% {transform: rotate(30.0deg);
+-moz-transform: rotate(30.0deg); /* FF3.5+ */
+-o-transform: rotate(30.0deg); /* Opera 10.5 */
+-webkit-transform: rotate(30.0deg); /* Saf3.1+, Chrome */}
+	
+45%  {transform: rotate(-15.0deg);
+-moz-transform: rotate(-15.0deg); /* FF3.5+ */
+-o-transform: rotate(-15.0deg); /* Opera 10.5 */
+-webkit-transform: rotate(-15.0deg); /* Saf3.1+, Chrome */}
+
+60%  {transform: rotate(10.0deg);
+-moz-transform: rotate(10.0deg); /* FF3.5+ */
+-o-transform: rotate(10.0deg); /* Opera 10.5 */
+-webkit-transform: rotate(10.0deg); /* Saf3.1+, Chrome */}
+
+85%  {transform: rotate(-6.0deg);
+-moz-transform: rotate(-6.0deg); /* FF3.5+ */
+-o-transform: rotate(-6.0deg); /* Opera 10.5 */
+-webkit-transform: rotate(-6.0deg); /* Saf3.1+, Chrome */}
+
+100% {transform: rotate(0deg);
+-moz-transform: rotate(0deg); /* FF3.5+ */
+-o-transform: rotate(0deg); /* Opera 10.5 */
+-webkit-transform: rotate(0deg); /* Saf3.1+, Chrome */}
+	
+	} 
+.bac_change_1{background:url(../img/tubiao9.png) 0 2px no-repeat;}
+.bac_change_2{background:url(../img/tubiao12.png) 0 2px no-repeat}
+.bac_change_3{background:url(../img/tubiao3.png) 0 2px no-repeat}
+
+.msg_right_top{width:886px; height:33px; border:1px solid #ddd; border-radius:5px;}
+.top_tongzhi{float:left; width:60px; height:33px; background:#1368eb; line-height:33px; text-align:center; border-radius:5px; color:#fff;}
+.msg_right_top p{float:left; display:inline-block;  margin:9px 0 0 10px;}
+.xiangxi{float:left; margin-left:5px; line-height:33px; text-align:center; color:#3d68ef}
+.zhidao{float:right; margin-right:5px; line-height:33px;}
+.msg_right_cent{width:886px; height:120px; margin-top:18px; border:1px solid #ddd; border-radius:5px;}
+.msg_div01{width:294px; height:102px; float:left; border-right:1px solid #ddd; margin-top:10px;}
+
+.div01_left{width:50%; height:100%;  float:left;}
+.div01_left .p1{width:130px; height:25px; display:inline-block;}
+.div01_top{width:64px; height:20px; text-align:center; float:left; line-height:20px; font-size:14px; margin-left:12px;}
+.p1 a{width:15px; height:15px; display:inline-block; background:url(../img/tubiao13.png) no-repeat; float:left; margin-top:2px;}
+.div01_left h3{width:90px; height:15px; margin-top:4px; line-height:15px;}
+.div01_left strong{font-size:18px;}
+.div01_right{width:50%; height:100%;  float:left;}
+.div01_right button{margin-top:58px;}
+.div01_right .btn_01{width:48px; height:24px; background:#fc6e00; border-radius:3px; display:inline-block; line-height:24px; 
+                     color:#fff; border:1px solid #F30; margin-top:45px;}
+.div01_right .btn_02{width:48px; height:24px; background:#f5f5f5; border-radius:3px; display:inline-block; line-height:24px; color:#000; border:1px solid #e5e5e5;}
+.msg_div02{width:188px; height:102px; float:left; border-right:1px solid #ddd; margin-top:10px;}
+.msg_div03{width:188px; height:102px; float:left; border-right:1px solid #ddd; margin-top:10px;}
+.msg_div04{width:188px; height:102px; float:left;  margin-top:10px;}
+.msg_right_main{width:886px; height:auto; border:1px solid #ddd; border-radius:5px; margin-top:14px;}
+.msg_title{width:866px; height:30px; margin:10px auto; border-bottom:2px solid #ddd; color:#000;}
+.msg_title a{float:right; color:#3d68ef; margin-top:8px;}
+.msg_title h2{width:76px; height:28px; float:left;  margin:2px 0 2px 0; border-bottom:2px solid #818181; font-size:18px;}
+.shouyi{width:866px; height:300px; background:#FFF; margin:0 10px;}
+.shouyi .sec{width:886px; height:50px;}
+.shouyi li{float:left; width:60px; height:30px ; margin-top:10px; text-align:center; line-height:30px; cursor:pointer;}
+.bac_org{background:url(../img/text-1_r2_c2.jpg) 2px 2px no-repeat; color:#fff;}
+.shouyi p{margin:20px 288px; float:left; text-align:center; }
+.last{width:866px; height:auto;}
+.jilu{width:866px; height:50px; background:#f5f5f5; border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
+.jilu li{width:132px; height:30px; float:left; margin:10px 20px; }
+.jilu_con{width:866px; height:150px; clear:left; overflow:hidden; border-bottom:2px solid #ddd;}
+.jilu_con p{text-align:center; margin-left:360px; line-height:60px;}
+.msg_con_bottom p{margin:15px 0; float:right;}
+/*over*/
+
+/*用户信息*/
+.msg_main{width:886px; height:auto; border:1px solid #ddd; border-radius:5px;}
+.user_con{width: 866px; height:300px;  margin:0 auto; border-bottom:1px solid #ddd;}
+.photo{width:220px; height:300px; float:left; position:relative; }
+.photo span{width:118px; height:118px; background:url(../img/aitouzi02_r2_c.jpg) no-repeat; position:absolute; left:70px; top: 30px;  
+            border-radius:5px; border:1px solid #e6e6e6;}
+.center{width:450px; height:300px;  float:left;}
+.center .user_con_mag{float:left; width:200px;}
+.center .user_con_name {float:left; width:200px;}
+.center .user_con_name li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:right; font-size:16px;}
+.center .user_con_mag li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:left; font-size:16px;}
+.user_right{height:300px; float:left;}
+.user_right li{width:80px; height:26px; margin:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef; 
+              background:url(../img/tubiao16.png) 3px 3px no-repeat;}
+.user_right .xiangqing{background:url(../img/tubiao15.png) 3px 3px no-repeat; color:#3e3e3e;}
+.user_con_last{width:866px; height:400px;  margin:10px auto;}
+.center_last{width:450px; height:300px;  float:left; margin-left:218px;}
+.user_con_last_name{float:left; width:200px; }
+.user_con_last_name li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:right; font-size:16px;}
+.user_con_last_mag{float:left; width:200px; }
+.user_con_last_mag li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:left; font-size:16px;}
+.user_bottom{width:836px; height:100px; background:#fffadc; margin:10px auto; border:1px solid #c2bc88; padding:15px;}
+.user_bottom h3{text-align:left; }
+.user_bottom ol{padding:0; margin:20px;}
+.user_bottom li{text-align:left; margin-top:10px;}
 
 
 
