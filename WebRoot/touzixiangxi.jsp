@@ -429,9 +429,9 @@ $(document).ready(function(){
             <div  class="wz_one" ><a>相关证件</a></div>
                     <div class="wz_nr" ><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">他项权证：</span><br>${product1.enterpriseCertificate}
-                    <img src="<%=path%>/images/20140708132140144014.jpg" width="581" height="800" />
+                   <%--  <img src="<%=path%>/images/20140708132140144014.jpg" width="581" height="800" />
                     <img src="<%=path%>/images/20140708132035433543.jpg" width="720" height="523" />
-                    <img src="<%=path%>/images/20140708132013601360.jpg" width="720" height="989" />  
+                    <img src="<%=path%>/images/20140708132013601360.jpg" width="720" height="989" />   --%>
                     </div>
                     
                     
