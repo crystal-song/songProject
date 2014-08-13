@@ -141,6 +141,7 @@ $(document).ready(function(){
                     <div class="table_xiangqing">
                             <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0">
                               <tr>
+                              
                                 <td height="30" bgcolor="#990000" align="center">
                                     <strong>
                                     <span style="font-family:'Microsoft YaHei'; color:#FFF;font-size:12px;" >投资人</span>
@@ -157,19 +158,27 @@ $(document).ready(function(){
                                     </strong>
                                 </td>
                               </tr>
+                              
+                              <c:if test="${ not empty list}">
+        <c:forEach var="s" items="${list}" varStatus="i">
                               <tr>
                                 <td height="30" bgcolor="#FFFFFF" align="center">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">郭*</span>
+                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">${s.investor}</span>
                                 </td>
                                 <td bgcolor="#FFFFFF" align="center">
                                 	<span style="font-family:'Microsoft YaHei';font-size:12px;">    
-                                    1101061********621</span>
+                                    ${s.identityCard}</span>
                                 </td>
                                 <td bgcolor="#FFFFFF" align="center">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">60万元</span>
+                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">${s.investmentAmount}万元</span>
                                 </td>
                               </tr>
-                              <tr>
+                              
+                                </c:forEach>
+      
+	 
+        </c:if>
+                           <!--    <tr>
                                 <td height="30" align="center" bgcolor="#FFFFFF">
                                     <span style="font-family:'Microsoft YaHei';font-size:12px;">王**</span> 
                                 </td>
@@ -411,7 +420,7 @@ $(document).ready(function(){
                                 <td align="center" bgcolor="#FFFFFF">
                                     <span style="font-family:'Microsoft YaHei';font-size:12px;">170万元</span> 
                                 </td>
-                            </tr>
+                            </tr> -->
                           </table>
                     </div>
                     </div>
@@ -419,7 +428,7 @@ $(document).ready(function(){
 
             <div  class="wz_one" ><a>相关证件</a></div>
                     <div class="wz_nr" ><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">他项权证：</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">他项权证：</span><br>${product1.enterpriseCertificate}
                     <img src="<%=path%>/images/20140708132140144014.jpg" width="581" height="800" />
                     <img src="<%=path%>/images/20140708132035433543.jpg" width="720" height="523" />
                     <img src="<%=path%>/images/20140708132013601360.jpg" width="720" height="989" />  
