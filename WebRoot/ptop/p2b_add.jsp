@@ -209,15 +209,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <input type="hidden" name="mes" id="mes" value="${mes}" />
     <input type="hidden" name="enterpriseCertificate" id="enterpriseCertificate" value="" />
     <input type="hidden" name="projectPicture" id="projectPicture" value="" />
+    <input type="hidden" name="id" id="id" value="${product1.id}" />
         	<ul>
                 <li>
                     <dd>项目名称：</dd>
-                    <input type="text" name="projectName"  id="projectName" />
+                    <input type="text" name="projectName"  id="projectName"  value="${product1.projectName}"  />
                     <dt>1111</dt>
                 </li>
                 <li>
                     <dd>企业编号：</dd>
-                    <input type="text" name="enterpriseNumber"  id="enterpriseNumber"   />
+                    <input type="text" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />
                     <dt></dt>
                 </li>
                 <li>
@@ -231,42 +232,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
  
                 <dt><script type="text/plain"   id="Editor" style="width:600px;height:100px;"> 
-    <p>这里我可以写一些输入提示</p> 
+    ${product1.projectPicture}
  </script>  <br />尺寸：250*158</dt>  
                 </li>
                 <li>
                     <dd>信用等级：</dd>
-                    <input type="number"  name="qualityRating"  id="qualityRating"      min="1" max="5" value="1" step="1" />
+                    <input type="number"  name="qualityRating"  id="qualityRating" value="${product1.qualityRating}"      min="1" max="5" value="1" step="1" />
                     <dt></dt>
                 </li>
                 <li>
                     <dd>年化收益：</dd>
-                    <input type="number"  name="yearIncome"  id="yearIncome"     min="0.05" max="0.24" value="0.12" step="0.01" />
+                    <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome}"   min="0.05" max="0.24" value="0.12" step="0.01" />
                     <dt></dt>
                 </li>
                 <li>
                     <dd>还款日期：</dd>
-                    <input type="date" name="repaymentTime"  id="repaymentTime"  />
+                    <input type="date" name="repaymentTime"  id="repaymentTime" value="${product1.repaymentTime}"  />
                     <dt></dt>
                 </li>
                 <li>
                     <dd>担保机构：</dd>
-                    <input type="text" name="guaranteeInstitution"  id="guaranteeInstitution"  />
+                    <input type="text" name="guaranteeInstitution"  id="guaranteeInstitution" value="${product1.guaranteeInstitution}"  />
                     <dt></dt>
                 </li>
                  <li>
                     <dd>还款方式：</dd>
-                    <input type="text" name="repaymentWay"  id="repaymentWay" />
+                    <input type="text" name="repaymentWay"  id="repaymentWay"  value="${product1.repaymentWay}" />
                     <dt>1111</dt>
                 </li>
                 <li>
                     <dd>融资金额：</dd>
-                    <input type="number"  name="financingMoney"  id="financingMoney"     min="0" value="0" />
+                    <input type="number"  name="financingMoney"  id="financingMoney"  value="${product1.financingMoney}"    min="0" value="0" />
                     <dt></dt>
                 </li>
                 <li>
                     <dd>融资周期：</dd>
-                    <input type="number"  name="financingPeriod"  id="financingPeriod"     min="0" value="0" />
+                    <input type="number"  name="financingPeriod"  id="financingPeriod"  value="${product1.financingPeriod}"    min="0" value="0" />
                     <dt></dt>
                 </li>
                 
@@ -277,53 +278,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li> -->
                  <li>
                     <dd>公司介绍：</dd>
-                    <textarea    name="companyProfile"  id="companyProfile"  cols="" rows=""></textarea>
+                    <textarea    name="companyProfile"  id="companyProfile"  value="${product1.companyProfile}"    cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>项目介绍：</dd>
-                    <textarea  name="projectIntroduce"  id="projectIntroduce"     cols="" rows=""></textarea>
+                    <textarea  name="projectIntroduce"  id="projectIntroduce"   value="${product1.projectIntroduce}"   cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>担保意见：</dd>
-                    <textarea  name="collateralOpinion"  id="collateralOpinion"    cols="" rows=""></textarea>
+                    <textarea  name="collateralOpinion"  id="collateralOpinion"  value="${product1.collateralOpinion}"   cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>担保机构介绍：</dd>
-                    <textarea  name="guaranteeInstitutionIntroduce"  id="guaranteeInstitutionIntroduce"    cols="" rows=""></textarea>
+                    <textarea  name="guaranteeInstitutionIntroduce"  id="guaranteeInstitutionIntroduce"  value="${product1.guaranteeInstitutionIntroduce}"    cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>资金用途：</dd>
-                    <textarea   name="fundUse"  id="fundUse"  cols="" rows=""></textarea>
+                    <textarea   name="fundUse"  id="fundUse"  value="${product1.fundUse}"     cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>偿还来源：</dd>
-                    <textarea   name="repaymentSource"  id="repaymentSource"  cols="" rows=""></textarea>
+                    <textarea   name="repaymentSource"  id="repaymentSource"  value="${product1.repaymentSource}"    cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>抵押物信息：</dd>
-                    <textarea   name="guarantee"  id="guarantee"  cols="" rows=""></textarea>
+                    <textarea   name="guarantee"  id="guarantee"   value="${product1.guarantee}"   cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>风险控制：</dd>
-                    <textarea   name="riskControl"  id="riskControl"  cols="" rows=""></textarea>
+                    <textarea   name="riskControl"  id="riskControl"  value="${product1.riskControl}"   cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                  <li>
                     <dd>营业范围：</dd>
-                    <textarea   name="businessScope"  id="businessScope"  cols="" rows=""></textarea>
+                    <textarea   name="businessScope"  id="businessScope"  value="${product1.businessScope}"    cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                  
                 <li>
                     <dd>经营状况：</dd>
-                    <textarea   name="stateOfOperation"  id="stateOfOperation"  cols="" rows=""></textarea>
+                    <textarea   name="stateOfOperation"  id="stateOfOperation"   value="${product1.stateOfOperation}"   cols="" rows=""></textarea>
                     <dt></dt>
                 </li>
                
@@ -346,7 +347,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!--style给定宽度可以影响编辑器的最终宽度-->
 <script type="text/plain"   id="myEditor" style="width:1000px;height:180px;">
-    <p>这里我可以写一些输入提示</p>
+    ${product1.enterpriseCertificate}
 </script>
                 
              
@@ -355,7 +356,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <dd>设置项目属性：</dd>
                  <p>
                       <label>
-                        <input type="checkbox" name="recommendType" id="recommendType"   value="1"  />
+                        <input type="checkbox" name="recommendType" id="recommendType" value="${product1.recommendType}"   value="1"  />
                         <span>推荐</span></label>
 				</p>
                     <dt></dt>

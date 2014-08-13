@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td>${s.financingProgress}%</td>
     <td>${s.yearIncome}</td>
 <a href="javascript:if(confirm('确实要删除该内容吗?'))location='http://www.baidu.com'">
-    <td><p><a href="<%=path%>/Login/getProductByid?id=${s.id}">修改</a><a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteproduct?id=${s.id}'">删除</a></p></td>
+    <td><p><a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a><a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a><a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteproduct?id=${s.id}'">删除</a></p></td>
   </tr>
   </c:forEach>
       
