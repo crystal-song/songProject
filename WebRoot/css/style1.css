@@ -31,6 +31,7 @@ a:hover{ color:#09C; text-decoration:underline;}
 .dataForm dd{ width:25%; display:block; float:left; padding:5px; text-align:right; line-height:2em; font-weight:bold;}
 .dataForm input{width:70%; height:2em; padding:2px; border:1px solid #030; border-radius:5px; font-size:1.2em; line-height:120%; display:block; float:left; background-color:#f1fff1; font-family:"微软雅黑", "黑体";}
 .dataForm input:focus{ border-color:#0C9; background-color:#fff;}
+.dataForm input:disabled{ color:#999; background-color:#eee; border-color:#666;}
 .dataForm dt{ display:block; float:none; clear:left; padding-left:30%; font-size:0.8em; color:#bbb; padding-top:0.1em; padding-bottom:0.1em;}
 .dataForm label{ display:block; float:left; line-height:2em; margin:0px 5px; padding:0 0.2em;} 
 .dataForm label input{width:1.2em;; height:1.8em; padding:0;}
@@ -52,3 +53,12 @@ a:hover{ color:#09C; text-decoration:underline;}
 .dataList td{ font-size:0.9em; text-align:center; border-bottom:1px solid #dfd;}
 .dataList td p a{ display:block; float:left; margin:0 0.05em; padding:0.05em; width:3em;}
 
+.investmentList{ clear:both; margin:0.5em auto; width:98%;}
+.investmentList thead td{ background-color:#FFC;}
+.investmentList tbody td{ font-size:0.6em;}
+.investmentList tbody td a{ color:#099; text-decoration:underline;}
+.investmentList tfoot td{ font-size:0.8em; font-weight:bold;}
+#totalMoney,#progressTd{ color:#63C;}
+
+.investmentDelList{ clear:both; margin:0.5em auto; width:98%; color:#CCC;}
+.investmentDelList tbody td{ font-size:0.8em; text-decoration:line-through;}
