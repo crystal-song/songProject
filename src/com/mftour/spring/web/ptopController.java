@@ -258,4 +258,22 @@ public class ptopController {
          	return "ptop/p2b_update";
 }
 	
+	
+	@RequestMapping(value = "/updateProduct", method = {RequestMethod.POST, RequestMethod.GET})
+	public String updateProduct(@RequestParam("id") Long id,
+			Model model,
+			TProduct product) throws Exception {
+		
+		
+	
+		 
+		TProduct product1= productService.getProductById(id);
+		
+		 model.addAttribute("product1", product1);
+		
+		return "ptop/p2b_add";
+		
+	}
+	
+	
 }
