@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 
 
-<div class="clear"></div>
+<!-- <div class="clear"></div>
 <div id="btns">
     <table>
         <tr>
@@ -168,10 +168,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button class="btn" onclick="deleteEditor()"/>删除编辑器</button>
         </td>
     </tr>
-</table>
+</table> -->
 
 <div>
-    <h3 id="focush2"></h3>
+     <h3 id="focush2"></h3> 
 </div>
 <script type="text/javascript">
     //实例化编辑器
@@ -202,10 +202,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
     function getContent() {
         var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
+     /*    arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+        arr.push("内容为："); */
         arr.push(UM.getEditor('myEditor').getContent());
         alert(arr.join("\n"));
+        $("#txt").val(arr.join("\n"));
+        $("#form" ).submit();
     }
     function getPlainTxt() {
         var arr = [];
@@ -278,6 +280,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         }
     }
 </script>
+
+<form  action="<%=path%>/Login/session" id="form" method="post"   class="box"  style="display:'none'"   >
+ <input type="text"   name="txt" id="txt" value=""   /> 
+ 
+<input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
+
+</form>
 
 </body>
 </html>
