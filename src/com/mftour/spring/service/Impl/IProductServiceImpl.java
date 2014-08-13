@@ -42,6 +42,40 @@ public class IProductServiceImpl implements  IProductService {
 		return productDao.queryProductByType(type);
 	}
 
+
+
+	@Override
+	public List<TProduct> queryProduct(TProduct product) throws Exception {
+		return productDao.queryProduct(product);
+	}
+
+
+
+	@Override
+	public List<TProduct> queryProductByNumber(String enterpriseNumber)
+			throws Exception {
+		
+		return productDao.queryProductByNumber(enterpriseNumber);
+	}
+
+
+
+	@Override
+	public void deleteProduct(Long id) throws Exception {
+		  productDao.deleteProduct(id);
+		
+	}
+
+
+
+	
+
+	
+	
+
+
+	
+
 	
 	
 	

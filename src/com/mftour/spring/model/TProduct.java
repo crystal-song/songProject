@@ -16,6 +16,7 @@ public class TProduct implements java.io.Serializable{
 	    private Integer financingPeriod; //融资周期         2
 	    private Double financingProgress; //融资进度        4
 	    private String projectIntroduce;  //项目介绍
+	    private Double realityMoney=0.0;   //实际金额   
 	    private Integer projectStatus;  //项目状态
 	    private String companyProfile;    //公司介绍
 	    private String enterpriseCertificate;  //企业证书
@@ -30,6 +31,8 @@ public class TProduct implements java.io.Serializable{
 	    private String businessScope; //营业范围
 	    private String stateOfOperation; //经营状况
 	    private Integer recommendType;
+	    private String  projectPicture;
+	    
 	    
 	   
 	  
@@ -100,6 +103,14 @@ public class TProduct implements java.io.Serializable{
 		}
 		
 		
+		
+		
+		public Double getRealityMoney() {
+			return realityMoney;
+		}
+		public void setRealityMoney(Double realityMoney) {
+			this.realityMoney = realityMoney;
+		}
 		public Integer getFinancingMoney() {
 			return financingMoney;
 		}
@@ -186,6 +197,12 @@ public class TProduct implements java.io.Serializable{
 		}
 		public void setRecommendType(Integer recommendType) {
 			this.recommendType = recommendType;
+		}
+		public String getProjectPicture() {
+			return projectPicture;
+		}
+		public void setProjectPicture(String projectPicture) {
+			this.projectPicture = projectPicture;
 		}
 		
 		

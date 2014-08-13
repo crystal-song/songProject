@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.IUserService;
+import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.MapUtil;
 import com.mftour.spring.util.Page;
 
@@ -29,6 +31,9 @@ public class productController {
 	
 	@Autowired
     private IProductService productService;
+	
+	@Autowired
+    private IptopService ptopService;
 	
 	@RequestMapping(value = "/allProduct", method = {RequestMethod.POST, RequestMethod.GET})
 	public String allProduct( @RequestParam(value = "pageNo",required=false, defaultValue= "1") int pageNo,
@@ -111,8 +116,10 @@ public class productController {
 	
 		 
 		TProduct product1= productService.getProductById(id);
+		List<TInvestmentInfo> list=ptopService.queryInvestmentInfoByNumber(product1.getEnterpriseNumber());
 		  
 		 model.addAttribute("product1", product1);
+		 model.addAttribute("list", list);
 		
 		return "touzixiangxi";
 		

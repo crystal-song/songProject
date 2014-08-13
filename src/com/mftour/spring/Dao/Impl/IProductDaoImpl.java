@@ -10,6 +10,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.mftour.spring.Dao.IProductDao;
+import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.util.Page;
 
@@ -342,5 +343,55 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 	
 	
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TProduct> queryProduct(TProduct product) throws Exception {
+		if(product.getProjectName()==null||product.getProjectName()==""){
+			String hql = "from TProduct product";
+			return getHibernateTemplate().find(hql);
+		}
+		
+		String hq = "from TProduct product where product.projectName like :projectName";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("projectName","%" + product.getProjectName()+ "%");
+		return query.list();
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TProduct> queryProductByNumber(String enterpriseNumber)
+			throws Exception {
+		String hq = "from TProduct product where product.enterpriseNumber = :enterpriseNumber";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
+
+	@Override
+	public void deleteProduct(Long id) throws Exception {
+		TProduct Product = getHibernateTemplate().get(TProduct.class, id);
+        getHibernateTemplate().delete( Product);
+		
+	}
+
 	
-}
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	}
+	
+	

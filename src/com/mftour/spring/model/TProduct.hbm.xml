@@ -31,6 +31,10 @@
         <property name="financingMoney" type="java.lang.Integer">
             <column name="financingMoney" length="50" />
         </property>
+        
+        <property name="realityMoney" type="java.lang.Double">
+            <column name="realityMoney" length="50" />
+        </property>
         <property name="financingPeriod" type="java.lang.Integer">
             <column name="financingPeriod" length="50" />
         </property>
@@ -84,6 +88,9 @@
         
          <property name="recommendType" type="java.lang.Integer">
             <column name="recommendType" length="20" />
+        </property>
+         <property name="projectPicture" type="java.lang.String">
+            <column name="projectPicture" length="200" />
         </property>
         
         

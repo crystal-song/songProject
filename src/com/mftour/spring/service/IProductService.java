@@ -13,5 +13,13 @@ public interface IProductService {
 	 public TProduct getProductById(Long id);
 	 
 	  public List<TProduct> queryProductByType(Integer type);
+	  
+	  public List<TProduct> queryProduct(TProduct product)throws Exception;
+	  
+	  public List<TProduct> queryProductByNumber(String  enterpriseNumber)throws Exception;
+	  
+	  public void deleteProduct(Long id) throws Exception;
+	  
+	 
 
 }
