@@ -17,7 +17,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 
 <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>  -->
-
+<script type="text/javascript">
+var navIndex=1;
+</script>
 
 <script type="text/javascript" >
 
@@ -290,10 +292,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
-<div class="clear"></div>
-<!-- banner start -->
-<%@ include file="/includes/banner.jsp" %>
-<!-- banner end  -->
+
 <div class="clear"></div>
 <div class="one"></div>
 <div class="clear_height"></div>

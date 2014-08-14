@@ -12,129 +12,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>中投汇</title>
 
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
- <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
-   $(function(){
-	   var timer=null;
-	   var num=1;
-	   timer=setInterval(autoplay,3000);
-	   function autoplay(nn){
-		   if(nn!=null)num=nn+num;
-		 if(num>2){num=0}
-		 if(num<0){num=2}
-		 //console.log(num);	
-		  $('.banner_fra ul li').eq(num).hide().fadeIn().siblings().hide();   
-		  $('.banner_fra ol li').eq(num).addClass('current').siblings().removeClass('current');
-		   num++; 
-		   }
-	   $(".banner_fra ol li").mouseover(function(e){
-               var index=$(this).index();
-			   
-       		 $('.banner_fra ul li').eq(index).hide().fadeIn().siblings().hide();  
-			 $('.banner_fra ol li').eq(index).addClass('current').siblings().removeClass('current');
-			 
-		   });   
-	   $(".banner_fra ol li").mouseover(function(e){
-		       clearInterval(timer);		   
-		   }).mouseout(function(e){
-			   clearInterval(timer);
-			   timer=setInterval(autoplay,3000)
-			   });   
-	   $(".banner_fra").mouseover(function(e){
-		    $(".ban_left").css('display','block'); 
-		    $(".ban_right").css('display','block');
-			
-		   }).mouseout(function(e){
-		    $(".ban_left").css('display','none'); 
-		    $(".ban_right").css('display','none');
-			
-		   });;
-	   $(".ban_right").click(function(){
-		   
-		   autoplay(0);
-		   clearInterval(timer);
-			timer=setInterval(autoplay,3000)
-		   });
-	   $(".ban_left").click(function(){
-		   var index=$('.banner_fra ul li').index();
-		   autoplay(-2);
-		   clearInterval(timer);
-			timer=setInterval(autoplay,3000)
-		   });
-	   });
-
-/*  $(document).ready(function(){ 
-	alert("ccccccccccc");
- 
-	
-    
-            $.ajax({
-                type: 'POST',
-                url: '<c:url value="/product/recommend?type=1"/>', */
-              /*   data: 'type=1', */
-              /*   dataType: 'text', */
-               /*  success: function() {
-                	alert("dd"+data+'"success"');
-                   
-                } */
-  /*           });
-      	
-});   */
-
+var navIndex=0;
 </script>
+
 </head>
 <body>
-<div class="top">
-	<div class="top_fra">
-    	<div class="top_left">
-        	<div class="kefu"><img src="<%=path%>/images/sy_04.jpg"></div>
-            <div class="phone">010-84243099</div>
-        </div>
-    	<div class="top_right">
-        	<img src="<%=path%>/images/sy_09.jpg">&nbsp;&nbsp;<img src="<%=path%>/images/sy_11.jpg">
-        </div>
-    </div>
-</div>
+<!-- top start  -->
+<%@ include file="/includes/header.jsp" %>
+<!-- top end  -->
 <div class="clear"></div>
-<div class="zth">
-	<div class="logo"><a href="<%=path%>/index.jsp"><img src="<%=path%>/images/sy_17.jpg"></a></div>
-    <div class="nav">
-    	<ul>
-    	
-        	<li id="dangqian">首页</li>
-            <li><a href="<%=path%>/product/allProduct">我要投资</a></li>
-            <li><a href="<%=path%>/zhanghu.jsp">我的账户</a></li>
-            <li><a href="<%=path%>/baozhang.jsp">安全保障</a></li>
-         <!--    <li><a href="help.jsp">帮助中心</a></li> -->
-            <li><a href="<%=path%>/reg.jsp">帮助中心</a></li>
-            
-        </ul>
-    </div>
-</div>
-<div class="clear"></div>
-<div class="banner_bg">
-	<div class="banner_fra">
-		<ul class="ban_show">
-	          <li><img src="<%=path%>/img/banner1-3.jpg" width="1400" height="300" /></li>
-	          <li><img src="<%=path%>/img/banner1-5.jpg" width="1400" height="300" /></li>
-	          <li><img src="<%=path%>/img/banner1-1.jpg" width="1400" height="300" /></li>
-	     </ul>
-	     <ol>
-	       <li class="current"></li>
-	       <li></li>
-	       <li></li>
-	     </ol>
-	    <div class="ban_left" style="display:none"></div>
-	    <div class="ban_right" style="display:none"></div>
-	</div>
-</div>
-
-<div class="top_01">
-			<span id="datespan"></span> 欢迎 <span style="color: #F00">${name}</span>
-			使用后台管理系统，本系统由:<span ID="HyperLink1" runat="server" Target="_blank"
-				style="color: #F00">中投汇融</span>独立开发
-		</div>
+<!-- banner start -->
+<%@ include file="/includes/banner.jsp" %>
+<!-- banner end  -->
+<div class="top_01"></div>
 <div class="clear"></div>
 <div class="one">
 	<div class="one_fra">
@@ -419,53 +311,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </div>
 <div class="clear_height"></div>
-<div class="links">
-	<div class="links_fra">
-    	<div class="links_left">友情链接</div>
-        <div class="links_right">
-        	<ul>
-            	<li>网贷指南</li>
-                <li>web网财</li>
-                <li>P2P网贷导航</li>
-                <li>银讯网</li>
-                <li>网贷天眼</li>
-                <li>和讯互联网金融</li>
-                <li>中国安全应急产业网</li>
-                <li>存折网</li>
-                <li>网贷帮手</li>
-                <li>网e家园</li>
-                <li>网贷无忧</li>
-                <li>网贷黑名单</li>
-                <li>网贷导航</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<!-- links start -->
+<%@ include file="/includes/links.jsp" %>
+<!-- links end -->
 <div class="clear"></div>
-<div class="menu">
-	<div class="menu_fra">
-    	<ul>
-        	<li>关于我们</li>
-            <li>常见问题</li>
-            <li>理财问答</li>
-            <li>法律声明</li>
-            <li>联系我们</li>
-            <li>友情链接</li>
-            <li>我要融资</li>
-            <li>收益计算器</li>
-        </ul>
-    </div>
-</div>
-<div class="clear"></div>
-<div class="copyright">
-	<div class="copy_fra">
-    	<div class="copy_left"><img src="<%=path%>/images/sy02_03.jpg"></div>
-        <div class="copy_center">
-        	页面版权所有：中投汇融财富管理中心&nbsp;&nbsp;&nbsp;&nbsp;京ICP备13011445号<br>
-地址：******************************************&nbsp;&nbsp;&nbsp;&nbsp;客服电话：010-84243099
-        </div>
-        <div class="copy_right"><img src="<%=path%>/images/sy01_03.png"></div>
-    </div>
-</div>
+<!-- footer start -->
+<%@ include file="/includes/footer.jsp" %>
+<!-- footer end -->
 </body>
 </html>
