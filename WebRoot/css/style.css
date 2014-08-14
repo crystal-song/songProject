@@ -276,8 +276,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .banner_fra ol li{width:12px; height:12px; margin:3px 5px;; float:left; list-style:none; border-radius:15px; border:1px solid #999; 
                   background:#ccc; box-shadow: -2px -2px 2px #999 inset; cursor:pointer;}
 .banner_fra ol .current{background:#F00; border:1px solid #903; box-shadow: -2px -2px 2px #b20d0d inset;}
-.ban_left{width:45px; height:45px; background:url(../img/zuo.png) no-repeat; position:absolute; top:240px; left:130px; cursor:pointer;}
-.ban_right{width:45px; height:45px; background:url(../img/you.png) no-repeat; position:absolute; top:240px; right:130px; cursor:pointer;}
+.ban_left{width:45px; height:45px; background:url(../img/zuo.png) no-repeat; position:absolute; top:240px; left:280px; cursor:pointer;}
+.ban_right{width:45px; height:45px; background:url(../img/you.png) no-repeat; position:absolute; top:240px; right:280px; cursor:pointer;}
 /*banner over*/
 
 /*yonghuzhongxin */
