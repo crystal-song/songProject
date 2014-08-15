@@ -4,8 +4,8 @@
 	<div class="banner_fra">
 		<ul class="ban_show">
 	          <li><img src="<%=path%>/img/banner1-3.jpg" width="1400" height="300" /></li>
-	          <li><img src="<%=path%>/img/banner1-5.jpg" width="1400" height="300" /></li>
-	          <li><img src="<%=path%>/img/banner1-1.jpg" width="1400" height="300" /></li>
+	          <li style="display:none"><img src="<%=path%>/img/banner1-5.jpg" width="1400" height="300" /></li>
+	          <li style="display:none"><img src="<%=path%>/img/banner1-1.jpg" width="1400" height="300" /></li>
 	     </ul>
 	     <ol>
 	       <li class="current"></li>
