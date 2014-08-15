@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td>${s.id}</td>
     <td>${s.name}</td>
     <td>${s.time}</td>
-    <!-- <td><p><a href="#">修改</a> --><a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteChannelbyId?id=${s.id}'">删除</a></p></td>
+    <td><p><a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteChannelbyId?id=${s.id}'">删除</a></p></td>
   </tr>
    </c:forEach>
       
