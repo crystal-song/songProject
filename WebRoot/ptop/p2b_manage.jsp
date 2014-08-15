@@ -24,9 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<ul>
         	<li><a href="<%=path%>/Login/queryproduct" class="btn_gray">PtoB产品管理</a></li>
             <li><a href="<%=path%>/ptop/p2b_add.jsp" class="btn_gray">添加PtoB产品</a></li>
-        	<li><a href="javascript:;" class="btn_gray">PtoB产品管理</a></li>
-            <li><a href="javascript:;" class="btn_gray">网站公告管理</a></li>
-        	<li><a href="javascript:;" class="btn_gray">PtoB产品管理</a></li>
+        	<li><a href="<%=path%>/Login/getNews" class="btn_gray">网站公告管理</a></li>
+            <li><a href="<%=path%>/Login/channelManage" class="btn_gray">频道管理</a></li>
+        	<li><a href="<%=path%>/Login/getChannel" class="btn_gray" >网站新闻</a></li>
             <li><a href="javascript:;" class="btn_gray">网站公告管理</a></li>
         </ul>
     </div>
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td>${s.financingMoney}万</td>
     <td>${s.financingProgress}%</td>
     <td>${s.yearIncome}</td>
-<a href="javascript:if(confirm('确实要删除该内容吗?'))location='http://www.baidu.com'">
+
     <td><p><a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a><a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a><a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteproduct?id=${s.id}'">删除</a></p></td>
   </tr>
   </c:forEach>

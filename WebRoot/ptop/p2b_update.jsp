@@ -24,9 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<ul>
         	<li><a href="<%=path%>/Login/queryproduct" class="btn_gray">PtoB产品管理</a></li>
             <li><a href="<%=path%>/ptop/p2b_add.jsp" class="btn_gray">添加PtoB产品</a></li>
-        	<li><a href="javascript:;" class="btn_gray">PtoB产品管理</a></li>
-            <li><a href="javascript:;" class="btn_gray">网站公告管理</a></li>
-        	<li><a href="javascript:;" class="btn_gray">PtoB产品管理</a></li>
+        	<li><a href="<%=path%>/Login/getNews" class="btn_gray">网站公告管理</a></li>
+            <li><a href="<%=path%>/Login/channelManage" class="btn_gray">频道管理</a></li>
+        	<li><a href="<%=path%>/Login/getChannel" class="btn_gray" >网站新闻</a></li>
             <li><a href="javascript:;" class="btn_gray">网站公告管理</a></li>
         </ul>
     </div>
