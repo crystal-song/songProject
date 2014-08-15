@@ -64,16 +64,16 @@ function query(){
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
-<div class="clear"></div>
+<!-- <div class="clear"></div> -->
 <!-- banner start -->
-<%@ include file="/includes/banner.jsp" %>
+<%-- <%@ include file="/includes/banner.jsp" %> --%>
 <!-- banner end  -->
 <div class="clear"></div>
 <div class="one"></div>
 <div class="clear_height"></div>
 
 
- <form action="welcome/session"  id="form" method="post">
+ <form action="<%=path%>/welcome/session"  id="form" method="post">
 <div class="zh">
 	<div class="zh_fra">
     	<div class="zh_left"><img src="<%=path%>/images/dl_09.jpg"></div>
