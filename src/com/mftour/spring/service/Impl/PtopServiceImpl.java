@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.mftour.spring.Dao.IProductDao;
 import com.mftour.spring.Dao.IptopDao;
 import com.mftour.spring.model.TAdministrator;
+import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInvestmentInfo;
+import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IptopService;
@@ -64,6 +66,104 @@ public class PtopServiceImpl  implements  IptopService  {
 		ptopDao.deleteTInvestmentInfo(id);
 		
 	}
+
+
+
+	@Override
+	public void addOrUpdateTNews(TNews news) throws Exception {
+		ptopDao.addOrUpdateTNews(news);
+		
+	}
+
+
+
+	@Override
+	public void addOrUpdateTChannel(TChannel channel) throws Exception {
+		ptopDao.addOrUpdateTChannel(channel);
+		
+	}
+
+
+
+	@Override
+	public List<TChannel> getChannel() throws Exception {
+		return  ptopDao.getChannel();
+		 
+	}
+
+
+
+	@Override
+	public List<TNews> getNews() throws Exception {
+		
+		return ptopDao.getNews();
+	}
+
+
+
+	@Override
+	public List<TChannel> getChannelById(Long id) {
+		
+		return ptopDao.getChannelById(id);
+	}
+
+
+
+	@Override
+	public List<TNews> getNewsByName(String name) {
+		
+		return ptopDao.getNewsByName(name);
+	}
+
+
+
+	@Override
+	public TNews getTNewsById(Long id) {
+		
+		return ptopDao.getTNewsById(id);
+	}
+
+
+
+	@Override
+	public void deleteNews(Long id) throws Exception {
+		ptopDao.deleteNews(id);
+		
+	}
+
+
+
+	@Override
+	public void deleteTChannel(Long id) throws Exception {
+		ptopDao.deleteTChannel(id);
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
