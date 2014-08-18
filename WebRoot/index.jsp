@@ -290,27 +290,6 @@ var navIndex=0;
     </div>
 </div>
 <div class="clear_height"></div>
-<div class="hezuo">
-	<div class="hz_fra">
-    	<div class="hz_left"><img src="<%=path%>/images/sy_79.jpg"></div>
-        <div class="hz_right">
-        	<div class="bot_left"><img src="<%=path%>/images/sy_101.jpg"></div>
-            <div class="bot_center">
-            	<img src="<%=path%>/images/sy_82.jpg">
-                <img src="<%=path%>/images/sy_84.jpg">
-                <img src="<%=path%>/images/sy_87.jpg">
-                <img src="<%=path%>/images/sy_89.jpg">
-                <img src="<%=path%>/images/sy_91.jpg">
-                <img src="<%=path%>/images/sy_93.jpg">
-                <img src="<%=path%>/images/sy_95.jpg">
-                <img src="<%=path%>/images/sy_96.jpg">
-                <img src="<%=path%>/images/sy_98.jpg">
-            </div>
-            <div class="bot_right"><img src="<%=path%>/images/sy_101.jpg"></div>
-        </div>
-    </div>
-</div>
-<div class="clear_height"></div>
 <!-- links start -->
 <%@ include file="/includes/links.jsp" %>
 <!-- links end -->
