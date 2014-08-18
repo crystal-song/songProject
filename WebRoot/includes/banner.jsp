@@ -12,10 +12,10 @@
        <li></li>
        <li></li>
      </ol>
-    
-  </div>
   <div class="ban_left" ></div>
-  <div class="ban_right" ></div>
+  <div class="ban_right" ></div> 
+  </div>
+
     
     
 </div>
