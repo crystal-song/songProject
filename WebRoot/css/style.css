@@ -23,8 +23,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 #dangqian{ width:95px; height:69px; background:url(../images/sy_20.jpg); color:#FFF;}
 .currentNav{ width:95px; height:69px; background:url(../images/sy_20.jpg); color:#FFF!important;}
 
-.banner_bg{ width:100%; height:300px; background:url(../images/sy_bg.jpg); position:relative;}
-.banner_fra{ width:1100px; height:300px; margin:0 auto;  }
+.banner_bg{ width:100%; min-width:1100px; height:300px; background:url(../images/sy_bg.jpg);}
+.banner_fra{ width:1100px; height:300px; margin:0 auto;  position:relative;}
 
 .one{ width:100%; height:31px; background:url(../images/sy_26.jpg);}
 .one_fra{ width:1100px; height:31px; margin:0 auto; text-align:left; line-height:31px;}
@@ -295,8 +295,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .banner_fra ol li{width:12px; height:12px; margin:3px 5px;; float:left; list-style:none; border-radius:15px; border:1px solid #999; 
                   background:#ccc; box-shadow: -2px -2px 2px #999 inset;}
 .banner_fra ol .current{background:#F00; border:1px solid #903; box-shadow: -2px -2px 2px #b20d0d inset;}
-.ban_left{width:45px; height:45px; background:url(../img/zuo.png) no-repeat; position:absolute; top:50%; left:30%;}
-.ban_right{width:45px; height:45px; background:url(../img/you.png) no-repeat; position:absolute; top:50%; right:30%;}
+.ban_left{width:45px; height:45px; background:url(../img/zuo.png) no-repeat; position:absolute; top:50%; left:0;}
+.ban_right{width:45px; height:45px; background:url(../img/you.png) no-repeat; position:absolute; top:50%; right:0;}
 /*banner over*/
 
 /*yonghuzhongxin */
