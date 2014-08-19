@@ -246,7 +246,14 @@ var navIndex=0;
                 </div>
                 <div class="cr_nr">
                 	<ul>
-                    	<li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
+                	 <c:if test="${ not empty list1}">
+        <c:forEach var="s" items="${list1}" varStatus="i">
+                    	<li>${s.title}</li>
+                    	 </c:forEach>
+      
+	
+	 
+        </c:if>
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
