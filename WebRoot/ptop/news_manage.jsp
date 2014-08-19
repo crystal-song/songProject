@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>管理PtoB项目</title>
+<title>文章管理</title>
 <link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript" >
@@ -32,21 +32,9 @@ function query(){
 
 <body>
 <div id="wrap">
-	<div class="header">
-    	<div class="logo"></div>
-        <h1>网站管理后台</h1>
-    </div>
-	<div class="cl"></div>
-    <div class="top_nav">
-    	<ul>
-        	<li><a href="<%=path%>/Login/queryproduct" class="btn_gray">PtoB产品管理</a></li>
-            <li><a href="<%=path%>/ptop/p2b_add.jsp" class="btn_gray">添加PtoB产品</a></li>
-        	<li><a href="<%=path%>/Login/getNews" class="btn_gray">网站公告管理</a></li>
-            <li><a href="<%=path%>/Login/channelManage" class="btn_gray">频道管理</a></li>
-        	<li><a href="<%=path%>/Login/getChannel" class="btn_gray">网站新闻</a></li>
-            <li><a href="javascript:;" class="btn_gray">网站公告管理</a></li>
-        </ul>
-    </div>
+<!-- header -->
+ <%@ include file="/includes/manage_nav.jsp" %> 
+ <!-- header end -->
     <div class="cl"></div>
   <div class="content">
   	<h2>文章管理</h2>

@@ -15,21 +15,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 <div id="wrap">
-	<div class="header">
-    	<div class="logo"></div>
-        <h1>网站管理后台</h1>
-    </div>
-	<div class="cl"></div>
-    <div class="top_nav">
-    	<ul>
-        	<li><a href="<%=path%>/Login/queryproduct" class="btn_gray">PtoB产品管理</a></li>
-            <li><a href="<%=path%>/ptop/p2b_add.jsp" class="btn_gray">添加PtoB产品</a></li>
-        	<li><a href="<%=path%>/Login/getNews" class="btn_gray">网站公告管理</a></li>
-            <li><a href="<%=path%>/Login/channelManage" class="btn_gray">频道管理</a></li>
-        	<li><a href="<%=path%>/Login/getChannel" class="btn_gray" >网站新闻</a></li>
-            <li><a href="javascript:;" class="btn_gray">网站公告管理</a></li>
-        </ul>
-    </div>
+<!-- header -->
+ <%@ include file="/includes/manage_nav.jsp" %> 
+ <!-- header end -->
     <div class="cl"></div>
   <div class="content">
   	<h2>管理PtoB项目</h2>

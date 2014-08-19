@@ -131,21 +131,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 <div id="wrap">
-	<div class="header">
-    	<div class="logo"></div>
-        <h1>网站管理后台</h1>
-    </div>
-	<div class="cl"></div>
-    <div class="top_nav">
-    	<ul>
-        	<li><a href="<%=path%>/Login/queryproduct" class="btn_gray">PtoB产品管理</a></li>
-            <li><a href="<%=path%>/ptop/p2b_add.jsp" class="btn_gray">添加PtoB产品</a></li>
-        	<li><a href="<%=path%>/Login/getNews" class="btn_gray">网站公告管理</a></li>
-            <li><a href="<%=path%>/Login/channelManage" class="btn_gray">频道管理</a></li>
-        	<li><a href="<%=path%>/Login/getChannel" class="btn_gray">网站新闻</a></li>
-            <li><a href="javascript:;" class="btn_gray">网站公告管理</a></li>
-        </ul>
-    </div>
+<!-- header -->
+ <%@ include file="/includes/manage_nav.jsp" %> 
+ <!-- header end -->
     <div class="cl"></div>
   <div class="content">
   	<h2>添加新闻公告</h2>
@@ -155,7 +143,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<input type="hidden"  name="depicts"  id="depicts" />
         	<input type="hidden"  name="channel"  id="channel" />
         	<input type="hidden" name="id" id="id" value="${news1.id}" />
-        	
+      <ul>  	
+        <li>
         <dd>请选择频道：</dd>
         <select name="chanel" id="chanel" >
            <!-- <option value="0">全部&nbsp;&nbsp;&nbsp;</option>  -->
@@ -167,8 +156,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </c:if>
          
         </select> 
+        </li>	
         	
-        	<ul>
                  <li>
                     <dd>文章标题：</dd>
                     <input type="text"  name="title"  id="title"  value="${news1.title}"  />
@@ -177,9 +166,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                
                 <li>
                     <dd>文章内容：</dd> 
-                      <script type="text/plain"   id="myEditor" style="width:1000px;height:180px;"> 
-                 ${news1.depicts}
-           </script> 
+                      <dt><script type="text/plain"   id="myEditor" style="width:100%;height:200px;">${news1.depicts}</script>
+           </dt>
                 </li>
                 <li> 
                 
@@ -187,12 +175,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <dd>设置文章属性：</dd>
                  <p>
                  
-                <label> <select name="state" id="state" >
-            <option value="1">推荐</option>  
-             <option value="0">不推荐</option> 
-          
-         
-        </select> </label>
+                <select name="state" id="state" >
+	            	<option value="0">不推荐</option>
+	            	<option value="1">推荐</option>  
+       			</select>
                  
                  
                     <!--   <label>
@@ -226,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     //实例化编辑器
     var um = UM.getEditor('myEditor');
     um.addListener('blur',function(){
-        $('#focush2').html('编辑器失去焦点了')
+        //$('#focush2').html('编辑器失去焦点了')
     });
     um.addListener('focus',function(){
         $('#focush2').html('')
