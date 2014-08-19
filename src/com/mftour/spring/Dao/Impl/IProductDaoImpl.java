@@ -35,8 +35,8 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 		 int FinancingMoney2=500;
 		 int FinancingMoney3=1000;
 		 
-		 int FinancingProgress1=50;
-		 int FinancingProgress2=80;
+		 Double FinancingProgress1=50.0;
+		 Double FinancingProgress2=80.0;
 		 
 		 int projectStatus1=1;
 		 int projectStatus2=2;
