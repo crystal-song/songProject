@@ -130,7 +130,6 @@ var navIndex=0;
                     </div>
                     <div class="clear"></div>
                     <div class="xq_table">
-                    .
                         <div class="xq01">
                             <div class="xq01_tit">年化收益</div>
                             <div class="xq01_nr hong">${s.yearIncome}</div>
