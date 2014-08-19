@@ -35,10 +35,12 @@ a:hover{ color:#09C; text-decoration:underline;}
 .dataForm dt{ display:block; float:none; clear:left; padding-left:30%; font-size:0.8em; color:#bbb; padding-top:0.1em; padding-bottom:0.1em;}
 .dataForm label{ display:block; float:left; line-height:2em; margin:0px 5px; padding:0 0.2em;} 
 .dataForm label input{width:1.2em;; height:1.8em; padding:0;}
+.dataForm label input+span{ font-size:1.2em;}
 .dataForm label input:checked+span{ font-weight:bold;}
 .dataForm textarea{ height:8em;width:70%;padding:2px; border:1px solid #030; border-radius:5px; font-size:1.2em; line-height:120%; display:block; float:left; background-color:#f1fff1;}
 .dataForm textarea:focus{ border-color:#0C9; background-color:#fff;}
 .dataForm .bigArea{ margin:0.1em; height:20em;}
+.dataForm select{width:30%; height:2em; padding:2px; border:1px solid #030; border-radius:5px; font-size:1.2em; line-height:120%; display:block; float:left; background-color:#f1fff1; font-family:"微软雅黑", "黑体";}
 
 
 .dataSearch{}
@@ -50,8 +52,9 @@ a:hover{ color:#09C; text-decoration:underline;}
 .dataList{ padding-top:0.2em;}
 .dataList tr:first-child td{ font-weight:bold;background-color:#3CF!important; color:#fff;}
 .dataList tr:hover td{ background-color:#EFC;}
-.dataList td{ font-size:0.9em; text-align:center; border-bottom:1px solid #dfd;}
-.dataList td p a{ display:block; float:left; margin:0 0.05em; padding:0.05em; width:3em;}
+.dataList td{ font-size:0.9em; text-align:center; border-bottom:1px solid #dfd; height:2em;}
+.dataList td p a{ display:block; float:left; margin:0 0.05em; padding:0.05em; width:30%;}
+.dataList td p a:hover{text-decoration:none; background:#f3a85c;}
 
 .investmentList{ clear:both; margin:0.5em auto; width:98%;}
 .investmentList thead td{ background-color:#FFC;}
