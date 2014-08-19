@@ -139,6 +139,14 @@ public class PtopServiceImpl  implements  IptopService  {
 		
 	}
 
+
+
+	@Override
+	public List<TNews> getNewsbyRecommend() throws Exception {
+		
+		return ptopDao.getNewsbyRecommend();
+	}
+
 	
 	
 	
