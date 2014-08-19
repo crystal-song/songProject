@@ -186,16 +186,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
                 <dd>设置文章属性：</dd>
                  <p>
-                      <label>
+                 
+                <label> <select name="state" id="state" >
+            <option value="1">推荐</option>  
+             <option value="0">不推荐</option> 
+          
+         
+        </select> </label>
+                 
+                 
+                    <!--   <label>
                         <input type="checkbox" name="state" id="state" value="1"  />
-                        <span>置顶</span></label>
+                        <span>置顶</span></label> -->
 				</p>
                     <dt></dt>
                 </li>
                
                 <li>
                 <dd></dd>
-                 <input type="submit" title="提交" onclick="getContent()"class="submitBtn"/>
+                 <input type="button" value="提交" onclick="getContent()"class="submitBtn"/>
                  <!-- <input type="submit" title="预览" value="预览" class="submitBtn"/> -->
                 </li>
             </ul>
@@ -252,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
        
         
-        /*  $("#form" ).submit();   */
+          $("#form" ).submit();   
     }
     function getPlainTxt() {
         var arr = [];
