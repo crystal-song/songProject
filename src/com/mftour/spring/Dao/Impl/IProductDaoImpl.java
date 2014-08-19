@@ -347,13 +347,17 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 	@Override
 	public List<TProduct> queryProduct(TProduct product) throws Exception {
 		if(product.getProjectName()==null||product.getProjectName()==""){
-			String hql = "from TProduct product";
-			return getHibernateTemplate().find(hql);
+			String hql = "from TProduct product where product.existType = :existType";
+			Query query = getSession().createQuery(hql);
+			query.setParameter("existType", "0");
+			return query.list();
+			
 		}
 		
-		String hq = "from TProduct product where product.projectName like :projectName";
+		String hq = "from TProduct product where product.projectName like :projectName and product.existType = :existType ";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("projectName","%" + product.getProjectName()+ "%");
+		query.setParameter("existType", "0");
 		return query.list();
 		
 	}
@@ -371,7 +375,9 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 	@Override
 	public void deleteProduct(Long id) throws Exception {
 		TProduct Product = getHibernateTemplate().get(TProduct.class, id);
-        getHibernateTemplate().delete( Product);
+		Product.setExistType("1");
+		getHibernateTemplate().saveOrUpdate(Product);
+       
 		
 	}
 
