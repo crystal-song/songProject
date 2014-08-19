@@ -294,6 +294,7 @@ var navIndex=0;
                 </div>
             </div>
         </div>
+        <div class="clear"></div>
     </div>
 </div>
 <div class="clear_height"></div>
