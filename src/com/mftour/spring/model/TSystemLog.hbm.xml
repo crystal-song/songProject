@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+    系统日志信息hib配置
+-->
+<hibernate-mapping>
+    <class name="com.mftour.spring.model.TSystemLog" table="systemlog" >
+        <id name="logId" type="java.lang.Long">
+            <column name="logId" />
+            <generator class="native" />
+        </id>
+        <property name="logModule" type="java.lang.String">
+            <column name="logModule" length="255" />
+        </property>
+            <property name="logDescribe" type="java.lang.String">
+            <column name="logDescribe" length="500" />
+        </property>
+            <property name="logCreatetime" type="java.lang.String">
+            <column name="logCreatetime" length="50" />
+        </property>
+            <property name="logInputusr" type="java.lang.String">
+            <column name="logInputusr" length="50" />
+        </property>
+            <property name="logType" type="java.lang.Integer">
+            <column name="logType" length="50" />
+        </property>
+           <property name="logIp" type="java.lang.String">
+            <column name="logIp" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

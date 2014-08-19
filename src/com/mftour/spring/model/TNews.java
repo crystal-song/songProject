@@ -28,13 +28,15 @@ public class TNews  implements java.io.Serializable {
 	public void setDepicts(String depicts) {
 		this.depicts = depicts;
 	}
+	
+	
+	
 	public String getState() {
 		return state;
 	}
 	public void setState(String state) {
 		this.state = state;
 	}
-	
 	public String getChannel() {
 		return channel;
 	}

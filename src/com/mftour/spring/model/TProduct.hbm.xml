@@ -93,6 +93,10 @@
             <column name="projectPicture" length="200" />
         </property>
         
+         <property name="existType" type="java.lang.String">
+            <column name="existType" length="10" />
+        </property>
+        
         
        
     </class>

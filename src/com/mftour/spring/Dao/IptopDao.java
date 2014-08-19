@@ -38,7 +38,7 @@ public interface IptopDao {
      
      public void deleteTChannel(Long id) throws Exception;
      
-     
+     public List<TNews> getNewsbyRecommend()throws Exception;
      
      
 

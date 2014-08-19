@@ -128,9 +128,24 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		getHibernateTemplate().delete(channel);
 		
 	}
-	
-	
 
+	@Override
+	public List<TNews> getNewsbyRecommend() throws Exception {
+		/*String hql = "from TNews news where news.state = :state order by news.time desc";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("state", "1");*/
+		
+		
+		String hql = "from TNews news where news.state = :state order by news.time desc";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("state", "0");
+	
+		return query.list();
+	}
+	
+	
+	
+    
 	
 	
 	

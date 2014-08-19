@@ -32,6 +32,8 @@ public class TProduct implements java.io.Serializable{
 	    private String stateOfOperation; //经营状况
 	    private Integer recommendType;
 	    private String  projectPicture;
+	    private String  existType;
+	    
 	    
 	    
 	   
@@ -203,6 +205,12 @@ public class TProduct implements java.io.Serializable{
 		}
 		public void setProjectPicture(String projectPicture) {
 			this.projectPicture = projectPicture;
+		}
+		public String getExistType() {
+			return existType;
+		}
+		public void setExistType(String existType) {
+			this.existType = existType;
 		}
 		
 		
