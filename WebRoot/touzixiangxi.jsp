@@ -9,11 +9,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>投资详细页面</title>
+<title>项目：${product1.projectName} - 我要投资 - 中投汇</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css_new/style.css" rel="stylesheet" type="text/css" />
 
- <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+ <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+ <script type="text/javascript">
+var navIndex=1;
+</script>
+   
 <script type="text/javascript">
 $(document).ready(function(){
 	var scroplltop=$(window).scrollTop();
@@ -136,40 +140,43 @@ $(document).ready(function(){
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">经营状况：</span>&nbsp;&nbsp;${product1.stateOfOperation}<br>
 </div>
            <div class="wz_one" ><a>投资详情</a></div>
-                    <div class="wz_nr" ><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">具体信息：</span><br>
-                    <div class="table_xiangqing">
-                            <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0">
+                    <div class="wz_nr" >
+                    <div class="table_xiangqing" style="height:auto;">
+                    <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0">
                               <tr>
                               
-                                <td height="30" bgcolor="#990000" align="center">
+                                <td height="30" bgcolor="#990000" align="center" width="30%">
                                     <strong>
                                     <span style="font-family:'Microsoft YaHei'; color:#FFF;font-size:12px;" >投资人</span>
                                     </strong>
                                 </td>
-                                <td bgcolor="#990000" align="center">
+                                <td bgcolor="#990000" align="center" width="40%">
                                     <strong>
                                     <span style="font-family:'Microsoft YaHei'; color:#FFF; font-size:12px;">投资人身份证</span>
                                     </strong>
                                 </td>
-                                <td bgcolor="#990000" align="center">
+                                <td bgcolor="#990000" align="center" width="30%">
                                     <strong>
                                     <span style="font-family:'Microsoft YaHei'; color:#FFF; font-size:12px;">投资金额</span>
                                     </strong>
                                 </td>
                               </tr>
+                              </table>
+                       </div>
+                       <div class="table_xiangqing">
+                            <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0">
                               
                               <c:if test="${ not empty list}">
         <c:forEach var="s" items="${list}" varStatus="i">
                               <tr>
-                                <td height="30" bgcolor="#FFFFFF" align="center">
+                                <td height="30" bgcolor="#FFFFFF" align="center" width="30%">
                                 	<span style="font-family:'Microsoft YaHei';font-size:12px;">${s.investor}</span>
                                 </td>
-                                <td bgcolor="#FFFFFF" align="center">
+                                <td bgcolor="#FFFFFF" align="center" width="40%">
                                 	<span style="font-family:'Microsoft YaHei';font-size:12px;">    
                                     ${s.identityCard}</span>
                                 </td>
-                                <td bgcolor="#FFFFFF" align="center">
+                                <td bgcolor="#FFFFFF" align="center" width="30%">
                                 	<span style="font-family:'Microsoft YaHei';font-size:12px;">${s.investmentAmount}万元</span>
                                 </td>
                               </tr>
@@ -439,9 +446,12 @@ $(document).ready(function(){
            <div class="btn_bottom"></div>
             </div>
         </div>
+        <div class="xx_right">
         <!-- xx right -->
-<%@ include file="/includes/xx_right.jsp" %>
+		<%@ include file="/includes/news_list_right.jsp" %>
     	<!-- xx right end-->
+    	</div>
+    	<div class="clear"></div>
     </div>
 </div>
 

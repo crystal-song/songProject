@@ -100,9 +100,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </tbody>
         <tfoot>
         	<tr>
-            <td align="center">总金额</td><td align="center" id="totalMoney" colspan="2">${product1.realityMoney}</td>
+            <td align="center">总金额</td><td align="center" id="totalMoney" colspan="2">${product1.realityMoney}万元</td>
             <td align="center">投资进度</td>
-            <td colspan="3" align="center" id="progressTd">${product1.financingProgress}</td>
+            <td colspan="3" align="center" id="progressTd">${product1.financingProgress}%</td>
           </tr>
         </tfoot>
         </table>
