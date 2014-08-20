@@ -29,33 +29,27 @@ var navIndex=3;
     	<div class="bzl_tit">帮助中心</div>
         <div class="bzl_list">
         	<ul>
-            	<li class="aqbz">风险保障金</li>
-                <li>全额抵押贷款</li>
-                <li>受法律保护</li>
+        	 <c:if test="${ not empty list}">
+        <c:forEach var="s" items="${list}" varStatus="i">
+            	<li class="aqbz"><span class="hong"><a href="<%=path%>/guarantee/getlist?id=${s.id}">${s.name}</a></span></li>
+            	</c:forEach>
+        </c:if>
+               
             </ul>
         </div>
     </div>
     <div class="bz_right">
     	<div class="bzr_tit">
-        	<ul>
-            	<li class="bzr_qian">合作担保机构</li>
-                <li>CFCA战略合作</li>
-                <li>风险保障金</li>
-                <li>企业信用等级</li>
-                <li>信审风控体系</li>
-                <li>法律法规</li> 
-            </ul>
+        	
         </div>
         <div class="clear"></div>
         <div class="bzr_nr">
         	<ul>
-            	<li>好收益是什么网站？</li>
-                <li>好收益提供什么样的理财项目？</li>
-                <li>好收益有哪些理财产品？</li>
-                <li>如何成为好收益的投资人？</li>
-                <li>投资人如何进行投资？</li>
-                <li>投资人是否需要支付费用？</li>
-                <li>投资人投资金额是多少？</li>
+        		 <c:if test="${ not empty list1}">
+        <c:forEach var="s" items="${list1}" varStatus="i">
+            	<li><span class="hong"><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></span></li>
+               	</c:forEach>
+        </c:if>
             </ul>
         </div>
     </div>
