@@ -34,10 +34,10 @@ public class guaranteeController {
 			) throws Exception {
 		
 		List<TChannel> list=guaranteeService.getTChannel();
-	/*	List<TNews> list1=ptopService.getNews();*/
+		List<TNews> list1=ptopService.getNews();
 		 
 		 model.addAttribute("list", list);
-	/*	 model.addAttribute("list1", list1);*/
+		 model.addAttribute("list1", list1);
 	   
 		 
 	
