@@ -42,7 +42,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .hong{ color:#bc3726;}
 .two_pic{ width:1100px; height:13px;}
 
-.content{ width:100%; min-height:853px; padding:15px 0px; background:#dadada;}
+.content{ width:100%; min-height:853px; padding:15px 0px; background:#f8f8f8;}
 .content_fra{ width:1100px; min-height:853px; margin:0 auto;}
 .cont_left{ float:left; width:803px; height:auto;}
 .ckxq{ width:803px; height:246px;}
@@ -69,9 +69,10 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .ind_list{ width:735px; height:160px; background:#FFF; border:1px solid #b2b2b2; padding:25px 40px 0px 26px;}
 .ind_right{ float:right; width:492px; height:160px;}
 .tuijian{ width:492px; letter-spacing:1px; padding-bottom:5px; height:25px; padding-top:5px;}
-.tj_left{ float:left; width:310px; height:23px; line-height:23px; font-size:14px; font-weight:600; text-align:left;}
-.tj_right{ float:right; width:182px; height:23px; text-align:left;}
-.tj_jd{ float:left; width:100px; height:23px; line-height:23px;}
+.tj_left{ float:left; width:270px; height:23px; line-height:23px; font-size:14px; font-weight:600; text-align:left;}
+.hong a:hover{color:#ed5f59;}
+.tj_right{ float:right; width:205px; height:23px; text-align:left;}
+.tj_jd{ float:left; width:120px; height:23px; line-height:23px;}
 .tj_jd_pic{ float:right; width:82px; height:16px; padding-top:7px;}
 
 .cont_right{ float:right; width:286px; height:auto;margin-top:15px;}
@@ -115,8 +116,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .tz_one{ width:771px; height:24px; margin-bottom:6px;}
 .tz_one_left{ float:left; width:82px; height:24px; line-height:24px; text-align:right;}
 .tz_one_right{ float:right; width:689px; height:24px;}
-.tz_one_right ul li{ float:left; line-height:24px; margin-left:10px; text-align:center; width:75px;}
-.dq{ width:75px; height:24px; background:url(../images/touzi_07.jpg) no-repeat; color:#FFF;}
+.tz_one_right ul li{ float:left; line-height:24px; margin-left:10px; text-align:center; width:75px; cursor:pointer}
+.dq{ width:75px; height:24px; background:url(../images/touzi_07.jpg) no-repeat; color:#FFF; }
 
 /*pager css*/
 .num{ max-width:803px; height:25px; text-align:center; padding-top:15px; margin:0px auto;}
@@ -145,18 +146,18 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .bz_left{ float:left; width:253px; height:auto;}
 .bzl_tit{ width:218px; height:39px; background:url(../images/help_03.jpg); padding-left:35px; line-height:39px; text-align:left; color:#bf1c20; font-family:"微软雅黑"; font-size:14px; font-weight:600;}
 .bzl_list{ width:235px; height:auto; border:1px solid #dfdfdf; padding-left:8px; padding-right:8px; padding:0px 8px 18px 8px;}
-.bzl_list ul li{ width:209px; height:48px; font-size:14px; font-weight:600; line-height:48px; text-align:left; border-bottom:1px dashed #c4c3c3; padding-left:26px;}
+.bzl_list ul li{ width:209px; height:48px; font-size:14px; font-weight:600; line-height:48px; text-align:left; border-bottom:1px dashed #c4c3c3; padding-left:26px; cursor:pointer}
 .aqbz{ color:#db6f05; background:url(../images/help_11.jpg) no-repeat 210px 18px;}
 
 .bz_right{ float:right; width:832px; height:auto;}
 .bzr_tit{ width:830px; height:42px; border-top:2px solid #c10a0e; border-bottom:1px solid #d1d1d1; border-left:1px solid #d1d1d1; border-right:1px solid 
 #d1d1d1; background:url(../images/help_06.jpg);}
-.bzr_tit ul li{ float:left; width:110px; font-size:14px; font-weight:600; line-height:42px; border-right:1px solid #d1d1d1;}
+.bzr_tit ul li{ float:left; width:110px; font-size:14px; font-weight:600; line-height:42px; border-right:1px solid #d1d1d1; cursor:pointer}
 .bzr_qian{ background:#c10a0e; color:#FFF;}
 .bzr_nr{ width:806px; padding-top:18px; height:auto; margin:0 auto;}
 .bzr_nr ul li{ text-align:left; width:781px; line-height:46px; border-bottom:1px dashed #dedede; font-size:14px; font-weight:600; background:url(../images/help_15.jpg) no-repeat 10px 20px; padding-left:25px;}
-
-.xx{ width:100%; height:4318px; background:#dbdada; padding:8px 0px;}
+.bzr_nr li a:hover{color:#ed5f59;}
+.xx{ width:100%; height:4318px; background:#f8f8f8;; padding:8px 0px;}
 .xx_fra{ width:1100px; height:auto; margin:0 auto;}
 .xx_left{ float:left; width:800px; height:auto;}
 .xx_one{ width:798px; height:320px; border:1px solid #c4c3c3; background:#FFF;}
@@ -430,7 +431,6 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .user_bottom li{text-align:left; margin-top:10px;}
 
 
-
 /*production_jianjie*/
 .main_con{width:1100px; height:auto; margin:0 auto; padding-top:30px}
 .main_left{width:735px; height:2780px; background:#fff; float:left; border:1px solid #e5e5e5; border-radius:5px; margin-bottom:25px}
@@ -509,7 +509,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .bar_aini{width:335px; height:40px; border-bottom:1px dashed #e5e5e5; border-top:1px dashed #e5e5e5; margin-top:15px;}
 .bar_body{width:250px; height:15px; background:#f2f2f2; margin:12px  0 0 20px; border-radius:15px; float:left}
 .bar_body div{width:50%; height:15px; background:#ed5f59; border-radius:15px;}
-.shu{float:right; height:15px; width:25px; margin:10px 30px 0 0; font-size:14px}
+.shu{float:right; height:15px; width:25px; font-size:14px}
 .dibu{width:335px; height:80px;}
 .dibu span{width:100px; height:60px; margin:10px 0 0 0; background:#fff; display:inline-block}
 .cen{border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
