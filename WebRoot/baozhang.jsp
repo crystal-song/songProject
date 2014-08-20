@@ -47,7 +47,7 @@ var navIndex=3;
         	<ul>
         		 <c:if test="${ not empty list1}">
         <c:forEach var="s" items="${list1}" varStatus="i">
-            	<li><span class="hong"><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></span></li>
+            	<li><span class="hong"><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title} ${s.time} </a></span></li>
                	</c:forEach>
         </c:if>
             </ul>

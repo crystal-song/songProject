@@ -46,7 +46,7 @@ var navIndex=3;
         <div class="bzr_nr">
          <%-- <div >${news.title}</div> --%>
          <div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/product/allProduct" >新闻公告</a> </div>
-         <div class="news_content">${news.depicts}</div> 
+         <div class="news_content">${news.depicts}</div> ${news.time}     ${news.channel}
         
         	<%-- <ul>
         		 <c:if test="${ not empty list1}">
