@@ -9,6 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<Link href="/favicon.ico" rel="Shortcut Icon">
 <title>项目：${product1.projectName} - 我要投资 - 中投汇</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css_new/style.css" rel="stylesheet" type="text/css" />
@@ -74,6 +75,8 @@ $(document).ready(function(){
 <div class="xx">
 	<div class="xx_fra">
     	<div class="xx_left">
+    		<div class="lactation">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/product/allProduct" >我要投资</a> >> 项目详情</div>
+    		<div class="clear_height"></div>
         	<div class="xx_one">
             	<div class="xxo_bor">
                 	<div class="xxo_left"><img src="<%=path%>/images/sy_64.jpg"></div>
