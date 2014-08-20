@@ -245,14 +245,7 @@ var navIndex=0;
                 </div>
                 <div class="cr_nr">
                 	<ul>
-                	 <c:if test="${ not empty list1}">
-        <c:forEach var="s" items="${list1}" varStatus="i">
-                    	<li>${s.title}</li>
-                    	 </c:forEach>
-      
-	
-	 
-        </c:if>
+                	
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
@@ -280,15 +273,23 @@ var navIndex=0;
             <div class="cr_bg">
             	<div class="cr_tit">
                 	<div class="cr_font">媒体报道</div>
-                    <div class="cr_more"><img src="<%=path%>/images/sy_50.jpg"></div>
+                    <div class="cr_more"><a href="<%=path%>/guarantee/getNewslist?channel=新闻报道"><img src="<%=path%>/images/sy_50.jpg"></a></div>
                 </div>
                 <div class="cr_nr">
                 	<ul>
+                	 <c:if test="${ not empty list1}">
+        <c:forEach var="s" items="${list1}" varStatus="i">
+                    	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">和讯：${s.title}</a></li>
+                    	 </c:forEach>
+      
+	
+	 
+        </c:if><!-- 
                     	<li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
                         <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
-                        <li>和讯：积木盒子十个月破十亿 P2P黑马……</li>
+                        <li>和讯：积木盒子十个月破十亿 P2P黑马……</li> -->
                     </ul>
                 </div>
             </div>
