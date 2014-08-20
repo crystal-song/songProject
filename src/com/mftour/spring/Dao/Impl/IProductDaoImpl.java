@@ -27,9 +27,9 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 		Double YearIncome2=15.0;
 		Double YearIncome3=20.0;
         
-        int FinancingPeriod1=60;
-		int FinancingPeriod2=180;
-		int FinancingPeriod3=360;
+        int FinancingPeriod1=3;
+		int FinancingPeriod2=6;
+		int FinancingPeriod3=12;
 		
 		 int FinancingMoney1=200;
 		 int FinancingMoney2=500;
@@ -115,27 +115,35 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 					sb.append(" where");
 				}
 				
-				if(product.getFinancingPeriod()==60){
+				if(product.getFinancingPeriod()==3){
 					
 				sb.append(" product.financingPeriod < :FinancingPeriod");
 				params.put("FinancingPeriod", FinancingPeriod1);
 				}
 				
-				if(product.getFinancingPeriod()==180){
+				if(product.getFinancingPeriod()==6){
 					
-			    sb.append(" product.financingPeriod >= :FinancingPeriod  and  product.financingPeriod < :FinancingPeriod2 ");
+			    sb.append(" product.financingPeriod >= :FinancingPeriod  and  product.financingPeriod <= :FinancingPeriod2 ");
 				params.put("FinancingPeriod", FinancingPeriod1);
 				params.put("FinancingPeriod2", FinancingPeriod2);
 					
 				}
 				
-				if(product.getFinancingPeriod()==360){
+				if(product.getFinancingPeriod()==12){
 					
-				sb.append(" product.financingPeriod >= :FinancingPeriod2  and  product.financingPeriod < :FinancingPeriod3 ");
+				sb.append(" product.financingPeriod >= :FinancingPeriod2  and  product.financingPeriod <= :FinancingPeriod3 ");
 			    params.put("FinancingPeriod2", FinancingPeriod2);
 				params.put("FinancingPeriod3", FinancingPeriod3);
 						
 					}
+				
+				if(product.getFinancingPeriod()==24){
+					
+					sb.append(" product.financingPeriod >= :FinancingPeriod3");
+				    params.put("FinancingPeriod3", FinancingPeriod3);
+	
+							
+						}
 				
 			}
 			
@@ -337,6 +345,7 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 		String hql = "from TProduct tproduct where tproduct.recommendType = :recommendType";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("recommendType", type);
+		query.setMaxResults(3);
 		return query.list();
 	}
 

@@ -114,6 +114,24 @@ public class PtopServiceImpl  implements  IptopService  {
 		
 		return ptopDao.getNewsByName(name);
 	}
+	
+	
+	
+
+
+	@Override
+	public List<TNews> getWebsiteNoticeByChannel() throws Exception {
+		
+		return ptopDao.getWebsiteNoticeByChannel();
+	}
+
+
+
+	@Override
+	public List<TNews> getRepaymentNoticeByChannel() throws Exception {
+		
+		return ptopDao.getRepaymentNoticeByChannel();
+	}
 
 
 

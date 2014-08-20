@@ -108,7 +108,7 @@ public class guaranteeController {
 		List<TNews> list1=ptopService.getNewsByName(news.getChannel());
 		
 		 model.addAttribute("list1", list1);
-	   
+	                      
 		 
 	
 		  

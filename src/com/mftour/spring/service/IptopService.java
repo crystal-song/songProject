@@ -45,6 +45,10 @@ public interface IptopService {
 	 
 	 public List<TNews> getNewsbyTime()throws Exception;
 	 
+     public List<TNews> getWebsiteNoticeByChannel()throws Exception;
+	 
+	 public List<TNews> getRepaymentNoticeByChannel()throws Exception;
+	 
 	 
 
 }

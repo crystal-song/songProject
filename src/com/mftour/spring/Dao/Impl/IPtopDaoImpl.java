@@ -152,6 +152,30 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		query.setMaxResults(3);
 		return query.list();
 	}
+
+	@Override
+	public List<TNews> getWebsiteNoticeByChannel() throws Exception {
+		String hql = "from TNews news where news.state = :state and news.channel = :channel  order by news.time desc";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("state", "1");
+		query.setParameter("channel", "网站公告");
+		query.setMaxResults(3);
+		return query.list();
+	}
+
+	@Override
+	public List<TNews> getRepaymentNoticeByChannel() throws Exception {
+		String hql = "from TNews news where news.state = :state and news.channel = :channel  order by news.time desc";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("state", "1");
+		query.setParameter("channel", "还款公告");
+		query.setMaxResults(3);
+		return query.list();
+	}
+
+	
+	
+	
 	
 	
 	

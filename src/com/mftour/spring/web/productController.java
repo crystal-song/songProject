@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mftour.spring.model.TInvestmentInfo;
+import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IProductService;
@@ -59,6 +60,15 @@ public class productController {
 		  model.addAttribute("list", list);
 		  model.addAttribute("page", page);
 		  model.addAttribute("product", product);
+		  
+		  List<TNews> list1=ptopService.getNewsbyTime();
+			model.addAttribute("list1", list1);
+			
+			List<TNews> list2=ptopService.getWebsiteNoticeByChannel();
+			model.addAttribute("list2", list2);
+			
+			List<TNews> list3=ptopService.getRepaymentNoticeByChannel();
+			model.addAttribute("list3", list3);
 		
 		return "touzi";
 		
