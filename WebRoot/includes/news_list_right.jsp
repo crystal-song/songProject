@@ -12,6 +12,7 @@
                     	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
                     	 </c:forEach>
 						</c:if>
+						</ul>
                 </div>
             </div>
 		<div class="clear_height"></div>
@@ -27,6 +28,7 @@
                     	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
                     	 </c:forEach>
 						</c:if>
+						</ul>
                 </div>
             </div>
 		<div class="clear_height"></div>
@@ -42,6 +44,7 @@
                     	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
                     	 </c:forEach>
 						</c:if>
+						</ul>
                 </div>
             </div>
 		<div class="clear_height"></div>
@@ -57,5 +60,6 @@
                     	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
                     	 </c:forEach>
 						</c:if>
+						</ul>
                 </div>
             </div>
