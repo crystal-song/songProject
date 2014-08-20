@@ -130,6 +130,15 @@ public class productController {
 		  
 		 model.addAttribute("product1", product1);
 		 model.addAttribute("list", list);
+		 
+		 List<TNews> list1=ptopService.getNewsbyTime();
+			model.addAttribute("list1", list1);
+			
+			List<TNews> list2=ptopService.getWebsiteNoticeByChannel();
+			model.addAttribute("list2", list2);
+			
+			List<TNews> list3=ptopService.getRepaymentNoticeByChannel();
+			model.addAttribute("list3", list3);
 		
 		return "touzixiangxi";
 		
