@@ -318,9 +318,10 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                     <div class="tz_one_right">
                     	<ul class="filter">
                         	<li class="dq" value="1"  >全部</li>
-                            <li value="60" >60天以下</li>
-                            <li value="180" >60-180天</li>
-                            <li value="360" >180-360天</li>
+                            <li value="3" >3个月以下</li>
+                            <li value="6" >3-6个月</li>
+                            <li value="12" >6-12个月</li>
+                            <li value="24" >12个月以上</li>
                         </ul>
                     </div>
                 </div>
