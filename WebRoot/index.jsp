@@ -157,37 +157,7 @@ var navIndex=0;
             
             
        <div class="clear_height"></div>
-            <div class="ind_list">
-            	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
-                <div class="ind_right">
-                	<div class="tuijian">
-                    	<div class="tj_left">推荐项目:<span class="hong">建筑工程企业建筑材料采购</span></div>
-                        <div class="tj_right">
-                        	<div class="tj_jd">融资进度：80%</div>
-                            <div class="tj_jd_pic"><img src="<%=path%>/images/sy_76.jpg"></div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="xq_table">
-                        <div class="xq01">
-                            <div class="xq01_tit">年化收益</div>
-                            <div class="xq01_nr hong">14.50%</div>
-                        </div>
-                        <div class="xq02">
-                            <div class="xq01_tit">融资金额</div>
-                            <div class="xq01_nr">1000万</div>
-                        </div>
-                        <div class="xq03">
-                            <div class="xq01_tit">还款日期</div>
-                            <div class="xq01_nr">2015-06-04</div>
-                        </div>
-                        <div class="xq04">
-                            <div class="xq01_tit">企业等级</div>
-                            <div class="xq04_nr"><img src="<%=path%>/images/sy_66.jpg"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>  
+              
            <%--  <div class="clear_height"></div>
             <div class="ind_list">
             	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>

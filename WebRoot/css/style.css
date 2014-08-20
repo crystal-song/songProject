@@ -42,8 +42,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .hong{ color:#bc3726;}
 .two_pic{ width:1100px; height:13px;}
 
-.content{ width:100%; min-height:853px; padding:15px 0px; background:#f8f8f8;}
-.content_fra{ width:1100px; min-height:853px; margin:0 auto;}
+.content{ width:100%; min-height:653px; padding:15px 0px; background:#f8f8f8;}
+.content_fra{ width:1100px; min-height:653px; margin:0 auto;}
 .cont_left{ float:left; width:803px; height:auto;}
 .ckxq{ width:803px; height:246px;}
 .ckxq_bg{ width:530px; height:37px; background:url(../images/sy_44.jpg); padding-top:24px; padding-left:273px; letter-spacing:1px; font-size:14px; font-weight:600; text-align:left;}
@@ -152,6 +152,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .bz_right{ float:right; width:832px; height:auto;}
 .bzr_tit{ width:830px; height:42px; border-top:2px solid #c10a0e; border-bottom:1px solid #d1d1d1; border-left:1px solid #d1d1d1; border-right:1px solid 
 #d1d1d1; background:url(../images/help_06.jpg);}
+.bzr_tit h1{ font-size:20px; line-height:38px; padding-top:4px; margin:0px;}
 .bzr_tit ul li{ float:left; width:110px; font-size:14px; font-weight:600; line-height:42px; border-right:1px solid #d1d1d1; cursor:pointer}
 .bzr_qian{ background:#c10a0e; color:#FFF;}
 .bzr_nr{ width:806px; padding-top:18px; height:auto; margin:0 auto;}
@@ -296,8 +297,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .banner_fra ol li{width:12px; height:12px; margin:3px 5px;; float:left; list-style:none; border-radius:15px; border:1px solid #999; 
                   background:#ccc; box-shadow: -2px -2px 2px #999 inset; cursor:pointer}
 .banner_fra ol .current{background:#F00; border:1px solid #903; box-shadow: -2px -2px 2px #b20d0d inset;}
-.ban_left{width:45px; height:45px; background:url(../img/zuo.png) no-repeat; position:absolute; top:50%; left:0;}
-.ban_right{width:45px; height:45px; background:url(../img/you.png) no-repeat; position:absolute; top:50%; right:0;}
+.ban_left{width:45px; height:45px; background:url(../img/zuo.png) no-repeat; position:absolute; top:50%; left:0;cursor:pointer;}
+.ban_right{width:45px; height:45px; background:url(../img/you.png) no-repeat; position:absolute; top:50%; right:0;cursor:pointer;}
 /*banner over*/
 
 /*yonghuzhongxin */
@@ -619,3 +620,10 @@ ul{ margin:0px; padding:0px; list-style:none;}
 
 .lactation{ text-align:left; line-height：30px; padding:20px; background:#fff; border:1px solid #c4c3c3;}
 .lactation a:hover{}
+
+.news_content{text-align:left; line-height：30px;}
+.news_location{text-align:left; line-height：30px; padding:10px 0px; background:#fff;}
+
+.news_list li{ clear:both; padding:0px 20px; font-weight:normal!important;}
+.news_list a{ display:block; float:left; padding:0px; width:80%;}
+.news_list dt{ display:block; float:right; padding:0px;}
