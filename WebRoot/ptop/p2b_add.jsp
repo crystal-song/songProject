@@ -151,7 +151,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		alert($('#mes').val());
         	}
         	
-        	
+        	if($("#enterpriseNumber").val()=="")
+        	{
+        		tt=new Date();
+        		$("#enterpriseNumber").val("ZTH01"+tt.valueOf());
+        		}
         	/* if( r!=null){
         		alert(r);
         	} */
@@ -201,7 +205,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li>
                     <dd>项目名称：</dd>
                     <input type="text" name="projectName"  id="projectName"  value="${product1.projectName}"  />
-                    <dt>1111</dt>
+                    <dt>必填项，字数请控制在14个汉字以内。</dt>
                 </li>
                 <li>
                     <dd>企业编号：</dd>
@@ -218,19 +222,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- </script>  -->
 
  
-                <dt><script type="text/plain"   id="Editor" style="width:600px;height:100px;"> 
-    ${product1.projectPicture}
+                <dt><script type="text/plain"   id="Editor" style="width:100%;height:100px;">${product1.projectPicture}
  </script>  <br />尺寸：250*158</dt>  
                 </li>
                 <li>
                     <dd>信用等级：</dd>
-                    <input type="number"  name="qualityRating"  id="qualityRating" value="${product1.qualityRating}"      min="1" max="5" value="1" step="1" />
+                    <input type="number"  name="qualityRating"  id="qualityRating" value="${product1.qualityRating==null?1:product1.qualityRating}"      min="1" max="5" value="1" step="1" />
                     <dt></dt>
                 </li>
                 <li>
                     <dd>年化收益：</dd>
-                    <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome}"   min="0.05" max="0.24" value="0.12" step="0.01" />
-                    <dt></dt>
+                    <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome==null?0.12:product1.yearIncome}"   min="0.05" max="0.24" value="0.12" step="0.01" />
+                    <dt>用小数表示，如12%则输入0.12</dt>
                 </li>
                 <li>
                     <dd>还款日期：</dd>
@@ -244,18 +247,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                  <li>
                     <dd>还款方式：</dd>
-                    <input type="text" name="repaymentWay"  id="repaymentWay"  value="${product1.repaymentWay}" />
-                    <dt>1111</dt>
+                    <input type="text" name="repaymentWay"  id="repaymentWay"  value="${product1.repaymentWay==null?'按月付息、到期还本':product1.repaymentWay}" />
+                    <dt>按月付息、到期还本</dt>
                 </li>
                 <li>
                     <dd>融资金额：</dd>
                     <input type="number"  name="financingMoney"  id="financingMoney"  value="${product1.financingMoney}"    min="0" value="0" />
-                    <dt></dt>
+                    <dt>单位是<b>万元</b>。</dt>
                 </li>
                 <li>
                     <dd>融资周期：</dd>
-                    <input type="number"  name="financingPeriod"  id="financingPeriod"  value="${product1.financingPeriod}"    min="0" value="0" />
-                    <dt></dt>
+                    <input type="number"  name="financingPeriod"  id="financingPeriod"  value="${product1.financingPeriod==null?12:product1.financingPeriod}"    min="0" value="0" />
+                    <dt>按月计算，如3、6、12、24、36</dt>
                 </li>
                 
                <!--  <li>
@@ -330,20 +333,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>  -->
                 
                 
-        <h1>相关证件</h1>
-
+        <dd>相关证件：</dd>
+<label>
 <!--style给定宽度可以影响编辑器的最终宽度-->
-<script type="text/plain"   id="myEditor" style="width:1000px;height:180px;">
-    ${product1.enterpriseCertificate}
-</script>
-                
+<script type="text/plain"   id="myEditor" style="width:100%;height:180px;">${product1.enterpriseCertificate}</script>
+</label> 
+		<dt>请将所有相关的图片上传至此区域内！</dt>       
              
 
                 <li>
                 <dd>设置项目属性：</dd>
                  <p>
                       <label>
-                        <input type="checkbox" name="recommendType" id="recommendType" value="${product1.recommendType}"   value="1"  />
+                        <input type="checkbox" name="recommendType" id="recommendType" value="${product1.recommendType}"   value="0"  />
                         <span>推荐</span></label>
 				</p>
                     <dt></dt>
@@ -358,9 +360,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li>
                 <dd></dd>
                  <input type="button"  title="提交"  onclick="getContent()"   value="提交" class="b"/>
+                <dt>请仔细检查后再提交！！！</dt>
                 </li>
+                
             </ul>
-            
+            <p align="right"><a href="#top">↑返回顶部</a></p>
    	  </div>
    	  </form>
   </div>
@@ -410,7 +414,7 @@ function getAllHtml() {
     //实例化编辑器
     var um = UM.getEditor('myEditor');
     um.addListener('blur',function(){
-        $('#focush2').html('编辑器失去焦点了')
+        //$('#focush2').html('编辑器失去焦点了')
     });
     um.addListener('focus',function(){
         $('#focush2').html('')
@@ -446,8 +450,15 @@ function getAllHtml() {
         arr1.push(UM.getEditor('Editor').getContent());
         alert(arr1.join("\n"));
         $("#projectPicture").val(arr1.join("\n"));
+        if($("#projectName").val()==""){
+        	alert("注意：项目名称 不得为空!");
+        	return FALSE;
+        }
         
-        
+        if($("#financingMoney").val()==""){
+        	alert("注意：融资金额 不得为空!");
+        	return FALSE;
+        }
          $("#form" ).submit();  
     }
     function getPlainTxt() {
