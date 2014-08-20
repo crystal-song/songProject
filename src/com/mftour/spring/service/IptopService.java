@@ -43,6 +43,8 @@ public interface IptopService {
 	 
 	 public List<TNews> getNewsbyRecommend()throws Exception;
 	 
+	 public List<TNews> getNewsbyTime()throws Exception;
+	 
 	 
 
 }

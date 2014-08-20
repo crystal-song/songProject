@@ -147,6 +147,14 @@ public class PtopServiceImpl  implements  IptopService  {
 		return ptopDao.getNewsbyRecommend();
 	}
 
+
+
+	@Override
+	public List<TNews> getNewsbyTime() throws Exception {
+		
+		return ptopDao.getNewsbyTime();
+	}
+
 	
 	
 	

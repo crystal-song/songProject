@@ -40,6 +40,7 @@ public interface IptopDao {
      
      public List<TNews> getNewsbyRecommend()throws Exception;
      
+     public List<TNews> getNewsbyTime()throws Exception;
      
 
 }

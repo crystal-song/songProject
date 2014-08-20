@@ -102,7 +102,7 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TNews> getNewsByName(String name) {
-		String hql = "from TNews news where news.channel = :channel";
+		String hql = "from TNews news where news.channel = :channel  order by news.time desc";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("channel", name);
 	
@@ -140,6 +140,16 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		Query query = getSession().createQuery(hql);
 		query.setParameter("state", "0");
 	
+		return query.list();
+	}
+
+	@Override
+	public List<TNews> getNewsbyTime() throws Exception {
+		String hql = "from TNews news where news.state = :state and news.channel = :channel  order by news.time desc";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("state", "1");
+		query.setParameter("channel", "新闻报道");
+		query.setMaxResults(3);
 		return query.list();
 	}
 	

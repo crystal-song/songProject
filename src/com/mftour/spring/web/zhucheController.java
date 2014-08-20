@@ -32,7 +32,10 @@ public class zhucheController {
 		
 		model.addAttribute("list", list);
 		
-		List<TNews> list1=ptopService.getNewsbyRecommend();
+		/*List<TNews> list1=ptopService.getNewsbyRecommend();
+		model.addAttribute("list1", list1);*/
+		      
+		List<TNews> list1=ptopService.getNewsbyTime();
 		model.addAttribute("list1", list1);
 		
 		return "index";
