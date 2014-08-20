@@ -6,7 +6,7 @@ img{ border:0px;}
 .clear{ clear:both;}
 .clear_height{ clear:both; height:15px;}
 a{ color:#5d5d5d; text-decoration:none;}
-a:hover{ color:#5d5d5d; text-decoration:none;}
+a:hover{ color:#333; text-decoration:none;}
 ul{ margin:0px; padding:0px; list-style:none;}
 
 .top{ width:100%; height:29px; background:url(../images/sy_02.jpg);}
@@ -617,5 +617,5 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .repeat_top a{display:inline-block; float:left; margin-left:18px; color:#fff;}
 .repeat_bottom{width:800px; height:20px;  margin-left:210px; text-align:left;  color:#ccc;}
 
-
-
+.lactation{ text-align:left; line-height：30px; padding:20px; background:#fff; border:1px solid #c4c3c3;}
+.lactation a:hover{}
