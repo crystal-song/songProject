@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <%@ include file="/includes/taglibs.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>安全保障</title>
+<title>${news.title} - 中投汇</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
@@ -26,7 +26,7 @@ var navIndex=3;
 <div class="clear_height"></div>
 <div class="frame">
 	<div class="bz_left">
-    	<div class="bzl_tit">帮助中心</div>
+    	<div class="bzl_tit"></div>
         <div class="bzl_list">
         	<ul>
         	 <c:if test="${ not empty list}">
@@ -40,12 +40,13 @@ var navIndex=3;
     </div>
     <div class="bz_right">
     	<div class="bzr_tit">
-        	
+        	<h1>${news.title}</h1>
         </div>
         <div class="clear"></div>
         <div class="bzr_nr">
-         <div >${news.title}</div>
-         <div >${news.depicts}</div> 
+         <%-- <div >${news.title}</div> --%>
+         <div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/product/allProduct" >新闻公告</a> </div>
+         <div class="news_content">${news.depicts}</div> 
         
         	<%-- <ul>
         		 <c:if test="${ not empty list1}">
