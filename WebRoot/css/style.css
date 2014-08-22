@@ -155,7 +155,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .bzr_tit h1{ font-size:20px; line-height:38px; padding-top:4px; margin:0px;}
 .bzr_tit ul li{ float:left; width:110px; font-size:14px; font-weight:600; line-height:42px; border-right:1px solid #d1d1d1; cursor:pointer}
 .bzr_qian{ background:#c10a0e; color:#FFF;}
-.bzr_nr{ width:806px; padding-top:18px; height:auto; margin:0 auto;}
+.bzr_nr{ width:806px; padding-top:18px; height:auto; margin:0 auto 60px;}
 .bzr_nr ul li{ text-align:left; width:781px; line-height:46px; border-bottom:1px dashed #dedede; font-size:14px; font-weight:600; background:url(../images/help_15.jpg) no-repeat 10px 20px; padding-left:25px;}
 .bzr_nr li a:hover{color:#ed5f59;}
 .xx{ width:100%; min-height:400px; background:#f8f8f8;; padding:8px 0px;}
@@ -627,3 +627,23 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .news_list li{ clear:both; padding:0px 20px; font-weight:normal!important;}
 .news_list a{ display:block; float:left; padding:0px; width:80%;}
 .news_list dt{ display:block; float:right; padding:0px;}
+
+
+
+/*help*/
+
+.bzr_nr dl{width:806px; height:auto; }
+.bzr_nr dt{width:806px; height:50px; font-size:16px; text-align:left}
+.bzr_nr dd{ text-align:left; line-height:28px; margin:0 0 30px 0; text-indent:2em; font-size:10pt; }
+.bzr_nr p{font-size:16px; text-align:left;}
+.dingwei{text-align:left; width:806px; margin-left:22px; line-height:28px; font-size:10pt;}
+#shengming li{border-bottom:none; }
+.anquan p{width:786px; padding-left:20px; background:url(../img/xiaoyuandian.png) no-repeat; margin-left:26px;}
+.anquan div{width:806px;text-align:left; line-height:28px; margin:0 0 30px 0; text-indent:2em; font-size:10pt; }
+.contaction{width:766px; height:198px; border:1px solid #ccc; padding:20px;}
+.contaction p{ font-size:14px;}
+
+ html,body{margin:0;padding:0;}
+    .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+    .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+
