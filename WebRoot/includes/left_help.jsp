@@ -3,11 +3,18 @@
     	<div class="bzl_tit">帮助中心</div>
         <div class="bzl_list">
         	<ul>
-            	<li class="aqbz">关于我们</li>
-            	<li>常见问题</li>
-                <li>安全策略</li>
-                <li>法律声明</li>
-                <li>联系客服</li>
+            	<li><a href="<%=path%>/help.jsp">关于我们</a></li>
+            	<li><a href="<%=path%>/question.jsp">常见问题</a></li>
+                <li><a href="<%=path%>/security.jsp">安全策略</a></li>
+                <li><a href="<%=path%>/notice.jsp">法律声明</a></li>
+                <li><a href="<%=path%>/contact.jsp">联系客服</a></li>   
             </ul>
         </div>
     </div>
+    <script type="text/javascript">
+	var navIndex=4;
+	$(function(){
+	  $('.bzl_list a').eq(index).addClass('aqbz');		
+	});
+
+</script>
