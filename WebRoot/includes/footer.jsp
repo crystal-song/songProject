@@ -2,14 +2,11 @@
 <div class="menu">
 	<div class="menu_fra">
     	<ul>
-        	<li>关于我们</li>
-            <li>常见问题</li>
-            <li>理财问答</li>
-            <li>法律声明</li>
-            <li>联系我们</li>
-            <li>友情链接</li>
-            <li>我要融资</li>
-            <li>收益计算器</li>
+        	<li class="fir_li"><a href="#"><a href="<%=path%>/help.jsp">关于我们</a></li>
+            <li><a href="<%=path%>/question.jsp">常见问题</a></li>
+            <li><a href="<%=path%>/security.jsp">安全策略</a></li>
+            <li><a href="<%=path%>/notice.jsp">法律声明</a></li>
+            <li><a href="<%=path%>/contact.jsp">联系客服</a></li>     
         </ul>
     </div>
 </div>
