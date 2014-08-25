@@ -42,15 +42,18 @@ function filterChange(){
 		filterIndex[0]=0;
 	}
 	switch (myFilter[1]){
-	case 60:
+	case 3:
 		filterIndex[1]=1;
 		break;
-	case 180:
+	case 6:
 		filterIndex[1]=2;
 		break;
-	case 360:
+	case 12:
 		filterIndex[1]=3;
 		break;
+	case 24:
+		filterIndex[1]=4;
+		break;	
 	default:
 		filterIndex[1]=0;
 	}
@@ -321,7 +324,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                             <li value="3" >3个月以下</li>
                             <li value="6" >3-6个月</li>
                             <li value="12" >6-12个月</li>
-                            <li value="24" >12个月以上</li>
+                            <li value="24" >12个月以上</li> 
                         </ul>
                     </div>
                 </div>
@@ -401,7 +404,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
         <c:forEach var="s" items="${list}" varStatus="i">
         <div class="clear_height"></div>
         <div class="ind_list">
-            <div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
+            <div class="xq_left"  style="width:50px; height:50px;" >${s.projectPicture}</div>
             <div class="ind_right">
                 <div class="tuijian">
                 
