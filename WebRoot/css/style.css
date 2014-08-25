@@ -147,7 +147,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .bzl_tit{ width:218px; height:39px; background:url(../images/help_03.jpg); padding-left:35px; line-height:39px; text-align:left; color:#bf1c20; font-family:"微软雅黑"; font-size:14px; font-weight:600;}
 .bzl_list{ width:235px; height:auto; border:1px solid #dfdfdf; padding-left:8px; padding-right:8px; padding:0px 8px 18px 8px;}
 .bzl_list ul li{ width:209px; height:48px; font-size:14px; font-weight:600; line-height:48px; text-align:left; border-bottom:1px dashed #c4c3c3; padding-left:26px; cursor:pointer}
-.aqbz{color:#db6f05!important; background:url(../images/help_11.jpg) no-repeat 180px 18px!important;}
+.aqbz{color:#db6f05; background:url(../images/help_11.jpg) no-repeat 180px 18px;}
 .bzl_list a{width:209px; height:48px; display:inline-block}
 .bzl_list a:hover{color:#db6f05; }
 .bz_right{ float:right; width:832px; height:auto;}
