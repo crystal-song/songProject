@@ -47,13 +47,13 @@ var index=4;
         <div class="bzr_nr">
         	<div class="contaction">
         	   <p>名称：中投汇融投资管理有限公司
-               <p>地址：北京市东城区北京市朝阳区工体北路13号院1号楼
+               <p>地址：北京市朝阳区工体北路13号院1号楼
                <p>电话：010-84243099/3199</p>
                <p>传真号：010-84243990</p>
                <p>email：cs@ptobchina.com</p>
                <p>简介：中投汇融，北京市朝阳区工体北路13号院1号楼1501-1502室。 邮编：100020</p>
         	</div>
-        	<div style="width:806px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
+        	<div style="width:800px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
  	
         </div>
     </div>
@@ -108,7 +108,7 @@ var index=4;
     }
     
     //标注点数组
-    var markerArr = [{title:"海隆石油工业集团",content:"我的备注",point:"116.455582|39.941954",isOpen:0,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+    var markerArr = [{title:"中投汇融投资管理有限公司",content:"地址：北京市朝阳区工体北路13号院1号楼1501-1502室",point:"116.455582|39.941954",isOpen:0,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
 		 ];
     //创建marker
     function addMarker(){
