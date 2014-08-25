@@ -232,8 +232,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                     <dd>年化收益：</dd>
-                    <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome==null?0.12:product1.yearIncome}"   min="0.05" max="0.24" value="0.12" step="0.01" />
-                    <dt>用小数表示，如12%则输入0.12</dt>
+                    <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome==null?10:product1.yearIncome}"   min="1" max="100" value="10" step="1" />
+                    <dt>用整数表示，如12%则输入12</dt>
                 </li>
                 <li>
                     <dd>还款日期：</dd>
@@ -443,7 +443,7 @@ function getAllHtml() {
      /*    arr.push("使用editor.getContent()方法可以获得编辑器的内容");
         arr.push("内容为："); */
         arr.push(UM.getEditor('myEditor').getContent());
-        alert(arr.join("\n"));
+      /*   alert(arr.join("\n")); */
         $("#enterpriseCertificate").val(arr.join("\n"));
         
         
