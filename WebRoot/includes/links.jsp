@@ -23,7 +23,7 @@
 <div class="clear_height"></div>
 
 <!-- links -->
-<div class="links">
+<div class="links" style="display:none">
 	<div class="links_fra">
     	<div class="links_left">友情链接</div>
         <div class="links_right">
