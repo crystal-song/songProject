@@ -27,6 +27,7 @@ var index=0;
 <div class="one"></div>
 <div class="clear_height"></div>
 <div class="frame">
+<div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/guarantee/getNewslist?channel=${news.channel}">${news.channel}</a></div>
 <!-- left menu -->
 <%@ include file="/includes/left_help.jsp" %>
 <!-- left end -->
@@ -35,11 +36,7 @@ var index=0;
 
     	<div class="bzr_tit">
         	<ul>
-            	<li class="bzr_qian">关于我们</li>
-                <li><a href="<%=path%>/security.jsp">安全策略</a></li>
-                <li>账户操作</li>
-                <li>投融资相关</li>
-                <li>生利宝</li>
+            	<li class="bzr_qian">关于我们</li>               
             </ul>
         </div>
         <div class="clear"></div>
