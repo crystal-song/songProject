@@ -144,10 +144,6 @@ function chk_email(){
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
-<!-- banner start -->
-<%@ include file="/includes/banner.jsp" %>
-<!-- banner end  -->
-<div class="clear"></div>
 <div class="one"></div>
 <div class="clear_height"></div>
 <div class="frame">
