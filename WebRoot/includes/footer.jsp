@@ -16,8 +16,8 @@
     	<div class="copy_left"><img src="<%=path%>/images/sy02_03.jpg"></div>
         <div class="copy_center">
         	页面版权所有：中投汇融财富管理中心&nbsp;&nbsp;&nbsp;&nbsp;京ICP备13011445号<br>
-地址：******************************************&nbsp;&nbsp;&nbsp;&nbsp;客服电话：010-84243099
+地址：北京市朝阳区工体北路13号院1号楼1501-1502室&nbsp;&nbsp;&nbsp;&nbsp;客服电话：010-84243099/3199
         </div>
-        <div class="copy_right"><img src="<%=path%>/images/sy01_03.png"></div>
+        
     </div>
 </div>
