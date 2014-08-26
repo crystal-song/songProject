@@ -40,7 +40,7 @@ var index=2;
         <div class="clear"></div>
         <div class="bzr_nr">
         	<dl>
-        	   <dt><strong>安全策略</strong></dt>
+        	   <dt></dt>
         	   <p>(一) 严格准入</p>
         	   <dd style="margin-bottom:15px;">担保公司准入：理财范围仅与持有融资性担保机构经营许可证的融资性担保公司战略合作；
                </dd>
