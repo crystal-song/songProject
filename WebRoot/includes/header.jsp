@@ -21,7 +21,7 @@
 </div>
 <div class="clear"></div>
 <div class="zth">
-	<div class="logo"><a href="<%=path%>/wel" title="中投汇 首页"><img src="<%=path%>/images/sy_17.jpg" alt="返回首页"></a></div>
+	<div class="logo"><a href="<%=path%>/wel" title="中投汇 首页"><img src="<%=path%>/images/logo.png" alt="返回首页"></a></div>
     <div class="nav">
     	<ul>
         	<%-- <li><a href="<%=path%>/index.jsp">首页</a></li> --%>
