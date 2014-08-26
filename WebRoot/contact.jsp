@@ -36,11 +36,7 @@ var index=4;
 
     	<div class="bzr_tit">
         	<ul>
-            	<li class="bzr_qian">关于我们</li>
-                <li>安全策略</li>
-                <li>账户操作</li>
-                <li>投融资相关</li>
-                <li>生利宝</li>
+            	<li class="bzr_qian">联系客服</li>
             </ul>
         </div>
         <div class="clear"></div>
