@@ -119,10 +119,10 @@ var navIndex=0;
 	  
 			<div class="clear_height"></div>
             <div class="ind_list">
-            	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
+            	<div class="xq_left"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}"><img src="<%=path%>/images/sy_63.jpg" /></a></div>
                 <div class="ind_right">
                 	<div class="tuijian">
-                    	<div class="tj_left">推荐项目:<span class="hong"><a href="product/getProductByid?id=${s.id}">${s.projectName}</a></span></div>
+                    	<div class="tj_left">推荐项目:<span class="hong"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></span></div>
                         <div class="tj_right">
                         	<div class="tj_jd">融资进度：${s.financingProgress}%</div>
                              <div class="tj_jd_pic"><div class="progress_80"><div class="progress_bar" style="width:${s.financingProgress<100?s.financingProgress:100}%" title="融资进度：${s.financingProgress}%"></div></div></div>
@@ -132,7 +132,7 @@ var navIndex=0;
                     <div class="xq_table">
                         <div class="xq01">
                             <div class="xq01_tit">年化收益</div>
-                            <div class="xq01_nr hong">${s.yearIncome}</div>
+                            <div class="xq01_nr hong">${s.yearIncome}%</div>
                         </div>
                         <div class="xq02">
                             <div class="xq01_tit">融资金额</div>
