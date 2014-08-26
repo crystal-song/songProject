@@ -267,7 +267,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .con_nav li a:hover{color:red;}
 .con_nav .nav_first{ background:#fff; border-right:1px solid #c4c3c3; border-top:4px solid red; border-left:1px solid #c4c3c3; line-height:62px;}
 .con_nav_01{width:1000px; height:70px; background:#f5f5f5; margin:0 auto;}
-.btn_bottom{width:100px; height:40px; background:url(../images/top_r2_c2.jpg) no-repeat;  position:fixed; right:0px; bottom:180px;}
+.btn_bottom{width:100px; height:40px; background:url(../images/top_r2_c2.jpg) no-repeat;  position:fixed; right:0px; bottom:180px; cursor:pointer;}
 .text{position:fixed; top:0;  height:70px; margin:0 auto; border:1px solid #ddd;}
 .table_xiangqing{width:762px; height:250px; overflow:auto;}
 
