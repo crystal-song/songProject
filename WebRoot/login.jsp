@@ -44,14 +44,44 @@ function query(){
      }else{
      	alert('请输入用户名！');
      }   
-	
-	
-	
 }
 
 
-
-   
+window.onload=function(){
+	var myblur= document.getElementById('name')
+	var myblur01= document.getElementById('password')
+	      myblur.onfocus=function(){
+		  if(myblur.value=="请输入姓名"){
+			  myblur.value="";
+			  myblur.style.color="#000"	 
+			  } 	  
+			 }  
+		  myblur.onblur=function(){
+			  
+			 if(myblur.value==""){
+			   myblur.value="请输入姓名"
+			   myblur.style.color="#ccc"	 
+			   }	 		  
+ 
+	}
+		  
+		  myblur01.onfocus=function(){
+			  if(myblur01.value=="请输入密码"){
+				  myblur01.value="";
+				  myblur01.style.color="#000"	 
+				  }  
+			  
+		  }	 
+		  
+		  myblur01.onblur=function(){
+			  
+				 if(myblur01.value==""){
+				   myblur01.value="请输入密码"
+				   myblur01.style.color="#ccc"	 
+				   }	 		  
+	 
+		}
+}  
                 
            
 
@@ -79,8 +109,8 @@ function query(){
     	<div class="zh_left"><img src="<%=path%>/images/dl_09.jpg"></div>
     	 
         <div class="zh_right">
-        	<div><input name="name"  id="name" type="text" class="zh_wby" /></div>
-            <div><input name="password" id="password"  type="text" class="zh_wby" /></div>
+        	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名"/></div>
+            <div><input name="password" id="password"  type="text" class="zh_wby" value="请输入密码"/></div>
             <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" >　<a href="<%=path%>/reg.jsp"><img src="images/dl01_05.jpg" /></a>
             </div>
         </div>
