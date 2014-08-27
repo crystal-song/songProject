@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
+var navIndex=2;
 $(document).ready(function(){
 	$('.select_nav a').click(function(){
 		$(this).siblings().slideToggle('slow')
@@ -77,7 +78,8 @@ $(document).ready(function(){
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
-
+<div class="one"></div>
+<div class="clear_height"></div>
 <div class="msg_con">
    <div class="msg_left">
        <div class="msg_left_top">
