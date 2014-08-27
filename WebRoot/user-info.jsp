@@ -16,10 +16,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 var navIndex=2;
 $(document).ready(function(){
-	$('.select_nav a').click(function(){
+	/*$('.select_nav a').click(function(){
 		$(this).siblings().slideToggle('slow')
 		}
-	);	
+	);	*/
 	
 	$(function(){
 	var num=0;
@@ -113,7 +113,7 @@ $(document).ready(function(){
                 <i class="bac_change_1"></i>
                 <span>资产管理</span>
               </a>
-              <ul>
+              <ul style="display:none">
                   <li>资产统计</li>
                   <li>充值提现</li>
                   <li>交易记录</li>
@@ -121,10 +121,10 @@ $(document).ready(function(){
           </div>
           <div class="select_nav">
               <a  class="msg_nav">
-              <i class="bac_change_2"></i>
-              <span>消息管理</span>
+	              <i class="bac_change_2"></i>
+	              <span>消息管理</span>
             </a>
-              <ul>
+              <ul style="display:none">
                   <li>资产统计</li>
                   <li>充值提现</li>
                   <li>交易记录</li>
@@ -135,7 +135,7 @@ $(document).ready(function(){
                   <i class="bac_change_3"></i>
                   <span>账户管理</span>
               </a>
-              <ul>
+              <ul style="display:none">
                   <li>资产统计</li>
                   <li>充值提现</li>
                   <li style="border-bottom:0">交易记录</li>
