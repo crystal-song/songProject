@@ -27,7 +27,7 @@ var index=0;
 <div class="one"></div>
 <div class="clear_height"></div>
 <div class="frame">
-<div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/guarantee/getNewslist?channel=${news.channel}">${news.channel}</a></div>
+<div class="news_location">当前位置：<a href="<%=path%>/index.jsp" >首页</a> >> <a href="<%=path%>/help.jsp" >帮助中心</a></div>
 <!-- left menu -->
 <%@ include file="/includes/left_help.jsp" %>
 <!-- left end -->
