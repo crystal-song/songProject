@@ -49,5 +49,17 @@ public class zhucheController {
 	}
 	
 	
+	@RequestMapping(value = "/account",method = {RequestMethod.POST, RequestMethod.GET})
+	public String account(Model model) throws Exception {
+		
+		return "profile";
+	}
+	
+	
+	@RequestMapping(value = "/help",method = {RequestMethod.POST, RequestMethod.GET})
+	public String help(Model model) throws Exception {
+		
+		return "help";
+	}
 
 }
