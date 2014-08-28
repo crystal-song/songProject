@@ -33,6 +33,7 @@ public class TProduct implements java.io.Serializable{
 	    private Integer recommendType;
 	    private String  projectPicture;
 	    private String  existType;
+	    private String  releaseTime;
 	    
 	    
 	    
@@ -211,6 +212,12 @@ public class TProduct implements java.io.Serializable{
 		}
 		public void setExistType(String existType) {
 			this.existType = existType;
+		}
+		public String getReleaseTime() {
+			return releaseTime;
+		}
+		public void setReleaseTime(String releaseTime) {
+			this.releaseTime = releaseTime;
 		}
 		
 		

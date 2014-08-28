@@ -97,6 +97,9 @@
             <column name="existType" length="10" />
         </property>
         
+          <property name="releaseTime" type="java.lang.String">
+            <column name="releaseTime" length="30" />
+        </property>
         
        
     </class>
