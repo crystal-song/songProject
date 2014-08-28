@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 function query(){
-	alert("ccccccccccc");
+	/* alert("ccccccccccc"); */
  
 	
     if($('#name').val() != ''){
@@ -27,9 +27,9 @@ function query(){
                 data: 'name='+$('#name').val()+'&password='+$('#password').val(),
                 dataType: 'text',
                 success: function(data) {
-                	alert("dd"+data+'"success"');
+                	/* alert("dd"+data+'"success"'); */
                     if(data == '"success"') {
-                    	alert("登陆成功");
+                    	/* alert("登陆成功"); */
                     	$('#form').submit();
                         /* window.open('<c:url value="/welcome/session"/>', '_self'); */
                     } else {
