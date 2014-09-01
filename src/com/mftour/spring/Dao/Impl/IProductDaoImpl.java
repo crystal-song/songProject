@@ -276,8 +276,13 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 					params.put("projectStatus4", projectStatus4);
 						}
 			}
-			
-			
+			if(params.size()>0){
+				sb.append(" and product.existType = 0 ");
+				
+			}else{
+				sb.append(" where product.existType = 0 ");
+			}
+              
 
 		}
 
