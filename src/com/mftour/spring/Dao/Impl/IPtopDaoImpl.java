@@ -149,7 +149,7 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		Query query = getSession().createQuery(hql);
 		query.setParameter("state", "1");
 		query.setParameter("channel", "新闻报道");
-		query.setMaxResults(3);
+		query.setMaxResults(6);
 		return query.list();
 	}
 
@@ -159,7 +159,7 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		Query query = getSession().createQuery(hql);
 		query.setParameter("state", "1");
 		query.setParameter("channel", "网站公告");
-		query.setMaxResults(3);
+		query.setMaxResults(6);
 		return query.list();
 	}
 
@@ -169,7 +169,7 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		Query query = getSession().createQuery(hql);
 		query.setParameter("state", "1");
 		query.setParameter("channel", "还款公告");
-		query.setMaxResults(3);
+		query.setMaxResults(6);
 		return query.list();
 	}
 
