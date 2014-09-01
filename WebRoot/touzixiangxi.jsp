@@ -94,7 +94,7 @@ $(document).ready(function(){
                 	<div class="tzxx_left">
                     	担保机构:<span class="cu">${product1.guaranteeInstitution}</span><br>
 100%本息保障<br>
-距离企业还款结项还有300天<br>
+<!-- 距离企业还款结项还有300天<br> -->
 企业生产经营正常，还款正常
                     </div>
                     <div class="tzxx_right">
@@ -121,7 +121,7 @@ $(document).ready(function(){
                  </ul>
                 </div>
             	<div class="wz_one">项目描述</div>
-                <div class="wz_nr">${product1.companyProfile}</div>
+                <div class="wz_nr">${product1.projectIntroduce}</div>
                 <div class="wz_one">担保机构简介及担保意见</div>
                 <div class="wz_nr"><span class="cu">担保机构简介：</span>${product1.guaranteeInstitutionIntroduce}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">担保机构意见：</span>${product1.collateralOpinion}</div>
