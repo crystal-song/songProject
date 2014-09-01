@@ -50,7 +50,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .ckxq_red{ font-size:18px; font-family:"微软雅黑"; font-weight:600; color:#c72c32;}
 .ckxq_red1{ font-size:14px; font-family:"微软雅黑"; font-weight:600; color:#c72c32;}
 .xq_tab{ width:735px; height:184px; background:#fff; border-bottom:1px solid #b1b1b1; border-left:1px solid #b1b1b1; border-right:1px solid #b1b1b1; padding:0px 40px 0px 26px;}
-.xq_left{ float:left; width:195px; height:124px; border:1px solid #c4c3c3; text-align:center; padding-top:6px;}
+.xq_left{ float:left; width:184px; height:112px; border:1px solid #c4c3c3; text-align:center; padding:6px;}
 .xq_right{ float:right; width:492px; height:184px;}
 .xq_table{ width:490px; height:84px; border:1px solid #cdcdcd; background:url(../images/sy_60.jpg);}
 .xq01{ float:left; width:104px; height:84px;}
