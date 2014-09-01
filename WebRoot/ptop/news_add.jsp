@@ -126,6 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      
     
     
+    
 
 </head>
 
@@ -137,6 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="cl"></div>
   <div class="content">
   	<h2>添加新闻公告</h2>
+  	
   	
     	<div class="dataForm">
     	<form  action="<%=path%>/Login/addnews" id="form" method="post"    >
@@ -241,11 +243,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      /*    arr.push("使用editor.getContent()方法可以获得编辑器的内容");
         arr.push("内容为："); */
         arr.push(UM.getEditor('myEditor').getContent());
-        alert(arr.join("\n"));
+        /* alert(arr.join("\n")); */
         $("#depicts").val(arr.join("\n"));
         $("#channel").val( $("#chanel").val());
         
-       
+        
         
           $("#form" ).submit();   
     }
