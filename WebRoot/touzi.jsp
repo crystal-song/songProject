@@ -200,7 +200,7 @@ $('.tz_nr li').click(function(){
   
 
 function jumpPage(pag){
-	alert("ccccccccccc"+pag);
+	/* alert("ccccccccccc"+pag); */
 	   
 	    $('#pageNo').val(pag); 
 	    
