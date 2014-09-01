@@ -345,7 +345,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <dd>设置项目属性：</dd>
                  <p>
                       <label>
-                        <input type="checkbox" name="recommendType" id="recommendType" value="${product1.recommendType}"   value="0"  />
+                        <input type="checkbox" name="recommendType" id="recommendType" value="${product1.recommendType}"   value="1"  />
                         <span>推荐</span></label>
 				</p>
                     <dt></dt>
