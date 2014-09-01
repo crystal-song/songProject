@@ -404,7 +404,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
         <c:forEach var="s" items="${list}" varStatus="i">
         <div class="clear_height"></div>
         <div class="ind_list">
-            <div class="xq_left"  style="width:50px; height:50px;" >${s.projectPicture}</div>
+            <div class="xq_left">${s.projectPicture}</div>
             <div class="ind_right">
                 <div class="tuijian">
                 
