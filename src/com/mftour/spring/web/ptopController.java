@@ -308,6 +308,7 @@ public class ptopController {
           
            List<TChannel> list1=ptopService.getChannel();
 			model.addAttribute("list1", list1);
+			model.addAttribute("news", "操作成功");
 			systemLogService.saveSystemLog(request, "后台信息", "添加新闻", 1);
        } catch (Exception e) {
            e.printStackTrace();
