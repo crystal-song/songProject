@@ -347,9 +347,10 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TProduct> queryProductByType(Integer type) {
-		String hql = "from TProduct tproduct where tproduct.recommendType = :recommendType  order by tproduct.releaseTime desc";
+		String hql = "from TProduct tproduct where tproduct.recommendType = :recommendType and  tproduct.existType = :existType   order by tproduct.releaseTime desc";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("recommendType", type);
+		query.setParameter("existType", "0");
 		query.setMaxResults(3);
 		return query.list();
 	}
