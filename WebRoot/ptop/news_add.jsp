@@ -247,7 +247,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $("#depicts").val(arr.join("\n"));
         $("#channel").val( $("#chanel").val());
         
-        
+        alert("添加成功")
         
           $("#form" ).submit();   
     }
