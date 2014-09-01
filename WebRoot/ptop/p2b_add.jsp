@@ -448,7 +448,7 @@ function getAllHtml() {
         
         
         arr1.push(UM.getEditor('Editor').getContent());
-        alert(arr1.join("\n"));
+      /*   alert(arr1.join("\n")); */
         $("#projectPicture").val(arr1.join("\n"));
         if($("#projectName").val()==""){
         	alert("注意：项目名称 不得为空!");
