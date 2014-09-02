@@ -105,7 +105,7 @@ $(document).ready(function(){
        </div>
        <div class="msg_left_cent">
           <a class="msg_nav">
-               <i style="background:url(img/tubiao5.png) no-repeat"></i>
+               <i style="background:url(<%=path%>/img/tubiao5.png) no-repeat"></i>
                <span>账户主页</span>
           </a>
           <div class="select_nav">
