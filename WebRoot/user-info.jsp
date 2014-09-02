@@ -148,7 +148,7 @@ $(document).ready(function(){
        <div class="msg_main">
            <div class="msg_title">
              <h2>个人信息</h2>
-             <a href="#">查看更多个人信息</a>
+             <a href="<%=path%>/user-info-modify.jsp">修改个人信息</a>
            </div>
            <div class="user_con">
                <div class="photo">
