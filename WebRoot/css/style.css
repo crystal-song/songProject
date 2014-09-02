@@ -425,18 +425,24 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .user_right li{width:80px; height:26px; margin:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef; 
               background:url(../img/tubiao16.png) 3px 3px no-repeat;}
 .user_right .xiangqing{background:url(../img/tubiao15.png) 3px 3px no-repeat; color:#3e3e3e;}
-.user_con_last{width:866px; height:400px;  margin:10px auto;}
-.center_last{width:450px; height:300px;  float:left; margin-left:218px;}
-.user_con_last_name{float:left; width:200px; }
-.user_con_last_name li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:right; font-size:16px;}
-.user_con_last_mag{float:left; width:200px; }
-.user_con_last_mag li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:left; font-size:16px;}
+
 .user_bottom{width:836px; height:100px; background:#fffadc; margin:10px auto; border:1px solid #c2bc88; padding:15px;}
 .user_bottom h3{text-align:left; }
 .user_bottom ol{padding:0; margin:20px;}
 .user_bottom li{text-align:left; margin-top:10px;}
 
-
+.user_con_last{width:866px; height:710px;  margin:10px auto;}
+.center_last{width:450px; height:300px;  float:left; margin-left:196px;}
+.user_con_last_name{float:left; width:200px; }
+.user_con_last_name li{width:180px; height:30px;  margin:30px 10px; line-height:30px; text-align:right; font-size:16px;}
+.user_con_last_mag{float:left; width:200px; margin-left: 25px;}
+.user_con_last_mag li{width:200px; height:30px;  margin:30px 10px; line-height:30px; text-align:left; font-size:16px;}
+.text01{width:216px; height:30px; border:1px solid #ccc; border-radius:3px;}
+.select01{width:220px; height:30px; border:1px solid #ccc; border-radius:3px;}
+.submit01{width:60px; height:30px; background:#fc6e00; border-radius:3px; display:inline-block; line-height:24px; 
+          color:#fff; border:1px solid #F30; }
+.submit02{width:60px; height:30px; border-radius:3px; display:inline-block; line-height:24px; background:#e6e6e6;
+          color:#000; border:1px solid #999; margin-left:15px}
 /*production_jianjie*/
 .main_con{width:1100px; height:auto; margin:0 auto; padding-top:30px}
 .main_left{width:735px; height:2780px; background:#fff; float:left; border:1px solid #e5e5e5; border-radius:5px; margin-bottom:25px}
