@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -99,8 +100,8 @@ $(document).ready(function(){
                     </div>
                     <div class="tzxx_right">
                     	融资金额:<span class="cu hong">${product1.financingMoney}万</span><br>
-融资进度：<span class="cu hong">${product1.financingProgress}%</span><br>
-<div class="progress_160"><div class="progress_bar" style="width:${product1.financingProgress<100?product1.financingProgress:100}%"></div></div>
+融资进度：<span class="cu hong">${product1.financingProgress}<c:if test='${empty product1.financingProgress}'>0</c:if>%</span><br>
+<div class="progress_160"><div class="progress_bar" style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div></div>
 
                     </div>
                 </div>
@@ -172,15 +173,18 @@ $(document).ready(function(){
                               <c:if test="${ not empty list}">
         <c:forEach var="s" items="${list}" varStatus="i">
                               <tr>
-                                <td height="30" bgcolor="#FFFFFF" align="center" width="30%">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">${s.investor}</span>
+                                <td height="30" bgcolor="#FFFFFF" align="center" width="30%"><!-- fn:substring(s.investor,0,1)s.investor -->
+                                	<span >${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
                                 </td>
                                 <td bgcolor="#FFFFFF" align="center" width="40%">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">    
-                                    ${s.identityCard}</span>
+                                	<span ><c:if test="${fn:length(s.identityCard)==18}">
+											${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
+											</c:if>
+											<c:if test="${fn:length(s.identityCard)!=18}">-</c:if>
+											</span>
                                 </td>
                                 <td bgcolor="#FFFFFF" align="center" width="30%">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">${s.investmentAmount}万元</span>
+                                	<span >${s.investmentAmount}万元</span>
                                 </td>
                               </tr>
                               
@@ -188,249 +192,7 @@ $(document).ready(function(){
       
 	 
         </c:if>
-                           <!--    <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">王**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">    
-                                 1426311********410</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">15万元</span> 
-                                </td>
-                              </tr>
-                                <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">王**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">1101011********522</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">60万元</span> 
-                                </td>
-                              </tr>
-                              <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">罗**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">1101011********516</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                              </tr>
-                              <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">金*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">1101051********539</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">20万元</span> 
-                                </td>
-                              </tr>
-                                <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                	<span style="font-family:'Microsoft YaHei';font-size:12px;">金*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101051********539</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">20万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">李**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101061********34X</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">12万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">林*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">3310211********021</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">王**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101021********516</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">钟**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1326281********044</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">40万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">马**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1306221********617</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">赵**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101061********929</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">黄*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">4301241********298</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">25万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">史*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101041********536</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">冯**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1427331********813</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">袁*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101061********153</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">章**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">3408111********820</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">30万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">徐**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101051********816</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">15万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">王**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">2301021********632</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">30万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">桂*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">3601041********512</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">王*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101061********314</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">陈*</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">1101081********516</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">10万元</span> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="30" align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">杨**</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">6123011********925</span> 
-                                </td>
-                                <td align="center" bgcolor="#FFFFFF">
-                                    <span style="font-family:'Microsoft YaHei';font-size:12px;">170万元</span> 
-                                </td>
-                            </tr> -->
+                           
                           </table>
                     </div>
                     </div>
@@ -438,7 +200,7 @@ $(document).ready(function(){
 
             <div  class="wz_one" ><a>相关证件</a></div>
                     <div class="wz_nr" ><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">他项权证：</span><br>${product1.enterpriseCertificate}
+        <!-- &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">他项权证：</span><br> -->${product1.enterpriseCertificate}
                    <%--  <img src="<%=path%>/images/20140708132140144014.jpg" width="581" height="800" />
                     <img src="<%=path%>/images/20140708132035433543.jpg" width="720" height="523" />
                     <img src="<%=path%>/images/20140708132013601360.jpg" width="720" height="989" />   --%>
