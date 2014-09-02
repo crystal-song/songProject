@@ -268,53 +268,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li> -->
                  <li>
                     <dd>公司介绍：</dd>
-                    <textarea    name="companyProfile"  id="companyProfile"  value="${product1.companyProfile}"    cols="" rows=""></textarea>
+                    <textarea    name="companyProfile"  id="companyProfile"  value=""    cols="" rows="">${product1.companyProfile}</textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>项目介绍：</dd>
-                    <textarea  name="projectIntroduce"  id="projectIntroduce"   value="${product1.projectIntroduce}"   cols="" rows=""></textarea>
+                    <textarea  name="projectIntroduce"  id="projectIntroduce"   value=""   cols="" rows="">${product1.projectIntroduce}</textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>担保意见：</dd>
-                    <textarea  name="collateralOpinion"  id="collateralOpinion"  value="${product1.collateralOpinion}"   cols="" rows=""></textarea>
+                    <textarea  name="collateralOpinion"  id="collateralOpinion"  value=""   cols="" rows="">${product1.collateralOpinion}</textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>担保机构介绍：</dd>
-                    <textarea  name="guaranteeInstitutionIntroduce"  id="guaranteeInstitutionIntroduce"  value="${product1.guaranteeInstitutionIntroduce}"    cols="" rows=""></textarea>
+                    <textarea  name="guaranteeInstitutionIntroduce"  id="guaranteeInstitutionIntroduce"  value=""    cols="" rows="">${product1.guaranteeInstitutionIntroduce}</textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>资金用途：</dd>
-                    <textarea   name="fundUse"  id="fundUse"  value="${product1.fundUse}"     cols="" rows=""></textarea>
+                    <textarea   name="fundUse"  id="fundUse"  value=""     cols="" rows="">${product1.fundUse}</textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>偿还来源：</dd>
-                    <textarea   name="repaymentSource"  id="repaymentSource"  value="${product1.repaymentSource}"    cols="" rows=""></textarea>
+                    <textarea   name="repaymentSource"  id="repaymentSource"  value=""    cols="" rows="">${product1.repaymentSource}</textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>抵押物信息：</dd>
-                    <textarea   name="guarantee"  id="guarantee"   value="${product1.guarantee}"   cols="" rows=""></textarea>
+                    <textarea   name="guarantee"  id="guarantee"   value=""   cols="" rows="">${product1.guarantee}</textarea>
                     <dt></dt>
                 </li>
                 <li>
                     <dd>风险控制：</dd>
-                    <textarea   name="riskControl"  id="riskControl"  value="${product1.riskControl}"   cols="" rows=""></textarea>
+                    <textarea   name="riskControl"  id="riskControl"  value=""   cols="" rows="">${product1.riskControl}</textarea>
                     <dt></dt>
                 </li>
                  <li>
                     <dd>营业范围：</dd>
-                    <textarea   name="businessScope"  id="businessScope"  value="${product1.businessScope}"    cols="" rows=""></textarea>
+                    <textarea   name="businessScope"  id="businessScope"  value=""    cols="" rows="">${product1.businessScope}</textarea>
                     <dt></dt>
                 </li>
                  
                 <li>
                     <dd>经营状况：</dd>
-                    <textarea   name="stateOfOperation"  id="stateOfOperation"   value="${product1.stateOfOperation}"   cols="" rows=""></textarea>
+                    <textarea   name="stateOfOperation"  id="stateOfOperation"   value=""   cols="" rows="">${product1.stateOfOperation}</textarea>
                     <dt></dt>
                 </li>
                
