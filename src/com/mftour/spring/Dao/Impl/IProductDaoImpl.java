@@ -351,7 +351,7 @@ public class IProductDaoImpl  extends HibernateDaoSupport  implements  IProductD
 		Query query = getSession().createQuery(hql);
 		query.setParameter("recommendType", type);
 		query.setParameter("existType", "0");
-		query.setMaxResults(3);
+		query.setMaxResults(4);
 		return query.list();
 	}
 
