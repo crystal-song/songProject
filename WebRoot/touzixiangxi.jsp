@@ -79,7 +79,7 @@ $(document).ready(function(){
     		<div class="clear_height"></div>
         	<div class="xx_one">
             	<div class="xxo_bor">
-                	<div class="xxo_left"><img src="<%=path%>/images/sy_64.jpg"></div>
+                	<div class="xxo_left">${s.projectPicture}</div>
                     <div class="xxo_right">
                     	<div class="xxo_one">
                         	<div class="xxo_font">项目名称：<span class="ckxq_red">${product1.projectName}</span></div>
