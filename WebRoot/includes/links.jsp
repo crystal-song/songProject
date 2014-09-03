@@ -6,16 +6,11 @@
         <div class="hz_right">
         	<div class="bot_left"><img src="<%=path%>/images/sy_101.jpg"></div>
             <div class="bot_center">
-            	<img src="<%=path%>/images/sy_82.jpg">
-                <img src="<%=path%>/images/sy_84.jpg">
-                <img src="<%=path%>/images/sy_87.jpg">
-                <img src="<%=path%>/images/sy_89.jpg">
-                <img src="<%=path%>/images/sy_91.jpg">
-                <img src="<%=path%>/images/sy_93.jpg">
-                <img src="<%=path%>/images/sy_95.jpg">
-                <img src="<%=path%>/images/sy_96.jpg">
-                <img src="<%=path%>/images/sy_98.jpg">
-            </div>
+            	<img src="<%=path%>/img/fuyou.jpg">
+                <img src="<%=path%>/img/minshengcaifu.jpg">
+                <img src="<%=path%>/img/yibao.jpg">
+                <img src="<%=path%>/img/zhongrong.jpg">
+               
             <div class="bot_right"><img src="<%=path%>/images/sy_101.jpg"></div>
         </div>
     </div>
