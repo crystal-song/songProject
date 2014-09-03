@@ -624,7 +624,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .fenlan dd {width:220px; height:22px;  margin:0 10px 0 0;}
 .fenlan dd a{color:#fff;}
 .fenlan dd em{color:#ccc;}
-.repeat_top{width:800px; height:70px; margin:20px 0 0 210px; }
+.repeat_top{width:800px; height:70px; margin:20px 0 0 210px;}
 .repeat_top span{display:inline-block; float:left;  color:#fff;}
 .repeat_top p{display:inline-block;  margin:10px 0; float:left;}
 .repeat_top a{display:inline-block; float:left; margin-left:18px; color:#fff;}
@@ -633,8 +633,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .lactation{ text-align:left; line-height：30px; padding:20px; background:#fff; border:1px solid #c4c3c3;}
 .lactation a:hover{}
 
-.news_content{text-align:left; line-height：30px;}
-.news_location{text-align:left; line-height：30px; padding:10px 0px; background:#fff;}
+.news_content{text-align:left; line-height:30px;}
+.news_location{text-align:left; line-height:30px; padding:10px 0px; background:#fff;}
 .news_location a:hover{color:blue}
 .news_list li{ clear:both; padding:0px 20px; font-weight:normal!important;}
 .news_list a{ display:block; float:left; padding:0px; width:80%;}
