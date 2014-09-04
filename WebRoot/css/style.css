@@ -18,7 +18,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 
 .zth{ width:1100px; height:76px; margin:0 auto;}
 .logo{ width:300px; height:76px; text-align:left; float:left;}
-.nav{ float:right; width:580px; height:69px; padding-top:7px; padding-right:10px;}
+.nav{ float:right; width:600px; height:69px; padding-top:7px; padding-right:10px;}
 .nav ul li{ width:95px; height:69px; float:left; text-align:center; line-height:69px; font-family:"微软雅黑"; font-size:14px; font-weight:600;}
 #dangqian{ width:95px; height:69px; background:url(../images/sy_20.jpg); color:#FFF;}
 .currentNav{ width:95px; height:69px; background:url(../images/sy_20.jpg); color:#FFF!important;}
