@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -243,14 +244,29 @@ public class ptopController {
 	return "ptop/p2b_manage";
 }
 	
-	
+	@Transactional 
 	@RequestMapping(value = "/deleteTInvestmentInfo", method = {RequestMethod.POST, RequestMethod.GET})
 	public String deleteTInvestmentInfo( Model model,TInvestmentInfo TInvestmentInfo,@RequestParam("id") Long id,
 			@RequestParam("enterpriseNumber") String enterpriseNumber,HttpServletRequest request) throws Exception {
 	
          	
          	try {
+         		TInvestmentInfo investmentInfo=ptopService.queryTInvestmentInfo(id);
+         		List<TProduct> list1 = productService.queryProductByNumber(investmentInfo.getEnterpriseNumber());
+         		TProduct product=list1.get(0);
+         		Double   realityMoney=product.getRealityMoney(); 
+         		
+         		Double   investmentAmount=investmentInfo.getInvestmentAmount();
+         		Double r= realityMoney-investmentAmount;
+         		Double  t= r/product.getFinancingMoney();
+         		product.setFinancingProgress(t*100);
+         		product.setRealityMoney(r);
+         		ptopService.addOrUpdate(product);
+         		
+         		
          		 ptopService.deleteTInvestmentInfo(id);
+         		 
+         		 
          		 
          		 List<TInvestmentInfo> list=ptopService.queryInvestmentInfoByNumber(enterpriseNumber);
     			 model.addAttribute("list", list);
