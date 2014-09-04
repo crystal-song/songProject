@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
+var navIndex=2;
 $(document).ready(function(){
 	var nav_top=parseInt($('#jianjie_nav').offset().top);
 	var main_left_top=parseInt($('.main_left').offset().top)	
@@ -74,30 +75,12 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class="header">
-  <div class="zth_01">
-	<div class="logo01"><a href="index.html"><img src="images/sy_17.jpg"></a></div>
-    <div class="nav_01">
-    	<ul>
-        	<li><a href="index.html" class="li_red_bott">首页</a></li>
-            <li><a href="touzi.html">浏览项目</a></li>
-            <li><a href="zhanghu.html">开放平台</a></li>
-            <li><a href="baozhang.html">新手帮助</a></li>
-            <li><a href="help.html">发起项目</a></li>
-        </ul>
-    </div>
-    <div class="nav_search">
-      <div class="search_border">
-        <input type="text" value="搜索" class="input" id="blur"/>
-        <span></span>
-      </div>  
-    </div>
-   <div class="denglu">
-      <span><a class="deng">登陆</a></span>
-      <span><a>注册</a></span>
-    </div>
-  </div>
-</div>
+<!-- top start  -->
+<%@ include file="/includes/header.jsp" %>
+<!-- top end  -->
+
+<div class="clear"></div>
+<div class="one"></div>
 <div class="clear"></div>
 <div class="content">
  <div class="main_con">
@@ -112,8 +95,8 @@ $(document).ready(function(){
            <a href="#" class="style01">项目主页</a>
            <a href="#">话题</a>
            <a href="#">支持者</a>
-           <span class="sp_bac01"><strong>喜欢</strong></span>
-           <span class="sp_bac02"><strong>支持</strong></span>
+           <span class="sp_bac01"><strong>支持</strong></span>
+           <span class="sp_bac02"><strong>喜欢</strong></span>
         </div>
         <div class="jianjie_con">
         <h1>关于我们</h1>
@@ -427,125 +410,13 @@ $(document).ready(function(){
   </div>  
  </div>
  
- 
- 
- 
- 
- 
- 
- 
- 
-   
- <div class="locus">
-     <div class="fenlan">
-        <dl>    
-          <dt>众筹项目</dt> 
-          <dd>
-          <a>科技</a>
-          <em>/</em>
-          <a>艺术</a>
-          <em>/</em>
-          <a>设计</a>
-          <em>/</em>
-          <a>音乐</a>
-          <em>/</em>
-          </dd>
-          <dd>
-          <a>影视</a>
-          <em>/</em>
-          <a>出版</a>
-          <em>/</em>
-          <a>动漫游戏</a>
-          <em>/</em>
-          <a>公益</a>
-          <em>/</em>
-          </dd>
-          <dd>
-          <a>公开课</a>
-          <em>/</em>
-          <a>农业</a>
-          <em>/</em>
-          <a>其他</a>
-          <em>/</em>
-          </dd>
-        </dl>
-        <dl>        
-          <dt>关于</dt>
-          <dd>
-          <a>关于众筹</a>
-          <em>/</em>
-          <a>联系我们</a>
-          <em>/</em>
-          <a>帮助中心</a>
-          <em>/</em>
-          </dd>
-          <dd>
-          <a>团队介绍</a>
-          <em>/</em>
-          <a>服务协议</a>
-          <em>/</em>
-          <a>项目发起规范</a>
-          <em>/</em>
-          </dd>
-        </dl>
-        <dl>
-          <dt>关注我们</dt>
-          <dd>
-          <a>百度贴吧</a>
-          <em>/</em>
-          <a>QQ空间</a>
-          <em>/</em>
-          <a>新浪微博</a>
-          <em>/</em>
-          </dd> 
-          <dd>
-         <a>豆瓣小站</a>
-          <em>/</em> 
-          </dd> 
-        </dl>
-        <dl>
-          <dt>服务</dt>
-          <dd>
-          <a>投资融资服务</a>
-          <em>/</em>
-          </dd>
-        </dl>
-     </div>
-  
- </div>           
- <div class="repeat">       
-        <div class="repeat_top">
-         <span>友情链接:</span>
-          <p>
-          <a href="#">和讯网</a>
-          <a href="#">雷锋网</a>
-          <a href="#">36氪</a>
-          <a href="#">hao123</a>
-          <a href="#">360安全网</a>
-          <a href="#">北青网</a>
-          <a href="#">凤凰网</a>
-          <a href="#">金融界</a>
-          <a href="#">财新网</a>
-          <a href="#">钛媒体</a>
-          <a href="#">IMGII</a>
-          <a href="#">电影网</a>
-          <a href="#">雅昌艺术网</a>
-          <a href="#">V电影</a>
-          <a href="#">易观网</a>
-          <a href="#">投资界</a>
-          <a href="#">亿邦动力社区</a>
-          <a href="#">拉勾网</a>
-          <a href="#">金融工场</a>
-          <a href="#">投融中国联盟</a>
-          <a href="#">友成基金会</a>
-          <a href="#">人人生活</a>
-          <a href="#">众筹导航</a>
-          </p>
-        </div>
-        <div class="repeat_bottom">页面版权所有：中投汇融财富管理中心    京ICP备13011445号</div>
-          
-        </div>
- </div>
+ <!-- links start -->
+<%@ include file="/includes/links.jsp" %>
+<!-- links end -->
+<div class="clear"></div>
+<!-- footer start -->
+<%@ include file="/includes/footer.jsp" %>
+<!-- footer end -->
 
 
 </body>
