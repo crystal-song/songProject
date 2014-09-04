@@ -26,7 +26,7 @@
     	<ul>
         	<%-- <li><a href="<%=path%>/index.jsp">首页</a></li> --%>
         	<li><a href="<%=path%>/wel">首页</a></li>
-            <li><a href="<%=path%>/product/allProduct">我要投资</a></li>
+            <li><a href="<%=path%>/product/allProduct">投资理财</a></li>
             <li><a href="<%=path%>/production-show.jsp">参与众筹</a></li>
             <li><a href="<%=path%>/wel/account">我的账户</a></li>
             <li><a href="<%=path%>/guarantee/getchannel">新闻公告</a></li>
