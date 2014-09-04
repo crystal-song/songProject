@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
-var navIndex=3;
+var navIndex=4;
 </script>
 </head>
 
@@ -33,10 +33,9 @@ var navIndex=3;
         	<ul>
         	 <c:if test="${ not empty list}">
         <c:forEach var="s" items="${list}" varStatus="i">
-            	<li class="aqbz"><a href="getlist?id=${s.id}">${s.name}</a></span></li>
+            	<li class="aqbz"><a href="getlist?id=${s.id}">${s.name}</a></li>
             	</c:forEach>
-        </c:if>
-               
+        </c:if>    
             </ul>
         </div>
     </div>
