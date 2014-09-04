@@ -118,7 +118,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -139,7 +139,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -166,7 +166,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -187,7 +187,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -208,7 +208,7 @@ $(document).ready(function(){
              <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -229,7 +229,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -250,7 +250,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -271,7 +271,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -292,7 +292,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -313,7 +313,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -334,7 +334,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -355,7 +355,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -377,7 +377,7 @@ $(document).ready(function(){
              <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -398,7 +398,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -419,7 +419,7 @@ $(document).ready(function(){
              <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -440,7 +440,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -461,7 +461,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -482,7 +482,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -503,7 +503,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
@@ -524,7 +524,7 @@ $(document).ready(function(){
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
-                 <h3><a class="shuoming">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
