@@ -148,7 +148,7 @@ $(document).ready(function(){
        <div class="msg_main">
            <div class="msg_title">
              <h2>个人信息</h2>
-             <a href="<%=path%>/user-info.jsp">取消修改</a>
+             <a href="<%=path%>/user/cancelUpdate?name=${user1.name}">取消修改</a>
            </div>
            <div class="user_con">
                <div class="photo">
@@ -156,20 +156,20 @@ $(document).ready(function(){
                </div>
                <div class="center">
                    <ul class="user_con_name">
-                     <li>昵称</li>
-                     <li>详情</li>
+                     <li>用户名</li>
+                    <!--  <li>详情</li> -->
                      <li>真实姓名</li>
                      <li>身份证号码</li>
                      <li>手机号码</li>
                      <li>邮箱地址</li>  
                    </ul>
                    <ul class="user_con_mag">
-                     <li>xiaoyan</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>220...</li>
-                     <li>186...</li>
-                     <li>xxxx@sina.com</li>
+                      <li>${user1.name}</li>
+                    <!--  <li>...</li> -->
+                     <li>${user1.realName}</li>
+                     <li>${user1.identityCard}</li>
+                     <li>${user1.phone}</li>
+                     <li>${user1.email}</li>
                    </ul>
                </div>
                <div class="user_right">
@@ -185,7 +185,14 @@ $(document).ready(function(){
                </div>             
            </div>
            <div class="user_con_last">
-                <form id="form">
+                <form id="form"  action="<%=path%>/user/update" id="form" method="post"    >
+                 <input type="hidden"  name="id" id="id" value="${user1.id}" />
+                 <input type="hidden"  name="name" id="name" value="${user1.name}" />
+                 <input type="hidden"  name="password" id="password" value="${user1.password}" />
+                 <input type="hidden"  name="realName" id="realName" value="${user1.realName}" />
+                 <input type="hidden"  name="identityCard" id="identityCard" value="${user1.identityCard}" />
+                 <input type="hidden"  name="phone" id="phone" value="${user1.phone}" />
+                 <input type="hidden"  name="email" id="email" value="${user1.email}" />
                 <div class="center_last">
                    <ul class="user_con_last_name">
                      <li>性别(不可修改)</li>
@@ -203,18 +210,18 @@ $(document).ready(function(){
                      <li></li>
                      <li></li>
                      <li> 
-                       <select class="select01">
+                       <select class="select01"  name="educationBackground"   value="${user1.educationBackground}" >
                          <option checked="checked">请选择</option>
                          <option>高中或以下</option>
                          <option>大专</option>
                          <option>大学本科</option>
                          <option>研究生及以上</option> 
                        </select></li>
-                     <li><input type="text"/ class="text01"></li>
-                     <li><input type="radio" name="weihun" value="a"/>未婚<input type="radio" value="b" name="weihun"/>已婚<input type="radio" name="weihun" checked="true" />其他</li>
-                     <li><input type="text" class="text01"/></li>
+                     <li><input type="text" class="text01"   name="schoolOfGraduation"  value="${user1.schoolOfGraduation}"   /></li>
+                     <li><input type="radio" name="maritalStatus" value="未婚"/>未婚<input type="radio" value="已婚" name="maritalStatus"/>已婚<input type="radio" name="maritalStatus" value="其他"  checked="true" />其他</li>
+                     <li><input type="text" class="text01"  name="address" value="${user1.address}"   /></li>
                      <li> 
-                       <select class="select01">
+                       <select class="select01" name="companyIndustry" value="${user1.companyIndustry}"  >
                             <option value="">请选择</option>
                             <option value="制造业">制造业</option>
                             <option value="IT">IT</option>
@@ -238,7 +245,7 @@ $(document).ready(function(){
                        </select>
                        </li>
                      <li>
-                       <select class="select01">
+                       <select class="select01"  name="companyScale" value="${user1.companyScale}" >
                             <option value="">请选择</option>
                             <option value="10人以下">10人以下</option>
                             <option value="10-100人">10-100人</option>
@@ -246,9 +253,9 @@ $(document).ready(function(){
                             <option value="500人以上">500人以上</option> 
                        </select>
                      </li>
-                     <li><input type="text" class="text01"/></li>
+                     <li><input type="text" class="text01"  name="position"   value="${user1.position}"  /></li>
                      <li>
-                       <select class="select01">
+                       <select class="select01"  name="income" value="${user1.income}"  >
                             <option value="">请选择</option>
                             <option value="1000元以下">1000元以下</option>
                             <option value="1001-2000元">1001-2000元</option>
@@ -260,7 +267,7 @@ $(document).ready(function(){
                        </select>       
                      </li>
                    </ul>
-                   <input type="submit" class="submit01" value="保存"/> <input type="reset" class="submit02" value="取消"/>
+                   <input type="submit" class="submit01" value="保存"/><a href="<%=path%>/user/cancelUpdate?name=${user1.name}"> <input type="button" class="submit02" value="取消"/></a>
                </div>
                 </form>
               
