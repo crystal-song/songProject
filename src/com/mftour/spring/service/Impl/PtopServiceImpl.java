@@ -173,6 +173,15 @@ public class PtopServiceImpl  implements  IptopService  {
 		return ptopDao.getNewsbyTime();
 	}
 
+
+
+	@Override
+	public TInvestmentInfo queryTInvestmentInfo(Long id) throws Exception {
+		
+		return ptopDao.queryTInvestmentInfo(id);
+		
+	}
+
 	
 	
 	

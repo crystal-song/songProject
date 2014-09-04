@@ -49,6 +49,8 @@ public interface IptopService {
 	 
 	 public List<TNews> getRepaymentNoticeByChannel()throws Exception;
 	 
+	 public TInvestmentInfo queryTInvestmentInfo(Long id) throws Exception;
+	 
 	 
 
 }
