@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
-var navIndex=3;
+var navIndex=2;
 $(document).ready(function(){
 	/*$('.select_nav a').click(function(){
 		$(this).siblings().slideToggle('slow')
@@ -148,7 +148,7 @@ $(document).ready(function(){
        <div class="msg_main">
            <div class="msg_title">
              <h2>个人信息</h2>
-             <a href="<%=path%>/user-info-modify.jsp">修改个人信息</a>
+             <a href="<%=path%>/user/getuserbyName?name=${user1.name}">修改个人信息</a>
            </div>
            <div class="user_con">
                <div class="photo">
@@ -156,20 +156,20 @@ $(document).ready(function(){
                </div>
                <div class="center">
                    <ul class="user_con_name">
-                     <li>昵称</li>
-                     <li>详情</li>
+                     <li>用户名</li>
+                     <!-- <li>详情</li> -->
                      <li>真实姓名</li>
                      <li>身份证号码</li>
                      <li>手机号码</li>
                      <li>邮箱地址</li>  
                    </ul>
                    <ul class="user_con_mag">
-                     <li>xiaoyan</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>220...</li>
-                     <li>186...</li>
-                     <li>xxxx@sina.com</li>
+                     <li>${user1.name}</li>
+                    <!--  <li>...</li> -->
+                     <li>${user1.realName}</li>
+                     <li>${user1.identityCard}</li>
+                     <li>${user1.phone}</li>
+                     <li>${user1.email}</li>
                    </ul>
                </div>
                <div class="user_right">
@@ -198,17 +198,18 @@ $(document).ready(function(){
                      <li>职位</li>
                      <li>月收入</li> 
                    </ul>
+         
                    <ul class="user_con_last_mag">
-                     <li>女</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>...</li>
-                     <li>...</li>
+                     <li>${user1.sex}</li>
+                     <li>${user1.dateOfBirth}</li>
+                     <li>${user1.educationBackground}</li>
+                     <li>${user1.schoolOfGraduation}</li>
+                     <li>${user1.maritalStatus}</li>
+                     <li>${user1.address}</li>
+                     <li>${user1.companyIndustry}</li>
+                     <li>${user1.companyScale}</li>
+                     <li>${user1.position}</li>
+                     <li>${user1.income}</li>
                    </ul>
                </div>
            </div>
