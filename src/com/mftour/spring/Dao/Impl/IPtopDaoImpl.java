@@ -173,6 +173,14 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		return query.list();
 	}
 
+	@Override
+	public TInvestmentInfo queryTInvestmentInfo(Long id) throws Exception {
+		return  getHibernateTemplate().get(TInvestmentInfo.class, id);
+		
+	}
+
+	
+	
 	
 	
 	

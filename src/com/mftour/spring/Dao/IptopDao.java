@@ -45,6 +45,8 @@ public interface IptopDao {
      public List<TNews> getWebsiteNoticeByChannel()throws Exception;
 	 
 	 public List<TNews> getRepaymentNoticeByChannel()throws Exception;
+	 
+	 public TInvestmentInfo queryTInvestmentInfo(Long id) throws Exception;
      
      
 
