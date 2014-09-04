@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
-var navIndex=3;
+var navIndex=4;
 </script>
 </head>
 
@@ -28,7 +28,8 @@ var navIndex=3;
 <div class="one"></div>
 <div class="clear_height"></div>
 <div class="frame">
-<div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/guarantee/getchannel">新闻公告</a></div>
+<div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/guarantee/getchannel">新闻公告</a>
+</div>
 	<div class="clear_height"></div>
 	<div class="bz_left">
     	<!-- <div class="bzl_tit"></div> -->
@@ -47,7 +48,7 @@ var navIndex=3;
 <!--      	<div class="bzr_tit">
         	<h1>新闻公告</h1>
         </div>  -->
-        <div class="clear">
+        <div class="clear"></div>
         <div class="bzr_nr" style="padding-top:0px;">
         	<ul class="news_list">
         		 <c:if test="${ not empty list1}">
