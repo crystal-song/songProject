@@ -52,30 +52,12 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div class="header">
-  <div class="zth_01">
-	<div class="logo01"><a href="index.html"><img src="images/sy_17.jpg"></a></div>
-    <div class="nav_01">
-    	<ul>
-        	<li><a href="index.html">首页</a></li>
-            <li><a href="touzi.html">浏览项目</a></li>
-            <li><a href="zhanghu.html">开放平台</a></li>
-            <li><a href="baozhang.html">新手帮助</a></li>
-            <li><a href="help.html">发起项目</a></li>
-        </ul>
-    </div>
-    <div class="nav_search">
-      <div class="search_border">
-        <input type="text" value="搜索" class="input" id="blur"/>
-        <span></span>
-      </div>  
-    </div>
-   <div class="denglu">
-      <span><a class="deng">登陆</a></span>
-      <span><a>注册</a></span>
-    </div>    
-  </div>
-</div>
+<!-- top start  -->
+<%@ include file="/includes/header.jsp" %>
+<!-- top end  -->
+
+<div class="clear"></div>
+<div class="one"></div>
 <div class="main">
     <div class="con_top">
        <ul class="content_nav_left">
