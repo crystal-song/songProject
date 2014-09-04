@@ -4,14 +4,14 @@
 	<div class="hz_fra">
     	<div class="hz_left"><img src="<%=path%>/images/sy_79.jpg"></div>
         <div class="hz_right">
-        	<div class="bot_left"><img src="<%=path%>/images/sy_101.jpg"></div>
+        	<div class="bot_left"><img src="<%=path%>/img/sy_left.jpg"></div>
             <div class="bot_center">
             	<img src="<%=path%>/img/fuyou.jpg">
                 <img src="<%=path%>/img/minshengcaifu.jpg">
                 <img src="<%=path%>/img/yibao.jpg">
                 <img src="<%=path%>/img/zhongrong.jpg">
                
-            <div class="bot_right"><img src="<%=path%>/images/sy_101.jpg"></div>
+            <div class="bot_right"><img src="<%=path%>/img/sy_right.jpg"></div>
         </div>
     </div>
 </div>
