@@ -223,12 +223,6 @@ $(document).ready(function(){
        </div>
    </div>    
 </div>
-
-
-<div class="clear"></div>
-<div class="one"></div>
-<div class="clear"></div>
-
 <div class="clear_height"></div>
 
 <!-- links start -->
