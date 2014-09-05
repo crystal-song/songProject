@@ -19,6 +19,46 @@
          <property name="email" type="java.lang.String">
             <column name="email" length="50" />
         </property>
+         <property name="realName" type="java.lang.String">
+            <column name="realName" length="50" />
+        </property>
+        <property name="identityCard" type="java.lang.String">
+            <column name="identityCard" length="50" />
+        </property>
+        
+        <property name="phone" type="java.lang.String">
+            <column name="phone" length="50" />
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="sex" length="50" />
+        </property>
+         <property name="dateOfBirth" type="java.lang.String">
+            <column name="dateOfBirth" length="50" />
+        </property>
+        <property name="educationBackground" type="java.lang.String">
+            <column name="educationBackground" length="50" />
+        </property>
+        <property name="schoolOfGraduation" type="java.lang.String">
+            <column name="schoolOfGraduation" length="50" />
+        </property>
+         <property name="maritalStatus" type="java.lang.String">
+            <column name="maritalStatus" length="50" />
+        </property>
+         <property name="address" type="java.lang.String">
+            <column name="address" length="50" />
+        </property>
+         <property name="companyIndustry" type="java.lang.String">
+            <column name="companyIndustry" length="50" />
+        </property>
+        <property name="companyScale" type="java.lang.String">
+            <column name="companyScale" length="50" />
+        </property>
+        <property name="position" type="java.lang.String">
+            <column name="position" length="50" />
+        </property>
+        <property name="income" type="java.lang.String">
+            <column name="income" length="50" />
+        </property>
        
     </class>
 </hibernate-mapping>
