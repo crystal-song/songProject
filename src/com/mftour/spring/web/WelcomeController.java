@@ -76,8 +76,10 @@ public class WelcomeController {
 		 	 
 		/*model.addAttribute("name",user.getName()); */
 		request.getSession().setAttribute("name",user.getName()); 
+		TUser user1 = userService.getUserByAccount(user.getName());
+		model.addAttribute("user1", user1); 
 //		request.getSession().setAttribute("users", username);
-		return "index";
+		return "user-info";
 }
 	    
 		

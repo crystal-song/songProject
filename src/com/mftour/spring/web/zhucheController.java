@@ -2,6 +2,8 @@ package com.mftour.spring.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IProductService;
+import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
 
 @Controller
@@ -24,6 +27,9 @@ public class zhucheController {
 	
 	@Autowired
     private IProductService productService;
+	
+	@Autowired
+    private IUserService userService;
 	
 	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
 	public String helloWorld(Model model) throws Exception {
@@ -50,8 +56,16 @@ public class zhucheController {
 	
 	
 	@RequestMapping(value = "/account",method = {RequestMethod.POST, RequestMethod.GET})
-	public String account(Model model) throws Exception {
-		
+	public String account(Model model,HttpServletRequest request) throws Exception {
+		 Object o= request.getSession().getAttribute("name");
+		 if(o!=null){
+			 TUser user1 = userService.getUserByAccount(o.toString());
+				
+				model.addAttribute("user1", user1);
+			
+			 
+		 }
+		  
 		return "user-info";
 	}
 	
