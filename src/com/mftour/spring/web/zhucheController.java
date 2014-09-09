@@ -62,11 +62,14 @@ public class zhucheController {
 			 TUser user1 = userService.getUserByAccount(o.toString());
 				
 				model.addAttribute("user1", user1);
-			
+				return "user-info";
 			 
 		 }
+			 
+		 
+		 
 		  
-		return "user-info";
+		return "login";
 	}
 	
 	
