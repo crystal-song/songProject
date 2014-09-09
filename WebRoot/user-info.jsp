@@ -87,7 +87,7 @@ $(document).ready(function(){
                  <div class="pic">
                    <h3></h3>
                  </div>
-                 <span><strong>liuxiaoyan..</strong></span>
+                 <span><strong>${user1.name}</strong></span>
            </div>
            <div class="left_btm">
                   <span class="sp1"><a href="#" title="您还未实名认证，请点击"></a></span>
