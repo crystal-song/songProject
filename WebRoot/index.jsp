@@ -119,6 +119,7 @@ var navIndex=0;
 	  
 			<div class="clear_height"></div>
             <div class="ind_list">
+            
             	<%-- <div class="xq_left"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}"><img src="<%=path%>/images/sy_63.jpg" /></a></div> --%>
             	<div class="xq_left"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectPicture}</a></div>
                 <div class="ind_right">
@@ -131,6 +132,7 @@ var navIndex=0;
                     </div>
                     <div class="clear"></div>
                     <div class="xq_table">
+                    <a href="product/getProductByid?id=${s.id}" title="${s.projectName}">
                         <div class="xq01">
                             <div class="xq01_tit">年化收益</div>
                             <div class="xq01_nr hong">${s.yearIncome}%</div>
@@ -147,8 +149,10 @@ var navIndex=0;
                             <div class="xq01_tit">企业等级</div>
                             <div class="xq04_nr"><img src="<%=path%>/images/qualityRate_${s.qualityRating}.jpg" style="margin-bottom:-3px;"></div>
                         </div>
+                        </a>
                     </div>
                 </div>
+                
             </div>
             </c:forEach>
       
