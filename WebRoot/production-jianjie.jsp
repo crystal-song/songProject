@@ -50,7 +50,7 @@ $(document).ready(function(){
 				  }
 		  });
 		  
-	   var a =$('.shu').text();
+	   var a =$('.shu1').text();
 	   $('.bar_body').children().css('width',a)
 	   //alert(a)	  
 	
@@ -142,7 +142,7 @@ $(document).ready(function(){
          <span class="bur">此项目必须在 <strong>2014年09月06</strong>日 前得到 <strong>¥30000</strong> 的支持才可成功！</span>
          <div class="bar_aini">
            <div class="bar_body"><div></div></div>
-           <div class="shu">80%</div>
+           <div class="shu1">80%</div>
          </div>
          <div class="dibu">
            <span>
