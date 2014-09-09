@@ -522,7 +522,8 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .bar_aini{width:335px; height:40px; border-bottom:1px dashed #e5e5e5; border-top:1px dashed #e5e5e5; margin-top:15px;}
 .bar_body{width:250px; height:15px; background:#f2f2f2; margin:12px  0 0 20px; border-radius:15px; float:left}
 .bar_body div{width:50%; height:15px; background:#ed5f59; border-radius:15px;}
-.shu{float:left; height:15px; width:25px; font-size:14px; margin:10px 0 0 20px;}
+.shu{float:left; height:15px; width:25px; font-size:14px;}
+.shu1{float:left; height:15px; width:25px; font-size:14px; margin:10px 0 0 20px;}
 .dibu{width:335px; height:80px;}
 .dibu span{width:100px; height:60px; margin:10px 0 0 0; background:#fff; display:inline-block}
 .cen{border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
