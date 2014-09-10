@@ -414,6 +414,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 /*用户信息*/
 .msg_main{width:886px; height:auto; border:1px solid #ddd; border-radius:5px;}
 .user_con{width: 866px; height:300px;  margin:0 auto; border-bottom:1px solid #ddd;}
+.user_con01{width: 866px; height:auto;  margin:0 auto;}
 .photo{width:220px; height:300px; float:left; position:relative; }
 .photo span{width:118px; height:118px; background:url(../img/aitouzi02_r2_c.jpg) no-repeat; position:absolute; left:70px; top: 30px;  
             border-radius:5px; border:1px solid #e6e6e6;}
@@ -422,9 +423,13 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .center .user_con_name {float:left; width:200px;}
 .center .user_con_name li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:right; font-size:16px;}
 .center .user_con_mag li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:left; font-size:16px;}
-.user_right{height:300px; float:left;}
-.user_right li{width:80px; height:26px; margin:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef; 
+.user_right{height:300px; float:left; position:relative}
+.user_check li{width:80px; height:26px; margin:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef; 
               background:url(../img/tubiao16.png) 3px 3px no-repeat;}
+              
+/*tanchukuang*/
+.box_m{position:absolute; left:-72px;}
+.box_m li{width:80px; height:26px; margin:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef;}             
 .user_right .xiangqing{background:url(../img/tubiao15.png) 3px 3px no-repeat; color:#3e3e3e;}
 
 .user_bottom{width:836px; height:100px; background:#fffadc; margin:10px auto; border:1px solid #c2bc88; padding:15px;}
@@ -435,7 +440,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .user_con_last{width:866px; height:710px;  margin:10px auto;}
 .center_last{width:450px; height:300px;  float:left; margin-left:196px;}
 .user_con_last_name{float:left; width:200px; }
-.user_con_last_name li{width:180px; height:30px;  margin:30px 10px; line-height:30px; text-align:right; font-size:16px;}
+.user_con_last_name li{width:180px; height:30px;  margin:10px; line-height:30px; text-align:right; font-size:16px;}
 .user_con_last_mag{float:left; width:200px; margin-left: 25px;}
 .user_con_last_mag li{width:200px; height:30px;  margin:30px 10px; line-height:30px; text-align:left; font-size:16px;}
 .text01{width:216px; height:30px; border:1px solid #ccc; border-radius:3px;}
@@ -658,4 +663,49 @@ ul{ margin:0px; padding:0px; list-style:none;}
  html,body{margin:0;padding:0;}
     .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
     .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+
+/*anquanshezhi*/
+
+.renzheng{width:866px; height:auto; border-bottom:1px solid #ddd; margin-bottom:10px; overflow: hidden;}
+.renzheng span{display:inline-block; width:100px; height:60px;  float:left; margin-right:20px; line-height:60px}
+.renzheng span i{width:40px; height:60px; background:pink; display:inline-block; float:left; background:url(../img/tubiao15.png) 15px 20px no-repeat;}
+.renzheng .ren_right{width:60px; height:60px;float:right;  display:inline-block; cursor:pointer; color:blue}
+.ren_h{width:866px; height:60px;}
+.yincang{width:844PX; height:auto; background:#f5f5f5; border:1px solid #ccc; border-bottom:0; border-right:1px solid #ccc; padding:10px; display:none}
+form{padding-top:50px;}
+table{margin-left:200px;}
+td{width:120px; height:36px; padding-right:30px}
+.tr1{margin-top:50px;}
+.table_input{width:200px; height:30px; border:1px solid #ccc; border-radius:5px; }
+.w_td{width:335px;}
+
+.tb_left{text-align:right; }
+.user_bottom01{width:806px; height:145px; background:#fffadc; margin:10px auto; border:1px solid #c2bc88; padding:15px;}
+.user_bottom01 h3{text-align:left; }
+.user_bottom01 ol{padding:0; margin:20px;}
+.user_bottom01 li{text-align:left; margin-top:10px;}
+.yincang p{display:inline-block; width:800px; height:40px;}
+.yincang span{display:inline-block; width:140px; height:40px; float:left; line-height:40px; text-align:right}
+.yincang input{height:40px; margin:0}
+.huoqu{width:90px; height:30px; background:#f60; border:1px solid #f90; display:inline-block; text-align:center; border-radius:5px; color:#fff; line-height:30px;}
+.next_btn{width:90px; height:30px; background:#f60; border:1px solid #f90; display:inline-block; text-align:center; border-radius:5px; color:#fff; line-height:30px; margin-left:160px; float:left}
+.yincang select{height:40px; width:160px}
+.yincang .sub_m{margin:0px 18px 0 160px; float:left}
+.aa{float:left;height:40px; line-height:40px; color:blue; cursor:pointer}
+.aa:hover{color:blue}
+.yincang .pic_car{width:300px; height:180px; background:#fff; display:inline-block}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
