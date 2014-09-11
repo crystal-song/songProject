@@ -109,9 +109,20 @@ $(document).ready(function(){
         </select>    
       </div>
     </div>
-    <div class="main_content">     
+    <div class="main_content">  
+          <div id="bodyframe" style="VISIBILITY: hidden">  
+       <!--  <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px">    -->
+		 <form  action="<%=path%>/crowdfunding/allCrowdfunding" id="form" method="post"   class="box"  style="display:'none'"   >
+		 <input type="hidden"   name="pageNo" id="pageNo" value="${pageNo}"   /> 
+		
+		
+		<input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
+		<!-- <button id="update" ></button> -->
+		</form>
+       <!--  </IFRAME>   -->
+        </div>   
           <ul class="clearfix">
-            <%-- <li>
+             <li>
               <div class="floor_num">
                  <a class="floor_img"><img src="<%=path%>/img/num1.png" width="256" height="170" />
                  </a>
@@ -131,18 +142,8 @@ $(document).ready(function(){
                    <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em></a><a style="float:right; color:#a4a4a4;">剩余时间</a></span>
                  </div>
               </div>
-            </li> --%>
-       <div id="bodyframe" style="VISIBILITY: hidden">  
-<!--  <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px">    -->
-<form  action="<%=path%>/crowdfunding/allCrowdfunding" id="form" method="post"   class="box"  style="display:'none'"   >
- <input type="hidden"   name="pageNo" id="pageNo" value="${pageNo}"   /> 
-
-
-<input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
-<!-- <button id="update" ></button> -->
-</form>
- <!--  </IFRAME>   -->
- </div>        
+            </li>
+            
             
             
             
@@ -581,7 +582,9 @@ $(document).ready(function(){
 								<%--  <a href="#" onclick="jumpPage(${current-1})" class="org">上一页</a> --%>
 								<a href="javascript:jumpPage(${page.totalPage})">末页</a>
             <!--  <a class="redus_first"></a>    -->
-           </div>   
+           </div>
+           
+              
     </div> 
  </div>     
  <div class="clear_height"></div>
