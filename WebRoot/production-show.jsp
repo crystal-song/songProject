@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>项目展示</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 var navIndex=2;
@@ -49,6 +49,21 @@ $(document).ready(function(){
 			   }	 		  
 			  }	
 	}
+    
+    
+    function jumpPage(pag){
+    	/* alert("ccccccccccc"+pag); */
+    	   
+    	    $('#pageNo').val(pag); 
+    	    
+    	   
+    	    
+    	 
+    	    
+    	    
+    	 $("#form" ).submit(); 
+
+     }
 </script>
 </head>
 <body>
@@ -96,9 +111,9 @@ $(document).ready(function(){
     </div>
     <div class="main_content">     
           <ul class="clearfix">
-            <li>
+            <%-- <li>
               <div class="floor_num">
-                 <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
+                 <a class="floor_img"><img src="<%=path%>/img/num1.png" width="256" height="170" />
                  </a>
                  <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
@@ -116,37 +131,63 @@ $(document).ready(function(){
                    <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em></a><a style="float:right; color:#a4a4a4;">剩余时间</a></span>
                  </div>
               </div>
-            </li>
+            </li> --%>
+       <div id="bodyframe" style="VISIBILITY: hidden">  
+<!--  <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px">    -->
+<form  action="<%=path%>/crowdfunding/allCrowdfunding" id="form" method="post"   class="box"  style="display:'none'"   >
+ <input type="hidden"   name="pageNo" id="pageNo" value="${pageNo}"   /> 
+
+
+<input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
+<!-- <button id="update" ></button> -->
+</form>
+ <!--  </IFRAME>   -->
+ </div>        
+            
+            
+            
             <li>
+            
+            
+             <c:if test="${ not empty list}">
+        <c:forEach var="s" items="${list}" varStatus="i">
               <div class="floor_num">
-                 <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
-                 </a>
-                 <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
+                 <a class="floor_img"><img src="<%=path%>/img/num1.png" width="256" height="170" />
+                 </a><a href="getProductByid?id=${s.id}">
+                 <h3><a class="shuoming" href="<%=path%>/crowdfunding/getCrowdfundingByid?id=${s.id}">${s.name}</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
-                   <span>60天</span>
-                   <span><i>¥&nbsp;&nbsp;</i>60000</span>
+                   <span>${s.raiseTime}天</span>
+                   <span><i>¥&nbsp;&nbsp;</i>${s.raiseMoney}</span>
                    <a>众筹中</a>
                  </div>
                  <div class="loding_bar">
                  <div class="l_b"></div>
                  </div>
                  <div class="floor_bottom">
-                   <span><a id="load" class="baifenbi" style="float:left; text-align:left;">20%</a>
+                   <span><a id="load" class="baifenbi" style="float:left; text-align:left;">${s.raiseProportion}%</a>
                          <a style="float:left; color:#a4a4a4;">已达</a>
                    </span>
-                   <span><a class="baifenbi"><em>¥&nbsp;&nbsp;</em>30000</a>
+                   <span><a class="baifenbi"><em>¥&nbsp;&nbsp;</em>${s.realityMoney}</a>
                          <a style="color:#a4a4a4;">已筹资</a>
                    </span>
-                   <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em>
+                   <span><a class="baifenbi" style="float:right; text-align:right;">${s.surplusTime}<em>天</em>
                          </a><a style="float:right; color:#a4a4a4;">剩余时间</a>
                    </span>
                  </div>
               </div>
+              
+               </c:forEach>
+   
+	 
+        </c:if>
+        
             </li>
-            <li>
+           <%--  <li>
+            
+            
               <div class="floor_num">
-                 <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
+                 <a class="floor_img"><img src="<%=path%>/img/num1.png" width="256" height="170" />
                  </a>
                  <h3><a class="shuoming" href="<%=path%>/production-jianjie.jsp">Withings智能无线血压仪——随时随地关爱健康</a></h3>
                  <div class="aim">
@@ -185,8 +226,8 @@ $(document).ready(function(){
                    <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em></a><a style="float:right; color:#a4a4a4;">剩余时间</a></span>
                  </div>
               </div>
-            </li>
-            <li>
+            </li> --%>
+            <%-- <li>
              <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
@@ -501,8 +542,8 @@ $(document).ready(function(){
                    <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em></a><a style="float:right; color:#a4a4a4;">剩余时间</a></span>
                  </div>
               </div>
-            </li>
-            <li>
+            </li> --%>
+            <%-- <li>
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
@@ -522,16 +563,24 @@ $(document).ready(function(){
                    <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em></a><a style="float:right; color:#a4a4a4;">剩余时间</a></span>
                  </div>
               </div>
-            </li>
+            </li> --%>
           </ul>
            <div class="redus">
-             <a class="redus_last">下一页</a>
-             <a>6</a>
+             <!-- <a class="redus_last">下一页</a> -->
+            <!--  <a>6</a>
              <a>...</a>
              <a>4</a>
              <a>3</a>
-             <a>2</a>
-             <a class="redus_first">1</a>   
+             <a>2</a> -->
+             	 <%-- <span> 第${page.pageNo}页, 共${page.totalPage}页  </span>  --%>
+								 <a href="javascript:jumpPage(1)">首页</a> 
+								<c:if test=""></c:if>
+								 <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
+								 <div class="pageNum"></div>
+								   <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  
+								<%--  <a href="#" onclick="jumpPage(${current-1})" class="org">上一页</a> --%>
+								<a href="javascript:jumpPage(${page.totalPage})">末页</a>
+            <!--  <a class="redus_first"></a>    -->
            </div>   
     </div> 
  </div>     

@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>项目简介</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 var navIndex=2;
@@ -99,34 +99,35 @@ $(document).ready(function(){
            <span class="sp_bac02"><strong>喜欢</strong></span>
         </div>
         <div class="jianjie_con">
-        <h1>关于我们</h1>
+        <!-- <h1>关于我们</h1>
         <div class="profile">
              卡迪鲁科技是一家新兴的致力于智能穿戴产品的科技公司，拥有来自多个知名高新企业行业人员，自2013年末开始研发智能产品。我们团队经过资源整合与优化，于2014年第一季度制定             了我们首款产品-卡迪鲁儿童智能守卫。经过半年时间对同类产品的技术方案优化及穿戴的体验感的梳理，无论从功能设置、人机工程学，还是材料应用上，我们相信它将会带给用户优质的体验。
-        </div>
-         <h1>项目简介</h1>
+        </div> -->
+        <!--  <h1>项目简介</h1>
         <div class="profile">
              卡迪鲁儿童智能守卫是一款主要针对3-13岁的儿童智能手表，孩子们只需带上一只智能守卫，作为监护人，就能随时监测到孩子的动向、地理位置等安全、学习信息。同时通过手机APP端实现对孩子的监控。
              <a href="#" title="卡迪鲁儿童智能守卫"><img src="img/zhongcou01.jpg" width="650" height="460" /></a>
-        </div>
-        <h1>产品介绍</h1>
+        </div> -->
+        <!-- <h1>产品介绍</h1>
         <div class="profile">
              <a href="#" title="卡迪鲁儿童智能守卫"><img src="img/zhongcou02.jpg" width="650" height="411" /></a>
              为人父母，我们时常担心熊孩子调皮捣蛋、不好好学习，带熊孩子出去玩担心他乱跑...而作为70、80的父亲母亲又多粗心大意.怎么办？别担心，我们来为您解决困扰，所有的问题，有了它，一切将不再是问题.
              <a href="#" title="卡迪鲁儿童智能守卫"><img src="img/zhongcou03.jpg" width="650" height="411" /></a>
              电子围栏警报，当我们通过地图以设备为中心划出范围，当调皮捣蛋的熊孩子走出这个范围，监护人即可收到警报提示信息。
              <a href="#" title="卡迪鲁儿童智能守卫"><img src="img/zhongcou05.jpg" width="650" height="474" /></a>
-        </div>
-        <h1>为什么我需要您的支持</h1>
+        </div> -->
+        <!-- <h1>为什么我需要您的支持</h1>
         <div class="profile">
              codru儿童智能守卫已经完成硬件开发及产品的设计，前期工作我们重点在硬件的开发和测试。我们希望您的支持能够让我们快速的获得用户反馈意见，便于我们进一步的改进和更新软硬件产品，选择更优质的生产商和原材料供应商制造产品，保障即将生产的品质、提高产品安全性、也希望大家能帮助我们传播用户体验，让更多的70、80后，还有更多的熊孩子喜欢上它
         </div>
         <h1>我们的承诺与回报</h1>
         <div class="profile">
              我们承诺：众筹网的支持者将成为codru儿童智能守的首批使用者<br/> <br/>我们承诺：众筹网的支持者将以低于市场价格的众筹价格获得codru儿童智能守<br/><br/>我们承诺：众筹网的支持者将终身免平台服务费
-        </div>
+        </div> -->
+       ${crowdfunding1.projectIntroduction}
         <div class="biaoqian01">
-         <p>分类<a href="#">科技</a></p>
-         <p class="biaoqian02">标签：<a href="#">科技</a><a href="#">守卫</a><a href="#">儿童</a><a href="#">智能</a><a href="#">codru</a></p>
+         <!-- <p>分类<a href="#">科技</a></p>
+         <p class="biaoqian02">标签：<a href="#">科技</a><a href="#">守卫</a><a href="#">儿童</a><a href="#">智能</a><a href="#">codru</a></p> -->
         </div>
        </div>  
      </div>
@@ -137,46 +138,50 @@ $(document).ready(function(){
        </div>
        <div class="m_r_cent">
          <span>目前累计金额</span>
-         <p>¥<strong>34,617</strong></p>
+         <p>¥<strong>${crowdfunding1.realityMoney}</strong></p>
          <a>众筹中</a>
-         <span class="bur">此项目必须在 <strong>2014年09月06</strong>日 前得到 <strong>¥30000</strong> 的支持才可成功！</span>
+         <span class="bur">此项目必须在 <strong>2014年09月06</strong>日 前得到 <strong>¥${crowdfunding1.raiseMoney}</strong> 的支持才可成功！</span>
          <div class="bar_aini">
            <div class="bar_body"><div></div></div>
-           <div class="shu1">80%</div>
+           <div class="shu1">${crowdfunding1.raiseProportion}%</div>
          </div>
          <div class="dibu">
            <span>
-             <p><strong>23天</strong></p>
+             <p><strong>${crowdfunding1.surplusTime}天</strong></p>
              <p>剩余时间</p>
            </span>
            <span class="cen">
-             <p><strong>152</strong></p>
+             <p><strong>${crowdfunding1.supporter}</strong></p>
              <p>支持者</p>
            </span>
            <span>
-             <p><strong>730</strong></p>
+             <p><strong>${crowdfunding1.like}</strong></p>
              <p>喜欢</p>
            </span>
          </div>
        </div>
+       
+        <c:if test="${ not empty list}">
+        <c:forEach var="s" items="${list}" varStatus="i">
        <div class="m_r_bott">
           <div class="aside01">
             <a>
-                <strong>支持¥20</strong>    
+                <strong>支持¥${s.sustainMoney}</strong>    
             </a>
-            <p>已有 <em>122</em> 位支持者 / 限额 <em>200</em> 位</p>
+            <p>已有 <em>${s.supporter}</em> 位支持者 / 限额 <em>${s.limitQuantity}</em> 位</p>
           </div>
           <div class="aside02">
-          谢谢您一起与codru为伴！<br/>
-          感谢您的支持，作为回报，您将在项目结束后获得codru儿童智能守卫一台，我们将在2014年10月30日前为您发货。（codru儿童智能守卫共有玫红、橘色、蓝色、紫色、绿色5种颜色，请您          
-          标注好您所想要的颜色，我们会按照您选择的颜色为您发货。）<br/><br/>
-          配送费用：免运费<br/><br/>
-          预计回报发送时间：项目成功结束后30天内 
+          ${s.productInfo}
           </div>
           <span>      
-                <strong>支持¥20</strong>    
+                <strong>支持¥${s.sustainMoney}</strong>    
           </span>   
        </div>  
+       
+        </c:forEach>
+     
+	 
+        </c:if>
         <div class="m_r_bott">
           <div class="aside01">
             <a>
