@@ -317,7 +317,10 @@ ul{ margin:0px; padding:0px; list-style:none;}
     background:#FFF;   border:1px solid #dddddd; border-radius:5px; padding:2px;}
 .pic h3{width:54px; height:54px;  background:url(../img/tubiao-111.jpg) 2px 2px no-repeat; margin:0;}	  
 .name span{width:110px; height:55px; float:right; line-height:60px; text-align:center; font-size:16px; color:#3e3e3e;}
-.left_btm{width:179px; height:32px;  padding:10px;}
+.left_btm{width:179px; height:32px;  padding:10px; position:relative; }
+
+.btm_hide{width:179px; height:32px; background:pink; position:absolute; top:40px;}
+
 .sp1{width:30px; height:30px;  float:left; margin-left:22px; background:#ebebeb; border-radius:5px;}
 .sp1 a{width:20px; height:20px; background:url(../img/tubiao0.png) no-repeat; display:inline-block; margin-top:5px;}
 .sp2{width:30px; height:30px;  float:left; margin-left:5px; background:#ebebeb; border-radius:5px;}
@@ -418,19 +421,24 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .photo{width:220px; height:300px; float:left; position:relative; }
 .photo span{width:118px; height:118px; background:url(../img/aitouzi02_r2_c.jpg) no-repeat; position:absolute; left:70px; top: 30px;  
             border-radius:5px; border:1px solid #e6e6e6;}
-.center{width:450px; height:300px;  float:left;}
+.center{width:340px; height:300px;  float:left;}
 .center .user_con_mag{float:left; width:200px;}
-.center .user_con_name {float:left; width:200px;}
-.center .user_con_name li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:right; font-size:16px;}
-.center .user_con_mag li{width:150px; height:26px;  margin:10px; line-height:26px; text-align:left; font-size:16px;}
-.user_right{height:300px; float:left; position:relative}
-.user_check li{width:80px; height:26px; margin:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef; 
-              background:url(../img/tubiao16.png) 3px 3px no-repeat;}
-              
+.center .user_con_name {float:left; width:340px;}
+.center .user_con_name li{width:110px; height:26px;  margin:10px; line-height:26px; text-align:right; font-size:16px; float:left; }
+.center .user_con_mag li{width:80px; height:26px;  margin:10px; line-height:26px; text-align:left; font-size:16px;}
+.user_right{height:300px; float:left; position:relative; width:306px}
+.user_check li{width:260px; height:26px; padding:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef; 
+              }
+.user_check li p{width:50px; height:28px; margin:10px; display:inline-block; float:right; padding-left:36px; background:url(../img/tubiao16.png) 3px 3px no-repeat; margin:0; cursor:pointer}           
 /*tanchukuang*/
-.box_m{position:absolute; left:-72px;}
-.box_m li{width:80px; height:26px; margin:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef;}             
+.box_m{position:absolute; right:100px;}
+.box_m li{width:370px; height:26px; margin:10px; line-height:26px;  font-size:16px; padding-left:10px; color:#3d68ef;}             
 .user_right .xiangqing{background:url(../img/tubiao15.png) 3px 3px no-repeat; color:#3e3e3e;}
+.box_left{width:9px; height:28px; background:url(../img/you01.png) no-repeat; display:inline-block; float:right;}
+.box_center{width:auto; height:28px; background:url(../img/zhong01.png) repeat-x; float:right; font-size:12px; line-height:28px; padding:0 15px; color:#000}
+.box_center a{color:#3d68ef;}
+.box_right{width:3px; height:28px; background:url(../img/zuo01.png) no-repeat; display:inline-block; float:right;}
+.box_check{width:380px; height:28px; position:absolute; right:118px; line-height:28px;}
 
 .user_bottom{width:836px; height:100px; background:#fffadc; margin:10px auto; border:1px solid #c2bc88; padding:15px;}
 .user_bottom h3{text-align:left; }
@@ -438,10 +446,10 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .user_bottom li{text-align:left; margin-top:10px;}
 
 .user_con_last{width:866px; height:710px;  margin:10px auto;}
-.center_last{width:450px; height:300px;  float:left; margin-left:196px;}
+.center_last{width:650px; height:300px;  float:left; margin-left:146px;}
 .user_con_last_name{float:left; width:200px; }
 .user_con_last_name li{width:180px; height:30px;  margin:10px; line-height:30px; text-align:right; font-size:16px;}
-.user_con_last_mag{float:left; width:200px; margin-left: 25px;}
+.user_con_last_mag{float:left; width:200px; margin-left:99px;}
 .user_con_last_mag li{width:200px; height:30px;  margin:30px 10px; line-height:30px; text-align:left; font-size:16px;}
 .text01{width:216px; height:30px; border:1px solid #ccc; border-radius:3px;}
 .select01{width:220px; height:30px; border:1px solid #ccc; border-radius:3px;}
@@ -602,7 +610,7 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .main_content ul{width:1130px; height:1700px;}
 .clearfix {display: block;}
 .main_content ul li{width:260px; height:320px; padding:0 20px 20px 0; float:left;}
-.floor_num{width:256px; height:310px; background:#fff;border:1px solid #e5e5e5; border-radius:5px;}
+.floor_num{width:256px; height:310px;  border:1px solid #e5e5e5; border-radius:5px;}
 .floor_img{width:256px; height:170px; display:inline-block;}
 .floor_num img{border-radius:5px 5px 0 0;}
 .floor_num h3{display:inline-block; width:222px; height:32px; margin:12px 14px; cursor:pointer;}
@@ -696,10 +704,13 @@ td{width:120px; height:36px; padding-right:30px}
 .yincang .pic_car{width:300px; height:180px; background:#fff; display:inline-block}
 
 
+/*tongzhishezhi*/
 
-
-
-
+.tong{width:866px; height:300px; padding-top:40px;}
+.tong li{width:866px; height:60px; border-bottom:1px solid #ccc;}
+.tong li span{width:200px; height:60px; display:inline-block; margin-right:5px;  float:left; line-height:60px;}
+.tong input{margin-top:23px; }
+.check_sub{width:90px; height:30px; background:#f60; border:1px solid #eb6a05; display:inline-block; text-align:center; border-radius:5px; color:#fff; cursor:pointer}
 
 
 
