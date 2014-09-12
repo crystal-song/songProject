@@ -14,15 +14,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
     var navIndex=3;
+/*    
+    var page_url=window.location.href 
+    alert(page_url)
+    var spl=page_url.split("#")[1];
+    for(var i=0; i<spl.length; i++){
+   	 if(spl[i]=="phone"){
+   		 alert('aaa')
+   	 }  	 
+   }
+  */  
+    
     $(document).ready(function(){
     	$(function(){
     		var num=0;
     		var timer=null;
     		timer=setInterval(function(){
-    			num++
+    			num++;
     			$('.red_bar').css('width',num);
-    			/*$('progress').val(num)
-    			$('span').html(num)*/
     			var zi=$('.view strong').text();
     			if(zi=='低' && num==40){
     				clearInterval(timer)	
@@ -38,16 +47,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		$('.sec li').mouseover(function(e){
     			$(this).addClass('bac_org').siblings().removeClass('bac_org');
     			});
-    	    });
-    		
+    	    });	
     		$('.msg_nav').eq(1).mouseover(function(e){
     			$('.bac_change_1').css('background-image','url("<%=path%>/img/tubiao10.png")');
     			
     			}).mouseout(function(e){
-    			$('.bac_change_1').css('background-image','url("<%=path%>/img/tubiao9.png")');
-    			
+    			$('.bac_change_1').css('background-image','url("<%=path%>/img/tubiao9.png")');   			
     			});
-    		
     		$('.msg_nav').eq(2).mouseover(function(e){
     			$('.bac_change_2').css('background-image','url("<%=path%>/img/tubiao11.png")');
     			
