@@ -654,8 +654,6 @@ ul{ margin:0px; padding:0px; list-style:none;}
 .news_list a{ display:block; float:left; padding:0px; width:80%;}
 .news_list dt{ display:block; float:right; padding:0px;}
 
-
-
 /*help*/
 
 .bzr_nr dl{width:806px; height:auto; }
@@ -688,21 +686,21 @@ td{width:120px; height:36px; padding-right:30px}
 .w_td{width:335px;}
 
 .tb_left{text-align:right; }
-.user_bottom01{width:806px; height:145px; background:#fffadc; margin:10px auto; border:1px solid #c2bc88; padding:15px;}
+.user_bottom01{width:780px; height:145px; background:#fffadc; margin:10px auto; border:1px solid #c2bc88; padding:15px;}
 .user_bottom01 h3{text-align:left; }
 .user_bottom01 ol{padding:0; margin:20px;}
 .user_bottom01 li{text-align:left; margin-top:10px;}
 .yincang p{display:inline-block; width:800px; height:40px;}
-.yincang span{display:inline-block; width:140px; height:40px; float:left; line-height:40px; text-align:right}
+.yincang span{display:inline-block; width:144px; height:40px; float:left; line-height:40px; text-align:right}
 .yincang input{height:40px; margin:0}
-.huoqu{width:90px; height:30px; background:#f60; border:1px solid #f90; display:inline-block; text-align:center; border-radius:5px; color:#fff; line-height:30px;}
-.next_btn{width:90px; height:30px; background:#f60; border:1px solid #f90; display:inline-block; text-align:center; border-radius:5px; color:#fff; line-height:30px; margin-left:160px; float:left}
+.huoqu{width:90px; height:30px; background:#f60; border:1px solid #f90; display:inline-block; text-align:center; border-radius:5px; color:#fff; line-height:30px; font-size:12px}
+.next_btn{width:100px; height:30px; background:#f60; border:1px solid #f90; display:inline-block; text-align:center;
+          border-radius:5px; color:#fff; line-height:30px; margin-left:160px; float:left; font-size:12px}
 .yincang select{height:40px; width:160px}
 .yincang .sub_m{margin:0px 18px 0 160px; float:left}
-.aa{float:left;height:40px; line-height:40px; color:blue; cursor:pointer}
+.aa{float:left; height:40px; line-height:40px; color:blue; cursor:pointer; font-size:14px}
 .aa:hover{color:blue}
 .yincang .pic_car{width:300px; height:180px; background:#fff; display:inline-block}
-
 
 /*tongzhishezhi*/
 
@@ -711,6 +709,26 @@ td{width:120px; height:36px; padding-right:30px}
 .tong li span{width:200px; height:60px; display:inline-block; margin-right:5px;  float:left; line-height:60px;}
 .tong input{margin-top:23px; }
 .check_sub{width:90px; height:30px; background:#f60; border:1px solid #eb6a05; display:inline-block; text-align:center; border-radius:5px; color:#fff; cursor:pointer}
+
+/*chongzhi*/
+
+.user_con01 p{height:60px; text-align:left; line-height:60px; font-size:16px; padding-left:22px}
+.yinhang{width:820px; height:300px; border-bottom:1px solid #ccc; margin:0 auto; overflow:hidden}
+.yinhang span{width:160px; height:50px;  display:inline-block; margin:15px; border:1px solid #ccc;}
+.chong{width:820px; height:300px;}
+.chong li{width:820px; height:60px;}
+.chong li a{display:inline-block; float:left; height:40px; width:180px; line-height:40px; text-align:left}
+.chong span{width:100px; height:40px; float:left; margin:0; line-height:40px; border:none}
+.chong .input_text{height:30px; display:inline-block; margin-top:5px}
+.chong i{font-style:normal; display:inline-block; width:60px; height:40px;line-height:40px; float:left; text-align:left}
+.chong .org_num{width:50px; font-size:16px; color:#f90;}
+.yinhang01{width:820px; height:auto; margin:0 auto; overflow:hidden}
+.wang_yin{width:820px; height:100px}
+.wang_yin span{width:160px; height:50px;  display:inline-block; margin:15px; border:1px solid #ccc;}
+.chong .queren_box{width:50px;}
+.queren_box input{margin-top:12px}
+.submit_box{width:80px; height:30px; background:#f60; border:1px solid #eb6a05; display:inline-block; text-align:center; border-radius:5px; color:#fff; cursor:pointer}
+
 
 
 
