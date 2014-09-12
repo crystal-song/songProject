@@ -13,19 +13,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
-    var navIndex=3;
-/*    
-    var page_url=window.location.href 
-    alert(page_url)
-    var spl=page_url.split("#")[1];
-    for(var i=0; i<spl.length; i++){
-   	 if(spl[i]=="phone"){
-   		 alert('aaa')
-   	 }  	 
-   }
-  */  
-    
+    var navIndex=3;    
     $(document).ready(function(){
+    	$('.select_nav a').click(function(){
+    		$(this).siblings().slideToggle('slow')
+    		}
+    	);
     	$(function(){
     		var num=0;
     		var timer=null;
@@ -158,8 +151,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </a>
               <ul style="display:none">
                   <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li>交易记录</li>
+                  <li>充值</li>
+                  <li>提现</li>
               </ul>
           </div>
           <div class="select_nav">
@@ -168,9 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              <span>消息管理</span>
             </a>
               <ul style="display:none">
-                  <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li>交易记录</li>
+                  <li>站内信息</li>                  
               </ul>
           </div>
           <div class="select_nav">
@@ -179,9 +170,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <span>账户管理</span>
               </a>
               <ul style="display:none">
-                  <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li style="border-bottom:0">交易记录</li>
+                  <li>个人信息</li>
+                  <li>安全设置</li>
+                  <li style="border-bottom:0">通知设置</li>
               </ul>
           </div>    
        </div>
@@ -225,8 +216,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <p><span> 上传背面证件照</span><span><a class="huoqu">上传照片</a></span></p>
 			              <p class="pic_car"></p>
 		              </div>
-		              <p><span><input type="checkbox"></input></span><span style="width:223px">我已阅读并同意签署 《中投汇服务协议》</span></p>
-		              <p><span><input type="checkbox"></input></span><span style="width:235px">我已阅读并同意签署 《委托收付资金协议》</span></p>
+		              <p><span><input type="checkbox"></input></span><span style="width:300px">我已阅读并同意签署 《中投汇服务协议》</span></p>
+		              <p><span><input type="checkbox"></input></span><span style="width:312px">我已阅读并同意签署 《委托收付资金协议》</span></p>
 		              <p><input type="submit" value="提交实名认证" class="sub_m"></input><a class="aa">采用上传认证</a></p>               
 	               <div class="user_bottom01" style="height:200px">
 		            <h3>温馨提示:</h3>
