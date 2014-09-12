@@ -14,18 +14,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
     var navIndex=3;
-/*    
-    var page_url=window.location.href 
-    alert(page_url)
-    var spl=page_url.split("#")[1];
-    for(var i=0; i<spl.length; i++){
-   	 if(spl[i]=="phone"){
-   		 alert('aaa')
-   	 }  	 
-   }
-  */  
-    
     $(document).ready(function(){
+    	$('.select_nav a').click(function(){
+    		$(this).siblings().slideToggle('slow')
+    		}
+    	);
     	$(function(){
     		var num=0;
     		var timer=null;
@@ -69,8 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao3.png")');
     			
     			});	
-    	
-    	
+    		
          $(".ren_right").click(function(){
              var a=$(this).parent().parent().children('.yincang').slideToggle();        
         	 var text=$(this).text()
@@ -90,12 +82,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	 }else if(text=="设置"){
         		 $(this).text("取消设置")
         	 }else if(text=="取消设置"){     		 
-        		 $(this).text("设置")
-        		 
+        		 $(this).text("设置")       		 
         	 } 
-         });
-         
-    	   	 
+         });        	   	 
          $('.aa').click(function(){
         	 var aa_text=$('.aa').text();   
              if(aa_text=="采用上传认证"){
@@ -103,16 +92,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	 $('.aa').text('采用接口认证');
              }else if(aa_text=="采用接口认证"){
             	 $('.hide_car').css("display","none")
-            	 $('.aa').text('采用上传认证');
-            	 
+            	 $('.aa').text('采用上传认证');            	 
              }
          })
-         
-         
-         
+       
 });
-         
-
+        
 </script>
 </head>
 
@@ -158,8 +143,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </a>
               <ul style="display:none">
                   <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li>交易记录</li>
+                  <li>充值</li>
+                  <li>提现</li>
               </ul>
           </div>
           <div class="select_nav">
@@ -168,9 +153,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              <span>消息管理</span>
             </a>
               <ul style="display:none">
-                  <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li>交易记录</li>
+                  <li>站内信息</li>                  
               </ul>
           </div>
           <div class="select_nav">
@@ -179,13 +162,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <span>账户管理</span>
               </a>
               <ul style="display:none">
-                  <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li style="border-bottom:0">交易记录</li>
+                  <li>个人信息</li>
+                  <li>安全设置</li>
+                  <li style="border-bottom:0">通知设置</li>
               </ul>
           </div>    
-       </div>
-          
+       </div>         
    </div>
    <div class="msg_right">
        <div class="msg_main">
