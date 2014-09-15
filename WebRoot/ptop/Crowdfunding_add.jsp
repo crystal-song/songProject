@@ -3,6 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -151,10 +153,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		alert($('#mes').val());
         	}
         	
-        	if($("#enterpriseNumber").val()=="")
+        	if($("#projectNumber").val()=="")
         	{
         		tt=new Date();
-        		$("#enterpriseNumber").val("ZTH01"+tt.valueOf());
+        		$("#projectNumber").val("ZTH01"+tt.valueOf());
         		}
         	/* if( r!=null){
         		alert(r);
@@ -191,41 +193,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="cl"></div>
 <div class="content">
   	<h2>添加众筹项目</h2>
+  	<form  action="<%=path%>/collectMoney/addproject" id="form" method="post"   class="box"  style="display:'none'"   >
     	<div class="dataForm">
         	<ul>
                 <li>
                     <dd>项目名称：</dd>
-                    <input type="text" />
+                    <input type="text"  id="name"  name="name" />
                     <dt>1111</dt>
                 </li>
-                <li>
+                <!-- <li>
                     <dd>项目图片：</dd>
                     <input type="file" />
                     <dt><img alt="项目图片预览" width="250" height="158" /><br />尺寸：250*158</dt>
-                </li>
+                </li> -->
+                   <dd>相关证件：</dd>
+<label>
+<!--style给定宽度可以影响编辑器的最终宽度-->
+<script type="text/plain"   id="Editor" style="width:100%;height:180px;">${product1.enterpriseCertificate}</script>
+</label> 
+		<dt>请将所有相关的图片上传至此区域内！</dt>  
                 <li>
                     <dd>项目编号：</dd>
-                    <input type="text" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />
+                    <input type="text" name="projectNumber"  id="projectNumber"  value="${product1.enterpriseNumber}"   />
                     <dt></dt>
                 </li>
-                <li>
+                <!-- <li>
                     <dd>项目发起人：</dd>
                     <input type="text" value="中投汇融"/>
                     <dt></dt>
-                </li>
-                <li>
+                </li> -->
+               <!--  <li>
                     <dd>项目描述：</dd>
                     <textarea name="abstract" cols="" rows="" class="bigArea"></textarea>
                     <dt></dt>
-                </li>
+                </li> -->
+                
+                           <dd>相关证件：</dd>
+<label>
+<!--style给定宽度可以影响编辑器的最终宽度-->
+<script type="text/plain"   id="myEditor" style="width:100%;height:180px;">${product1.enterpriseCertificate}</script>
+</label> 
+		<dt>请将所有相关的图片上传至此区域内！</dt>  
                 <li>
                 <dd>筹集金额：</dd>
-                <input type="number" min="0" />
+                <input type="number" min="0"  name="raiseMoney"  id="raiseMoney"  />
                 <dt></dt>
                 </li>
                 <li>
-                    <dd>回报时间：</dd>
-                    <input type="date" />
+                    <dd>筹集时间：</dd>
+                    <input type="date"  name="raiseTime"  id="raiseTime"    />
                     <dt></dt>
                 </li>
                 <li>
@@ -249,6 +265,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
             </ul>
    	  </div>
+   	  </form>
   </div>
   <div class="cl"></div>
 </div>
