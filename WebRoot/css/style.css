@@ -417,7 +417,6 @@ ul{ margin:0px; padding:0px; list-style:none;}
 /*用户信息*/
 .msg_main{width:886px; height:auto; border:1px solid #ddd; border-radius:5px;}
 .user_con{width: 866px; height:300px;  margin:0 auto; border-bottom:1px solid #ddd;}
-.user_con01{width: 866px; height:auto;  margin:0 auto;}
 .photo{width:220px; height:300px; float:left; position:relative; }
 .photo span{width:118px; height:118px; background:url(../img/aitouzi02_r2_c.jpg) no-repeat; position:absolute; left:70px; top: 30px;  
             border-radius:5px; border:1px solid #e6e6e6;}
@@ -711,7 +710,7 @@ td{width:120px; height:36px; padding-right:30px}
 .check_sub{width:90px; height:30px; background:#f60; border:1px solid #eb6a05; display:inline-block; text-align:center; border-radius:5px; color:#fff; cursor:pointer}
 
 /*chongzhi*/
-
+.user_con01{width: 866px; height:auto;  margin:0 auto;}
 .user_con01 p{height:60px; text-align:left; line-height:60px; font-size:16px; padding-left:22px}
 .yinhang{width:820px; height:300px; border-bottom:1px solid #ccc; margin:0 auto; overflow:hidden}
 .yinhang span{width:160px; height:50px;  display:inline-block; margin:15px; border:1px solid #ccc;}
@@ -728,6 +727,26 @@ td{width:120px; height:36px; padding-right:30px}
 .chong .queren_box{width:50px;}
 .queren_box input{margin-top:12px}
 .submit_box{width:80px; height:30px; background:#f60; border:1px solid #eb6a05; display:inline-block; text-align:center; border-radius:5px; color:#fff; cursor:pointer}
+
+/*tixian*/
+.user_con01{width: 866px; height:auto;  margin:0 auto;}
+.user_con02{width: 866px; height:auto;  margin:0 auto;}
+.user_con02 p{width:866px; height:40px; text-align:left; padding:10px; font-size:14px}
+.post_car{width:800px; height:auto;}
+.post_car li{width:800px; height:50px;}
+.post_car span{display:inline-block; width:230px; height:40px; float:left; margin-left:15px; margin-right:45px; text-align:left; line-height:40px}
+.btn_tijao input{width:70px; height:30px; margin-bottom:10px}
+.btn_bac{background:#f60; border:1px solid #eb6a05;}
+.post_car span select{width:160px; margin-top:8px}
+.post_car .ti_wh{width:150px; height:40px; text-align:right;}
+.post_car input{ margin-top:9px}
+.post_car .choes_pro{width:76px; height:24px}
+.w_tishi{width:800px; height:200px; }
+.w_tishi p{margin:5px; padding:0; color:#e25353;}
+.user_con02 .jine{width:850px; border-top:1px solid #ccc;}
+.post_car a{width:55px; height:25px; border:1px solid #ccc; display:inline-block; float:right; margin-top:5px;}
+.post_car strong{font-size:14px; color:$f90; width:50px; display:inline-block}
+.post_car i{font-style:normal;}
 
 
 
