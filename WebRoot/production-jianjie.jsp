@@ -72,6 +72,7 @@ $(document).ready(function(){
 			   }	 		  
 			  }	
 	}
+    
 </script>
 </head>
 <body>
@@ -133,7 +134,7 @@ $(document).ready(function(){
      </div>
      <div id="main_right">
        <div class="m_r_top">
-           <span class="m_r_red"><strong class="xin">喜欢</strong></span>
+           <span class="m_r_red"><strong class="xin"  onclick="query()">喜欢</strong></span>
            <span class="m_r_blue"><strong class="zhichi">支持</strong></span>
        </div>
        <div class="m_r_cent">
