@@ -6,7 +6,7 @@ public class TCrowdfunding {
 	 private Long id;
 	 private String projectNumber; 
 	 private String name;    //名称
-	 private String raiseTime;  //筹集时间
+	 private int raiseTime;  //筹集时间
 	 private String raiseMoney;   //筹集资金
 	 private String raiseProportion;  //筹集比例
 	 private String realityMoney;   //已经筹集资金
@@ -15,6 +15,8 @@ public class TCrowdfunding {
 	 private String projectIntroduction;  //项目介绍
 	 private int supporter;  
 	 private int like; 
+	 private String releaseTime;  //发布时间
+	 private String expirationTime;  //截止时间
 	 
 	 
 	public Long getId() {
@@ -35,10 +37,11 @@ public class TCrowdfunding {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getRaiseTime() {
+	
+	public int getRaiseTime() {
 		return raiseTime;
 	}
-	public void setRaiseTime(String raiseTime) {
+	public void setRaiseTime(int raiseTime) {
 		this.raiseTime = raiseTime;
 	}
 	public String getRaiseMoney() {
@@ -88,6 +91,18 @@ public class TCrowdfunding {
 	}
 	public void setLike(int like) {
 		this.like = like;
+	}
+	public String getReleaseTime() {
+		return releaseTime;
+	}
+	public void setReleaseTime(String releaseTime) {
+		this.releaseTime = releaseTime;
+	}
+	public String getExpirationTime() {
+		return expirationTime;
+	}
+	public void setExpirationTime(String expirationTime) {
+		this.expirationTime = expirationTime;
 	}
 	
 	 

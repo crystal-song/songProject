@@ -48,6 +48,6 @@ public interface IptopDao {
 	 
 	 public TInvestmentInfo queryTInvestmentInfo(Long id) throws Exception;
      
-     
+	 public Double querySum(String number) throws Exception;
 
 }

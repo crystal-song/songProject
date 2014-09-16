@@ -179,6 +179,20 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		
 	}
 
+	@Override
+	public Double querySum(String number) throws Exception {
+		
+		String hql = "select sum(investmentAmount)  from  TInvestmentInfo  where enterpriseNumber = :number  and  state = :state";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("number", number);
+		query.setParameter("state", "0");
+		System.out.println("dddddd"+number);
+		
+		Double d=(Double) query.list().get(0);
+		System.out.println("cccccc"+d);
+		 return d;
+	}
+
 	
 	
 	

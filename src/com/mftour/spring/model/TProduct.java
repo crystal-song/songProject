@@ -16,7 +16,7 @@ public class TProduct implements java.io.Serializable{
 	    private Integer financingPeriod; //融资周期         2
 	    private Double financingProgress; //融资进度        4
 	    private String projectIntroduce;  //项目介绍
-	    private Double realityMoney=0.0;   //实际金额   
+	    private Double realityMoney;   //实际金额   
 	    private Integer projectStatus;  //项目状态
 	    private String companyProfile;    //公司介绍
 	    private String enterpriseCertificate;  //企业证书
