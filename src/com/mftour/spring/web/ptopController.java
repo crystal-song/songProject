@@ -193,18 +193,23 @@ public class ptopController {
 		          
 		            Double RealityMoney=t.getRealityMoney();
 		            System.out.println("vvvvvvvvvv"+investmentInfo.getInvestmentAmount()+"vvvvvvvvvvvvvvvv"+RealityMoney);
-		            if(RealityMoney==null){
+		            if(RealityMoney==null||RealityMoney==0.0){
 		            	t.setRealityMoney(investmentInfo.getInvestmentAmount());
 		            	t.setFinancingProgress(investmentInfo.getInvestmentAmount()/t.getFinancingMoney()*100);
 		            }else{
-		            	Double  money=RealityMoney+investmentInfo.getInvestmentAmount();
+		            	/*Double  money=RealityMoney+investmentInfo.getInvestmentAmount();
 		            	t.setRealityMoney(money);
-		            	t.setFinancingProgress(money/t.getFinancingMoney()*100);
+		            	t.setFinancingProgress(money/t.getFinancingMoney()*100);*/
+		            	
+		            	Double d=ptopService.querySum(investmentInfo.getEnterpriseNumber());
+		            	t.setRealityMoney(d);
+		            	t.setFinancingProgress(d/t.getFinancingMoney()*100);
 		            }
 		            
 		            System.out.println("vvvvvvvvvvvvvvvvvvvvvvvvvv");
 		            
-		            ptopService.addOrUpdate(t);
+		           ptopService.addOrUpdate(t);
+		           /* ptopService.querySum();*/
 		         
 		         
 		  List<TInvestmentInfo> list=ptopService.queryInvestmentInfoByNumber(investmentInfo.getEnterpriseNumber());
