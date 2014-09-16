@@ -21,3 +21,9 @@
         
     </div>
 </div>
+<div style="display:none"><!-- 百度统计代码 -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb22f51366ffad7f2637952d4acb0eade' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</div><!-- 百度统计代码end -->
