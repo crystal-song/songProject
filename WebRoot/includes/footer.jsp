@@ -15,7 +15,7 @@
 	<div class="copy_fra">
     	<div class="copy_left"><img src="<%=path%>/images/sy02_03.jpg"></div>
         <div class="copy_center">
-        	页面版权所有：中投汇融财富管理中心&nbsp;&nbsp;&nbsp;&nbsp;京ICP备13011445号<br>
+        	页面版权所有：中投汇融财富管理中心&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备14013075号-3</a><br>
 地址：北京市朝阳区工体北路13号院1号楼1501-1502室&nbsp;&nbsp;&nbsp;&nbsp;客服电话：010-84243099/3199
         </div>
         
