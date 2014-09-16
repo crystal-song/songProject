@@ -759,7 +759,7 @@ td{width:120px; height:36px; padding-right:30px}
 .zhedie{width:70px; height:40px; position:absolute; right:10px; top:50px; line-height:40px; cursor:pointer; text-align:left; background:url(../img/jiantou.png) no-repeat 35px 10px; font-size:14px;}
 
 
-
+#bodyframe{display:none; height:0px;over-flow:hidden;}
 
 
 
