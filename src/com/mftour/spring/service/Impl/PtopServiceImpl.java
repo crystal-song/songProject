@@ -182,6 +182,18 @@ public class PtopServiceImpl  implements  IptopService  {
 		
 	}
 
+
+
+	@Override
+	public Double querySum(String number) throws Exception {
+		
+		return ptopDao.querySum(number);
+	}
+	
+	
+	
+	
+
 	
 	
 	
