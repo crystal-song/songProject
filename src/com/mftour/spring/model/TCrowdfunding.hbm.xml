@@ -16,7 +16,7 @@
         <property name="projectNumber" type="java.lang.String">
             <column name="projectNumber" length="100" />
         </property>
-        <property name="raiseTime" type="java.lang.String">
+        <property name="raiseTime" type="java.lang.Integer">
             <column name="raiseTime" length="100" />
         </property>
          <property name="raiseMoney" type="java.lang.String">
@@ -43,6 +43,12 @@
         </property>
          <property name="like" type="java.lang.Integer">
             <column name="like" length="100" />
+        </property>
+        <property name="releaseTime" type="java.lang.String">
+            <column name="releaseTime" length="100" />
+        </property>
+        <property name="expirationTime" type="java.lang.String">
+            <column name="expirationTime" length="100" />
         </property>
        
     </class>
