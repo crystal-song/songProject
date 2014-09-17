@@ -14,12 +14,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
+
 var navIndex=3;
 $(document).ready(function(){
-	/*$('.select_nav a').click(function(){
+	$('.select_nav a').click(function(){
 		$(this).siblings().slideToggle('slow')
 		}
-	);	*/
+	);
 	
 	$(function(){
 	var num=0;
@@ -68,7 +69,22 @@ $(document).ready(function(){
 		}).mouseout(function(e){
 		$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao3.png")');
 		
-		});			
+		});		
+
+	$(".box_check").hide();	
+	$(".user_check p").mouseover(function(){
+		$(this).siblings('.box_check').show();
+		$('.box_check').mouseover(function(){
+			$(this).show();
+			});
+
+	}).mouseout(function(){
+		$(this).siblings('.box_check').hide();    
+		$('.box_check').mouseout(function(){
+			$(this).hide();
+			});
+		
+	    });
 	});
 </script>
 </head>
@@ -90,10 +106,10 @@ $(document).ready(function(){
                  <span><strong>${user1.name}</strong></span>
            </div>
            <div class="left_btm">
-                  <span class="sp1"><a href="#" title="您还未实名认证，请点击"></a></span>
-                  <span class="sp2"><a href="#" title="您还未绑定手机，请点击"></a></span>
-                  <span class="sp3"><a href="#" title="您还未验证邮箱，请点击"></a></span>
-                  <span class="sp4"><a href="#" title="您还未设置支付密码，请点击"></a></span>        
+                  <span class="sp1"><a href="<%=path%>/anquanshezhi.jsp" title="您未认证个人实名信息, 点击认证"></a></span>
+                  <span class="sp2"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定身份证，点击绑定"></a></span>
+                  <span class="sp3"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定手机号，点击绑定"></a></span>
+                  <span class="sp4"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定邮箱，点击绑定"></a></span>                  
            </div>
            <div class="loadbar">
              <div class="red_bar"></div>
@@ -115,8 +131,8 @@ $(document).ready(function(){
               </a>
               <ul style="display:none">
                   <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li>交易记录</li>
+                  <li>充值</li>
+                  <li>提现</li>
               </ul>
           </div>
           <div class="select_nav">
@@ -125,9 +141,7 @@ $(document).ready(function(){
 	              <span>消息管理</span>
             </a>
               <ul style="display:none">
-                  <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li>交易记录</li>
+                  <li>站内信息</li>                  
               </ul>
           </div>
           <div class="select_nav">
@@ -136,9 +150,9 @@ $(document).ready(function(){
                   <span>账户管理</span>
               </a>
               <ul style="display:none">
-                  <li>资产统计</li>
-                  <li>充值提现</li>
-                  <li style="border-bottom:0">交易记录</li>
+                  <li>个人信息</li>
+                  <li>安全设置</li>
+                  <li style="border-bottom:0">通知设置</li>
               </ul>
           </div>    
        </div>
@@ -156,32 +170,21 @@ $(document).ready(function(){
                </div>
                <div class="center">
                    <ul class="user_con_name">
-                     <li>用户名</li>
-                     <!-- <li>详情</li> -->
-                     <li>真实姓名</li>
-                     <li>身份证号码</li>
-                     <li>手机号码</li>
-                     <li>邮箱地址</li>  
-                   </ul>
-                   <ul class="user_con_mag">
-                     <li>${user1.name}</li>
-                    <!--  <li>...</li> -->
-                     <li>${user1.realName}</li>
-                     <li>${user1.identityCard}</li>
-                     <li>${user1.phone}</li>
-                     <li>${user1.email}</li>
-                   </ul>
-               </div>
-               <div class="user_right">
+                     <li>用户名</li><li>${user1.name}</li>
+                     <li>真实姓名</li><li>${user1.realName}</li>
+                     <li>身份证号码</li><li>${user1.identityCard}</li>
+                     <li>手机号码</li><li>${user1.phone}</li>
+                     <li>邮箱地址</li><li>${user1.email}</li>
+                   </ul>                  
+               </div>               
+               <div class="user_right">            
                    <ul class="user_check">
-                     <li class="xiangqing"><a href="#">详情</a></li>
-                     <li>未认证</li>
-                     <li>未绑定</li>
-                     <li>未绑定</li>
-                     <li>未绑定</li>
-                     <li>未绑定</li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">用户注册时填写的用户名，不可更改</div><span class="box_right"></span></div><p class="xiangqing">详情</p></li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未认证个人实名信息， <a href="<%=path%>/anquanshezhi.jsp">实名认证</a></div><span class="box_right"></span></div><p>未认证</p></li>                  
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定身份证，实名认证即可成功绑定身份证， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定手机号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定邮箱号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>            
                    </ul>
-               
                </div>             
            </div>
            <div class="user_con_last">
