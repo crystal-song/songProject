@@ -14,7 +14,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" >
 
-
 function query(){
 	/* alert("ccccccccccc"); */
  
