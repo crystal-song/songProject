@@ -18,7 +18,6 @@ var c_name=false;
 var c_pwd=false;
 var c_repwd=false;
 var c_email=false;
-
 function chk_name(){
 	
 	 var name = $("#name").val();
