@@ -213,9 +213,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <li>充值过程遇到问题，请联系客服，400-600-4300 </li>
 			            </ol>
                </div>
-	          </div> 
-	          
-	             
+	          </div>             
 	       </div>
 	   </div>            
    </div>           
