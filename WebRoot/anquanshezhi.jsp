@@ -21,6 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	);
     	$(function(){
     		var num=0;
+    		
+    		
     		var timer=null;
     		timer=setInterval(function(){
     			num++;
@@ -100,9 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	 
              }
          })
-         
-         
-         
+                 
 });
          
 
