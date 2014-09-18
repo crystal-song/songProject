@@ -53,7 +53,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .xq_left{ float:left; width:184px; height:112px; border:1px solid #c4c3c3; text-align:center; padding:6px; }
 .xq_left a{margin:0; display:inline-block; width:180px; height:110px;}
 .xq_left a img{width:180px; height:110px;}
-.xq_left a p{margin:0; display:inline-block;}
+.xq_left a p{margin:0; display:inline-block; }
 .xq_right{ float:right; width:492px; height:184px;}
 .xq_table{ width:490px; height:84px; border:1px solid #cdcdcd; background:url(../images/sy_60.jpg);}
 .xq01{ float:left; width:104px; height:84px;}
@@ -186,11 +186,8 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .wz_nr{ width:762px; height:auto; line-height:3em; text-align:left; padding:5px 18px 0px 18px; text-indent:25px;}
 
 .xx_right{ float:right; width:285px; height:auto;}
-
 .blank_block{ width:803px; min-height:160px; background:#FFF;  padding:0px; margin:0px auto;}
-
 .blank_block_title{ width:793px; height:32px;background:url(../images/touzi_title.jpg) no-repeat; text-align:left; font-size:18px; font-weight:bold; padding-top:13px; padding-left:10px; color:#fff;}
-
 .blank_block_content{ padding:20px; text-align:left; background:#f6f6f6;}
 
 .reg{ font-size:18px; line-height:36px; font-family:"微软雅黑", "黑体"; padding-left:25%;}
@@ -202,7 +199,6 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 
 .btn_login{ background:url(../images/dl01_03.jpg) no-repeat center; width:109px!important; height:40px!important; border:none!important; cursor:pointer;}
 .btn_reg{ background:url(../images/dl01_05.jpg) no-repeat center; width:109px!important; height:40px!important; border:none!important; cursor:pointer;}
-
 .zh_wby:focus{ border:none;}
 
 .tip_f{
@@ -446,7 +442,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .user_bottom ol{padding:0; margin:20px;}
 .user_bottom li{text-align:left; margin-top:10px;}
 
-.user_con_last{width:866px; height:710px;  margin:10px auto;}
+.user_con_last{width:866px; height:560px;  margin:10px auto;}
 .center_last{width:650px; height:300px;  float:left; margin-left:146px;}
 .user_con_last_name{float:left; width:200px; }
 .user_con_last_name li{width:180px; height:30px;  margin:10px; line-height:30px; text-align:right; font-size:16px;}
@@ -757,6 +753,16 @@ td{width:120px; height:36px; padding-right:30px}
 .xitong p{margin:0; padding:0}
 .hide_div{width:845px; height:auto; border:1px solid #ccc; background:#f5f5f5; line-height:50px; margin-bottom:20px; font-size:14px; text-align:left; padding-left:20px}
 .zhedie{width:70px; height:40px; position:absolute; right:10px; top:50px; line-height:40px; cursor:pointer; text-align:left; background:url(../img/jiantou.png) no-repeat 35px 10px; font-size:14px;}
+.zi_num{width:866px; height:50px; display:inline-block;}
+.zi_num span{ display:inline-block; width:80px; height:50px;}
+.zi_num strong{font-size:18px; color:#ff6d00; display:inline-block; }
+.zi_num i{margin-left:5px; font-style:normal}
+.gray_bar{width:350px; height:190px;}
+.gray_bar li{width:350px; height:34px; background:#eeeeee; margin-bottom:5px; line-height:34px;}
+.gray_bar span{width:154px; height:34px; display:inline-block; float:left; line-height:34px;}
+.gray_bar strong{float:left;font-size:16px; color:#ff6d00; height:34px; line-height:34px;}
+.gray_bar i{float:left; margin-left:5px; height:34px; line-height:34px; font-style:normal}
+.shouyi_pic{width:350px; height:190px; background:pink;}
 
 
 #bodyframe{display:none; height:0px;over-flow:hidden;}
@@ -768,6 +774,8 @@ td{width:120px; height:36px; padding-right:30px}
 
 
 
+<<<<<<< .mine
+=======
 
 
 
@@ -776,3 +784,4 @@ td{width:120px; height:36px; padding-right:30px}
 
 
 
+>>>>>>> .r318
