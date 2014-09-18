@@ -13,6 +13,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 var navIndex=2;
+$(document).ready(function(){
+	$('.bzl_list ul li').click(function(){
+	    $(this).addClass('aqbz').siblings().removeClass('aqbz');
+	});
+	
+	
+	
+	
+})
 </script>
 </head>
 
@@ -34,7 +43,6 @@ var navIndex=2;
     	<div class="bzr_tit">
         	<ul>
             	<li class="bzr_qian">我的账户</li>
-
             </ul>
         </div>
         <div class="clear"></div>
