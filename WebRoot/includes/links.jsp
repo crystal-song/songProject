@@ -9,8 +9,7 @@
             	<img src="<%=path%>/img/fuyou.jpg">
                 <img src="<%=path%>/img/minshengcaifu.jpg">
                 <img src="<%=path%>/img/yibao.jpg">
-                <img src="<%=path%>/img/zhongrong.jpg">
-               
+                <img src="<%=path%>/img/zhongrong.jpg">      
             <div class="bot_right"><img src="<%=path%>/img/sy_right.jpg"></div>
         </div>
     </div>
