@@ -61,9 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			}).mouseout(function(e){
     			$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao3.png")');
     			
-    			});	
-    	
-    	
+    			});	    	
          $(".ren_right").click(function(){
              var a=$(this).parent().parent().children('.yincang').slideToggle();        
         	 var text=$(this).text()
@@ -110,7 +108,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	     $(this).text('展开');
         	     $(this).css('background-image','url("<%=path%>/img/jiantou.png")');
         	 }
-        	 
          });  
          
          $('.kitt li').mouseover(function(){       	 
@@ -196,22 +193,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <h2>站内消息</h2>
            </div>
            <div class="user_con02">
-
-
             <ul class="kitt">
               <li>状态</li>
               <li class="all_org">全部</li>
               <li>未读</li>
               <li>已读</li>
-            </ul>
-            
+            </ul> 
             <div class="xitong">
               <div class="zhedie"><strong>展开</strong></div>
               <h3>系统通知</h3>
               <p>2014-07-25 09:55:23</p>
               <p>恭喜您获得注册奖励面值50元投资券！</p>
               <div class="hide_div" style="display:none">亲爱的用户，感谢您在爱投资平台注册，并获得注册奖励面值50元投资券！请您及时登录爱投资账户查看。 </div>
- 
             </div>
             <div class="xitong">
               <div class="zhedie"><strong>展开</strong></div>
@@ -219,8 +212,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <p>2014-07-25 09:55:23</p>
               <p>恭喜您获得注册奖励面值50元投资券！</p>
               <div class="hide_div" style="display:none"> 
-                                 亲爱的用户zhaoshuang您好，<br>
-                                 您已经成功注册，欢迎您加入爱投资！<br>
+                                 亲爱的用户zhaoshuang您好，<br />
+                                 您已经成功注册，欢迎您加入爱投资！<br />
                                  希望我们可以为您提供更加优质的服务，让您的财富稳健增长。
               </div>
             </div>  
@@ -228,7 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   </div>
     </div>            
   </div>           
-</div>
+
 <div class="clear_height"></div>
 
 <!-- links start -->
