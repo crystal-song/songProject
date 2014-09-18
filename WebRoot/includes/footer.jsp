@@ -2,7 +2,7 @@
 <div class="menu">
 	<div class="menu_fra">
     	<ul>
-        	<li class="fir_li"><a href="#"><a href="<%=path%>/help.jsp">关于我们</a></li>
+        	<li class="fir_li"><a href="<%=path%>/help.jsp">关于我们</a></li>
             <li><a href="<%=path%>/question.jsp">常见问题</a></li>
             <li><a href="<%=path%>/security.jsp">安全策略</a></li>
             <li><a href="<%=path%>/notice.jsp">法律声明</a></li>
