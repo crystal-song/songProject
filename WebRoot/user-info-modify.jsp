@@ -68,7 +68,23 @@ $(document).ready(function(){
 		}).mouseout(function(e){
 		$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao3.png")');
 		
-		});			
+		});
+	
+	$(".box_check").hide();	
+	$(".user_check p").mouseover(function(){
+		$(this).siblings('.box_check').show();
+		$('.box_check').mouseover(function(){
+			$(this).show();
+			});
+
+	}).mouseout(function(){
+		$(this).siblings('.box_check').hide();    
+		$('.box_check').mouseout(function(){
+			$(this).hide();
+			});
+		
+	    });
+	
 	});
 </script>
 </head>
@@ -156,30 +172,20 @@ $(document).ready(function(){
                </div>
                <div class="center">
                    <ul class="user_con_name">
-                     <li>用户名</li>
-                    <!--  <li>详情</li> -->
-                     <li>真实姓名</li>
-                     <li>身份证号码</li>
-                     <li>手机号码</li>
-                     <li>邮箱地址</li>  
-                   </ul>
-                   <ul class="user_con_mag">
-                      <li>${user1.name}</li>
-                    <!--  <li>...</li> -->
-                     <li>${user1.realName}</li>
-                     <li>${user1.identityCard}</li>
-                     <li>${user1.phone}</li>
-                     <li>${user1.email}</li>
-                   </ul>
+                     <li>用户名</li><li>${user1.name}</li>
+                     <li>真实姓名</li><li>${user1.realName}</li>
+                     <li>身份证号码</li><li>${user1.identityCard}</li>
+                     <li>手机号码</li><li>${user1.phone}</li>
+                     <li>邮箱地址</li><li>${user1.email}</li>
+                   </ul>   
                </div>
                <div class="user_right">
                    <ul class="user_check">
-                     <li class="xiangqing"><a href="#">详情</a></li>
-                     <li>未认证</li>
-                     <li>未绑定</li>
-                     <li>未绑定</li>
-                     <li>未绑定</li>
-                     <li>未绑定</li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">用户注册时填写的用户名，不可更改</div><span class="box_right"></span></div><p class="xiangqing">详情</p></li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未认证个人实名信息， <a href="<%=path%>/anquanshezhi.jsp">实名认证</a></div><span class="box_right"></span></div><p>未认证</p></li>                  
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定身份证，实名认证即可成功绑定身份证， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定手机号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定邮箱号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>            
                    </ul>
                
                </div>             
@@ -267,8 +273,11 @@ $(document).ready(function(){
                        </select>       
                      </li>
                    </ul>
-                   <input type="submit" class="submit01" value="保存"/><a href="<%=path%>/user/cancelUpdate?name=${user1.name}"> <input type="button" class="submit02" value="取消"/></a>
+                   
                </div>
+               
+                <a href="<%=path%>/user/cancelUpdate?name=${user1.name}"><input type="button" class="submit02" value="取消"/></a>
+                <input type="submit" class="submit01" value="保存"/>
                 </form>
               
            </div>
