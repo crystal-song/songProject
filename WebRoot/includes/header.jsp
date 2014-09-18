@@ -36,6 +36,6 @@
     </div>
 </div>
 <script type="text/javascript">
-if(var navIndex!=null&&navIndex!=-1)$(".nav ul li").eq(navIndex).children("a").addClass("currentNav");
+if(navIndex!=null&&navIndex!=-1)$(".nav ul li").eq(navIndex).children("a").addClass("currentNav");
 
 </script>
