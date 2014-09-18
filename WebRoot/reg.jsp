@@ -124,7 +124,7 @@ function chk_email(){
 		
 		if(c_name&&c_pwd&&c_repwd&&c_email){
 	
-	alert("all check pass!");
+	/* alert("all check pass!"); */
 	/*  Form.action="welcome/register"; 
 	 Form.submit();  */
 	 
