@@ -191,7 +191,7 @@ $(document).ready(function(){
                </div>             
            </div>
            <div class="user_con_last">
-                <form id="form"  action="<%=path%>/user/update" id="form" method="post"    >
+               <form id="form"  action="<%=path%>/user/update" id="form" method="post" style="width:866px; height:595px; overflow:hidden ">
                  <input type="hidden"  name="id" id="id" value="${user1.id}" />
                  <input type="hidden"  name="name" id="name" value="${user1.name}" />
                  <input type="hidden"  name="password" id="password" value="${user1.password}" />
@@ -259,9 +259,9 @@ $(document).ready(function(){
                             <option value="500人以上">500人以上</option> 
                        </select>
                      </li>
-                     <li><input type="text" class="text01"  name="position"   value="${user1.position}"  /></li>
+                     <li><input type="text" class="text01"  name="position"   value="${user1.position}" /></li>
                      <li>
-                       <select class="select01"  name="income" value="${user1.income}"  >
+                       <select class="select01"  name="income" value="${user1.income}">
                             <option value="">请选择</option>
                             <option value="1000元以下">1000元以下</option>
                             <option value="1001-2000元">1001-2000元</option>
@@ -272,12 +272,13 @@ $(document).ready(function(){
                             <option value="50000元以上">50000元以上</option> 
                        </select>       
                      </li>
-                   </ul>
-                   
+                   </ul>    
                </div>
-               
+               <div class="clear"></div>
+               <div class="use_btn">
                 <a href="<%=path%>/user/cancelUpdate?name=${user1.name}"><input type="button" class="submit02" value="取消"/></a>
                 <input type="submit" class="submit01" value="保存"/>
+               </div>
                 </form>
               
            </div>
