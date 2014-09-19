@@ -111,7 +111,7 @@ window.onload=function(){
         	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名"/></div>
             <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码"/></div>
             <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="<%=path%>/reg.jsp"><img src="<%=path%>/images/dl01_05.jpg" /></a>
-            </div>
+</div>
         </div>
          
     </div>
