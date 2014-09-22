@@ -150,9 +150,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span>资产管理</span>
               </a>
               <ul style="display:none">
-                  <li>资产统计</li>
-                  <li>充值</li>
-                  <li>提现</li>
+                  <li><a href="<%=path%>/zichan.jsp">资产统计</a></li>
+                  <li><a href="<%=path%>/chongzhi.jsp">充值</a></li>
+                  <li><a href="<%=path%>/tixian.jsp">提现</a></li>
               </ul>
           </div>
           <div class="select_nav">
@@ -161,7 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              <span>消息管理</span>
             </a>
               <ul style="display:none">
-                  <li>站内信息</li>                  
+                  <li><a  href="<%=path%>/zhanneitongzhi.jsp">站内信息</a></li>                  
               </ul>
           </div>
           <div class="select_nav">
@@ -169,10 +169,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <i class="bac_change_3"></i>
                   <span>账户管理</span>
               </a>
-              <ul style="display:none">
-                  <li>个人信息</li>
-                  <li>安全设置</li>
-                  <li style="border-bottom:0">通知设置</li>
+              <ul style="display:block">
+                  <li><a href="<%=path%>/user-info.jsp">个人信息</a></li>
+                  <li><a href="<%=path%>/anquanshezhi.jsp">安全设置</a></li>
+                  <li style="border-bottom:0"><a href="<%=path%>/tongzhishezhi.jsp">通知设置</a></li>
               </ul>
           </div>    
        </div>
