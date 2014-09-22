@@ -8,6 +8,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <%@ include file="/includes/taglibs.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!--[if (gte IE 5.5)&(lt IE 8)]>
+你在使用 IE 5.5 以上，低于IE8 版本的IE浏览器，建议您更新浏览器版本至IE8+.
+<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <Link href="/favicon.ico" rel="Shortcut Icon">
