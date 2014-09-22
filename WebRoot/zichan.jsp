@@ -11,7 +11,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户中心页面</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+<link href="<%=path%>/js/cleonello-jqplot-e8af8a37f0f1/src/jquery.jqplot.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=path%>/js/cleonello-jqplot-e8af8a37f0f1/src/jquery.min.js"></script>
+<script type="text/javascript" src="<%=path%>/js/cleonello-jqplot-e8af8a37f0f1/src/jquery.jqplot.js"></script>
+<script type="text/javascript" src="<%=path%>/js/cleonello-jqplot-e8af8a37f0f1/src/excanvas.js"></script>
+<script type="text/javascript" src="<%=path%>/js/cleonello-jqplot-e8af8a37f0f1/src/plugins/jqplot.pointLabels.js"></script>  
 <script type="text/javascript">
     var navIndex=3;    
     $(document).ready(function(){
@@ -81,8 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	 }else if(text=="设置"){
         		 $(this).text("取消设置")
         	 }else if(text=="取消设置"){     		 
-        		 $(this).text("设置")
-        		 
+        		 $(this).text("设置") 		 
         	 } 
          });    	   	 
          $('.aa').click(function(){
@@ -96,8 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              }
          });
          
-         $(".zhedie").click(function(){
-        	
+         $(".zhedie").click(function(){  	
         	 if($(this).text()=='展开'){
         	     $(this).siblings('.hide_div').css('display','block');
         	     $(this).text('收起');
@@ -109,10 +112,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	     $(this).css('background-image','url("<%=path%>/img/jiantou.png")');
         	 }
          });  
-         
          $('.kitt li').mouseover(function(){       	 
         	 $(this).addClass('all_org').siblings().removeClass('all_org');    	 
          });
+         
+         
+         
+    //tubiao     
+        var a=10;
+     	var b=50;
+        var c=100;
+     	var d=110;
+     	var e=150;
+
+     	$.jqplot('chartdiv',  [[[0,c],[20,b],[40,a],[60,d],[80,e],[100,a],[120,c],[140,b],[160,d],[180,e],[200,d],[220,e]]],
+     	{ title:'收益走势图',
+     	  seriesDefaults: {
+     		  pointLabels: { show: true } 
+     		  }, 
+     	  axes:{yaxis:{ticks: [0,50,100,150,200],
+     	               label:"收益(￥)"
+     	  },
+     	        xaxis: {   
+                        label:"月份(2014年)",
+     				    ticks: [[0,'1月'],[20,'2月'],[40,'3月'],[60,'4月'],[80,'5月'],[100,'6月'],[120,'7月'],[140,'8月'],[160,'9月'],[180,'10月'],[200,'11月'],[220,'12月']],				        
+     			}
+     	}
+     	});
+               
 });
   
 </script>
@@ -150,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </div>
        </div>
        <div class="msg_left_cent">
-          <a class="msg_nav">
+          <a class="msg_nav" href="<%=path%>/user-info.jsp">
                <i style="background:url(<%=path%>/img/tubiao5.png) no-repeat"></i>
                <span>账户主页</span>
           </a>
@@ -159,10 +186,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <i class="bac_change_1"></i>
                 <span>资产管理</span>
               </a>
-              <ul style="display:none">
-                  <li>资产统计</li>
-                  <li>充值</li>
-                  <li>提现</li>
+              <ul style="display:block">
+                  <li><a href="<%=path%>/zichan.jsp">资产统计</a></li>
+                  <li><a href="<%=path%>/chongzhi.jsp">充值</a></li>
+                  <li><a href="<%=path%>/tixian.jsp">提现</a></li>
               </ul>
           </div>
           <div class="select_nav">
@@ -171,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              <span>消息管理</span>
               </a>
               <ul style="display:none">
-                  <li>站内信息</li>                  
+                  <li><a  href="<%=path%>/zhanneitongzhi.jsp">站内信息</a></li>                  
               </ul>
           </div>
           <div class="select_nav">
@@ -180,9 +207,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <span>账户管理</span>
               </a>
               <ul style="display:none">
-                  <li>个人信息</li>
-                  <li>安全设置</li>
-                  <li style="border-bottom:0">通知设置</li>
+                  <li><a href="<%=path%>/user-info.jsp">个人信息</a></li>
+                  <li><a href="<%=path%>/anquanshezhi.jsp">安全设置</a></li>
+                  <li style="border-bottom:0"><a href="<%=path%>/tongzhishezhi.jsp">通知设置</a></li>
               </ul>
           </div>    
        </div>     
@@ -206,10 +233,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <h2>待收收益</h2>
              </div>             
 	             <p class="zi_num"><span>待收收益:</span><strong>0.00</strong><i>元</i></p>	             
-		            <div class="gray_bar"></div>         
-		            <span>可用余额:</span><strong>0.00</strong><i>元</i>          
+		           
+                    <div class="gray_bar">
+		              <div class="gray_bac">
+		                <span>可用余额:</span><strong>0.00</strong><i>元</i>
+		             </div> 
+		            </div>  
+		            <div class="tubiao">
+		            <div id="chartdiv" style="height:250px;width:500px; "></div> 
+		            </div>
+		                          
 	       </div>    
-	         
 	       <div class="user_con02">
 	         <div class="msg_title">
                <h2>已收收益</h2>
