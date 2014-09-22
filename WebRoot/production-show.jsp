@@ -109,8 +109,14 @@ $(document).ready(function(){
         </select>    
       </div>
     </div>
+<<<<<<< .mine
+    <div class="main_content">    
+          <ul>
+          <!--  
+=======
     <div class="main_content">     
           <ul class="clearfix">
+>>>>>>> .r287
             <%-- <li>
               <div class="floor_num">
                  <a class="floor_img"><img src="<%=path%>/img/num1.png" width="256" height="170" />
@@ -144,7 +150,13 @@ $(document).ready(function(){
  <!--  </IFRAME>   -->
  </div>        
       
+<<<<<<< .mine
+            -->
+                             
+            <li>              
+=======
             
+>>>>>>> .r287
              <c:if test="${ not empty list}">
         <c:forEach var="s" items="${list}" varStatus="i">
                 <li>
@@ -175,13 +187,13 @@ $(document).ready(function(){
               </div>
               </li>
               
-               </c:forEach>
-   
-	 
+               </c:forEach> 
         </c:if>
         
             
-           <%--  <li>
+           
+            <!--
+            <li>
             
             
               <div class="floor_num">
@@ -224,8 +236,8 @@ $(document).ready(function(){
                    <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em></a><a style="float:right; color:#a4a4a4;">剩余时间</a></span>
                  </div>
               </div>
-            </li> --%>
-            <%-- <li>
+            </li>
+          <li>
              <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
@@ -540,8 +552,8 @@ $(document).ready(function(){
                    <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em></a><a style="float:right; color:#a4a4a4;">剩余时间</a></span>
                  </div>
               </div>
-            </li> --%>
-            <%-- <li>
+            </li>
+            <li>
               <div class="floor_num">
                  <a class="floor_img"><img src="img/num1.png" width="256" height="170" />
                  </a>
@@ -561,7 +573,11 @@ $(document).ready(function(){
                    <span><a class="baifenbi" style="float:right; text-align:right;">25<em>天</em></a><a style="float:right; color:#a4a4a4;">剩余时间</a></span>
                  </div>
               </div>
-            </li> --%>
+            </li> -->
+            
+            
+            
+            
           </ul>
            <div class="redus">
              <!-- <a class="redus_last">下一页</a> -->
