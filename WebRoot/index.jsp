@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <%@ include file="/includes/taglibs.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>中投汇</title>
@@ -15,10 +16,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 var navIndex=0;
+$(document).ready(function(){
+	$('.res').click(function(){
+		$('.ie_text').css('display','none');
+		//alert('ok')
+	  });
+	});
 </script>
 </head>
 <body>
+
+
+<!--[if lt IE 8]>
+<div class="ie_text">你在使用 IE5.5 以上低于 IE8 版本的IE浏览器，建议您更新浏览器版本至IE8以上查看.
+<div class="res"></div>
+</div>
+
+<![endif]-->
+
 <!-- top start  -->
+
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
@@ -116,7 +133,7 @@ var navIndex=0;
             <div class="ind_list">
             
             	<%-- <div class="xq_left"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}"><img src="<%=path%>/images/sy_63.jpg" /></a></div> --%>
-            	<div class="xq_left"><a href="#"><p>${s.projectPicture}</p></a></div>
+            	<div class="xq_left"><a href="#">${s.projectPicture}</a></div>
                 <div class="ind_right">
                 	<div class="tuijian">
                     	<div class="tj_left">推荐项目:<span class="hong"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></span></div>
