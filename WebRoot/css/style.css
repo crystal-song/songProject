@@ -9,6 +9,8 @@ a{ color:#5d5d5d; text-decoration:none;}
 a:hover{ color:#333; text-decoration:none;}
 ul,li{ margin:0px; padding:0px; list-style:none;}
 
+.ie_text{width:100%; height:40px; line-height:40px; background:#dadada; color:#000; font-size:14px; position:relative;}
+.res{width:40px; height:40px; background:url(../img/cha.png); position:absolute; top:0; right:5px}
 .top{ width:100%; height:29px; background:url(../images/sy_02.jpg);}
 .top_fra{ width:1100px; height:29px; margin:0 auto;}
 .top_left{ float:left; width:550px; height:29px;}
@@ -52,10 +54,10 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .xq_tab{ width:735px; height:184px; background:#fff; border-bottom:1px solid #b1b1b1; border-left:1px solid #b1b1b1; border-right:1px solid #b1b1b1; padding:0px 40px 0px 26px;}
 .xq_left{ float:left; width:184px; height:112px; border:1px solid #c4c3c3; text-align:center; padding:6px; margin-right:20px; margin-top:8px}
 .xq_left a{margin:0; display:inline-block; width:180px; height:110px;}
-.xq_left a img{width:180px; height:110px;}
+.xq_left a img{width:180px; height:110px; display:inline-block;}
 .xq_left a p{margin:0; display:inline-block; }
 .xq_left p{margin:0; display:inline-block; }
-.xq_left img{max-width:184px; max-height:114px;*width:184px;*height:114px;}
+.xq_left img{max-width:184px; max-height:114px; display:inline-block;}
 .xq_right{ float:right; width:492px; height:184px;}
 .xq_table{ width:490px; height:84px; border:1px solid #cdcdcd; background:url(../images/sy_60.jpg);}
 .xq01{ float:left; width:104px; height:84px;}
@@ -71,7 +73,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .jd_right{ float:right; width:272px; line-height:28px; text-align:left; font-size:14px; font-weight:600; letter-spacing:1px;}
 .jd_font{ width:490px; height:28px;}
 .qucu{ font-weight:normal;}
-.ind_list{ width:735px; height:160px; background:#FFF; border:1px solid #b2b2b2; padding:25px 40px 0px 26px; *+padding-right:78px}
+.ind_list{ width:735px;  height:160px; background:#FFF; border:1px solid #b2b2b2; padding:25px 40px 0px 26px; }
 .ind_right{ float:right; width:492px; height:160px;}
 .tuijian{ width:492px; letter-spacing:1px; padding-bottom:5px; height:25px; padding-top:5px;}
 .tj_left{ float:left; width:270px; height:23px; line-height:23px; font-size:14px; font-weight:600; text-align:left;}
@@ -146,7 +148,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .zh_left{ float:left; width:311px; height:92px; padding:133px 117px 0px 140px;}
 .zh_right{ float:right; width:239px; height:171px; margin:102px 220px 0px 0px; background:url(../images/dl_06.jpg) no-repeat; padding:72px 34px 0px 34px; *+padding-bottom:30px}
 .zh_bot{ width:239px; height:50px; padding-top:24px; text-align:left;}
-.zh_wby{ width:220px; height:36px; line-height:36px; text-align:left; border:0px; margin-bottom:3px; margin-right:19px; margin-top:2px; color:#ccc}
+.zh_wby{ width:220px; height:36px; line-height:36px; text-align:left; border:0px; margin-bottom:3px; margin-right:19px; margin-top:2px; color:#ccc; *+margin-top:0px;}
 .zh_bot a{display:inline-block; float:right}
 .zh_bot input{display:inline-block; float:left}
 
@@ -259,9 +261,9 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 
 .btm_border{ border-bottom: 1px solid #E4E4E4;}
 
-.progress_80{ width:80px; height:10px;  background:url(../images/progress_bg_80px.jpg) center no-repeat; margin:1px;}
+.progress_80{ width:80px; height:10px;  background:url(../images/progress_bg_80px.jpg) center no-repeat; margin:1px; overflow:hidden}
 .progress_160{ width:160px; height:10px; background:url(../images/progress_bg_160px.jpg) center no-repeat; margin:1px;}
-.progress_bar{width:50px;  height:10px; *+margin-top:2px;; background:url(../images/progress_bar.jpg) repeat-x;}
+.progress_bar{width:50%;  height:100%;  background:url(../images/progress_bar.jpg) repeat-x; line-height:10px; overflow:hidden}
 
 
 
@@ -330,7 +332,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .sp4{width:30px; height:30px;  float:left; margin-left:5px; background:#ebebeb; border-radius:5px;}
 .sp4 a{width:20px; height:20px; background:url(../img/tubiao8.png) no-repeat; display:inline-block; margin-top:4px;}
 .loadbar{width:138px; height:8px; background:#ebebeb; margin:0 auto; border-radius:5px; }
-.red_bar{width:138px; height:8px; border-radius:5px; background:#990000; float:left} 
+.red_bar{width:98px; height:8px; border-radius:5px; background:#990000; float:left} 
 .view{width:138px; height:28px;  margin:0 auto; line-height:28px;}
 .view span{float:left;}
 .view strong{color:#990000;}
@@ -339,7 +341,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .select_nav{width:194px; height:auto;}
 .select_nav ul{display:none;}
 .select_nav li{width:194; height:40px; background:#FFF; line-height:40px; border-bottom:1px solid #ddd; cursor:pointer;}
-
+.select_nav li a{width:194; height:40px; display:inline-block}
 .msg_nav{background:#f4f4f4; width:194px; height:40px; line-height:40px; margin-bottom:3px; display:inline-block;}
 .msg_nav span{width:50px;  padding-top:2px; cursor:pointer; height:22px; display:inline-block; margin:8px 0 0 5px;; line-height:22px; float:left}
 .msg_nav i{width:20px; height:22px; display:inline-block; float:left; margin:8px 0 0 50px}
@@ -398,7 +400,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .msg_div03{width:188px; height:102px; float:left; border-right:1px solid #ddd; margin-top:10px;}
 .msg_div04{width:188px; height:102px; float:left;  margin-top:10px;}
 .msg_right_main{width:886px; height:auto; border:1px solid #ddd; border-radius:5px; margin-top:14px;}
-.msg_title{width:866px; height:30px; margin:10px auto; border-bottom:2px solid #ddd; color:#000;}
+.msg_title{width:866px; height:30px; margin:10px auto; border-bottom:2px solid #ddd; color:#000; clear:both}
 .msg_title a{float:right; color:#3d68ef; margin-top:8px;}
 .msg_title h2{width:76px; height:28px; float:left;  margin:2px 0 2px 0; border-bottom:2px solid #818181; font-size:18px;}
 .shouyi{width:866px; height:300px; background:#FFF; margin:0 10px;}
@@ -697,7 +699,7 @@ td{width:120px; height:36px; padding-right:30px}
 .yincang input{height:40px; margin:0}
 .huoqu{width:90px; height:30px; background:#f60; border:1px solid #f90; display:inline-block; text-align:center; border-radius:5px; color:#fff; line-height:30px; font-size:12px}
 .next_btn{width:100px; height:30px; background:#f60; border:1px solid #f90; display:inline-block; text-align:center;
-          border-radius:5px; color:#fff; line-height:30px; margin-left:160px; float:left; font-size:12px}
+          border-radius:5px; color:#fff; line-height:30px; margin-left:165px; float:left; font-size:12px}
 .yincang select{height:40px; width:160px}
 .yincang .sub_m{margin:0px 18px 0 160px; float:left}
 .aa{float:left; height:40px; line-height:40px; color:blue; cursor:pointer; font-size:14px}
@@ -733,22 +735,23 @@ td{width:120px; height:36px; padding-right:30px}
 
 /*tixian*/
 .user_con01{width: 866px; height:auto;  margin:0 auto;}
-.user_con02{width: 866px; height:auto;  margin:0 auto; position:relative}
+.user_con02{width: 866px; height:auto;  margin:0 auto; position:relative; overflow:hidden}
 .user_con02 p{width:866px; height:40px; text-align:left; padding:10px; font-size:14px}
 .post_car{width:800px; height:auto;}
 .post_car li{width:800px; height:50px;}
 .post_car span{display:inline-block; width:230px; height:40px; float:left; margin-left:15px; margin-right:45px; text-align:left; line-height:40px}
 .btn_tijao input{width:70px; height:30px; margin-bottom:10px}
-.btn_bac{background:#f60; border:1px solid #eb6a05;}
+.btn_bac{background:#f60; border:1px solid #eb6a05; margin-top:10px}
 .post_car span select{width:160px; margin-top:8px}
 .post_car .ti_wh{width:150px; height:40px; text-align:right;}
-.post_car input{ margin-top:9px}
+.post_car .post_a a{display:inline-block; *+margin-top:-25px}
+.post_car input{ margin-top:9px;}
 .post_car .choes_pro{width:76px; height:24px}
 .w_tishi{width:800px; height:200px; }
 .w_tishi p{margin:5px; padding:0; color:#e25353;}
 .user_con02 .jine{width:850px; border-top:1px solid #ccc;}
 .post_car a{width:55px; height:25px; border:1px solid #ccc; display:inline-block; float:right; margin-top:5px;}
-.post_car strong{font-size:14px; color:$f90; width:50px; display:inline-block}
+.post_car strong{font-size:14px; color:#f90; width:50px; display:inline-block}
 .post_car i{font-style:normal;}
 .kitt{width:866px; height:50px;}
 .kitt li{width:60px; height:30px; float:left; line-height:30px;  border-radius:5px; cursor:pointer}
@@ -758,19 +761,20 @@ td{width:120px; height:36px; padding-right:30px}
 .xitong p{margin:0; padding:0}
 .hide_div{width:845px; height:auto; border:1px solid #ccc; background:#f5f5f5; line-height:50px; margin-bottom:20px; font-size:14px; text-align:left; padding-left:20px}
 .zhedie{width:70px; height:40px; position:absolute; right:10px; top:50px; line-height:40px; cursor:pointer; text-align:left; background:url(../img/jiantou.png) no-repeat 35px 10px; font-size:14px;}
-.zi_num{width:866px; height:50px; display:inline-block;}
-.zi_num span{ display:inline-block; width:80px; height:50px;}
+.zi_num{width:846px; height:50px;  display:inline-block;}
+.zi_num span{ display:inline-block;  width:80px; height:16px;}
 .zi_num strong{font-size:18px; color:#ff6d00; display:inline-block; }
 .zi_num i{margin-left:5px; font-style:normal}
-.gray_bar{width:350px; height:190px;}
+.gray_bar{width:350px; height:190px; *+margin-left:0; float:left}
 .gray_bar li{width:350px; height:34px; background:#eeeeee; margin-bottom:5px; line-height:34px;}
 .gray_bar span{width:154px; height:34px; display:inline-block; float:left; line-height:34px;}
 .gray_bar strong{float:left;font-size:16px; color:#ff6d00; height:34px; line-height:34px;}
 .gray_bar i{float:left; margin-left:5px; height:34px; line-height:34px; font-style:normal}
 .shouyi_pic{width:350px; height:190px;}
-
-
+.gray_bar01{width:350px; height:34px; background:#eeeeee; margin-bottom:5px; line-height:34px;}
+.gray_bac{width:350px; height:34px; background:#eeeeee; margin-bottom:5px; line-height:34px;}
 #bodyframe{display:none; height:0px;over-flow:hidden;}
+.tubiao{width:470px; height:250px; background:pink; float:right}
 
 
 
@@ -779,14 +783,3 @@ td{width:120px; height:36px; padding-right:30px}
 
 
 
-<<<<<<< .mine
-=======
-
-
-
-
-
-
-
-
->>>>>>> .r318
