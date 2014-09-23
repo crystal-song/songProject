@@ -310,9 +310,9 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                     <div class="tz_one_right">
                     	<ul class="filter">
                         	<li class="dq" value="1" >全部</li>
-                            <li value="10"  >10%以下</li>
-                            <li value="15"  >10%-15%</li>
-                            <li value="20"   >15%-20%</li>
+                            <li value="10">10%以下</li>
+                            <li value="15">10%-15%</li>
+                            <li value="20">15%-20%</li>
                         </ul>
                     </div>
                 </div>
