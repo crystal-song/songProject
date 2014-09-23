@@ -191,15 +191,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	             </div>	             
 	           </div>                 
 	           <div class="renzheng">
-	             <div class="ren_h">
+	             <div class="ren_h">    
 		             <span><i></i>实名认证</span>
 		             <span></span>
 		             <span class="ren_right" >认证</span>
 	             </div>
-	             <div class="yincang">      
-	               <p><span>用户名</span><span><input type="text"></input></span></p>
-		              <p><span>真实姓名</span><span><input type="text"></input></span></p>
-		              <p><span>证件类型</span>
+	             <div class="yincang">  
+	              <span><b>*</b>为必填项</span>    
+	               <p><span><b>*</b>用户名</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>真实姓名</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>证件类型</span>
 		                 <span>
 		                     <select>
 		                        <option value="">身份证</option>
@@ -209,23 +210,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							 </select>
 						</span>
 					  </p>
-		              <p><span>身份证号</span><span><input type="text"></input></span></p>
-		              <div class="hide_car" style="display:none">
-			              <p><span> 上传正面证件照</span><span><a class="huoqu">上传照片</a></span></p>
+		              <p><span><b>*</b>身份证号</span><span><input type="text"></input></span></p>
+		              <div class="hide_car">
+			              <p><span><b>*</b>上传正面证件照</span><span><a class="huoqu">上传照片</a></span></p>		              
 			              <p class="pic_car"></p>
-			              <p><span> 上传背面证件照</span><span><a class="huoqu">上传照片</a></span></p>
-			              <p class="pic_car"></p>
+			              <p><span><b>*</b>上传背面证件照</span><span><a class="huoqu">上传照片</a></span></p>			              
+			              <p class="pic_car"></p>			              
 		              </div>
-		              <p><span><input type="checkbox"></input></span><span style="width:300px">我已阅读并同意签署 《中投汇服务协议》</span></p>
-		              <p><span><input type="checkbox"></input></span><span style="width:312px">我已阅读并同意签署 《委托收付资金协议》</span></p>
-		              <p><input type="submit" value="提交实名认证" class="sub_m"></input><a class="aa">采用上传认证</a></p>               
+		              <p><span><input type="checkbox"></input></span><span style="width:300px"><a class="xieyi">我已阅读并同意签署 《中投汇服务协议》</a></span></p>
+		              <p><span><input type="checkbox"></input></span><span style="width:312px"><a>我已阅读并同意签署 《委托收付资金协议》</a></span></p>
+		              <p><input type="submit" value="提交实名认证" class="sub_m">               
 	               <div class="user_bottom01" style="height:200px">
 		            <h3>温馨提示:</h3>
 			            <ol>
-			              <li>请谨慎填写身份验证信息，因为调用公安局的验证接口需要支付5元费用，爱投资会为用户垫付首次验证费用。</li>
-			              <li>您还可选择通过上传身份证的形式通过身份验证，通过 上传认证 完成实名认证，然后等待客服人员审核通过。</li>
+			              <li>您可选择通过上传身份证的形式通过身份验证，通过 上传认证 完成实名认证，然后等待客服人员审核通过。</li>
 			              <li>未满18周岁，实名认证无法通过。</li>
-			              <li>爱投资会对用户的所有资料进行严格保密。</li>
+			              <li>中投汇会对用户的所有资料进行严格保密。</li>
 			              <li>实名认证过程遇到问题，请联系客服，400-600-4300</li>		              
 			            </ol>		            	            
                    </div>
@@ -239,8 +239,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             <span class="ren_right">认证</span>
 	             </div>
 	             <div class="yincang">
-		              <p><span>手机号码</span><span><input type="text"></input></span><span><a class="huoqu">获取验证码</a></span></p>
-		              <p><span>短信验证码</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>手机号码</span><span><input type="text"></input></span><span><a class="huoqu">获取验证码</a></span></p>
+		              <p><span><b>*</b>短信验证码</span><span><input type="text"></input></span></p>
 		              <p><a class="next_btn">下一步</a></p>
 		              <div class="user_bottom01">
 			            <h3>温馨提示:</h3>
@@ -260,7 +260,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             <span class="ren_right">验证</span>
 	             </div>
 	             <div class="yincang">
-		              <p><span>邮箱验证</span><span><input type="text"></input></span></p> 
+		              <p><span><b>*</b>邮箱验证</span><span><input type="text"></input></span></p> 
 		              <p><a class="next_btn">发送验证邮件</a></p>
 		              <div class="user_bottom01">
 			            <h3>温馨提示:</h3>
@@ -280,9 +280,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             <span class="ren_right">修改</span>
 	             </div>
 	             <div class="yincang">
-		              <p><span>原登录密码</span><span><input type="text"></input></span></p>
-		              <p><span>新登录密码</span><span><input type="text"></input></span></p>
-		              <p><span>再次输入新登录密码</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>原登录密码</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>新登录密码</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>再次输入新登录密码</span><span><input type="text"></input></span></p>
 		              <p><a class="next_btn">修改登录密码</a></p>
 		              <div class="user_bottom01">
 			            <h3>温馨提示:</h3>
@@ -301,8 +301,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             <span class="ren_right">设置</span>
 	             </div>
 	             <div class="yincang">
-		              <p><span>输入支付密码</span><span><input type="text"></input></span></p>
-		              <p><span>再次输入支付密码</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>输入支付密码</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>再次输入支付密码</span><span><input type="text"></input></span></p>
 		              <p><a class="next_btn">设置支付密码</a></p>
 		              <div class="user_bottom01">
 			            <h3>温馨提示:</h3>
