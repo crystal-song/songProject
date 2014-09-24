@@ -805,7 +805,7 @@ td{width:120px; height:36px; padding-right:30px}
 .form-group label{width:100px; height:30px;  float:left; font-size:14px; line-height:30px; margin-left:200px; text-align:right}
 .form-control{float:left; margin-left:60px; width:200px; height:30px; }
 .btn-default{width:70px; height:32px}
-.bt{background:#f60; width:68px; height:30px; border:1px solid #c12d17; color:#fff}
+.bt{background:#f60; width:68px; height:30px; *+height:32px; border:1px solid #c12d17; color:#fff; *+margin-left:15px}
 #msg_new{margin-left:125px}
 
 
