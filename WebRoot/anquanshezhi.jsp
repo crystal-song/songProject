@@ -212,14 +212,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  </p>
 		              <p><span><b>*</b>身份证号</span><span><input type="text"></input></span></p>
 		              <div class="hide_car">
-			              <p><span><b>*</b>上传正面证件照</span><span><a class="huoqu">上传照片</a></span></p>		              
+			              <p><span><b>*</b>上传正面证件照</span><span><input type="file"></input></span></p>		              
 			              <p class="pic_car"></p>
-			              <p><span><b>*</b>上传背面证件照</span><span><a class="huoqu">上传照片</a></span></p>			              
+			              <p><span><b>*</b>上传背面证件照</span><span><input type="file"></input></span></p>			              
 			              <p class="pic_car"></p>			              
 		              </div>
 		              <p><span><input type="checkbox"></input></span><span style="width:300px"><a class="xieyi">我已阅读并同意签署 《中投汇服务协议》</a></span></p>
 		              <p><span><input type="checkbox"></input></span><span style="width:312px"><a>我已阅读并同意签署 《委托收付资金协议》</a></span></p>
-		              <p><input type="submit" value="提交实名认证" class="sub_m">               
+		              <p><input type="submit" value="提交实名认证" class="sub_m"></p>               
 	               <div class="user_bottom01" style="height:200px">
 		            <h3>温馨提示:</h3>
 			            <ol>
