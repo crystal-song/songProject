@@ -121,7 +121,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <span class="sp1"><a href="#" title="您还未实名认证，请点击"></a></span>
                   <span class="sp2"><a href="#" title="您还未绑定手机，请点击"></a></span>
                   <span class="sp3"><a href="#" title="您还未验证邮箱，请点击"></a></span>
-                  <span class="sp4"><a href="#" title="您还未设置支付密码，请点击"></a></span>        
+                  <span class="sp4"><a href="#" title="您还未设置支付密码，请点击"></a></span>
+                  <span class="sp5"><a href="<%=path%>/anquanshezhi.jsp" title="您未注册易宝支付账号，点击注册"></a></span>         
            </div>
            <div class="loadbar">
              <div class="red_bar"></div>
@@ -172,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="msg_right">
        <div class="msg_main">
            <div class="msg_title">
-             <h2>安全设置</h2>
+             <h2>通知设置</h2>
            </div>
            <div class="user_con01">
                <ul class="tong">
