@@ -153,6 +153,7 @@ $(document).ready(function(){
                   <li><a href="<%=path%>/user-info.jsp">个人信息</a></li>
                   <li><a href="<%=path%>/anquanshezhi.jsp">安全设置</a></li>
                   <li style="border-bottom:0"><a href="<%=path%>/tongzhishezhi.jsp">通知设置</a></li>
+                  
               </ul>
           </div>    
        </div>
@@ -175,6 +176,7 @@ $(document).ready(function(){
                      <li>身份证号码</li><li>${user1.identityCard}</li>
                      <li>手机号码</li><li>${user1.phone}</li>
                      <li>邮箱地址</li><li>${user1.email}</li>
+                     <li>易宝账号</li><li>${user1.email}</li>
                    </ul>                  
                </div>               
                <div class="user_right">            
@@ -183,7 +185,8 @@ $(document).ready(function(){
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未认证个人实名信息， <a href="<%=path%>/anquanshezhi.jsp">实名认证</a></div><span class="box_right"></span></div><p>未认证</p></li>                  
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定身份证，实名认证即可成功绑定身份证， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定手机号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
-                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定邮箱号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>            
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定邮箱号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未注册易宝账号， <a href="<%=path%>/#">请注册</a></div><span class="box_right"></span></div><p>未认证</p></li>            
                    </ul>
                </div>             
            </div>
@@ -215,7 +218,7 @@ $(document).ready(function(){
                      <li>${user1.income}</li>
                    </ul>
                </div>
-           </div>
+	         </div>	       
            <div class="user_bottom">
             <h3>温馨提示:</h3>
             <ol>
@@ -224,6 +227,7 @@ $(document).ready(function(){
             </ol>
            </div>
        </div>
+  
    </div>    
 </div>
 <div class="clear_height"></div>
