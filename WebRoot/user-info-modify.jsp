@@ -109,7 +109,8 @@ $(document).ready(function(){
                   <span class="sp1"><a href="#" title="您还未实名认证，请点击"></a></span>
                   <span class="sp2"><a href="#" title="您还未绑定手机，请点击"></a></span>
                   <span class="sp3"><a href="#" title="您还未验证邮箱，请点击"></a></span>
-                  <span class="sp4"><a href="#" title="您还未设置支付密码，请点击"></a></span>        
+                  <span class="sp4"><a href="#" title="您还未设置支付密码，请点击"></a></span>
+                  <span class="sp5"><a href="<%=path%>/anquanshezhi.jsp" title="您未注册易宝支付账号，点击注册"></a></span>        
            </div>
            <div class="loadbar">
              <div class="red_bar"></div>
@@ -177,6 +178,7 @@ $(document).ready(function(){
                      <li>身份证号码</li><li>${user1.identityCard}</li>
                      <li>手机号码</li><li>${user1.phone}</li>
                      <li>邮箱地址</li><li>${user1.email}</li>
+                     <li class="mg_right">易宝账号</li><li>${user1.email}</li>
                    </ul>   
                </div>
                <div class="user_right">
@@ -186,6 +188,7 @@ $(document).ready(function(){
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定身份证，实名认证即可成功绑定身份证， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定手机号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定邮箱号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>            
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未注册易宝账号， <a href="<%=path%>/#">请注册</a></div><span class="box_right"></span></div><p>未注册</p></li> 
                    </ul>
                
                </div>             
