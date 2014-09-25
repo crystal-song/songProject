@@ -190,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="msg_right">
        <div class="msg_main">
            <div class="msg_title">
-             
+             <h2>站内通知</h2>
            </div>
            <div class="user_con02">
             <ul class="kitt">
