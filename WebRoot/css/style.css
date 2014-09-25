@@ -446,7 +446,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .user_bottom ol{padding:0; margin:20px;}
 .user_bottom li{text-align:left; margin-top:10px;}
 
-.user_con_last{width:866px; height:560px;  margin:10px auto; }
+.user_con_last{width:866px; height:500px;  margin:10px auto; }
 .center_last{width:640px; height:auto;  float:left; margin-left:146px; over-flow:hidden}
 .user_con_last_name{float:left; width:200px;}
 .user_con_last_name li{width:180px; height:30px;  margin:10px; line-height:30px; text-align:right; font-size:16px;}
