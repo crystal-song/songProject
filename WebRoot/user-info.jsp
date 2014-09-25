@@ -109,7 +109,8 @@ $(document).ready(function(){
                   <span class="sp1"><a href="<%=path%>/anquanshezhi.jsp" title="您未认证个人实名信息, 点击认证"></a></span>
                   <span class="sp2"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定身份证，点击绑定"></a></span>
                   <span class="sp3"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定手机号，点击绑定"></a></span>
-                  <span class="sp4"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定邮箱，点击绑定"></a></span>                  
+                  <span class="sp4"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定邮箱，点击绑定"></a></span>
+                  <span class="sp5"><a href="<%=path%>/anquanshezhi.jsp" title="您未注册易宝支付账号，点击注册"></a></span>                  
            </div>
            <div class="loadbar">
              <div class="red_bar"></div>
@@ -171,12 +172,12 @@ $(document).ready(function(){
                </div>
                <div class="center">
                    <ul class="user_con_name">
-                     <li>用户名</li><li>${user1.name}</li>
-                     <li>真实姓名</li><li>${user1.realName}</li>
-                     <li>身份证号码</li><li>${user1.identityCard}</li>
-                     <li>手机号码</li><li>${user1.phone}</li>
-                     <li>邮箱地址</li><li>${user1.email}</li>
-                     <li>易宝账号</li><li>${user1.email}</li>
+                     <li class="mg_right">用户名</li><li>${user1.name}</li>
+                     <li class="mg_right">真实姓名</li><li>${user1.realName}</li>
+                     <li class="mg_right">身份证号</li><li>${user1.identityCard}</li>
+                     <li class="mg_right">手机号码</li><li>${user1.phone}</li>
+                     <li class="mg_right">邮箱地址</li><li>${user1.email}</li>
+                     <li class="mg_right">易宝账号</li><li>${user1.email}</li>
                    </ul>                  
                </div>               
                <div class="user_right">            
@@ -186,7 +187,7 @@ $(document).ready(function(){
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定身份证，实名认证即可成功绑定身份证， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定手机号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定邮箱号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
-                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未注册易宝账号， <a href="<%=path%>/#">请注册</a></div><span class="box_right"></span></div><p>未认证</p></li>            
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未注册易宝账号， <a href="<%=path%>/#">请注册</a></div><span class="box_right"></span></div><p>未注册</p></li>            
                    </ul>
                </div>             
            </div>
@@ -201,8 +202,8 @@ $(document).ready(function(){
                      <li>居住地址</li>
                      <li>公司行业</li>
                      <li>公司规模</li>
-                     <li>职位</li>
-                     <li>月收入</li> 
+                     <li>所在职位</li>
+                     <li>每月收入</li> 
                    </ul>
          
                    <ul class="user_con_last_mag">
