@@ -195,6 +195,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<h2>添加众筹项目</h2>
   	<form  action="<%=path%>/collectMoney/addproject" id="form" method="post"   class="box"  style="display:'none'"   >
     	<div class="dataForm">
+    	 <input type="hidden" name="projectIntroduction" id="projectIntroduction" value="" />
+    <input type="hidden" name="projectPicture" id="projectPicture" value="" />
         	<ul>
                 <li>
                     <dd>项目名称：</dd>
@@ -206,15 +208,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="file" />
                     <dt><img alt="项目图片预览" width="250" height="158" /><br />尺寸：250*158</dt>
                 </li> -->
-                   <dd>相关证件：</dd>
+                   <dd>项目图片：</dd>
 <label>
 <!--style给定宽度可以影响编辑器的最终宽度-->
-<script type="text/plain"   id="Editor" style="width:100%;height:180px;">${product1.enterpriseCertificate}</script>
+<script type="text/plain"   id="Editor" style="width:100%;height:180px;"></script>
 </label> 
 		<dt>请将所有相关的图片上传至此区域内！</dt>  
                 <li>
                     <dd>项目编号：</dd>
-                    <input type="text" name="projectNumber"  id="projectNumber"  value="${product1.enterpriseNumber}"   />
+                    <input type="text" name="projectNumber"  id="projectNumber"  value=""   />
                     <dt></dt>
                 </li>
                 <!-- <li>
@@ -228,10 +230,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <dt></dt>
                 </li> -->
                 
-                           <dd>相关证件：</dd>
+                           <dd>项目描叙：</dd>
 <label>
 <!--style给定宽度可以影响编辑器的最终宽度-->
-<script type="text/plain"   id="myEditor" style="width:100%;height:180px;">${product1.enterpriseCertificate}</script>
+<script type="text/plain"   id="myEditor" style="width:100%;height:180px;"></script>
 </label> 
 		<dt>请将所有相关的图片上传至此区域内！</dt>  
                 <li>
@@ -241,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                     <dd>筹集时间：</dd>
-                    <input type="date"  name="raiseTime"  id="raiseTime"    />
+                    <input type="number"  name="raiseTime"  id="raiseTime"    />
                     <dt></dt>
                 </li>
                 <li>
@@ -260,7 +262,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                 <dd></dd>
-                 <input type="submit" title="提交" value="提交" class="submitBtn"/>
+                 <input type="submit" title="提交"  onclick="getContent()"    value="提交" class="submitBtn"/>
                  <input type="submit" title="预览" value="预览" class="submitBtn"/>
                 </li>
             </ul>
@@ -343,13 +345,13 @@ function getAllHtml() {
         arr.push("内容为："); */
         arr.push(UM.getEditor('myEditor').getContent());
       /*   alert(arr.join("\n")); */
-        $("#enterpriseCertificate").val(arr.join("\n"));
+        $("#projectIntroduction").val(arr.join("\n"));
         
         
         arr1.push(UM.getEditor('Editor').getContent());
       /*   alert(arr1.join("\n")); */
         $("#projectPicture").val(arr1.join("\n"));
-        if($("#projectName").val()==""){
+       /*  if($("#projectName").val()==""){
         	alert("注意：项目名称 不得为空!");
         	return FALSE;
         }
@@ -357,7 +359,7 @@ function getAllHtml() {
         if($("#financingMoney").val()==""){
         	alert("注意：融资金额 不得为空!");
         	return FALSE;
-        }
+        } */
          $("#form" ).submit();  
     }
     function getPlainTxt() {
