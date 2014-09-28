@@ -172,12 +172,12 @@ $(document).ready(function(){
                </div>
                <div class="center">
                    <ul class="user_con_name">
-                     <li class="mg_right">用户名</li><li>${user1.name}</li>
-                     <li class="mg_right">真实姓名</li><li>${user1.realName}</li>
-                     <li class="mg_right">身份证号</li><li>${user1.identityCard}</li>
-                     <li class="mg_right">手机号码</li><li>${user1.phone}</li>
-                     <li class="mg_right">邮箱地址</li><li>${user1.email}</li>
-                     <li class="mg_right">易宝账号</li><li>${user1.email}</li>
+                     <li class="mg_right">用户名</li><li>aaa${user1.name}</li>
+                     <li class="mg_right">真实姓名</li><li>aaa${user1.realName}</li>
+                     <li class="mg_right">身份证号</li><li>aaa${user1.identityCard}</li>
+                     <li class="mg_right">手机号码</li><li>aaa${user1.phone}</li>
+                     <li class="mg_right">邮箱地址</li><li>aaa${user1.email}</li>
+                     <li class="mg_right">易宝账号</li><li>aaa${user1.email}</li>
                    </ul>                  
                </div>               
                <div class="user_right">            
@@ -207,16 +207,16 @@ $(document).ready(function(){
                    </ul>
          
                    <ul class="user_con_last_mag">
-                     <li>${user1.sex}</li>
-                     <li>${user1.dateOfBirth}</li>
-                     <li>${user1.educationBackground}</li>
-                     <li>${user1.schoolOfGraduation}</li>
-                     <li>${user1.maritalStatus}</li>
-                     <li>${user1.address}</li>
-                     <li>${user1.companyIndustry}</li>
-                     <li>${user1.companyScale}</li>
-                     <li>${user1.position}</li>
-                     <li>${user1.income}</li>
+                     <li>bbb${user1.sex}</li>
+                     <li>bbb${user1.dateOfBirth}</li>
+                     <li>bbb${user1.educationBackground}</li>
+                     <li>bbb${user1.schoolOfGraduation}</li>
+                     <li>bbb${user1.maritalStatus}</li>
+                     <li>bbb${user1.address}</li>
+                     <li>bbb${user1.companyIndustry}</li>
+                     <li>bbb${user1.companyScale}</li>
+                     <li>bbb${user1.position}</li>
+                     <li>bbb${user1.income}</li>
                    </ul>
                </div>
 	         </div>	       
