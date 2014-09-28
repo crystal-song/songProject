@@ -190,6 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <span></span><span></span><span></span><span></span>
 	          <span></span><span></span><span></span><span></span>
 	          <span></span><span></span><span></span><span></span>
+	          <span></span><span></span><span></span>
 	          </div> 
 	          <p>充值方式</p>                 
 	          <div class="yinhang01">
