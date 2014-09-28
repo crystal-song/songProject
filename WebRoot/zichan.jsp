@@ -240,7 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                <span>可用余额:</span><strong>0.00</strong><i>元</i>
 		             </div> 
 		            </div>  
-		            <div class="tubiao">
+		            <div class="tubiao" style="display:none">
 		            <div id="chartdiv" style="height:250px;width:500px; "></div> 
 		            </div>
 		                          
