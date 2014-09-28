@@ -173,12 +173,12 @@ $(document).ready(function(){
                </div>
                <div class="center">
                    <ul class="user_con_name">
-                     <li>用户名</li><li>${user1.name}</li>
-                     <li>真实姓名</li><li>${user1.realName}</li>
-                     <li>身份证号码</li><li>${user1.identityCard}</li>
-                     <li>手机号码</li><li>${user1.phone}</li>
-                     <li>邮箱地址</li><li>${user1.email}</li>
-                     <li class="mg_right">易宝账号</li><li>${user1.email}</li>
+                     <li class="mg_right">用户名</li><li>aaa${user1.name}</li>
+                     <li class="mg_right">真实姓名</li><li>aaa${user1.realName}</li>
+                     <li class="mg_right">身份证号码</li><li>aaa${user1.identityCard}</li>
+                     <li class="mg_right">手机号码</li><li>aaa${user1.phone}</li>
+                     <li class="mg_right">邮箱地址</li><li>aaa${user1.email}</li>
+                     <li class="mg_right">易宝账号</li><li>aaa${user1.email}</li>
                    </ul>   
                </div>
                <div class="user_right">
