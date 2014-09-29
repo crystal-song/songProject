@@ -133,7 +133,7 @@ $(document).ready(function(){
             <div class="ind_list">
             
             	<%-- <div class="xq_left"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}"><img src="<%=path%>/images/sy_63.jpg" /></a></div> --%>
-            	<div class="xq_left"><a href="#">${s.projectPicture}</a></div>
+            	<div class="xq_left"><a href="product/getProductByid?id=${s.id}">${s.projectPicture}</a></div>
                 <div class="ind_right">
                 	<div class="tuijian">
                     	<div class="tj_left">推荐项目:<span class="hong"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></span></div>
