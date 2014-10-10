@@ -14,14 +14,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>项目：${product1.projectName} - 我要投资 - 中投汇</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css_new/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=path%>/jquery-ui-1.11.1/js/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="<%=path%>/jquery-ui-1.11.1/js/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+
+
 
  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+ <script type="text/javascript" src="<%=path%>/jquery-ui-1.11.1/js/jquery-ui.js"></script>
+ <script type="text/javascript" src="<%=path%>/jquery-ui-1.11.1/js/jquery-ui.min.js"></script>
  <script type="text/javascript">
 var navIndex=1;
 </script>
    
 <script type="text/javascript">
 $(document).ready(function(){
+	
 	var scroplltop=$(window).scrollTop();
 	var nav_height=parseInt($('.con_nav').offset().top);
 	$('.con_nav li').click(function(){
@@ -43,8 +50,7 @@ $(document).ready(function(){
 			var top = parseInt($(this).scrollTop());
 			if(top>500){			
 				$('.btn_bottom').show();
-				}else{
-					
+				}else{		
 				$('.btn_bottom').hide()	;
 					}	
 			var text=$('.con_nav');		
@@ -57,7 +63,50 @@ $(document).ready(function(){
 		$('.btn_bottom').click(function(){
 			$("html,body").animate({scrollTop:0},500);	
 		    });
-		});
+		
+		
+		$("#input").keyup(function(){
+
+	           var str= /^[0-9]*$/;
+	           var val=$("#input").val();
+	           $('.neirong').css('display','block');
+			   
+		       if(!(str.test(val))){
+		    	   
+				   $('.neirong').html("您输入的金额不是数字,请重新输入");
+				   return false;
+			    }
+			    if(val<100){
+				   $('.neirong').html("您输入的金额小于100元,请重新输入");
+				   return false;
+			    }
+			    if(parseInt(val)%100!=0){	
+				  $('.neirong').html("输入的资金必须是100的整数倍");
+				  return false;
+				   }
+			      $('.neirong').html('您要投入的实际金额为:'+val);		   
+		});	
+});		
+
+window.onload=function(){
+	var myblur= document.getElementById('input')
+	
+	      myblur.onfocus=function(){
+		  if(myblur.value=="请输入资金"){
+			  myblur.value="";
+			  myblur.style.color="#000"	 
+			  } 	  
+			 }  
+		  myblur.onblur=function(){
+			  
+			 if(myblur.value==""){
+			   myblur.value="请输入资金"
+			   myblur.style.color="#ccc"	 
+			   }	 		  
+	}
+	 
+}
+		
 </script>
 </head>
 
@@ -82,7 +131,7 @@ $(document).ready(function(){
             	<div class="xxo_bor">
                 	<div class="xxo_left">${product1.projectPicture}</div>
                     <div class="xxo_right">
-                    	<div class="xxo_one">
+                    	<div class="xxo_one">                  	   
                         	<div class="xxo_font">项目名称：<span class="ckxq_red">${product1.projectName}</span></div>
                             <div class="xxo_font">企业编号：${product1.enterpriseNumber}</div>
                             <div class="xxo_font">信用等级：<img src="<%=path%>/images/qualityRate_${product1.qualityRating}.jpg" style="margin-bottom:-3px;"><span style="padding-left:120px;">分享到：<img src="<%=path%>/images/xx_09.jpg">&nbsp;<img src="<%=path%>/images/xx_11.jpg">&nbsp;<img src="<%=path%>/images/xx_13.jpg"></span></div>
