@@ -64,15 +64,19 @@ $(document).ready(function(){
 			$("html,body").animate({scrollTop:0},500);	
 		    });
 		
+		$("#input").keydown(function(){
+			
+			
+		});
+		
 		
 		$("#input").keyup(function(){
 
 	           var str= /^[0-9]*$/;
 	           var val=$("#input").val();
 	           $('.neirong').css('display','block');
-			   
-		       if(!(str.test(val))){
-		    	   
+			 
+		       if(!(str.test(val))){  	   
 				   $('.neirong').html("您输入的金额不是数字,请重新输入");
 				   return false;
 			    }
@@ -80,6 +84,10 @@ $(document).ready(function(){
 				   $('.neirong').html("您输入的金额小于100元,请重新输入");
 				   return false;
 			    }
+			    if(val>500000){
+					   $('.neirong').html("您输入的金额大于500000元,请重新输入");
+					   return false;
+				    }
 			    if(parseInt(val)%100!=0){	
 				  $('.neirong').html("输入的资金必须是100的整数倍");
 				  return false;
@@ -92,13 +100,15 @@ window.onload=function(){
 	var myblur= document.getElementById('input')
 	
 	      myblur.onfocus=function(){
+	    	  
 		  if(myblur.value=="请输入资金"){
 			  myblur.value="";
 			  myblur.style.color="#000"	 
 			  } 	  
-			 }  
+			 }
+	      
 		  myblur.onblur=function(){
-			  
+			 
 			 if(myblur.value==""){
 			   myblur.value="请输入资金"
 			   myblur.style.color="#ccc"	 
@@ -124,9 +134,10 @@ window.onload=function(){
 
 <div class="xx">
 	<div class="xx_fra">
-    	<div class="xx_left">
-    		<div class="lactation">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/product/allProduct" >我要投资</a> >> 项目详情</div>
+	    <div class="lactation">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/product/allProduct" >我要投资</a> >> 项目详情</div>
     		<div class="clear_height"></div>
+    	<div class="xx_left">
+    		
         	<div class="xx_one">
             	<div class="xxo_bor">
                 	<div class="xxo_left">${product1.projectPicture}</div>
@@ -262,7 +273,19 @@ window.onload=function(){
         </div>
         <div class="xx_right">
         <!-- xx right -->
-		<%@ include file="/includes/news_list_right.jsp" %>
+          <div class="cr_bg" style="height:220px;">
+            	<div class="cr_tit">
+                	<div class="cr_font">投资份额</div>
+                    <div class="cr_more"><img src="<%=path%>/images/sy_50.jpg"></div>
+                </div>
+                <div class="cr_nr">
+                	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
+                	<div class="neirong" style="display:none"></div>
+                	<div class="jin_input"><input type="text" class="jin_text" value="请输入资金" id="input"></input>元</div>
+                	<div class="jin_input"><a id="touzi_dialog"><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
+                </div>
+            </div>
+		 <%@ include file="/includes/news_list_right.jsp" %>
     	<!-- xx right end-->
     	</div>
     	<div class="clear"></div>
