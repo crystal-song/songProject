@@ -4,15 +4,15 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
- <%@ include file="/includes/taglibs.jsp" %> 
+ <%-- <%@ include file="/includes/taglibs.jsp" %>  --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户中心页面</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+ <%-- <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
+<%-- <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  --%> 
 <script type="text/javascript">
    function onSubmit(host) {
 	  document.getElementById("host").value = host;
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="user_con01">                 
       <div class="container">
         <form id="form" role="form" action="<%=path%>/gate/doRegister" method="post" target="_blank">
-          <input type="hidden" id="host" name="host">
+          <input type="hidden" id="host" name="host"/>
           <div class="form-group">
             <label for="platformNo">platformNo</label>
             <input type="text"class="form-control" id="platformNo" 
@@ -88,8 +88,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/exam" />
           </div>
-          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">取消</button>
-          <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">确定</button>
+          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button>
+          <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">生产</button>
         </form>
      </div>  
        </div>
