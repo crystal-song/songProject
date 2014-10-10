@@ -21,8 +21,51 @@ $(document).ready(function(){
 		$('.ie_text').css('display','none');
 		//alert('ok')
 	  });
+	$("#input").keyup(function(){
+
+        var str= /^[0-9]*$/;
+        var val=$("#input").val();
+	       $('.neirong').css('display','block');
+		   
+	       if(!(str.test(val))){
+			   $('.neirong').html("您输入的金额不是数字,请重新输入");
+			   return false;
+		    }
+		    if(val<100){
+			   $('.neirong').html("您输入的金额小于100元,请重新输入");
+			   return false;
+		    }
+		    if(parseInt(val)%100!=0){	
+			  $('.neirong').html("输入的资金必须是100的整数倍");
+			  return false;
+			   }
+		      $('.neirong').html('您要投入的实际金额为:'+val);		   
+	});	
+
 	});
+	
+	
+window.onload=function(){
+	var myblur= document.getElementById('input')
+	
+	      myblur.onfocus=function(){
+		  if(myblur.value=="请输入资金"){
+			  myblur.value="";
+			  myblur.style.color="#000"	 
+			  } 	  
+			 }  
+		  myblur.onblur=function(){
+			  
+			 if(myblur.value==""){
+			   myblur.value="请输入资金"
+			   myblur.style.color="#ccc"	 
+			   }	 		  
+	}
+	 
+}	
+	
 </script>
+
 </head>
 <body>
 
