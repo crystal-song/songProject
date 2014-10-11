@@ -266,9 +266,9 @@ function getCity(currProvince)
            <div class="msg_title">
              <h2>提&nbsp;&nbsp;&nbsp;&nbsp;现</h2>
            </div>
-           <div class="user_con02">
-             <p>添加银行卡</p>
-             <ul class="post_car">
+           <div class="user_con02" >
+             <p style="display:none">添加银行卡</p>
+             <ul class="post_car" style="display:none">
              <li><span class="ti_wh">持卡人</span><span>aaa</span></li>
 	         <li><span class="ti_wh">银行</span>
 		             <span>
@@ -298,19 +298,19 @@ function getCity(currProvince)
 	                 <span>
 	                   <select name="province" id="selProvince" onChange = "getCity(this.options[this.selectedIndex].value)" class="choes_pro">  
                        </select>  
-				       <select name="city" id="selCity" class="choes_pro">  
+				       <select name="city" id="selCity" class="choes_pro" >  
 				         <option>北京</option>  
 				       </select>
 	                 </span>     
 	             </li>
 	             <li><span class="ti_wh">开户行</span><span><input type="text" ></input></span></li>
              </ul>
-             <div class="w_tishi">
+             <div class="w_tishi" style="display:none">
              <p>温馨提示：为确保您的资金划转安全高效，爱投资建议您完善开户行信息。 您只需在分支行框内输入分支行关键词。</p>
              <p style="padding-left:70px">比如您的开户行名称为“工商银行北京宣武门支行”，只需输入关键词“宣武”即可。如果推荐列表中没有符合关键词的信息，</p>
              <p style="padding-left:70px">请您务必在列表中选择开户城市的银行分行，如：工商银行北京市分行营业部。</p>
              </div>
-             <div class="btn_tijao">
+             <div class="btn_tijao" style="display:none">
                <input type="submit" value="添加" class="btn_bac"></input> <input type="reset" value="取消"></input>     
              </div> 
              <p class="jine">填写提现金额</p>
@@ -333,7 +333,7 @@ function getCity(currProvince)
 		         </li>
              </ul>
              <div class="btn_tijao">
-               <input type="submit" value="添加" class="btn_bac"></input>     
+               <a href="<%=path%>/chongzhicheck.jsp" class="btn_back_ti">提现</a>  
              </div>
              <div class="user_bottom01" style="height:350px">
 			            <h3>温馨提示:</h3>
