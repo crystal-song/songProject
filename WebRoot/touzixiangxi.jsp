@@ -282,7 +282,7 @@ window.onload=function(){
                 	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
                 	<div class="jin_input"><input type="text" class="jin_text" value="请输入资金" id="input"></input>元</div>
-                	<div class="jin_input"><a id="touzi_dialog"><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
+                	<div class="jin_input"><a id="touzi_dialog" href="<%=path%>/touzicheck.jsp"><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
                 </div>
             </div>
 		 <%@ include file="/includes/news_list_right.jsp" %>
