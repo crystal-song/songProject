@@ -185,17 +185,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <h2>充&nbsp;&nbsp;&nbsp;&nbsp;值</h2>
            </div>
            <div class="user_con01">
-              <p>选择银行</p>                 
-	          <div class="yinhang">
-	          <span></span><span></span><span></span><span></span>
-	          <span></span><span></span><span></span><span></span>
-	          <span></span><span></span><span></span><span></span>
-	          <span></span><span></span><span></span>
-	          </div> 
 	          <p>充值方式</p>                 
 	          <div class="yinhang01">
 	          <div class="wang_yin">
-	          <span></span><span></span><span></span><span></span>
+	          <span></span>
 	          </div>
 	          <div class="clear"></div>
 	          <ul class="chong">
@@ -203,7 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           <li><span>充值金额</span><a><input type="text" class="input_text"></input></a><i>元</i></li>
 		           <li><span>验证码</span><a><input type="text" class="input_text"></input></a><i></i></li>
 	               <li><span></span><a class="queren_box"><input type="checkbox"></input></a><a>我已阅读并确认下方重要提示信息</a></li>
-	               <li><span></span><a><input type="submit" class="submit_box" value="充值"></input></a></li>              
+	               <li><span></span><a href="<%=path%>/chongzhicheck.jsp" class="submit_box">充值</a></li>              
 	          </ul>
 	          <div class="user_bottom01" style="height:200px">
 			            <h3>温馨提示:</h3>
