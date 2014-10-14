@@ -64,8 +64,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao3.png")');
     			
     			});	
-    	
-    	
          $(".ren_right").click(function(){
              var a=$(this).parent().parent().children('.yincang').slideToggle();        
         	 var text=$(this).text()
@@ -85,24 +83,91 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	 }else if(text=="设置"){
         		 $(this).text("取消设置")
         	 }else if(text=="取消设置"){     		 
-        		 $(this).text("设置")
-        		 
+        		 $(this).text("设置")        		 
         	 } 
+        	 $('.ren_pass').css('display','none');
          });
-         
-    	   	 
-         $('.aa').click(function(){
-        	 var aa_text=$('.aa').text();   
-             if(aa_text=="采用上传认证"){
-            	 $('.hide_car').css("display","block")
-            	 $('.aa').text('采用接口认证');
-             }else if(aa_text=="采用接口认证"){
-            	 $('.hide_car').css("display","none")
-            	 $('.aa').text('采用上传认证');
-            	 
-             }
-         })
-                 
+      
+         $('.next_btn').click(function(){
+ 
+        	$(this).parent().parent().parent().children().children('.ren_right').html('修改')
+        	$(this).parent().parent().parent().children('.ren_pass').css('display','block');
+        	$(this).parent().parent('.yincang').css('display','none');
+         });
+              
+         $(".yincang input").blur(function(){
+        	 var val=$(this).val();
+        	 
+        	 if( $(this).is('#phone') ){
+        		var phone= $('#phone').parent().parent().children('.tishitext');
+        		if(val.length!=11||val==""){
+        			 phone.css('display','block');	 
+        		 }else{
+        			 phone.css('display','none')
+        		 } 
+        	 }
+        	 
+        	 if( $(this).is('#username') ){
+         		var username = $('#username').parent().parent().children('.tishitext');
+         		if(val=="" || checkusername(val)){
+         			username.css('display','block');
+         		 }else{
+         			username.css('display','none');	
+         		 } 
+         		 
+         	     function checkusername(str){
+         	    	var Expression=/[^\u4E00-\u9FA5]/; 
+         	    	var objExp=new RegExp(Expression);
+         	    	if(objExp.test(val)==true){
+         	    	  return true;       	    
+         	    	}else{
+         	    	  return false;
+         	    	}        	    	 	  
+         	     }
+        	 }   
+        	 
+        	 
+        	 if( $(this).is('#carno') ){
+         		var carno= $('#carno').parent().parent().children('.tishitext');
+         		if(isCardNo(val)){
+         			 carno.css('display','block');	 
+         		 }else{
+         			 carno.css('display','none')
+         		 } 
+         		
+         		function isCardNo(card)  
+         		{  
+         		   // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X  
+         		   var reg = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;  
+         		   if(reg.test(card))  
+         		   {     
+         		     alert('ok')
+         		   } else{
+         			  alert('fail')
+         		   } 
+         		}  
+         		
+         	 }
+         	 
+        	 if( $(this).is('#file01') ){
+         		var file01= $('#file01').parent().parent().children('.tishitext');
+         		if(val==""){
+         			 file01.css('display','block');	 
+         		 }else{
+         			 file01.css('display','none')
+         		 } 
+         	 }
+        	 
+        	 if( $(this).is('#file02') ){
+          		var file02= $('#file02').parent().parent().children('.tishitext');
+          		if(val==""){
+          			 file02.css('display','block');	 
+          		 }else{
+          			 file02.css('display','none')
+          		 } 
+          	 }
+        	 
+         });
 });
          
 
@@ -118,65 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="clear_height"></div>
 <div class="msg_con">
    <div class="msg_left">
-       <div class="msg_left_top">
-           <div class="name">
-                 <div class="pic">
-                   <h3></h3>
-                 </div>
-                 <span><strong>liuxiaoyan..</strong></span>
-           </div>
-           <div class="left_btm">
-                  <span class="sp1"><a href="#" title="您还未实名认证，请点击"></a></span>
-                  <span class="sp2"><a href="#" title="您还未绑定手机，请点击"></a></span>
-                  <span class="sp3"><a href="#" title="您还未验证邮箱，请点击"></a></span>
-                  <span class="sp4"><a href="#" title="您还未设置支付密码，请点击"></a></span>
-                  <span class="sp5"><a href="<%=path%>/anquanshezhi.jsp" title="您未注册易宝支付账号，点击注册"></a></span>         
-           </div>
-           <div class="loadbar">
-             <div class="red_bar"></div>
-           </div>
-           <div class="view">
-             <span>安全等级：<strong>低</strong></span>
-             <a href="#">[提升]</a>
-           </div>
-       </div>
-       <div class="msg_left_cent">
-          <a class="msg_nav">
-               <i style="background:url(<%=path%>/img/tubiao5.png) no-repeat"></i>
-               <span>账户主页</span>
-          </a>
-          <div class="select_nav">
-              <a  class="msg_nav">
-                <i class="bac_change_1"></i>
-                <span>资产管理</span>
-              </a>
-              <ul style="display:none">
-                  <li><a href="<%=path%>/zichan.jsp">资产统计</a></li>
-                  <li><a href="<%=path%>/chongzhi.jsp">充值</a></li>
-                  <li><a href="<%=path%>/tixian.jsp">提现</a></li>
-              </ul>
-          </div>
-          <div class="select_nav">
-              <a  class="msg_nav">
-	              <i class="bac_change_2"></i>
-	              <span>消息管理</span>
-            </a>
-              <ul style="display:none">
-                  <li><a  href="<%=path%>/zhanneitongzhi.jsp">站内信息</a></li>                  
-              </ul>
-          </div>
-          <div class="select_nav">
-              <a class="msg_nav" style="margin-bottom: 0px;">
-                  <i class="bac_change_3"></i>
-                  <span>账户管理</span>
-              </a>
-              <ul style="display:block">
-                  <li><a href="<%=path%>/user-info.jsp">个人信息</a></li>
-                  <li><a href="<%=path%>/anquanshezhi.jsp">安全设置</a></li>
-                  <li style="border-bottom:0"><a href="<%=path%>/tongzhishezhi.jsp">通知设置</a></li>
-              </ul>
-          </div>    
-       </div>
+       <%@ include file="/includes/user_info_left.jsp" %>
           
    </div>
    <div class="msg_right">
@@ -197,10 +204,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             <span></span>
 		             <span class="ren_right" >认证</span>
 	             </div>
-	             <div class="yincang">  
+	             <div class="yincang" style="display:none">  
 	              <span><b>*</b>为必填项</span>    
-	               <p><span><b>*</b>用户名</span><span><input type="text"></input></span></p>
-		              <p><span><b>*</b>真实姓名</span><span><input type="text"></input></span></p>
+	                  <p><span><b></b>用户名</span><span style="text-align:left">****</span></p>
+		              <p><span><b>*</b>真实姓名</span><span><input type="text" id="username"></input></span><span class="tishitext" style="display:none">请输入正确的中文名!</span></p>
 		              <p><span><b>*</b>证件类型</span>
 		                 <span>
 		                     <select>
@@ -210,17 +217,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<option value="">护照</option>
 							 </select>
 						</span>
+						<span class="tishitext" style="display:none">请选择证件类型!</span>
 					  </p>
-		              <p><span><b>*</b>身份证号</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>身份证号</span><span><input type="text" id="carno"></input></span><span class="tishitext" style="display:none">请输入18位有效证件号!</span></p>
 		              <div class="hide_car">
-			              <p><span><b>*</b>上传正面证件照</span><span><input type="file"></input></span></p>		              
+			              <p><span><b>*</b>上传正面证件照</span><span><input type="file" id="file01"></input></span></p>		              
 			              <p class="pic_car"></p>
-			              <p><span><b>*</b>上传背面证件照</span><span><input type="file"></input></span></p>			              
+			              <p><span><b>*</b>上传背面证件照</span><span><input type="file" id="file02"></input></span></p>			              
 			              <p class="pic_car"></p>			              
 		              </div>
-		              <p><span><input type="checkbox"></input></span><span style="width:300px"><a class="xieyi">我已阅读并同意签署 《中投汇服务协议》</a></span></p>
-		              <p><span><input type="checkbox"></input></span><span style="width:312px"><a>我已阅读并同意签署 《委托收付资金协议》</a></span></p>
-		              <p><input type="submit" value="提交实名认证" class="sub_m"></p>               
+		              <p><span><input type="checkbox"></input></span><span style="width:300px"><a class="xieyi">我已阅读并同意签署 《中投汇服务协议》</a></span><span class="tishitext" style="display:none">请签署协议!</span></p>
+		              <p><span><input type="checkbox"></input></span><span style="width:312px"><a>我已阅读并同意签署 《委托收付资金协议》</a></span><span class="tishitext" style="display:none">请签署协议!</span></p>
+		              <p><a class="next_btn">提交实名认证</a>               
 	               <div class="user_bottom01" style="height:200px">
 		            <h3>温馨提示:</h3>
 			            <ol>
@@ -231,6 +239,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            </ol>		            	            
                    </div>
 	             </div>
+	             <div class="ren_pass" style="display:none">
+	                   <strong>恭喜您实名认证成功</strong>    
+	             </div>
 	           </div>
 	           <div class="clear"></div>
 	           <div class="renzheng">
@@ -239,9 +250,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             <span></span>
 		             <span class="ren_right">认证</span>
 	             </div>
-	             <div class="yincang">
-		              <p><span><b>*</b>手机号码</span><span><input type="text"></input></span><span><a class="huoqu">获取验证码</a></span></p>
-		              <p><span><b>*</b>短信验证码</span><span><input type="text"></input></span></p>
+	             <div class="yincang" style="display:none">
+		              <p><span><b>*</b>手机号码</span><span><input type="text" id="phone"></input></span><span><a class="huoqu">获取验证码</a></span><span class="tishitext" style="display:none">请输入正确的手机号!</span></p>
+		              <p><span><b>*</b>短信验证码</span><span><input type="text"></input></span><span class="tishitext" style="display:none">验证码错误!</span></p>
 		              <p><a class="next_btn">下一步</a></p>
 		              <div class="user_bottom01">
 			            <h3>温馨提示:</h3>
@@ -252,6 +263,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            </ol>
                       </div>        	             
 	             </div>
+	             <div class="ren_pass" style="display:none">
+	                   <strong>恭喜您手机认证成功</strong>    
+	             </div>
 	           </div>
 	           <div class="clear"></div>
 	           <div class="renzheng">
@@ -261,7 +275,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             <span class="ren_right">验证</span>
 	             </div>
 	             <div class="yincang">
-		              <p><span><b>*</b>邮箱验证</span><span><input type="text"></input></span></p> 
+		              <p><span><b>*</b>邮箱验证</span><span><input type="text"></input></span><span class="tishitext" style="display:none">请输入正确格式邮箱!</span></p> 
 		              <p><a class="next_btn">发送验证邮件</a></p>
 		              <div class="user_bottom01">
 			            <h3>温馨提示:</h3>
@@ -271,6 +285,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <li>邮箱验证过程遇到问题，请联系客服，400-600-4300 </li>
 			            </ol>
                       </div>        	             
+	             </div>
+	             <div class="ren_pass" style="display:none">
+	                   <strong>已向您的邮箱发送一封邮件</strong>  
+	                   <a class="ren_org" href="http://mail.sina.com.cn/">前往查看</a>  
 	             </div>
 	           </div>
 	           <div class="clear"></div>
@@ -282,8 +300,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	             </div>
 	             <div class="yincang">
 		              <p><span><b>*</b>原登录密码</span><span><input type="text"></input></span></p>
-		              <p><span><b>*</b>新登录密码</span><span><input type="text"></input></span></p>
-		              <p><span><b>*</b>再次输入新登录密码</span><span><input type="text"></input></span></p>
+		              <p><span><b>*</b>新登录密码</span><span><input type="text"></input></span><span class="tishitext"></span></p>
+		              <p><span><b>*</b>再次输入新登录密码</span><span><input type="text"></input></span><span class="tishitext" style="display:none">密码不一致,请从新输入!</span></p>
 		              <p><a class="next_btn">修改登录密码</a></p>
 		              <div class="user_bottom01">
 			            <h3>温馨提示:</h3>
@@ -292,6 +310,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <li>邮箱验证过程遇到问题，请联系客服，400-600-4300 </li>
 			            </ol>
                       </div>        	             
+	             </div>
+	             <div class="ren_pass" style="display:none">
+	                   <strong>恭喜您登录密码设置成功</strong>    
 	             </div>
 	           </div>
 	           <div class="clear"></div>
@@ -312,6 +333,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <li>使用过程遇到问题，请联系客服，400-600-4300 </li>
 			            </ol>
                       </div>        	             
+	             </div>
+	             <div class="ren_pass" style="display:none">
+	                   <strong>恭喜您支付密码设置成功</strong>    
 	             </div>
 	           </div>
 	           <div class="clear"></div>
@@ -335,7 +359,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<option value="6">你的学号是多少</option>
 								<option value="7">你的老家在哪里</option>
 		                     </select>
-		              
 		                  </span>
 		              </p>
 		              <p><span>再次输入支付密码</span><span><input type="text"></input></span></p>
@@ -347,6 +370,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <li>使用过程遇到问题，请联系客服，400-600-4300 </li>
 			            </ol>
                       </div>        	             
+	             </div>
+	             <div class="ren_pass" style="display:none">
+	                   <strong>恭喜您密码保护设置成功</strong>    
 	             </div>
 	           </div>
 	           <div class="clear"></div>	           
