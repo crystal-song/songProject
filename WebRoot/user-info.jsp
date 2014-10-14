@@ -97,69 +97,12 @@ $(document).ready(function(){
 <div class="one"></div>
 <div class="clear_height"></div>
 <div class="msg_con">
-   <div class="msg_left">
-       <div class="msg_left_top">
-           <div class="name">
-                 <div class="pic">
-                   <h3></h3>
-                 </div>
-                 <span><strong>${user1.name}</strong></span>
-           </div>
-           <div class="left_btm">
-                  <span class="sp1"><a href="<%=path%>/anquanshezhi.jsp" title="您未认证个人实名信息, 点击认证"></a></span>
-                  <span class="sp2"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定身份证，点击绑定"></a></span>
-                  <span class="sp3"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定手机号，点击绑定"></a></span>
-                  <span class="sp4"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定邮箱，点击绑定"></a></span>
-                  <span class="sp5"><a href="<%=path%>/anquanshezhi.jsp" title="您未注册易宝支付账号，点击注册"></a></span>                  
-           </div>
-           <div class="loadbar">
-             <div class="red_bar"></div>
-           </div>
-           <div class="view">
-             <span>安全等级：<strong>低</strong></span>
-             <a href="#">[提升]</a>
-           </div>
-       </div>
-       <div class="msg_left_cent">
-          <a class="msg_nav">
-               <i style="background:url(<%=path%>/img/tubiao5.png) no-repeat"></i>
-               <span>账户主页</span>
-          </a>
-          <div class="select_nav">
-              <a  class="msg_nav">
-                <i class="bac_change_1"></i>
-                <span>资产管理</span>
-              </a>
-              <ul style="display:none">
-                  <li><a href="<%=path%>/zichan.jsp">资产统计</a></li>
-                  <li><a href="<%=path%>/chongzhi.jsp">充值</a></li>
-                  <li><a href="<%=path%>/tixian.jsp">提现</a></li>
-              </ul>
-          </div>
-          <div class="select_nav">
-              <a  class="msg_nav">
-	              <i class="bac_change_2"></i>
-	              <span>消息管理</span>
-              </a>
-              <ul style="display:none">
-                  <li><a  href="<%=path%>/zhanneitongzhi.jsp">站内信息</a></li>                  
-              </ul>
-          </div>
-          <div class="select_nav">
-              <a class="msg_nav" style="margin-bottom: 0px;">
-                  <i class="bac_change_3"></i>
-                  <span>账户管理</span>
-              </a>
-              <ul style="display:none">
-                  <li><a href="<%=path%>/user-info.jsp">个人信息</a></li>
-                  <li><a href="<%=path%>/anquanshezhi.jsp">安全设置</a></li>
-                  <li style="border-bottom:0"><a href="<%=path%>/tongzhishezhi.jsp">通知设置</a></li>
-                  
-              </ul>
-          </div>    
-       </div>
-          
-   </div>
+  <div class="msg_left">
+
+	<%@ include file="/includes/user_info_left.jsp" %>
+	
+  </div>     
+ </div>
    <div class="msg_right">
        <div class="msg_main">
            <div class="msg_title">
