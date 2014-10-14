@@ -73,11 +73,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           <div class="form-group">
             <label for="mobile">mobile</label><input type="text"
-              class="form-control" id="mobile" name="mobile" value="18975601645" />
+              class="form-control" id="mobile" name="mobile" value="${user.phone}" />
           </div>
           <div class="form-group">
             <label for="email">email</label><input type="text"
-              class="form-control" id="email" name="email" value="abc@yeepay.com" />
+              class="form-control" id="email" name="email" value="${user.email}" />
           </div>
           <div class="form-group">
             <label for="notifyUrl">notifyUrl</label><input type="text"
