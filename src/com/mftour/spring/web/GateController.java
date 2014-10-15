@@ -174,13 +174,14 @@ public class GateController  {
 	
 	
 	@RequestMapping(value="/gate/transfer")
-	public String Transfer(Model model,HttpServletRequest request,String paymentAmount) throws Exception {
+	public String Transfer(Model model,HttpServletRequest request,String buyAmount) throws Exception {
 		Object o= request.getSession().getAttribute("name");
 		 TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
-		System.out.println("ddddd"+paymentAmount);
+		System.out.println("ddddd"+buyAmount);
 		model.addAttribute("registerYeePay1", registerYeePay1);
+		model.addAttribute("buyAmount", buyAmount);
 		model.addAttribute("now", System.currentTimeMillis());
-		return "tixiancheck";
+		return "touzicheck";
 	}
 	
 	@RequestMapping(value="/gate/doTransfer")
