@@ -1,6 +1,6 @@
 package com.mftour.spring.model;
 
-public class TSystemLog {
+public class TSystemLog  implements java.io.Serializable{
 	
 	
 private static final long serialVersionUID = -1140360051584731919L;

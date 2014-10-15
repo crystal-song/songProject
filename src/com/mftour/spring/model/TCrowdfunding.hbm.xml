@@ -32,8 +32,8 @@
         <property name="surplusTime" type="java.lang.String">
             <column name="surplusTime" length="100" />
         </property>
-        <property name="companyIntroduction" type="java.lang.String">
-            <column name="companyIntroduction" length="100" />
+        <property name="projectPicture" type="java.lang.String">
+            <column name="projectPicture" length="100" />
         </property>
          <property name="projectIntroduction" type="java.lang.String">
             <column name="projectIntroduction" length="100" />
