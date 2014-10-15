@@ -64,16 +64,16 @@ $(document).ready(function(){
 			$("html,body").animate({scrollTop:0},500);	
 		    });
 		
-		$("#input").keydown(function(){
+		$("#buyAmount").keydown(function(){
 			
 			
 		});
 		
 		
-		$("#input").keyup(function(){
+		$("#buyAmount").keyup(function(){
 
 	           var str= /^[0-9]*$/;
-	           var val=$("#input").val();
+	           var val=$("#buyAmount").val();
 	           $('.neirong').css('display','block');
 			 
 		       if(!(str.test(val))){  	   
@@ -97,7 +97,7 @@ $(document).ready(function(){
 });		
 
 window.onload=function(){
-	var myblur= document.getElementById('input')
+	var myblur= document.getElementById('buyAmount')
 	
 	      myblur.onfocus=function(){
 	    	  
@@ -117,7 +117,7 @@ window.onload=function(){
 	 
 }
 
-function onsubmit(){
+function mysubmit(){
 	if($("#buyAmount").val()==0){alert("投资金额不能为空！");return false;}
 	var form = document.getElementById("form");
 	 form.submit();
@@ -285,11 +285,11 @@ function onsubmit(){
                     <div class="cr_more"><img src="<%=path%>/images/sy_50.jpg"></div>
                 </div>
                 <div class="cr_nr">
-                <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank">
+                <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
                 	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
                 	<div class="jin_input"><input type="text" class="jin_text" value="" id="buyAmount"></input>元</div>
-                	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="onsubmit()" ><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
+                	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="mysubmit();" ><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
                 	</form>
                 </div>
             </div>
