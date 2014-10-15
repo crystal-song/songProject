@@ -19,10 +19,17 @@ import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.ccc;
 import com.yeepay.bha.example.bean.BHARechargeRequest;
 import com.yeepay.bha.example.bean.BHARegisterRequest;
 import com.yeepay.bha.example.bean.BHATransferRequest;
 import com.yeepay.bha.example.bean.BHAWithdrawRequest;
+
+
+
+
+
+
 
 
 
@@ -46,6 +53,7 @@ import java.io.FileOutputStream;
 import java.io.IOException; 
 import java.io.InputStream; 
 import java.io.PrintWriter; 
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder; 
 import javax.xml.parsers.DocumentBuilderFactory; 
@@ -60,7 +68,7 @@ import org.xml.sax.SAXException;
 @Controller
 public class GateController  {
 	
-	private ServletContext servletContext = null;
+	/*private ServletContext servletContext = null;*/
 	
 	@Autowired
     private IGateService gateService;
@@ -102,9 +110,10 @@ public class GateController  {
 	@RequestMapping(value="/gate/register")
 	public String register(Model model,HttpServletRequest request) throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
-		/*Object o= request.getSession().getAttribute("name");
+		Object o= request.getSession().getAttribute("name"); 
+		
 		TUser user=userService.getUserByAccount(o.toString());
-		model.addAttribute("user", user);*/
+		model.addAttribute("user", user);
 		/*return "payment/register";*/
 		return "register";
 	}
@@ -121,15 +130,25 @@ public class GateController  {
 	//
 	@RequestMapping(value="/gate/doRegister")
 	public String doRegister(String host, BHARegisterRequest request, Model model,TRegisterYeePay  registerYeePay) throws Exception {
-		System.out.println("dddddddddddddddddddd");
+		System.out.println("dddddddddddddddddddd"+registerYeePay.getPlatformUserNo());
 		gateService.addOrUpdateRegisterYeePay(registerYeePay);
 		
 		return doSign(request, host + "/bha/toRegister", model );
 	}
 	
-	@RequestMapping(value="/gate/recharge")
-	public String recharge(Model model) {
+	@RequestMapping(value="/gate/recharge",method = {RequestMethod.POST, RequestMethod.GET})
+	public String recharge(Model model,HttpServletRequest request)throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
+		Object o= request.getSession().getAttribute("name");
+		
+		  TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
+ 		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
+ 		
+ 		  if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){
+	        	  model.addAttribute("registerYeePay1", registerYeePay1);
+	        	  return "chongzhi";
+ 		  }
+		System.out.println(o.toString());
 		/*return "payment/recharge";*/
 		return "chongzhi";
 	}
@@ -155,9 +174,13 @@ public class GateController  {
 	
 	
 	@RequestMapping(value="/gate/transfer")
-	public String Transfer(Model model) {
+	public String Transfer(Model model,HttpServletRequest request,String paymentAmount) throws Exception {
+		Object o= request.getSession().getAttribute("name");
+		 TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
+		System.out.println("ddddd"+paymentAmount);
+		model.addAttribute("registerYeePay1", registerYeePay1);
 		model.addAttribute("now", System.currentTimeMillis());
-		return "payment/transfer";
+		return "tixiancheck";
 	}
 	
 	@RequestMapping(value="/gate/doTransfer")
@@ -175,8 +198,8 @@ public class GateController  {
 	
 	
 	
-	@RequestMapping(value="/gate/exam")
-	public String exam(Model model, String resp, String sign) {
+	@RequestMapping(value="/gate/exam", method = {RequestMethod.POST, RequestMethod.GET})
+	public String exam(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
 		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
@@ -229,16 +252,34 @@ public class GateController  {
 		    		  
 		    	  }
 		    	  
-		    	  
+		      }  
 		    	  
 		    	  
 		    	  gateService.addOrUpdate(YeePay);
+		    	  /*TRegisterYeePay registerYeePay=new TRegisterYeePay();*/
+		    	 
+		    	 TRegisterYeePay registerYeePay= gateService.queryTRegisterYeePayByNumber(YeePay.getRequestNo()).get(0);
+		    	 registerYeePay.setCode(YeePay.getCode());
+		    	    gateService.addOrUpdateRegisterYeePay(registerYeePay);
+		    	   
+		    	   /* Object o= request.getSession().getAttribute("name");
+		    	  System.out.println("aaaaaaaaaaaaa"+o.toString());*/
+		    	 
+		    		  TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo()).get(0);
+		    		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
+		    		  model.addAttribute("now", System.currentTimeMillis());
+		    		  if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){
+			        	  model.addAttribute("registerYeePay1", registerYeePay1);
+			        	  return "zhuce";
+			          }else if(registerYeePay1.getCode()!="1"){
+			        	  
+			        	  return "register";
+			          }
+			     
+		    	  
+		    	 
+		    	  
 		         
-		         
-	
-		          
-		          
-		      }
 		      
 		      
 		        } catch (Exception e) {
@@ -298,8 +339,10 @@ public class GateController  {
 			 
 		
 		
-		
-		return "payment/exam";
+		  
+		/*return "payment/exam";*/
+		  
+		return "chong";
 	}
 
 	/*@Override
@@ -323,6 +366,7 @@ public class GateController  {
 		/*model.addAttribute("sign", SignUtil.sign(s, pfx, "123qwe"));*/
 		model.addAttribute("sign","ddd");
 		System.out.println("wwwwwwwwwwwwwwwwwww");
+		 ccc.da(service,url,s);
 		return "post";
 	}
 	
