@@ -11,7 +11,7 @@ public class TCrowdfunding {
 	 private String raiseProportion;  //筹集比例
 	 private String realityMoney;   //已经筹集资金
 	 private String surplusTime;     //剩余时间 
-	 private String companyIntroduction;  //公司介绍
+	 private String projectPicture;  //项目图片
 	 private String projectIntroduction;  //项目介绍
 	 private int supporter;  
 	 private int like; 
@@ -68,11 +68,12 @@ public class TCrowdfunding {
 	public void setSurplusTime(String surplusTime) {
 		this.surplusTime = surplusTime;
 	}
-	public String getCompanyIntroduction() {
-		return companyIntroduction;
+	
+	public String getProjectPicture() {
+		return projectPicture;
 	}
-	public void setCompanyIntroduction(String companyIntroduction) {
-		this.companyIntroduction = companyIntroduction;
+	public void setProjectPicture(String projectPicture) {
+		this.projectPicture = projectPicture;
 	}
 	public String getProjectIntroduction() {
 		return projectIntroduction;

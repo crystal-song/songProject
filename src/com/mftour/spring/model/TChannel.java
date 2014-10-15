@@ -1,6 +1,6 @@
 package com.mftour.spring.model;
 
-public class TChannel {
+public class TChannel  implements java.io.Serializable{
 	
 	private static final long serialVersionUID = -8032736954676846625L;
 	

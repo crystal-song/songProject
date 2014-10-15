@@ -1,6 +1,6 @@
 package com.mftour.spring.model;
 
-public class TCrowdfundingCommodity {
+public class TCrowdfundingCommodity  implements java.io.Serializable{
 	
 	private static final long serialVersionUID = -8032736967366846625L;
 	
