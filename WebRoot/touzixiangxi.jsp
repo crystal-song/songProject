@@ -285,11 +285,11 @@ function onsubmit(){
                     <div class="cr_more"><img src="<%=path%>/images/sy_50.jpg"></div>
                 </div>
                 <div class="cr_nr">
-                <form id="form" role="form" action="" method="post" target="_blank">
+                <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank">
                 	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
-                	<div class="jin_input"><input type="text" class="jin_text" value="请输入资金" id="buyAmount"></input>元</div>
-                	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="onsubmit()"><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
+                	<div class="jin_input"><input type="text" class="jin_text" value="" id="buyAmount"></input>元</div>
+                	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="onsubmit()" ><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
                 	</form>
                 </div>
             </div>
