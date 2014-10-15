@@ -116,11 +116,17 @@ window.onload=function(){
 	}
 	 
 }
-		
+
+function onsubmit(){
+	if($("#buyAmount").val()==0){alert("投资金额不能为空！");return false;}
+	var form = document.getElementById("form");
+	 form.submit();
+}	
 </script>
 </head>
 
 <body>
+
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
@@ -279,10 +285,12 @@ window.onload=function(){
                     <div class="cr_more"><img src="<%=path%>/images/sy_50.jpg"></div>
                 </div>
                 <div class="cr_nr">
+                <form id="form" role="form" action="" method="post" target="_blank">
                 	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
-                	<div class="jin_input"><input type="text" class="jin_text" value="请输入资金" id="input"></input>元</div>
-                	<div class="jin_input"><a id="touzi_dialog" href="<%=path%>/touzicheck.jsp"><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
+                	<div class="jin_input"><input type="text" class="jin_text" value="请输入资金" id="buyAmount"></input>元</div>
+                	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="onsubmit()"><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
+                	</form>
                 </div>
             </div>
 		 <%@ include file="/includes/news_list_right.jsp" %>
