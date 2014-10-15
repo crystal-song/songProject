@@ -288,7 +288,7 @@ function mysubmit(){
                 <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
                 	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
-                	<div class="jin_input"><input type="text" class="jin_text" value="" id="buyAmount"></input>元</div>
+                	<div class="jin_input"><input type="text" class="jin_text" value="" id="buyAmount" name="buyAmount"></input>元</div>
                 	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="mysubmit();" ><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
                 	</form>
                 </div>
