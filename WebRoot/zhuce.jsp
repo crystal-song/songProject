@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <ol class="sec_list">
       <li>去项目中心<a class="con_link" href="<%=path%>/touzi.jsp"><strong>[浏览项目]</strong></a></li>
       <li>去用户中心查看<a class="con_link" href="<%=path%>/user-info.jsp"><strong>[个人信息]</strong></a></li>
-      <li><a class="sec_btn_org" href="<%=path%>/chongzhi.jsp">去充值</a></li>    
+      <li><a class="sec_btn_org" href="<%=path%>/gate/recharge">去充值</a></li>    
    </ol> 
    <div class="sec_pro_show"></div>      
 </div>
