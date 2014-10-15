@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>充值 - 用户中心 - 中投汇</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
- <jsp:include page="/payment/head.jsp"></jsp:include>  
+<%--  <jsp:include page="/payment/head.jsp"></jsp:include>  --%> 
 <script type="text/javascript">
 	function onSubmit(host) {
 		document.getElementById("host").value = host;

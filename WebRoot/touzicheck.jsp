@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>投资确认 - 中投汇</title>
- <jsp:include page="/payment/head.jsp"></jsp:include>  
+<%--  <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+  <%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -9,7 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>正在提交数据...</title>
 <link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
- <jsp:include page="/payment/head.jsp"></jsp:include>  
+<%--  <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
 <script type="text/javascript">
 function onSubmit() {
 	var url = document.getElementById("url").value;
