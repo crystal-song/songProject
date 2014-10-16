@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>注册易宝账户 - 用户中心 - 中投汇</title>
+ <title注册易宝账户 - 用户中心 - 中投汇/></title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
  <%-- <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
 <%-- <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  --%> 
@@ -72,16 +72,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="form-group" style="">
             <label for="platformNo">platformNo</label>
             <input type="text"class="form-control" id="platformNo" 
-                   name="platformNo" value="10040011137" disabled="disabled" />
+                   name="platformNo" value="10040011137" />
           </div>
           <div class="form-group">
             <label for="requestNo">requestNo</label><input type="text"
-              class="form-control" id="requestNo" name="requestNo" value="${now}" disabled="disabled"  />
+              class="form-control" id="requestNo" name="requestNo" value="${now}"  />
           </div>
           <div class="form-group">
             <label for="platformUserNo">platformUserNo</label><input
               type="text" class="form-control" id="platformUserNo"
-              name="platformUserNo"  value="${now}"  disabled="disabled"   />
+              name="platformUserNo"  value="${user.name}"    />
           </div>
           <div class="form-group">
             <label for="nickName">nickName</label><input type="text"
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           <div class="form-group">
             <label for="idCardType">idCardType</label><input type="text"
-              class="form-control" id="idCardType" name="idCardType" value="G2_IDCARD"  disabled="disabled"  />
+              class="form-control" id="idCardType" name="idCardType" value="G2_IDCARD"   />
           </div>
           <div class="form-group">
             <label for="idCardNo">idCardNo</label><input type="text"
@@ -105,16 +105,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           <div class="form-group">
             <label for="email">email</label><input type="text"
-              class="form-control" id="email" name="email" value="${user.email}" disabled="disabled"  />
+              class="form-control" id="email" name="email" value="${user.email}"  />
           </div>
           <div class="form-group">
             <label for="notifyUrl">notifyUrl</label><input type="text"
-              class="form-control" id="notifyUrl" name="notifyUrl" value="${host}${context}/gate/exam" disabled="disabled"  />
+              class="form-control" id="notifyUrl" name="notifyUrl" value="${host}${context}/gate/exam"   />
           </div>
           <div class="form-group">
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
-              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/exam" disabled="disabled"  />
+              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/exam"   />
           </div>
           <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button>
           <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">生产</button>
