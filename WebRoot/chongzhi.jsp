@@ -12,6 +12,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>充值 - 用户中心 - 中投汇</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>  --%> 
+
+
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 	function onSubmit(host) {
 		document.getElementById("host").value = host;
@@ -19,8 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		form.submit();
 	}
 </script>
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
     var navIndex=3;    
     $(document).ready(function(){
@@ -138,6 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="wang_yin">
 	          <span></span>
 	          </div>
+	          
 	          <div class="clear"></div>
               <ul class="chong">
 		           <li><span>所剩余额</span><a class="org_num"><strong>0.00</strong></a><i>元</i></li>
@@ -145,61 +147,72 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           <li><span>验证码</span><a><input type="text" class="input_text"></input></a><i></i></li>
 	                             
 	          </ul>
+	          
+	          <!--  <ul class="chong"> -->
               <form role="form" action="<%=path%>/gate/doRecharge" method="post"
           target="_blank">
-          <input type="hidden" id="host" name="host">
-          <div class="form-group" style="display:none">
+          <ul class="chong">
+         <li> <input type="hidden" id="host" name="host"></input></li>
+         <li> <div class="form-group" >
             <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo"
               value="10040011137" />
-          </div>
-          <div class="form-group" style="display:none">
+          </div></li>
+          <li><div class="form-group" >
             <label for="requestNo">requestNo</label><input type="text"
               class="form-control" id="requestNo" name="requestNo"
               value="${now}" />
-          </div>
-          <div class="form-group" style="display:none">
+          </div></li>
+         <li> <div class="form-group" >
             <label for="platformUserNo">platformUserNo</label><input
               type="text" class="form-control" id="platformUserNo"
-              name="platformUserNo"  value="189123456"  />
-          </div>
-          <div class="form-group" style="display:none">
+              name="platformUserNo"  value="${registerYeePay1.platformUserNo}"  />
+          </div></li>
+         <li> <div class="form-group" >
             <label for="feeMode">feeMode</label><input type="text"
               class="form-control" id="feeMode" name="feeMode"
               value="PLATFORM" />
           </div>
-          
+          </li>
+          <li>
            <div class="form-group">
-           <ul class="chong"><li><span>充值金额</span>
-            <label for="amount" style="display:none">amount</label>
+            <label for="amount" >充值金额</label>
             <input type="text"
               class="form-control" id="amount" name="amount"
               value="100" /><i>元</i>
-              </li></ul>
           </div> 
-          <div class="form-group" style="display:none">
+          </li>
+          <li>
+          <div class="form-group" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
               class="form-control" id="notifyUrl" name="notifyUrl"  value="http://192.168.1.207:8080/spring3/bha/gate/exam" />
           </div>
-          <div class="form-group" style="display:none">
+          </li>
+          <li>
+          <div class="form-group" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl"
               value="http://192.168.1.207:8080/spring3/bha/gate/exam" />
           </div>
-          
-        
-        <ul class="chong">
-        <li><span></span><a class="queren_box"><input type="checkbox"></input></a><a>我已阅读并确认下方重要提示信息</a></li>
-	               <li><span></span><%-- <a href="<%=path%>/chongzhicheck.jsp" class="submit_box">充值</a> --%>
-                   <button onclick="onSubmit('http://qa.yeepay.com/member')"
+          </li>
+          <li>
+           <button onclick="onSubmit('http://qa.yeepay.com/member')"
             class="btn btn-default">QA</button>
           <button onclick="onSubmit('http://qa.yeepay.com/bha-toolkit')"
             class="btn btn-default">QA</button>
           <button onclick="onSubmit('https://member.yeepay.com/member')"
-            class="btn btn-default">生产</button></li>
+            class="btn btn-default">生产</button>
+        </li>
         </ul>
-	       </form>   
+         </form> 
+        <ul class="chong">
+         <!-- <li><span></span><a class="queren_box"><input type="checkbox"></input></a><a>我已阅读并确认下方重要提示信息</a></li> -->
+	               <li><%-- <span></span><a href="<%=path%>/chongzhicheck.jsp" class="submit_box">充值</a> --%> 
+                  </li>
+        </ul>
+	      
+	       <!-- </ul>  --> 
 	          <div class="user_bottom01" style="height:200px">
 			            <h3>温馨提示:</h3>
 			            <ol>
