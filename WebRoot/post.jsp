@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
-  <%
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -32,7 +32,7 @@ window.onload=function(){
 <h1>正在为您转至第三方支付平台，请稍后...</h1>
 <h2><a href="javascript:;" onclick="onSubmit">立即跳转</a></h2>
 </div>
-  <div class="container" styly="display:none;">
+  <div class="container" style="display:none;">
     <div class="row clearfix">
       <div class="col-md-12 column">
         <h3>准备请求</h3>
