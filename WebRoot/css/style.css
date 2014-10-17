@@ -318,7 +318,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 
 /*yonghuzhongxin */
 .msg_con{width:1100px; height:auto;  margin:0 auto; margin-top:50px; }
-.msg_left{width:200px; height:550px; float:left; margin-right:12px;}
+.msg_left{width:200px; height:auto; float:left; margin-right:12px;}
 .msg_right{width:880px; height:auto;  float:left;}
 .msg_left_top{width:200px; height:160px; border:1px solid #ccc; border-radius:5px;}
 .name{width:200px; height:70px; border-bottom:1px solid #dddddd; position:relative; }
@@ -872,3 +872,20 @@ td{width:120px; height:36px; padding-right:30px}
 .ren_pass01 strong{width:800px; height:160px; background:url(../img/renok.png) 200px 80px no-repeat; display:inline-block; line-height:200px; font-size:24px; color:#000}
 .querenlist{margin-left:100px;}
 .querenlist li{width:600px;}
+.logo_style{width:300px; height:76px; color:#be1025; font-size:48px; display:inline-block; text-align:center; line-height:76px; margin:0; font-family:"微软雅黑"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
