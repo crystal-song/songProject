@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <Link href="/favicon.ico" rel="Shortcut Icon">
-<title>项目：${product1.projectName} - 我要投资 - 中投汇</title>
+<title>项目：${product1.projectName} - 我要投资 - 中汇宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css_new/style.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/jquery-ui-1.11.1/js/jquery-ui.css" rel="stylesheet" type="text/css" />
