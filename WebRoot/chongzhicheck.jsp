@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="clear_height"></div>
 <div class="msg_con">
   <div class="queren_con">
-   <div class="con_title"><strong>充值信息确认</strong></div>
+   <div class="con_title"><strong>易宝账号注册信息</strong></div>
    <ul>
       <li><span>用户名:</span><div>xiaoyan</div></li>
       <li><span>订单号:</span><div>1234567890</div></li>
