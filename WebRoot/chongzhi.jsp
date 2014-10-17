@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>充值 - 用户中心 - 中投汇</title>
+<title>充值 - 用户中心 - 中汇宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>  --%> 
 
@@ -219,7 +219,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <li><strong>您充值的资金若未投资就提现，第三方支付公司会收取您提现金额的0.5%作为转账费用。</strong> </li>
 			              <li>您的账户资金将由第三方平台托管。 </li>       
 			              <li>为了您的资金安全，请您在充值前完成手机绑定，身份认证及支付密码设置。  </li>
-			              <li>中投汇严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务，并会影响银行征信记录。</li>
+			              <li>中汇宝严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务，并会影响银行征信记录。</li>
 			              <li>充值过程遇到问题，请联系客服，400-600-4300 </li>
 			            </ol>
                </div>
