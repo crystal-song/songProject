@@ -249,7 +249,7 @@ function getCity(currProvince)
 	             <li><span class="ti_wh">开户行</span><span><input type="text" ></input></span></li>
              </ul>
              <div class="w_tishi" style="display:none">
-             <p>温馨提示：为确保您的资金划转安全高效，爱投资建议您完善开户行信息。 您只需在分支行框内输入分支行关键词。</p>
+             <p>温馨提示：为确保您的资金划转安全高效，中汇宝建议您完善开户行信息。 您只需在分支行框内输入分支行关键词。</p>
              <p style="padding-left:70px">比如您的开户行名称为“工商银行北京宣武门支行”，只需输入关键词“宣武”即可。如果推荐列表中没有符合关键词的信息，</p>
              <p style="padding-left:70px">请您务必在列表中选择开户城市的银行分行，如：工商银行北京市分行营业部。</p>
              </div>
