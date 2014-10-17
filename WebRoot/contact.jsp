@@ -48,7 +48,7 @@ var index=4;
                <p>电话：010-84243099/3199</p>
                <p>传真号：010-84243990</p>
                <p>email：cs@ptobchina.com</p>
-               <p>简介：中投汇融，北京市朝阳区工体北路13号院1号楼1501-1502室。 邮编：100020</p>
+               <p>简介：中汇宝，北京市朝阳区工体北路13号院1号楼1501-1502室。 邮编：100020</p>
         	</div>
         	<div style="width:800px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
  	
