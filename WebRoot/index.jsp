@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>中投汇</title>
+<title>中汇宝</title>
 
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
@@ -62,11 +62,11 @@ $(document).ready(function(){
         </div>
         <div class="two_list1">
         	<div class="two_tit">极致之美</div>
-            <div class="two_nr">对于极致的追求是中投汇融一直以来秉承的信念，<span class="hong">极致透明安全、极致体验</span>。在这里我们为您准备好一切。</div>
+            <div class="two_nr">对于极致的追求是中汇宝一直以来秉承的信念，<span class="hong">极致透明安全、极致体验</span>。在这里我们为您准备好一切。</div>
         </div>
         <div class="two_list2">
         	<div class="two_tit">理财随心</div>
-            <div class="two_nr">在中投汇融，我们提供了高质量的不同期限、不同利率、不同用途的借款项目，随心选择。</div>
+            <div class="two_nr">在中汇宝，我们提供了高质量的不同期限、不同利率、不同用途的借款项目，随心选择。</div>
         </div>
     </div>
     <div class="clear"></div>
