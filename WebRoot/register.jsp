@@ -69,16 +69,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="container">
         <form id="form" role="form" action="<%=path%>/gate/doRegister" method="post" target="_blank">
           <input type="hidden" id="host" name="host"/>
-          <div class="form-group" style="">
+          <div class="form-group" style="VISIBILITY: hidden">
             <label for="platformNo">platformNo</label>
-            <input type="text"class="form-control" id="platformNo" 
-                   name="platformNo" value="10040011137" />
+             <input type="text"class="form-control" id="platformNo" 
+                   name="platformNo" value="10012415118" /> 
+           <!--  <input type="text"class="form-control" id="platformNo" 
+                   name="platformNo" value="10040011137" /> -->
           </div>
-          <div class="form-group">
+          <div class="form-group" style="VISIBILITY: hidden" >
             <label for="requestNo">requestNo</label><input type="text"
               class="form-control" id="requestNo" name="requestNo" value="${now}"  />
           </div>
-          <div class="form-group">
+          <div class="form-group" style="VISIBILITY: hidden" >
             <label for="platformUserNo">platformUserNo</label><input
               type="text" class="form-control" id="platformUserNo"
               name="platformUserNo"  value="${user.name}"    />
@@ -89,29 +91,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           <div class="form-group">
             <label for="realName">realName</label><input type="text"
-              class="form-control" id="realName" name="realName" value="张三" />
+              class="form-control" id="realName" name="realName" value="杨磊" />
           </div>
-          <div class="form-group">
+          <div class="form-group"  style="VISIBILITY: hidden" >
             <label for="idCardType">idCardType</label><input type="text"
               class="form-control" id="idCardType" name="idCardType" value="G2_IDCARD"   />
           </div>
           <div class="form-group">
             <label for="idCardNo">idCardNo</label><input type="text"
-              class="form-control" id="idCardNo" name="idCardNo" value="10040011137" />
+              class="form-control" id="idCardNo" name="idCardNo" value="110108198210250031" />
           </div>
           <div class="form-group">
             <label for="mobile">mobile</label><input type="text"
-              class="form-control" id="mobile" name="mobile" value="${user.phone}" />
+              class="form-control" id="mobile" name="mobile" value="" />
           </div>
-          <div class="form-group">
+          <div class="form-group" style="VISIBILITY: hidden" >
             <label for="email">email</label><input type="text"
               class="form-control" id="email" name="email" value="${user.email}"  />
           </div>
-          <div class="form-group">
+          <div class="form-group" style="VISIBILITY: hidden" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
               class="form-control" id="notifyUrl" name="notifyUrl" value="${host}${context}/gate/exam"   />
           </div>
-          <div class="form-group">
+          <div class="form-group" style="VISIBILITY: hidden" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/exam"   />
