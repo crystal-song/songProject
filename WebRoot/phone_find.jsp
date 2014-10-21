@@ -4,7 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
- <%@ include file="/includes/taglibs.jsp" %> 
+<%@ include file="/includes/taglibs.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -29,8 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="con_title"><strong>手机找回密码</strong><a class="youxiangfind" href="<%=path%>/youxiangfind.jsp">邮箱找回</div></a>
    <ul class="pass_msg">
       <li><span>输入手机号:</span><div><input type="text" id="input_fir" value="手机号/用户名"></input></div></li>
-      <li><span>验证码:</span><div><input type="text"  id="input_sec"></input><a id="yan_ma"></a><a class="shuaxin"></a></div></li>
-     
+      <li><span>验证码:</span><div><input type="text"  id="input_sec"></input><a id="yan_ma"></a><a class="shuaxin"></a></div></li> 
    </ul>
    <div class="que_btn "><a href="<%=path%>/newpwd.jsp" class="que_mar">下一步</a></div>
   </div>        
