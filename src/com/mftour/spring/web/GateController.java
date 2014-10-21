@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ServletContextAware;
 
+import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TRegisterYeePay;
+import com.mftour.spring.model.TTransferInfo;
+import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
@@ -46,6 +49,12 @@ import com.yeepay.bha.example.bean.BHAWithdrawRequest;
 
 
 
+
+
+
+
+import com.yeepay.g3.utils.security.cfca.SignUtil;
+
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream; 
 import java.io.FileNotFoundException; 
@@ -68,7 +77,7 @@ import org.xml.sax.SAXException;
 @Controller
 public class GateController  {
 	
-	/*private ServletContext servletContext = null;*/
+	private ServletContext servletContext = null;
 	
 	@Autowired
     private IGateService gateService;
@@ -83,7 +92,7 @@ public class GateController  {
 		
 		 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
 	    			+"<response platformNo='10040011137'>"
-	    			+"<platformUserNo>18975601645</platformUserNo> "
+	    			+"<platformUserNo>gg123456</platformUserNo> "
 	                +"</response>";
 		 model.addAttribute("req", req);
 		
@@ -111,11 +120,13 @@ public class GateController  {
 	public String register(Model model,HttpServletRequest request) throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name"); 
-		
-		TUser user=userService.getUserByAccount(o.toString());
-		model.addAttribute("user", user);
-		/*return "payment/register";*/
-		return "register";
+		if(o!=null){
+			TUser user=userService.getUserByAccount(o.toString());
+			model.addAttribute("user", user);
+			/*return "payment/register";*/
+			return "register";
+		}
+		return "login";
 	}
 	
 	
@@ -140,6 +151,7 @@ public class GateController  {
 	public String recharge(Model model,HttpServletRequest request)throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name");
+		 if(o!=null){
 		
 		  TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
  		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
@@ -148,9 +160,12 @@ public class GateController  {
 	        	  model.addAttribute("registerYeePay1", registerYeePay1);
 	        	  return "chongzhi";
  		  }
+		 }else{
+			 return "login";
+		 }
 		System.out.println(o.toString());
 		/*return "payment/recharge";*/
-		return "chongzhi";
+		return "login";
 	}
 	
 	@RequestMapping(value="/gate/doRecharge")
@@ -174,19 +189,21 @@ public class GateController  {
 	
 	
 	@RequestMapping(value="/gate/transfer")
-	public String Transfer(Model model,HttpServletRequest request,String buyAmount) throws Exception {
+	public String Transfer(Model model,HttpServletRequest request,String buyAmount,TProduct product) throws Exception {
 		Object o= request.getSession().getAttribute("name");
 		 TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
 		System.out.println("ddddd"+buyAmount);
 		model.addAttribute("registerYeePay1", registerYeePay1);
 		model.addAttribute("buyAmount", buyAmount);
+		model.addAttribute("product", product);
 		model.addAttribute("now", System.currentTimeMillis());
 		return "touzicheck";
+		/*return "payment/transfer";*/
 	}
 	
 	@RequestMapping(value="/gate/doTransfer")
-	public String doTransfer(String host, BHATransferRequest request, Model model) {
-	
+	public String doTransfer(String host, BHATransferRequest request, Model model,TTransferInfo TtransferInfo) throws Exception {
+		gateService.addOrUpdateTTransferInfo(TtransferInfo);
 		return doSign(request, host + "/bha/toTransfer", model);
 	}
 	
@@ -269,6 +286,7 @@ public class GateController  {
 		    		  TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo()).get(0);
 		    		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
 		    		  model.addAttribute("now", System.currentTimeMillis());
+		    		  System.out.println("ddddddddddddddd"+registerYeePay1.getPlatformUserNo()+"ddddddddd"+registerYeePay1.getCode());
 		    		  if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){
 			        	  model.addAttribute("registerYeePay1", registerYeePay1);
 			        	  return "zhuce";
@@ -343,17 +361,102 @@ public class GateController  {
 		  
 		/*return "payment/exam";*/
 		  
-		return "chong";
+		return "register";
+	}
+	
+	
+	
+	@RequestMapping(value="/gate/transferSucceed", method = {RequestMethod.POST, RequestMethod.GET})
+	public String transferSucceed(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
+		model.addAttribute("resp", resp);
+		model.addAttribute("sign", sign);
+		System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzz");
+		
+		
+		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+		  
+		  try {
+		            
+		      //    通过 解析器 工厂 创建 一个 解析 器 
+		      DocumentBuilder db=dbf.newDocumentBuilder();
+		      
+		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
+		     
+		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
+		     Document dm=db.parse(iStream);
+		      
+		      //得到 所有 person节点 
+		      NodeList persons=dm.getElementsByTagName("response");
+		     
+		      TTransferSucceed TTransferSucceed=new TTransferSucceed();
+		      
+		      for(int i=0;i<persons.getLength();i++){
+		          
+		    	  Element personElement = (Element)persons.item(i);
+		    	  
+		    	  NodeList p=personElement.getChildNodes();
+		    	  for(int j=0;j<p.getLength();j++){
+		    		  Node e= p.item(j);
+		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+		    		 
+		    	  }
+		    	  
+		    	 
+		    	  
+		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
+		    		  TTransferSucceed.setService(p.item(1).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
+		    		  TTransferSucceed.setRequestNo(p.item(3).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
+		    		  TTransferSucceed.setCode(p.item(5).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
+		    		  TTransferSucceed.setDescription(p.item(7).getTextContent());
+		    		  
+		    	  }
+		    	  
+		      }  
+		      gateService.addOrUpdateTTransferSucceed(TTransferSucceed);
+		      TTransferInfo transferInfo = gateService.queryTTransferInfoByNumber(TTransferSucceed.getRequestNo()).get(0);
+		      model.addAttribute("transferInfo", transferInfo);
+		    	  
+		    	 
+		    		 
+		    		
+		    		
+		      
+		      
+		        } catch (Exception e) {
+		            // TODO: handle exception
+		            e.printStackTrace();
+		        } finally {
+		        }
+		   
+		
+		  
+		/*return "payment/exam";*/
+		  return "buy_ok";
+		  
+		/*return "chong";*/
 	}
 
-	/*@Override
+	
+	
+	
+	
+
 	public void setServletContext(ServletContext servletContext) {
 		this.servletContext = servletContext;
-	}*/
+	}
 	
 	private String doSign(String xml, String url, Model model, String service) {
 		System.out.println("ssssssssssssss");
-		/*String pfx = servletContext.getRealPath("/WEB-INF/bha.pfx");*/
+		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
 
 		String s = xml;
 		s = s.replaceAll("[\\r\\n]", "");
@@ -364,10 +467,10 @@ public class GateController  {
 		model.addAttribute("service", service);
 		model.addAttribute("url", url);
 		model.addAttribute("req", s);
-		/*model.addAttribute("sign", SignUtil.sign(s, pfx, "123qwe"));*/
-		model.addAttribute("sign","ddd");
+		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
+		/*model.addAttribute("sign","ddd");*/
 		System.out.println("wwwwwwwwwwwwwwwwwww");
-		 ccc.da(service,url,s);
+		/* ccc.da(service,url,s);*/
 		return "post";
 	}
 	
