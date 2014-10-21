@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.mftour.spring.Dao.IGateDao;
 import com.mftour.spring.model.TRegisterYeePay;
+import com.mftour.spring.model.TTransferInfo;
+import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
 
 @Repository("gateDao")
@@ -43,6 +45,35 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("requestNo", Number);
 		return query.list();
 	}
+
+	@Override
+	public void addOrUpdateTTransferSucceed(TTransferSucceed transferSucceed)
+			throws Exception {
+		getHibernateTemplate().saveOrUpdate(transferSucceed);
+		
+	}
+
+	@Override
+	public void addOrUpdateTTransferInfo(TTransferInfo TTransferInfo)
+			throws Exception {
+		getHibernateTemplate().saveOrUpdate(TTransferInfo);
+		
+	}
+
+	@Override
+	public List<TTransferInfo> queryTTransferInfoByNumber(String Number)
+			throws Exception {
+		String hq = "from TTransferInfo transferInfo where transferInfo.requestNo = :requestNo";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("requestNo", Number);
+		return query.list();
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
