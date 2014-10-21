@@ -289,6 +289,9 @@ function mysubmit(){
                 	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
                 	<div class="jin_input"><input type="text" class="jin_text" value="" id="buyAmount" name="buyAmount"></input>元</div>
+                	<div class="jin_"><input type="hidden" class="jin_text" value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
+                	<div class="jin_"><input type="hidden" class="jin_text" value="${product1.projectName}" id="projectName" name="projectName"></input></div>
+                	<div class="jin_"><input type="hidden" class="jin_text" value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
                 	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="mysubmit();" ><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
                 	</form>
                 </div>
