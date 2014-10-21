@@ -153,22 +153,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           target="_blank">
           <ul class="chong">
          <li> <input type="hidden" id="host" name="host"></input></li>
-         <li> <div class="form-group" >
-            <label for="platformNo">platformNo</label><input type="text"
+         <li> <div class="form-group" style="VISIBILITY: hidden" >
+            <!-- <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo"
-              value="10040011137" />
+              value="10040011137" /> -->
+               <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo"
+              value="10012415118" />
           </div></li>
-          <li><div class="form-group" >
+          <li><div class="form-group" style="VISIBILITY: hidden" >
             <label for="requestNo">requestNo</label><input type="text"
               class="form-control" id="requestNo" name="requestNo"
               value="${now}" />
           </div></li>
-         <li> <div class="form-group" >
+         <li> <div class="form-group" style="VISIBILITY: hidden" >
             <label for="platformUserNo">platformUserNo</label><input
               type="text" class="form-control" id="platformUserNo"
               name="platformUserNo"  value="${registerYeePay1.platformUserNo}"  />
           </div></li>
-         <li> <div class="form-group" >
+         <li> <div class="form-group" style="VISIBILITY: hidden" >
             <label for="feeMode">feeMode</label><input type="text"
               class="form-control" id="feeMode" name="feeMode"
               value="PLATFORM" />
@@ -183,13 +186,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div> 
           </li>
           <li>
-          <div class="form-group" >
+          <div class="form-group" style="VISIBILITY: hidden" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
               class="form-control" id="notifyUrl" name="notifyUrl"  value="http://192.168.1.207:8080/spring3/bha/gate/exam" />
           </div>
           </li>
           <li>
-          <div class="form-group" >
+          <div class="form-group" style="VISIBILITY: hidden" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl"
@@ -197,10 +200,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           </li>
           <li>
-           <button onclick="onSubmit('http://qa.yeepay.com/member')"
+          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')"
             class="btn btn-default">QA</button>
           <button onclick="onSubmit('http://qa.yeepay.com/bha-toolkit')"
-            class="btn btn-default">QA</button>
+            class="btn btn-default">QA</button> -->
           <button onclick="onSubmit('https://member.yeepay.com/member')"
             class="btn btn-default">生产</button>
         </li>
