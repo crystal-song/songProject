@@ -87,11 +87,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           <div class="form-group">
             <label for="nickName">nickName</label><input type="text"
-              class="form-control" id="nickName" name="nickName" value="新用户" />
+              class="form-control" id="nickName" name="nickName" value="" />
           </div>
           <div class="form-group">
             <label for="realName">realName</label><input type="text"
-              class="form-control" id="realName" name="realName" value="杨磊" />
+              class="form-control" id="realName" name="realName" value="" />
           </div>
           <div class="form-group"  style="VISIBILITY: hidden" >
             <label for="idCardType">idCardType</label><input type="text"
@@ -99,7 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           <div class="form-group">
             <label for="idCardNo">idCardNo</label><input type="text"
-              class="form-control" id="idCardNo" name="idCardNo" value="110108198210250031" />
+              class="form-control" id="idCardNo" name="idCardNo" value="" />
           </div>
           <div class="form-group">
             <label for="mobile">mobile</label><input type="text"
@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/exam"   />
           </div>
-          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button>
+         <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button> -->
           <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">生产</button>
         </form>
         <div class="jin_input"><a href="javascript:;" title="立即注册" onclick="onSubmit('http://qa.yeepay.com/member')">立即注册</a></div>
