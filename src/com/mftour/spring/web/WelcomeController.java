@@ -2,7 +2,9 @@ package com.mftour.spring.web;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TUser;
+import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
 
@@ -26,6 +28,9 @@ public class WelcomeController {
 
 	@Autowired
     private IUserService userService;
+	
+	@Autowired
+    private IGateService gateService;
   
 	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	@ResponseBody
@@ -78,6 +83,9 @@ public class WelcomeController {
 		request.getSession().setAttribute("name",user.getName()); 
 		TUser user1 = userService.getUserByAccount(user.getName());
 		model.addAttribute("user1", user1); 
+	
+		TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0);
+		model.addAttribute("registerYeePay1", registerYeePay1);
 //		request.getSession().setAttribute("users", username);
 		return "user-info";
 }
