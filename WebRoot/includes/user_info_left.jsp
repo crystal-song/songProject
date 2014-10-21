@@ -1,4 +1,5 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
+
      <!--    <div class="clear_height"></div>
                 	<div class="profile_l">
         		<div class="avatar"><a href="#"><img /></a></div>
@@ -24,12 +25,12 @@
                  </div>
                  <span><strong>${user1.name}</strong></span>
            </div>
-           <div class="left_btm">
-                  <span class="sp1"><a href="<%=path%>/anquanshezhi.jsp" title="您未认证个人实名信息, 点击认证"></a></span>
-                  <span class="sp2"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定身份证，点击绑定"></a></span>
-                  <span class="sp3"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定手机号，点击绑定"></a></span>
-                  <span class="sp4"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定邮箱，点击绑定"></a></span>
-                  <span class="sp5"><a href="<%=path%>/anquanshezhi.jsp" title="您未注册易宝支付账号，点击注册"></a></span>                  
+           <div class="left_btm" style="height:12px;">
+                  <span class="sp1" style="display:none"><a href="<%=path%>/anquanshezhi.jsp" title="您未认证个人实名信息, 点击认证"></a></span>
+                  <span class="sp2" style="display:none"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定身份证，点击绑定"></a></span>
+                  <span class="sp3" style="display:none"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定手机号，点击绑定"></a></span>
+                  <span class="sp4" style="display:none"><a href="<%=path%>/anquanshezhi.jsp" title="您未绑定邮箱，点击绑定"></a></span>
+                  <span class="sp5" style="display:none"><a href="<%=path%>/anquanshezhi.jsp" title="您未注册易宝支付账号，点击注册"></a></span>                  
            </div>
            <div class="loadbar">
              <div class="red_bar"></div>
@@ -55,12 +56,12 @@
                   <li><a href="<%=path%>/tixian.jsp">提现</a></li>
               </ul>
           </div>
-          <div class="select_nav">
+          <div class="select_nav" style="display:none">
               <a  class="msg_nav">
 	              <i class="bac_change_2"></i>
 	              <span>消息管理</span>
               </a>
-              <ul style="display:none">
+              <ul>
                   <li><a  href="<%=path%>/zhanneitongzhi.jsp">站内信息</a></li>                  
               </ul>
           </div>
@@ -69,10 +70,10 @@
                   <i class="bac_change_3"></i>
                   <span>账户管理</span>
               </a>
-              <ul style="display:none">
+              <ul style="display:none" >
                   <li><a href="<%=path%>/user-info.jsp">个人信息</a></li>
-                  <li><a href="<%=path%>/anquanshezhi.jsp">安全设置</a></li>
-                  <li style="border-bottom:0"><a href="<%=path%>/tongzhishezhi.jsp">通知设置</a></li>
+                  <li style="border-bottom:0;"><a href="<%=path%>/anquanshezhi.jsp">安全设置</a></li>
+                  <li style="border-bottom:0; display:none" ><a href="<%=path%>/tongzhishezhi.jsp">通知设置</a></li>
                   
               </ul>
           </div>    
