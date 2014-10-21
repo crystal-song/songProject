@@ -122,7 +122,7 @@ $(document).ready(function(){
                      <li class="mg_right">身份证号</li><li>${user1.identityCard}</li>
                      <li class="mg_right">手机号码</li><li>${user1.phone}</li>
                      <li class="mg_right">邮箱地址</li><li>${user1.email}</li>
-                     <li class="mg_right">易宝账号</li><li>${user1.email}</li>
+                     <li class="mg_right">易宝账号</li><li>${registerYeePay1.platformUserNo}</li>
                    </ul>                  
                </div>               
                <div class="user_right">            
@@ -132,7 +132,7 @@ $(document).ready(function(){
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定身份证，实名认证即可成功绑定身份证， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定手机号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
                      <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未绑定邮箱号， <a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div><span class="box_right"></span></div><p>未认证</p></li>
-                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未注册易宝账号， <a href="<%=path%>/gate/register" target="_blank">请注册</a></div><span class="box_right"></span></div><p>未注册</p></li>            
+                     <li><div class="box_check"><span class="box_left"></span><div class="box_center">您未注册易宝账号， <a href="<%=path%>/gate/register" target="_blank">请注册</a></div><span class="box_right"></span></div><c:if test='${ empty registerYeePay1.code}'><p>未注册</p></c:if><c:if test='${registerYeePay1.code==1}'><p>已注册</p></c:if></li>            
                    </ul>
                </div>             
            </div>
