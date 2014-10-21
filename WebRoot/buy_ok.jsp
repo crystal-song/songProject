@@ -34,9 +34,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div>
    	订单信息：
    	<ul class="chong">
-   	<li><span>　订单号：</span><span>xxxxxxx</span></li>
-   	<li><span>项目名称：</span><span>xxxxxxx</span></li>
-   	<li><span>金　　额：</span><span>xxxxxxx</span></li>
+   	<li><span>　订单号：</span><span>${transferInfo.orderNo}</span></li>
+   	<li><span>项目名称：</span><span>${transferInfo.projectName}</span></li>
+   	<li><span>金　　额：</span><span>${transferInfo.paymentAmount}</span></li>
    	</ul>
    </div>
    <div class="title_sec">您可以进行以下操作</div>
