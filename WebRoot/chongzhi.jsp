@@ -9,7 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>充值 - 用户中心 - 中汇宝</title>
+<meta content="中汇宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
+<meta content="中汇宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
+<title>充值 - 我的账户 - 中汇宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>  --%> 
 
@@ -26,7 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var navIndex=3;    
     $(document).ready(function(){
     	$('.select_nav a').click(function(){
-    		$(this).siblings().slideToggle('slow')
+    		$(this).siblings().slideToggle('slow');
+    		//$(this).siblings().css('display','block');
     		}
     	);
     	$(function(){
@@ -139,15 +142,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="wang_yin">
 	          <span></span>
 	          </div>
-	          
 	          <div class="clear"></div>
               <ul class="chong">
 		           <li><span>所剩余额</span><a class="org_num"><strong>0.00</strong></a><i>元</i></li>
 		           <li style=" display:none;"><span>充值金额</span><a><input type="text" class="input_text"></input></a><i>元</i></li>
-		           <li><span>验证码</span><a><input type="text" class="input_text"></input></a><i></i></li>
-	                             
-	          </ul>
-	          
+		           <li><span>验证码</span><a><input type="text" class="input_text"></input></a><i></i></li>            
+	          </ul>      
 	          <!--  <ul class="chong"> -->
               <form role="form" action="<%=path%>/gate/doRecharge" method="post"
           target="_blank">
@@ -223,7 +223,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <li>您的账户资金将由第三方平台托管。 </li>       
 			              <li>为了您的资金安全，请您在充值前完成手机绑定，身份认证及支付密码设置。  </li>
 			              <li>中汇宝严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务，并会影响银行征信记录。</li>
-			              <li>充值过程遇到问题，请联系客服，400-600-4300 </li>
+			              <li>充值过程遇到问题，请联系客服，010-84243099/3199</li>
 			            </ol>
                </div>
 	          </div>             
