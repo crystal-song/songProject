@@ -9,7 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>用户中心页面</title>
+<meta content="中汇宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
+<meta content="中汇宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
+<title>安全设置 - 我的账户 - 中汇宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
@@ -235,7 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <li>您可选择通过上传身份证的形式通过身份验证，通过 上传认证 完成实名认证，然后等待客服人员审核通过。</li>
 			              <li>未满18周岁，实名认证无法通过。</li>
 			              <li>中汇宝会对用户的所有资料进行严格保密。</li>
-			              <li>实名认证过程遇到问题，请联系客服，400-600-4300</li>		              
+			              <li>实名认证过程遇到问题，请联系客服，010-84243099/3199</li>		              
 			            </ol>		            	            
                    </div>
 	             </div>
@@ -259,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            <ol>
 			              <li>请填写真实有效的手机号，手机号将作为验证用户身份的重要手段。</li>
 			              <li>中汇宝会对用户的所有资料进行严格保密。 </li>
-			              <li>手机认证过程遇到问题，请联系客服，400-600-4300。</li>
+			              <li>手机认证过程遇到问题，请联系客服，010-84243099/3199。</li>
 			            </ol>
                       </div>        	             
 	             </div>
@@ -282,7 +284,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            <ol>
 			              <li>请填写真实有效的邮箱地址，您可通过邮箱进行找回密码等操作。</li>
 			              <li>中汇宝会对用户的所有资料进行严格保密。 </li>
-			              <li>邮箱验证过程遇到问题，请联系客服，400-600-4300 </li>
+			              <li>邮箱验证过程遇到问题，请联系客服，010-84243099/3199。 </li>
 			            </ol>
                       </div>        	             
 	             </div>
@@ -307,7 +309,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            <h3>温馨提示:</h3>
 			            <ol>
 			              <li>请牢记您设置的新密码，登录密码可通过密码找回功能找回。</li>
-			              <li>邮箱验证过程遇到问题，请联系客服，400-600-4300 </li>
+			              <li>邮箱验证过程遇到问题，请联系客服，010-84243099/3199 </li>
 			            </ol>
                       </div>        	             
 	             </div>
@@ -330,7 +332,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            <h3>温馨提示:</h3>
 			            <ol>
 			              <li>请牢记您设置的支付密码，支付密码将用于投资，提现等重要操作。</li>
-			              <li>使用过程遇到问题，请联系客服，400-600-4300 </li>
+			              <li>使用过程遇到问题，请联系客服，010-84243099/3199</li>
 			            </ol>
                       </div>        	             
 	             </div>
@@ -367,7 +369,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            <h3>温馨提示:</h3>
 			            <ol>
 			              <li>请牢记您设置的密码保护问题，密码问题将用于找回密码等重要操作。</li>
-			              <li>使用过程遇到问题，请联系客服，400-600-4300 </li>
+			              <li>使用过程遇到问题，请联系客服，010-84243099/3199</li>
 			            </ol>
                       </div>        	             
 	             </div>
