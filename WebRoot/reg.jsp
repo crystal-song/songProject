@@ -9,8 +9,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="中汇宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
+<meta content="中汇宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
 
-<title>用户注册</title>
+<title>用户注册 - 我的账户 - 中汇宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <script type="text/javascript" >
@@ -160,8 +162,10 @@ function chk_email(){
           <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/></p>
           <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div>
           <p><input name="imgbtn" type="button"   onclick="check()" class="btn_reg"></p>
-          </div>
-          
+          <p class="xieyi_font"><input  type="checkbox" checked="checked">我已阅读并同意中汇宝
+           <a target="_blank" href="<%=path%>/zhucexieyi.jsp">《使用协议》</a>及
+           <a target="_blank" href="<%=path%>/yinsitiaokuan.jsp">《隐私条款》</a></p>
+          </div>          
           <div class="two_pic"></div>
       </form>
     </div>
