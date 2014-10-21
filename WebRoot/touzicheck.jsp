@@ -43,37 +43,37 @@ function onSubmit(host) {
    <ul>
    
           <input type="hidden" id="host" name="host">
-         <li> <div class="form-group" style="VISIBILITY: hidden" >
+         <li> <div class="form-group" style="display:none;height:0px;" >
             <!-- <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo" value="10040011137" /> -->
               <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo" value="10012415118" />
           </div></li>
-          <li><div class="form-group" style="VISIBILITY: hidden" >
+          <li><div class="form-group" style="display:none;height:0px;" >
             <label for="requestNo">requestNo</label><input type="text"
               class="form-control" id="requestNo" name="requestNo" value="${now}" />
           </div></li>
           <li>
-          <div class="form-group" style="VISIBILITY: hidden" >
+          <div class="form-group" style="display:none;height:0px;" >
             <label for="platformUserNo">platformUserNo</label><input
               type="text" class="form-control" id="platformUserNo"
               name="platformUserNo"  value="${registerYeePay1.platformUserNo}"  />
           </div>
           </li>
           <li>
-          <div class="form-group" style="VISIBILITY: hidden" >
+          <div class="form-group" style="display:none;height:0px;" >
             <label for="orderNo">标的号</label><input type="text"
               class="form-control" id="orderNo" name="orderNo" value="${now}" />
           </div>
           </li>
           <li>
-          <div class="form-group" style="VISIBILITY: hidden" >
+          <div class="form-group" style="display:none;height:0px;" >
             <label for="transferAmount">标的金额</label><input type="text"
               class="form-control jin_font" id="transferAmount" name="transferAmount" value="${product.financingMoney}" />
           </div>
           </li>
           <li>
-          <div class="form-group" style="VISIBILITY: hidden" >
+          <div class="form-group" style="display:none;height:0px;" >
             <label for="targetPlatformUserNo">借款人会员编号</label><input type="text"
               class="form-control" id="targetPlatformUserNo" name="targetPlatformUserNo" value="18975601645" />
           </div>
@@ -85,20 +85,20 @@ function onSubmit(host) {
           </div>
           </li>
           <li>
-          <div class="form-group" style="VISIBILITY: hidden" >
+          <div class="form-group" style="display:none;height:0px;" >
             <label for="expired">投标过期时间</label><input type="text"
               class="form-control" id="expired" name="expired" value="2014-11-01 22:22:31" />
           </div>
           </li>
           
            <li>
-          <div class="form-group"  style="VISIBILITY: hidden" >
+          <div class="form-group"  style="display:none;height:0px;" >
             <label for="enterpriseNumber">项目编号</label><input type="text"
               class="form-control" id="enterpriseNumber" name="enterpriseNumber" value="${product.enterpriseNumber}" />
           </div>
           </li>
            <li>
-          <div class="form-group" style="VISIBILITY: hidden" >
+          <div class="form-group" >
             <label for="projectName">项目名称</label><input type="text"
               class="form-control" id="projectName" name="projectName" value="${product.projectName}" />
           </div>
@@ -106,13 +106,13 @@ function onSubmit(host) {
           
           
           <li>
-          <div class="form-group" style="VISIBILITY: hidden" >
+          <div class="form-group" style="display:none;height:0px;" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
               class="form-control" id="notifyUrl" name="notifyUrl" value="${host}${context}/gate/transferSucceed" />
           </div>
           </li>
           <li>
-          <div class="form-group" style="VISIBILITY: hidden" >
+          <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/transferSucceed" />
@@ -120,8 +120,8 @@ function onSubmit(host) {
           </li>
           <li>
          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button> -->
-          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button>
-          <div class="que_btn"><a src="#">确定</a></div>
+         <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
+          <div class="que_btn"><a src="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')">确定</a></div>
           </li>
           </ul>
         </form>
