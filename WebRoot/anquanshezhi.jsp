@@ -363,8 +363,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                     </select>
 		                  </span>
 		              </p>
-		              <p><span>再次输入支付密码</span><span><input type="text"></input></span></p>
-		              <p><a class="next_btn">设置支付密码</a></p>
+		              <p><span>输入答案</span><span><input type="text"></input></span></p>
+		              <p><a class="next_btn">提交</a></p>
 		              <div class="user_bottom01">
 			            <h3>温馨提示:</h3>
 			            <ol>
