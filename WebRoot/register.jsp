@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <title注册易宝账户 - 用户中心 - 中汇宝/></title>
+ <title注册易宝账户 - 用户中心 - 中租宝/></title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
  <%-- <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
 <%-- <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  --%> 
@@ -129,7 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="user_bottom" style="width:auto;">
             <h3>温馨提示:</h3>
             <ol>
-              <li>根据国家有关规定，中汇宝将所有资金委托第三方支付平台“易宝支付”进行管理。</li>
+              <li>根据国家有关规定，中租宝将所有资金委托第三方支付平台“易宝支付”进行管理。</li>
               <li>为保证交易的规范化，您在进行充值、投资等行为前需要同步注册“易宝支付”账户。</li>
               <li>为确保您交易的安全性，请您如实填写以上信息！</li>
             </ol>
