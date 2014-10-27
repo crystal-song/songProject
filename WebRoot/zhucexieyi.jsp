@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>注册协议 - 我的账户 - 中汇宝</title>
+<title>注册协议 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
@@ -27,8 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="msg_con">
   <div class="queren_con">
     <div class="termsOfUse mgt-20">
-			<h1 style="text-align: center; font-size: 20px;">中汇宝网站使用协议</h1>
-			<div class="section">本网站由中投汇融投资管理有限公司（以下简称：中汇宝）负责运营（以下本网站均指网站及中投投汇融投资管理有限公司）。在您注册成为本网站用户前请务必仔细阅读以下条款。若您一旦注册，则视为您接受本网站的服务并受以下条款的约束。若您不接受以下条款，请停止注册本网站。</div>
+			<h1 style="text-align: center; font-size: 20px;">中租宝网站使用协议</h1>
+			<div class="section">本网站由中投汇融投资管理有限公司（以下简称：中租宝）负责运营（以下本网站均指网站及中投投汇融投资管理有限公司）。在您注册成为本网站用户前请务必仔细阅读以下条款。若您一旦注册，则视为您接受本网站的服务并受以下条款的约束。若您不接受以下条款，请停止注册本网站。</div>
 			<div class="section">本使用协议内容包括以下条款及已经发布的或将来可能发布的各类规则。所有规则为协议不可分割的一部分，与协议正文具有同等法律效力。本协议是由您与本网站共同签订的，适用于您在本网站的全部活动。在您注册成为用户时，您已经阅读、理解并接受本协议的全部条款及各类规则，并承诺遵守中华人民共和国现行的法律、法规、规章及其他政府规定，如有违反而导致任何法律后果的发生，您将以自己的名义独立承担所有相应的法律责任。</div>
 			<div class="section">本网站有权根据需要不时地制定、修改本协议或各类规则，如本协议及规则有任何变更，一切变更以本网站最新公布条例为准。经修订的协议、规则一经在本网站公布，即自动生效或在该等协议、规则指定的时间生效。您应不时地注意本协议及附属规则地变更，若您不同意相关变更，本网站有权不经任何告知终止、中止本协议或者限制您进入本网站的全部或者部分板块且不承担任何法律责任。但该终止、中止或限制行为并不能豁免您在本网站已经进行的交易下所应承担的义务。</div>
 			<div class="section">您确认本使用协议后，本使用协议即在您和本网站之间产生法律效力。您只要在“我已阅读并且同意爱投资的使用协议及隐私条款”前的选择框里打钩并按照本网站规定的注册程序成功注册为用户，您的行为既表示同意并签署了本使用协议。本使用协议不涉及您与本网站的其他用户之间因网上交易而产生的法律关系及法律纠纷，但您在此同意将全面接受和履行与本网站其他用户在本网站签订的任何电子法律文本，并承诺按该法律文本享有和/或放弃相应的权利、承担和/或豁免相应的义务。</div>
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="mailto:cs@ptobchina.com">cs@ptobchina.com</a>
 			。
 			</div>
-			<div class="sign">中汇宝网站</div>
+			<div class="sign">中租宝网站</div>
 			<div class="sign">2014.10.21</div>
 		
 	   </div>
