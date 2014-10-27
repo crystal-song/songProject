@@ -8,9 +8,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <%@ include file="/includes/taglibs.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta content="中汇宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="中汇宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
-<title>联系客服 - 帮助中心 - 中汇宝</title>
+<meta content="中租宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
+<meta content="中租宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
+<title>联系客服 - 帮助中心 - 中租宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
@@ -49,7 +49,7 @@ var index=4;
                <p>电话：010-84243099/3199</p>
                <p>传真号：010-84243990</p>
                <p>email：cs@ptobchina.com</p>
-               <p>简介：中汇宝，北京市朝阳区工体北路13号院1号楼1501-1502室。 邮编：100020</p>
+               <p>简介：中租宝，北京市朝阳区工体北路13号院1号楼1501-1502室。 邮编：100020</p>
         	</div>
         	<div style="width:800px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
  	
