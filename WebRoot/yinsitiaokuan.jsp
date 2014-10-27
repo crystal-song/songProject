@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>注册协议 - 我的账户 - 中汇宝</title>
+<title>注册协议 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="queren_con">
   
 		<div class="termsOfUse mgt-20">
-			<h1 style="font-size:20px;text-align:center;">中汇宝网站隐私条款</h1>
+			<h1 style="font-size:20px;text-align:center;">中租宝网站隐私条款</h1>
 			<div class="section">以下是本网站（http://ptobchina.com）及其运营公司中投汇融投资管理有限公司（以下合称“本网站”）的隐私规则条款。</div>
 			<div class="section">您成为本网站用户前务必仔细阅读本隐私条款并同意本隐私条款。作为本网站服务的正常操作程序的一部分，本网站收集、使用并（在一些情况下）向第三方披露有关您的资料。本隐私条款作为本网站服务协议的附件，在您注册成为本网站用户后立即生效，并对您及本网站产生约束力。</div>
 			<div class="title">1. 用户身份限制</div>
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">您须对使用您的用户名和密码所采取的一切行为负责。因此，本网站建议您不要向任何第三方披露您在本网站的用户名和密码。</div>
 			<div class="title">9. 规则修改</div>
 			<div class="section">本网站可能不时按照您的意见和本网站的需要修改本隐私条款，以准确地反映本网站的资料收集及披露惯例。本条款的所有修改，在本网站公布有关修改内容后自动生效或在该等条款指定的日期生效。</div>
-			<div class="sign">中汇宝网站</div>
+			<div class="sign">中租宝网站</div>
 		</div>
 	</div>
   </div>        
