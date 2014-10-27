@@ -8,9 +8,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <%@ include file="/includes/taglibs.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta content="中汇宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="中汇宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
-<title>帮助中心 - 中汇宝</title>
+<meta content="中租宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
+<meta content="中租宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
+<title>帮助中心 - 中租宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
@@ -54,7 +54,7 @@ var index=4;
         	   <h3>申请单位</h3>
         	    <div class="danwei">
         	      <dd class="mb_dt">您的申请单位
-					  是中汇宝评估您信用状况的主要依据之一，请您详细填写。</dd>
+					  是中租宝评估您信用状况的主要依据之一，请您详细填写。</dd>
         	    
         	    </div>
         	  </li>
@@ -82,7 +82,7 @@ var index=4;
         	  <h3>资金用途</h3>
         	     <div id="danwei">
         	        <dd class="mb_dt">您的资金用途
-					  是中汇宝评估您信用状况的主要依据之一，请您详细填写。</dd>
+					  是中租宝评估您信用状况的主要依据之一，请您详细填写。</dd>
 					
 				
         	     </div>
@@ -92,7 +92,7 @@ var index=4;
         	     <div id="danwei">
         	       <dl id="mb10">
 					 <dd class="mb_dt">您的还款来源
-					  是中汇宝评估您信用状况的主要依据之一，请您详细填写。</dd>
+					  是中租宝评估您信用状况的主要依据之一，请您详细填写。</dd>
 					</dl>
         	     </div>
         	  </li>
@@ -100,7 +100,7 @@ var index=4;
         	  <h3>增信措施</h3>
         	     <div id="danwei">
                      <dd class="mb_dt">您的增信措施
-					  是中汇宝评估您信用状况的主要依据之一，请您详细填写。</dd>
+					  是中租宝评估您信用状况的主要依据之一，请您详细填写。</dd>
         	     </div>
         	  </li>
         	</ul>
