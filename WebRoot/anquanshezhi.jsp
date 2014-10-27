@@ -9,9 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta content="中汇宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="中汇宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
-<title>安全设置 - 我的账户 - 中汇宝</title>
+<meta content="中租宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
+<meta content="中租宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
+<title>安全设置 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
@@ -228,7 +228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			              <p><span><b>*</b>上传背面证件照</span><span><input type="file" id="file02"></input></span></p>			              
 			              <p class="pic_car"></p>			              
 		              </div>
-		              <p><span><input type="checkbox"></input></span><span style="width:300px"><a class="xieyi">我已阅读并同意签署 《中汇宝服务协议》</a></span><span class="tishitext" style="display:none">请签署协议!</span></p>
+		              <p><span><input type="checkbox"></input></span><span style="width:300px"><a class="xieyi">我已阅读并同意签署 《中租宝服务协议》</a></span><span class="tishitext" style="display:none">请签署协议!</span></p>
 		              <p><span><input type="checkbox"></input></span><span style="width:312px"><a>我已阅读并同意签署 《委托收付资金协议》</a></span><span class="tishitext" style="display:none">请签署协议!</span></p>
 		              <p><a class="next_btn">提交实名认证</a>               
 	               <div class="user_bottom01" style="height:200px">
@@ -236,7 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            <ol>
 			              <li>您可选择通过上传身份证的形式通过身份验证，通过 上传认证 完成实名认证，然后等待客服人员审核通过。</li>
 			              <li>未满18周岁，实名认证无法通过。</li>
-			              <li>中汇宝会对用户的所有资料进行严格保密。</li>
+			              <li>中租宝会对用户的所有资料进行严格保密。</li>
 			              <li>实名认证过程遇到问题，请联系客服，010-84243099/3199</li>		              
 			            </ol>		            	            
                    </div>
@@ -260,7 +260,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            <h3>温馨提示:</h3>
 			            <ol>
 			              <li>请填写真实有效的手机号，手机号将作为验证用户身份的重要手段。</li>
-			              <li>中汇宝会对用户的所有资料进行严格保密。 </li>
+			              <li>中租宝会对用户的所有资料进行严格保密。 </li>
 			              <li>手机认证过程遇到问题，请联系客服，010-84243099/3199。</li>
 			            </ol>
                       </div>        	             
@@ -283,7 +283,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			            <h3>温馨提示:</h3>
 			            <ol>
 			              <li>请填写真实有效的邮箱地址，您可通过邮箱进行找回密码等操作。</li>
-			              <li>中汇宝会对用户的所有资料进行严格保密。 </li>
+			              <li>中租宝会对用户的所有资料进行严格保密。 </li>
 			              <li>邮箱验证过程遇到问题，请联系客服，010-84243099/3199。 </li>
 			            </ol>
                       </div>        	             
