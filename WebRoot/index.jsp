@@ -10,9 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta content="中汇宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="中汇宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
-<title>中汇宝</title>
+<meta content="中租宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
+<meta content="中租宝,理财,投资,收益,中投汇融,融资,P2B,P2P,商券,众筹,zhonghuibao,信托,债权,抵押,信贷,基金,定投,中小贷,微信托,投资人" name="keywords">
+<title>中租宝</title>
 
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
@@ -64,11 +64,11 @@ $(document).ready(function(){
         </div>
         <div class="two_list1">
         	<div class="two_tit">极致之美</div>
-            <div class="two_nr">对于极致的追求是中汇宝一直以来秉承的信念，<span class="hong">极致透明安全、极致体验</span>。在这里我们为您准备好一切。</div>
+            <div class="two_nr">对于极致的追求是中租宝一直以来秉承的信念，<span class="hong">极致透明安全、极致体验</span>。在这里我们为您准备好一切。</div>
         </div>
         <div class="two_list2">
         	<div class="two_tit">理财随心</div>
-            <div class="two_nr">在中汇宝，我们提供了高质量的不同期限、不同利率、不同用途的借款项目，随心选择。</div>
+            <div class="two_nr">在中租宝，我们提供了高质量的不同期限、不同利率、不同用途的借款项目，随心选择。</div>
         </div>
     </div>
     <div class="clear"></div>
