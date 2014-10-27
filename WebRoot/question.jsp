@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <%@ include file="/includes/taglibs.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>常见问题 - 帮助中心 - 中汇宝</title>
+<title>常见问题 - 帮助中心 - 中租宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
@@ -43,13 +43,13 @@ var index=1;
         <div class="bzr_nr">
         	<dl>
         	   <dt></dt>
-        	   <p>1、中汇宝平台投资理财的收益情况如何？</p>
-        	   <dd>中汇宝平台上出借人的回报是基于P2P模式下的点对点回报，也就是出借人的收益会受借款人个体差异的影响，不是一个固定的数据，中汇通的每月预期收益率1%以上。
+        	   <p>1、中租宝平台投资理财的收益情况如何？</p>
+        	   <dd>中租宝平台上出借人的回报是基于P2P模式下的点对点回报，也就是出借人的收益会受借款人个体差异的影响，不是一个固定的数据，中汇通的每月预期收益率1%以上。
                </dd>
                <dd>公司主要以P2B即person-to-business,个人对（非金融机构）企业为主要运营模式。专注服务于中小企业融资项目与投资人对接的金融服务平台。
                                  完全打破传统P2P平台的纯信用软风控运作模式，转变为以不动产为抵押物的硬风控运作模式，从而将投资人的风险大幅下降，致力于为客户提供安全稳健的优质理财产品。
                </dd>
-               <p>2、中汇宝作为理财服务平台，受法律保护吗？</p>
+               <p>2、中租宝作为理财服务平台，受法律保护吗？</p>
                <dd>《中华人民共和国合同法》从法律上肯定了民间借贷行为的合法性，并从法律层面保护出借人收回借贷资金和利息的权利。
                </dd>
                <dd>《合同法》第211条：“自然人之间的借款合同对支付利息没有约定或约定不明确的，视为不支付利息。自然人之间的借款合同约定支付利息的，
