@@ -201,6 +201,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <input type="hidden" name="projectPicture" id="projectPicture" value="" />
     <input type="hidden" name="id" id="id" value="${product1.id}" />
     <input type="hidden" name="existType" id="existType" value="0" />
+    <input type="hidden" name="financingProgress" id="financingProgress" value="${product1.financingProgress}" />
         	<ul>
                 <li>
                     <dd>项目名称：</dd>
