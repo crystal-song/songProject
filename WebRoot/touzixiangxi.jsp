@@ -96,6 +96,18 @@ $(document).ready(function(){
 				   }
 			      $('.neirong').html('您要投入的实际金额为:'+val);		   
 		});	
+		
+		var cu_text=$("#zijine").text();
+
+			if(cu_text=="100%"){		
+				//alert(cu_text);
+				$("#touzi_fir").html("");
+			$("#touzi_fir").css('background-image','url("<%=path%>/img/touzi_sec.jpg")');
+		
+				
+			}
+		
+		
 });		
 
 window.onload=function(){
@@ -168,7 +180,7 @@ function mysubmit(){
                     </div>
                     <div class="tzxx_right">
                     	融资金额:<span class="cu hong">${product1.financingMoney}万</span><br>
-融资进度：<span class="cu hong">${product1.financingProgress}<c:if test='${empty product1.financingProgress}'>0</c:if>%</span><br>
+融资进度：<span class="cu hong" id="zijine">${product1.financingProgress}<c:if test='${empty product1.financingProgress}'>0</c:if>%</span><br>
 <div class="progress_160"><div class="progress_bar" style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div></div>
 
                     </div>
@@ -281,12 +293,12 @@ function mysubmit(){
         </div>
         <div class="xx_right">
         <!-- xx right -->
-          <div class="cr_bg" style="height:220px;">
+          <div class="cr_bg" style="height:220px;" >
             	<div class="cr_tit">
                 	<div class="cr_font">投资份额</div>
                     <div class="cr_more"><img src="<%=path%>/images/sy_50.jpg"></div>
                 </div>
-                <div class="cr_nr">
+                <div class="cr_nr" id="touzi_fir">
                 <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
                 	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
@@ -297,7 +309,9 @@ function mysubmit(){
                 	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="mysubmit();" ><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
                 	</form>
                 </div>
+               
             </div>
+            <div class="clear_height"></div>
 		 <%@ include file="/includes/news_list_right.jsp" %>
     	<!-- xx right end-->
     	</div>
