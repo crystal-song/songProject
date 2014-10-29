@@ -412,7 +412,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                 
                     <div class="tj_left">推荐项目:<span class="hong"><a href="getProductByid?id=${s.id}">${s.projectName}</a></span></div>
                     <div class="tj_right">
-                        <div class="tj_jd">融资进度：<c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</div>
+                        <div class="tj_jd">融资进度：<c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%<c:if test='${s.financingProgress==100}'><img src="<%=path%>/img/touzi_sec.jpg"></c:if></div>
                         <div class="tj_jd_pic"><div class="progress_80"><div class="progress_bar" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div></div></div>
                     </div>
                 </div>
