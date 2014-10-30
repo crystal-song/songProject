@@ -272,7 +272,19 @@ function mysubmit(){
       
 	 
         </c:if>
-                           
+        
+         <c:if test="${ not empty li}">
+        <c:forEach var="s" items="${li}" varStatus="i">
+        ${s.startMoney}
+        ${s.startInterestRate}
+        ${s.moneyIncrease}
+        ${s.InterestRateIncrease}
+        ${s.highestMoney}
+         </c:forEach>
+      
+	 
+        </c:if>
+               
                           </table>
                     </div>
                     </div>
@@ -300,7 +312,7 @@ function mysubmit(){
                 </div>
                 <div class="cr_nr" id="touzi_fir">
                 <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
-                	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">50,000.00</span></strong><i>元</i></div>              	
+                	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">${product1.financingMoney-product1.realityMoney}</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
                 	<div class="jin_input"><input type="text" class="jin_text" value="" id="buyAmount" name="buyAmount"></input>元</div>
                 	<div class="jin_"><input type="hidden" class="jin_text" value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
