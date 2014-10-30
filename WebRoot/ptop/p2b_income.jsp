@@ -11,6 +11,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>${product1.projectName} - 更新利率详情</title>
 <link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
+ <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+
+<script type="text/javascript" charset="utf-8">
+
+
+       /*  function addOrUpdateUser() {
+           
+
+            $.post("resource/addOrUpdate", $("#form").serializeArray(), function (data) {
+                $('#MyPopWindow').window('close');
+                $('#hotelTable').datagrid('reload');
+                $.messager.alert('提示', data.mes, 'info');
+            });
+        } */
+
+        $(document).ready(function(){ 
+        	
+        	/* alert("ddddddddddddddddddddd"); */
+        	
+        	    
+        	/* $('#mes').val(); */
+        	if($('#ms').val()!=''){
+        		alert($('#ms').val());
+        	}
+        	
+       
+        	
+        	
+        });   
+        
+       
+        
+    </script>
+    
 </head>
 
 <body>
@@ -108,27 +142,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </table>
         <div class="addToList dataForm">
         
-        <form  action="<%=path%>/Login/investmentinfo" id="form" method="post"      > 
+        <form  action="<%=path%>/Login/saveInterestRate" id="form" method="post"      > 
      
-            <input type="hidden"  name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"  />
-             <input type="hidden"  name="state"   id="state"   value="0"    />
-           
+            <input type="text"  name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"  />
+              <input type="hidden"  name="ms"  id="ms"  value="${ms}"  />
         <ul><li>
-            <dd>初始金额：</dd><input type="text"  name="investor"  id="investor"  />
+            <dd>初始金额：</dd><input type="text"  name="startMoney"  id="startMoney"  />
         <dt>
         <br />
-            <dd>初始利率：</dd><input type="text"  name="identityCard"  id="identityCard"   />
+            <dd>初始利率：</dd><input type="text"  name="startInterestRate"  id="startInterestRate"   />
         <dt>
         <br />
-            <dd>金额步长值：</dd><input type="number"  name="investmentAmount"  id="investmentAmount"   />
-        <dt>
-        <br />
-</dt>
-		<dd>利率步长值：</dd><input type="number"  name="investmentAmount"  id="investmentAmount"   />
+            <dd>金额步长值：</dd><input type="text"  name="moneyIncrease"  id="moneyIncrease"   />
         <dt>
         <br />
 </dt>
-		<dd>封顶金额：</dd><input type="number"  name="investmentAmount"  id="investmentAmount"   />
+		<dd>利率步长值：</dd><input type="text"  name="InterestRateIncrease"  id="InterestRateIncrease"   />
+        <dt>
+        <br />
+</dt>
+		<dd>封顶金额：</dd><input type="text"  name="highestMoney"  id="highestMoney"   />
         <dt>
         <br />
 		<input type="submit" value="添加" class="submitBtn" /></dt>
