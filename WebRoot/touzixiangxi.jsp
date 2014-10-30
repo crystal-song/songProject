@@ -293,7 +293,7 @@ function mysubmit(){
                   
             <div  class="wz_one" ><a>收益率</a></div>  
                  <div class="wz_nr">
-<c:if test="${ not empty li}">
+<%-- <c:if test="${ not empty li}">
         <c:forEach var="s" items="${li}" varStatus="i">
         ${s.startMoney}
         ${s.startInterestRate}
@@ -301,7 +301,7 @@ function mysubmit(){
         ${s.InterestRateIncrease}
         ${s.highestMoney}
          </c:forEach>
-			</c:if>
+			</c:if> --%>
 </div>   
                    
            <div class="btn_bottom"></div>
