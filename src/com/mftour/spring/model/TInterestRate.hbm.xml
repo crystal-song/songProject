@@ -22,8 +22,8 @@
          <property name="moneyIncrease" type="java.lang.Integer">
             <column name="moneyIncrease" length="100" />
         </property>
-         <property name="InterestRateIncrease" type="java.lang.Double">
-            <column name="InterestRateIncrease" length="100" />
+         <property name="interestRateIncrease" type="java.lang.Double">
+            <column name="interestRateIncrease" length="100" />
         </property>
          <property name="highestMoney" type="java.lang.Integer">
             <column name="highestMoney" length="100" />
