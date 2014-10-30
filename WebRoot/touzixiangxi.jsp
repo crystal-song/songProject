@@ -272,20 +272,10 @@ function mysubmit(){
       
 	 
         </c:if>
-        
-         <c:if test="${ not empty li}">
-        <c:forEach var="s" items="${li}" varStatus="i">
-        ${s.startMoney}
-        ${s.startInterestRate}
-        ${s.moneyIncrease}
-        ${s.InterestRateIncrease}
-        ${s.highestMoney}
-         </c:forEach>
-      
-	 
-        </c:if>
+        </table>
+         
                
-                          </table>
+                          
                     </div>
                     </div>
 
@@ -296,9 +286,23 @@ function mysubmit(){
                    <%--  <img src="<%=path%>/images/20140708132140144014.jpg" width="581" height="800" />
                     <img src="<%=path%>/images/20140708132035433543.jpg" width="720" height="523" />
                     <img src="<%=path%>/images/20140708132013601360.jpg" width="720" height="989" />   --%>
+                   
+
+                   
                     </div>
-                    
-                    
+                  
+            <div  class="wz_one" ><a>收益率</a></div>  
+                 <div class="wz_nr">
+<c:if test="${ not empty li}">
+        <c:forEach var="s" items="${li}" varStatus="i">
+        ${s.startMoney}
+        ${s.startInterestRate}
+        ${s.moneyIncrease}
+        ${s.InterestRateIncrease}
+        ${s.highestMoney}
+         </c:forEach>
+			</c:if>
+</div>   
                    
            <div class="btn_bottom"></div>
             </div>
