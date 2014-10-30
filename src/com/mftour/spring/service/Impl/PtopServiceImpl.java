@@ -9,6 +9,7 @@ import com.mftour.spring.Dao.IProductDao;
 import com.mftour.spring.Dao.IptopDao;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
+import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
@@ -189,6 +190,29 @@ public class PtopServiceImpl  implements  IptopService  {
 		
 		return ptopDao.querySum(number);
 	}
+
+
+
+	@Override
+	public void addOrUpdateTInterestRate(TInterestRate InterestRate)
+			throws Exception {
+		ptopDao.addOrUpdateTInterestRate(InterestRate);
+		
+	}
+
+
+
+	@Override
+	public List<TInterestRate> queryTInterestRateByNumber(String Number) {
+		
+		return ptopDao.queryTInterestRateByNumber(Number);
+	}
+	
+	
+
+
+
+	
 	
 	
 	

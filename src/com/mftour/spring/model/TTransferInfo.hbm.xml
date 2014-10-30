@@ -52,6 +52,9 @@
          <property name="projectName" type="java.lang.String">
             <column name="projectName" length="500" />
         </property>
+         <property name="interestRate" type="java.lang.Double">
+            <column name="interestRate" length="500" />
+        </property>
        
     </class>
 </hibernate-mapping>

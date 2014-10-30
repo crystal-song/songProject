@@ -191,6 +191,9 @@ public class GateController  {
 	@RequestMapping(value="/gate/transfer")
 	public String Transfer(Model model,HttpServletRequest request,String buyAmount,TProduct product) throws Exception {
 		Object o= request.getSession().getAttribute("name");
+		if(o==null){
+			return "login";
+		}
 		 TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
 		System.out.println("ddddd"+buyAmount);
 		model.addAttribute("registerYeePay1", registerYeePay1);
@@ -204,6 +207,81 @@ public class GateController  {
 	@RequestMapping(value="/gate/doTransfer")
 	public String doTransfer(String host, BHATransferRequest request, Model model,TTransferInfo TtransferInfo) throws Exception {
 		gateService.addOrUpdateTTransferInfo(TtransferInfo);
+		  int PaymentAmount= Integer.parseInt(TtransferInfo.getPaymentAmount());
+		if(PaymentAmount>100&&PaymentAmount<200){
+			TtransferInfo.setInterestRate(7.0);
+		}if(PaymentAmount>200&&PaymentAmount<300){
+			TtransferInfo.setInterestRate(7.1);
+		}if(PaymentAmount>300&&PaymentAmount<400){
+			TtransferInfo.setInterestRate(7.2);
+		}if(PaymentAmount>400&&PaymentAmount<500){
+			TtransferInfo.setInterestRate(7.4);
+		}if(PaymentAmount>500&&PaymentAmount<600){
+			TtransferInfo.setInterestRate(7.5);
+		}if(PaymentAmount>600&&PaymentAmount<700){
+			TtransferInfo.setInterestRate(7.6);
+		}if(PaymentAmount>700&&PaymentAmount<800){
+			TtransferInfo.setInterestRate(7.7);
+		}if(PaymentAmount>800&&PaymentAmount<900){
+			TtransferInfo.setInterestRate(7.8);
+		}if(PaymentAmount>900&&PaymentAmount<1000){
+			TtransferInfo.setInterestRate(7.8);
+		}if(PaymentAmount>1000&&PaymentAmount<2000){
+			TtransferInfo.setInterestRate(8.0);
+		}if(PaymentAmount>2000&&PaymentAmount<3000){
+			TtransferInfo.setInterestRate(8.1);
+		}if(PaymentAmount>3000&&PaymentAmount<4000){
+			TtransferInfo.setInterestRate(8.2);
+		}if(PaymentAmount>4000&&PaymentAmount<5000){
+			TtransferInfo.setInterestRate(8.3);
+		}if(PaymentAmount>5000&&PaymentAmount<6000){
+			TtransferInfo.setInterestRate(8.4);
+		}if(PaymentAmount>6000&&PaymentAmount<7000){
+			TtransferInfo.setInterestRate(8.5);
+		}if(PaymentAmount>7000&&PaymentAmount<8000){
+			TtransferInfo.setInterestRate(8.6);
+		}if(PaymentAmount>8000&&PaymentAmount<9000){
+			TtransferInfo.setInterestRate(8.7);
+		}if(PaymentAmount>9000&&PaymentAmount<10000){
+			TtransferInfo.setInterestRate(8.8);
+		}if(PaymentAmount>10000&&PaymentAmount<20000){
+			TtransferInfo.setInterestRate(9.0);
+		}if(PaymentAmount>20000&&PaymentAmount<30000){
+			TtransferInfo.setInterestRate(9.1);
+		}if(PaymentAmount>30000&&PaymentAmount<40000){
+			TtransferInfo.setInterestRate(9.2);
+		}if(PaymentAmount>40000&&PaymentAmount<50000){
+			TtransferInfo.setInterestRate(9.3);
+		}if(PaymentAmount>50000&&PaymentAmount<60000){
+			TtransferInfo.setInterestRate(9.4);
+		}if(PaymentAmount>60000&&PaymentAmount<70000){
+			TtransferInfo.setInterestRate(9.5);
+		}if(PaymentAmount>70000&&PaymentAmount<80000){
+			TtransferInfo.setInterestRate(9.6);
+		}if(PaymentAmount>80000&&PaymentAmount<90000){
+			TtransferInfo.setInterestRate(9.7);
+		}if(PaymentAmount>90000&&PaymentAmount<100000){
+			TtransferInfo.setInterestRate(9.8);
+		}if(PaymentAmount>100000&&PaymentAmount<200000){
+			TtransferInfo.setInterestRate(10.0);
+		}if(PaymentAmount>200000&&PaymentAmount<300000){
+			TtransferInfo.setInterestRate(10.1);
+		}if(PaymentAmount>300000&&PaymentAmount<400000){
+			TtransferInfo.setInterestRate(10.2);
+		}if(PaymentAmount>400000&&PaymentAmount<500000){
+			TtransferInfo.setInterestRate(10.3);
+		}if(PaymentAmount>500000&&PaymentAmount<600000){
+			TtransferInfo.setInterestRate(10.4);
+		}if(PaymentAmount>600000&&PaymentAmount<700000){
+			TtransferInfo.setInterestRate(10.5);
+		}if(PaymentAmount>700000&&PaymentAmount<800000){
+			TtransferInfo.setInterestRate(10.6);
+		}if(PaymentAmount>800000&&PaymentAmount<900000){
+			TtransferInfo.setInterestRate(10.7);
+		}if(PaymentAmount>900000&&PaymentAmount<100000){
+			TtransferInfo.setInterestRate(10.8);
+		}
+		
 		return doSign(request, host + "/bha/toTransfer", model);
 	}
 	

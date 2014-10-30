@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
+import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
@@ -52,6 +53,10 @@ public interface IptopService {
 	 public TInvestmentInfo queryTInvestmentInfo(Long id) throws Exception;
 	 
 	 public Double querySum(String number) throws Exception;
+	 
+	 public void addOrUpdateTInterestRate(TInterestRate InterestRate) throws Exception;
+	 
+	 public List<TInterestRate> queryTInterestRateByNumber(String Number);
 	 
 	 
 
