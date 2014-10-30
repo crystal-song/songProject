@@ -7,7 +7,7 @@ public class TInterestRate implements java.io.Serializable{
 	    private int startMoney;   //初始金额
 	    private Double startInterestRate;           //初始利率
 	    private int moneyIncrease;       //金额步长值  
-	    private Double InterestRateIncrease;   //利率步长值
+	    private Double interestRateIncrease;   //利率步长值
 	    private int highestMoney;  //封顶金额       
 		public Long getId() {
 			return id;
@@ -39,11 +39,12 @@ public class TInterestRate implements java.io.Serializable{
 		public void setMoneyIncrease(int moneyIncrease) {
 			this.moneyIncrease = moneyIncrease;
 		}
+		
 		public Double getInterestRateIncrease() {
-			return InterestRateIncrease;
+			return interestRateIncrease;
 		}
 		public void setInterestRateIncrease(Double interestRateIncrease) {
-			InterestRateIncrease = interestRateIncrease;
+			this.interestRateIncrease = interestRateIncrease;
 		}
 		public int getHighestMoney() {
 			return highestMoney;

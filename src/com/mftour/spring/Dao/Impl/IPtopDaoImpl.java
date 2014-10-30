@@ -203,7 +203,7 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 
 	@Override
 	public List<TInterestRate> queryTInterestRateByNumber(String Number) {
-		String hql = "from TInterestRate interestRate where interestRate.enterpriseNumber = :enterpriseNumber ";
+		String hql = "from TInterestRate interestRate where interestRate.enterpriseNumber = :enterpriseNumber";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("enterpriseNumber", Number);
 	
