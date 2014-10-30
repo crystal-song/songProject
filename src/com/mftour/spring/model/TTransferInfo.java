@@ -16,6 +16,7 @@ public class TTransferInfo  implements java.io.Serializable {
 	private String code;
 	private String enterpriseNumber;
 	private String projectName;
+	private Double interestRate;
 	public Long getId() {
 		return id;
 	}
@@ -100,6 +101,13 @@ public class TTransferInfo  implements java.io.Serializable {
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
+	public Double getInterestRate() {
+		return interestRate;
+	}
+	public void setInterestRate(Double interestRate) {
+		this.interestRate = interestRate;
+	}
+	
 	
 	
 }

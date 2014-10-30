@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.mftour.spring.Dao.IptopDao;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
+import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
@@ -193,6 +194,28 @@ public class IPtopDaoImpl  extends HibernateDaoSupport  implements IptopDao {
 		 return d;
 	}
 
+	@Override
+	public void addOrUpdateTInterestRate(TInterestRate InterestRate)
+			throws Exception {
+		getHibernateTemplate().saveOrUpdate(InterestRate);
+		
+	}
+
+	@Override
+	public List<TInterestRate> queryTInterestRateByNumber(String Number) {
+		String hql = "from TInterestRate interestRate where interestRate.enterpriseNumber = :enterpriseNumber ";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("enterpriseNumber", Number);
+	
+		return query.list();
+	}
+	
+	
+
+	
+	
+
+	
 	
 	
 	
