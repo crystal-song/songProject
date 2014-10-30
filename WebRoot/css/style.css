@@ -179,7 +179,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .xx_fra{ width:1100px; height:auto; margin:0 auto;}
 .xx_left{ float:left; width:800px; height:auto;}
 
-.xx_one{ width:798px; height:320px; border:1px solid #c4c3c3; background:#FFF;}
+.xx_one{ width:798px; min-height:320px; border:1px solid #c4c3c3; background:#FFF;}
 .xxo_bor{ width:798px; height:173px; border-bottom:1px solid #c4c3c3;}
 .xxo_left{ float:left; width:251px; height:162px;  text-align:center; padding:6px; *+margin:6px;}
 .xxo_left p{margin:0;}
@@ -189,7 +189,7 @@ ul,li{ margin:0px; padding:0px; list-style:none;}
 .xxo_font{ width:520px; line-height:32px; text-align:left; padding-left:14px; font-size:14px;}
 .xx_font{ width:520px; padding-left:14px; line-height:34px; text-align:left;}
 .zi14{ font-size:14px; line-height:38px;}
-.tzxx{ width:798px; height:130px; padding-top:15px;}
+.tzxx{ width:798px; height:136px; padding:0px; overflow:hidden; background:#fff;}
 .tzxx_left{ float:left; width:314px; height:130px; padding-left:85px; line-height:28px; text-align:left; font-size:14px; letter-spacing:1px;}
 .tzxx_right{ float:right; width:331px; height:130px; border-left:1px solid #c4c3c3; padding-left:67px; line-height:28px; text-align:left; letter-spacing:1px; font-size:14px;}
 .cu{ font-weight:600;}
@@ -895,7 +895,10 @@ td{width:120px; height:36px; padding-right:30px}
 .hei_margin{margin:20px 0;}
 
 
+.syl_table{ margin:0px auto; width:90%}
+.syl_table td{padding:0px; margin:0px; font-size:0.8em; width:20%; height:12px;}
 
+.xx_one:hover .tzxx{height:auto!important; overflow:visible; background:#fff; z-index:99;}
 
 
 

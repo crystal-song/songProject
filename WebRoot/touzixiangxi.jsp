@@ -165,26 +165,48 @@ function mysubmit(){
                     	<div class="xxo_one">                  	   
                         	<div class="xxo_font">项目名称：<span class="ckxq_red">${product1.projectName}</span></div>
                             <div class="xxo_font">企业编号：${product1.enterpriseNumber}</div>
-                            <div class="xxo_font">信用等级：<img src="<%=path%>/images/qualityRate_${product1.qualityRating}.jpg" style="margin-bottom:-3px;"><span style="padding-left:120px;">分享到：<img src="<%=path%>/images/xx_09.jpg">&nbsp;<img src="<%=path%>/images/xx_11.jpg">&nbsp;<img src="<%=path%>/images/xx_13.jpg"></span></div>
+                            <div class="xxo_font">信用等级：<img src="<%=path%>/images/qualityRate_${product1.qualityRating}.jpg" style="margin-bottom:-3px;"><span style="padding-left:120px;">融资金额:<span class="cu hong">${product1.financingMoney}万</span><br></span></div>
                         </div>
-                        <div class="xx_font">年化收益：<span class="ckxq_red1">${product1.yearIncome}%</span>&nbsp;&nbsp;还款日期:<span class="ckxq_red1">${product1.repaymentTime}</span>&nbsp;&nbsp;还款方式：<span class="zi14">${product1.repaymentWay}</span></div>
+                         <div class="xx_font"><%--年化收益：<span class="ckxq_red1">${product1.yearIncome}%</span>&nbsp;&nbsp; --%>还款日期:<span class="ckxq_red1">${product1.repaymentTime}</span>&nbsp;&nbsp;还款方式：<span class="zi14">${product1.repaymentWay}</span></div>
                     </div>
                 </div>
                 <div class="clear"></div>
                 <div class="tzxx">
-                	<div class="tzxx_left">
+                <div class="xxo_font">年化预期收益率：</div>
+                <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0" class="syl_table">
+                 <tr>
+                 <td bgcolor="#fff" align="center"><b>阶段起点金额</b></td>
+                 <td bgcolor="#fff" align="center"><b>起始利率</b></td>
+                 <td bgcolor="#fff" align="center"><b>投资增幅</b></td>
+                 <td bgcolor="#fff" align="center"><b>利率增幅</b></td>
+                 <td bgcolor="#fff" align="center"><b>阶段上限金额</b></td>
+                 </tr>
+                 
+ 	<c:if test="${ not empty li}">
+        <c:forEach var="s" items="${li}" varStatus="i">
+        <tr>
+        <td bgcolor="#fff" align="center"><span>${s.startMoney}</span></td>
+        <td bgcolor="#fff" align="center"><span>${s.startInterestRate}</span></td>
+         <td bgcolor="#fff" align="center"><span>${s.moneyIncrease}</span></td>
+       	<td bgcolor="#fff" align="center"><span>${s.interestRateIncrease}</span></td>
+        <td bgcolor="#fff" align="center"><span>${s.highestMoney}</span></td>
+        </tr>
+         </c:forEach>
+			</c:if> 
+			</table>
+			<div class="clear_height" style="height:20px;"></div>
+                <%-- <div class="tzxx_left">
                     	担保机构:<span class="cu">${product1.guaranteeInstitution}</span><br>
 100%本息保障<br>
 <!-- 距离企业还款结项还有300天<br> -->
 企业生产经营正常，还款正常
                     </div>
                     <div class="tzxx_right">
-                    	融资金额:<span class="cu hong">${product1.financingMoney}万</span><br>
-融资进度：<span class="cu hong" id="zijine">${product1.financingProgress}<c:if test='${empty product1.financingProgress}'>0</c:if>%</span><br>
-<div class="progress_160"><div class="progress_bar" style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div></div>
+                    	
 
-                    </div>
+                    </div> --%>
                 </div>
+                
             </div>
             <div class="clear_height"></div>
             <div class="wenzi">
@@ -290,31 +312,21 @@ function mysubmit(){
 
                    
                     </div>
-                  
-            <div  class="wz_one" ><a>收益率</a></div>  
-                 <div class="wz_nr">
-<%-- <c:if test="${ not empty li}">
-        <c:forEach var="s" items="${li}" varStatus="i">
-        ${s.startMoney}
-        ${s.startInterestRate}
-        ${s.moneyIncrease}
-        ${s.InterestRateIncrease}
-        ${s.highestMoney}
-         </c:forEach>
-			</c:if> --%>
-</div>   
                    
            <div class="btn_bottom"></div>
             </div>
         </div>
         <div class="xx_right">
         <!-- xx right -->
-          <div class="cr_bg" style="height:220px;" >
+          <div class="cr_bg" style="height:auto;" >
             	<div class="cr_tit">
                 	<div class="cr_font">投资份额</div>
                     <div class="cr_more"><img src="<%=path%>/images/sy_50.jpg"></div>
                 </div>
                 <div class="cr_nr" id="touzi_fir">
+                <p align="left" style="font-size:14px;">融资进度：<span class="cu hong" id="zijine">${product1.financingProgress}<c:if test='${empty product1.financingProgress}'>0</c:if>%</span><br>
+<div class="progress_160"><div class="progress_bar" style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div></div>
+</p>
                 <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
                 	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">${product1.financingMoney-product1.realityMoney}</span></strong><i>元</i></div>              	
                 	<div class="neirong" style="display:none"></div>
@@ -325,7 +337,7 @@ function mysubmit(){
                 	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="mysubmit();" ><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
                 	</form>
                 </div>
-               
+               <div class="clear" style="height:20px;"></div>
             </div>
             <div class="clear_height"></div>
 		 <%@ include file="/includes/news_list_right.jsp" %>
