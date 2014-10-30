@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
@@ -127,7 +128,8 @@ public class productController {
 		 
 		TProduct product1= productService.getProductById(id);
 		List<TInvestmentInfo> list=ptopService.queryInvestmentInfoByNumber(product1.getEnterpriseNumber());
-		  
+		 List<TInterestRate> li=ptopService.queryTInterestRateByNumber(product1.getEnterpriseNumber());
+		 model.addAttribute("li", li);
 		 model.addAttribute("product1", product1);
 		 model.addAttribute("list", list);
 		 

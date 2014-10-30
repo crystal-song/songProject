@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
+import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
@@ -591,6 +592,42 @@ public class ptopController {
 		
 	}
 	
+	@RequestMapping(value = "/addyield", method = {RequestMethod.POST, RequestMethod.GET})
+	public String addyield(@RequestParam("id") Long id,
+			Model model,
+			TProduct product,HttpServletRequest request) throws Exception {
+		
+		
+	
+		 
+		TProduct product1= productService.getProductById(id);
+		
+		
+		 model.addAttribute("product1", product1);
+		
+		return "ptop/p2b_income";
+		
+	}
+	
+	
+	@RequestMapping(value = "/saveInterestRate", method = {RequestMethod.POST, RequestMethod.GET})
+	public String saveInterestRate(
+			Model model,
+			TInterestRate InterestRate,HttpServletRequest request) throws Exception {
+		
+		
+	System.out.println("ddddddddddddddddddddddddddddddddd");
+		 
+		ptopService.addOrUpdateTInterestRate(InterestRate);
+
+		
+		 model.addAttribute("ms", "添加成功");
+		 TProduct product1= productService.queryProductByNumber(InterestRate.getEnterpriseNumber()).get(0);
+		 model.addAttribute("product1", product1);
+		
+		return "ptop/p2b_income";
+		
+	}
 	
 	
 }
