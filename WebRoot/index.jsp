@@ -48,7 +48,7 @@ $(document).ready(function(){
 <div class="top_01"></div>
 <div class="clear"></div>
 <div class="one">
-	<div class="one_fra">
+	<div class="one_fra" style="display:none">
     	<div class="one_list">已撮合融资<span class="red_weight">1,703,240,000</span>元</div>
         <div class="one_list">为客户赚取收益<span class="red_weight">171,282,505</span>元</div>
         <div class="one_list">已按时还款<span class="red_weight">355,700,000</span>元</div>
