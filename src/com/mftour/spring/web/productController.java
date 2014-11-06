@@ -129,7 +129,13 @@ public class productController {
 		TProduct product1= productService.getProductById(id);
 		List<TInvestmentInfo> list=ptopService.queryInvestmentInfoByNumber(product1.getEnterpriseNumber());
 		 List<TInterestRate> li=ptopService.queryTInterestRateByNumber(product1.getEnterpriseNumber());
+		 System.out.println("dddddddddddd"+product1.getEnterpriseNumber());
+		 if(li != null && li.size()!=0){
 		 model.addAttribute("li", li);
+		 System.out.println("cccccccc"+li.get(0).getEnterpriseNumber());
+		 System.out.println("eeeeeeeee"+li.get(0).getInterestRateIncrease());
+		 }
+		
 		 model.addAttribute("product1", product1);
 		 model.addAttribute("list", list);
 		 
@@ -143,6 +149,8 @@ public class productController {
 			model.addAttribute("list3", list3);
 		
 		return "touzixiangxi";
+		/*return "payment/register";*/
+		
 		
 	}
 	

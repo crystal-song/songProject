@@ -43,6 +43,7 @@ public class ptopController {
 	@Autowired
     private ISystemLogService systemLogService;
 	
+	
 	@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET})
 	public String helloWorld(Model model,HttpServletRequest request) throws Exception {
 		
@@ -601,8 +602,8 @@ public class ptopController {
 	
 		 
 		TProduct product1= productService.getProductById(id);
-		
-		
+		List<TInterestRate>li=ptopService.queryTInterestRateByNumber(product1.getEnterpriseNumber());
+		 model.addAttribute("li", li);
 		 model.addAttribute("product1", product1);
 		
 		return "ptop/p2b_income";
@@ -619,8 +620,10 @@ public class ptopController {
 	System.out.println("ddddddddddddddddddddddddddddddddd");
 		 
 		ptopService.addOrUpdateTInterestRate(InterestRate);
-
-		
+		System.out.println("ddddddddddddddddddddddddddddddddd");
+		List<TInterestRate>li=ptopService.queryTInterestRateByNumber(InterestRate.getEnterpriseNumber());
+		 model.addAttribute("li", li);
+			System.out.println("ddddddddddddddddddddddddddddddddd");
 		 model.addAttribute("ms", "添加成功");
 		 TProduct product1= productService.queryProductByNumber(InterestRate.getEnterpriseNumber()).get(0);
 		 model.addAttribute("product1", product1);
