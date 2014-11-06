@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ServletContextAware;
 
+import com.mftour.spring.model.TEstablishmentNotify;
+import com.mftour.spring.model.TEstablishmentRegistration;
+import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
@@ -22,7 +25,9 @@ import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.HttpClientTest;
 import com.mftour.spring.util.ccc;
+import com.yeepay.bha.example.bean.BHAEstablishmentRegistration;
 import com.yeepay.bha.example.bean.BHARechargeRequest;
 import com.yeepay.bha.example.bean.BHARegisterRequest;
 import com.yeepay.bha.example.bean.BHATransferRequest;
@@ -85,15 +90,20 @@ public class GateController  {
 	@Autowired
     private IUserService userService;
 	
+	@Autowired
+    private IptopService ptopService;
+	
 	@RequestMapping(value="/gate/service")
-	public String service(Model model) {
+	public String service(Model model,HttpServletRequest request) throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
-		
-		
+		Object o= request.getSession().getAttribute("name"); 
+		 TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
+		           String name= registerYeePay1.getPlatformUserNo();
 		 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-	    			+"<response platformNo='10040011137'>"
-	    			+"<platformUserNo>gg123456</platformUserNo> "
-	                +"</response>";
+	    			+"<request platformNo='10040011137'>"
+	    			/*+"<platformUserNo>gg123456</platformUserNo> "*/
+	    			+"<platformUserNo>"+name+"</platformUserNo> "
+	                +"</request>";
 		 model.addAttribute("req", req);
 		
 		return "payment/service";
@@ -102,7 +112,7 @@ public class GateController  {
 	@RequestMapping(value="/gate/doService")
 	public String doService(String host, String req, String service, Model model) {
 
-		return doSign(req, host + "/bhaexter/bhaController", model, service);
+		return doSigns(req, host + "/bhaexter/bhaController", model, service);
 	}
 	
 	
@@ -153,19 +163,27 @@ public class GateController  {
 		Object o= request.getSession().getAttribute("name");
 		 if(o!=null){
 		
-		  TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
+			 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
  		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
- 		
+			 if(li != null && li.size()!=0){
+				 TRegisterYeePay registerYeePay1=li.get(0);
+				 System.out.println("dddddddd"+registerYeePay1.getPlatformUserNo());
+				 System.out.println("dddddddd"+registerYeePay1.getCode());
+				 if(registerYeePay1.getCode()!=null){
  		  if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){
 	        	  model.addAttribute("registerYeePay1", registerYeePay1);
 	        	  return "chongzhi";
- 		  }
-		 }else{
-			 return "login";
+ 		   }
+				 }
+			 }else{
+ 			 return "register";
+ 		 
 		 }
-		System.out.println(o.toString());
-		/*return "payment/recharge";*/
-		return "login";
+ 		  }
+		 TUser user=userService.getUserByAccount(o.toString());
+			model.addAttribute("user", user);
+			/*return "payment/register";*/
+			return "register";
 	}
 	
 	@RequestMapping(value="/gate/doRecharge")
@@ -206,7 +224,26 @@ public class GateController  {
 	
 	@RequestMapping(value="/gate/doTransfer")
 	public String doTransfer(String host, BHATransferRequest request, Model model,TTransferInfo TtransferInfo) throws Exception {
-		gateService.addOrUpdateTTransferInfo(TtransferInfo);
+		
+		 List<TInterestRate> li=ptopService.queryTInterestRateByNumber(TtransferInfo.getEnterpriseNumber());
+		     int paymentAmount= Integer.parseInt(TtransferInfo.getPaymentAmount());
+			for(int i=0;i<li.size();i++){
+				int a=li.get(i).getStartMoney();
+				int b=li.get(i+1).getStartMoney();
+				if(a<paymentAmount&&paymentAmount<b){
+					Double StartInterestRate=li.get(i).getStartInterestRate();
+					int  MoneyIncrease=li.get(i).getMoneyIncrease();
+					int  StartMoney= li.get(i).getStartMoney();
+					Double InterestRateIncrease= li.get(i).getInterestRateIncrease();
+					int c=(paymentAmount- StartMoney)/MoneyIncrease;
+					Double d=c*InterestRateIncrease;
+					Double interestRate= StartInterestRate+d;
+					TtransferInfo.setInterestRate(interestRate);
+				}
+			}
+			
+			gateService.addOrUpdateTTransferInfo(TtransferInfo);
+		 
 		  int PaymentAmount= Integer.parseInt(TtransferInfo.getPaymentAmount());
 		if(PaymentAmount>100&&PaymentAmount<200){
 			TtransferInfo.setInterestRate(7.0);
@@ -287,11 +324,94 @@ public class GateController  {
 	
 	
 	
+	@RequestMapping(value="/gate/establishmentRegistration")
+	public String EstablishmentRegistration(Model model,HttpServletRequest request) throws Exception {
+		
+	
+		model.addAttribute("now", System.currentTimeMillis());
+		return "payment/establishmentRegistration";
+		/*return "payment/transfer";*/
+	}
+	
+	@RequestMapping(value="/gate/doEstablishmentRegistration")
+	public String doEstablishmentRegistration(String host, Model model,BHAEstablishmentRegistration  request, TEstablishmentRegistration establishmentRegistration) throws Exception {
+		
+		gateService.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
+	    System.out.println("ddddddddddddddddddd"+establishmentRegistration.getTaxNo());
+		return doSign(request, host + "/bha/toEnterpriseRegister", model );
+	}
 	
 	
+	@RequestMapping(value="/gate/examEstablishmentRegistration", method = {RequestMethod.POST, RequestMethod.GET})
+	public String examEstablishmentRegistration(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
+		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
+		model.addAttribute("resp", resp);
+		model.addAttribute("sign", sign);
+		
+		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+		  
+		  try {
+		            
+		      //    通过 解析器 工厂 创建 一个 解析 器 
+		      DocumentBuilder db=dbf.newDocumentBuilder();
+		      
+		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
+		     
+		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
+		     Document dm=db.parse(iStream);
+		      
+		      //得到 所有 person节点 
+		      NodeList persons=dm.getElementsByTagName("response");
+		     
+		      TEstablishmentNotify establishmentNotify=new TEstablishmentNotify();
+		      
+		      for(int i=0;i<persons.getLength();i++){
+		          
+		    	  Element personElement = (Element)persons.item(i);
+		    	  
+		    	  NodeList p=personElement.getChildNodes();
+		    	  for(int j=0;j<p.getLength();j++){
+		    		  Node e= p.item(j);
+		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+		    		  
+		    	  }
+		    	  
+		    	 
+		    	  
+		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
+		    		  establishmentNotify.setService(p.item(1).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
+		    		  establishmentNotify.setRequestNo(p.item(3).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
+		    		  establishmentNotify.setCode(p.item(5).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
+		    		  establishmentNotify.setDescription(p.item(7).getTextContent());
+		    		  
+		    	  }
+		    	  
+		      }  
+		      gateService.addOrUpdateTEstablishmentNotify(establishmentNotify);
+		      TEstablishmentRegistration establishmentRegistration= gateService.queryTEstablishmentRegistrationByNumber(establishmentNotify.getRequestNo()).get(0);
+		      establishmentRegistration.setCode( establishmentNotify.getCode());
+		      gateService.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
+		  } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	        } finally {
+	        }
+		    	  
+		
+		
+		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
+		return "payment/establishmentRegistration";
 	
-	
-	
+	}
 	
 	
 	@RequestMapping(value="/gate/exam", method = {RequestMethod.POST, RequestMethod.GET})
@@ -535,7 +655,7 @@ public class GateController  {
 	private String doSign(String xml, String url, Model model, String service) {
 		System.out.println("ssssssssssssss");
 		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
-
+		System.out.println("wwwwwwwwwwwwwwwwwww1"+xml);
 		String s = xml;
 		s = s.replaceAll("[\\r\\n]", "");
 		
@@ -548,12 +668,101 @@ public class GateController  {
 		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
 		/*model.addAttribute("sign","ddd");*/
 		System.out.println("wwwwwwwwwwwwwwwwwww");
-		/* ccc.da(service,url,s);*/
+		System.out.println("url"+url);
+		 /*ccc.da(service,url,s);*/
+		/* HttpClientTest d=new HttpClientTest();
+		             d.postForm(service, url, s);*/
 		return "post";
 	}
 	
+	private String doSigns(String xml, String url, Model model, String service) {
+		System.out.println("ssssssssssssss");
+		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
+		System.out.println("wwwwwwwwwwwwwwwwwww1"+xml);
+		String s = xml;
+		s = s.replaceAll("[\\r\\n]", "");
+		
+		System.out.println("wwwwwwwwwwwwwwwwwww1"+s);
+		System.out.println("wwwwwwwwwwwwwwwwwww2"+service);
+		System.out.println("wwwwwwwwwwwwwwwwwww3"+url);
+		model.addAttribute("service", service);
+		model.addAttribute("url", url);
+		model.addAttribute("req", s);
+		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
+		/*model.addAttribute("sign","ddd");*/
+		System.out.println("wwwwwwwwwwwwwwwwwww");
+		System.out.println("url"+url);
+		 /*ccc.da(service,url,s);*/
+		 HttpClientTest d=new HttpClientTest();
+		          String resp=d.postForm(service, url, s);
+		          
+		          System.out.println("yyyyyyyyyyyyyyyy"+resp);   
+		          System.out.println("yyyyyyyyyyyyyyyy"+resp);    
+		    
+		          
+		          DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+		          System.out.println("yyyyyyyyyyyyyyyy"+resp);
+				  try {
+				            
+				      //    通过 解析器 工厂 创建 一个 解析 器 
+				      DocumentBuilder db=dbf.newDocumentBuilder();
+				      System.out.println("eeeeeeeeeee");
+				      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
+				     
+				      InputStream iStream=new ByteArrayInputStream(resp.getBytes("UTF-8"));
+				     Document dm=db.parse(iStream);
+				     System.out.println("ssssssssssssss");
+				      //得到 所有 person节点 
+				      NodeList persons=dm.getElementsByTagName("response");
+				      System.out.println("qqqqqqqqqqqqq");
+				      TTransferSucceed TTransferSucceed=new TTransferSucceed();
+				      System.out.println("wwwwwwwwwwwwwww");
+				      for(int i=0;i<persons.getLength();i++){
+				          
+				    	  Element personElement = (Element)persons.item(i);
+				    	  
+				    	  NodeList p=personElement.getChildNodes();
+				    	  for(int j=0;j<p.getLength();j++){
+				    		  Node e= p.item(j);
+				    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+				    		 
+				    	  }
+				    	  
+				    	 
+				    	  
+				    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
+				    		  /*TTransferSucceed.setService(p.item(1).getTextContent());*/
+				    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+				    	  }
+				    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
+				    		 /* TTransferSucceed.setRequestNo(p.item(3).getTextContent());*/
+				    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+				    		  
+				    	  }
+				    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
+				    		 /* TTransferSucceed.setCode(p.item(5).getTextContent());*/
+				    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+				    		  
+				    	  }
+				    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
+				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
+				    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+				    		  
+				    	  }
+				    	  
+				      }  
+				  
+				  } catch (Exception e) {
+			            // TODO: handle exception
+			            e.printStackTrace();
+			        } finally {
+			        }
+		          
+		return "zichan";
+	}
+	
 	private String doSign(Object obj, String url, Model model ) {
-		System.out.println("cccccccccccccccccc");
+		System.out.println("cccccccccccccccccc"+url);
 		StringWriter w = new StringWriter();
 		JAXB.marshal(obj, w);
 		/*System.out.println("eeeeeeeeeeeeeeee"+w.toString());*/
