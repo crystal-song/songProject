@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.mftour.spring.Dao.ICrowdfundingDao;
 import com.mftour.spring.Dao.IGateDao;
+import com.mftour.spring.model.TEstablishmentNotify;
+import com.mftour.spring.model.TEstablishmentRegistration;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferSucceed;
@@ -74,6 +76,35 @@ public class IGateServiceImpl  implements  IGateService {
 		return gateDao.queryTTransferInfoByNumber(Number);
 		
 	}
+
+
+	@Override
+	public void addOrUpdateTEstablishmentRegistration(
+			TEstablishmentRegistration establishmentRegistration)
+			throws Exception {
+		gateDao.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
+		
+	}
+
+
+	@Override
+	public void addOrUpdateTEstablishmentNotify(
+			TEstablishmentNotify establishmentNotify) throws Exception {
+		gateDao.addOrUpdateTEstablishmentNotify(establishmentNotify);
+		
+	}
+
+
+	@Override
+	public List<TEstablishmentRegistration> queryTEstablishmentRegistrationByNumber(
+			String Number) throws Exception {
+		
+		return gateDao.queryTEstablishmentRegistrationByNumber(Number);
+	}
+	
+	
+	
+	
 	
 	
 	
