@@ -67,8 +67,14 @@ public class zhucheController {
 		 if(o!=null){
 			 System.out.println("zhanghu"+o.toString());
 			 TUser user1 = userService.getUserByAccount(o.toString());
-				TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0);
-				model.addAttribute("registerYeePay1", registerYeePay1);	
+			 System.out.println("zhanghu"+user1.getName()+"ddd"+user1.getPassword());
+			 
+			 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(user1.getName());
+				if(li != null && li.size()!=0){
+					TRegisterYeePay registerYeePay1= li.get(0);
+					model.addAttribute("registerYeePay1", registerYeePay1);	
+				}
+				
 				model.addAttribute("user1", user1);
 				return "user-info";
 			 
