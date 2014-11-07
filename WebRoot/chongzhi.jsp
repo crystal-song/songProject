@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta content="中租宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
 <meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <title>充值 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>  --%> 
 
 
@@ -27,92 +27,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
     var navIndex=3;    
     $(document).ready(function(){
-    	$('.select_nav a').click(function(){
-    		$(this).siblings().slideToggle('slow');
-    		//$(this).siblings().css('display','block');
-    		}
-    	);
-    	$(function(){
-    		var num=0;
-    		var timer=null;
-    		timer=setInterval(function(){
-    			num++;
-    			$('.red_bar').css('width',num);
-    			var zi=$('.view strong').text();
-    			if(zi=='低' && num==40){
-    				clearInterval(timer)	
-    			}
-    			if(zi=='中' && num==80){
-    				clearInterval(timer)	
-    			}
-    			if(zi=='高' && num==120){
-    				clearInterval(timer)			
-    			}
-    		},20)
-
-    		$('.sec li').mouseover(function(e){
-    			$(this).addClass('bac_org').siblings().removeClass('bac_org');
-    			});
-    	    });	
-    		$('.msg_nav').eq(1).mouseover(function(e){
-    			$('.bac_change_1').css('background-image','url("<%=path%>/img/tubiao10.png")');
-    			
-    			}).mouseout(function(e){
-    			$('.bac_change_1').css('background-image','url("<%=path%>/img/tubiao9.png")');   			
-    			});
-    		$('.msg_nav').eq(2).mouseover(function(e){
-    			$('.bac_change_2').css('background-image','url("<%=path%>/img/tubiao11.png")');
-    			
-    			}).mouseout(function(e){
-    			$('.bac_change_2').css('background-image','url("<%=path%>/img/tubiao12.png")');
-    			
-    			});	
-    		
-    		$('.msg_nav').eq(3).mouseover(function(e){
-    			$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao2.png")');
-    			
-    			}).mouseout(function(e){
-    			$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao3.png")');
-    			
-    			});	
-    	
-    	
-         $(".ren_right").click(function(){
-             var a=$(this).parent().parent().children('.yincang').slideToggle();        
-        	 var text=$(this).text()
-
-        	 if(text=="认证"){
-        		 $(this).text("取消认证")
-        	 }else if(text=="取消认证"){
-        	     $(this).text("认证")
-        	 }else if(text=="验证"){
-        		 $(this).text("取消验证")
-        	 }else if(text=="取消验证"){     		 
-        		 $(this).text("验证")    		 
-        	 }else if(text=="修改"){
-        		 $(this).text("取消修改")
-        	 }else if(text=="取消修改"){     		 
-        		 $(this).text("修改")	 
-        	 }else if(text=="设置"){
-        		 $(this).text("取消设置")
-        	 }else if(text=="取消设置"){     		 
-        		 $(this).text("设置")
-        		 
-        	 } 
-         });
-         
-    	   	 
-         $('.aa').click(function(){
-        	 var aa_text=$('.aa').text();   
-             if(aa_text=="采用上传认证"){
-            	 $('.hide_car').css("display","block")
-            	 $('.aa').text('采用接口认证');
-             }else if(aa_text=="采用接口认证"){
-            	 $('.hide_car').css("display","none")
-            	 $('.aa').text('采用上传认证');
-            	 
-             }
-         })
+    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
+    	  $(".u_left_mian").click(function(){
+              $(this).siblings().slideToggle("slow");
+            });
      
 });
          
@@ -125,11 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
+<!-- 
 <div class="one"></div>
 <div class="clear_height"></div>
 <div class="msg_con">
    <div class="msg_left">
-         <%@ include file="/includes/user_info_left.jsp" %>      
+         
    </div>
    <div class="msg_right">
        <div class="msg_main">
@@ -147,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		           <li><span>账户余额</span><a class="org_num"><strong>0.00</strong></a><i>元</i></li>
 		           <li style=" display:none;"><span>充值金额：</span><a><input type="text" class="input_text"></input></a><i>元</i></li>
 	          </ul>      
-	          <!--  <ul class="chong"> -->
+	          <!--  <ul class="chong"> 
               <form role="form" action="<%=path%>/gate/doRecharge" method="post"
           target="_blank">
           <ul class="chong">
@@ -155,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="form-group" style="display:none;height:0px;" >
             <!-- <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo"
-              value="10040011137" /> -->
+              value="10040011137" /> 
                <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo"
               value="10012415118" />
@@ -201,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <button onclick="onSubmit('http://qa.yeepay.com/bha-toolkit')"
             class="btn btn-default">QA</button> -->
           <!-- <button onclick="onSubmit('https://member.yeepay.com/member')"
-            class="btn btn-default">立即充值</button> -->
+            class="btn btn-default">立即充值</button> 
             <div  class="que_btn"><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" style="text-align:center;">确定</a></div>
         </li>
         </ul>
@@ -223,10 +142,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>           
 </div>
 <div class="clear_height"></div>
+ -->
+<div class="user_con">
+     <div class="user_left">
+         <!-- user_left start -->
+           <%@ include file="/includes/user_info_left.jsp" %>
+         <!-- user_left end -->
+      </div>
+      <div class="user_right">  
+      <form role="form" action="<%=path%>/gate/doRecharge" method="post"
+          target="_blank">
+          
+        <div class="zichan_con">        
+          <div class="pro_con_title" style="margin-top:5px;"><strong>充值</strong></div>
+          <div class="fangshi">
+            <p>充值方式</p>
+            <ul>
+              <li></li>
+              
+            </ul>
+          </div>
+          <div class="money">
+            <p><span>可用余额</span><span><strong>0.00</strong>元</span></p>
+            <p class="position_money"><span>充值金额</span><span class="money_text"><input type="text" value="100"></input>元</span></p>
+          </div>
+          
+          <div class="fangshi" style="height:auto; display:none ">
+            <p>选择银行</p>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="yanzheng">
+            <p><a>验证码</a><span><input type="submit" class="sub" value="点击获取验证码"></input></span><a></a></p>
+            <p><a href=""></a><span><input type="checkbox"> </input>我已阅读并确认下方重要提示信息</span></p>
+            <p><a href=""></a><span><a href="#" class="chongzhi_btn">立即充值</a></span></p>
+          </div>
+          <div class="tishi">
+            <p><strong>温馨提示</strong></p>
+            <ul>
+              <li class="tishi_red">您充值的资金若未投资就提现，第三方支付公司会收取您提现金额的0.5%作为转账费用。</li>
+              <li>您的账户资金将由第三方平台托管。</li>
+              <li>为了您的资金安全，请您在充值前完成手机绑定，身份认证及支付密码设置。</li>
+              <li>爱投资严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务， 并会影响银行征信记录。</li>
+              <li>充值过程遇到问题，请联系客服，010-84243099/3199</li>
+            </ul>
+            
+          </div>
+              
+          </div> 
+         </form> 
+        </div>
+      </div>
 
-<!-- links start -->
-<%@ include file="/includes/links.jsp" %>
-<!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
