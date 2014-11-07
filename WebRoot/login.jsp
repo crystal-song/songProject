@@ -13,7 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <title>用户登录 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
+
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 
 
 <script type="text/javascript" >
@@ -121,13 +122,6 @@ window.onload=function(){
     </div>
 </div>
 </form>
-
-
-<div class="clear_height"></div>
-
-<!-- links start -->
-<%@ include file="/includes/links.jsp" %>
-<!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
