@@ -876,6 +876,7 @@ ul,li{
 	background:url(../img/images-2014-11/red_line.png) 60px 15px no-repeat;	
 	}	
 .guanggao{
+	display:none;
 	width:268px;
 	height:200px;
 	border:1px solid #eee;
@@ -1459,6 +1460,7 @@ ul,li{
 .pro_mo{
 	width:800px;
 	height:300px;
+	text-align:left;
 	}
 .zijin{
 	width:800px;
@@ -1477,11 +1479,10 @@ ul,li{
 	background:url(../img/images-2014-11/red_line_big.png) 152px 12px no-repeat;	
 	}
 .ziliao_pic{
-	width:430px;
+	min-width:430px;
 	min-height:500px;
 	margin:25px auto;
 	overflow: hidden;
-	position: relative;
 	}
 .ziliao_pic li{
    width: 430px; 

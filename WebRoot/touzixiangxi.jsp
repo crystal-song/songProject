@@ -422,7 +422,7 @@ window.onload=function(){
        </div>
 
  -->
-	<div class="syl_table">
+	<div class="syl_table" style="clear:both;">
      <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="2" border="0">
                  <tr>
                  <td bgcolor="#fff" align="center"><b>阶段起点金额</b></td>
