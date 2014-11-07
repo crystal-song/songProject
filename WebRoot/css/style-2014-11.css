@@ -955,7 +955,8 @@ ul,li{
 	background:url(../img/images-2014-11/xiugai_msg.png) 2px -4px no-repeat;
 	position: absolute;
 	right: 0;
-	top:43%;
+	top:30%;
+	*+top:35%;
 }	
 .user_pink:hover{
 	color: #ef4551;
