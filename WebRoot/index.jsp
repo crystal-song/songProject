@@ -154,13 +154,9 @@ $(window).on('scroll', function(){
   </div>
     <div class="shuju">
        <div class="new_production">
-         <div class="images_pro"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/meier.png"></div>
-         <div class="meier_wd">
-         
-         
-           <h3><a href="product/getProductByid?id=55">山西润通工程</a></h3>
-        
-	
+         <div class="images_pro"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/shanxi01.png"></div>
+         <div class="meier_wd">                
+           <h3><a href="product/getProductByid?id=55">山西润通工程</a></h3>       	
            <ul class="mei_msg">
             <li><span>融资金额</span><span class="wd_size"><strong>1180,000</strong></span></li>
             <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">10%</strong></span></li>
@@ -172,11 +168,11 @@ $(window).on('scroll', function(){
        </div>
        <div class="newpro_right">
          <dl>
-           <dt><strong>数据统计</strong></dt>
-           <dd><span>已撮合融资总额:</span><span><i class="money_all">4720,000</i><i>元</i></span></dd>
-           <dd><span>为客户赚取利益:</span><span><i class="money_all">258,880</i><i>元</i></span></dd>
-           <dd><span>已按时还款:</span><span><i class="money_all">172,586</i><i>元</i></span></dd>
-           <dd><span>已支付收益:</span><span><i class="money_all">172,586</i><i>元</i></span></dd>
+           <dt><strong>企业定位</strong></dt>
+           <dd><a class="newpro_wd01"></a><span>打造专业化金融信息交易平台。</span></dd>
+           <dd><a class="newpro_wd02"></a><span>实现高净值资产管理规模。</span></dd>
+           <dd><a class="newpro_wd03"></a><span>创造国际化资产管理服务水平。</span></dd>
+           <dd><a class="newpro_wd04"></a><span>成就顶级国际私人银行服务平台。</span></dd>
        </dl>
        </div>    
     </div> 
@@ -312,7 +308,7 @@ $(window).on('scroll', function(){
     
    <div class="w_gonggao">
 	      <ul class="news_title">
-	        <li class="news_title_bac"><a>网站公告</a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
+	        <li class="news_title_bac"><a id="new_bac" class="new_title01">网站公告</a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
@@ -326,7 +322,7 @@ $(window).on('scroll', function(){
      </div> 
      <div class="w_gonggao">
 	      <ul class="news_title">
-	        <li class="news_title_bac"><a>还款公告</a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
+	        <li class="news_title_bac"><a id="new_bac" class="new_title02">还款公告</a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
@@ -338,9 +334,9 @@ $(window).on('scroll', function(){
 		      </ul>      
 	      </div>
      </div> 
-     <div class="w_gonggao">
+     <div class="w_gonggao" style="margin-right:0">
 	      <ul class="news_title">
-	        <li class="news_title_bac"><a>媒体报道 </a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
+	        <li class="news_title_bac"><a id="new_bac" class="new_title03">媒体报道 </a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
