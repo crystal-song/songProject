@@ -13,15 +13,81 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta content="中租宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
 <meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <title>中租宝</title>
-
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 var navIndex=0;
 $(document).ready(function(){
+	// if(var navIndex!=null&&navIndex!=-1)$(".nav_big li").eq(0).addClass("bd_btom");
+	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
+	  
 	$('.res').click(function(){
 		$('.ie_text').css('display','none');
-	  });
+	  });	
+
+    $(".header li").mouseover(function(){ 
+      var index=$(this).index();
+      $('.top div').eq(index).show();
+
+    $(this).addClass('head_red').siblings().removeClass('head_red');     
+    }).mouseout(function(){
+       var index=$(this).index();
+       $('.top div').eq(index).hide();
+    });
+
+    $(".top div").mouseover(function(){ 
+      var index=$(this).index();
+      $(this).show();
+     
+    }).mouseout(function(){
+       var index=$(this).index();
+       $(this).hide();
+    });
+
+
+    $(".news_title li").click(function(){
+        var index= $(this).index();
+        $(this).addClass('news_title_bac').siblings().removeClass('news_title_bac');
+        $(".news_label ul").eq(index).css("display","block").siblings().css("display","none")
+    });
+
+    $(".username").mouseover(function(){
+      $(".tuichu").show();
+    }).mouseout(function(){
+      $(".tuichu").hide();
+    });
+    $(".tuichu").mouseover(function(){
+      $(this).show();
+    }).mouseout(function(){
+      $(this).hide();
+    });
+     
+     $(".absolute_right a").hide();
+     $(".absolute_right span").mouseover(function(){
+        $(this).children().show();
+
+    }).mouseout(function(){
+        $(this).children().css("display","none");
+    });
+        $(".absolute_bac2").mouseover(function(){
+          $(this).siblings(".erweima_bac").show();
+        }).mouseout(function(){
+          $(this).siblings(".erweima_bac").hide();
+        });
+
+$(window).on('scroll', function(){
+        if($(window).scrollTop()<500){
+            $(".absolute_bac1").hide();
+        }
+        if($(window).scrollTop()>=500){
+            $(".absolute_bac1").show(); 
+        }
+      });
+            $(".absolute_bac1").click(function(){
+
+               $("html,body").animate({scrollTop:0},500);  
+            
+            });	
 });
 
 </script>
@@ -42,9 +108,12 @@ $(document).ready(function(){
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
+
 <!-- banner start -->
 <%@ include file="/includes/banner.jsp" %>
 <!-- banner end  -->
+
+<!-- 
 <div class="top_01"></div>
 <div class="clear"></div>
 <div class="one">
@@ -78,60 +147,115 @@ $(document).ready(function(){
 <div class="content">
 	<div class="content_fra">
     	<div class="cont_left">
-    	
-    	
-    	<%--  <c:if test="${ not empty list}">
-        <c:forEach var="s" items="${list}" varStatus="i">
-        	<div class="ckxq">
-            	<div class="ckxq_bg">推荐项目:<span class="ckxq_red"><a href="<%=path%>/index.jsp">${s.projectName}</a></span></div>
-                <div class="xq_tab">
-                	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
-                    <div class="xq_right">
-                    	<div class="xq_table">
-                        	<div class="xq01">
-                            	<div class="xq01_tit">年化收益</div>
-                                <div class="xq01_nr hong">14.50%</div>
-                            </div>
-                            <div class="xq02">
-                            	<div class="xq01_tit">融资金额</div>
-                                <div class="xq01_nr">1000万</div>
-                            </div>
-                            <div class="xq03">
-                            	<div class="xq01_tit">还款日期</div>
-                                <div class="xq01_nr">2015-06-04</div>
-                            </div>
-                            <div class="xq04">
-                            	<div class="xq01_tit">企业等级</div>
-                                <div class="xq04_nr"><img src="<%=path%>/images/sy_66.jpg"></div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="jindu">
-                        	<div class="jindu_font">融资进度：<span class="hong">73%</span></div>
-                            <div class="jindu_pic"><img src="<%=path%>/images/sy_71.jpg"></div>
-                        <div class="clear"></div>
-                        <div class="jd_font">
-                        	<div class="jindu_font">已投金额：<span class="hong">730万元</span></div>
-                            <div class="jd_right">还款方式：<span class="qucu">到期还本</span></div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="jd_font">
-                        	<div class="jindu_font">还需金额：<span class="hong">270万元</span></div>
-                            <div class="jd_right">担保机构：<span class="qucu">很暗诺亚投资担保有限公司</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-			</div>
-			 </c:forEach>
+   --> 	
+<div class="content">
+  <div class="title">
+       <div class="label"><strong>数据统计</strong></div>
+  </div>
+    <div class="shuju">
+       <div class="new_production">
+         <div class="images_pro"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/meier.png"></div>
+         <div class="meier_wd">
+           <h3>美尔旅居酒店扩建工程</h3>
+           <ul class="mei_msg">
+            <li><span>融资金额</span><span class="wd_size"><strong>2000,000</strong></span></li>
+            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">12%</strong></span></li>
+            <li><span>借款期限</span><span class="wd_size">90天</span></li>
+            <li><span>融资进度</span><span class="wd_size">80%</span></li>
+            <li><a href="#" class="touzi_mei">我要投</a></li>
+           </ul>
+         </div>
+       </div>
+       <div class="newpro_right">
+         <dl>
+           <dt><strong>数据统计</strong></dt>
+           <dd><span>已撮合融资总额:</span><span><i class="money_all">4720,000</i><i>元</i></span></dd>
+           <dd><span>为客户赚取利益:</span><span><i class="money_all">258,880</i><i>元</i></span></dd>
+           <dd><span>已按时还款:</span><span><i class="money_all">172,586</i><i>元</i></span></dd>
+           <dd><span>已支付收益:</span><span><i class="money_all">172,586</i><i>元</i></span></dd>
+       </dl>
+       </div>    
+    </div> 
+    <div class="clear"></div>
+    <!--
+      <li class="shu_pro">
       
-	 
-        </c:if>
-			 --%>
- 
+        <div class="shu_pic pic01"></div>
+        <div class="shu_wd">
+          <span>以撮合融资总额</span>
+          <p><strong>1,447,540<i>元</i></strong></p>
+        </div>
+        
+      </li>
+      <li class="shu_pro">
+        <div class="shu_pic pic02"></div>
+        <div class="shu_wd">
+          <span>为客户赚取利益</span>
+          <p><strong>1,447,540<i>元</i></strong></p>
+        </div>
+        
+      </li>
+      <li class="shu_pro">
+        <div class="shu_pic pic03"></div>
+        <div class="shu_wd">
+          <span>以按时返款</span>
+          <p><strong>1,447,540<i>元</i></strong></p>
+        </div>
+        
+      </li>
+      <li class="shu_pro">
+        <div class="shu_pic pic04"></div>
+        <div class="shu_wd">
+          <span>以支付利益</span>
+          <p><strong>1,447,540<i>元</i></strong></p>
+        </div>
+      </li>
+       -->
+
+     <div class="title">
+       <div class="label"><strong>项目推荐</strong></div>
+       <a class="more" href="<%=path%>/product/allProduct">更多&nbsp;&nbsp;>></a>
+     </div> 
+     <div class="main">
+       <ul>
+        
 	   <c:if test="${ not empty list}">
-        <c:forEach var="s" items="${list}" varStatus="i">
-	  
+        <c:forEach var="s" items="${list}" varStatus="i">   
+         <li>
+              <div class="floor_num">
+                 <a class="floor_img" href="product/getProductByid?id=${s.id}">
+                 ${s.projectPicture}
+                 <div class="hot"></div>
+                 <!-- <div class="last_time">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div> -->
+                 <div class="last_time">年化收益率:<strong>&nbsp;&nbsp;${s.yearIncome}%</strong></div>
+                 </a>
+                 <h3><a class="shuoming" href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></h3>
+                 <div class="aim">
+                   <span style="color:#a4a4a4;">目标:</span>
+                   <span>60天</span>
+                   <span><em>¥&nbsp;&nbsp;</em>${s.financingMoney}</span>
+                   <a>融资中</a>
+                 </div>
+                 <div class="loding_bar">
+                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
+                 </div>
+                 <div class="floor_bottom">
+                   <span><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
+                   <a style="float:left; color:#a4a4a4;">已达</a></span>
+                   <span><a class="baifenbi"><em>¥&nbsp;&nbsp;</em>30000</a><a style="color:#a4a4a4;">已筹资</a>
+                   </span>
+                   <span><a class="baifenbi" style="float:right; text-align:right;">${s.yearIncome}%</a>
+                   <a style="float:right; color:#a4a4a4;" >年化收益率</a></span>
+                 </div>
+                 <div class="botm_btn">
+                  <a href="product/getProductByid?id=${s.id}">我要投资</a>
+                  <a href="product/getProductByid?id=${s.id}" class="btn_org">了解详情</a>
+                 </div>
+              </div>
+            </li>
+      
+        
+	 <!-- 
 			<div class="clear_height"></div>
             <div class="ind_list">
             
@@ -169,59 +293,80 @@ $(document).ready(function(){
                 </div>
                 
             </div>
-            </c:forEach>
-      
-	 
-        </c:if>
-             
-            
-            
-       <div class="clear_height"></div>
+            -->
               
-           <%--  <div class="clear_height"></div>
-            <div class="ind_list">
-            	<div class="xq_left"><img src="<%=path%>/images/sy_63.jpg"></div>
-                <div class="ind_right">
-                	<div class="tuijian">
-                    	<div class="tj_left">推荐项目:<span class="hong">建筑工程企业建筑材料采购</span></div>
-                        <div class="tj_right">
-                        	<div class="tj_jd">融资进度：80%</div>
-                            <div class="tj_jd_pic"><img src="<%=path%>/images/sy_76.jpg"></div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="xq_table">
-                        <div class="xq01">
-                            <div class="xq01_tit">年化收益</div>
-                            <div class="xq01_nr hong">14.50%</div>
-                        </div>
-                        <div class="xq02">
-                            <div class="xq01_tit">融资金额</div>
-                            <div class="xq01_nr">1000万</div>
-                        </div>
-                        <div class="xq03">
-                            <div class="xq01_tit">还款日期</div>
-                            <div class="xq01_nr">2015-06-04</div>
-                        </div>
-                        <div class="xq04">
-                            <div class="xq01_tit">企业等级</div>
-                            <div class="xq04_nr"><img src="<%=path%>/images/sy_66.jpg"></div>
-                        </div>
-                    </div>
-                </div>
-            </div> --%>
+            
+            </c:forEach>
+        </c:if>
+       
+     </ul>
+   </div>
+   <div class="title">
+       <div class="label"><strong>公告</strong></div>
+     </div>
+   <div class="news">
+    
+   <div class="w_gonggao">
+	      <ul class="news_title">
+	        <li class="news_title_bac">网站公告</li>       
+	       </ul>
+	      <div class="news_label">
+		      <ul class="news_con">
+		        <c:if test="${ not empty list2}">
+        <c:forEach var="s" items="${list2}" varStatus="i">
+                    	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
+                    	 </c:forEach>
+						</c:if>
+
+		      </ul>      
+	      </div>
+     </div> 
+     <div class="w_gonggao">
+	      <ul class="news_title">
+	        <li class="news_title_bac">还款公告</li>       
+	       </ul>
+	      <div class="news_label">
+		      <ul class="news_con">
+		        <c:if test="${ not empty list3}">
+        <c:forEach var="s" items="${list3}" varStatus="i">
+                    	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
+                    	 </c:forEach>
+						</c:if>
+		      </ul>      
+	      </div>
+     </div> 
+     <div class="w_gonggao">
+	      <ul class="news_title">
+	        <li class="news_title_bac">媒体报道</li>       
+	       </ul>
+	      <div class="news_label">
+		      <ul class="news_con">
+		        <c:if test="${ not empty list1}">
+        <c:forEach var="s" items="${list1}" varStatus="i">
+                    	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
+                    	 </c:forEach>
+						</c:if>
+		      </ul>      
+	      </div>
+     </div> 
+    </div> 
+ </div>                  
+      <!--    
 		</div> 
 		<div class="cont_right">
 			<!-- news_list start  -->
-			<%@ include file="/includes/news_list_right.jsp" %>
+		
 			<!-- news_list end  -->
+			<!-- 
         </div>
         <div class="clear"></div>
     </div>
 </div>
 <div class="clear_height"></div>
 <!-- links start -->
-<%@ include file="/includes/links.jsp" %>
+<!-- 
+
+ -->
 <!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->
