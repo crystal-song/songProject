@@ -36,10 +36,16 @@ $(document).ready(function(e) {
 
        <div class="news_left">
           <div class="n_left_title">新闻中心</div>
-           <ul class="news_ul">             
+           <ul class="news_ul"> 
+           <!--              
              <li><a href="<%=path%>/newxiangqing.jsp">网站公告</a></li>
              <li><a href="<%=path%>/newxiangqing.jsp">还款公告</a></li>
-             <li><a href="<%=path%>/newxiangqing.jsp">媒体公告</a></li>
+             <li><a href="<%=path%>/newxiangqing.jsp">媒体公告</a></li>-->
+             <c:if test="${ not empty list}">
+               <c:forEach var="s" items="${list}" varStatus="i">
+            	<li><a href="getlist?id=${s.id}">${s.name}</a></li>
+            	</c:forEach>
+        </c:if>    
            </ul>   
        </div>
        <div class="right_news_con">
