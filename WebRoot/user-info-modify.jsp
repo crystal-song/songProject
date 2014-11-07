@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -12,82 +13,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta content="中租宝，是北京中投汇融投资管理有限公司旗下的众筹网络平台，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
 <meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <title>用户中心修改 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
-
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 var navIndex=3;
 $(document).ready(function(){
-	$('.select_nav a').click(function(){
-		$(this).siblings().slideToggle('slow')
-		}
-	);	
-	
-	$(function(){
-	var num=0;
-	var timer=null;
-	timer=setInterval(function(){
-		num++
-		$('.red_bar').css('width',num);
-		/*$('progress').val(num)
-		$('span').html(num)*/
-		var zi=$('.view strong').text();
-		if(zi=='低' && num==40){
-			clearInterval(timer)	
-		}
-		if(zi=='中' && num==80){
-			clearInterval(timer)	
-		}
-		if(zi=='高' && num==120){
-			clearInterval(timer)			
-		}
-	},20)
+	$(".tip").mouseover(function(){
+        //alert("aa");
+       
+            $(this).siblings("#tishik01").css("display","block");
+            $(this).siblings("#tishik01").mouseover(function(){
+            $(this).show();
+         }).mouseout(function(){
+            $(this).hide();    
+         });
 
-	$('.sec li').mouseover(function(e){
-		$(this).addClass('bac_org').siblings().removeClass('bac_org');
-		});
-    });
-	
-	$('.msg_nav').eq(1).mouseover(function(e){
-		$('.bac_change_1').css('background-image','url("<%=path%>/img/tubiao10.png")');
-		
-		}).mouseout(function(e){
-		$('.bac_change_1').css('background-image','url("<%=path%>/img/tubiao9.png")');
-		
-		});
-	
-	$('.msg_nav').eq(2).mouseover(function(e){
-		$('.bac_change_2').css('background-image','url("<%=path%>/img/tubiao11.png")');
-		
-		}).mouseout(function(e){
-		$('.bac_change_2').css('background-image','url("<%=path%>/img/tubiao12.png")');
-		
-		});	
-	
-	$('.msg_nav').eq(3).mouseover(function(e){
-		$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao2.png")');
-		
-		}).mouseout(function(e){
-		$('.bac_change_3').css('background-image','url("<%=path%>/img/tubiao3.png")');
-		
-		});
-	
-	$(".box_check").hide();	
-	$(".user_check p").mouseover(function(){
-		$(this).siblings('.box_check').show();
-		$('.box_check').mouseover(function(){
-			$(this).show();
-			});
-
-	}).mouseout(function(){
-		$(this).siblings('.box_check').hide();    
-		$('.box_check').mouseout(function(){
-			$(this).hide();
-			});
-		
-	    });
-	
-	});
+      }).mouseout(function(){
+         $(this).siblings("#tishik01").css("display","none");      
+      });
+      
+      $(".u_left_mian").click(function(){
+          $(this).siblings().slideToggle("slow");
+        });
+});
 </script>
 </head>
 
@@ -95,14 +43,12 @@ $(document).ready(function(){
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
+<!-- 
 <div class="clear"></div>
 <div class="one"></div>
 <div class="clear_height"></div>
 <div class="msg_con">
-   <div class="msg_left">
-      
-	  <%@ include file="/includes/user_info_left.jsp" %>
-	 
+   <div class="msg_left">	 
    </div>
    <div class="msg_right">
        <div class="msg_main">
@@ -245,10 +191,160 @@ $(document).ready(function(){
 <div class="clear"></div>
 
 <div class="clear_height"></div>
-
-<!-- links start -->
-<%@ include file="/includes/links.jsp" %>
-<!-- links end -->
+ -->
+<div class="user_con">
+    <div class="user_left">
+      <!-- user_left start -->
+           <%@ include file="/includes/user_info_left.jsp" %>
+         <!-- user_left end -->
+    </div>
+          <div class="user_right">  
+	        <div class="zichan_con">        
+	          <div class="pro_con_title" style="margin-top:5px;"><strong>个人信息</strong>
+	          </div>
+	          
+	                <div class="con_list">
+	                  <div class="con_pic"></div>
+	                   <ul class="con_name">
+	                     <li>
+	                        <span>用户名</span>
+	                        <span>${user1.name}</span>
+	                        <span class="tip">详情</span>
+	                          <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01">注册时的用户名不可更改</div>
+	                           <span class="border_right01"></span>
+	                           </div>
+	                     </li>
+	                     <li>
+	                      <span>真实姓名</span>
+	                      <span>${user1.realName}</span>
+	                      <span class="tip">立即认证</span>
+	                      <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01" >您未进行实名认证，<a href="<%=path%>/anquanshezhi.jsp">请认证</a></div>
+	                           <span class="border_right01"></span>
+	                      </div>
+	                    </li>
+	                     <li>
+	                      <span>身份证号码</span>
+	                      <span>${user1.identityCard}</span>
+	                      <span class="tip">立即认证</span>
+	                      <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01">您未绑定身份证，<a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div>
+	                           <span class="border_right01"></span>
+	                      </div>
+	                    </li>
+	                     <li>
+	                      <span>手机号码</span>
+	                      <span>${user1.phone}</span>
+	                      <span class="tip">立即认证</span>
+	                        <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01">您未绑定手机号码，<a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div>
+	                           <span class="border_right01"></span>
+	                        </div>
+	                    </li>
+	                     <li>
+	                      <span>邮箱地址</span>
+	                      <span>${user1.email}</span>
+	                      <span class="tip">立即认证</span>
+	                        <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01">您未绑定邮箱，<a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div>
+	                           <span class="border_right01"></span>
+	                        </div>
+	                    </li>
+	                    <li><span>易宝账号</span>
+	                      <span>${registerYeePay1.platformUserNo}</span>
+	                      <span class="tip">立即认证</span>
+	                        <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01">您未绑定易宝账号，<a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div>
+	                           <span class="border_right01"></span>
+	                        </div></li>
+	                   </ul>
+                       <ul class="con_name lame">
+                     <li><span>性别(不可修改)</span><span class="modify"></span></li>
+                     <li><span>出生日期(不可修改)</span><span class="modify">aaa</span></li>
+                     <li><span>最高学历</span><span class="modify">
+                         <select class="select01"  name="educationBackground"   value="${user1.educationBackground}" >
+                           <option checked="checked">请选择</option>
+                           <option>高中或以下</option>
+                           <option>大专</option>
+                           <option>大学本科</option>
+                           <option>研究生及以上</option> 
+                       </select>
+                     </span></li>
+                     <li><span>毕业院校</span><span class="modify"><input type="text" class="input_wd"></span></li>
+                     <li><span>婚姻状态</span><span class="modify">
+                      <input type="radio" value="未婚" class="radio_width" name="radio_one"/>未婚
+                      <input type="radio" value="已婚" class="radio_width" name="radio_one"/>已婚
+                      <input type="radio"  value="其他"  checked="true" class="radio_width" name="radio_one"/>其他</span>
+                    </li>
+                     <li><span>居住地址</span><span class="modify"><input type="text" class="input_wd"></span></li>
+                     <li><span>公司行业</span><span class="modify">
+                         <select class="select01" name="companyIndustry" value="${user1.companyIndustry}"  >
+                            <option value="">请选择</option>
+                            <option value="制造业">制造业</option>
+                            <option value="IT">IT</option>
+                            <option value="政府机关">政府机关</option>
+                            <option value="媒体/广告">媒体/广告</option>
+                            <option value="零售/批发">零售/批发</option>
+                            <option value="教育/培训">教育/培训</option>
+                            <option value="公共事业">公共事业</option>
+                            <option value="交通运输业">交通运输业</option>
+                            <option value="房地产业">房地产业</option>
+                            <option value="能源业">能源业</option>
+                            <option value="金融/法律">金融/法律</option>
+                            <option value="餐饮/旅馆业">餐饮/旅馆业</option>
+                            <option value="医疗/卫生/保健">医疗/卫生/保健</option>
+                            <option value="建筑工程">建筑工程</option>
+                            <option value="农业">农业</option>
+                            <option value="娱乐服务业">娱乐服务业</option>
+                            <option value="体育/艺术">体育/艺术</option>
+                            <option value="公益组织">公益组织</option>
+                            <option value="其它">其它</option> 
+                       </select>
+                     </span></li>
+                     <li><span>公司规模</span><span class="modify">
+                            <select class="select01"  name="companyScale" value="${user1.companyScale}" >
+                            <option value="">请选择</option>
+                            <option value="10人以下">10人以下</option>
+                            <option value="10-100人">10-100人</option>
+                            <option value="100-500人">100-500人</option>
+                            <option value="500人以上">500人以上</option> 
+                       </select>
+                     </span></span></li>
+                     <li><span>职位</span><span class="modify"><input type="text" class="input_wd"></span></li>
+                     <li><span>月收入</span><span class="modify">
+                            
+                            <select class="select01"  name="income" value="${user1.income}">
+                            <option value="">请选择</option>
+                            <option value="1000元以下">1000元以下</option>
+                            <option value="1001-2000元">1001-2000元</option>
+                            <option value="2000-5000元"> 2000-5000元</option>
+                            <option value="5000-10000元">5000-10000元</option>
+                            <option value="10000-20000元">10000-20000元</option>
+                            <option value="20000-50000元">20000-50000元</option>
+                            <option value="50000元以上">50000元以上</option> 
+                       </select>
+                     </span></li>
+                     <li><span class="span_left">
+                           <a href="#">确定</a>
+                          </span>
+                         <span class="modify span_right" >
+                           <a href="<%=path%>/user/cancelUpdate?name=${user1.name}" class="bac">取消</a>
+                           </span>
+                     </li>
+                   </ul>	                    
+	               </div>     
+	           </div>
+         </div>
+  
+</div>
+    
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
