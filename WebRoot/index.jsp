@@ -312,7 +312,7 @@ $(window).on('scroll', function(){
     
    <div class="w_gonggao">
 	      <ul class="news_title">
-	        <li class="news_title_bac">网站公告<a class="new_logo1" href="#">更多 >></a></li>       
+	        <li class="news_title_bac"><a>网站公告</a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
@@ -326,7 +326,7 @@ $(window).on('scroll', function(){
      </div> 
      <div class="w_gonggao">
 	      <ul class="news_title">
-	        <li class="news_title_bac">还款公告<a class="new_logo1" href="#">更多 >></a></li>       
+	        <li class="news_title_bac"><a>还款公告</a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
@@ -340,7 +340,7 @@ $(window).on('scroll', function(){
      </div> 
      <div class="w_gonggao">
 	      <ul class="news_title">
-	        <li class="news_title_bac">媒体报道<a class="new_logo1" href="#">更多 >></a></li>       
+	        <li class="news_title_bac"><a>媒体报道 </a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
