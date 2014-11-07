@@ -1478,7 +1478,7 @@ ul,li{
 	}
 .ziliao_pic{
 	width:430px;
-	height:500px;
+	min-height:500px;
 	margin:25px auto;
 	overflow: hidden;
 	position: relative;
@@ -3029,7 +3029,7 @@ ul,li{
 	height:120px;
 	overflow:hidden;
 }
-.pro_msg:hover .syl_table{height:auto;overflow:visible;}
+.syl_table:hover{height:auto;overflow:visible;}
 .syl_table td{  
 	width:20%; 
 	height:12px; 

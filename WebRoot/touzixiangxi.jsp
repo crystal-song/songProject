@@ -388,7 +388,7 @@ window.onload=function(){
          <span><a class="red_touzi" href="#" id="dialog-link">立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">100元起投</span>
        </div>
-    
+      </div>   
  <!--弹出窗口 -->   
 <!-- 
        <div id="dialog" title="投资金额确认">
@@ -444,7 +444,7 @@ window.onload=function(){
 			</c:if> 
       </table>
       </div> 
-     </div>
+
       <ul class="small_nav">
             <li class="sm_nav_fir">
               <strong><a>投资记录</a></strong>
