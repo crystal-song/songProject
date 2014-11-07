@@ -66,11 +66,6 @@ $(document).ready(function(e) {
     </div>
 <!-- right end -->
 </div>
-<div class="clear_height"></div>
-
-<!-- links start -->
-<%@ include file="/includes/links.jsp" %>
-<!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
