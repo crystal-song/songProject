@@ -422,12 +422,11 @@ window.onload=function(){
        </div>
 
  -->
-     </div>
-     <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0" class="syl_table">
+	<div class="syl_table">
+     <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="2" border="0">
                  <tr>
                  <td bgcolor="#fff" align="center"><b>阶段起点金额</b></td>
-                 <td bgcolor="#fff" align="ce
-                 nter"><b>起始利率</b></td>
+                 <td bgcolor="#fff" align="center"><b>起始利率</b></td>
                  <td bgcolor="#fff" align="center"><b>投资增幅</b></td>
                  <td bgcolor="#fff" align="center"><b>利率增幅</b></td>
                  <td bgcolor="#fff" align="center"><b>阶段上限金额</b></td>
@@ -443,7 +442,9 @@ window.onload=function(){
         </tr>
          </c:forEach>
 			</c:if> 
-      </table> 
+      </table>
+      </div> 
+     </div>
       <ul class="small_nav">
             <li class="sm_nav_fir">
               <strong><a>投资记录</a></strong>
@@ -487,14 +488,18 @@ window.onload=function(){
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
       </ul> -->
-      <div class="pro_con_title"><strong>项目描述</strong></div>
-      <div class="pro_mo">${product1.projectIntroduce}</div>
+
+   <div class="pro_con_title"><strong>项目描述</strong></div>
+      <div class="zijin">
+        <p class="zijin_msg">${product1.projectIntroduce}</p>        
+      </div>
+      
       <div class="pro_con_title"><strong>资金运转</strong></div>
       
       <div class="zijin">
          <p>资金用途</p>
          <p class="zijin_msg">${product1.fundUse}</p>
-        <p>查看详情</p>
+        <!-- <p>查看详情</p> -->
         <div style="display:none;"></div>
         <p>还款来源</p>
         <p class="zijin_msg">${product1.repaymentSource}</p>  
@@ -503,7 +508,7 @@ window.onload=function(){
       <div class="zijin">
           <p>企业背景</p>
           <p class="zijin_msg">${product1.companyProfile}</p>
-          <p>查看详情</p>
+          <!-- <p>查看详情</p> -->
           <div style="display:none;"></div>
           <p>业务范围</p>
           <p class="zijin_msg">${product1.businessScope}</p>
