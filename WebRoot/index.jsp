@@ -150,19 +150,23 @@ $(window).on('scroll', function(){
    --> 	
 <div class="content">
   <div class="title">
-       <div class="label"><strong>数据统计</strong></div>
+       <div class="label"><strong>热门项目</strong></div>
   </div>
     <div class="shuju">
        <div class="new_production">
          <div class="images_pro"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/meier.png"></div>
          <div class="meier_wd">
-           <h3>美尔旅居酒店扩建工程</h3>
+         
+         
+           <h3><a href="product/getProductByid?id=55">山西润通工程</a></h3>
+        
+	
            <ul class="mei_msg">
-            <li><span>融资金额</span><span class="wd_size"><strong>2000,000</strong></span></li>
-            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">12%</strong></span></li>
+            <li><span>融资金额</span><span class="wd_size"><strong>1180,000</strong></span></li>
+            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">10%</strong></span></li>
             <li><span>借款期限</span><span class="wd_size">90天</span></li>
-            <li><span>融资进度</span><span class="wd_size">80%</span></li>
-            <li><a href="#" class="touzi_mei">我要投</a></li>
+            <li><span>融资进度</span><span class="wd_size">0%</span></li>
+            <li><a href="product/getProductByid?id=55" class="touzi_mei">我要投</a></li>
            </ul>
          </div>
        </div>
@@ -213,7 +217,7 @@ $(window).on('scroll', function(){
        -->
 
      <div class="title">
-       <div class="label"><strong>项目推荐</strong></div>
+       <div class="label"><strong>推荐项目</strong></div>
        <a class="more" href="<%=path%>/product/allProduct">更多&nbsp;&nbsp;>></a>
      </div> 
      <div class="main">
@@ -302,42 +306,41 @@ $(window).on('scroll', function(){
      </ul>
    </div>
    <div class="title">
-       <div class="label"><strong>公告</strong></div>
+       <div class="label"><strong>最新动态</strong></div>
      </div>
    <div class="news">
     
    <div class="w_gonggao">
 	      <ul class="news_title">
-	        <li class="news_title_bac">网站公告</li>       
+	        <li class="news_title_bac">网站公告<a class="new_logo1" href="#">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
 		        <c:if test="${ not empty list2}">
-        <c:forEach var="s" items="${list2}" varStatus="i">
-                    	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
-                    	 </c:forEach>
-						</c:if>
-
+			        <c:forEach var="s" items="${list2}" varStatus="i">
+			            <li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
+			        </c:forEach>
+				</c:if>
 		      </ul>      
 	      </div>
      </div> 
      <div class="w_gonggao">
 	      <ul class="news_title">
-	        <li class="news_title_bac">还款公告</li>       
+	        <li class="news_title_bac">还款公告<a class="new_logo1" href="#">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
 		        <c:if test="${ not empty list3}">
-        <c:forEach var="s" items="${list3}" varStatus="i">
+                    <c:forEach var="s" items="${list3}" varStatus="i">
                     	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
-                    	 </c:forEach>
-						</c:if>
+                    </c:forEach>
+				</c:if>
 		      </ul>      
 	      </div>
      </div> 
      <div class="w_gonggao">
 	      <ul class="news_title">
-	        <li class="news_title_bac">媒体报道</li>       
+	        <li class="news_title_bac">媒体报道<a class="new_logo1" href="#">更多 >></a></li>       
 	       </ul>
 	      <div class="news_label">
 		      <ul class="news_con">
