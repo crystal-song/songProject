@@ -204,7 +204,7 @@ $(document).ready(function(){
 	          </div>
 	          
 	                <div class="con_list">
-	                  <div class="con_pic"></div>
+	                  <div class="con_pic" style="display:none"></div>
 	                   <ul class="con_name">
 	                     <li>
 	                        <span>用户名</span>
