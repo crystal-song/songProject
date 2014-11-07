@@ -456,7 +456,25 @@ window.onload=function(){
             <li class="zheng"><a>相关证件</a></li>
       </ul>
       <div class="pro_con_title"><strong>投资记录</strong></div>
-      <ul class="table_mag">
+       <ul class="table_mag">
+       <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>状态</span></li>
+		<c:if test="${ not empty list}">
+		<c:forEach var="s" items="${list}" varStatus="i">
+		<li>
+		<span >${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
+		<span >
+			<c:if test="${fn:length(s.identityCard)==18}">${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
+			</c:if>
+			<c:if test="${fn:length(s.identityCard)!=18}">-
+			</c:if>
+		</span>
+		<span >${s.investmentAmount}万元</span>
+		<span>成功</span>
+		</li>
+		</c:forEach>
+		</c:if>
+		</ul> 
+<!--       <ul class="table_mag">
         <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>投资时间</span><span>状态</span></li>
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
@@ -468,7 +486,7 @@ window.onload=function(){
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-      </ul>
+      </ul> -->
       <div class="pro_con_title"><strong>项目描述</strong></div>
       <div class="pro_mo">${product1.projectIntroduce}</div>
       <div class="pro_con_title"><strong>资金运转</strong></div>
@@ -539,9 +557,10 @@ window.onload=function(){
       -->
      <div class="pro_con_title"><strong>相关资料</strong></div> 
      <div class="ziliao_pic">
-      <div class="ban_left"></div>
+     ${product1.enterpriseCertificate}
+      <%--<div class="ban_left"></div>
       <div class="ban_right"></div>
-       <ul>
+        <ul>
          <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132140144014.jpg" width="355px" height="500px"></li>
          <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132091019101.jpg" width="355px" height="500px"></li>
          <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132035433543.jpg" width="355px" height="500px"></li>
@@ -567,7 +586,8 @@ window.onload=function(){
          <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132396009600.jpg" width="355px" height="500px"></li>
          <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140731170538603860.jpg" width="355px" height="500px"></li>
          <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140731170564286428.jpg" width="355px" height="500px"></li>
-       </ul>
+       </ul> --%>
+       
      </div>
     </div>
 </div> 
