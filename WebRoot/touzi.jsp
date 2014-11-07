@@ -417,7 +417,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
    <!-- con_left -->
       <%@ include file="/includes/news_list_right.jsp" %>
    <!-- con_left end-->   
-      <div class="guanggao"></div>
+      <div class="guanggao" style="display:none"></div>
    </div>
    <div class="con_right">
      <div class="right_lable">
