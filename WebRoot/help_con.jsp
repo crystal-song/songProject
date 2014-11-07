@@ -103,9 +103,7 @@ $(document).ready(function(e) {
     </div>
 </div>
 -->
-<div class="clear_height"></div>
-
-
+<div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
