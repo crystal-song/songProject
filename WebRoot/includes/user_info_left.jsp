@@ -17,7 +17,7 @@
         	<div class="clear_height  btm_border"></div>
         	-->
       
-      
+     <!--  
       <div class="msg_left_top">
            <div class="name">
                  <div class="pic">
@@ -78,4 +78,81 @@
               </ul>
           </div>    
        </div>
-        	
+        -->	
+      
+        <ul>
+           <li class="u_left_red">账户主页</li>
+           <li>
+              <div class="u_left_mian"><i class="mian_pic01"></i><span>资产管理</span></div>
+              <ul class="u_left_sec">
+                <li style="display:none;">
+                 <a href="<%=path%>/zichan.jsp" >资产统计</a>
+                </li>
+                <li>
+                 <a href="<%=path%>/chongzhi.jsp">充值</a>
+                </li>
+                <li>
+                 <a href="<%=path%>/tixian.jsp">提现</a>
+                </li>
+              </ul>
+           </li>
+           <li style="display:none;">
+              <div class="u_left_mian"><i class="mian_pic02"></i><span>投资管理</span></div>
+              <ul class="u_left_sec">
+                <li>
+                <a href="<%=path%>/yitou.jsp">已投项目</a>
+                </li>
+                <li>
+                <a href="<%=path%>/shoucang.jsp">收藏项目</a>
+                </li>
+                <li>
+                <a href="<%=path%>/jiaoyi.jsp">交易记录</a>
+                </li>
+                <li>
+                <a href="<%=path%>/zhaiquan.jsp">债权转让</a>
+                </li>
+              </ul>
+           </li>
+           <li>
+              <div class="u_left_mian"><i class="mian_pic03"></i><span>账户管理</span></div>
+               <ul class="u_left_sec">
+                <li>
+                  <a href="<%=path%>/user-info.jsp">个人信息</a>
+                </li>
+                <li>
+                  <a href="<%=path%>/anquanshezhi.jsp">安全设置</a>
+
+                </li>
+                <li style="border-bottom:0; display:none">
+                  <a href="<%=path%>/tongzhishezhi.jsp" >通知设置</a>
+                </li>
+              </ul>
+           </li>
+           <li style="display:none;">
+             <div class="u_left_mian"><i class="mian_pic04"></i><span>消息管理</span></div>
+              <ul class="u_left_sec">
+                <li style="border-bottom:0">
+                  <a href="<%=path%>/xitongxiaoxi.jsp">系统消息</a>
+                </li>
+              </ul>
+           </li>
+         </ul>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
