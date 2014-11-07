@@ -102,7 +102,7 @@ var navIndex=2;
           <div class="pro_con_title" style="margin-top:5px;"><strong>个人信息</strong>
           </div>
                <div class="con_list">
-                  <div class="con_pic"></div>
+                  <div class="con_pic" style="display:none"></div>
                    <ul class="con_name">
                      <li> <span>用户名</span>
 	                        <span>${user1.name}</span>
