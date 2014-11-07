@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 
 <title>用户注册 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 </head>
 <script type="text/javascript" >
 var c_name=false;
@@ -144,9 +144,6 @@ function chk_email(){
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
-<div class="clear"></div>
-<div class="one"></div>
-<div class="clear_height"></div>
 <div class="frame">
 <!-- page content -->
 <div class="blank_block">
@@ -172,11 +169,6 @@ function chk_email(){
     </div>
  <!-- page content end -->   
 </div>
-<div class="clear_height"></div>
-
-<!-- links start -->
-<%@ include file="/includes/links.jsp" %>
-<!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
