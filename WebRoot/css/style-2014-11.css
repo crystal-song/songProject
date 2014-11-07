@@ -689,7 +689,10 @@ ul,li{
 	text-align:left;
 	padding-left:10%;
 	}	
-	
+.news_title_bac a{
+	float:left;
+	color:#fff;
+}	
 .news_label{
 	width:100%;
 	height:332px;
@@ -3215,7 +3218,7 @@ ul,li{
                   background:#ccc; box-shadow: -2px -2px 2px #999 inset; cursor:pointer}
 .banner_fra ol .current{background:#F00; border:1px solid #903; box-shadow: -2px -2px 2px #b20d0d inset;}
 
-.new_logo1{
+.news_title_bac .new_logo1{
 	width:50px;
 	height:50px;
 	float:right;
