@@ -50,9 +50,9 @@
          </ul>
        </li>
        <li><img src="<%=path%>/img/images-2014-11/zhongtou.png" width="300" height="50" /></li>
-       <li>京ICP备14013075号-3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@ptobchina.com</li>    
-       <li>©2014 Email:zthrgs@126.com&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中投汇融投资管理有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有</li>
-       <li style="margin-top:20px;"><img src="<%=path%>/img/images-2014-11/bottom_pic.png" width="300" height="50" /></li>
+       <li><a href="http://www.miitbeian.gov.cn"/>京ICP备14013075号-3</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@ptobchina.com</li>    
+       <li  style="margin-top:10px;">中投汇融投资管理有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;版权所有</li>
+       <li style="margin-top:20px; display:none"><img src="<%=path%>/img/images-2014-11/bottom_pic.png" width="300" height="50" /></li>
      </ul>
    </div>   
 <script type="text/javascript">
