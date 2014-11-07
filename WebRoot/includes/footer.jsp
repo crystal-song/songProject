@@ -40,13 +40,11 @@
        </li>
        <li>
          <ul class="min_label">
-          <li class="min_mar">关于我们</li>
-          <li>常见问题</li>
-          <li>理财问答</li>
-          <li>法律声明</li>
-          <li>联系我们</li>
-          <li>招贤纳士</li>
-          <li>网站地图</li>
+          <li class="min_mar"><a href="<%=path%>/help_con.jsp">关于我们</a></li>
+          <li><a href="<%=path%>/question.jsp">常见问题</a></li>
+          <li><a href="<%=path%>/security.jsp">安全策略</a></li>
+          <li><a href="<%=path%>/notice.jsp">法律声明</a></li>
+          <li><a>联系我们</a></li>
          </ul>
        </li>
        <li><img src="<%=path%>/img/images-2014-11/zhongtou.png" width="300" height="50" /></li>
