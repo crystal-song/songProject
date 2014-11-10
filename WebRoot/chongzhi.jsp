@@ -143,6 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div class="clear_height"></div>
  -->
+
 <div class="user_con">
      <div class="user_left">
          <!-- user_left start -->
@@ -186,7 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p><a href=""></a><span><input type="checkbox"> </input>我已阅读并确认下方重要提示信息</span></p>
             <p><a href=""></a><span><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" class="chongzhi_btn">立即充值</a></span></p>
           </div>                  
-     <form role="form" action="<%=path%>/gate/doRecharge" method="post" target="_blank">      
+     <form role="form" action="<%=path%>/gate/doRecharge" method="post" target="_blank" id="form">      
           <ul class="chong">
             <li style="height:0px;"> <input type="hidden" id="host" name="host"></input>
 		<div class="form-group" style="display:none;height:0px;" >
@@ -224,13 +225,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
-              class="form-control" id="notifyUrl" name="notifyUrl"  value="http://192.168.1.207:8080/spring3/bha/gate/exam" />
+              class="form-control" id="notifyUrl" name="notifyUrl"  value="http://www.ptobchina.com/bha/gate/exam" />
           </div>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl"
-              value="http://192.168.1.207:8080/spring3/bha/gate/exam" />
+              value="http://www.ptobchina.com/bha/gate/exam" />
           </div>         
           <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')"
             class="btn btn-default">QA</button>
