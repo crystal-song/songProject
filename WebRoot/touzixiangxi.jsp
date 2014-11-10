@@ -30,7 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <script type="text/javascript">
 var navIndex=1;
 function mysubmit(){
-	if($("#buyAmount").val()==0){alert("投资金额不能为空！");return false;}
+	if($("#buyAmount").val()==0){
+		alert("投资金额不能为空！");
+		return false;
+		}
 	var form = document.getElementById("form");
 	 form.submit();
 }	
@@ -349,11 +352,11 @@ window.onload=function(){
              <a class="pro_bac_logo03" href="http://t.qq.com"></a>
            </span>
            </li>
-           <li><span>融资金额</span><span>年化收益</span><span>还款日期</span></li>
+           <li><span style="width:90px;">融资金额(万元)</span><span style="width:90px;">年化收益</span><span style="width:90px;">还款日期</span></li>
            <li class="bac_red_wd">
-              <span><strong><i>￥</i>${product1.financingMoney}</strong></span>
-              <span><strong>${product1.yearIncome}%</strong></span>
-              <span><strong>${product1.repaymentTime}</strong></span>
+              <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}</strong></span>
+              <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
+              <span style="width:90px;"><strong>${product1.repaymentTime}</strong></span>
            </li>
            <li>
              <span>融资进度：</span>
