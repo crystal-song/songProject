@@ -1283,7 +1283,7 @@ ul,li{
 	
 .pro_con li span{
 	display:inline-block;
-	width:70px;
+	width:65px;
 	height:24px;
 	float:left;
 	line-height:24px;
@@ -1293,7 +1293,6 @@ ul,li{
 	color:#da0000;
 	font-size:14px;
 	}	
-	
 .bac_red_wd i{
 	font-style:normal;
 	}
