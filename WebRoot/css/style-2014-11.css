@@ -2544,7 +2544,7 @@ ul,li{
 	background: #c7c7c7;
 }
 .modify select{
-	width: 130%;
+	width: 128%;
 	width: 134%\9;
 	height: 30px;
 	height: 20px\9;
@@ -2561,7 +2561,7 @@ ul,li{
 	border:0;
 }
 .input_wd{
-	width:130%;
+	width:128%;
 	*+width:133%;
 	height:100%;
 }
@@ -3313,9 +3313,9 @@ ul,li{
 .btn-default{width:70px; height:32px}
 .bt{background:#f60; width:68px; height:30px; *+height:32px; border:1px solid #c12d17; color:#fff; *+margin-left:15px}
 #msg_new{margin-left:125px}
-.jin_input{width:100%; height:36px; line-height:36px; font-size:16px; margin:20px 0;}
+.jin_input{width:60%; height:36px; line-height:36px; font-size:16px; margin:20px 50px;}
 .jin_input a{width:200px; height:40px; line-height:40px; display:inline-block; font-size:16px; background:url(../img/goumai04.jpg); float:left; color:#fff; cursor:pointer}
-.user_bottom{width:836px; height:100px; background:#fffadc; margin:80px 10px 20px 10px;; border:1px solid #c2bc88; padding:15px;}
+.user_bottom{width:836px; height:150px; background:#fffadc; margin:80px 10px 20px 10px;; border:1px solid #c2bc88; padding:15px; }
 .user_bottom h3{text-align:left; }
 .user_bottom ol{padding:0; margin:20px;}
 .user_bottom li{text-align:left; margin-top:10px;}
@@ -3325,7 +3325,7 @@ ul,li{
 .queren_con .jin_font{font-size:20px;}
 .queren_con .sec_list li{width:600px; height:38px; margin:10px 0 10px 360px; list-style-type:decimal;}
 .sec_btn_org{width:200px; height:38px; background:#fe6d00; display:inline-block; color:#fff; text-align:center; line-height:38px; cursor:pointer}
-.sec_btn_org:hover{background}
+.sec_btn_org:hover{background:#e46304; color:#fff;}
 .sec_pro_show{width:450px; height:240px; border:1px solid #ccc; margin:80px 0 0 300px; float:left}
 .msg_con{width:1100px; height:auto;  margin:0 auto; margin-top:50px; }
 
@@ -3340,17 +3340,18 @@ ul,li{
                font-size:16px; line-height:50px; padding-left:40px; color:#000;}
 .queren_con li span{width:112px; height:50px;float:left;}
 .queren_con li div{width:300px; height:50px;float:left;}
-.que_btn{width:1050; height:50px;}
+.que_btn{width:1050; height:50px; cursor:pointer}
 .queren_con li i{font-style:normal; margin-left:10px;}
 .queren_con .jin_font{font-size:20px;}
 .que_btn{width:1050; height:50px;}
 .que_btn a{width:270px; height:50px; background:#ff6862; color:#fff; font-size:20px; display:inline-block; line-height:50px; float:left; text-align:center; margin-left:260px;}
 .mar_chong{padding-left:200px;}
 .mar_que_top{margin-top:50px;}
-
-
-
-
+.lame .submit01{width:80px; height:30px; background:#ff453e;  display:inline-block; line-height:30px; 
+          color:#fff;  margin-top:20px;  cursor:pointer; border:0;}
+.sucess_title{width:1050px; height:50px;  font-size:24px; color:#000;line-height:50px; margin-top:55px; background:url(../img/renok.png) 322px 6px no-repeat;}
+.title_sec{font-size:20px; color:#000;margin-top:20px;}
+.con_link{display:inline-block; width:90px; height:30px; font-size:16px; color:#3181db; cursor:pointer}
 
 
 
