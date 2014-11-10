@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <title>投资确认 - 中租宝</title>
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
     var navIndex=3;          
@@ -33,18 +33,12 @@ function onSubmit(host) {
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
-
-
-
-<div class="one"></div>
-<div class="clear_height"></div>
 <div class="msg_con">
   <div class="queren_con">
    <div class="con_title"><strong>投资金额信息确认</strong></div>
    <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank">
-   <ul>
-   
-          <input type="hidden" id="host" name="host">
+   <ul> 
+         <input type="hidden" id="host" name="host">
          <li> <div class="form-group" style="display:none;height:0px;" >
             <!-- <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo" value="10040011137" /> -->
@@ -82,7 +76,13 @@ function onSubmit(host) {
           </li>
           <li>
           <div class="form-group" >
-            <label for="paymentAmount">冻结金额</label><input type="text"
+            <label for="projectName">项目名称</label><input type="text"
+              class="form-control" id="projectName" name="projectName" value="${product.projectName}" />
+          </div>
+          </li>
+          <li>
+          <div class="form-group" >
+            <label for="paymentAmount">资金金额</label><input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
           </div>
           </li>
@@ -99,12 +99,7 @@ function onSubmit(host) {
               class="form-control" id="enterpriseNumber" name="enterpriseNumber" value="${product.enterpriseNumber}" />
           </div>
           </li>
-           <li>
-          <div class="form-group" >
-            <label for="projectName">项目名称</label><input type="text"
-              class="form-control" id="projectName" name="projectName" value="${product.projectName}" />
-          </div>
-          </li>
+           
           
           
           <li>
@@ -117,7 +112,7 @@ function onSubmit(host) {
           <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
-              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/transferSucceed" />
+              name="callbackUrl" value="http://www.ptobchina.com/gate/transferSucceed" />
           </div>
           </li>
           <li>
@@ -130,15 +125,7 @@ function onSubmit(host) {
    
   </div>        
 </div>
-   
-     
-       
 
-<div class="clear_height"></div>
-
-<!-- links start -->
-<%@ include file="/includes/links.jsp" %>
-<!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
