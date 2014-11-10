@@ -85,9 +85,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               type="text" class="form-control" id="platformUserNo"
               name="platformUserNo"  value="${user.name}"    />
           </div>
-          <div class="form-group">
+          <div class="form-group" style="display:none;height:0px;" >
             <label for="nickName">　用户名：</label><input type="text"
-              class="form-control" id="nickName" name="nickName" value="" />
+              class="form-control" id="nickName" name="nickName" value="${user.name}" />
           </div>
           <div class="form-group">
             <label for="realName">真实姓名：</label><input type="text"
@@ -129,6 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="user_bottom" style="width:auto;">
             <h3>温馨提示:</h3>
             <ol>
+              <li>在您进行任何充值操作之前，请先注册易宝支付账号，以便您能正常充值。</li>
               <li>根据国家有关规定，中租宝将所有资金委托第三方支付平台“易宝支付”进行管理。</li>
               <li>为保证交易的规范化，您在进行充值、投资等行为前需要同步注册“易宝支付”账户。</li>
               <li>为确保您交易的安全性，请您如实填写以上信息！</li>
