@@ -1,7 +1,5 @@
 package com.mftour.spring.web;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import com.mftour.spring.model.TRegisterYeePay;
@@ -80,30 +78,12 @@ public class WelcomeController {
 	
 	@RequestMapping(value = "/session", method = {RequestMethod.POST, RequestMethod.GET})
 	public String Session( Model model,TUser user,HttpServletRequest request) throws Exception {
-<<<<<<< .mine
-=======
-	
-		List<TRegisterYeePay> li=null;
-		
-		 	 
-		/*model.addAttribute("name",user.getName()); */
->>>>>>> .r723
 		request.getSession().setAttribute("name",user.getName()); 
 		TUser user1 = userService.getUserByAccount(user.getName());
 		model.addAttribute("user1", user1); 
-<<<<<<< .mine
 	
 		TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0); 
 		model.addAttribute("registerYeePay1", registerYeePay1);
-=======
-	   
-		 li= gateService.queryTRegisterYeePayByName(user1.getName());
-		if(li != null && li.size()!=0){
-			TRegisterYeePay registerYeePay1= li.get(0);
-			model.addAttribute("registerYeePay1", registerYeePay1);
-		}
-		
->>>>>>> .r723
 //		request.getSession().setAttribute("users", username);
 		return "user-info";
 }
