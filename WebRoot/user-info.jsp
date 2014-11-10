@@ -154,7 +154,7 @@ var navIndex=2;
 	                           <span class="border_right01"></span>
 	                        </div></li>
                    </ul>
-                   <a class="user_pink" href="<%=path %>/user-info-modify.jsp">修改个人信息</a>
+                   <a class="user_pink" href="<%=path%>/user/getuserbyName?name=${user1.name}">修改个人信息</a>
                    <ul class="con_name lame">
                      <li><span>性别</span><span>${user1.sex}</span></li>
                      <li><span>出生日期</span><span>${ser1.dateOfBirth}</span></li>
