@@ -212,13 +212,19 @@ public class GateController  {
 		if(o==null){
 			return "login";
 		}
-		 TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
+		 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
+		 if(li != null && li.size()!=0){
+			 TRegisterYeePay registerYeePay1=li.get(0);
 		System.out.println("ddddd"+buyAmount);
 		model.addAttribute("registerYeePay1", registerYeePay1);
 		model.addAttribute("buyAmount", buyAmount);
 		model.addAttribute("product", product);
 		model.addAttribute("now", System.currentTimeMillis());
 		return "touzicheck";
+		 }
+		 TUser user=userService.getUserByAccount(o.toString());
+			model.addAttribute("user", user);
+		 return "register";
 		/*return "payment/transfer";*/
 	}
 	
@@ -747,6 +753,21 @@ public class GateController  {
 				    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
 				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
 				    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+				    		  
+				    	  } if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
+				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
+				    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+				    		  model.addAttribute("balance", p.item(9).getTextContent());
+				    		  
+				    	  } if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
+				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
+				    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+				    		  model.addAttribute("availableAmount", p.item(11).getTextContent());
+				    		  
+				    	  }if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
+				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
+				    		  System.out.println("ddddddd"+p.item(13).getTextContent());
+				    		  model.addAttribute("freezeAmount", p.item(13).getTextContent());
 				    		  
 				    	  }
 				    	  
