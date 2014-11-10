@@ -4,12 +4,10 @@
     <div class="banner_fra">
      <ul class="ban_show">
           <li class="a1"><a href="http://ptobchina.com/guarantee/getTNewsById?id=42"><img src="<%=path%>/img/images-2014-11/banner1.jpg" width="1100" height="300" /></a></li>
-          <li style="display:none"><a href="<%=path%>/security.jsp"><img src="<%=path%>/img/images-2014-11/banner2.jpg" width="1100" height="300" /></a></li>
-          <li style="display:none"><a href="http://ptobchina.com/guarantee/getTNewsById?id=44"><img src="<%=path%>/img/banner03.gif" width="1100" height="300" /></a></li>
+          <li style="display:none"><a href="<%=path%>/security.jsp"><img src="<%=path%>/img/images-2014-11/banner2.jpg" width="1100" height="300" /></a></li>          
      </ul>
      <ol>
        <li class="current"></li>
-       <li></li>
        <li></li>
      </ol>
   <div class="ban_left" ></div>
@@ -27,7 +25,7 @@
 	   $(function(){
 		   var timer=null;
 		   var num=1;
-		   timer=setInterval(autoplay,3000);
+		   timer=setInterval(autoplay,2000);
 		   function autoplay(nn){
 			   if(nn!=null)num=nn+num;
 			 if(num>2){num=0}
