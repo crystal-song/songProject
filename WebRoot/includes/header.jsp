@@ -1,5 +1,8 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
+<<<<<<< .mine
+=======
 <!--  
+>>>>>>> .r728
 <div class="top">
 	<div class="top_fra">
     	<div class="top_left">
@@ -10,10 +13,10 @@
         	<div class="top_right">
         	<span id="datespan"></span> 
         	<c:if test="${!empty name}">     	
-        	<span id="profileLink">尊敬的<b style="color: #F00" id="userName">${name}</b>，您好！&nbsp;&nbsp;<a href="<%=path%>/profile.jsp">我的账户</a></span>
+        	<span id="profileLink">尊敬的<b style="color: #F00" id="userName">${name}</b>，您好！&nbsp;&nbsp;<a href="<%=path%>/profile.jsp">我的账户</a>&nbsp;&nbsp;<a href="<%=path%>/welcome/logout">【退出】</a></span>
         	</c:if>
         	<c:if test="${empty name}">  
-        	<span id="loginLink"><a href="<%=path%>/login.jsp">登陆</a>&nbsp;&nbsp;<a href="<%=path%>/reg.jsp">注册</a></span>
+        	<span id="loginLink"><a href="<%=path%>/login.jsp">登陆</a>&nbsp;&nbsp;<a href="<%=path%>/reg.jsp"  >注册</a></span>
         	</c:if>
         </div>
         </div>
