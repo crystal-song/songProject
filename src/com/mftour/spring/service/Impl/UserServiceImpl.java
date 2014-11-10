@@ -20,6 +20,10 @@ public class UserServiceImpl implements IUserService {
 		List list=  userDao.getUserByAccount(account);
 		return list==null || list.size() == 0 ? null : (TUser)list.get(0);
 		
+	}
+	public TUser getUserByEmail(String email) throws Exception {
+		List list=  userDao.getUserByEmail(email);
+		return list==null || list.size() == 0 ? null : (TUser)list.get(0);
 		
 	}
 
