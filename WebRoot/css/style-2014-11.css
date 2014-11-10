@@ -1283,7 +1283,7 @@ ul,li{
 	
 .pro_con li span{
 	display:inline-block;
-	width:60px;
+	width:70px;
 	height:24px;
 	float:left;
 	line-height:24px;
@@ -3320,3 +3320,50 @@ ul,li{
 .user_bottom h3{text-align:left; }
 .user_bottom ol{padding:0; margin:20px;}
 .user_bottom li{text-align:left; margin-top:10px;}
+.queren_con{width:1098pxpx; min-height:500px; border:1px solid #ccc; border-top:4px solid #bd1125; background:#f8f8f8;}
+.ren_pass_01{width:844PX; height:200px; background:#f5f5f5; border:1px solid #ccc; border-right:1px solid #ccc; padding:10px; font-size:24px; line-height:200px; margin-left:100px;}
+.ren_pass01 strong{width:800px; height:160px; background:url(../img/renok.png) 200px 80px no-repeat; display:inline-block; line-height:200px; font-size:24px; color:#000}
+.queren_con .jin_font{font-size:20px;}
+.queren_con .sec_list li{width:600px; height:38px; margin:10px 0 10px 360px; list-style-type:decimal;}
+.sec_btn_org{width:200px; height:38px; background:#fe6d00; display:inline-block; color:#fff; text-align:center; line-height:38px; cursor:pointer}
+.sec_btn_org:hover{background}
+.sec_pro_show{width:450px; height:240px; border:1px solid #ccc; margin:80px 0 0 300px; float:left}
+.msg_con{width:1100px; height:auto;  margin:0 auto; margin-top:50px; }
+
+
+
+
+/*xinxiqueren*/
+.queren_con{width:1098pxpx; min-height:500px; border:1px solid #ccc; border-top:4px solid #bd1125; background:#f8f8f8;}
+.con_title{width:1050px; height:50px; padding-left:30px; font-size:24px; color:#000; text-align:left;
+           line-height:50px; margin-top:30px}
+.queren_con li{width:1050px; height:auto; margin:20px 0; text-align:left; 
+               font-size:16px; line-height:50px; padding-left:40px; color:#000;}
+.queren_con li span{width:112px; height:50px;float:left;}
+.queren_con li div{width:300px; height:50px;float:left;}
+.que_btn{width:1050; height:50px;}
+.queren_con li i{font-style:normal; margin-left:10px;}
+.queren_con .jin_font{font-size:20px;}
+.que_btn{width:1050; height:50px;}
+.que_btn a{width:270px; height:50px; background:#ff6862; color:#fff; font-size:20px; display:inline-block; line-height:50px; float:left; text-align:center; margin-left:260px;}
+.mar_chong{padding-left:200px;}
+.mar_que_top{margin-top:50px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
