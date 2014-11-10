@@ -21,6 +21,14 @@ public class IUserDaoImpl extends HibernateDaoSupport  implements IUserDao{
 		return query.list();
 		
 	}
+	@Override
+	public List getUserByEmail(String email) throws Exception {
+		String hql = "from TUser user where user.email = :email";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("email", email);
+		return query.list();
+		
+	}
 
 	@Override
 	public void addOrUpdate(TUser user) throws Exception {
