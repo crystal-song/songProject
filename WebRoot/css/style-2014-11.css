@@ -684,6 +684,9 @@ ul,li{
 	}
 .floor_num .btn_org:hover{
 	background:#fb7f0f;
+}
+.floor_num01 .btn_org:hover{
+	background:#fb7f0f;
 }		
 .w_gonggao{
 	width:28%;
@@ -1083,7 +1086,13 @@ ul,li{
 	margin:5px 20px;
 	line-height:30px;
 	color:#fff;
-	}	
+	font-size:14px;
+	}
+.botm_btn01 a:hover{
+	color:#fff;
+	background:#e73533;
+}	
+		
 .botm_btn01 .btn_org{
 	background:#ff975f;
 	}
@@ -3025,9 +3034,9 @@ ul,li{
 	top:19%;
 }
 .syl_table{ 
-	margin:40px 0 60px; 
+	margin:30px 0 ; 
 	width:100%;
-	height:120px;
+	height:60px;
 	overflow:hidden;
 }
 .syl_table:hover{height:auto;overflow:visible;}
