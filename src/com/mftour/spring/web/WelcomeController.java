@@ -48,12 +48,15 @@ public class WelcomeController {
 			   return "success";
 		   }
 	   }
-	   /*System.out.println(user1.getName()+"www"+user1.getPassword());*/
-	    
 	   return "fail";
 /*	    return "user/chpasswd";*/
 	    
 		
+	}
+	@RequestMapping(value = "/logout",  method = {RequestMethod.POST, RequestMethod.GET})
+	public String logout(HttpServletRequest request) throws Exception {
+		request.getSession().removeAttribute("name");
+		return "login";
 	}
 	
 	@RequestMapping(value = "/register", method=RequestMethod.POST)
@@ -77,14 +80,22 @@ public class WelcomeController {
 	
 	@RequestMapping(value = "/session", method = {RequestMethod.POST, RequestMethod.GET})
 	public String Session( Model model,TUser user,HttpServletRequest request) throws Exception {
+<<<<<<< .mine
+=======
 	
 		List<TRegisterYeePay> li=null;
 		
 		 	 
 		/*model.addAttribute("name",user.getName()); */
+>>>>>>> .r723
 		request.getSession().setAttribute("name",user.getName()); 
 		TUser user1 = userService.getUserByAccount(user.getName());
 		model.addAttribute("user1", user1); 
+<<<<<<< .mine
+	
+		TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0); 
+		model.addAttribute("registerYeePay1", registerYeePay1);
+=======
 	   
 		 li= gateService.queryTRegisterYeePayByName(user1.getName());
 		if(li != null && li.size()!=0){
@@ -92,6 +103,7 @@ public class WelcomeController {
 			model.addAttribute("registerYeePay1", registerYeePay1);
 		}
 		
+>>>>>>> .r723
 //		request.getSession().setAttribute("users", username);
 		return "user-info";
 }
@@ -101,9 +113,6 @@ public class WelcomeController {
 	@ResponseBody
 	public String queryUser( Model model,TUser user) throws Exception {
 	
-		
-		
-		 	 
 		TUser user1 = userService.getUserByAccount(user.getName());
 	            if(user1!=null){
 	            	  return "success";
