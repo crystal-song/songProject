@@ -261,7 +261,7 @@ $(document).ready(function(){
 	                      <span class="tip">立即认证</span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
-	                           <div class="border_cent01">您未绑定易宝账号，<a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div>
+	                           <div class="border_cent01">您未绑定易宝账号，<a href="<%=path%>/gate/register" target="_blank">请绑定</a></div>
 	                           <span class="border_right01"></span>
 	                        </div></li>
 	                   </ul>
