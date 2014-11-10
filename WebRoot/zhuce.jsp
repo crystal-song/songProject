@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="ren_pass01"><strong>您的易宝账号已注册成功</strong></div> 
     <p class="jin_font">现在需要您重新登录！</p>
     <ol class="sec_list">
-      <li><a class="sec_btn_org" href="<%=path%>/login">立即重新登录</a></li>
+      <li><a class="sec_btn_org" href="<%=path%>/login.jsp">立即重新登录</a></li>
     </ol>
     <%-- <p class="jin_font">您可以做以下操作</p>
    <ol class="sec_list">
