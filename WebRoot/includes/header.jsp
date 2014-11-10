@@ -80,10 +80,10 @@
           <ul class="nav_big">
             <li><a href="<%=path%>/wel"><span><strong>首页</strong></span><p>Home</p></a></li>
             <li><a href="<%=path%>/product/allProduct"><span><strong>我要投资</strong></span><p>Investment</p></a></li>
-            <li><a href="<%=path%>/wel/account"><span><strong>我的账户</strong></span><p>Safety</p></a></li>
-            <li><a href="<%=path%>/guarantee/getchannel"><span><strong>新闻公告</strong></span><p>News bulletin</p></a></li>
-            <li><a href="<%=path%>/help_con.jsp"><span><strong>帮助中心</strong></span><p>Offer help</p></a></li>
-            <li><a href="<%=path%>/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Production</p></a></li>
+            <li><a href="<%=path%>/wel/account"><span><strong>我的账户</strong></span><p>Account</p></a></li>
+            <li><a href="<%=path%>/guarantee/getchannel"><span><strong>新闻公告</strong></span><p>News</p></a></li>
+            <li><a href="<%=path%>/help_con.jsp"><span><strong>帮助中心</strong></span><p>Help</p></a></li>
+            <li><a href="<%=path%>/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Application</p></a></li>
           </ul>
           <div class="login">
                <c:if test="${empty name}">
