@@ -265,7 +265,16 @@ $(document).ready(function(){
 	                           <span class="border_right01"></span>
 	                        </div></li>
 	                   </ul>
-                       <ul class="con_name lame">
+	                   
+             <ul class="con_name lame">
+                      <form id="form"  action="<%=path%>/user/update" id="form" method="post" style="width:866px; height:595px; overflow:hidden ">
+		                 <input type="hidden"  name="id" id="id" value="${user1.id}" />
+		                 <input type="hidden"  name="name" id="name" value="${user1.name}" />
+		                 <input type="hidden"  name="password" id="password" value="${user1.password}" />
+		                 <input type="hidden"  name="realName" id="realName" value="${user1.realName}" />
+		                 <input type="hidden"  name="identityCard" id="identityCard" value="${user1.identityCard}" />
+		                 <input type="hidden"  name="phone" id="phone" value="${user1.phone}" />
+		                 <input type="hidden"  name="email" id="email" value="${user1.email}" />
                      <li><span>性别(不可修改)</span><span class="modify"></span></li>
                      <li><span>出生日期(不可修改)</span><span class="modify">aaa</span></li>
                      <li><span>最高学历</span><span class="modify">
@@ -332,12 +341,13 @@ $(document).ready(function(){
                        </select>
                      </span></li>
                      <li><span class="span_left">
-                           <a href="#">确定</a>
+                           <input type="submit" class="submit01" value="保存"/>
                           </span>
                          <span class="modify span_right" >
                            <a href="<%=path%>/user/cancelUpdate?name=${user1.name}" class="bac">取消</a>
                            </span>
                      </li>
+                     </form>
                    </ul>	                    
 	               </div>     
 	           </div>
