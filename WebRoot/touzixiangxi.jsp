@@ -29,6 +29,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  <script type="text/javascript">
 var navIndex=1;
+function mysubmit(){
+	if($("#buyAmount").val()==0){alert("投资金额不能为空！");return false;}
+	var form = document.getElementById("form");
+	 form.submit();
+}	
 </script>
    
 <script type="text/javascript">
@@ -384,9 +389,9 @@ window.onload=function(){
        <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
-         <span>还差金额500元</span>
+         <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元</span>
          <span><input type="text" class="text01" value="投资金额不低于100元" id="myinput"/></span>
-         <span><a class="red_touzi" href="#" id="dialog-link">立即投资</a><i class="jisuan"></i></span>
+         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">100元起投</span>
        </div>
        </form>
