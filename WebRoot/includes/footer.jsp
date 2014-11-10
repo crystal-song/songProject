@@ -44,7 +44,7 @@
           <li><a href="<%=path%>/question.jsp">常见问题</a></li>
           <li><a href="<%=path%>/security.jsp">安全策略</a></li>
           <li><a href="<%=path%>/notice.jsp">法律声明</a></li>
-          <li><a>联系我们</a></li>
+          <li><a href="<%=path%>/contact.jsp">联系我们</a></li>
          </ul>
        </li>
        <li><img src="<%=path%>/img/images-2014-11/zhongtou.png" width="300" height="50" /></li>
