@@ -112,7 +112,42 @@ window.onload=function(){
         clearInterval(timer);
            timer=setInterval(autoplay,3000);
         });
+      
+      
+      $("#dialog-link").click(function(){
+          var values= $("#myinput").val();
+             if (values!="投资金额不低于100元") {
+                     if(values<100){
+               alert("请输入大于100元投资金额")
+                     }else{
+                       $( "#dialog" ).dialog( "open" );
+                     }
+              }else{
+               alert("请输入投资金额");
+              }
 
+             
+             $( "#dialog" ).dialog({
+                 autoOpen: false,
+                 width: 500,
+                 height:300,
+                 buttons: [
+                   {
+                     text: "确认",
+                     click: function() {
+                       $( this ).dialog( "close" );    
+                        $(".red_touzi").css("background","#ccc").html("投资成功！");
+                        values=="投资金额不低于100元";
+                     }
+                   },
+                   {
+                     text: "取消",
+                     click: function() {
+                       $( this ).dialog( "close" );
+                     }
+                   }
+                 ]
+               });
   });
 </script>
 </head>
@@ -527,9 +562,7 @@ window.onload=function(){
           <p class="zijin_msg">${product1.stateOfOperation}</p>
      </div>   
      <div class="pro_con_title" id="p_c_t02"><strong>担保机构及担保意见</strong></div>      
-      <div class="zijin">
-          <p>企业背景</p>
-          <p class="zijin_msg">${product1.companyProfile}</p>
+      <div class="zijin">         
           <p>担保机构简介</p>
           <p class="zijin_msg">${product1.guaranteeInstitutionIntroduce}</p> 
           <p>担保机构意见</p>
