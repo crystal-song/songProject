@@ -149,24 +149,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <%@ include file="/includes/user_info_left.jsp" %>
          <!-- user_left end -->
       </div>
-      <div class="user_right">  
-      <form role="form" action="<%=path%>/gate/doRecharge" method="post"
-          target="_blank">
-          
+      <div class="user_right">           
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>充值</strong></div>
           <div class="fangshi">
             <p>充值方式</p>
             <ul>
-              <li></li>
-              
+              <li></li>              
             </ul>
           </div>
+          
           <div class="money">
             <p><span>可用余额</span><span><strong>0.00</strong>元</span></p>
-            <p class="position_money"><span>充值金额</span><span class="money_text"><input type="text" value="100"></input>元</span></p>
-          </div>
-          
+            <p class="position_money" style="display:none"><span>充值金额</span><span class="money_text"><input type="text" value="100"></input>元</span></p>
+          </div>   
+                
           <div class="fangshi" style="height:auto; display:none ">
             <p>选择银行</p>
             <ul>
@@ -184,11 +181,67 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <li></li>
             </ul>
           </div>
-          <div class="yanzheng">
+          <div class="yanzheng" style="display:none">
             <p><a>验证码</a><span><input type="submit" class="sub" value="点击获取验证码"></input></span><a></a></p>
             <p><a href=""></a><span><input type="checkbox"> </input>我已阅读并确认下方重要提示信息</span></p>
-            <p><a href=""></a><span><a href="#" class="chongzhi_btn">立即充值</a></span></p>
+            <p><a href=""></a><span><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" class="chongzhi_btn">立即充值</a></span></p>
+          </div>                  
+     <form role="form" action="<%=path%>/gate/doRecharge" method="post" target="_blank">      
+          <ul class="chong">
+            <li style="height:0px;"> <input type="hidden" id="host" name="host"></input>
+		<div class="form-group" style="display:none;height:0px;" >
+            <!-- <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo"
+              value="10040011137" /> -->
+               <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo"
+              value="10012415118" />
           </div>
+          <div class="form-group" style="display:none;height:0px;" >
+            <label for="requestNo">requestNo</label><input type="text"
+              class="form-control" id="requestNo" name="requestNo"
+              value="${now}" />
+          </div>
+           <div class="form-group" style="display:none;height:0px;" >
+            <label for="platformUserNo">platformUserNo</label><input
+              type="text" class="form-control" id="platformUserNo"
+              name="platformUserNo"  value="${registerYeePay1.platformUserNo}"  />
+          </div>
+          <div class="form-group" style="display:none;height:0px;" >
+            <label for="feeMode">feeMode</label><input type="text"
+              class="form-control" id="feeMode" name="feeMode"
+              value="PLATFORM" />
+          </div>
+          </li>
+          <li class="mar_chong">
+           <div class="form-group">
+            <span><label for="amount" style="margin:0px;" >充值金额：</label></span>
+            <input type="text"
+              class="form-control" id="amount" name="amount"
+              value="100" /><label style="margin-left:10px; text-align:left;">元</label>
+          </div> 
+          </li>
+          <li>
+          <div class="form-group" style="display:none;height:0px;" >
+            <label for="notifyUrl">notifyUrl</label><input type="text"
+              class="form-control" id="notifyUrl" name="notifyUrl"  value="http://192.168.1.207:8080/spring3/bha/gate/exam" />
+          </div>
+          <div class="form-group" style="display:none;height:0px;" >
+            <label for="callbackUrl">callbackUrl</label><input
+              type="text" class="form-control" id="callbackUrl"
+              name="callbackUrl"
+              value="http://192.168.1.207:8080/spring3/bha/gate/exam" />
+          </div>         
+          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')"
+            class="btn btn-default">QA</button>
+          <button onclick="onSubmit('http://qa.yeepay.com/bha-toolkit')"
+            class="btn btn-default">QA</button> -->
+          <!-- <button onclick="onSubmit('https://member.yeepay.com/member')"
+            class="btn btn-default">立即充值</button> -->
+            <div  class="que_btn mar_que_top"><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" style="text-align:center;">确定</a></div>
+        </li>
+        </ul>
+         </form>                     
           <div class="tishi">
             <p><strong>温馨提示</strong></p>
             <ul>
@@ -197,12 +250,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <li>为了您的资金安全，请您在充值前完成手机绑定，身份认证及支付密码设置。</li>
               <li>爱投资严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务， 并会影响银行征信记录。</li>
               <li>充值过程遇到问题，请联系客服，010-84243099/3199</li>
-            </ul>
-            
-          </div>
-              
+             </ul>            
+           </div>              
           </div> 
-         </form> 
         </div>
       </div>
 
