@@ -2612,7 +2612,7 @@ ul,li{
 	height: auto;
 }
 .anquan_hide li{
-	width:450px;
+	width:540px;
 	*+width:450px;
 	height: 40px;
 	margin-left: 200px;
@@ -2620,15 +2620,21 @@ ul,li{
 	border: 0;
 	margin-top: 15px;
 }
+.tishitext{
+	margin-left:10px;
+	color:#e73533;
+	display:none;
+}
 .anquan_hide li span{
 	margin-right: 10px;
-	line-height: 40px;
-	width: 130px; 
+	line-height: 30px;
+	width: 140px; 
 	*+width: 172px;
 	height: 30px;
 	display: inline-block;
 	text-align: right;
 	margin-right: 28px;
+	float:left;
 }
 .anquan_hide li strong{
 	color:#ff453e;
@@ -3293,8 +3299,24 @@ ul,li{
     line-height:50px;
     color:#fff;
 }
+.msg_con{width:1100px; height:auto;  margin:0 auto; margin-top:50px; }
+.msg_right{width:880px; height:auto;  float:left; margin:0 auto;}
+.msg_main{width:886px; height:auto; border:1px solid #ddd; border-radius:5px;}
+.msg_title{width:866px; height:30px; margin:10px auto; border-bottom:2px solid #ddd; color:#000; clear:both}
+.msg_title a{float:right; color:#3d68ef; margin-top:8px;}
+.msg_title h2{width:auto; height:28px; float:left;  margin:2px 0 2px 0; border-bottom:2px solid #818181; font-size:18px;}
+.user_con01{width: 866px; height:auto;  margin:0 auto;}
+.container{width:866px; height:auto; background:#f8f8f8; border-radius:5px; margin-top:25px; padding-top:40px;}
+.form-group{width:100%!important; height:40px; clear:both;}
 
-
-
-
-
+.form-group label{width:100px; height:30px;  float:left; font-size:14px; line-height:30px; margin-left:200px; text-align:right}
+.form-control{float:left; margin-left:60px; width:200px; height:30px; }
+.btn-default{width:70px; height:32px}
+.bt{background:#f60; width:68px; height:30px; *+height:32px; border:1px solid #c12d17; color:#fff; *+margin-left:15px}
+#msg_new{margin-left:125px}
+.jin_input{width:100%; height:36px; line-height:36px; font-size:16px; margin:20px 0;}
+.jin_input a{width:200px; height:40px; line-height:40px; display:inline-block; font-size:16px; background:url(../img/goumai04.jpg); float:left; color:#fff; cursor:pointer}
+.user_bottom{width:836px; height:100px; background:#fffadc; margin:80px 10px 20px 10px;; border:1px solid #c2bc88; padding:15px;}
+.user_bottom h3{text-align:left; }
+.user_bottom ol{padding:0; margin:20px;}
+.user_bottom li{text-align:left; margin-top:10px;}
