@@ -35,7 +35,7 @@ function onSubmit(host) {
 <div class="clear"></div>
 <div class="msg_con">
   <div class="queren_con">
-   <div class="con_title"><strong>投资金额信息确认</strong></div>
+   <div class="con_title"><strong>投资信息确认</strong></div>
    <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank">
    <ul> 
          <input type="hidden" id="host" name="host">
@@ -82,7 +82,7 @@ function onSubmit(host) {
           </li>
           <li>
           <div class="form-group" >
-            <label for="paymentAmount">资金金额</label><input type="text"
+            <label for="paymentAmount">投资金额</label><input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
           </div>
           </li>
@@ -99,9 +99,7 @@ function onSubmit(host) {
               class="form-control" id="enterpriseNumber" name="enterpriseNumber" value="${product.enterpriseNumber}" />
           </div>
           </li>
-           
-          
-          
+                             
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
