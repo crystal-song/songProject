@@ -3281,7 +3281,6 @@ ul,li{
 	width:90%;
 }
 .tip_n{ font-size:12px; text-align:left; padding:5px; color:#999;  display:block; text-indent:100px; line-height:16px; height:16px; width:90%;}
-
 .xieyi_font{font-size:12px;}
 .xieyi_font a{color:#e43756}
 .wenjian_list .wenjian_hei{width:100%; height:auto; margin-bottom:20px; color:#000}
@@ -3289,7 +3288,6 @@ ul,li{
 .banner_fra ol li{width:12px; height:12px; margin:3px 5px;; float:left; list-style:none; border-radius:15px; border:1px solid #999; 
                   background:#ccc; box-shadow: -2px -2px 2px #999 inset; cursor:pointer}
 .banner_fra ol .current{background:#F00; border:1px solid #903; box-shadow: -2px -2px 2px #b20d0d inset;}
-
 .news_title_bac .new_logo1{
 	width:50px;
 	height:50px;
@@ -3320,7 +3318,7 @@ ul,li{
 .user_bottom h3{text-align:left; }
 .user_bottom ol{padding:0; margin:20px;}
 .user_bottom li{text-align:left; margin-top:10px;}
-.queren_con{width:1098pxpx; min-height:500px; border:1px solid #ccc; border-top:4px solid #bd1125; background:#f8f8f8;}
+.queren_con{width:1098pxpx; min-height:500px; border:1px solid #ccc; border-top:4px solid #bd1125; background:#f8f8f8; over-flow:hidden;}
 .ren_pass_01{width:844PX; height:200px; background:#f5f5f5; border:1px solid #ccc; border-right:1px solid #ccc; padding:10px; font-size:24px; line-height:200px; margin-left:100px;}
 .ren_pass01 strong{width:800px; height:160px; background:url(../img/renok.png) 200px 80px no-repeat; display:inline-block; line-height:200px; font-size:24px; color:#000}
 .queren_con .jin_font{font-size:20px;}
@@ -3334,7 +3332,7 @@ ul,li{
 
 
 /*xinxiqueren*/
-.queren_con{width:1098pxpx; min-height:500px; border:1px solid #ccc; border-top:4px solid #bd1125; background:#f8f8f8;}
+.queren_con{width:1098pxpx; *+height:500px; min-height:500px; border:1px solid #ccc; border-top:4px solid #bd1125; background:#f8f8f8;}
 .con_title{width:1050px; height:50px; padding-left:30px; font-size:24px; color:#000; text-align:left;
            line-height:50px; margin-top:30px}
 .queren_con li{width:1050px; height:auto; margin:20px 0; text-align:left; 
@@ -3358,7 +3356,8 @@ ul,li{
 .table_style{
    width:540px;
    height:300px;
-   margin-left:35%;	
+   margin-left:35%;
+   text-align:left;	
 }
 .table_style tr{
 	height:40px;
