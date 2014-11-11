@@ -157,12 +157,11 @@ function chk_email(){
           <p>确认密码：<input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/></p>
           <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
           <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/></p>
-          <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div>
-          
+          <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div>          
           <p class="xieyi_font"><input  type="checkbox" checked="checked" id="agreement">我已阅读并同意中租宝
            <a target="_blank" href="<%=path%>/zhucexieyi.jsp">《使用协议》</a>及
            <a target="_blank" href="<%=path%>/yinsitiaokuan.jsp">《隐私条款》</a></p>
-           <p><input name="imgbtn" type="button"   onclick="check()" class="btn_reg"></p>
+           <p><input name="imgbtn" type="button"  onclick="check()" class="btn_reg"></p>
           </div>          
           <div class="two_pic"></div>
       </form>
