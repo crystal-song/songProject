@@ -53,6 +53,9 @@ $(document).ready(function(){
 
     $(".username").mouseover(function(){
       $(".tuichu").show();
+      $(".tuichu").mouseover(function(){
+    	  $(this).show();
+      });
     }).mouseout(function(){
       $(".tuichu").hide();
     });
