@@ -13,64 +13,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <title>用户登录 - 重设密码 - 中租宝</title>
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
-
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
 
 <script type="text/javascript" >
+  $(function(){
+	  
+	  $("#re_password").keyup(function(){
+		 // alert($(this).val())
+		  var password=$("#password").val();
+		    //alert(password);
+		  if($(this).val()==password){
+			  $(".pass_change_check").text("两次密码一致.")
+			  
+		  }else{
+			  $(".pass_change_check").text("两次密码不一致，请重新输入！")
+		  }
+				 
+	  });
+	  
+	  
+  });
+ 
+
 
 </script>
-
 </head>
-
-
 <body>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
-<!-- top end  -->
-<!-- <div class="clear"></div> -->
-<!-- banner start -->
-<%-- <%@ include file="/includes/banner.jsp" %> --%>
-<!-- banner end  -->
-<div class="clear"></div>
-<div class="one"></div>
-<div class="clear_height"></div>
-
-
+<div class="msg_con">
+  <div class="queren_con">
+   <div class="con_title"><strong>重新设置密码</strong></div>
  <form action="<%=path%>/user/updatePassword"  id="form" method="post">
-    	<table border="0" cellspacing="0" cellpadding="0" align="center"  width="100%">
-			<tr  >
+    	<table border="0" cellspacing="0" cellpadding="0" align="center"  width="100%" class="table_style">
+			<tr>
 				<td  style="color:#FF6633;font-weight:bold" width="100%">重设密码</td>
-			</tr>
-			
+			</tr>			
 			 <tr>
-						<td align="left">用户名：
+						<td align="left"><span>用户名：</span>
 						  <label>
 					      <input name="name" type="text"  id="name" value="${name}"  onblur="chk_name()"/>
 					      </label>&nbsp;&nbsp;
 					      </td>
 			 </tr>
 			 <tr>
-						<td align="left">请输入新密码：
+						<td align="left"><span>请输入新密码：</span>
 						  <label>
 					      <input name="password" type="text"  id="password" value="" />
-					      </label>&nbsp;&nbsp;
-					     
+					      </label>&nbsp;&nbsp;					     
 					      </td>
 			 </tr>
 			 <tr>
-						<td align="left">重复输入密码：
+						<td align="left"><span>重复输入密码：</span>
 						  <label>
 					      <input name="re_password" type="text"  id="re_password" value="" />
-					      </label>&nbsp;&nbsp;
-					     
+					      </label>&nbsp;&nbsp;	
+					      <span class="pass_change_check"></span>				     
 					      </td>
-			 </tr>
-		
+			 </tr>		
                       <tr>
-                        <td style="text-align:left;"><input type="submit" value="确定" /></td>
-                       
-	</tr>
-	
+                        <td style="text-align:left;"><input type="submit" value="确定"  class="check_btn01"/></td>                     
+	       </tr>
+	 
                         </td>
                       </tr>
 					
@@ -80,13 +85,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 
 </form>
-
-
-<!-- <div class="clear_height"></div> -->
-
-<!-- links start -->
-<%@ include file="/includes/links.jsp" %>
-<!-- links end -->
+</div>
+</div>
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
