@@ -429,7 +429,7 @@ function mysubmit(){
          <span class="pro_right_title"><strong>投资金额</strong></span>
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元</span>
          <div class="neirong"></div>
-         <span><input type="text" class="text01" value="投资金额不低于100元" id="myinput"/></span>
+         <span><input type="text" class="text01" value="投资金额不低于100元" id="buyAmount"  name="buyAmount"/></span>
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
