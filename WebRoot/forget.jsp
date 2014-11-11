@@ -13,16 +13,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <title>用户登录 - 找回密码 - 中租宝</title>
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
-
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 
 <script type="text/javascript" >
+$(document).ready(function(){
 function loadimage(){ 
 	document.getElementById("verifyPic_img").src = "image.jsp?"+Math.random(); 
 	} 
 var c_name = false;
 var c_email = false;
+
+$("#name").blur(function(){
+	chk_name();
+});
+
 function chk_name() {
+	//alert("aaa");
 	var name = $("#name").val();
 	var cc = /^[a-zA-Z][a-zA-Z0-9_]*$/;
 	if(name==''){
@@ -45,7 +52,6 @@ function chk_name() {
 						/* $('#form').submit(); */
 						/* window.open('<c:url value="/welcome/session"/>', '_self'); */
 					} else {
-
 						$("#tip_username").html(
 								'<span class="tip_f">用户名不存在！</span>');
 					}
@@ -55,15 +61,14 @@ function chk_name() {
 
 	}
 }
-
-
+});
 function chk_email() {
 
 	var email = $("#email").val();
 	var cc = /^([a-zA-Z0-9]|[._])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
 	if (email=='') {
 		// alert('邮箱不能為空  ');
-		$("#tip_useremail").html('<span class="tip_f">请输入邮箱！</span>');
+		$("#tip_useremail").html('<div class="tip_f">请输入邮箱！</div>');
 	} else if (!(cc.test(email))) {
 		//	  alert('邮箱格式不正确  ');
 		$("#tip_useremail").html('<span class="tip_f">邮箱格式不正确！</span>');
@@ -80,7 +85,6 @@ function chk_email() {
 					$("#tip_useremail").html(
 							'<span class="tip_p">邮箱存在！</span>');
 				} else {
-
 					$("#tip_useremail").html(
 							'<span class="tip_f">邮箱不存在！</span>');
 				}
@@ -98,52 +102,46 @@ function chk_email() {
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
-<!-- <div class="clear"></div> -->
-<!-- banner start -->
-<%-- <%@ include file="/includes/banner.jsp" %> --%>
-<!-- banner end  -->
-<div class="clear"></div>
-<div class="one"></div>
-<div class="clear_height"></div>
-
-
+<div class="msg_con">
+  <div class="queren_con">
+   <div class="con_title"><strong>重新设置密码</strong></div>
  <form action="<%=path%>/user/findPassword"  id="form" method="post">
-    	<table border="0" cellspacing="0" cellpadding="0" align="center"  width="100%">
-			<tr  >
+    	<table border="0" cellspacing="0" cellpadding="0" align="center"  width="100%" class="table_style">
+			<tr>
 				<td  style="color:#FF6633;font-weight:bold" width="100%">邮箱找回密码</td>
 			</tr>
 			
 			 <tr>
-						<td align="left">用户名：
+						<td align="left"><span>用户名：</span>
 						  <label>
-					      <input name="name" type="text"  id="name" value=""  onblur="chk_name()"/>
+					        <input name="name" type="text"  id="name" value=""  onblur="chk_name()"/>
 					      </label>&nbsp;&nbsp;
 					      <div id="tip_username">
-							<span class="tip_n">请输入用户名！</span>
+							<!--  <span class="tip_n">请输入用户名！</span>-->
 						 </div>
-					      </td>
+					   </td>
 			 </tr>
 			 <tr>
-						<td align="left">&nbsp;Email：
+						<td align="left">&nbsp;<span>Email：</span>
 						  <label>
 					      <input name="email" type="text"  id="email" value="" onblur="chk_email()"/>
 					      </label>&nbsp;&nbsp;
 					      <div id="tip_useremail">
-						<span class="tip_n">请输入邮箱！</span>
+						<!--  <span class="tip_n">请输入邮箱！</span>-->
 					</div>
 					      
 					      </td>
 			 </tr>
 			<tr>
-					  <td align="left">验证码：
+					  <td align="left"><span>验证码：</span>
 					      <input name="validatecode" type="text"  id="validatecode" value="" />
 										<img  id="verifyPic_img" type="4" align="absmiddle" src="<%=path%>/image.jsp" style="cursor: pointer;height:24px;margin-bottom:6px;">
-					<a href="javascript:loadimage();"><font size="2" co>看不清点我</font></a></td>
+					<a href="javascript:loadimage();"><font size="2">看不清点我</font></a></td>
 
 					    
 					  </tr>
                       <tr>
-                        <td style="text-align:left;"><input type="submit" value="确定" onclick="query()"/></td>
+                        <td style="text-align:left;"><input type="submit" value="确定"  class="check_btn01" onclick="query()"/></td>
                         <td align="left">
                          <% if (request.getAttribute("error") != null){ %>
 		   			  <font color=red size="2"><b><%=request.getAttribute("error")%></b></font>
@@ -153,21 +151,15 @@ function chk_email() {
      }
 	%>
                         </td>
-                      </tr>
-					
+                      </tr>					
 				  </table>
 				</td>
 			</tr>
 			</table>
 
 </form>
-
-
-<!-- <div class="clear_height"></div> -->
-
-<!-- links start -->
-<%@ include file="/includes/links.jsp" %>
-<!-- links end -->
+</div>
+</div>
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
