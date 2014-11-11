@@ -3236,7 +3236,7 @@ ul,li{
 .zh_fra{ width:1100px; height:491px; margin:0 auto;}
 .zh_left{ float:left; width:311px; height:92px; padding:133px 117px 0px 140px;}
 .zh_right{ float:right; width:239px; height:171px; margin:102px 220px 0px 0px; background:url(../images/dl_06.jpg) no-repeat; padding:72px 34px 0px 34px; *+padding-bottom:30px}
-.zh_bot{ width:239px; height:50px; padding-top:24px; text-align:left;}
+.zh_bot{ width:239px; height:50px; padding-top:14px; text-align:left;}
 .zh_wby{ width:220px; height:36px; line-height:36px; text-align:left; border:0px; margin-bottom:3px; margin-right:19px; margin-top:2px; color:#ccc; *+margin-top:0px;}
 .zh_bot a{display:inline-block; float:right}
 .zh_bot input{display:inline-block; float:left}
@@ -3388,8 +3388,9 @@ ul,li{
 }
 #tip_username{float:left}
 #tip_useremail{float:left}
-
-
+.zh_right .forget_pwd{width:240px;height:20px;line-height:20px;  text-align:right;}
+#pwd_color{color:#cc6a4f}
+#pwd_color:hover{color:#ff453e;}
 
 
 
