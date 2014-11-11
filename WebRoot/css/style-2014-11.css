@@ -110,7 +110,7 @@ ul,li{
 	height:100px;
 	border:1px solid #eee;
 	border-top:none;
-	display: none;
+	display: block;
 	position:absolute;
 	top:90%;
 	right:19%;
@@ -124,7 +124,7 @@ ul,li{
 	height:100px;
 	border:1px solid #eee;
 	border-top:none;
-    display: none;
+    display: block;
 	position:absolute;
 	top:90%;
 	right:12%; 
