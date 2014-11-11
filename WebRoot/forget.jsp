@@ -34,7 +34,7 @@ function chk_name() {
 	var cc = /^[a-zA-Z][a-zA-Z0-9_]*$/;
 	if(name==''){
 		   // alert('用户名不能為空  ');
-		$("#tip_username").html('<span class="tip_f">用户名不能为空！</span>');
+		$("#tip_username").html('<span class="tip_f01">用户名不能为空！</span>');
 		c_name = false;
 	}else{
 		if ($('#name').val() != '') {
@@ -48,12 +48,12 @@ function chk_name() {
 					/* alert("dd"+data+'"success"'); */
 					if (data == '"success"') {
 						$("#tip_username").html(
-								'<span class="tip_p">用户名存在！</span>');
+								'<span class="tip_p01">用户名存在！</span>');
 						/* $('#form').submit(); */
 						/* window.open('<c:url value="/welcome/session"/>', '_self'); */
 					} else {
 						$("#tip_username").html(
-								'<span class="tip_f">用户名不存在！</span>');
+								'<span class="tip_f01">用户名不存在！</span>');
 					}
 				}
 			});
@@ -68,10 +68,10 @@ function chk_email() {
 	var cc = /^([a-zA-Z0-9]|[._])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
 	if (email=='') {
 		// alert('邮箱不能為空  ');
-		$("#tip_useremail").html('<div class="tip_f">请输入邮箱！</div>');
+		$("#tip_useremail").html('<div class="tip_f01">请输入邮箱！</div>');
 	} else if (!(cc.test(email))) {
 		//	  alert('邮箱格式不正确  ');
-		$("#tip_useremail").html('<span class="tip_f">邮箱格式不正确！</span>');
+		$("#tip_useremail").html('<span class="tip_f01">邮箱格式不正确！</span>');
 		// return false; 
 	} else {
 		/* $("#tip_useremail").html('<span class="tip_p">邮箱可以使用！</span>'); */
@@ -83,10 +83,10 @@ function chk_email() {
 			success : function(data) {
 				if (data == '"success"') {
 					$("#tip_useremail").html(
-							'<span class="tip_p">邮箱存在！</span>');
+							'<span class="tip_p01">邮箱存在！</span>');
 				} else {
 					$("#tip_useremail").html(
-							'<span class="tip_f">邮箱不存在！</span>');
+							'<span class="tip_f01">邮箱不存在！</span>');
 				}
 			}
 		});
@@ -116,7 +116,7 @@ function chk_email() {
 						  <label>
 					        <input name="name" type="text"  id="name" value=""  onblur="chk_name()"/>
 					      </label>&nbsp;&nbsp;
-					      <div id="tip_username">
+					      <div id="tip_username" style="float:left">
 							<!--  <span class="tip_n">请输入用户名！</span>-->
 						 </div>
 					   </td>
@@ -126,7 +126,7 @@ function chk_email() {
 						  <label>
 					      <input name="email" type="text"  id="email" value="" onblur="chk_email()"/>
 					      </label>&nbsp;&nbsp;
-					      <div id="tip_useremail">
+					      <div id="tip_useremail" style="float:left">
 						<!--  <span class="tip_n">请输入邮箱！</span>-->
 					</div>
 					      
