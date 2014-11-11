@@ -13,9 +13,7 @@
   <div class="ban_left" ></div>
   <div class="ban_right" ></div> 
   </div>
-
-    
-    
+         
 </div>
 
 <script type="text/javascript">
@@ -25,10 +23,10 @@
 	   $(function(){
 		   var timer=null;
 		   var num=1;
-		   timer=setInterval(autoplay,2000);
+		   timer=setInterval(autoplay,3000);
 		   function autoplay(nn){
 			   if(nn!=null)num=nn+num;
-			 if(num>2){num=0}
+			 if(num>=2){num=0}
 			 if(num<0){num=2}
 			  $('.banner_fra ul li').eq(num).hide().fadeIn().siblings().hide();   
 			  $('.banner_fra ol li').eq(num).addClass('current').siblings().removeClass('current');
@@ -42,13 +40,13 @@
 				 $('.banner_fra ol li').eq(index).addClass('current').siblings().removeClass('current');
 			   }).mouseout(function(e){
 				   clearInterval(timer);
-				   timer=setInterval(autoplay,3000)
-				   });;
+				   timer=setInterval(autoplay,3000);
+				   });
 		   
 		   $(".ban_right").click(function(){
 			  
-			   autoplay(0);
-			   clearInterval(timer);
+			    autoplay(0);
+			    clearInterval(timer);
 				timer=setInterval(autoplay,3000)
 			   });
 		   $(".ban_left").click(function(){
