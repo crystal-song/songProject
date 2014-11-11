@@ -72,6 +72,7 @@
   <div class="list04"></div>
   </div>
 </div>
+
 <div class="nav_bac">
   <div class="nav">
           <div class="logo"></div>
