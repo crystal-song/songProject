@@ -3355,11 +3355,39 @@ ul,li{
 .con_link{display:inline-block; width:90px; height:30px; font-size:16px; color:#3181db; cursor:pointer}
 .neirong{position:absolute; top:36%; left:5%; width:180px; height:30px; background:#fdd9c8; text-align:left; display:none; border:1px solid #ae705e;}
 
+.table_style{
+   width:540px;
+   height:300px;
+   margin-left:35%;	
+}
+.table_style tr{
+	height:40px;
+}
+.table_style span{
+	width:128px;
+	margin-right:10px;
+	float:left;
+}
+.table_style label{
+	float:left;
+}
+.check_btn01{
+	width:150px;
+	height:40px;
+	background: #ff6862;
+	color:#fff;
+	border:0;
+	margin-left:50px;
+	font-size:14px;
+}
+.table_style .pass_change_check{
+	width:200px;
+	height:40px;
+	font-size:12px;
+	line-height:30px;
+	color:#ff453e;
 
-
-
-
-
+}
 
 
 
