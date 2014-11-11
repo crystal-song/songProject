@@ -3251,19 +3251,40 @@ ul,li{
 .reg{ font-size:18px; line-height:36px; font-family:"Î¢ÈíÑÅºÚ", "ºÚÌå"; padding-left:25%;}
 .reg p{ padding:3px; margin:0px;}
 .reg div{ font-size:12px;}
-.reg .input_item{ height:36px; line-height:36px; border: solid 1px #adadad; margin-bottom:-5px; width:200px; font-size:18px;}
+.reg .input_item{ height:36px; line-height:36px; border: solid 1px #adadad; margin-bottom:-5px; width:200px; font-size:18px; }
 .reg .input_item:focus{ border:1px solid #0F9;}
 
 .btn_login{ background:url(../images/dl01_03.jpg) no-repeat center; width:109px!important; height:40px!important; border:none!important; cursor:pointer;}
 .btn_reg{ background:url(../images/dl01_05.jpg) no-repeat center; width:109px!important; height:40px!important; border:none!important; cursor:pointer;}
 .zh_wby:focus{ border:none;}
-
-.table_style .tip_f{
+.table_style .tip_f01{
 	font-size:12px;
 	text-align:left;
 	padding:5px;
 	color:#F66;
 	display:block;
+	line-height:16px;
+	height:16px;
+	width:90%;
+}
+.tip_p01{
+	font-size:12px;
+	text-align:left;
+	padding:5px;
+	color:#390;
+	display:block;
+	text-indent:100px;
+	line-height:16px;
+	height:16px;
+	width:90%;
+}
+.tip_f{
+	font-size:12px;
+	text-align:left;
+	padding:5px;
+	color:#F66;
+	display:block;
+	text-indent:100px;
 	line-height:16px;
 	height:16px;
 	width:90%;
@@ -3279,8 +3300,14 @@ ul,li{
 	height:16px;
 	width:90%;
 }
+
+/*
 .tip_n{ font-size:12px; text-align:left; padding:5px; color:#999;  display:inline-block;  
-        line-height:16px; height:16px; width:90%; display:none;}
+        line-height:16px; height:16px; width:90%; ; float:left}
+  */      
+.tip_n{ font-size:12px; text-align:left; padding:5px; color:#999;  display:block; 
+        text-indent:100px; line-height:16px; height:16px; width:90%;}
+        
 .xieyi_font{font-size:12px;}
 .xieyi_font a{color:#e43756}
 .wenjian_list .wenjian_hei{width:100%; height:auto; margin-bottom:20px; color:#000}
@@ -3386,8 +3413,7 @@ ul,li{
 	line-height:30px;
 
 }
-#tip_username{float:left}
-#tip_useremail{float:left}
+
 .zh_right .forget_pwd{width:240px;height:20px;line-height:20px;  text-align:right;}
 #pwd_color{color:#cc6a4f}
 #pwd_color:hover{color:#ff453e;}
