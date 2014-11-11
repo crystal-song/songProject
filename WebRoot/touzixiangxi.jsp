@@ -16,10 +16,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>项目：${product1.projectName} - 我要投资 - 中租宝</title>
 
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
+
 <link href="<%=path%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
  
-
+ 
  <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
@@ -27,41 +29,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
  
  
- <script type="text/javascript">
-var navIndex=1;
-function mysubmit(){
-	if($("#buyAmount").val()==0){
-		alert("投资金额不能为空！");
-		return false;
-		}
-	var form = document.getElementById("form");
-	 form.submit();
-}	
-</script>
-   
+ 
 <script type="text/javascript">
 window.onload=function(){
-    var myblur= document.getElementById('myinput')
+
+    var myblur= document.getElementById('myinput');
        myblur.onfocus=function(){
+    	
          if(myblur.value=="投资金额不低于100元"){
+        	
            myblur.value="";
-           myblur.style.color="#000"  
+           myblur.style.color="#000"  ;
            }     
       }      
      myblur.onblur=function(){
       
       if(myblur.value==""){
-        myblur.value="投资金额不低于100元"
-        myblur.style.color="#ccc"   
+        myblur.value="投资金额不低于100元";
+        myblur.style.color="#ccc" ;  
         }        
  }
 }
 
+function mysubmit(){
+	if($("#myinput").val()==0){
+		alert("投资金额不能为空！");
+		return false;
+		}
+	var form = document.getElementById("form");
+	    form.submit();	
+}	
+
  $(document).ready(function(e) {  
+	 
+	 $("#myinput").keyup(function(){
+		  
+		    var str= /^[0-9]*$/;
+		    var val=$("#myinput").val();
+		    if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是数字,请重新输入");
+				   return false;
+			    }
+		    $('.neirong').css('display','block');
+	
+		    if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是数字,请重新输入");
+				   return false;
+			    }
+			    if(val<100){
+				   $('.neirong').html("您输入的金额小于100元,请重新输入");
+				   return false;
+			    }
+			    if(val>500000){
+					   $('.neirong').html("您输入的金额大于500000元,请重新输入");
+					   return false;
+				    }
+			    if(parseInt(val)%100!=0){	
+				  $('.neirong').html("输入的资金必须是100的整数倍");
+				  return false;
+				   }
+			      $('.neirong').html('您要投入的实际金额为:'+val);	   
+		
+	 
+	 });	
+
 	 
 	 $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
 
-/*导航滚动*/
+	 /* 导航滚动*/
 
        $(window).on('scroll', function(){
                checkText();
@@ -112,43 +147,8 @@ window.onload=function(){
         clearInterval(timer);
            timer=setInterval(autoplay,3000);
         });
-      
-      
-      $("#dialog-link").click(function(){
-          var values= $("#myinput").val();
-             if (values!="投资金额不低于100元") {
-                     if(values<100){
-               alert("请输入大于100元投资金额")
-                     }else{
-                       $( "#dialog" ).dialog( "open" );
-                     }
-              }else{
-               alert("请输入投资金额");
-              }
+ });   
 
-             
-             $( "#dialog" ).dialog({
-                 autoOpen: false,
-                 width: 500,
-                 height:300,
-                 buttons: [
-                   {
-                     text: "确认",
-                     click: function() {
-                       $( this ).dialog( "close" );    
-                        $(".red_touzi").css("background","#ccc").html("投资成功！");
-                        values=="投资金额不低于100元";
-                     }
-                   },
-                   {
-                     text: "取消",
-                     click: function() {
-                       $( this ).dialog( "close" );
-                     }
-                   }
-                 ]
-               });
-  });
 </script>
 </head>
 
@@ -428,6 +428,7 @@ window.onload=function(){
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元</span>
+         <div class="neirong"></div>
          <span><input type="text" class="text01" value="投资金额不低于100元" id="myinput"/></span>
          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">100元起投</span>
