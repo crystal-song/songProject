@@ -3144,7 +3144,7 @@ ul,li{
 	height:13px;
 	}
 .min_mar{
-	*+margin-left:220px;
+	*+margin-left:152px;
 }
 
 .right_news_con{
@@ -3258,13 +3258,12 @@ ul,li{
 .btn_reg{ background:url(../images/dl01_05.jpg) no-repeat center; width:109px!important; height:40px!important; border:none!important; cursor:pointer;}
 .zh_wby:focus{ border:none;}
 
-.tip_f{
+.table_style .tip_f{
 	font-size:12px;
 	text-align:left;
 	padding:5px;
 	color:#F66;
 	display:block;
-	text-indent:100px;
 	line-height:16px;
 	height:16px;
 	width:90%;
@@ -3280,7 +3279,8 @@ ul,li{
 	height:16px;
 	width:90%;
 }
-.tip_n{ font-size:12px; text-align:left; padding:5px; color:#999;  display:block; text-indent:100px; line-height:16px; height:16px; width:90%;}
+.tip_n{ font-size:12px; text-align:left; padding:5px; color:#999;  display:inline-block;  
+        line-height:16px; height:16px; width:90%; display:none;}
 .xieyi_font{font-size:12px;}
 .xieyi_font a{color:#e43756}
 .wenjian_list .wenjian_hei{width:100%; height:auto; margin-bottom:20px; color:#000}
@@ -3329,8 +3329,6 @@ ul,li{
 .msg_con{width:1100px; height:auto;  margin:0 auto; margin-top:50px; }
 
 
-
-
 /*xinxiqueren*/
 .queren_con{width:1098pxpx; *+height:500px; min-height:500px; border:1px solid #ccc; border-top:4px solid #bd1125; background:#f8f8f8;}
 .con_title{width:1050px; height:50px; padding-left:30px; font-size:24px; color:#000; text-align:left;
@@ -3356,7 +3354,8 @@ ul,li{
 .table_style{
    width:540px;
    height:300px;
-   margin-left:35%;
+   margin-left:30%;
+   *+margin-left:10%;
    text-align:left;	
 }
 .table_style tr{
@@ -3366,6 +3365,7 @@ ul,li{
 	width:128px;
 	margin-right:10px;
 	float:left;
+	text-align:right;
 }
 .table_style label{
 	float:left;
@@ -3376,7 +3376,7 @@ ul,li{
 	background: #ff6862;
 	color:#fff;
 	border:0;
-	margin-left:50px;
+	margin-left:137px;
 	font-size:14px;
 }
 .table_style .pass_change_check{
@@ -3384,11 +3384,10 @@ ul,li{
 	height:40px;
 	font-size:12px;
 	line-height:30px;
-	color:#ff453e;
 
 }
-
-
+#tip_username{float:left}
+#tip_useremail{float:left}
 
 
 
