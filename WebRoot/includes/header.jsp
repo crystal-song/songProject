@@ -1,6 +1,5 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
-<<<<<<< .mine
-=======
+
 <!--  
 >>>>>>> .r728
 <div class="top">
