@@ -277,7 +277,7 @@ ul,li{
 	height: 60px;
 	background: #fff;
 	position: absolute;
-	top:80%;
+	top:60%;
 	cursor: pointer;
 	right: 50px;
     display:none;
@@ -408,6 +408,7 @@ ul,li{
 	border:1px solid #ccc;
 	float:right;
 	margin-top:2%;
+	position:relative;
 }
 .newpro_right dd a{
 	display:inline-block;
@@ -3352,7 +3353,7 @@ ul,li{
 .sucess_title{width:1050px; height:50px;  font-size:24px; color:#000;line-height:50px; margin-top:55px; background:url(../img/renok.png) 322px 6px no-repeat;}
 .title_sec{font-size:20px; color:#000;margin-top:20px;}
 .con_link{display:inline-block; width:90px; height:30px; font-size:16px; color:#3181db; cursor:pointer}
-
+.neirong{position:absolute; top:36%; left:5%; width:180px; height:30px; background:pink;}
 
 
 
