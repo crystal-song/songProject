@@ -40,10 +40,10 @@ function onSubmit(host) {
    <ul> 
          <input type="hidden" id="host" name="host">
          <li> <div class="form-group" style="display:none;height:0px;" >
-            <!-- <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10040011137" /> -->
-              <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10012415118" />
+             <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo" value="10040011137" /> 
+             <!--  <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo" value="10012415118" /> -->
           </div></li>
           <li><div class="form-group" style="display:none;height:0px;" >
             <label for="requestNo">requestNo</label><input type="text"
@@ -63,7 +63,7 @@ function onSubmit(host) {
           </div>
           </li>
           <li>
-          <div class="form-group" style="display:none;height:0px;" >
+          <div class="form-group" >
             <label for="transferAmount">标的金额</label><input type="text"
               class="form-control jin_font" id="transferAmount" name="transferAmount" value="${product.financingMoney}" />
           </div>
@@ -89,7 +89,7 @@ function onSubmit(host) {
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="expired">投标过期时间</label><input type="text"
-              class="form-control" id="expired" name="expired" value="2014-11-01 22:22:31" />
+              class="form-control" id="expired" name="expired" value="2014-12-01 22:22:31" />
           </div>
           </li>
           
@@ -110,11 +110,11 @@ function onSubmit(host) {
           <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
-              name="callbackUrl" value="http://www.ptobchina.com/gate/transferSucceed" />
+              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/transferSucceed" />
           </div>
           </li>
           <li>
-         <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button> -->
+          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button> 
          <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
           <div class="que_btn"><a src="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')">确定</a></div>
           </li>
