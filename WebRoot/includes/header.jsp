@@ -88,8 +88,8 @@
           </ul>
           <div class="login">
                <c:if test="${empty name}">
-                <a class="wd_red" href="<%=path%>/reg.jsp" ><strong>注册</strong></a>
-                <a href="<%=path%>/login.jsp" ><strong>登录</strong></a>
+                <a class="wd_red" href="<%=path%>/reg.jsp" style="line-height:40px; font-size:16px;" ><strong>注册</strong></a>
+                <a href="<%=path%>/login.jsp" style="line-height:40px; font-size:16px;"><strong>登录</strong></a>
               </c:if>
              
              <c:if test="${!empty name}">
@@ -114,9 +114,8 @@ $(document).ready(function(){
 	  });	
 
     $(".header li").mouseover(function(){ 
-      var index=$(this).index();
-      //$('.top div').eq(index).show();
-
+      var index=$(this).index();      
+      $('.top div').eq(index).show();
     $(this).addClass('head_red').siblings().removeClass('head_red');
      
 
