@@ -257,10 +257,10 @@ ul,li{
 	width:50px;
 	height: 40px;
 	float:left;
-	line-height:40px;
-	font-size:16px;
+	line-height:30px;
 	color:#ccc;
 	margin-top:10px;
+	
 	}
 .username{
 	display: inline-block;
@@ -272,6 +272,7 @@ ul,li{
 	right: 0px;
 	font-size: 12px;
 	cursor: pointer;
+	background:url(../img/images-2014-11/sanjiao.png) 80% 0 no-repeat;
 }
 .tuichu{
 	width: 100px;
@@ -283,7 +284,7 @@ ul,li{
 	right: 50px;
     display:none;
 	z-index:100;
-	font-size:16px;
+	border:1px solid #ccc;
 }
 .tuichu li{
 	width: 100px;
@@ -294,6 +295,7 @@ ul,li{
 	background: #eaeaea;
 	border-bottom: 1px solid #ccc;
 	color:#c70e14;
+	color:#000;
 }
 
 .zhang .acount{
@@ -304,10 +306,10 @@ ul,li{
 
 }
 .zhang .out{
+	color:#000;
 	width:100%;
 	height:30px;
 	margin:0;
-	bor
 }
 .login .wd_red{
 	color:#ba171e;
