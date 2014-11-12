@@ -21,29 +21,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
  
- 
  <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
 
- 
- 
- 
 <script type="text/javascript">
+
 window.onload=function(){
 
-    var myblur= document.getElementById('myinput');
+    var myblur= document.getElementById('buyAmount');
+    
        myblur.onfocus=function(){
-    	
-         if(myblur.value=="投资金额不低于100元"){
-        	
+
+         if(myblur.value=="投资金额不低于100元"){        	
            myblur.value="";
            myblur.style.color="#000"  ;
            }     
       }      
-     myblur.onblur=function(){
-      
+     myblur.onblur=function(){      
       if(myblur.value==""){
         myblur.value="投资金额不低于100元";
         myblur.style.color="#ccc" ;  
@@ -51,8 +47,9 @@ window.onload=function(){
  }
 }
 
+
 function mysubmit(){
-	if($("#myinput").val()==0){
+	if($("#buyAmount").val()==0){
 		alert("投资金额不能为空！");
 		return false;
 		}
@@ -61,11 +58,12 @@ function mysubmit(){
 }	
 
  $(document).ready(function(e) {  
-	 
-	 $("#myinput").keyup(function(){
+   
+	
+	 $("#buyAmount").keyup(function(){
 		  
 		    var str= /^[0-9]*$/;
-		    var val=$("#myinput").val();
+		    var val=$("#buyAmount").val();
 		    if(!(str.test(val))){  	   
 				   $('.neirong').html("您输入的金额不是数字,请重新输入");
 				   return false;
@@ -96,7 +94,7 @@ function mysubmit(){
 	 
 	 $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
 
-	 /* 导航滚动*/
+	
 
        $(window).on('scroll', function(){
                checkText();
@@ -148,6 +146,7 @@ function mysubmit(){
            timer=setInterval(autoplay,3000);
         });
  });   
+
 
 </script>
 </head>
