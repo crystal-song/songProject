@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <a href="#">取消</a>
               </div>
               <div class="postcar_btn">
-                  <a href="#" class="postcar_btn_red">绑卡</a>
+                  <a href="#" class="postcar_btn_org">绑卡</a>
                   <a href="#">取消</a>
               </div>
             </div>    
