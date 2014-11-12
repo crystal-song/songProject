@@ -85,13 +85,13 @@
            <li>
               <div class="u_left_mian"><i class="mian_pic01"></i><span>资产管理</span></div>
               <ul class="u_left_sec">
-                <li style="display:none;">
+                <li>
                  <a href="<%=path%>/zichan.jsp" >资产统计</a>
                 </li>
                 <li>
                  <a href="<%=path%>/gate/recharge">充值</a>
                 </li>
-                <li style="display:none;">
+                <li>
                  <a href="<%=path%>/tixian.jsp">提现</a>
                 </li>
               </ul>
@@ -119,7 +119,7 @@
                 <li>
                   <a href="<%=path%>/user-info.jsp">个人信息</a>
                 </li>
-                <li style="display:none;">
+                <li style="display:block;">
                   <a href="<%=path%>/anquanshezhi.jsp">安全设置</a>
 
                 </li>
