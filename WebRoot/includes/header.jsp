@@ -52,23 +52,25 @@
 <div class="header">
  <div class="top">
   <ul>
-    <li>联系我们</li>
-    <li>关于我们</li>
+    <li>联系我们
+        <div class="list01">
+         <a href="<%=path%>/question.jsp">常见问题</a>
+         <a href="<%=path%>/contact.jsp">联系客服</a>
+        </div>
+    </li>
+    <li>关于我们
+	    <div class="list02">
+		    <a href="<%=path%>/help.jsp">企业介绍</a>
+		    <a href="<%=path%>/security.jsp">安全策略</a>
+		    <a href="<%=path%>/notice.jsp">法律声明</a>
+	    </div>
+  </li>
     <li class="head_red" style="display:none">我的账户</li>
+    <div class="list03" style="display:none">
+      <a href="<%=path%>/wel/account">账户管理</a>
+      <a href="<%=path%>/wel/account">资产管理</a>
+    </div>
   </ul>
-  <div class="list01">
-    <a href="<%=path%>/question.jsp">常见问题</a>
-    <a href="<%=path%>/contact.jsp">联系客服</a>
-  </div>
-  <div class="list02">
-    <a href="<%=path%>/help.jsp">企业介绍</a>
-    <a href="<%=path%>/security.jsp">安全策略</a>
-    <a href="<%=path%>/notice.jsp">法律声明</a>
-  </div>
-  <div class="list03">
-    <a href="<%=path%>/wel/account">账户管理</a>
-    <a href="<%=path%>/wel/account">资产管理</a>
-  </div>
   <div class="list04"></div>
   </div>
 </div>
@@ -91,12 +93,11 @@
               </c:if>
              
              <c:if test="${!empty name}">
-              <span class="username">您好，<strong>${name}</strong></span>
-           
+              <span class="username">您好，<strong>${name}</strong></span>         
               <div class="tuichu">
                   <ul>
                     <li class="zhang"><a href="<%=path%>/wel/account" class="acount">我的账户</a></li>
-                    <li  class="zhang"><a href="<%=path%>/welcome/logout">退出</a></li>
+                    <li  class="zhang" style="background:#fff"><a href="<%=path%>/welcome/logout" class="out">退出</a></li>
                   </ul>
               </div>
             </c:if> 
@@ -114,7 +115,7 @@ $(document).ready(function(){
 
     $(".header li").mouseover(function(){ 
       var index=$(this).index();
-      $('.top div').eq(index).show();
+      //$('.top div').eq(index).show();
 
     $(this).addClass('head_red').siblings().removeClass('head_red');
      
@@ -132,6 +133,20 @@ $(document).ready(function(){
        var index=$(this).index();
        $(this).hide();
     });
+    $(".username").mouseover(function(){
+    	
+       $(".tuichu").show();
+       $(".tuichu").mouseover(function(){
+      	  $(this).show();
+        });
+      }).mouseout(function(){
+       $(".tuichu").hide();
+      });
+      $(".tuichu").mouseover(function(){
+      $(this).show();
+      }).mouseout(function(){
+      $(this).hide();
+      });
 
 });
 </script>
