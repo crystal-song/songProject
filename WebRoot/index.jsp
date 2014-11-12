@@ -24,7 +24,7 @@ $(document).ready(function(){
 	$('.res').click(function(){
 		$('.ie_text').css('display','none');
 	  });	
-
+/*
     $(".header li").mouseover(function(){ 
       var index=$(this).index();
       $('.top div').eq(index).show();
@@ -44,7 +44,7 @@ $(document).ready(function(){
        $(this).hide();
     });
 
-
+*/
     $(".news_title li").click(function(){
         var index= $(this).index();
         $(this).addClass('news_title_bac').siblings().removeClass('news_title_bac');
@@ -150,7 +150,7 @@ $(window).on('scroll', function(){
            <h3><a href="product/getProductByid?id=55">山西润通工程</a></h3>       	
            <ul class="mei_msg">
             <li><span>融资金额</span><span class="wd_size"><strong>1180,000</strong></span></li>
-            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">10%</strong></span></li>
+            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">12%</strong></span></li>
             <li><span>借款期限</span><span class="wd_size">90天</span></li>
             <li><span>融资进度</span><span class="wd_size">0%</span></li>
             <li><a href="product/getProductByid?id=55" class="touzi_mei">我要投</a></li>
