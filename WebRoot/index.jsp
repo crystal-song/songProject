@@ -51,19 +51,7 @@ $(document).ready(function(){
         $(".news_label ul").eq(index).css("display","block").siblings().css("display","none")
     });
 
-    $(".username").mouseover(function(){
-      $(".tuichu").show();
-      $(".tuichu").mouseover(function(){
-    	  $(this).show();
-      });
-    }).mouseout(function(){
-      $(".tuichu").hide();
-    });
-    $(".tuichu").mouseover(function(){
-      $(this).show();
-    }).mouseout(function(){
-      $(this).hide();
-    });
+  
      
      $(".absolute_right a").hide();
      $(".absolute_right span").mouseover(function(){
