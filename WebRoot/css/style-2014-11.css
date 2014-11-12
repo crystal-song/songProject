@@ -271,8 +271,16 @@ ul,li{
 	top:30px;
 	right: 0px;
 	font-size: 12px;
-	cursor: pointer;
-	background:url(../img/images-2014-11/sanjiao.png) 80% 0 no-repeat;
+	cursor: pointer;	
+}
+.username strong{
+	display:inline-block;
+	height:20px;
+	min-width:60px;
+	background:pink;
+	text-align:left;
+	padding-right:20px;
+	background:url(../img/images-2014-11/sanjiao.png) 100% 0 no-repeat;
 }
 .tuichu{
 	width: 100px;
