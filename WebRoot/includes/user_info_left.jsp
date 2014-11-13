@@ -94,6 +94,9 @@
                 <li>
                  <a href="<%=path%>/tixian.jsp">提现</a>
                 </li>
+                <li>
+                 <a href="<%=path%>/yinhangka.jsp">绑定银行卡</a>
+                </li>
               </ul>
            </li>
            <li style="display:none;">
