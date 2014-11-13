@@ -17,17 +17,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 
 <script type="text/javascript" >
-$(document).ready(function(){
+
 function loadimage(){ 
 	document.getElementById("verifyPic_img").src = "image.jsp?"+Math.random(); 
 	} 
-var c_name = false;
-var c_email = false;
-
-$("#name").blur(function(){
-	chk_name();
-});
-
 function chk_name() {
 	//alert("aaa");
 	var name = $("#name").val();
@@ -61,7 +54,7 @@ function chk_name() {
 
 	}
 }
-});
+
 function chk_email() {
 
 	var email = $("#email").val();
@@ -137,7 +130,7 @@ function chk_email() {
 					      <input name="validatecode" type="text"  id="validatecode" value="" />
 										<img  id="verifyPic_img" type="4" align="absmiddle" src="<%=path%>/image.jsp" style="cursor: pointer;height:24px;margin-bottom:6px;">
 					<a href="javascript:loadimage();"><font size="2">看不清点我</font></a></td>
-
+					
 					    
 					  </tr>
                       <tr>
