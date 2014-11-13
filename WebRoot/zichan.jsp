@@ -40,12 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="user_right">  
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>资产统计</strong></div>
-          <p class="zichan_num"><span>资产总值:</span><strong><span>5000</span><i>元</i></strong></p>
+          <p class="zichan_num"><span>资产总值:</span><strong><span>${balance}</span><i>元</i></strong></p>
           <ul class="zichan_bar">
             <li>
               <div class="li_pic back01"></div>
               <div class="li_right">
-                 <div class="li_top"><span>可用余额</span><strong><span style="text-align:right">500,000</span><i>元</i></strong>
+                 <div class="li_top"><span>可用余额</span><strong><span style="text-align:right">${availableAmount}</span><i>元</i></strong>
                  </div>
                  <div class="li_loadbar"><div></div></div>
               </div>
