@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                
              <div class="add_postcar" >
               <p>绑定银行卡</p>
-              
+              <!-- 
               <ul>
                 <li><span>可提现金金额：</span><div><strong>0.00</strong>元（面提现手续费额度：0.00元）</div></li>
                 <li>
@@ -115,7 +115,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="postcar_btn" >
                   <a href="#" class="postcar_btn_org">绑卡</a>
                   <a href="#">取消</a>
-              </div>  
+              </div>
+                 -->
                <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
                  <input type="hidden" id="host" name="host">          
 		          <div class="form-group" style="display:none">
@@ -152,7 +153,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		              type="text" class="form-control" id="callbackUrl"
 		              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
 		          </div>
-                            
+                  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>
+                  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">ç”Ÿäº§</button>     
               </form>
             </div>    
            
