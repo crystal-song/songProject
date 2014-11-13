@@ -2268,6 +2268,20 @@ ul,li{
 	margin-left: 100px;
 	text-align: right;
 }
+.ti_jine span{
+	float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 200px;
+    text-align: right;
+    width: 100px;
+}
+.ti_jine strong{
+	font-size: 14px;
+	color: #fb570a;
+	margin-right: 10px;
+}
 .add_postcar div{
 	width: 240px;
 	height: 100%;
@@ -2279,6 +2293,13 @@ ul,li{
 	font-size: 14px;
 	color: #fb570a;
 	margin-right: 10px;
+}
+.ti_jine{
+	width:100%;
+	height:40px;	
+}
+.ti_jine span{
+	display:inline-block;
 }
 .add_postcar div input{
     margin-top: 10px;
@@ -2305,13 +2326,21 @@ ul,li{
     text-align: center;
     background: #e3e3e3;
 }
-.postcar_btn .postcar_btn_red{
+.postcar_btn  .postcar_btn_red{
+    width: 120px;
+    height: 30px;
 	background: #ff6862;
 	color: #fff;
+	border:0;
+	margin-top:20px;
 }
 .postcar_btn .postcar_btn_org{
+	width: 120px;
+    height: 30px;
 	background: #ff6a00;
 	color: #fff;
+	border:0;
+	margin-top:20px;
 }
 .yzm{
 	width: 60px; 
@@ -3363,7 +3392,10 @@ ul,li{
 
 .form-group label{width:100px; height:30px;  float:left; font-size:14px; line-height:30px; margin-left:200px; text-align:right}
 .form-control{float:left; margin-left:60px; width:200px; height:30px; }
-.btn-default{width:70px; height:32px}
+.form-control .wd_org{
+	margin-right:10px;
+}
+.btn-default{width:70px; height:32px; margin-top:20px;}
 .bt{background:#f60; width:68px; height:30px; *+height:32px; border:1px solid #c12d17; color:#fff; *+margin-left:15px}
 #msg_new{margin-left:125px}
 .jin_input{width:60%; height:36px; line-height:36px; font-size:16px; margin:20px 50px;}
