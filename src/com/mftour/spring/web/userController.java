@@ -121,7 +121,7 @@ public class userController {
 		  mailInfo.setPassword("12qwaszx");//您的邮箱密码 
 		  mailInfo.setFromAddress("cs@ptobchina.com"); 
 		  mailInfo.setToAddress(user.getEmail()); 
-		  mailInfo.setSubject("找回密码通知"); //设置邮箱标题
+		  mailInfo.setSubject("中租宝-找回密码通知"); //设置邮箱标题
 		  String path = request.getContextPath();
 	      String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 	      String resetPassHref =  basePath+"user/reset?userName="+user.getName();
