@@ -71,8 +71,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <a href="#">取消</a>
               </div>
             </div>
-               
-             <div class="add_postcar">
+             
+             <div class="form-group" style="margin-top:50px;">
+              <label for="platformNo">可提现金金额</label>
+              <div class="form-control" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元（面提现手续费额度：0.00元）</div>
+          </div>
+        <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
+          <input type="hidden" id="host" name="host">
+          <div class="form-group" >
+           <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo" value="10040011137" /> 
+              <!--  <input type="text"class="form-control" id="platformNo" 
+                   name="platformNo" value="10012415118" />  -->
+          </div>
+          <div class="form-group">
+            <label for="requestNo">requestNo</label><input type="text"
+              class="form-control" id="requestNo" name="requestNo" value="${now}" />
+          </div>
+          <div class="form-group">
+            <label for="platformUserNo">platformUserNo</label><input
+              type="text" class="form-control" id="platformUserNo"
+              name="platformUserNo"  value="18975601645"  />
+          </div>
+            <div class="form-group" >
+            <label for="feeMode">feeMode</label><input
+              type="text" class="form-control" id="feeMode"
+              name="feeMode"  value="USER"  />
+          </div>
+             <div class="form-group">
+            <label for="amount">金额</label><input
+              type="text" class="form-control" id="amount"
+              name="amount"  value=""  />
+          </div>
+           
+          <div class="form-group">
+            <label for="notifyUrl">notifyUrl</label><input type="text"
+              class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
+          </div>
+          <div class="form-group">
+            <label for="callbackUrl">callbackUrl</label><input
+              type="text" class="form-control" id="callbackUrl"
+              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
+          </div>
+	      <div class="postcar_btn">
+	          <button onclick="onSubmit('http://qa.yeepay.com/member')"  class="postcar_btn_red" >提现</button>
+	          <button onclick="onSubmit('https://member.yeepay.com/member')" class="postcar_btn_org">取消</button>
+	      </div>    
+        </form>
+        
+             <div class="add_postcar" style="display:none">
               <p>填写现金金额</p>
               <ul>
                 <li><span>可提现金金额：</span><div><strong>0.00</strong>元（面提现手续费额度：0.00元）</div></li>
@@ -100,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
             </div>    
 
-          <div class="tishi">
+          <div class="tishi" style="margin-top:50px;">
             <p><strong>温馨提示</strong></p>
             <ol>
               <li class="tishi_red">您充值的资金若未投资就提现，第三方支付公司会收取您提现金额的0.5%作为转账费用。</li>
