@@ -46,52 +46,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <p>银行卡信息</p>
               <ul class="postcar_msg">
                 <li><span>开户行名称：</span><div>工商银行</div></li>
-                <li>
-                  <span>银行卡账号：</span><div>12345678</div>
-                </li>
-                <li>
-                  <span>银行卡状态：</span><div>绑定中..</div>
+                <li><span>银行卡账号：</span><div>12345678</div></li>
+                <li><span>银行卡状态：</span><div>绑定中..</div>
                 </li>             
                 
               </ul>
                <div class="postcar_btn">
-                  <a href="#" class="postcar_btn_red" onclick="onSubmit('http://qa.yeepay.com/member')">添加银行卡</a>
+                  <a href="#" class="postcar_btn_red" >添加银行卡</a>
                   <!-- <a href="#" style="background:#ff6a00; color:#fff" onclick="onSubmit('https://member.yeepay.com/member')" >解除绑定</a> -->
-              </div>
-              <form id="form" role="form" action="<%=path%>/gate/dobinding" method="post" target="_blank">
-            <input type="hidden" id="host" name="host">
-              <div class="form-group" style="display:none">
-		           <label for="platformNo">platformNo</label><input type="text"
-		              class="form-control" id="platformNo" name="platformNo" value="10040011137" /> 
-		              <!--  <input type="text"class="form-control" id="platformNo" 
-		                   name="platformNo" value="10012415118" />  -->
-		          </div>
-		          <div class="form-group" style="display:none">
-		            <label for="requestNo">requestNo</label><input type="text"
-		              class="form-control" id="requestNo" name="requestNo" value="${now}" />
-		          </div>
-		          <div class="form-group" style="display:none">
-		            <label for="platformUserNo">platformUserNo</label><input
-		              type="text" class="form-control" id="platformUserNo"
-		              name="platformUserNo"  value="1413232498212"  />
-		          </div>
-		          <div class="form-group" style="display:none">
-		            <label for="notifyUrl">notifyUrl</label><input type="text"
-		              class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/bindingNotify" />
-		          </div>
-		          <div class="form-group" style="display:none">
-		            <label for="callbackUrl">callbackUrl</label><input
-		              type="text" class="form-control" id="callbackUrl"
-		              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/bindingSucceed" />
-		          </div>                          
-              </form>
-             
-            
+              </div>                       
             </div>
-               
+                 <!-- 
              <div class="add_postcar" >
               <p>绑定银行卡</p>
-              <!-- 
+            
               <ul>
                 <li><span>可提现金金额：</span><div><strong>0.00</strong>元（面提现手续费额度：0.00元）</div></li>
                 <li>
@@ -117,45 +85,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <a href="#">取消</a>
               </div>
                  -->
-               <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
-                 <input type="hidden" id="host" name="host">          
-		          <div class="form-group" style="display:none">
+                 <div class="clear_height" style="height:40px;"></div>
+               <form id="form" role="form" action="<%=path%>/gate/dobinding" method="post" target="_blank">
+		          <input type="hidden" id="host" name="host">
+		          <div class="form-group">
 		           <label for="platformNo">platformNo</label><input type="text"
 		              class="form-control" id="platformNo" name="platformNo" value="10040011137" /> 
 		              <!--  <input type="text"class="form-control" id="platformNo" 
 		                   name="platformNo" value="10012415118" />  -->
 		          </div>
-		          <div class="form-group" style="display:none">
+		          <div class="form-group">
 		            <label for="requestNo">requestNo</label><input type="text"
 		              class="form-control" id="requestNo" name="requestNo" value="${now}" />
 		          </div>
-		          <div class="form-group" style="display:none">
+		          <div class="form-group">
 		            <label for="platformUserNo">platformUserNo</label><input
 		              type="text" class="form-control" id="platformUserNo"
-		              name="platformUserNo"  value="18975601645"  />
+		              name="platformUserNo"  value="1413232498212"  />
 		          </div>
-		            <div class="form-group" style="display:none">
-		            <label for="feeMode">feeMode</label><input
-		              type="text" class="form-control" id="feeMode"
-		              name="feeMode"  value="USER"  />
-		          </div>
-		             <div class="form-group" style="display:none">
-		            <label for="amount">amount</label><input
-		              type="text" class="form-control" id="amount"
-		              name="amount"  value=""  />
-		          </div>		           
-		          <div class="form-group" style="display:none">
+		          <div class="form-group">
 		            <label for="notifyUrl">notifyUrl</label><input type="text"
-		              class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
+		              class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/bindingNotify" />
 		          </div>
-		          <div class="form-group" style="display:none">
+		          <div class="form-group">
 		            <label for="callbackUrl">callbackUrl</label><input
 		              type="text" class="form-control" id="callbackUrl"
-		              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
+		              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/bindingSucceed" />
 		          </div>
-                  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>
-                  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">ç”Ÿäº§</button>     
-              </form>
+		      
+		
+		          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>
+		          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">ç”Ÿäº§</button>
+               </form>
             </div>    
            
           </div> 
