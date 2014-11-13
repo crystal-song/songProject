@@ -119,7 +119,7 @@
                 <li>
                   <a href="<%=path%>/user-info.jsp">个人信息</a>
                 </li>
-                <li style="display:block;">
+				<li style="display:block;">
                   <a href="<%=path%>/anquanshezhi.jsp">安全设置</a>
 
                 </li>
