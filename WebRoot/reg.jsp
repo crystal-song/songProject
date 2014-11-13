@@ -148,7 +148,7 @@ function chk_email(){
 <!-- page content -->
 <div class="blank_block">
   <div class="blank_block_title">新用户注册</div>
-    <form action="welcome/register" id="Form1"  method="post" style="padding:0px;">
+    <form action="welcome/regEmail" id="Form1"  method="post" style="padding:0px;">
         <div class="blank_block_content reg">
           <p>　用户名：<input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /></p>
           <div id="tip_username"><span class="tip_n">请输入用户名！</span></div>
