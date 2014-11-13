@@ -38,7 +38,7 @@ function query(){
                         /* window.open('<c:url value="/welcome/session"/>', '_self'); */
                     } else {
                     	$('#password').val('');
-                       alert('用户名或密码错误！');
+                       alert('用户名或密码错误或用户没有激活！');
                     }
                 }
             });
