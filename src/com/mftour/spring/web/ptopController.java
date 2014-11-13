@@ -81,10 +81,6 @@ public class ptopController {
 	
 	@RequestMapping(value = "/session", method = {RequestMethod.POST, RequestMethod.GET})
 	public String Session( Model model,TAdministrator TAdministrator,HttpServletRequest request) throws Exception {
-	
-		
-		System.out.println("ffffffffffffffffffffffffff");
-		 	 
 		/*model.addAttribute("  Administrator",TAdministrator.getName()); */
 		request.getSession().setAttribute("Administrator",TAdministrator.getName()); 
 //		request.getSession().setAttribute("users", username);
@@ -97,7 +93,7 @@ public class ptopController {
 	@RequestMapping(value = "/addproduct", method = {RequestMethod.POST, RequestMethod.GET})
 		public String addproduct( Model model,TProduct product,HttpServletRequest request) throws Exception {
 		 
-		 System.out.println("ddddddddddddddd"+product.getProjectName());
+		 System.out.println("ddddddddddddddd"+product.getProjectPicture()+"id"+product.getId());
 		 
 	         	
 	         	 
