@@ -59,6 +59,9 @@
         <property name="income" type="java.lang.String">
             <column name="income" length="50" />
         </property>
+        <property name="regState" type="java.lang.String">
+            <column name="regState" length="10" />
+        </property>
        
     </class>
 </hibernate-mapping>
