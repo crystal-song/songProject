@@ -26,37 +26,12 @@ import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.HttpClientTest;
-import com.mftour.spring.util.ccc;
+//import com.mftour.spring.util.ccc;
 import com.yeepay.bha.example.bean.BHAEstablishmentRegistration;
 import com.yeepay.bha.example.bean.BHARechargeRequest;
 import com.yeepay.bha.example.bean.BHARegisterRequest;
 import com.yeepay.bha.example.bean.BHATransferRequest;
 import com.yeepay.bha.example.bean.BHAWithdrawRequest;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import com.yeepay.g3.utils.security.cfca.SignUtil;
 
@@ -152,6 +127,7 @@ public class GateController  {
 	@RequestMapping(value="/gate/doRegister")
 	public String doRegister(String host, BHARegisterRequest request, Model model,TRegisterYeePay  registerYeePay) throws Exception {
 		System.out.println("dddddddddddddddddddd"+registerYeePay.getPlatformUserNo());
+		System.out.println("mmmmmmmmmm"+host);
 		gateService.addOrUpdateRegisterYeePay(registerYeePay);
 		
 		return doSign(request, host + "/bha/toRegister", model );
