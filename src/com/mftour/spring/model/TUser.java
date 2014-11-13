@@ -31,7 +31,7 @@ public class TUser implements java.io.Serializable {
     private String companyScale;     //公司规模
     private String position;       //职位
     private String income;        //收入
-    
+    private String regState;	 //注册状态 f(失败)，s(成功)
     
     
    
@@ -39,9 +39,8 @@ public class TUser implements java.io.Serializable {
 
    
 
-    // Constructors
-
-    /**
+  
+	/**
      * default constructor
      */
     public TUser() {
@@ -183,6 +182,14 @@ public class TUser implements java.io.Serializable {
 
 	public void setIdentityCard(String identityCard) {
 		this.identityCard = identityCard;
+	}
+
+    public String getRegState() {
+		return regState;
+	}
+
+	public void setRegState(String regState) {
+		this.regState = regState;
 	}
 
     
