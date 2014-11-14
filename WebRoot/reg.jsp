@@ -33,8 +33,7 @@ function chk_name(){
 		  $("#tip_username").html('<span class="tip_f">用户名只能以字母开头！</span>');
 		  c_name=false;
 		 //return false; 
-	  } else{
-		  
+	  } else{	  
 		  if($('#name').val() != ''){
 		    	
 		            $.ajax({
@@ -55,23 +54,15 @@ function chk_name(){
 		               		  c_name=true; 
 		                    }
 		                }
-		            });
-		       
-		     }
-			
-		  
-		  
-		 
+		            });		       
+		     }		 
 	  }
 }
 
-
 function chk_pwd(){
 	
-	var ps = $("#password").val();
-	  
-	  var cc= /^[\w]{6,12}$/;	
-		 
+	var ps = $("#password").val();	  
+	  var cc= /^[\w]{6,12}$/;		 
 	  if (!(cc.test(ps))){
 //		  alert('密码输入格式不正确，请输入6到12位数 ');
 		  c_pwd=false;
@@ -80,8 +71,7 @@ function chk_pwd(){
 	  }else{
 		  c_pwd=true;
 		  $("#tip_userpwd").html('<span class="tip_p">密码可以使用！</span>');
-	  }
-	  
+	  }  
 }
 
 function chk_repwd(){
