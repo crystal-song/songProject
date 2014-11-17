@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         $(".anquan_right").click(function(){
         	
             $(this).parent().siblings(".anquan_hide").slideToggle();
-            //alert($(this).text());
+            
             if($(this).text()=="认证"){
 
                $(this).text("取消认证");
@@ -33,93 +33,134 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               $(this).siblings().slideToggle("slow");
             }); 
          $(".anquan_hide_btn").click(function(){
-        	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show();
-        	 
+        	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show();        	 
          });
          $(".anquan_hide input").blur(function(){
-        	 var val=$(this).val();
-        
+        	 var val=$(this).val();                	        	 
         	 
         	 if( $(this).is('#phone') ){
-        		var phone= $('#phone').parent().siblings('.tishitext');
-        		if(val.length!=11||val==""){
-        			 phone.css('display','block');	 
-        		 }else{
-        			 phone.css('display','none');
-        		 } 
-        	 }
-        	 
-        	 if( $(this).is('#username') ){
-         		var username = $('#username').parent().siblings('.tishitext');
-         		//alert(username);
-         		if(val=="" || checkusername(val)){
-         			username.show();
-         		 }else{
-         			username.hide();	
-         		 } 
-         		 
-         	     function checkusername(str){
-         	    	var Expression=/[^\u4E00-\u9FA5]/; 
-         	    	var objExp=new RegExp(Expression);
-         	    	if(objExp.test(val)==true){
-         	    	  return true;       	    
-         	    	}else{
-         	    	  return false;
-         	    	}        	    	 	  
-         	     }
-        	 }   
-        	 
-        	 
-        	 if( $(this).is('#carno') ){
-        		 
-         		var carno= $('#carno').parent().siblings('.tishitext');
          		
-         		if(isCardNo(val)){
-         			 carno.css('display','block');	 
-         		 }else{
-         			 carno.css('display','none')
-         		 } 
-         		
-         		function isCardNo(card)  
-         		{  
-         		   // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X  
-         		   var reg = /^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;  
-         		   if(reg.test(card))  
-         		   {     
-         		     alert('ok');
-         		    return true;  
-         		   } else{
-         			  alert('fail');
-         			 return false;
-         		   } 
-         		}  
-         		
-         	 }
-         	 
-        	 if( $(this).is('#file01') ){
-         		var file01= $('#file01').parent().siblings('.tishitext');
          		if(val==""){
-         			 file01.css('display','block');	 
+         			$(this).parent().siblings(".tishitext").text("您的手机号为空，请重新填写。"); 	 
+         		 }else if(val.length!=11){
+         			$(this).parent().siblings(".tishitext").text("您的手机号填写不正确，请重新填写。"); 
          		 }else{
-         			 file01.css('display','none');
+         			$(this).parent().siblings(".tishitext").text("您的手机号填写正确。"); 
+         		 } 
+         	 }   
+        	       	 
+        	 
+        	 if($(this).is('#username')){
+        		 var Expression=/[^\u4E00-\u9FA5]/;  
+        		 if(val==""){         			  
+         			  $(this).parent().siblings(".tishitext").text("您的姓名为空。");                     	 	                			
+         		 }else if(Expression.test(val)){
+         			 $(this).parent().siblings(".tishitext").text("您的姓名不正确！请重新填写。"); 
+         		 }else{         			
+         			  $(this).parent().siblings(".tishitext").text("您的姓名填写正确。");     		 
+         		      }  
+        		 
+         	     function checkusername(val){            	    	          	     
+         	    	       	    	
+         	    	  if(Expression.test(val)==true){           	    		        	    	
+         	    		return true;          	    		
+         	    	}         	    	
+         	      	  else{             	    	
+         	    	    return false;          	    	  
+         	    	}          	    	
+         	     } 				  				  		  
+		}
+        		        	      	 
+        	 if($(this).is('#card_id')){
+        		 var reg = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/;  
+				  if($('#card_id').val()==""){
+
+					   $(this).parent().siblings(".tishitext").text("您的身份证为空。");
+					   return false;
+					  }				  				  
+				  else if(!reg.test($('#card_id').val())){
+                      $(this).parent().siblings(".tishitext").text("您的身份证填写不正确。");
+					   return false;      
+        		 }else{
+                      $(this).parent().siblings(".tishitext").text("您的身份证填写正确。");
+					   return true;      
+        		 }   				  				  
+				  			  				  				 
+			  }
+        	         	 
+        	 if($(this).is('#email')){				 
+				   var cc= /^([a-zA-Z0-9]|[._])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;				  
+				      if($('#email').val()==""){
+      			    	$(this).parent().siblings(".tishitext").text("您的邮箱为空！请重新填写。");     
+      			    	return false;
+      			    } else if (!(cc.test($('#email').val()))){        			    	
+      			    	$(this).parent().siblings(".tishitext").text("您的邮箱格式不正确！请重新填写。");     
+      			    	return false;        				      			         				
+      			  }else{       			           				  
+      				   $(this).parent().siblings(".tishitext").text("您的邮箱填写正确。");     
+      				    return true;        			
+      			  }				  
+			}   
+        	 
+      	 
+        	 if( $(this).is('#file01') ){
+         		
+         		if(val==""){
+         			$(this).parent().siblings(".tishitext").text("您的正面证件照为空。"); 
+         		 }else{
+         			$(this).parent().siblings(".tishitext").text("您的正面证件照上传成功。"); 
          		 } 
          	 }
         	 
         	 if( $(this).is('#file02') ){
-          		var file02= $('#file02').parent().siblings('.tishitext');
+          		
           		if(val==""){
-          			 file02.css('display','block');	 
+          			$(this).parent().siblings(".tishitext").text("您的背面证件照为空。");  
           		 }else{
-          			 file02.css('display','none')
+          			$(this).parent().siblings(".tishitext").text("您的背面证件照上传成功。"); 
           		 } 
           	 }
-        	 
-         });
-      
-});
-        
-</script>
+          	      	 
+        	  if($(this).is('#newpassword')){
+				   	   				
+					var ps = $("#password").val();
+					var pas = $("#newpassword").val();
+					if(ps=="" || pas==""){						
+					  $(this).parent().siblings(".tishitext").text("您的密码为空。");
+						  return false;
+					}else if(ps!=pas){
 
+			          $(this).parent().siblings(".tishitext").text("兩次輸入的密碼不一致。");
+						 return false;
+					}else{						
+					  $(this).parent().siblings(".tishitext").text("您的密码输入正确");
+						  return true;
+                       }
+			 }
+             
+        	  
+        	  if($(this).is('#new_zhifu_password')){
+ 	   				
+					var ps01 = $("#zhifu_password").val();
+					var pas01 = $("#new_zhifu_password").val();
+					//alert(ps01);
+					
+					if(ps01=="" || pas01==""){						
+					  $(this).parent().siblings(".tishitext").text("您的密码为空。");
+						  return false;
+					}else if(ps01!=pas01){
+			          $(this).parent().siblings(".tishitext").text("兩次輸入的密码输入不一致。");
+						 return false;
+					}else if(ps01==pas01){						
+					  $(this).parent().siblings(".tishitext").text("兩次輸入一致。");
+						  return true;
+                     }
+			 }
+         });
+     
+});
+   
+</script>
 </head>
 
 <body>
@@ -146,35 +187,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <span>asdoi</span>
                         </div> 
                    </li>
-
-                   <li>
+                   <li >
                         <div class="anquan_label">
                          <span>实名认证</span>
                          <span>已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
-                       <div class="anquan_hide">
+                       <div class="anquan_hide" style="display:block;">
                          <ul>
                            <li><span><strong>*</strong>用户名</span><span></span></li>
                            <li>
-                           <span><strong>*</strong>真实姓名</span>
-                           <span><input type="text" id="username"></input></span> 
-                           <span class="tishitext" style="display:none">请输入正确的中文名!</span> 
+                             <span><strong>*</strong>真实姓名</span>
+                             <span><input type="text" id="username"></input></span> 
+                             <span class="tishitext" style="width:auto;"></span> 
                            </li>
                            <li>
-                           <span><strong>*</strong>证件类型</span>
-                           <span>
+                             <span><strong>*</strong>证件类型</span>
+                             <span>
 	                          <select>
 	                              <option value="">身份证</option>
 	                              <option value="">军官证</option>
 	                              <option value="">台胞证</option>
 	                              <option value="">护照</option>
 	                          </select>
-                          </span></li>
-                           <li><span><strong>*</strong>身份证号码</span><span><input type="text" id="carno"></input></span><span class="tishitext" style="display:none">请输入18位有效证件号!</span></li>
-                           <li><span><strong>*</strong>上传正面证件照</span><span><input type="file" id="file01"></input></span></li>
+                             </span>
+                            </li>
+                           <li><span><strong>*</strong>身份证号码</span><span><input type="text" id="card_id"></input></span><span class="tishitext" style="width:auto"></span></li>
+                           <li><span><strong>*</strong>上传正面证件照</span><span><input type="file" id="file01"></input></span><span class="tishitext" style="width:auto"></span></li>
                            <li id="pic_height"><span></span><span id="postcar"><div></div></span></li>
-                           <li><span><strong>*</strong>上传背面证件照</span><span><input type="file" id="file02"></input></span></li>
+                           <li><span><strong>*</strong>上传背面证件照</span><span><input type="file" id="file02"></input></span><span class="tishitext" style="width:auto"></span></li>
                            <li id="pic_height"><span></span><span id="postcar"><div></div></span></li>
                            
                            <li id="text-align_style">  
@@ -188,15 +229,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
                    </li>
-                   <li>
+                   <li style="display:none">
                        <div class="anquan_label">
                          <span>手机认证</span>
                          <span>已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
-                       <div class="anquan_hide">
+                       <div class="anquan_hide" style="display:block">
                           <ul>
-                           <li><span><strong>*</strong>手机号码</span><span><input type="text" id="phone"></input></span> <span class="tishitext" style="display:block">请输入正确的手机号!</span></li>
+                           <li><span><strong>*</strong>手机号码</span>
+                               <span><input type="text" id="phone"></input></span> 
+                               <span class="tishitext" style="width:auto"></span>
+                           </li>
                            <li><a class="sent">获取验证码</a></li>
                            <li><span><strong>*</strong>短信验证码</span><span><input type="text"></input></span></li>
                            <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
@@ -210,46 +254,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <span>已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
-                       <div class="anquan_hide">
+                       <div class="anquan_hide" style="display:block">
                           <ul>
-                           <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="mail"></input></span><span class="tishitext" style="display:none">请输入正确格式邮箱!</span></li>
+                           <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="email"></input></span><span class="tishitext" style="width:auto;"></span></li>
                            <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
                    </li>
-                   <li>
+                   <li >
                        <div class="anquan_label">
                          <span>登录密码</span>
                          <span>已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
-                       <div class="anquan_hide">
+                       <div class="anquan_hide" style="display:block">
                           <ul>
-                           <li><span><strong>*</strong>原登录密码</span><span><input type="text"></input></span></li>
-                            <li><span><strong>*</strong>新登录密码</span><span><input type="text"></input></span></li>
-                           <li><span><strong>*</strong>再次输入登录密码</span><span><input type="text"></input></span><span class="tishitext" style="display:none">密码不一致,请从新输入!</span></li>
+                           <li><span><strong>*</strong>原登录密码</span><span><input type="text" ></input></span></li>
+                           <li><span><strong>*</strong>新登录密码</span><span><input type="text" id="password"></input></span></li>
+                           <li><span><strong>*</strong>再次输入登录密码</span><span><input type="text" id="newpassword"></input></span><span class="tishitext" style="width:auto"></span></li>
                            <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
                    </li>
-                   <li>
-                       <div class="anquan_label">
+                   <li style="display:block">
+                       <div class="anquan_label" style="display:block">
                          <span>支付密码</span>
                          <span>已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
-                       <div class="anquan_hide">
+                       <div class="anquan_hide" style="display:block">
                           <ul>
-                           <li><span><strong>*</strong>输入支付密码</span><span><input type="text"></input></span></li>
-                           <li><span><strong>*</strong>再次输入支付密码</span><span><input type="text"></input></span><span class="tishitext" style="display:none">密码不一致,请从新输入!</span></li>
+                           <li><span><strong>*</strong>输入支付密码</span><span><input type="text" id="zhifu_password"></input></span></li>
+                           <li><span><strong>*</strong>再次输入支付密码</span><span><input type="text" id="new_zhifu_password"></input></span><span class="tishitext" style="width:auto"></span></li>
                            <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
                    </li>
-                   <li>
+                   <li style="display:none">
                         <div class="anquan_label">
                          <span>密码保护</span>
                          <span>已设置</span>
