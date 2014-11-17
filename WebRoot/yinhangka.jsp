@@ -22,6 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $(this).siblings().slideToggle("slow");
           });
 });
+    
+    function onSubmit(host) {
+    	  document.getElementById("host").value = host;
+    	  var form = document.getElementById("form");
+    	  form.submit();
+    	}
         
 </script>
 
@@ -89,10 +95,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <form id="form" role="form" action="<%=path%>/gate/dobinding" method="post" target="_blank">
 		          <input type="hidden" id="host" name="host">
 		          <div class="form-group">
-		           <label for="platformNo">platformNo</label><input type="text"
-		              class="form-control" id="platformNo" name="platformNo" value="10040011137" /> 
-		              <!--  <input type="text"class="form-control" id="platformNo" 
-		                   name="platformNo" value="10012415118" />  -->
+		         <!--   <label for="platformNo">platformNo</label><input type="text"
+		              class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
+		               <input type="text"class="form-control" id="platformNo" 
+		                   name="platformNo" value="10012415118" />  
 		          </div>
 		          <div class="form-group">
 		            <label for="requestNo">requestNo</label><input type="text"
@@ -101,7 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		          <div class="form-group">
 		            <label for="platformUserNo">platformUserNo</label><input
 		              type="text" class="form-control" id="platformUserNo"
-		              name="platformUserNo"  value="1413232498212"  />
+		              name="platformUserNo"  value="${name}"  />
 		          </div>
 		          <div class="form-group">
 		            <label for="notifyUrl">notifyUrl</label><input type="text"
