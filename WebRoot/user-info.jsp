@@ -117,41 +117,41 @@ var navIndex=2;
 	                 </li>
                      <li><span>真实姓名</span>
 	                      <span>${user1.realName}</span>
-	                      <span class="tip">立即认证</span>
+	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                      <div id="tishik01">
 	                           <span class="border_left01"></span>
-	                           <div class="border_cent01" >您未进行实名认证，<a href="<%=path%>/anquanshezhi.jsp">请认证</a></div>
+	                           <div class="border_cent01" ><a href="<%=path%>/anquanshezhi.jsp">您未进行实名认证，请认证</a></div>
 	                           <span class="border_right01"></span>
 	                      </div></li>
                      <li><span>身份证号码</span>
 	                      <span>${user1.identityCard}</span>
-	                      <span class="tip">立即认证</span>
+	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                      <div id="tishik01">
 	                           <span class="border_left01"></span>
-	                           <div class="border_cent01">您未绑定身份证，<a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div>
+	                           <div class="border_cent01"><a href="<%=path%>/anquanshezhi.jsp">您未绑定身份证，请绑定</a></div>
 	                           <span class="border_right01"></span>
 	                      </div></li>
                      <li><span>手机号码</span>
 	                      <span>${user1.phone}</span>
-	                      <span class="tip">立即认证</span>
+	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
-	                           <div class="border_cent01">您未绑定手机号码，<a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div>
+	                           <div class="border_cent01"><a href="<%=path%>/anquanshezhi.jsp">您未绑定手机号码，请绑定</a></div>
 	                           <span class="border_right01"></span>
 	                        </div></li>
                      <li><span>邮箱地址</span>
 	                      <span>${user1.email}</span>
-	                      <span class="tip">立即认证</span>
+	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
-	                           <div class="border_cent01">您未绑定邮箱，<a href="<%=path%>/anquanshezhi.jsp">请绑定</a></div>
+	                           <div class="border_cent01"><a href="<%=path%>/anquanshezhi.jsp">您未绑定邮箱，请绑定</a></div>
 	                           <span class="border_right01"></span>
 	                        </div></li>
 	                 <li>
 	                      <span>易宝账号</span>
 	                      <span><%-- ${registerYeePay1.platformUserNo} --%>${user1.realName}</span>
 	                      <c:if test='${ empty registerYeePay1.code}'>
-	                      <span class="tip">立即认证</span>
+	                      <span class="tip"><a href="<%=path%>/gate/register" target="_blank">立即认证</a></span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
 	                           <div class="border_cent01"><a href="<%=path%>/gate/register" target="_blank">您未绑定易宝账号，请绑定！</a></div>
