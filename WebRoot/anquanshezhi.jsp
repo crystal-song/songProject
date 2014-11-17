@@ -146,13 +146,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						  return true;
                        }
 			 }
-             
-        	  
+                   	  
         	  if($(this).is('#new_zhifu_password')){
  	   				
 					var ps01 = $("#zhifu_password").val();
 					var pas01 = $("#new_zhifu_password").val();
-					//alert(ps01);
 					
 					if(ps01=="" || pas01==""){						
 					  $(this).parent().siblings(".tishitext").text("您的密码为空。");
