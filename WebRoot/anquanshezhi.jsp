@@ -28,6 +28,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }else if($(this).text()=="取消认证"){
               $(this).text("认证");
             }
+            
+            if($(this).text()=="修改"){
+
+                $(this).text("取消修改");
+
+             }else if($(this).text()=="取消修改"){
+               $(this).text("修改");
+             }
+            
          }); 
          $(".u_left_mian").click(function(){
               $(this).siblings().slideToggle("slow");
@@ -193,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <span>已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
-                       <div class="anquan_hide" style="display:block;">
+                       <div class="anquan_hide" style="display:none;">
                          <ul>
                            <li><span><strong>*</strong>用户名</span><span></span></li>
                            <li>
@@ -254,7 +263,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <span>已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
-                       <div class="anquan_hide" style="display:block">
+                       <div class="anquan_hide" style="display:none">
                           <ul>
                            <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="email"></input></span><span class="tishitext" style="width:auto;"></span></li>
                            <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
@@ -266,9 +275,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        <div class="anquan_label">
                          <span>登录密码</span>
                          <span>已设置</span>
-                         <span class="anquan_right">认证</span>
+                         <span class="anquan_right">修改</span>
                         </div>
-                       <div class="anquan_hide" style="display:block">
+                       <div class="anquan_hide" style="display:none">
                           <ul>
                            <li><span><strong>*</strong>原登录密码</span><span><input type="text" ></input></span></li>
                            <li><span><strong>*</strong>新登录密码</span><span><input type="text" id="password"></input></span></li>
@@ -279,12 +288,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        </div>
                    </li>
                    <li style="display:block">
-                       <div class="anquan_label" style="display:block">
+                       <div class="anquan_label" style="display:none">
                          <span>支付密码</span>
                          <span>已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
-                       <div class="anquan_hide" style="display:block">
+                       <div class="anquan_hide" style="display:none">
                           <ul>
                            <li><span><strong>*</strong>输入支付密码</span><span><input type="text" id="zhifu_password"></input></span></li>
                            <li><span><strong>*</strong>再次输入支付密码</span><span><input type="text" id="new_zhifu_password"></input></span><span class="tishitext" style="width:auto"></span></li>
