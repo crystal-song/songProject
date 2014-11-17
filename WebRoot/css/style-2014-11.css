@@ -2667,6 +2667,9 @@ ul,li{
 	float: right;
 	cursor: pointer;
 }
+.anquan_label .yishe{
+	display:none;
+}
 .anquan_hide ul{
 	width: 100%;
 	height: auto;
@@ -2758,6 +2761,7 @@ ul,li{
 	line-height:200px;
 	background:url(../img/renok.png) 30% 48% no-repeat;
 	font-size:20px;
+	text-align:center;
 }
 .tong{
 	width:100%; 
