@@ -14,4 +14,6 @@ public interface IUserDao {
 	
 	public List<TUser> getName(String name)throws Exception;
 
+	public int finaAllRecord(String mobilephone);
+
 }

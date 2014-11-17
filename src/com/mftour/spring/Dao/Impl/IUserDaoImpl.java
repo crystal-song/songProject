@@ -42,7 +42,14 @@ public class IUserDaoImpl extends HibernateDaoSupport  implements IUserDao{
 		return null;
 	}
 	
-	
+	public int finaAllRecord(String mobilephone){
+		String hql="select user.messageCount from TUser user where user.phone=:mobilephone";
+		Query query=getSession().createQuery(hql);
+		query.setParameter("mobilephone", mobilephone);
+		Number num=(Number)query.uniqueResult();
+		return num.intValue();
+	}
+
 	
 	
 	

@@ -11,5 +11,6 @@ public interface IUserService {
 	public void addOrUpdate(TUser user) throws Exception;
 	
 	public List<TUser> getName(String name)throws Exception;
+	public int findAllRecord(String mobilephone);
 
 }

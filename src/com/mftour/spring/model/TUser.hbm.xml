@@ -62,6 +62,21 @@
         <property name="regState" type="java.lang.String">
             <column name="regState" length="10" />
         </property>
+        <property name="identityCardPic1" type="java.lang.String">
+            <column name="identityCardPic1" length="500" />
+        </property>
+        <property name="identityCardPic2" type="java.lang.String">
+            <column name="identityCardPic2" length="500" />
+        </property>
+        <property name="captcha" type="java.lang.String">
+            <column name="captcha" length="20" />
+        </property>
+        <property name="sendTime" type="java.lang.String">
+            <column name="sendTime" length="50" />
+        </property>
+        <property name="messageCount" type="java.lang.Integer">
+            <column name="messageCount" length="10" />
+        </property>
        
     </class>
 </hibernate-mapping>

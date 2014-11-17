@@ -39,7 +39,11 @@ public class UserServiceImpl implements IUserService {
 		
 	}
 
-	
+	public int findAllRecord(String mobilephone){
+		int i=0;
+		i=userDao.finaAllRecord(mobilephone);
+		return i;
+	}
 	
 	
 	

@@ -1,18 +1,29 @@
 package com.mftour.spring.web;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
+import com.mftour.spring.util.Env;
 import com.mftour.spring.util.MailSenderInfo;
 import com.mftour.spring.util.SimpleMailSender;
+import com.sms.webservice.client.SmsReturnObj;
+import com.sms.webservice.client.SmsWebClient;
 
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +32,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 /*
  * 不需要实现任何接口，也不需要继承任何的类，也不需要任何 Servlet API
@@ -110,6 +123,48 @@ public class WelcomeController {
 	
 	return "reg_email";
 }
+	@RequestMapping(value = "/emailVerification", method=RequestMethod.POST)
+	public String emailVerification(@RequestParam("mail") String mail, Model model,HttpServletRequest request) throws Exception {
+		boolean flag=false;
+		String username=(String)request.getSession().getAttribute("name");
+		TUser user = userService.getUserByAccount(username);
+		user.setEmail(mail);
+		userService.addOrUpdate(user);
+		//这个类主要是设置邮件
+		MailSenderInfo mailInfo = new MailSenderInfo(); 
+		mailInfo.setMailServerHost("smtp.ptobchina.com"); 
+		mailInfo.setMailServerPort("25"); 
+		mailInfo.setValidate(true);  
+		mailInfo.setUserName("cs@ptobchina.com"); 
+		mailInfo.setPassword("12qwaszx");//您的邮箱密码 
+		mailInfo.setFromAddress("cs@ptobchina.com"); 
+		mailInfo.setToAddress(user.getEmail()); 
+		mailInfo.setSubject("中租宝-用户验证"); //设置邮箱标题
+		String path = request.getContextPath();
+		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+		String resetPassHref =  basePath+"welcome/register?username="+user.getName();
+		String mainjsp = "http://www.ptobchina.com/wel";
+		
+		String msgContent = "亲爱的用户" + user.getName() + "，您好，<br/><br/>"
+				+ "您在" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
+				+ "<a href="+resetPassHref+"><font color='green'>http://www.ptobchina.com/welcome/register?username="+user.getName()+"</font></a><br/><br/>"
+				+"(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
+				+ "中租宝   <a href="+mainjsp+"><font color='green'>http://www.ptobchina.com/</font></a>" + "<br/><br/>"
+				+ "此为自动发送邮件，请勿直接回复！";
+		mailInfo.setContent(msgContent); //
+		//这个类主要来发送邮件
+		SimpleMailSender sms = new SimpleMailSender();
+		// sms.sendTextMail(mailInfo);//发送文体格式  
+		flag= sms.sendHtmlMail(mailInfo);//发送html格式
+		if(flag!=true){
+			mailInfo.setUserName("no-reply@ptobchina.com"); 
+			mailInfo.setPassword("12qwaszx");//您的邮箱密码 
+			mailInfo.setFromAddress("no-reply@ptobchina.com"); 
+			flag=sms.sendHtmlMail(mailInfo);
+		}
+		
+		return "reg_email";
+	}
 	@RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET})
 	public String register(@RequestParam("username") String username,Model model) throws Exception {
 		TUser user = userService.getUserByAccount(username);
@@ -124,8 +179,8 @@ public class WelcomeController {
 	public String Session( Model model,TUser user,HttpServletRequest request) throws Exception {
 		request.getSession().setAttribute("name",user.getName()); 
 		TUser user1 = userService.getUserByAccount(user.getName());
+		request.getSession().setAttribute("userinfo",user1);
 		model.addAttribute("user1", user1); 
-	
 		TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0); 
 		model.addAttribute("registerYeePay1", registerYeePay1);
 //		request.getSession().setAttribute("users", username);
@@ -144,7 +199,187 @@ public class WelcomeController {
 //		      
 		return "fail"; 
 }
+
+	@RequestMapping(value="/identityCardVerification", method=RequestMethod.POST)
+	public String identityCardVerification(TUser user,@RequestParam MultipartFile[] myfiles,HttpServletRequest request){
+		String realPath = request.getSession().getServletContext().getRealPath("/");  
+		System.out.println("ddddddddddd"+realPath);
+		try {
+			TUser user1=userService.getUserByAccount(user.getName());
+			user1.setRealName(user.getRealName());
+			user1.setIdentityCard(user.getIdentityCard());
+			user1.setIdentityCardPic1(myfiles[0].getOriginalFilename());
+			user1.setIdentityCardPic2(myfiles[1].getOriginalFilename());
+			userService.addOrUpdate(user1);
+			for(MultipartFile myfile : myfiles){  
+				if(myfile.isEmpty()){  
+					System.out.println("文件未上传");  
+				}else{  
+					System.out.println("文件长度: " + myfile.getSize());  
+					System.out.println("文件类型: " + myfile.getContentType());  
+					System.out.println("文件名称: " + myfile.getName());  
+					System.out.println("文件原名: " + myfile.getOriginalFilename());  
+					System.out.println("========================================");  
+					FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(realPath, myfile.getOriginalFilename()));
+				}}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		
+		return "identityCard_success";
+	}
 	
+	
+	/**
+	 * 验证手机短信是否发送成功
+	 * 
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/sms", method=RequestMethod.POST)
+	public void sms(@RequestParam("jbPhone") String jbPhone,@RequestParam("code") String code,HttpServletRequest request,HttpServletResponse response)  throws Exception {
+		String result = "0";
+		/** 手机号码 *//*
+		String jbPhone = WebContextUtil.getRequest().getParameter("jbPhone");
+		*//** 短信验证码 *//*
+		String code = WebContextUtil.getRequest().getParameter("code");
+		*//** 短信验证码存入session(session的默认失效时间30分钟) *//*
+		WebContextUtil.getSession().setAttribute("code", code);*/
+		/** 如何初始化失败返回 */
+		request.getSession().setAttribute("code", code);
+		if(!initClient()) {
+			return;
+		}
+		/** 单个手机号发送短信的方法的参数准备 */
+		// 手机号码
+		String mobilephone = jbPhone;
+		// 短信内容+随机生成的6位短信验证码
+		String content = "根据中租宝公司的委托，特向您发送此条短信。您的验证码为:" + code;
+		// 操作用户的ID
+		Integer operId = Integer.parseInt(Env.getInstance().getProperty("operId"));
+		// 定时发送的的发送时间(缺省为空，如果即时发送，填空)
+		String tosend_time = "";
+		// 应用系统的短信ID，用户查询该短信的状态报告(缺省为0，即不需查询短信的状态报告)
+		int sms_id = 0;
+		// 黑名单过滤(0：不需要黑名单过滤，1：需要黑名单过滤，缺省为0)
+		short backlist_filter = 0;
+		// 禁止语过滤(0：不需要禁止语过滤，1：需要禁止语过滤，缺省为0)
+		short fbdword_filter = 0;
+		// 优先级(值越大优先级越高，0：普通，1,：优先，2：最高，缺省为0)
+		short priority = 0;
+		// 短信有效时间(格式为：YYYY-MM-DD HH:mm:ss目前为空)
+		String valid_time = "";
+		/** 发送短信之前先统计一个已经发送的短信条数 */
+		TUser user=(TUser)request.getSession().getAttribute("userinfo");
+		int messageCount = userService.findAllRecord(mobilephone);
+		System.out.println("已发短信条数为：" +messageCount);
+		if(messageCount < 5){
+			/** 单个手机号发送短信 */
+			if (!sendMessage(mobilephone, content, operId, tosend_time, sms_id,
+					backlist_filter, fbdword_filter, priority, valid_time)) {
+				result = "0";// 失败
+			} else {
+				result = "1";// 成功
+				/** 发送一条短信，记录一条短信记录，为了方便之后的统计短信发送次数 */
+				user.setPhone(mobilephone);// 手机号码
+				user.setCaptcha(code);// 短信验证码
+				user.setSendTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));// 短信发送时间
+				user.setMessageCount(messageCount+1);
+				userService.addOrUpdate(user);
+			}
+		}else{
+			System.out.println("该手机号码今天发送验证码过多");
+			result = "2";//一个手机号码最多发送3条短信验证码
+		}
+		response.setContentType("application/json;charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache");
+		PrintWriter out = response.getWriter();
+		out.write(result.toString());
+	}
+	
+	/**
+	 * WebService客户端初始化
+	 * 
+	 */
+	public static boolean initClient() {
+		/**
+		 * 判断客户端是否已经初始化
+		 */
+		if (!SmsWebClient.enable()) {
+			int ret = 0;
+			try {
+				ret = SmsWebClient.init("url", "userName", "passWord");
+				if (ret == -1 || !SmsWebClient.enable()) {
+					System.out.println("短信平台接口初始化失败！");
+					return false;
+				}
+				System.out.println("短信平台接口初始化成功！"+ret+"----------");
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				System.out.println("短信平台接口初始化过程中异常！");
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 * 单个手机号码发送
+	 * 
+	 * @param mobilephone
+	 *            手机号
+	 * @param content
+	 *            短信内容
+	 * @param operId
+	 *            操作用户的ID
+	 * @param tosend_time
+	 *            定时发送的发送时间
+	 * @param sms_id
+	 *            应用系统的短信ID
+	 * @param backlist_filter
+	 *            黑名单过滤
+	 * @param fbdword_filter
+	 *            禁止语过滤
+	 * @param priority
+	 *            优先级
+	 * @param valid_time
+	 *            短信有效时间
+	 */
+	public static boolean sendMessage(java.lang.String mobilephone,
+			java.lang.String content, int operId, java.lang.String tosend_time,
+			int sms_id, short backlist_filter, short fbdword_filter,
+			short priority, java.lang.String valid_time) {
+		// 单个手机号码发送
+		try {
+			SmsReturnObj retObj = SmsWebClient.webSendMessage(mobilephone,
+					content, operId, tosend_time, sms_id, backlist_filter,
+					fbdword_filter, priority, valid_time);
+			if (retObj.getReturnCode() != 1) {
+				System.out.println("短信发送失败，原因为：" + retObj.getReturnMsg());
+				return false;
+			} else {
+				System.out.println("短信发送成功！返回结果为：" + retObj.getReturnMsg());
+				return true;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("短信发送过程发生异常!");
+		}
+		return true;
+	}
+	
+	@RequestMapping(value="/smsCheckCode", method=RequestMethod.POST)
+	public String smsCheckCode(@RequestParam("SmsCheckCode") String SmsCheckCode,HttpServletRequest request){
+		String code=(String)request.getSession().getAttribute("code");
+		if(code.equals(SmsCheckCode)){
+			return "success";
+		}
+		return "fail";
+	}
+	@RequestMapping(value="/phoneVerification", method=RequestMethod.POST)
+	public String phoneVerification(){
+		
+		return "PhoneVerification_success";
+	}
 	
 	
 	

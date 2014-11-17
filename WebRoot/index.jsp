@@ -336,7 +336,7 @@ $(window).on('scroll', function(){
                     	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
                     	 </c:forEach>
 						</c:if>
-		      </ul>      
+		      </ul>  
 	      </div>
      </div> 
     </div> 

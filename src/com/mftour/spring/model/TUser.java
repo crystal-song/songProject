@@ -32,13 +32,12 @@ public class TUser implements java.io.Serializable {
     private String position;       //职位
     private String income;        //收入
     private String regState;	 //注册状态 f(失败)，s(成功)
-    
-    
+    private String identityCardPic1;	//身份证正面图片
+    private String identityCardPic2;	//身份证反面图片
+	private String captcha;           //手机验证码
+    private String sendTime;          //发送时间
+    private Integer messageCount;	  //发送短信的次数
    
-    
-
-   
-
   
 	/**
      * default constructor
@@ -192,7 +191,48 @@ public class TUser implements java.io.Serializable {
 		this.regState = regState;
 	}
 
-    
+	 public String getIdentityCardPic1() {
+			return identityCardPic1;
+		}
+
+		public void setIdentityCardPic1(String identityCardPic1) {
+			this.identityCardPic1 = identityCardPic1;
+		}
+
+		public String getIdentityCardPic2() {
+			return identityCardPic2;
+		}
+
+		public void setIdentityCardPic2(String identityCardPic2) {
+			this.identityCardPic2 = identityCardPic2;
+		}
+
+		
+	    
+		public String getCaptcha() {
+			return captcha;
+		}
+
+		public void setCaptcha(String captcha) {
+			this.captcha = captcha;
+		}
+
+		public String getSendTime() {
+			return sendTime;
+		}
+
+		public void setSendTime(String sendTime) {
+			this.sendTime = sendTime;
+		}
+
+		public Integer getMessageCount() {
+			return messageCount;
+		}
+
+		public void setMessageCount(Integer messageCount) {
+			this.messageCount = messageCount;
+		}
+
 	
 	
 

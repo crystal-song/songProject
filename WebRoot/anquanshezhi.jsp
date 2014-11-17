@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.mftour.spring.service.IUserService"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -12,7 +14,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <title>安全设置 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
 <script type="text/javascript">
     var navIndex=3;    
     $(document).ready(function(){
@@ -169,7 +172,84 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          });
      
 });
-   
+
+  //js本地图片预览，兼容ie[6-9]、火狐、Chrome17+、Opera11+、Maxthon3、360浏览器
+    function PreviewImage(fileObj,imgPreviewId,divPreviewId){
+         var allowExtention=".jpg,.bmp,.gif,.png";//允许上传文件的后缀名document.getElementById("hfAllowPicSuffix").value;
+         var extention=fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();            
+         var browserVersion= window.navigator.userAgent.toUpperCase();
+         if(allowExtention.indexOf(extention)>-1){ 
+             if(fileObj.files){//兼容chrome、火狐7+、360浏览器5.5+等，应该也兼容ie10，HTML5实现预览
+                if(window.FileReader){
+                     var reader = new FileReader(); 
+                     reader.onload = function(e){
+                         document.getElementById(imgPreviewId).setAttribute("src",e.target.result);
+                     }  
+                     reader.readAsDataURL(fileObj.files[0]);
+                 }else if(browserVersion.indexOf("SAFARI")>-1){
+                     alert("不支持Safari浏览器6.0以下版本的图片预览!");
+                 }
+             }else if (browserVersion.indexOf("MSIE")>-1){//ie、360低版本预览
+                if(browserVersion.indexOf("MSIE 6")>-1){//ie6
+                     document.getElementById(imgPreviewId).setAttribute("src",fileObj.value);
+                 }else{//ie[7-9]
+                     fileObj.select();
+                     if(browserVersion.indexOf("MSIE 9")>-1)
+                         fileObj.blur();//不加上document.selection.createRange().text在ie9会拒绝访问
+                    var newPreview =document.getElementById(divPreviewId+"New");
+                     if(newPreview==null){
+                         newPreview =document.createElement("div");
+                         newPreview.setAttribute("id",divPreviewId+"New");
+                         newPreview.style.width = document.getElementById(imgPreviewId).width+"px";
+                         newPreview.style.height = document.getElementById(imgPreviewId).height+"px";
+                         newPreview.style.border="solid 1px #d2e2e2";
+                     }
+                     newPreview.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='" + document.selection.createRange().text + "')";                            
+                     var tempDivPreview=document.getElementById(divPreviewId);
+                     tempDivPreview.parentNode.insertBefore(newPreview,tempDivPreview);
+                     tempDivPreview.style.display="none";                    
+                 }
+             }else if(browserVersion.indexOf("FIREFOX")>-1){//firefox
+                 var firefoxVersion= parseFloat(browserVersion.toLowerCase().match(/firefox\/([\d.]+)/)[1]);
+                 if(firefoxVersion<7){//firefox7以下版本
+                    document.getElementById(imgPreviewId).setAttribute("src",fileObj.files[0].getAsDataURL());
+                 }else{//firefox7.0+                    
+                     document.getElementById(imgPreviewId).setAttribute("src",window.URL.createObjectURL(fileObj.files[0]));
+                 }
+             }else{
+                 document.getElementById(imgPreviewId).setAttribute("src",fileObj.value);
+             }         
+         }else{
+             alert("仅支持"+allowExtention+"为后缀名的文件!");
+             fileObj.value="";//清空选中文件
+            if(browserVersion.indexOf("MSIE")>-1){                        
+                 fileObj.select();
+                 document.selection.clear();
+             }                
+             fileObj.outerHTML=fileObj.outerHTML;
+         }
+     }
+  function updatePassword(){
+	  if($('#oldPassword').val() != ''){
+	    	if($('#password').val() != ''){
+	            $.ajax({
+	                type: 'POST',
+	                url: '<c:url value="/user/updatePasswordajax"/>',
+	                data: 'oldPassword='+$('#oldPassword').val()+'&password='+$('#password').val(),
+	                dataType: 'text',
+	                success: function(data) {
+	                    if(data == '"success"') {
+	                    	alert("密码修改成功！"); 
+	                    } 
+	                }
+	            });
+	        }else{
+	             alert('请输入原始密码！ ');
+	        }
+	     }else{
+	     	alert('请输入新密码！');
+	     }   
+  }
 </script>
 </head>
 
@@ -198,18 +278,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div> 
                    </li>
                    <li >
+                   <form action="<%=path%>/welcome/identityCardVerification" method="post" enctype="multipart/form-data">
                         <div class="anquan_label">
                          <span>实名认证</span>
+                          <c:if test="${userinfo.identityCard!=null}">
                          <span class="yishe">已设置</span>
+                     	  </c:if>
+                     	<c:if test="${userinfo.identityCard==null}">
                          <span class="anquan_right">认证</span>
+                        </c:if>
                         </div>
                        <div class="anquan_hide" style="display:none;">
                          <ul>
-                           <li><span><strong>*</strong>用户名</span><span></span></li>
+                           <li><span><strong>*</strong>用户名</span>
+                           <span><input type="text" id="name" name="name" value="${name}"></input></span> 
+                           </li>
                            <li>
-                             <span><strong>*</strong>真实姓名</span>
-                             <span><input type="text" id="username"></input></span> 
-                             <span class="tishitext" style="width:auto;"></span> 
+                           <span><strong>*</strong>真实姓名</span>
+                           <span><input type="text" id="realName" name="realName"></input></span> 
+                           <span class="tishitext" style="width:auto;"></span> 
                            </li>
                            <li>
                              <span><strong>*</strong>证件类型</span>
@@ -220,72 +307,103 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                              <option value="">台胞证</option>
 	                              <option value="">护照</option>
 	                          </select>
-                             </span>
-                            </li>
-                           <li><span><strong>*</strong>身份证号码</span><span><input type="text" id="card_id"></input></span><span class="tishitext" style="width:auto"></span></li>
-                           <li><span><strong>*</strong>上传正面证件照</span><span><input type="file" id="file01"></input></span><span class="tishitext" style="width:auto"></span></li>
-                           <li id="pic_height"><span></span><span id="postcar"><div></div></span></li>
-                           <li><span><strong>*</strong>上传背面证件照</span><span><input type="file" id="file02"></input></span><span class="tishitext" style="width:auto"></span></li>
-                           <li id="pic_height"><span></span><span id="postcar"><div></div></span></li>
-                           
+                          </span></li>
+                           <li><span><strong>*</strong>身份证号码</span>
+                           <span>
+                           <input type="text" id="identityCard" name="identityCard"></input>
+                           </span><span class="tishitext" style="width:auto"></span>
+                           </li>
+                           <li><span><strong>*</strong>上传正面证件照</span><span> <input type="file" name="myfiles" onchange="PreviewImage(this,'imgHeadPhoto1','divPreview1')" size="20"/></span><span class="tishitext" style="width:auto"></span></li>
+                           <li id="pic_height"><span></span>
+                            <span id="postcar">
+                            <div id="divPreview1">
+      						 <img id="imgHeadPhoto1" src="noperson.jpg" style="width: 200px; height: 200px; border: solid 1px #d2e2e2;" alt="" />
+ 							</div>
+ 							</span>
+ 						   </li>
+                          
+                         <li><span><strong>*</strong>上传背面证件照</span><span>  <input type="file" name="myfiles" onchange="PreviewImage(this,'imgHeadPhoto2','divPreview2')" size="20"/></span><span class="tishitext" style="width:auto"></span></li>
+                          <li id="pic_height"><span></span>
+                          <span id="postcar"> 
+                          <div id="divPreview2">
+      						 <img id="imgHeadPhoto2" src="noperson.jpg" style="width: 200px; height: 200px; border: solid 1px #d2e2e2;" alt="" />
+ 						  </div>
+				 		  </span>
+				 		  </li>
                            <li id="text-align_style">  
-                                <span style="width:300px;" id="text-align_style"><input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="#" class="wd_color">《中租宝服务协议》</a></span>    
+                                <span style="width:300px;" id="text-align_style">
+                                <input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="#" class="wd_color">《中租宝服务协议》</a></span>    
                            </li>
                            <li id="text-align_style">  
                                 <span style="width:300px;" id="text-align_style"><input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="#" class="wd_color">《委托收付资金协议》</a></span>    
                            </li>
-                           <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
+                           <li><span><input type="submit" value="提交"  class="anquan_hide_btn"/></span></li>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
+                       </form>
                    </li>
                    <li style="display:none">
+                   <form action="<%=path %>/welcome/phoneVerification" method="post">
                        <div class="anquan_label">
                          <span>手机认证</span>
                          <span class="yishe">已设置</span>
+                         
+                          <c:if test="${userinfo.phone!=null}">
+                         <span class="anquan_right">已认证</span>
+                     	</c:if>
+                     	<c:if test="${userinfo.phone==null}">
                          <span class="anquan_right">认证</span>
+                        </c:if>
                         </div>
+                        <form action="<%=path%>/welcome/phoneVerification">
                        <div class="anquan_hide" style="display:block">
                           <ul>
-                           <li><span><strong>*</strong>手机号码</span>
-                               <span><input type="text" id="phone"></input></span> 
-                               <span class="tishitext" style="width:auto"></span>
-                           </li>
-                           <li><a class="sent">获取验证码</a></li>
-                           <li><span><strong>*</strong>短信验证码</span><span><input type="text"></input></span></li>
-                           <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
+                           <li><span><strong>*</strong>手机号码</span><span><input type="text" id="jbPhone"></input></span> <span id="jbPhoneTip" class="tishitext" style="display:block"></span></li>
+                           <li><input type="button" id="btnSendCode" name="btnSendCode" value="免费获取验证码" onclick="sendMessage()" /></li>
+                           <li><span><strong>*</strong>短信验证码</span><span><input type="text" id="SmsCheckCode" name="SmsCheckCode" ></input></span></li>
+                           <li><span><input type="button" value="提交"></input></span></li>
                          </ul>
-                         <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
+                         <div class="tijiao_checkok" style="display:none">手机认证成功！</div>
                        </div>
+                       </form>
                    </li>
                    <li>
                         <div class="anquan_label">
                          <span>邮箱验证</span>
+                         
+                        <c:if test="${userinfo.regState=='s'}">
                          <span class="yishe">已设置</span>
+                     	</c:if>
+                     	<c:if test="${userinfo.regState=='f'}">
                          <span class="anquan_right">认证</span>
+                        </c:if>
                         </div>
                        <div class="anquan_hide" style="display:none">
                           <ul>
-                           <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="email"></input></span><span class="tishitext" style="width:auto;"></span></li>
-                           <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
+                          <form action="<%=path %>/welcome/emailVerification" method="post">
+                           <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="mail" name="mail"></input></span><span class="tishitext" style="width:auto;">请输入正确格式邮箱!</span></li>
+                           <li><span></span><input type="submit" value="提交"  class="anquan_hide_btn"></input></li>
+                         </form>
                          </ul>
-                         <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
+                         <div class="tijiao_checkok" style="display:none">邮箱验证成功！</div>
                        </div>
                    </li>
                    <li >
                        <div class="anquan_label">
                          <span>登录密码</span>
-                         <span class="yishe">已设置</span>
                          <span class="anquan_right">修改</span>
                         </div>
                        <div class="anquan_hide" style="display:none">
+                      
                           <ul>
-                           <li><span><strong>*</strong>原登录密码</span><span><input type="text" ></input></span></li>
-                           <li><span><strong>*</strong>新登录密码</span><span><input type="text" id="password"></input></span></li>
-                           <li><span><strong>*</strong>再次输入登录密码</span><span><input type="text" id="newpassword"></input></span><span class="tishitext" style="width:auto"></span></li>
-                           <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
+                           <li><span><strong>*</strong>原登录密码</span><span><input type="password" id="oldPassword" name="oldPassword"></input></span></li>
+                           <li><span><strong>*</strong>新登录密码</span><span><input type="password" id="password" name="password"></input></span></li>
+                           <li><span><strong>*</strong>再次输入登录密码</span><span><input type="password" id="newpassword"></input></span><span class="tishitext" style="width:auto"></span></li>
+                           <li><span><input type="button" class="anquan_hide_btn" value="提交" onclick="updatePassword();"/></span></li>
                          </ul>
-                         <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
+                    
+                         <div class="tijiao_checkok" style="display:none">密码修改成功！</div>
                        </div>
                    </li>
                    <li style="display:block">

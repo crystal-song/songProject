@@ -55,9 +55,14 @@ public class userController {
 	
 	model.addAttribute("user1", user1);
 	   return "user-info";
-
-	    
-		
+	}
+	@RequestMapping(value = "/updatePasswordajax",  method =RequestMethod.POST)
+	public String updatePassword(@RequestParam("oldPassword") String oldPassword,@RequestParam("password") String password, Model model,HttpServletRequest request ) throws Exception {
+		TUser user=(TUser)request.getSession().getAttribute("userinfo");
+		user.setPassword(password);
+		userService.addOrUpdate(user);
+		model.addAttribute("user1", user);
+		return "success";
 	}
 	
 	
