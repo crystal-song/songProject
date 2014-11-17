@@ -15,6 +15,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
+
+function onSubmit(host) {
+	  document.getElementById("host").value = host;
+	  var form = document.getElementById("form");
+	  form.submit();
+}
     var navIndex=3;    
     $(document).ready(function(){
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
@@ -22,7 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $(this).siblings().slideToggle("slow");
           });
 });
-        
+    
+  
 </script>
 
 </head>
@@ -73,16 +80,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
              
              <div class="form-group" style="margin-top:50px;">
-              <label for="platformNo">可提现金金额</label>
+              <label for="plat">可提现金金额</label>
               <div class="form-control" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元（面提现手续费额度：0.00元）</div>
           </div>
         <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
-          <input type="hidden" id="host" name="host">
-          <div class="form-group" >
-           <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10040011137" /> 
-              <!--  <input type="text"class="form-control" id="platformNo" 
-                   name="platformNo" value="10012415118" />  -->
+          <input type="hidden" id="host" name="host"/>
+          <div class="form-group">
+           <!-- <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
+                <input type="text"class="form-control" id="platformNo" 
+                   name="platformNo" value="10012415118" />  
           </div>
           <div class="form-group">
             <label for="requestNo">requestNo</label><input type="text"
@@ -91,15 +98,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="form-group">
             <label for="platformUserNo">platformUserNo</label><input
               type="text" class="form-control" id="platformUserNo"
-              name="platformUserNo"  value="18975601645"  />
+              name="platformUserNo"  value="${registerYeePay}"  />
           </div>
-            <div class="form-group" >
+            <div class="form-group">
             <label for="feeMode">feeMode</label><input
               type="text" class="form-control" id="feeMode"
-              name="feeMode"  value="USER"  />
+              name="feeMode"  value="${feeMode}"  />
           </div>
              <div class="form-group">
-            <label for="amount">金额</label><input
+            <label for="amount">amount</label><input
               type="text" class="form-control" id="amount"
               name="amount"  value=""  />
           </div>
@@ -113,13 +120,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
           </div>
-	      <div class="postcar_btn">
-	          <button onclick="onSubmit('http://qa.yeepay.com/member')"  class="postcar_btn_red" >提现</button>
-	          <button onclick="onSubmit('https://member.yeepay.com/member')" class="postcar_btn_org">取消</button>
-	      </div>    
+      
+          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>
+          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button>
         </form>
-        
-             <div class="add_postcar" style="display:none">
+            <%--  <div class="add_postcar" style="display:none">
               <p>填写现金金额</p>
               <ul>
                 <li><span>可提现金金额：</span><div><strong>0.00</strong>元（面提现手续费额度：0.00元）</div></li>
@@ -142,10 +147,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <a href="#">取消</a>
               </div>
               <div class="postcar_btn">
-                  <a href="#" class="postcar_btn_org">绑卡</a>
+                  <a href="<%=path%>/gate/binding" class="postcar_btn_org">绑卡</a>
                   <a href="#">取消</a>
               </div>
-            </div>    
+            </div>     --%>
 
           <div class="tishi" style="margin-top:50px;">
             <p><strong>温馨提示</strong></p>
