@@ -42,7 +42,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               $(this).siblings().slideToggle("slow");
             }); 
          $(".anquan_hide_btn").click(function(){
-        	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show();        	 
+        	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 
+        	  //$(this).parent().parent().siblinds().children(".anquan_label").children(".yishe").css("display","block");
+        	 $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
+        	 // alert(a)
          });
          $(".anquan_hide input").blur(function(){
         	 var val=$(this).val();                	        	 
@@ -197,7 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <li >
                         <div class="anquan_label">
                          <span>实名认证</span>
-                         <span>已设置</span>
+                         <span class="yishe">已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
                        <div class="anquan_hide" style="display:none;">
@@ -239,7 +242,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <li style="display:none">
                        <div class="anquan_label">
                          <span>手机认证</span>
-                         <span>已设置</span>
+                         <span class="yishe">已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
                        <div class="anquan_hide" style="display:block">
@@ -258,7 +261,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <li>
                         <div class="anquan_label">
                          <span>邮箱验证</span>
-                         <span>已设置</span>
+                         <span class="yishe">已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
                        <div class="anquan_hide" style="display:none">
@@ -272,7 +275,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <li >
                        <div class="anquan_label">
                          <span>登录密码</span>
-                         <span>已设置</span>
+                         <span class="yishe">已设置</span>
                          <span class="anquan_right">修改</span>
                         </div>
                        <div class="anquan_hide" style="display:none">
@@ -288,7 +291,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <li style="display:block">
                        <div class="anquan_label" style="display:none">
                          <span>支付密码</span>
-                         <span>已设置</span>
+                         <span class="yishe">已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
                        <div class="anquan_hide" style="display:none">
@@ -303,7 +306,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <li style="display:none">
                         <div class="anquan_label">
                          <span>密码保护</span>
-                         <span>已设置</span>
+                         <span class="yishe">已设置</span>
                          <span class="anquan_right">认证</span>
                         </div>
                        <div class="anquan_hide">
