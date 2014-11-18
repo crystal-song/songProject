@@ -77,6 +77,8 @@
         <property name="messageCount" type="java.lang.Integer">
             <column name="messageCount" length="10" />
         </property>
-       
+        <property name="answer" type="java.lang.String">
+            <column name="answer" length="50" />
+        </property>
     </class>
 </hibernate-mapping>

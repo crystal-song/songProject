@@ -37,6 +37,7 @@ public class TUser implements java.io.Serializable {
 	private String captcha;           //手机验证码
     private String sendTime;          //发送时间
     private Integer messageCount;	  //发送短信的次数
+    private String answer;			//密码保护答案
    
   
 	/**
@@ -233,6 +234,14 @@ public class TUser implements java.io.Serializable {
 			this.messageCount = messageCount;
 		}
 
+		public String getAnswer() {
+			return answer;
+		}
+
+		public void setAnswer(String answer) {
+			this.answer = answer;
+		}
+			
 	
 	
 

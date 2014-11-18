@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.mftour.spring.service.IUserService"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
@@ -6,7 +7,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
  <%@ include file="/includes/taglibs.jsp" %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -250,6 +251,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	     	alert('请输入新密码！');
 	     }   
   }
+  function passwordProtection(){
+	  if($('#answer').val()!=''){
+	            $.ajax({
+	                type: 'POST',
+	                url: '<c:url value="/user/passwordProtection"/>',
+	                data: 'answer='+$('#answer').val(),
+	                dataType: 'text',
+	                success: function(data) {
+	                    if(data == '"success"') {
+	                    	alert("密码保护设置成功！"); 
+	                    } 
+	                }
+	            });
+	            }else{
+	            	alert("请输入小于25个字的答案！")
+	            }
+  }
+  function checkAnswer(){
+		if ($('#answer').val() != '') {
+			$.ajax({
+				type : 'POST',
+				url : '<c:url value="/user/checkAnswer"/>',
+				data : 'name=' + $('#name').val()+'&answer='+$('#answer').val(),
+				dataType : 'text',
+				success : function(data) {
+					if (data == '"success"') {
+						$("#Tip_Answer").html(
+								'<span class="tip_p01" >答案正确！</span>');
+						$("#ensure").removeAttr("disabled");
+					} else {
+						$("#Tip_Answer").html(
+								'<span class="tip_f01" >答案不正确！</span>');
+						$("#ensure").attr("disabled",true);
+					}
+				}
+			});
+		}else{
+			$("#ensure").attr("disabled",true);
+			$("#Tip_Answer").html(
+			'<span class="tip_f01">答案为空！</span>');
+			
+		}
+	}
 </script>
 </head>
 
@@ -264,6 +308,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <%@ include file="/includes/user_info_left.jsp" %>
          <!-- user_left end -->
     </div>
+    
           <div class="user_right">  
             <div class="zichan_con">        
                <div class="pro_con_title" style="margin-top:5px;"><strong>安全设置</strong>
@@ -277,12 +322,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <span>asdoi</span>
                         </div> 
                    </li>
+                
                    <li >
                    <form action="<%=path%>/welcome/identityCardVerification" method="post" enctype="multipart/form-data">
                         <div class="anquan_label">
                          <span>实名认证</span>
                           <c:if test="${userinfo.identityCard!=null}">
-                         <span class="yishe">已设置</span>
+                         <span>已设置</span>
                      	  </c:if>
                      	<c:if test="${userinfo.identityCard==null}">
                          <span class="anquan_right">认证</span>
@@ -347,10 +393,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <form action="<%=path %>/welcome/phoneVerification" method="post">
                        <div class="anquan_label">
                          <span>手机认证</span>
-                         <span class="yishe">已设置</span>
-                         
                           <c:if test="${userinfo.phone!=null}">
-                         <span class="anquan_right">已认证</span>
+                         <span>已设置</span>
                      	</c:if>
                      	<c:if test="${userinfo.phone==null}">
                          <span class="anquan_right">认证</span>
@@ -373,7 +417,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <span>邮箱验证</span>
                          
                         <c:if test="${userinfo.regState=='s'}">
-                         <span class="yishe">已设置</span>
+                         <span>已设置</span>
                      	</c:if>
                      	<c:if test="${userinfo.regState=='f'}">
                          <span class="anquan_right">认证</span>
@@ -386,7 +430,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            <li><span></span><input type="submit" value="提交"  class="anquan_hide_btn"></input></li>
                          </form>
                          </ul>
-                         <div class="tijiao_checkok" style="display:none">邮箱验证成功！</div>
+                         <div class="tijiao_checkok" style="display:none">邮箱验证成功,请重新登录！</div>
                        </div>
                    </li>
                    <li >
@@ -400,10 +444,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            <li><span><strong>*</strong>原登录密码</span><span><input type="password" id="oldPassword" name="oldPassword"></input></span></li>
                            <li><span><strong>*</strong>新登录密码</span><span><input type="password" id="password" name="password"></input></span></li>
                            <li><span><strong>*</strong>再次输入登录密码</span><span><input type="password" id="newpassword"></input></span><span class="tishitext" style="width:auto"></span></li>
-                           <li><span><input type="button" class="anquan_hide_btn" value="提交" onclick="updatePassword();"/></span></li>
+                          
+                           <c:if test="${userinfo.answer!=bull}">
+                           <li><span><strong>*</strong>请选择问题：</span><span>
+                               <span>
+                                <select>
+                                  <option value="8">你孩子的名字叫什么</option>
+                                  <option value="9">你孩子的生日是哪天</option>
+                                  <option value="1">你爸爸的名字叫什么</option>
+                                  <option value="2">你爸爸的生日是哪天</option>
+                                  <option value="3">你妈妈的名字叫什么</option>
+                                  <option value="4">你妈妈的生日是哪天</option>
+                                  <option value="5">最难忘的日子</option>
+                                  <option value="6">你的学号是多少</option>
+                                  <option value="7">你的老家在哪里</option>
+                                </select>
+                               </span> 
+					     </li>
+						 <li><span><strong>*</strong>请输入答案：</span><span><input type="text" id="answer" name="answer" onblur="checkAnswer()"></input></span><span id="Tip_Answer"></span></li>
+                           </c:if>
+                         <li><span><input type="button" class="anquan_hide_btn" value="提交" onclick="updatePassword();" id="ensure"/></span></li>
                          </ul>
                     
-                         <div class="tijiao_checkok" style="display:none">密码修改成功！</div>
+                         <div class="tijiao_checkok" style="display:none">密码修改成功,请重新登录！</div>
                        </div>
                    </li>
                    <li style="display:block">
@@ -421,11 +484,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
                    </li>
-                   <li style="display:none">
+                   <li style="display:">
                         <div class="anquan_label">
                          <span>密码保护</span>
-                         <span class="yishe">已设置</span>
+                         
+                         <c:if test="${userinfo.answer!=null}">
+                         <span>已设置</span>
+                     	</c:if>
+                     	<c:if test="${userinfo.answer==null}">
                          <span class="anquan_right">认证</span>
+                        </c:if>
                         </div>
                        <div class="anquan_hide">
                           <ul>
@@ -444,10 +512,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </select>
                                </span>
                           </li>
-                           <li><span><strong>*</strong>输入答案</span><span><input type="text"></input></span></li>
-                           <li><span><a href="#" class="anquan_hide_btn">提交</a></span></li>
+                           <li><span><strong>*</strong>输入答案</span><span><input type="text" id="answer" name="answer"></input></span></li>
+                           <li><span><input type="button" class="anquan_hide_btn" value="提交" onclick="passwordProtection()"> </span></li>
                          </ul>
-                         <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
+                         <div class="tijiao_checkok" style="display:none">密码保护设置成功,请重新登录！</div>
                        </div>
                    </li>
                  </ul>

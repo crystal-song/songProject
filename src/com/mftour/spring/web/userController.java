@@ -155,17 +155,36 @@ public class userController {
 	
 	@RequestMapping(value = "/reset",  method = {RequestMethod.POST, RequestMethod.GET})
 	public String reset(@RequestParam("userName") String username,Model model) throws Exception {
+		TUser user=(TUser)userService.getUserByAccount(username);
+		model.addAttribute("answer", user.getAnswer());
 		model.addAttribute("name", username);
 		return "resetPassword";
 
 	}
+	@RequestMapping(value="/checkAnswer",method=RequestMethod.POST)
+	@ResponseBody
+	public String checkAnswer(@RequestParam("name") String name,@RequestParam("answer") String answer)throws Exception{
+		TUser user=(TUser)userService.getUserByAccount(name);
+		if(answer.equals(user.getAnswer())){
+		return "success";
+		}
+		return "fail";
+		
+	}
 	@RequestMapping(value = "/updatePassword",  method = {RequestMethod.POST, RequestMethod.GET})
-	public String updatePassword(@RequestParam("name") String name,@RequestParam("password") String password,Model model) throws Exception {
+	public String updatePassword(@RequestParam("name") String name,@RequestParam("password") String password,@RequestParam("answer") String answer,Model model) throws Exception {
 		TUser user = userService.getUserByAccount(name);
 		user.setPassword(password);
 		userService.addOrUpdate(user);
 		return "login";
 		
+	}
+	@RequestMapping(value = "/passwordProtection",  method = {RequestMethod.POST, RequestMethod.GET})
+	public String passwordProtection(@RequestParam("answer") String answer,HttpServletRequest request) throws Exception {
+		TUser user=(TUser)request.getSession().getAttribute("userinfo");
+		user.setAnswer(answer);
+		userService.addOrUpdate(user);
+		return "success";
 	}
 
 }

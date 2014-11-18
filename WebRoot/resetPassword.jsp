@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -35,7 +36,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  
   });
  
-
+function checkAnswer(){
+	if ($('#answer').val() != '') {
+		$.ajax({
+			type : 'POST',
+			url : '<c:url value="/user/checkAnswer"/>',
+			data : 'name=' + $('#name').val()+'&answer='+$('#answer').val(),
+			dataType : 'text',
+			success : function(data) {
+				if (data == '"success"') {
+					$("#Tip_Answer").html(
+							'<span class="tip_p01">答案正确！</span>');
+					$("#ensure").removeAttr("disabled");
+				} else {
+					$("#Tip_Answer").html(
+							'<span class="tip_f01">答案不正确！</span>');
+					$("#ensure").attr("disabled",true);
+				}
+			}
+		});
+	}else{
+		$("#ensure").attr("disabled",true);
+		$("#Tip_Answer").html(
+		'<span class="tip_f01">答案为空！</span>');
+		
+	}
+}
 
 </script>
 </head>
@@ -71,10 +97,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					      </label>&nbsp;&nbsp;	
 					      <span class="pass_change_check"></span>				     
 					      </td>
-			 </tr>		
+			 </tr>	
+			 <c:if test="${answer!=null}">
+			 <tr>
+						<td align="left"><span>请选择问题：</span>
+                               <span>
+                                <select>
+                                  <option value="8">你孩子的名字叫什么</option>
+                                  <option value="9">你孩子的生日是哪天</option>
+                                  <option value="1">你爸爸的名字叫什么</option>
+                                  <option value="2">你爸爸的生日是哪天</option>
+                                  <option value="3">你妈妈的名字叫什么</option>
+                                  <option value="4">你妈妈的生日是哪天</option>
+                                  <option value="5">最难忘的日子</option>
+                                  <option value="6">你的学号是多少</option>
+                                  <option value="7">你的老家在哪里</option>
+                                </select>
+                               </span>
+					      </td>
+			 </tr>	
+			  <tr>
+						<td align="left"><span>输入答案：</span>
+						  <label>
+					      <input type="text" id="answer" name="answer" onblur="checkAnswer()"></input><div id="Tip_Answer"></div>
+					      </label>&nbsp;&nbsp;	
+					      <span class="pass_change_check"></span>				     
+					      </td>
+			 </tr>	
+			 </c:if>	
                       <tr>
-                        <td style="text-align:left;"><input type="submit" value="确定"  class="check_btn01"/></td>                     
-	       </tr>
+                        <td style="text-align:left;"><input type="submit" value="确定"  id="ensure" class="check_btn01" /></td>                     
+	                  </tr>
 	 
                         </td>
                       </tr>

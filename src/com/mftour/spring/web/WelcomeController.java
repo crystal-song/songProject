@@ -144,7 +144,7 @@ public class WelcomeController {
 		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 		String resetPassHref =  basePath+"welcome/register?username="+user.getName();
 		String mainjsp = "http://www.ptobchina.com/wel";
-		
+		System.out.println("ssssssssssssss"+resetPassHref);
 		String msgContent = "亲爱的用户" + user.getName() + "，您好，<br/><br/>"
 				+ "您在" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
 				+ "<a href="+resetPassHref+"><font color='green'>http://www.ptobchina.com/welcome/register?username="+user.getName()+"</font></a><br/><br/>"
@@ -167,6 +167,7 @@ public class WelcomeController {
 	}
 	@RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET})
 	public String register(@RequestParam("username") String username,Model model) throws Exception {
+		System.out.println("dddddddddddddddd");
 		TUser user = userService.getUserByAccount(username);
 		user.setRegState("s");
 		userService.addOrUpdate(user);
@@ -183,7 +184,6 @@ public class WelcomeController {
 		model.addAttribute("user1", user1); 
 		TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0); 
 		model.addAttribute("registerYeePay1", registerYeePay1);
-//		request.getSession().setAttribute("users", username);
 		return "user-info";
 }
 	    

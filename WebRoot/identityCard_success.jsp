@@ -141,9 +141,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                <div class="con_list_new">
                  <ul class="anquan">
-                 实名认证成功！
+           		      实名认证成功,请重新登录！
                  </ul>
                </div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
          </div>       
        
       </div>
