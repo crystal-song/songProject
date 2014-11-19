@@ -45,12 +45,14 @@ function checkAnswer(){
 			dataType : 'text',
 			success : function(data) {
 				if (data == '"success"') {
-					$("#Tip_Answer").html(
-							'<span class="tip_p01">答案正确！</span>');
+					$("#Tip_Answer").text("答案正确")
+					/* $("#Tip_Answer").html(
+							'<span class="tip_p01">答案正确！</span>'); */
 					$("#ensure").removeAttr("disabled");
 				} else {
-					$("#Tip_Answer").html(
-							'<span class="tip_f01">答案不正确！</span>');
+					$("#Tip_Answer").text("答案正确")
+					/* $("#Tip_Answer").html(
+							'<span class="tip_f01">答案不正确！</span>'); */
 					$("#ensure").attr("disabled",true);
 				}
 			}
@@ -86,14 +88,14 @@ function checkAnswer(){
 			 <tr>
 						<td align="left"><span>请输入新密码：</span>
 						  <label>
-					      <input name="password" type="text"  id="password" value="" />
+					      <input name="password" type="password"  id="password" value="" />
 					      </label>&nbsp;&nbsp;					     
 					      </td>
 			 </tr>
 			 <tr>
 						<td align="left"><span>重复输入密码：</span>
 						  <label>
-					      <input name="re_password" type="text"  id="re_password" value="" />
+					      <input name="re_password" type="password"  id="re_password" value="" />
 					      </label>&nbsp;&nbsp;	
 					      <span class="pass_change_check"></span>				     
 					      </td>
@@ -117,14 +119,15 @@ function checkAnswer(){
 					      </td>
 			 </tr>	
 			  <tr>
-						<td align="left"><span>输入答案：</span>
+						<td align="left"><label for="answer"><span>输入答案：</span></label>
 						  <label>
-					      <input type="text" id="answer" name="answer" onblur="checkAnswer()"></input><div id="Tip_Answer"></div>
+					      <input type="text" id="answer" name="answer" onblur="checkAnswer()"></input>
 					      </label>&nbsp;&nbsp;	
-					      <span class="pass_change_check"></span>				     
+					      <span id="Tip_Answer" class="check_answer"></span>
 					      </td>
 			 </tr>	
-			 </c:if>	
+			 </c:if>
+			
                       <tr>
                         <td style="text-align:left;"><input type="submit" value="确定"  id="ensure" class="check_btn01" /></td>                     
 	                  </tr>

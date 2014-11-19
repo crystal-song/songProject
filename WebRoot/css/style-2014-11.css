@@ -3478,6 +3478,13 @@ ul,li{
 	line-height:30px;
 
 }
+.check_answer{
+	width:200px;
+	height:40px;
+	font-size:12px;
+	line-height:30px;
+
+}
 
 .zh_right .forget_pwd{width:240px;height:20px;line-height:20px;  text-align:right;}
 #pwd_color{color:#cc6a4f}
