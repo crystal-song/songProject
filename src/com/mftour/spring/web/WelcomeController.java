@@ -167,7 +167,6 @@ public class WelcomeController {
 	}
 	@RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET})
 	public String register(@RequestParam("username") String username,Model model) throws Exception {
-		System.out.println("dddddddddddddddd");
 		TUser user = userService.getUserByAccount(username);
 		user.setRegState("s");
 		userService.addOrUpdate(user);
@@ -182,8 +181,8 @@ public class WelcomeController {
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo",user1);
 		model.addAttribute("user1", user1); 
-		TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0); 
-		model.addAttribute("registerYeePay1", registerYeePay1);
+		//TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0); 
+		//model.addAttribute("registerYeePay1", registerYeePay1);
 		return "user-info";
 }
 	    
@@ -202,7 +201,7 @@ public class WelcomeController {
 
 	@RequestMapping(value="/identityCardVerification", method=RequestMethod.POST)
 	public String identityCardVerification(TUser user,@RequestParam MultipartFile[] myfiles,HttpServletRequest request){
-		String realPath = request.getSession().getServletContext().getRealPath("/");  
+		String realPath = request.getSession().getServletContext().getRealPath("/images/identityCardPic");  
 		System.out.println("ddddddddddd"+realPath);
 		try {
 			TUser user1=userService.getUserByAccount(user.getName());
