@@ -1,0 +1,394 @@
+/* CSS Document */
+body {
+	 margin:0px;
+	 padding:0px;
+	 font-family:"Î¢ÈíÑÅºÚ";
+	 font-size:12px; 
+	 color:#3e3e3e; 
+	 text-align:center;
+	 position: relative;	 
+	 }
+html,body {
+	 margin:0;
+	 padding:0;
+	 }
+ul,li{ 
+	margin:0px; 
+	padding:0px; 
+	list-style:none;
+} 
+h1, h2, h3, h4,img{ 
+     border:0px;
+	 margin:0;
+	 padding: 0;
+	 }
+.clear{ 
+     clear:both;
+	 }
+.clear_height{ 
+     clear:both; 
+	 height:15px;
+	 }
+a{ 
+     color:#5d5d5d; 
+	 text-decoration:none;
+	}
+a:hover{ 
+     color:#5d5d5d; 
+	 text-decoration:none;
+	 }
+ul,li{ 
+     margin:0px; 
+	 padding:0px; 
+	 list-style:none;
+	 }
+.main{
+	width: 100%;
+	height: auto;
+}
+.num1{
+	width:100%;    
+	/*background:url(../img/images-2014-11/huodong/images/num1_bac.jpg) 50% 0 repeat-y;*/
+	background:url(../img/images-2014-11/huodong/images/num1_bac.jpg) 50% 0 repeat-y;
+	position: relative;
+}
+.num1 img{
+    position: absolute;
+    top:7%;
+    left:19%;
+}
+.num2{
+	width:100%;
+	background:#91af01;
+	position: relative;
+	padding-top: 100px;
+}
+.num3{
+	background:#01af3e;
+	width:100%;
+	padding-top: 10%;
+}
+.num4{
+	background:#00c4cc;
+	width:100%;
+	padding-top: 10%;
+}
+.num5{
+	background:#006fcb;
+	width:100%;
+	padding-top: 50px;
+	position: relative;
+}
+.bottom{
+	width: 800px;
+	height: 300px;
+	position: absolute;
+	top:60%;
+	left:25%;
+	*+left:30%;
+}
+.bottom div{
+	width: 200px;
+	height: 200px;
+	float:left;
+	background:pink;
+	margin-right: 8%;	
+}
+.head{
+	width: 100%;
+	height: 60px;
+	background:url(../img/images-2014-11/huodong/images/head_bac.png) repeat-x;
+	z-index: 1000;
+}
+.bottom .li01{
+	background:url(../img/images-2014-11/huodong/images/renwu.jpg) no-repeat;
+	border-radius: 50%;
+}
+.bottom .li02{
+	background:url(../img/images-2014-11/huodong/images/photo_bac.jpg) no-repeat;
+	border-radius: 50%;
+	position: relative;
+}
+.li02 .jingqing{
+	font-size: 40px;
+	color: #ec6c23;
+	font-weight: bold;
+	position: absolute;
+	top:23%;
+	left:30%;
+}
+
+.li01 span{
+	margin-top: 80%;
+	display: inline-block;
+	color:#fff;
+	font-size: 20px;
+}
+.left{
+	width: 200px;
+	height: 100%;
+	background:url(../img/images-2014-11/huodong/images/logo.png) no-repeat;
+	margin-left: 20%;
+	float: left;
+}
+.right{
+	width: 200px;
+	height: 100%;
+	margin-right: 20%;
+	float: right;
+	cursor: pointer;
+}
+.right a{
+	display: inline-block;
+	margin-top: 9%;
+	font-size: 12px;
+	margin-right: 10px; 
+}
+.right .font_tou{
+	font-size: 16px;
+	font-weight: bold;
+	color:#000;
+}
+.photo{
+	width: 500px;
+	height: 200px;
+	background:url(../img/images-2014-11/huodong/images/zr.png) no-repeat;
+	margin-left: 20%;
+	position: relative;
+}
+.photo span{
+	font-size: 16px;
+	margin-top: 10%;
+	color:#fff;
+}
+.photo .name{
+	width: 200px;
+	display:inline-block;	
+	font-size: 44px;
+	margin-left: 7%;
+	margin-top: 9%;
+}
+.word{
+	width: 700px;
+	height: auto;
+	margin-left: 23%;
+	font-size: 16px;
+	color: #fff;
+	text-align:left;
+	text-indent: 2em;
+	margin-top: 20px;
+}
+.photo_msg{
+	width: 340px;
+	height: 50px;
+	position: absolute;
+	top: 56%;
+	left: 32%;
+	text-align: left;
+	color: #fff;
+}
+.picture{
+	width: 900px;
+	height: 300px;
+    margin: 9% auto 10px;
+    position: relative;
+}
+.picture div{
+	background: #fff;
+	padding: 5px;
+}
+.picture img{
+	width: 350px;
+	height: 250px;
+}
+.pic1{
+	width: 350px;
+	height: 250px;
+	background:#ccc;
+	transform:rotate(-10deg);
+	-moz-transform:rotate(-10deg);
+	-webkit-transform:rotate(-10deg);
+	-o-transform:rotate(-10deg);
+    z-index: 100;
+}
+.pic2{
+	width: 350px;
+	height: 250px;
+	background:#eee;
+	transform:rotate(10deg);
+	-moz-transform:rotate(10deg);
+	-webkit-transform:rotate(10deg);
+	-o-transform:rotate(10deg);
+    position: absolute;
+    top:5%;
+    left:34%;
+    z-index: 1;
+}
+.pic3{
+	width: 350px;
+	height: 250px;
+	background:#f8f8f8;
+	transform:rotate(-10deg);
+	-moz-transform:rotate(-10deg);
+	-webkit-transform:rotate(-10deg);
+	-o-transform:rotate(-10deg);
+    position: absolute;
+    top:5%;
+    left:70%;
+    z-index: 100;
+}
+.weizhi{
+	width: 1100px;
+	height: 550px;
+	margin: 0 auto;
+	background:url(../img/images-2014-11/huodong/images/weiwan.png) no-repeat;
+}
+.weizhi01{
+	width: 1100px;
+	height: 560px;
+	margin: 0 auto;
+	background:url(../img/images-2014-11/huodong/images/weiwan01.png) no-repeat;
+}
+.title{
+	width: 800px;
+	height: 400px;
+    margin: 0 auto;
+    padding: 10px;
+}
+.title h1{
+	font-size: 50px;
+	color: #fff;
+	text-align: left;
+}
+.title p{
+	text-align: left;
+	color: #fff;
+	margin-top: 20px;
+}
+.saomiao {
+	width: 120px;
+	height: 120px;
+	background:url(../img/images-2014-11/huodong/images/erweima01.png) no-repeat;
+	position: absolute;
+	top:18%;
+	right:14%;
+}
+
+/*footer*/
+
+.footer{
+	width:100%-20;
+	height:350px;
+	border-top:4px solid #bd2120;
+	background:#f8f8f8;
+	margin-top:20px;
+	}		
+	
+.foo01{
+	width:1100px;
+	height:80px;
+	background:url(../img/images-2014-11/footer.jpg) 0 80px no-repeat;
+	margin:0 auto;
+	font-size:16px;
+	color:#000;
+	text-align:left;
+	line-height:80px;
+	padding-bottom:15px;
+	}
+.foo01 li{
+	width:250px;
+	height:80px;
+	float:left;
+	}	
+.foo01 strong{
+	float:left;
+	}		
+.foo02{
+	width:1100px;
+	height:60px;
+	background:url(../img/images-2014-11/footer.jpg) 0 50px no-repeat;
+	margin:0 auto;
+	font-size:16px;
+	color:#000;
+	text-align:left;
+	line-height:60px;
+	padding-bottom:15px;
+	}	
+.foo02 span{
+	display:inline-block;
+	margin-left:40px;
+	}		
+.min_label{
+	width:1100px;
+	height:50px;
+    margin:0 auto;
+	line-height:50px;
+	}	
+.min_label li{
+	width:100px;	
+	height:50px;
+	float:left;
+	line-height:50x;
+	}
+.min_mar{
+	margin-left:28%;
+}		
+.res{
+	width:40px; 
+	height:40px; 
+	background:url(../img/cha.png); 
+	position:absolute; 
+	top:0; 
+	right:5px
+}
+.ie_text{
+	width:100%; 
+	height:40px; 
+	line-height:40px; 
+	background:#dadada; 
+	color:#000; 
+	font-size:14px; 
+	position:relative;
+}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
