@@ -4,7 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
- <%@ include file="/includes/taglibs.jsp" %> 
+<%@ include file="/includes/taglibs.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -15,15 +15,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+
 <script type="text/javascript">
 var navIndex=0;
-$(document).ready(function(){
+
 	// if(var navIndex!=null&&navIndex!=-1)$(".nav_big li").eq(0).addClass("bd_btom");
-	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
-	  
-	$('.res').click(function(){
-		$('.ie_text').css('display','none');
-	  });	
+	
 /*
     $(".header li").mouseover(function(){ 
       var index=$(this).index();
@@ -45,42 +42,21 @@ $(document).ready(function(){
     });
 
 */
-    $(".news_title li").click(function(){
-        var index= $(this).index();
-        $(this).addClass('news_title_bac').siblings().removeClass('news_title_bac');
-        $(".news_label ul").eq(index).css("display","block").siblings().css("display","none")
-    });
 
-  
-     
-     $(".absolute_right a").hide();
-     $(".absolute_right span").mouseover(function(){
-        $(this).children().show();
+$(document).ready(function(){
+	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
+		  
+		$('.res').click(function(){
+			$('.ie_text').css('display','none');
+		  });	
 
-    }).mouseout(function(){
-        $(this).children().css("display","none");
-    });
-        $(".absolute_bac2").mouseover(function(){
-          $(this).siblings(".erweima_bac").show();
-        }).mouseout(function(){
-          $(this).siblings(".erweima_bac").hide();
-        });
-
-$(window).on('scroll', function(){
-        if($(window).scrollTop()<500){
-            $(".absolute_bac1").hide();
-        }
-        if($(window).scrollTop()>=500){
-            $(".absolute_bac1").show(); 
-        }
-      });
-            $(".absolute_bac1").click(function(){
-
-               $("html,body").animate({scrollTop:0},500);  
-            
-            });	
-});
-
+		 $(".news_title li").click(function(){
+		        var index= $(this).index();
+		        $(this).addClass('news_title_bac').siblings().removeClass('news_title_bac');
+		        $(".news_label ul").eq(index).css("display","block").siblings().css("display","none")
+		    });
+		    		            
+	});
 </script>
 
 </head>
@@ -285,8 +261,7 @@ $(window).on('scroll', function(){
                 
             </div>
             -->
-              
-            
+          
             </c:forEach>
         </c:if>
        
@@ -340,6 +315,10 @@ $(window).on('scroll', function(){
 	      </div>
      </div> 
     </div> 
+    <!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp" %>
+	<!-- absolute_right end -->
+      
  </div>                  
       <!--    
 		</div> 
