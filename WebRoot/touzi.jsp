@@ -21,6 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" >
 
+
+</script>
+<script type="text/javascript" >
 $(document).ready(function(e){
 	  $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
     $(".right_lable li").click(function(){
@@ -30,9 +33,6 @@ $(document).ready(function(e){
     });
 });
 
-
-</script>
-<script type="text/javascript" >
 
 var myFilter=new Array();
 
