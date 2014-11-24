@@ -6,8 +6,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
- <%@ include file="/includes/taglibs.jsp" %> 
-
+<%@ include file="/includes/taglibs.jsp" %> 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -48,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          $(".anquan_hide_btn").click(function(){
         	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 
         	  //$(this).parent().parent().siblinds().children(".anquan_label").children(".yishe").css("display","block");
-        	 $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
+        	  $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
         	 // alert(a)
          });
          $(".anquan_hide input").blur(function(){
@@ -63,8 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          		 }else{
          			$(this).parent().siblings(".tishitext").text("您的手机号填写正确。"); 
          		 } 
-         	 }   
-        	       	 
+         	 }          	       	 
         	 
         	 if($(this).is('#username')){
         		 var Expression=/[^\u4E00-\u9FA5]/;  
@@ -116,9 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       				   $(this).parent().siblings(".tishitext").text("您的邮箱填写正确。");     
       				    return true;        			
       			  }				  
-			}   
-        	 
-      	 
+			}      	 
         	 if( $(this).is('#file01') ){
          		
          		if(val==""){
@@ -137,8 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           		 } 
           	 }
           	      	 
-        	  if($(this).is('#newpassword')){
-				   	   				
+        	  if($(this).is('#newpassword')){				   	   				
 					var ps = $("#password").val();
 					var pas = $("#newpassword").val();
 					if(ps=="" || pas==""){						
@@ -154,11 +149,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        }
 			 }
                    	  
-        	  if($(this).is('#new_zhifu_password')){
- 	   				
+        	  if($(this).is('#new_zhifu_password')){	   				
 					var ps01 = $("#zhifu_password").val();
-					var pas01 = $("#new_zhifu_password").val();
-					
+					var pas01 = $("#new_zhifu_password").val();					
 					if(ps01=="" || pas01==""){						
 					  $(this).parent().siblings(".tishitext").text("您的密码为空。");
 						  return false;
@@ -171,6 +164,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                      }
 			 }
          });
+          
+     	$(window).on('scroll', function(){
+	        if($(window).scrollTop()<500){
+	            $(".absolute_bac1").hide();
+	        }
+	        if($(window).scrollTop()>=500){
+	            $(".absolute_bac1").show(); 
+	        }
+	      });
+	            $(".absolute_bac1").click(function(){
+	               $("html,body").animate({scrollTop:0},500);  		            
+	            });	 
      
 });
 
@@ -316,7 +321,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <div class="con_list_new">
                  <ul class="anquan">
                    <li>
-                        <div class="anquan_label">
+                        <div class="anquan_label label1">
                          <span>用户名</span>
                          <span>已设置</span>
                          <span>asdoi</span>
@@ -325,7 +330,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 
                    <li >
                    <form action="<%=path%>/welcome/identityCardVerification" method="post" enctype="multipart/form-data">
-                        <div class="anquan_label">
+                        <div class="anquan_label label2">
                          <span>实名认证</span>
                           <c:if test="${userinfo.identityCard!=null}">
                          <span>已设置</span>
@@ -359,7 +364,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            <input type="text" id="identityCard" name="identityCard"></input>
                            </span><span class="tishitext" style="width:auto"></span>
                            </li>
-                           <li><span><strong>*</strong>上传正面证件照</span><span> <input type="file" name="myfiles" onchange="PreviewImage(this,'imgHeadPhoto1','divPreview1')" size="20"/></span><span class="tishitext" style="width:auto"></span></li>
+                           <li>
+                             <span><strong>*</strong>上传正面证件照</span>
+                             <span><input type="file" name="myfiles" onchange="PreviewImage(this,'imgHeadPhoto1','divPreview1')" size="20"/></span><span class="tishitext" style="width:auto"></span></li>
                            <li id="pic_height"><span></span>
                             <span id="postcar">
                             <div id="divPreview1">
@@ -391,7 +398,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    </li>
                    <li style="display:none">
                    <form action="<%=path %>/welcome/phoneVerification" method="post">
-                       <div class="anquan_label">
+                       <div class="anquan_label label3">
                          <span>手机认证</span>
                           <c:if test="${userinfo.phone!=null}">
                          <span>已设置</span>
@@ -413,7 +420,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        </form>
                    </li>
                    <li>
-                        <div class="anquan_label">
+                        <div class="anquan_label label4">
                          <span>邮箱验证</span>
                          
                         <c:if test="${userinfo.regState=='s'}">
@@ -434,7 +441,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        </div>
                    </li>
                    <li >
-                       <div class="anquan_label">
+                       <div class="anquan_label label5">
                          <span>登录密码</span>
                          <span class="anquan_right">修改</span>
                         </div>
@@ -470,7 +477,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        </div>
                    </li>
                    <li style="display:block">
-                       <div class="anquan_label" style="display:none">
+                       <div class="anquan_label label6" style="display:none">
                          <span>支付密码</span>
                          <span class="yishe">已设置</span>
                          <span class="anquan_right">认证</span>
@@ -484,8 +491,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
                    </li>
-                   <li style="display:">
-                        <div class="anquan_label">
+                   <li>
+                        <div class="anquan_label label7">
                          <span>密码保护</span>
                          
                          <c:if test="${userinfo.answer!=null}">
@@ -523,7 +530,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>       
        
       </div>
-  
+  <!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp" %>
+	<!-- absolute_right end -->
 </div>
 <div class="clear"></div>
 <!-- footer start -->
