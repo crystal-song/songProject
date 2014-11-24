@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+ 
 
 <script type="text/javascript">
 
@@ -58,7 +59,6 @@ function mysubmit(){
 }	
 
  $(document).ready(function(e) {  
-   
 	
 	 $("#buyAmount").keyup(function(){
 		  
@@ -87,15 +87,10 @@ function mysubmit(){
 				  return false;
 				   }
 			      $('.neirong').html('您要投入的实际金额为:'+val);	   
-		
 	 
 	 });	
-
-	 
+ 
 	 $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
-
-	
-
        $(window).on('scroll', function(){
                checkText();
               // alert($(this).scrollTop())
@@ -146,8 +141,65 @@ function mysubmit(){
            timer=setInterval(autoplay,3000);
         });
  });   
+ $(".jisuan").click(function(){
+     $( "#dialog01").dialog("open");
+     //alert("aaa")
+   });
 
+   $("#dialog-link").click(function(){
+    var values= $("#myinput").val();
+       if (values!="投资金额不低于100元") {
+               if(values<100){
+         alert("请输入大于100元投资金额")
+               }else{
+                 $( "#dialog" ).dialog( "open" );
+               }
+        }else{
+         alert("请输入投资金额");
+        }
+ });
+ 
+   $( "#dialog" ).dialog({
+       autoOpen: false,
+       width: 500,
+       height:300,
+       buttons: [
+         {
+           text: "确认",
+           click: function() {
+             $( this ).dialog( "close" );    
+              $(".red_touzi").css("background","#ccc").html("投资成功！");
+              values=="投资金额不低于100元";
+           }
+         },
+         {
+           text: "取消",
+           click: function() {
+             $( this ).dialog( "close" );
+           }
+         }
+       ]
+     });
 
+   $( "#dialog01" ).dialog({
+       autoOpen: false,
+       width: 300,
+       height:300,
+       buttons: [
+         {
+           text: "确认",
+           click: function() {
+             $( this ).dialog( "close" );                    
+           }
+         },
+         {
+           text: "取消",
+           click: function() {
+             $( this ).dialog( "close" );
+           }
+         }
+       ]
+     });
 </script>
 </head>
 
@@ -353,8 +405,6 @@ function mysubmit(){
 </div>
  -->
 
-
-
 <div class="tou_con">
     <div class="con_left">
       <!-- con_left -->
@@ -461,6 +511,12 @@ function mysubmit(){
             <option>四个月</option>
             <option>五个月</option>
             <option>六个月</option>
+            <option>七个月</option>
+            <option>八个月</option>
+            <option>九个月</option>
+            <option>十个月</option>
+            <option>十一个月</option>
+            <option>十二个月</option>
           </select></span>
          </div>
          <div class="touzi_text">
@@ -468,8 +524,8 @@ function mysubmit(){
           <span class="touz_right">12345</span>
          </div>
        </div>
-
  -->
+
 	<div class="syl_table" style="clear:both;">
      <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="2" border="0">
                  <tr>
@@ -481,13 +537,13 @@ function mysubmit(){
                  </tr>
                  <c:if test="${ not empty li}">
         <c:forEach var="s" items="${li}" varStatus="i">
-        <tr>
-        <td bgcolor="#fff" align="center"><span>${s.startMoney}</span></td>
-        <td bgcolor="#fff" align="center"><span>${s.startInterestRate}</span></td>
-         <td bgcolor="#fff" align="center"><span>${s.moneyIncrease}</span></td>
-       	<td bgcolor="#fff" align="center"><span>${s.interestRateIncrease}</span></td>
-        <td bgcolor="#fff" align="center"><span>${s.highestMoney}</span></td>
-        </tr>
+	        <tr>
+	        <td bgcolor="#fff" align="center"><span>${s.startMoney}</span></td>
+	        <td bgcolor="#fff" align="center"><span>${s.startInterestRate}</span></td>
+	        <td bgcolor="#fff" align="center"><span>${s.moneyIncrease}</span></td>
+	       	<td bgcolor="#fff" align="center"><span>${s.interestRateIncrease}</span></td>
+	        <td bgcolor="#fff" align="center"><span>${s.highestMoney}</span></td>
+	        </tr>
          </c:forEach>
 			</c:if> 
       </table>
