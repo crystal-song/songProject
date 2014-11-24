@@ -99,29 +99,32 @@ $(document).ready(function(e) {
        </div>   
        <div class="news_right position_top">
            <ul class="webside">
-               <c:if test="${ not empty list1}">
-        <c:forEach var="s" items="${list1}" varStatus="i">
-            	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
+              <c:if test="${ not empty list1}">
+                <c:forEach var="s" items="${list1}" varStatus="i">
+            	   <li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
                	</c:forEach>
-        </c:if>
-                    
+              </c:if>                    
            </ul>
            <ul class="webside" style="display:none">
                   <c:if test="${ not empty list1}">
-        <c:forEach var="s" items="${list1}" varStatus="i">
-            	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
-               	</c:forEach>
-        </c:if>
-       
+                    <c:forEach var="s" items="${list1}" varStatus="i">
+            	     <li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
+               	    </c:forEach>
+                  </c:if>
            </ul> 
            <ul class="webside" style="display:none">
                   <c:if test="${ not empty list1}">
-        <c:forEach var="s" items="${list1}" varStatus="i">
-            	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
-               	</c:forEach>
-        </c:if>
+                    <c:forEach var="s" items="${list1}" varStatus="i">
+            	     <li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
+               	    </c:forEach>
+                  </c:if>
            </ul>         
        </div>
+         <!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp" %>
+	<!-- absolute_right end -->
+	
+	
    </div>
 <div class="clear"></div>
 <!-- footer start -->
