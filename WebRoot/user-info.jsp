@@ -80,12 +80,10 @@ var navIndex=2;
                 return true;
               }
             });
-         
-         
+       
 });
         
 </script>
-
 </head>
 
 <body>
@@ -99,24 +97,25 @@ var navIndex=2;
            <%@ include file="/includes/user_info_left.jsp" %>
          <!-- user_left end -->
     </div>
-          <div class="user_right">  
+        <div class="user_right">  
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>个人信息</strong>
           </div>
                <div class="con_list">
                   <div class="con_pic" style="display:none"></div>
                    <ul class="con_name">
-                     <li> <span>用户名</span>
-	                        <span>${user1.name}</span>
+                     <li>
+                         <span>用户名</span>
+	                        <span class="span_le">${user1.name}</span>
 	                        <span class="tip">详情</span>
 	                          <div id="tishik01">
-	                           <span class="border_left01"></span>
-	                           <div class="border_cent01">注册时的用户名不可更改</div>
-	                           <span class="border_right01"></span>
-	                       </div>
+	                            <span class="border_left01"></span>
+	                            <div  class="border_cent01">注册时的用户名不可更改</div>
+	                            <span class="border_right01"></span>
+	                          </div>
 	                 </li>
                      <li><span>真实姓名</span>
-	                      <span>${user1.realName}</span>
+	                      <span class="span_le">${user1.realName}</span>
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                      <div id="tishik01">
 	                           <span class="border_left01"></span>
@@ -124,7 +123,7 @@ var navIndex=2;
 	                           <span class="border_right01"></span>
 	                      </div></li>
                      <li><span>身份证号码</span>
-	                      <span>${user1.identityCard}</span>
+	                      <span class="span_le">${user1.identityCard}</span>
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                      <div id="tishik01">
 	                           <span class="border_left01"></span>
@@ -132,7 +131,7 @@ var navIndex=2;
 	                           <span class="border_right01"></span>
 	                      </div></li>
                      <li><span>手机号码</span>
-	                      <span>${user1.phone}</span>
+	                      <span class="span_le">${user1.phone}</span>
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
@@ -140,7 +139,7 @@ var navIndex=2;
 	                           <span class="border_right01"></span>
 	                        </div></li>
                      <li><span>邮箱地址</span>
-	                      <span>${user1.email}</span>
+	                      <span class="span_le">${user1.email}</span>
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
@@ -149,7 +148,7 @@ var navIndex=2;
 	                        </div></li>
 	                 <li>
 	                      <span>易宝账号</span>
-	                      <span><%-- ${registerYeePay1.platformUserNo} --%>${user1.realName}</span>
+	                      <span class="span_le"><%-- ${registerYeePay1.platformUserNo} --%>${user1.realName}</span>
 	                      <c:if test='${ empty registerYeePay1.code}'>
 	                      <span class="tip"><a href="<%=path%>/gate/register" target="_blank">立即认证</a></span>
 	                        <div id="tishik01">
@@ -170,16 +169,16 @@ var navIndex=2;
                    </ul>
                    <a class="user_pink" href="<%=path%>/user/getuserbyName?name=${user1.name}">修改个人信息</a>
                    <ul class="con_name lame">
-                     <li><span>性别</span><span>${user1.sex}</span></li>
-                     <li><span>出生日期</span><span>${ser1.dateOfBirth}</span></li>
-                     <li><span>最高学历</span><span>${user1.educationBackground}</span></li>
-                     <li><span>毕业院校</span><span>${user1.schoolOfGraduation}</span></li>
-                     <li><span>婚姻状态</span><span>${user1.maritalStatus}</span></li>
-                     <li><span>居住地址</span><span>${user1.address}</span></li>
-                     <li><span>公司行业</span><span>${user1.companyIndustry}</span></li>
-                     <li><span>公司规模</span><span>${user1.companyScale}</span></li>
-                     <li><span>所在职位</span><span>${user1.position}</span></li>
-                     <li><span>每月收入</span><span>${user1.income}</span></li> 
+                     <li><span>性别</span><span class="span_le">${user1.sex}</span></li>
+                     <li><span>出生日期</span><span class="span_le">${ser1.dateOfBirth}</span></li>
+                     <li><span>最高学历</span><span class="span_le">${user1.educationBackground}</span></li>
+                     <li><span>毕业院校</span><span class="span_le">${user1.schoolOfGraduation}</span></li>
+                     <li><span>婚姻状态</span><span class="span_le">${user1.maritalStatus}</span></li>
+                     <li><span>居住地址</span><span class="span_le">${user1.address}</span></li>
+                     <li><span>公司行业</span><span class="span_le">${user1.companyIndustry}</span></li>
+                     <li><span>公司规模</span><span class="span_le">${user1.companyScale}</span></li>
+                     <li><span>所在职位</span><span class="span_le">${user1.position}</span></li>
+                     <li><span>每月收入</span><span class="span_le">${user1.income}</span></li> 
                    </ul>
                </div>       
            </div>
