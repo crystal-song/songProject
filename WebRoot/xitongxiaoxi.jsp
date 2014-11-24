@@ -14,7 +14,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>提现 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript">
+<script type="text/javascript">  
+
     var navIndex=3;    
     $(document).ready(function(){
         $(".label_sec li").click(function(){
@@ -42,7 +43,151 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               $(this).siblings().slideToggle("slow");
             }); 
 });
-        
+  
+    
+    var myFilter=new Array();
+
+function filterChange(){
+	var filterIndex= new Array();
+	switch (myFilter[0]){
+	case 10:
+		filterIndex[0]=1;
+		break;
+	case 15:
+		filterIndex[0]=2;
+		break;
+	case 20:
+		filterIndex[0]=3;
+		break;
+		break;
+	default:
+		filterIndex[0]=0;
+	}
+	switch (myFilter[1]){
+	case 3:
+		filterIndex[1]=1;
+		break;
+	case 6:
+		filterIndex[1]=2;
+		break;
+	case 12:
+		filterIndex[1]=3;
+		break;
+	case 24:
+		filterIndex[1]=4;
+		break;	
+	default:
+		filterIndex[1]=0;
+	}
+	switch (myFilter[2]){
+	case 200:
+		filterIndex[2]=1;
+		break;
+	case 500:
+		filterIndex[2]=2;
+		break;
+	case 1000:
+		filterIndex[2]=3;
+		break;
+	case 2000:
+		filterIndex[2]=4;
+		break;
+	default:
+		filterIndex[2]=0;
+	}
+	switch (myFilter[3]){
+	case 50:
+		filterIndex[3]=1;
+		break;
+	case 80:
+		filterIndex[3]=2;
+		break;
+	case 100:
+		filterIndex[3]=3;
+		break;
+	default:
+		filterIndex[3]=0;
+	}
+
+	switch (myFilter[4]){
+	case 2:
+		filterIndex[4]=1;
+		break;
+	case 3:
+		filterIndex[4]=2;
+		break;
+	case 4:
+		filterIndex[4]=3;
+		break;
+	default:
+		filterIndex[4]=0;
+	}
+	$(".filter li").removeClass("dq");
+	for(i=0;i<5;i++){
+		$(".filter").eq(i).children("li").eq(filterIndex[i]).addClass("dq");
+	}
+}
+
+
+
+function pa(clicked){
+	myFilter[clicked.parent().index(".filter")]=clicked.attr("value");
+/* 	for(i=0;i<5;i++){
+		$("#form input").eq(i).val(myFilter[i]);
+		console.log(i+">>"+$("#form input").eq(i).val());
+	} */
+	$("#yearIncome").val(myFilter[0]);
+	$("#financingPeriod").val(myFilter[1]);
+	$("#financingMoney").val(myFilter[2]);
+	$("#financingProgress").val(myFilter[3]);
+	$("#projectStatus").val(myFilter[4]);
+	$("#pageNo").val(1);
+	console.log(myFilter);
+	//alert("avd");
+	
+	$("#form" ).submit();
+}
+
+
+function jumpPage(pag){
+	/* alert("ccccccccccc"+pag); */
+	   
+	    $('#pageNo').val(pag); 
+	    
+	   /*  pa(); */
+	    
+	   $("#yearIncome").val(myFilter[0]);
+	$("#financingPeriod").val(myFilter[1]);
+	$("#financingMoney").val(myFilter[2]);
+	$("#financingProgress").val(myFilter[3]);
+	$("#projectStatus").val(myFilter[4]);
+	    
+	    
+	 $("#form" ).submit(); 
+
+ }
+ 
+function pagerInit(a,b){//${page.totalPage},${page.pageNo}
+	var totalPages=a;
+	var curPage=b;
+	if(curPage>totalPages)return false;
+	var endPage=curPage+5>totalPages-1?totalPages-1:curPage+5;
+	var startPage=endPage-7>2?endPage-7:2;
+	endPage=startPage+7>totalPages?totalPages:startPage+7;
+	console.log(startPage+"/"+endPage+"/"+curPage);
+	var str='';
+	var spl='<span>...</span>';
+	$(".pageNum").html('<a href="javascript:jumpPage(1)" class="pager">1</a>');
+	if(startPage>2){$(".pageNum").html($(".pageNum").html()+spl);}
+      for(i=startPage;i<endPage;i++){
+    	  str='<a href="javascript:jumpPage('+i+')" class="pager">'+i+'</a>';
+    	  $(".pageNum").html($(".pageNum").html()+str);
+		}
+      if(endPage<totalPages-1){$(".pageNum").html($(".pageNum").html()+spl);}
+    if(totalPages>1)$(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
+    $(".pager").eq(curPage-startPage+1).addClass("pageNumCur");
+	$(".pageNumCur").attr("href","javascript:;");	
+}
 </script>
 
 </head>
@@ -52,6 +197,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 
+ <div id="bodyframe" style="VISIBILITY: hidden">  
+ <!-- <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px"> -->   
+  
+<form  action="<%=path%>/product/allProduct" id="form" method="post"   class="box"  style="display:'none'"   >
+ <input type="hidden"   name="pageNo" id="pageNo" value="${pageNo}"   /> 
+ <input type="hidden"   name="yearIncome" id="yearIncome"   value="${product.yearIncome}"   />
+<input type="hidden"   name="financingMoney" id="financingMoney"  value="${product.financingMoney}" />
+<input type="hidden"   name="financingPeriod" id="financingPeriod" value="${product.financingPeriod}" />
+<input type="hidden"   name="financingProgress" id="financingProgress" value="${product.financingProgress}" /> 
+<input type="hidden"   name="projectStatus" id="projectStatus" value="${product.projectStatus}" /> 
+
+<input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
+<!--  <button id="update" ></button> --> 
+ 
+</form>
+ <!--  </IFRAME> -->  
+ </div>   
+
+
+
+
+<!-- <div onclick="document.all.bodyframe.style.visibility='visible'" style="background-color: red; cursor: hand; height: 22; left: 300; position: absolute; top: 137; width: 74; z-index: 1"> 
+<font color="#ffffff">显示iFrame</font></p> 
+</div> 
+<div onclick="document.all.bodyframe.style.visibility='hidden'" style="background-color: red; cursor: hand; height: 22; left: 400; position: absolute; top: 137; width: 74; z-index: 1"> 
+<font color="#ffffff">隐藏iFrame</font> 
+</div> 555555 -->
+ 
+<input type="hidden" name="page.pageNo" id="pageNo" value="1" />
+         
+         
 <div class="user_con">
     <div class="user_left">
       <!-- user_left start -->
@@ -153,13 +329,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <p class="xinxi">恭喜你通过了实名认证！</p>
                         </div>
                     </li>
-
-                  </ul>
-                
+                  </ul>                
                </div>
                
         <div class="next_list">
-           <a href="#" class="a1">首页</a>
+           <!--  <a href="#" class="a1">首页</a>
            <a href="#" class="a2"></a>
            <a href="#">1</a>
            <a href="#">2</a>
@@ -173,11 +347,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <span>跳到</span>
            <span><input type="text" /></span>
            <span>页</span>
-           <span><input type="submit" class="btn_sub" value="确定"/></span>
+           <span><input type="submit" class="btn_sub" value="确定"/></span>-->
+            <a href="javascript:jumpPage(1)">首页</a> 
+								 
+								<c:if test=""></c:if>
+								 
+								 <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
+								 <div class="pageNum"></div>
+								 
+								   <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  
+								
+								<a href="javascript:jumpPage(${page.totalPage})">末页</a> 
         </div>        
-           </div>
-         </div>
-  
+      </div>
+   </div> 
 </div>
 <div class="clear"></div>
 <!-- footer start -->
