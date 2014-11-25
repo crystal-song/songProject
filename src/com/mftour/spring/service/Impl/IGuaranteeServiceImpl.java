@@ -11,16 +11,14 @@ import com.mftour.spring.service.IGuaranteeService;
 
 @Service("guaranteeService")
 public class IGuaranteeServiceImpl implements IGuaranteeService {
-	
+
 	@Autowired
-    private IGuaranteeDao guaranteeDao;
+	private IGuaranteeDao guaranteeDao;
 
 	@Override
 	public List<TChannel> getTChannel() throws Exception {
-		
+
 		return guaranteeDao.getTChannel();
 	}
-	
-	
 
 }

@@ -35,9 +35,9 @@ public class CFCACertSignUtils {
 	private static final String ALGORITHM = SignatureUtil.SHA1_RSA;
 	public static final String DEFAULT_CHARSET = "UTF-8";
 	public static String lock = "LOCK";
-	
+
 	public static final String YEEPAY_IDENTITY = "OU=ra.yeepay.com";
-	
+
 	public static final String CERT_EXT_INFO = new String("1.2.86.1");
 
 	static {

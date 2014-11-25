@@ -6,13 +6,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 @XmlRootElement(name = "request")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BHAWithdrawRequest extends BHALoginRequest {
 
 	private BHAFeeModeEnum feeMode;
-	
+
 	private BigDecimal amount;
 
 	public BHAFeeModeEnum getFeeMode() {

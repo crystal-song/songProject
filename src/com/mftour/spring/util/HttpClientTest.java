@@ -16,54 +16,57 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 public class HttpClientTest {
-	
-	
-	public String postForm(String service,String url,String s) {  
-        // 创建默认的httpClient实例.    
-        CloseableHttpClient httpclient = HttpClients.createDefault();  
-        // 创建httppost    
-        HttpPost httppost = new HttpPost(url);  
-        // 创建参数队列    
-        List formparams = new ArrayList();  
-        formparams.add(new BasicNameValuePair("service", service));  
-        formparams.add(new BasicNameValuePair("req", s));  
-        formparams.add(new BasicNameValuePair("sign", "ddd"));
-        UrlEncodedFormEntity uefEntity;  
-        try {  
-            uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");  
-            httppost.setEntity(uefEntity);  
-            System.out.println("executing request " + httppost.getURI());  
-            CloseableHttpResponse response = httpclient.execute(httppost);  
-            try {  
-                HttpEntity entity = response.getEntity();  
-                if (entity != null) {  
-                    System.out.println("--------------------------------------");  
-                   /* System.out.println("Response content: " + EntityUtils.toString(entity, "UTF-8"));
-                    String name=EntityUtils.toString(entity, "UTF-8");*/
-                    
-                    System.out.println("--------------------------------------");  
-                   
-                    return EntityUtils.toString(entity, "UTF-8");
-                }  
-            } finally {  
-                response.close();  
-            }  
-        } catch (ClientProtocolException e) {  
-            e.printStackTrace();  
-        } catch (UnsupportedEncodingException e1) {  
-            e1.printStackTrace(); 
-        } catch (IOException e) {  
-            e.printStackTrace();    
-        } finally {  
-            // 关闭连接,释放资源    
-            try {  
-                httpclient.close();  
-            } catch (IOException e) {  
-                e.printStackTrace();  
-            }  
-        }  
-        return null;
-    }  
-  
+
+	public String postForm(String service, String url, String s) {
+		// 创建默认的httpClient实例.
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		// 创建httppost
+		HttpPost httppost = new HttpPost(url);
+		// 创建参数队列
+		List formparams = new ArrayList();
+		formparams.add(new BasicNameValuePair("service", service));
+		formparams.add(new BasicNameValuePair("req", s));
+		formparams.add(new BasicNameValuePair("sign", "ddd"));
+		UrlEncodedFormEntity uefEntity;
+		try {
+			uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");
+			httppost.setEntity(uefEntity);
+			System.out.println("executing request " + httppost.getURI());
+			CloseableHttpResponse response = httpclient.execute(httppost);
+			try {
+				HttpEntity entity = response.getEntity();
+				if (entity != null) {
+					System.out
+							.println("--------------------------------------");
+					/*
+					 * System.out.println("Response content: " +
+					 * EntityUtils.toString(entity, "UTF-8")); String
+					 * name=EntityUtils.toString(entity, "UTF-8");
+					 */
+
+					System.out
+							.println("--------------------------------------");
+
+					return EntityUtils.toString(entity, "UTF-8");
+				}
+			} finally {
+				response.close();
+			}
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			// 关闭连接,释放资源
+			try {
+				httpclient.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 
 }

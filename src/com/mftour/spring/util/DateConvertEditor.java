@@ -6,7 +6,8 @@ import java.text.SimpleDateFormat;
 import org.springframework.util.StringUtils;
 
 public class DateConvertEditor extends PropertyEditorSupport {
-	private SimpleDateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private SimpleDateFormat datetimeFormat = new SimpleDateFormat(
+			"yyyy-MM-dd HH:mm:ss");
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 	public void setAsText(String text) throws IllegalArgumentException {
@@ -16,11 +17,13 @@ public class DateConvertEditor extends PropertyEditorSupport {
 					setValue(this.dateFormat.parse(text));
 				} else if (text.indexOf(":") > 0 && text.length() == 19) {
 					setValue(this.datetimeFormat.parse(text));
-				}else{
-					throw new IllegalArgumentException("Could not parse date, date format is error ");
+				} else {
+					throw new IllegalArgumentException(
+							"Could not parse date, date format is error ");
 				}
 			} catch (ParseException ex) {
-				IllegalArgumentException iae = new IllegalArgumentException("Could not parse date: " + ex.getMessage());
+				IllegalArgumentException iae = new IllegalArgumentException(
+						"Could not parse date: " + ex.getMessage());
 				iae.initCause(ex);
 				throw iae;
 			}

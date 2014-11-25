@@ -10,7 +10,8 @@ import com.mftour.spring.Dao.IGuaranteeDao;
 import com.mftour.spring.model.TChannel;
 
 @Repository("guaranteeDao")
-public class IGuaranteeDaoImpl  extends HibernateDaoSupport  implements IGuaranteeDao {
+public class IGuaranteeDaoImpl extends HibernateDaoSupport implements
+		IGuaranteeDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -19,7 +20,5 @@ public class IGuaranteeDaoImpl  extends HibernateDaoSupport  implements IGuarant
 		Query query = getSession().createQuery(hql);
 		return query.list();
 	}
-	
-	
 
 }

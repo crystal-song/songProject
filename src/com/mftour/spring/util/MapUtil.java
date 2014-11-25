@@ -11,7 +11,7 @@ import java.util.Map;
  * 
  */
 public class MapUtil {
-	
+
 	/**
 	 * 实体转换成MAP
 	 * 

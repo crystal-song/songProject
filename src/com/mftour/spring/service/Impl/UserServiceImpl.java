@@ -9,44 +9,40 @@ import com.mftour.spring.Dao.IUserDao;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IUserService;
 
-
 @Service("userService")
 public class UserServiceImpl implements IUserService {
 
-	 @Autowired
-		private IUserDao userDao;
-	
+	@Autowired
+	private IUserDao userDao;
+
 	public TUser getUserByAccount(String account) throws Exception {
-		List list=  userDao.getUserByAccount(account);
-		return list==null || list.size() == 0 ? null : (TUser)list.get(0);
-		
+		List list = userDao.getUserByAccount(account);
+		return list == null || list.size() == 0 ? null : (TUser) list.get(0);
+
 	}
+
 	public TUser getUserByEmail(String email) throws Exception {
-		List list=  userDao.getUserByEmail(email);
-		return list==null || list.size() == 0 ? null : (TUser)list.get(0);
-		
+		List list = userDao.getUserByEmail(email);
+		return list == null || list.size() == 0 ? null : (TUser) list.get(0);
+
 	}
 
 	@Override
 	public void addOrUpdate(TUser user) throws Exception {
-		      userDao.addOrUpdate(user);
-		
+		userDao.addOrUpdate(user);
+
 	}
 
 	@Override
 	public List<TUser> getName(String name) throws Exception {
-		return  userDao.getName(name);
-		
+		return userDao.getName(name);
+
 	}
 
-	public int findAllRecord(String mobilephone){
-		int i=0;
-		i=userDao.finaAllRecord(mobilephone);
+	public int findAllRecord(String mobilephone) {
+		int i = 0;
+		i = userDao.finaAllRecord(mobilephone);
 		return i;
 	}
-	
-	
-	
 
-	
 }

@@ -8,12 +8,13 @@ import com.mftour.spring.model.TProduct;
 import com.mftour.spring.util.Page;
 
 public interface ICrowdfundingService {
-	
-	
-	public List<TCrowdfunding> getCrowdfunding(Page page,TCrowdfunding crowdfunding)throws Exception;
-	
+
+	public List<TCrowdfunding> getCrowdfunding(Page page,
+			TCrowdfunding crowdfunding) throws Exception;
+
 	public TCrowdfunding getCrowdfundingById(Long id);
-	
-	 public List<TCrowdfundingCommodity> queryTCrowdfundingCommodityByNumber(String  projectNumber)throws Exception;
+
+	public List<TCrowdfundingCommodity> queryTCrowdfundingCommodityByNumber(
+			String projectNumber) throws Exception;
 
 }

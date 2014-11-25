@@ -40,213 +40,256 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
  */
 @Controller
 @RequestMapping("/welcome")
-//将Model中属性名为Constants.USER_INFO_SESSION的属性放到Session属性列表中，以便这个属性可以跨请求访问
+// 将Model中属性名为Constants.USER_INFO_SESSION的属性放到Session属性列表中，以便这个属性可以跨请求访问
 @SessionAttributes(Constants.USER_INFO_SESSION)
 public class WelcomeController {
 
 	@Autowired
-    private IUserService userService;
-	
+	private IUserService userService;
+
 	@Autowired
-    private IGateService gateService;
-  
-	@RequestMapping(value = "/login", method=RequestMethod.POST)
+	private IGateService gateService;
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
-	public String helloWorld(TUser user, Model model,@RequestParam("name") String username,@RequestParam("password") String password ) throws Exception {
-		
-		
-		
-	TUser user1 = userService.getUserByAccount(user.getName());
-	
-	   if(user1!=null){
-		   if(user1.getPassword().equals(user.getPassword())){
-			   model.addAttribute("name", user.getName()); 
-			   return "success";
-		   }
-	   }
-	   return "fail";
-/*	    return "user/chpasswd";*/
-	    
-		
+	public String helloWorld(TUser user, Model model,
+			@RequestParam("name") String username,
+			@RequestParam("password") String password) throws Exception {
+
+		TUser user1 = userService.getUserByAccount(user.getName());
+
+		if (user1 != null) {
+			if (user1.getPassword().equals(user.getPassword())) {
+				model.addAttribute("name", user.getName());
+				return "success";
+			}
+		}
+		return "fail";
+		/* return "user/chpasswd"; */
+
 	}
-	@RequestMapping(value = "/logout",  method = {RequestMethod.POST, RequestMethod.GET})
+
+	@RequestMapping(value = "/logout", method = { RequestMethod.POST,
+			RequestMethod.GET })
 	public String logout(HttpServletRequest request) throws Exception {
 		request.getSession().removeAttribute("name");
 		return "login";
 	}
-	
-	@RequestMapping(value = "/regEmail", method=RequestMethod.POST)
-	public String regEemail(TUser user, Model model,HttpServletRequest request) throws Exception {
-		boolean flag=false;
-			if(user.getName()!=null&&user.getName()!=""&&user.getPassword()!=null); 
-			try {
-				user.setRegState("f");
-				userService.addOrUpdate(user);
-			} catch (Exception e) {
-				e.printStackTrace();
-				throw e;
-			}
-			model.addAttribute("user1", user);
-	         //这个类主要是设置邮件
-		  MailSenderInfo mailInfo = new MailSenderInfo(); 
-		  mailInfo.setMailServerHost("smtp.ptobchina.com"); 
-		  mailInfo.setMailServerPort("25"); 
-		  mailInfo.setValidate(true);  
-		  mailInfo.setUserName("cs@ptobchina.com"); 
-		  mailInfo.setPassword("12qwaszx");//您的邮箱密码 
-		  mailInfo.setFromAddress("cs@ptobchina.com"); 
-		  mailInfo.setToAddress(user.getEmail()); 
-		  mailInfo.setSubject("中租宝-用户注册确认邮件"); //设置邮箱标题
-		  String path = request.getContextPath();
-	      String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-	      String resetPassHref =  basePath+"welcome/register?username="+user.getName();
-	      String mainjsp = "http://www.ptobchina.com/wel";
 
-		  String msgContent = "亲爱的用户" + user.getName() + "，您好，<br/><br/>"
-	              + "您在" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
-	              + "<a href="+resetPassHref+"><font color='green'>http://www.ptobchina.com/welcome/register?username="+user.getName()+"</font></a><br/><br/>"
-	              +"(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-	              + "中租宝   <a href="+mainjsp+"><font color='green'>http://www.ptobchina.com/</font></a>" + "<br/><br/>"
-	              + "此为自动发送邮件，请勿直接回复！";
-		  mailInfo.setContent(msgContent); //
-	         //这个类主要来发送邮件
-		  SimpleMailSender sms = new SimpleMailSender();
-	         // sms.sendTextMail(mailInfo);//发送文体格式  
-	         flag= sms.sendHtmlMail(mailInfo);//发送html格式
-	         System.out.println("assssssssssss"+flag);
-	         if(flag!=true){
-	        	 mailInfo.setUserName("no-reply@ptobchina.com"); 
-	        	 mailInfo.setPassword("12qwaszx");//您的邮箱密码 
-	        	 mailInfo.setFromAddress("no-reply@ptobchina.com"); 
-	        	 flag=sms.sendHtmlMail(mailInfo);
-	         }
-	
-	return "reg_email";
-}
-	@RequestMapping(value = "/emailVerification", method=RequestMethod.POST)
-	public String emailVerification(@RequestParam("mail") String mail, Model model,HttpServletRequest request) throws Exception {
-		boolean flag=false;
-		String username=(String)request.getSession().getAttribute("name");
+	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
+	public String regEemail(TUser user, Model model, HttpServletRequest request)
+			throws Exception {
+		boolean flag = false;
+		if (user.getName() != null && user.getName() != ""
+				&& user.getPassword() != null)
+			;
+		try {
+			user.setRegState("f");
+			userService.addOrUpdate(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		model.addAttribute("user1", user);
+		// 这个类主要是设置邮件
+		MailSenderInfo mailInfo = new MailSenderInfo();
+		mailInfo.setMailServerHost("smtp.ptobchina.com");
+		mailInfo.setMailServerPort("25");
+		mailInfo.setValidate(true);
+		mailInfo.setUserName("cs@ptobchina.com");
+		mailInfo.setPassword("12qwaszx");// 您的邮箱密码
+		mailInfo.setFromAddress("cs@ptobchina.com");
+		mailInfo.setToAddress(user.getEmail());
+		mailInfo.setSubject("中租宝-用户注册确认邮件"); // 设置邮箱标题
+		String path = request.getContextPath();
+		String basePath = request.getScheme() + "://" + request.getServerName()
+				+ ":" + request.getServerPort() + path + "/";
+		String resetPassHref = basePath + "welcome/register?username="
+				+ user.getName();
+		String mainjsp = "http://www.ptobchina.com/wel";
+
+		String msgContent = "亲爱的用户"
+				+ user.getName()
+				+ "，您好，<br/><br/>"
+				+ "您在"
+				+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+						.format(new Date())
+				+ "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
+				+ "<a href="
+				+ resetPassHref
+				+ "><font color='green'>http://www.ptobchina.com/welcome/register?username="
+				+ user.getName() + "</font></a><br/><br/>"
+				+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
+				+ "中租宝   <a href=" + mainjsp
+				+ "><font color='green'>http://www.ptobchina.com/</font></a>"
+				+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+		mailInfo.setContent(msgContent); //
+		// 这个类主要来发送邮件
+		SimpleMailSender sms = new SimpleMailSender();
+		// sms.sendTextMail(mailInfo);//发送文体格式
+		flag = sms.sendHtmlMail(mailInfo);// 发送html格式
+		System.out.println("assssssssssss" + flag);
+		if (flag != true) {
+			mailInfo.setUserName("no-reply@ptobchina.com");
+			mailInfo.setPassword("12qwaszx");// 您的邮箱密码
+			mailInfo.setFromAddress("no-reply@ptobchina.com");
+			flag = sms.sendHtmlMail(mailInfo);
+		}
+
+		return "reg_email";
+	}
+
+	@RequestMapping(value = "/emailVerification", method = RequestMethod.POST)
+	public String emailVerification(@RequestParam("mail") String mail,
+			Model model, HttpServletRequest request) throws Exception {
+		boolean flag = false;
+		String username = (String) request.getSession().getAttribute("name");
 		TUser user = userService.getUserByAccount(username);
 		user.setEmail(mail);
 		userService.addOrUpdate(user);
-		//这个类主要是设置邮件
-		MailSenderInfo mailInfo = new MailSenderInfo(); 
-		mailInfo.setMailServerHost("smtp.ptobchina.com"); 
-		mailInfo.setMailServerPort("25"); 
-		mailInfo.setValidate(true);  
-		mailInfo.setUserName("cs@ptobchina.com"); 
-		mailInfo.setPassword("12qwaszx");//您的邮箱密码 
-		mailInfo.setFromAddress("cs@ptobchina.com"); 
-		mailInfo.setToAddress(user.getEmail()); 
-		mailInfo.setSubject("中租宝-用户验证"); //设置邮箱标题
+		// 这个类主要是设置邮件
+		MailSenderInfo mailInfo = new MailSenderInfo();
+		mailInfo.setMailServerHost("smtp.ptobchina.com");
+		mailInfo.setMailServerPort("25");
+		mailInfo.setValidate(true);
+		mailInfo.setUserName("cs@ptobchina.com");
+		mailInfo.setPassword("12qwaszx");// 您的邮箱密码
+		mailInfo.setFromAddress("cs@ptobchina.com");
+		mailInfo.setToAddress(user.getEmail());
+		mailInfo.setSubject("中租宝-用户验证"); // 设置邮箱标题
 		String path = request.getContextPath();
-		String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-		String resetPassHref =  basePath+"welcome/register?username="+user.getName();
+		String basePath = request.getScheme() + "://" + request.getServerName()
+				+ ":" + request.getServerPort() + path + "/";
+		String resetPassHref = basePath + "welcome/register?username="
+				+ user.getName();
 		String mainjsp = "http://www.ptobchina.com/wel";
-		System.out.println("ssssssssssssss"+resetPassHref);
-		String msgContent = "亲爱的用户" + user.getName() + "，您好，<br/><br/>"
-				+ "您在" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
-				+ "<a href="+resetPassHref+"><font color='green'>http://www.ptobchina.com/welcome/register?username="+user.getName()+"</font></a><br/><br/>"
-				+"(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-				+ "中租宝   <a href="+mainjsp+"><font color='green'>http://www.ptobchina.com/</font></a>" + "<br/><br/>"
-				+ "此为自动发送邮件，请勿直接回复！";
+		System.out.println("ssssssssssssss" + resetPassHref);
+		String msgContent = "亲爱的用户"
+				+ user.getName()
+				+ "，您好，<br/><br/>"
+				+ "您在"
+				+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+						.format(new Date())
+				+ "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
+				+ "<a href="
+				+ resetPassHref
+				+ "><font color='green'>http://www.ptobchina.com/welcome/register?username="
+				+ user.getName() + "</font></a><br/><br/>"
+				+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
+				+ "中租宝   <a href=" + mainjsp
+				+ "><font color='green'>http://www.ptobchina.com/</font></a>"
+				+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
 		mailInfo.setContent(msgContent); //
-		//这个类主要来发送邮件
+		// 这个类主要来发送邮件
 		SimpleMailSender sms = new SimpleMailSender();
-		// sms.sendTextMail(mailInfo);//发送文体格式  
-		flag= sms.sendHtmlMail(mailInfo);//发送html格式
-		if(flag!=true){
-			mailInfo.setUserName("no-reply@ptobchina.com"); 
-			mailInfo.setPassword("12qwaszx");//您的邮箱密码 
-			mailInfo.setFromAddress("no-reply@ptobchina.com"); 
-			flag=sms.sendHtmlMail(mailInfo);
+		// sms.sendTextMail(mailInfo);//发送文体格式
+		flag = sms.sendHtmlMail(mailInfo);// 发送html格式
+		if (flag != true) {
+			mailInfo.setUserName("no-reply@ptobchina.com");
+			mailInfo.setPassword("12qwaszx");// 您的邮箱密码
+			mailInfo.setFromAddress("no-reply@ptobchina.com");
+			flag = sms.sendHtmlMail(mailInfo);
 		}
-		
+
 		return "reg_email";
 	}
-	@RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET})
-	public String register(@RequestParam("username") String username,Model model) throws Exception {
+
+	@RequestMapping(value = "/register", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String register(@RequestParam("username") String username,
+			Model model) throws Exception {
 		TUser user = userService.getUserByAccount(username);
 		user.setRegState("s");
 		userService.addOrUpdate(user);
 		model.addAttribute("regState", user.getRegState());
 		return "reg_success";
 	}
-	
-	
-	@RequestMapping(value = "/session", method = {RequestMethod.POST, RequestMethod.GET})
-	public String Session( Model model,TUser user,HttpServletRequest request) throws Exception {
-		request.getSession().setAttribute("name",user.getName()); 
-		TUser user1 = userService.getUserByAccount(user.getName());
-		request.getSession().setAttribute("userinfo",user1);
-		model.addAttribute("user1", user1); 
-		//TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(user1.getName()).get(0); 
-		//model.addAttribute("registerYeePay1", registerYeePay1);
-		return "user-info";
-}
-	    
-		
-	@RequestMapping(value = "/queryUser", method = {RequestMethod.POST, RequestMethod.GET})
-	@ResponseBody
-	public String queryUser( Model model,TUser user) throws Exception {
-	
-		TUser user1 = userService.getUserByAccount(user.getName());
-	            if(user1!=null){ 
-	            	  return "success";
-	            }
-//		      
-		return "fail"; 
-}
 
-	@RequestMapping(value="/identityCardVerification", method=RequestMethod.POST)
-	public String identityCardVerification(TUser user,@RequestParam MultipartFile[] myfiles,HttpServletRequest request){
-		String realPath = request.getSession().getServletContext().getRealPath("/images/identityCardPic");  
-		System.out.println("ddddddddddd"+realPath);
+	@RequestMapping(value = "/session", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String Session(Model model, TUser user, HttpServletRequest request)
+			throws Exception {
+		request.getSession().setAttribute("name", user.getName());
+		TUser user1 = userService.getUserByAccount(user.getName());
+		request.getSession().setAttribute("userinfo", user1);
+		model.addAttribute("user1", user1);
+		// TRegisterYeePay registerYeePay1=
+		// gateService.queryTRegisterYeePayByName(user1.getName()).get(0);
+		// model.addAttribute("registerYeePay1", registerYeePay1);
+		return "user-info";
+	}
+
+	@RequestMapping(value = "/queryUser", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	@ResponseBody
+	public String queryUser(Model model, TUser user) throws Exception {
+
+		TUser user1 = userService.getUserByAccount(user.getName());
+		if (user1 != null) {
+			return "success";
+		}
+		//
+		return "fail";
+	}
+
+	@RequestMapping(value = "/identityCardVerification", method = RequestMethod.POST)
+	public String identityCardVerification(TUser user,
+			@RequestParam MultipartFile[] myfiles, HttpServletRequest request) {
+		String realPath = request.getSession().getServletContext()
+				.getRealPath("/images/identityCardPic");
+		System.out.println("ddddddddddd" + realPath);
 		try {
-			TUser user1=userService.getUserByAccount(user.getName());
+			TUser user1 = userService.getUserByAccount(user.getName());
 			user1.setRealName(user.getRealName());
 			user1.setIdentityCard(user.getIdentityCard());
 			user1.setIdentityCardPic1(myfiles[0].getOriginalFilename());
 			user1.setIdentityCardPic2(myfiles[1].getOriginalFilename());
 			userService.addOrUpdate(user1);
-			for(MultipartFile myfile : myfiles){  
-				if(myfile.isEmpty()){  
-					System.out.println("文件未上传");  
-				}else{  
-					System.out.println("文件长度: " + myfile.getSize());  
-					System.out.println("文件类型: " + myfile.getContentType());  
-					System.out.println("文件名称: " + myfile.getName());  
-					System.out.println("文件原名: " + myfile.getOriginalFilename());  
-					System.out.println("========================================");  
-					FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(realPath, myfile.getOriginalFilename()));
-				}}
+			for (MultipartFile myfile : myfiles) {
+				if (myfile.isEmpty()) {
+					System.out.println("文件未上传");
+				} else {
+					System.out.println("文件长度: " + myfile.getSize());
+					System.out.println("文件类型: " + myfile.getContentType());
+					System.out.println("文件名称: " + myfile.getName());
+					System.out.println("文件原名: " + myfile.getOriginalFilename());
+					System.out
+							.println("========================================");
+					FileUtils.copyInputStreamToFile(myfile.getInputStream(),
+							new File(realPath, myfile.getOriginalFilename()));
+				}
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}  
-		
+		}
+
 		return "identityCard_success";
 	}
-	
-	
+
 	/**
 	 * 验证手机短信是否发送成功
 	 * 
 	 * @throws Exception
 	 */
-	@RequestMapping(value="/sms", method=RequestMethod.POST)
-	public void sms(@RequestParam("jbPhone") String jbPhone,@RequestParam("code") String code,HttpServletRequest request,HttpServletResponse response)  throws Exception {
+	@RequestMapping(value = "/sms", method = RequestMethod.POST)
+	public void sms(@RequestParam("jbPhone") String jbPhone,
+			@RequestParam("code") String code, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		String result = "0";
-		/** 手机号码 *//*
-		String jbPhone = WebContextUtil.getRequest().getParameter("jbPhone");
-		*//** 短信验证码 *//*
-		String code = WebContextUtil.getRequest().getParameter("code");
-		*//** 短信验证码存入session(session的默认失效时间30分钟) *//*
-		WebContextUtil.getSession().setAttribute("code", code);*/
+		/** 手机号码 */
+		/*
+		 * String jbPhone = WebContextUtil.getRequest().getParameter("jbPhone");
+		 *//** 短信验证码 */
+		/*
+		 * String code = WebContextUtil.getRequest().getParameter("code");
+		 *//** 短信验证码存入session(session的默认失效时间30分钟) */
+		/*
+		 * WebContextUtil.getSession().setAttribute("code", code);
+		 */
 		/** 如何初始化失败返回 */
 		request.getSession().setAttribute("code", code);
-		if(!initClient()) {
+		if (!initClient()) {
 			return;
 		}
 		/** 单个手机号发送短信的方法的参数准备 */
@@ -255,7 +298,8 @@ public class WelcomeController {
 		// 短信内容+随机生成的6位短信验证码
 		String content = "根据中租宝公司的委托，特向您发送此条短信。您的验证码为:" + code;
 		// 操作用户的ID
-		Integer operId = Integer.parseInt(Env.getInstance().getProperty("operId"));
+		Integer operId = Integer.parseInt(Env.getInstance().getProperty(
+				"operId"));
 		// 定时发送的的发送时间(缺省为空，如果即时发送，填空)
 		String tosend_time = "";
 		// 应用系统的短信ID，用户查询该短信的状态报告(缺省为0，即不需查询短信的状态报告)
@@ -269,10 +313,10 @@ public class WelcomeController {
 		// 短信有效时间(格式为：YYYY-MM-DD HH:mm:ss目前为空)
 		String valid_time = "";
 		/** 发送短信之前先统计一个已经发送的短信条数 */
-		TUser user=(TUser)request.getSession().getAttribute("userinfo");
+		TUser user = (TUser) request.getSession().getAttribute("userinfo");
 		int messageCount = userService.findAllRecord(mobilephone);
-		System.out.println("已发短信条数为：" +messageCount);
-		if(messageCount < 5){
+		System.out.println("已发短信条数为：" + messageCount);
+		if (messageCount < 5) {
 			/** 单个手机号发送短信 */
 			if (!sendMessage(mobilephone, content, operId, tosend_time, sms_id,
 					backlist_filter, fbdword_filter, priority, valid_time)) {
@@ -282,20 +326,21 @@ public class WelcomeController {
 				/** 发送一条短信，记录一条短信记录，为了方便之后的统计短信发送次数 */
 				user.setPhone(mobilephone);// 手机号码
 				user.setCaptcha(code);// 短信验证码
-				user.setSendTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));// 短信发送时间
-				user.setMessageCount(messageCount+1);
+				user.setSendTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+						.format(new Date()));// 短信发送时间
+				user.setMessageCount(messageCount + 1);
 				userService.addOrUpdate(user);
 			}
-		}else{
+		} else {
 			System.out.println("该手机号码今天发送验证码过多");
-			result = "2";//一个手机号码最多发送3条短信验证码
+			result = "2";// 一个手机号码最多发送3条短信验证码
 		}
 		response.setContentType("application/json;charset=UTF-8");
 		response.setHeader("Cache-Control", "no-cache");
 		PrintWriter out = response.getWriter();
 		out.write(result.toString());
 	}
-	
+
 	/**
 	 * WebService客户端初始化
 	 * 
@@ -312,7 +357,7 @@ public class WelcomeController {
 					System.out.println("短信平台接口初始化失败！");
 					return false;
 				}
-				System.out.println("短信平台接口初始化成功！"+ret+"----------");
+				System.out.println("短信平台接口初始化成功！" + ret + "----------");
 			} catch (Exception ex) {
 				ex.printStackTrace();
 				System.out.println("短信平台接口初始化过程中异常！");
@@ -320,7 +365,7 @@ public class WelcomeController {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 单个手机号码发送
 	 * 
@@ -365,39 +410,36 @@ public class WelcomeController {
 		}
 		return true;
 	}
-	
-	@RequestMapping(value="/smsCheckCode", method=RequestMethod.POST)
-	public String smsCheckCode(@RequestParam("SmsCheckCode") String SmsCheckCode,HttpServletRequest request){
-		String code=(String)request.getSession().getAttribute("code");
-		if(code.equals(SmsCheckCode)){
+
+	@RequestMapping(value = "/smsCheckCode", method = RequestMethod.POST)
+	public String smsCheckCode(
+			@RequestParam("SmsCheckCode") String SmsCheckCode,
+			HttpServletRequest request) {
+		String code = (String) request.getSession().getAttribute("code");
+		if (code.equals(SmsCheckCode)) {
 			return "success";
 		}
 		return "fail";
 	}
-	@RequestMapping(value="/phoneVerification", method=RequestMethod.POST)
-	public String phoneVerification(){
-		
+
+	@RequestMapping(value = "/phoneVerification", method = RequestMethod.POST)
+	public String phoneVerification() {
+
 		return "PhoneVerification_success";
 	}
-	
-	
-	
-	
-	/*@RequestMapping(value = "/regis" , method=RequestMethod.POST)
-	public String register(TUser user, Model model) throws Exception {
-		     if(user.getName()!=null&&user.getName()!=""&&user.getPassword()!=null); 
-		     try {
-		    	 
-		     userService.addOrUpdate(user);
-		       } catch (Exception e) {
-		            e.printStackTrace();
-		           
-		            throw e;
-		        }
-		     
-		    
-		return null;
+
+	/*
+	 * @RequestMapping(value = "/regis" , method=RequestMethod.POST) public
+	 * String register(TUser user, Model model) throws Exception {
+	 * if(user.getName()!=null&&user.getName()!=""&&user.getPassword()!=null);
+	 * try {
+	 * 
+	 * userService.addOrUpdate(user); } catch (Exception e) {
+	 * e.printStackTrace();
+	 * 
+	 * throw e; }
+	 * 
+	 * 
+	 * return null; }
+	 */
 }
-	*/
-}
-	

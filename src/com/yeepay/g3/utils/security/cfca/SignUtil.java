@@ -8,7 +8,6 @@ import com.cfca.util.pki.PKIException;
 import com.cfca.util.pki.cert.X509Cert;
 import com.cfca.util.pki.cipher.JKey;
 
-
 public class SignUtil {
 
 	public static String sign(String sourceMessage, String file, String password) {
@@ -30,8 +29,7 @@ public class SignUtil {
 
 	public static boolean verifySign(String sourceMessage, String signMsg,
 			String merchantNo) {
-		return CFCACertSignUtils.verifySign(sourceMessage, signMsg,
-				merchantNo);
+		return CFCACertSignUtils.verifySign(sourceMessage, signMsg, merchantNo);
 	}
 
 }

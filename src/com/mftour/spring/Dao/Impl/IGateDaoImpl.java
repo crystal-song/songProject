@@ -15,11 +15,11 @@ import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
 
 @Repository("gateDao")
-public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
+public class IGateDaoImpl extends HibernateDaoSupport implements IGateDao {
 
 	@Override
 	public void addOrUpdate(TYeePay YeePay) throws Exception {
-		
+
 		getHibernateTemplate().saveOrUpdate(YeePay);
 	}
 
@@ -27,7 +27,7 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 	public void addOrUpdateRegisterYeePay(TRegisterYeePay registerYeePay)
 			throws Exception {
 		getHibernateTemplate().saveOrUpdate(registerYeePay);
-		
+
 	}
 
 	@Override
@@ -52,14 +52,14 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 	public void addOrUpdateTTransferSucceed(TTransferSucceed transferSucceed)
 			throws Exception {
 		getHibernateTemplate().saveOrUpdate(transferSucceed);
-		
+
 	}
 
 	@Override
 	public void addOrUpdateTTransferInfo(TTransferInfo TTransferInfo)
 			throws Exception {
 		getHibernateTemplate().saveOrUpdate(TTransferInfo);
-		
+
 	}
 
 	@Override
@@ -76,14 +76,14 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 			TEstablishmentRegistration establishmentRegistration)
 			throws Exception {
 		getHibernateTemplate().saveOrUpdate(establishmentRegistration);
-		
+
 	}
 
 	@Override
 	public void addOrUpdateTEstablishmentNotify(
 			TEstablishmentNotify establishmentNotify) throws Exception {
 		getHibernateTemplate().saveOrUpdate(establishmentNotify);
-		
+
 	}
 
 	@Override
@@ -94,27 +94,5 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("requestNo", Number);
 		return query.list();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-	
-		
-		
-	}
-
-
+}

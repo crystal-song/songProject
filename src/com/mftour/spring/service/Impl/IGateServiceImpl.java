@@ -16,106 +16,79 @@ import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
 
 @Service("gateService")
-public class IGateServiceImpl  implements  IGateService {
+public class IGateServiceImpl implements IGateService {
 
-	
 	@Autowired
-    private IGateDao gateDao;
-	
-	
+	private IGateDao gateDao;
+
 	@Override
 	public void addOrUpdate(TYeePay YeePay) throws Exception {
 		gateDao.addOrUpdate(YeePay);
-		
-	}
 
+	}
 
 	@Override
 	public void addOrUpdateRegisterYeePay(TRegisterYeePay registerYeePay)
 			throws Exception {
 		gateDao.addOrUpdateRegisterYeePay(registerYeePay);
-		
-	}
 
+	}
 
 	@Override
 	public List<TRegisterYeePay> queryTRegisterYeePayByName(String name)
 			throws Exception {
-		
+
 		return gateDao.queryTRegisterYeePayByName(name);
 	}
-
 
 	@Override
 	public List<TRegisterYeePay> queryTRegisterYeePayByNumber(String Number)
 			throws Exception {
-		
+
 		return gateDao.queryTRegisterYeePayByNumber(Number);
 	}
-
 
 	@Override
 	public void addOrUpdateTTransferSucceed(TTransferSucceed transferSucceed)
 			throws Exception {
-			gateDao.addOrUpdateTTransferSucceed(transferSucceed);
-		
-	}
+		gateDao.addOrUpdateTTransferSucceed(transferSucceed);
 
+	}
 
 	@Override
 	public void addOrUpdateTTransferInfo(TTransferInfo TTransferInfo)
 			throws Exception {
 		gateDao.addOrUpdateTTransferInfo(TTransferInfo);
-		
-	}
 
+	}
 
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByNumber(String Number)
 			throws Exception {
 		return gateDao.queryTTransferInfoByNumber(Number);
-		
-	}
 
+	}
 
 	@Override
 	public void addOrUpdateTEstablishmentRegistration(
 			TEstablishmentRegistration establishmentRegistration)
 			throws Exception {
 		gateDao.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
-		
-	}
 
+	}
 
 	@Override
 	public void addOrUpdateTEstablishmentNotify(
 			TEstablishmentNotify establishmentNotify) throws Exception {
 		gateDao.addOrUpdateTEstablishmentNotify(establishmentNotify);
-		
-	}
 
+	}
 
 	@Override
 	public List<TEstablishmentRegistration> queryTEstablishmentRegistrationByNumber(
 			String Number) throws Exception {
-		
+
 		return gateDao.queryTEstablishmentRegistrationByNumber(Number);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

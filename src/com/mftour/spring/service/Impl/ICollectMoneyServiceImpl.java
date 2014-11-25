@@ -9,19 +9,15 @@ import com.mftour.spring.model.TCrowdfunding;
 import com.mftour.spring.service.ICollectMoneyService;
 
 @Service("collectMoneyService")
-public class ICollectMoneyServiceImpl  implements ICollectMoneyService {
-	
-	
+public class ICollectMoneyServiceImpl implements ICollectMoneyService {
+
 	@Autowired
-    private ICollectMoneyDao collectMoneyDao;
+	private ICollectMoneyDao collectMoneyDao;
 
 	@Override
 	public void addOrUpdate(TCrowdfunding crowdfunding) throws Exception {
 		collectMoneyDao.addOrUpdate(crowdfunding);
-		
+
 	}
-	
-	
-	
 
 }

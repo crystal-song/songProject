@@ -7,22 +7,20 @@ import com.mftour.spring.Dao.ISystemLogDao;
 import com.mftour.spring.model.TSystemLog;
 
 @Repository("systemLogDao")
-public class ISystemLogDaoImpl  extends HibernateDaoSupport  implements ISystemLogDao {
+public class ISystemLogDaoImpl extends HibernateDaoSupport implements
+		ISystemLogDao {
 
 	@Override
 	public void saveSystemLog(TSystemLog systemLog) {
-		
-		 try {
-			 	getHibernateTemplate().saveOrUpdate(systemLog);
 
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	         
-	        }
-		
+		try {
+			getHibernateTemplate().saveOrUpdate(systemLog);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
 	}
-	
-	
-	
 
 }

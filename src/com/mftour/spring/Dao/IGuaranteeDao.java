@@ -4,9 +4,8 @@ import java.util.List;
 
 import com.mftour.spring.model.TChannel;
 
-
 public interface IGuaranteeDao {
-	
-	public List<TChannel> getTChannel()throws Exception;
+
+	public List<TChannel> getTChannel() throws Exception;
 
 }

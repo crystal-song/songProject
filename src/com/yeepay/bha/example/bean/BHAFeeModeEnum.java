@@ -1,6 +1,5 @@
 package com.yeepay.bha.example.bean;
 
-
 public enum BHAFeeModeEnum {
 
 	/**

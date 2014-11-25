@@ -70,6 +70,8 @@ function checkAnswer(){
 <body>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
+<c:if test="${msg!=null }">${msg}</c:if>
+<c:if test="${msg==null }">
 <div class="msg_con">
   <div class="queren_con">
    <div class="con_title"><strong>重新设置密码</strong></div>
@@ -129,7 +131,7 @@ function checkAnswer(){
 			 </c:if>
 			
                       <tr>
-                        <td style="text-align:left;"><input type="submit" value="确定"  id="ensure" class="check_btn01" /></td>                     
+                        <td style="text-align:left;"><input type="submit" value="确定"  id="ensure" class="check_btn01" onclick="alert('密码修改成功！')"/></td>                     
 	                  </tr>
 	 
                         </td>
@@ -143,6 +145,7 @@ function checkAnswer(){
 </form>
 </div>
 </div>
+</c:if>
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>

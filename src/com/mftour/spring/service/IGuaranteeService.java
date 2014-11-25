@@ -6,7 +6,7 @@ import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TProduct;
 
 public interface IGuaranteeService {
-	
-	public List<TChannel> getTChannel()throws Exception;
+
+	public List<TChannel> getTChannel() throws Exception;
 
 }

@@ -13,34 +13,30 @@ import com.mftour.spring.service.ICrowdfundingService;
 import com.mftour.spring.util.Page;
 
 @Service("crowdfundingService")
-public class ICrowdfundingServiceImpl implements  ICrowdfundingService {
-	
+public class ICrowdfundingServiceImpl implements ICrowdfundingService {
+
 	@Autowired
-    private ICrowdfundingDao crowdfundingDao;
+	private ICrowdfundingDao crowdfundingDao;
 
 	@Override
 	public List<TCrowdfunding> getCrowdfunding(Page page,
 			TCrowdfunding crowdfunding) throws Exception {
-		return   crowdfundingDao.getCrowdfunding(page, crowdfunding);
-		
+		return crowdfundingDao.getCrowdfunding(page, crowdfunding);
+
 	}
 
 	@Override
 	public TCrowdfunding getCrowdfundingById(Long id) {
-		
+
 		return crowdfundingDao.getCrowdfundingById(id);
 	}
 
 	@Override
 	public List<TCrowdfundingCommodity> queryTCrowdfundingCommodityByNumber(
 			String projectNumber) throws Exception {
-		
-		return crowdfundingDao.queryTCrowdfundingCommodityByNumber(projectNumber);
+
+		return crowdfundingDao
+				.queryTCrowdfundingCommodityByNumber(projectNumber);
 	}
-	
-	
-	
-	
-	
 
 }

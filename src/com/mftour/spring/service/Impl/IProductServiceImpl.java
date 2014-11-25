@@ -11,81 +11,46 @@ import com.mftour.spring.model.TProduct;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.util.Page;
 
-
 @Service("productService")
-public class IProductServiceImpl implements  IProductService {
+public class IProductServiceImpl implements IProductService {
 
-	
 	@Autowired
 	private IProductDao productDao;
-	
-	
 
 	@Override
-	public List<TProduct> getProduct(Page page,TProduct product) throws Exception {
-		return  productDao.getProduct(page,product);
+	public List<TProduct> getProduct(Page page, TProduct product)
+			throws Exception {
+		return productDao.getProduct(page, product);
 	}
-
-
 
 	@Override
 	public TProduct getProductById(Long id) {
-		
-		return  productDao.getProductById(id);
+
+		return productDao.getProductById(id);
 	}
-
-
 
 	@Override
 	public List<TProduct> queryProductByType(Integer type) {
-		
+
 		return productDao.queryProductByType(type);
 	}
-
-
 
 	@Override
 	public List<TProduct> queryProduct(TProduct product) throws Exception {
 		return productDao.queryProduct(product);
 	}
 
-
-
 	@Override
 	public List<TProduct> queryProductByNumber(String enterpriseNumber)
 			throws Exception {
-		
+
 		return productDao.queryProductByNumber(enterpriseNumber);
 	}
 
-
-
 	@Override
 	public void deleteProduct(Long id) throws Exception {
-		  productDao.deleteProduct(id);
-		
+		productDao.deleteProduct(id);
+
 	}
-
-
-
-	
-
-	
-	
-
-
-	
-
-	
-	
-	
-
-
-	
-	
-	
-	
-	
-	
 
 }
