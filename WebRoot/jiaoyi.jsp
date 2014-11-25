@@ -24,7 +24,125 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	          $(this).siblings().slideToggle("slow");
     	        });
 });
-        
+ 
+    
+    var myFilter=new Array();
+
+function filterChange(){
+	var filterIndex= new Array();
+	switch (myFilter[0]){
+	case 10:
+		filterIndex[0]=1;
+		break;
+	case 15:
+		filterIndex[0]=2;
+		break;
+	case 20:
+		filterIndex[0]=3;
+		break;
+		break;
+	default:
+		filterIndex[0]=0;
+	}
+	switch (myFilter[1]){
+	case 3:
+		filterIndex[1]=1;
+		break;
+	case 6:
+		filterIndex[1]=2;
+		break;
+	case 12:
+		filterIndex[1]=3;
+		break;
+	case 24:
+		filterIndex[1]=4;
+		break;	
+	default:
+		filterIndex[1]=0;
+	}
+	switch (myFilter[2]){
+	case 200:
+		filterIndex[2]=1;
+		break;
+	case 500:
+		filterIndex[2]=2;
+		break;
+	case 1000:
+		filterIndex[2]=3;
+		break;
+	case 2000:
+		filterIndex[2]=4;
+		break;
+	default:
+		filterIndex[2]=0;
+	}
+	switch (myFilter[3]){
+	case 50:
+		filterIndex[3]=1;
+		break;
+	case 80:
+		filterIndex[3]=2;
+		break;
+	case 100:
+		filterIndex[3]=3;
+		break;
+	default:
+		filterIndex[3]=0;
+	}
+
+	switch (myFilter[4]){
+	case 2:
+		filterIndex[4]=1;
+		break;
+	case 3:
+		filterIndex[4]=2;
+		break;
+	case 4:
+		filterIndex[4]=3;
+		break;
+	default:
+		filterIndex[4]=0;
+	}
+	$(".filter li").removeClass("dq");
+	for(i=0;i<5;i++){
+		$(".filter").eq(i).children("li").eq(filterIndex[i]).addClass("dq");
+	}
+}
+
+function pa(clicked){
+	myFilter[clicked.parent().index(".filter")]=clicked.attr("value");
+	$("#yearIncome").val(myFilter[0]);
+	$("#financingPeriod").val(myFilter[1]);
+	$("#financingMoney").val(myFilter[2]);
+	$("#financingProgress").val(myFilter[3]);
+	$("#projectStatus").val(myFilter[4]);
+	$("#pageNo").val(1);
+	console.log(myFilter);
+	//alert("avd");
+	
+	$("#form" ).submit();
+}
+
+
+function jumpPage(pag){
+	   
+	    $('#pageNo').val(pag); 
+	    
+	    
+	   $("#yearIncome").val(myFilter[0]);
+	$("#financingPeriod").val(myFilter[1]);
+	$("#financingMoney").val(myFilter[2]);
+	$("#financingProgress").val(myFilter[3]);
+	$("#projectStatus").val(myFilter[4]);
+	    
+	    
+	 $("#form" ).submit(); 
+
+ }
+    
+    
+    
+    
 </script>
 
 </head>
@@ -36,7 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="user_con">
     <div class="user_left">
-      <!-- user_left start -->
+         <!-- user_left start -->
            <%@ include file="/includes/user_info_left.jsp" %>
          <!-- user_left end -->
     </div>
@@ -48,10 +166,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <ul class="list_label">
                     <li>
                       <ul class="label_sec">
-                        <li class="label_bak">全部</li>
-                        <li>最近七天</li>
+                        <li class="label_bak">最近七天</li>
                         <li>一个月</li>
                         <li>三个月</li>
+                        <li>全部</li>
                       </ul>
                     </li>
                     <li>
@@ -64,14 +182,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li>回收本金</li>
                       </ul>
                     </li>
-                    <li>
+                    <li style="padding-left:10%;">
                      <ul class="label_third">
-                        <li>全部</li>
+                        <li>订单编号</li>
                         <li>时间</li>
                         <li>交易类型</li>
                         <li>交易详情</li>
-                        <li>金额</li>
-                        <li id="bord_right">余额</li>
+                        <li id="bord_right">金额</li>
                       </ul>
                       <ul class="jiaoyi_msg">
                             <li></li>
@@ -79,54 +196,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li></li>
                             <li></li>
                             <li></li>
-                            <li></li>
-                      </ul>
+                            
+                      </ul>                
+                      <ul class="jiaoyi_msg">
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          
+                      </ul>                 
+                      <ul class="jiaoyi_msg">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                        
+                      </ul>                        
+                      <ul class="jiaoyi_msg">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                      
+                      </ul>                      
+                      <ul class="jiaoyi_msg">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                        
-                      <ul class="jiaoyi_msg">
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                      </ul>
-                   
-                      <ul class="jiaoyi_msg">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                      </ul>
-                        
-                      <ul class="jiaoyi_msg">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                      </ul>
-                       
-                      <ul class="jiaoyi_msg">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                      </ul>
-                        
-                      <ul class="jiaoyi_msg">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                      </ul>
+                      </ul>                                         
                   </ul>
                   <div class="clear"></div>
                   <div class="charge">
@@ -135,6 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </div>
                
         <div class="next_list">
+        <!--  
            <a href="#" class="a1">首页</a>
            <a href="#" class="a2"></a>
            <a href="#">1</a>
@@ -149,7 +253,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <span>跳到</span>
            <span><input type="text" /></span>
            <span>页</span>
-           <span><input type="submit" class="btn_sub" value="确定"/></span>
+           <span><input type="submit" class="btn_sub" value="确定"/></span>-->
+           
+           <a href="javascript:jumpPage(1)">首页</a> 
+				<c:if test=""></c:if>								 
+				<c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
+				<div class="pageNum"></div>								 
+				<c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  								
+		   <a href="javascript:jumpPage(${page.totalPage})">末页</a>                   
         </div>
 
         
