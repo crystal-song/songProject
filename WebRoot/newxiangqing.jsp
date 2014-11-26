@@ -23,6 +23,12 @@ $(document).ready(function(e) {
        $(this).siblings().children("div").removeClass("news_wd_color");
        $(".news_right ul").eq(index).css("display","block").siblings().css("display","none");
     });
+    var news_height= $(".news_right").height();   
+    var left_height= $(".news_left").height();
+  if(news_height>260){
+  	//alert(news_height);
+  	$(".user_con_news").css("height",news_height+100);
+  }
     
 });
 </script>
@@ -48,7 +54,8 @@ $(document).ready(function(e) {
         </c:if>    
            </ul>   
        </div>
-       <div class="right_news_con">
+       <!-- <div class="right_news_con"> -->
+        <div class="news_right position_top">
           <h1>${news.title}</h1>       
           <div>${news.depicts}</div>
        </div>   
