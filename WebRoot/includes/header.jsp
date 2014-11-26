@@ -60,7 +60,7 @@
     </li>
     <li>关于我们
 	    <div class="list02">
-		    <a href="<%=path%>/help.jsp">企业介绍</a>
+		    <a href="<%=path%>/help_con.jsp">企业介绍</a>
 		    <a href="<%=path%>/security.jsp">安全策略</a>
 		    <a href="<%=path%>/notice.jsp">法律声明</a>
 	    </div>
