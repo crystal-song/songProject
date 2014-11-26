@@ -239,7 +239,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             class="btn btn-default">QA</button> -->
           <!-- <button onclick="onSubmit('https://member.yeepay.com/member')"
             class="btn btn-default">立即充值</button> -->
-            <div  class="que_btn mar_que_top"><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" style="text-align:center;">确定</a></div>
+            <div  class="mar_que_top"><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" style="text-align:center; color:#fff">确定</a></div>
         </li>
         </ul>
          </form>                     
