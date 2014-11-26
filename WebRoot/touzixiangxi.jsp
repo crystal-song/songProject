@@ -566,7 +566,7 @@ function mysubmit(){
 		<c:if test="${ not empty list}">
 		<c:forEach var="s" items="${list}" varStatus="i">
 		<li>
-		<span >${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
+		<span>${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
 		<span >
 			<c:if test="${fn:length(s.identityCard)==18}">${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
 			</c:if>
