@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <c:forEach var="s" items="${list}" varStatus="i">
   <tr>
    <!--  <td><img width="50" /></td> -->
-    <td>${s.projectName}</td>
+    <td><a href="<%=path%>/product/getProductByid?id=${s.id}" target="_blank" title="点击进入项目前台页面">${s.projectName}</a></td>
     <td>${s.financingMoney}万</td>
     <td>${s.financingProgress}%</td>
     <td>${s.yearIncome}</td>

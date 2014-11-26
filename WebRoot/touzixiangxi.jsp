@@ -46,6 +46,7 @@ window.onload=function(){
         myblur.style.color="#ccc" ;  
         }        
  }
+     
 }
 
 
@@ -140,6 +141,11 @@ function mysubmit(){
         clearInterval(timer);
            timer=setInterval(autoplay,3000);
         });
+ 	$(".syl_table").hover(function(){
+ 		$(this).css("height","auto");
+ 	},function(){
+ 		$(this).css("height","60px");
+ 	});
  });   
  $(".jisuan").click(function(){
      $( "#dialog01").dialog("open");
@@ -538,11 +544,11 @@ function mysubmit(){
                  <c:if test="${ not empty li}">
         <c:forEach var="s" items="${li}" varStatus="i">
 	        <tr>
-	        <td bgcolor="#fff" align="center"><span>${s.startMoney}</span></td>
-	        <td bgcolor="#fff" align="center"><span>${s.startInterestRate}</span></td>
-	        <td bgcolor="#fff" align="center"><span>${s.moneyIncrease}</span></td>
-	       	<td bgcolor="#fff" align="center"><span>${s.interestRateIncrease}</span></td>
-	        <td bgcolor="#fff" align="center"><span>${s.highestMoney}</span></td>
+	        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
+	        <td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
+	        <td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
+	       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
+	        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
 	        </tr>
          </c:forEach>
 			</c:if> 
