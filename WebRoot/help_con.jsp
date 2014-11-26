@@ -36,7 +36,6 @@ $(document).ready(function(e) {
 <div class="clear"></div>
 <div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/help_con.jsp">帮助中心</a> >> <a href="<%=path%>/help_con.jsp" >关于我们</a></div>
    <div class="user_con_news">
-
        <div class="news_left">
           <!-- left menu -->
            <%@ include file="/includes/left_help.jsp" %>
