@@ -575,6 +575,7 @@ ul,li{
 	height:406px; 
 	background:#fff;
 	border:1px solid #e5e5e5;
+	margin-top:10px;
 	}
 .floor_img{
 	width:330px; 
@@ -611,6 +612,7 @@ ul,li{
 	position:absolute;
 	top:-8px; 
 	left:10px;
+	z-index:100;
 	}
 .shuoming{
 	display:inline-block; 
@@ -1051,7 +1053,7 @@ ul,li{
 	height:150px; 
 	display:inline-block; 
 	position:relative;
-	overflow:hidden;
+	
 	}
 .floor_img01 img{
 	width:250px; 
