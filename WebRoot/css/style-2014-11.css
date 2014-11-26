@@ -242,7 +242,7 @@ ul,li{
 .nav_big li a{
 	display: inline-block;
 	width:90px;
-	height:76px;
+	height:72px;
 	cursor: pointer;
 }	
 .nav_big .bd_btom{
@@ -252,7 +252,7 @@ ul,li{
 	}	
 .login{
 	width:155px; 
-	height:80px;
+	height:76px;
 	float:right;
 	position: relative;
 	z-index:1;
@@ -493,7 +493,7 @@ ul,li{
 	margin-top:8px;
 }
 .touzi_mei{
-	width:100px;
+	width:120px;
 	height:38px;
 	background:#ff6660;
 	display:inline-block;
@@ -695,7 +695,7 @@ ul,li{
 	height:50px;
 	}	 	
 .botm_btn a{
-	width:110px;
+	width:120px;
 	height:40px;
 	display:inline-block;
 	background:#ff665f;
@@ -992,8 +992,8 @@ ul,li{
 	background:url(../img/images-2014-11/xiugai_msg.png) 2px -4px no-repeat;
 	position: absolute;
 	right: 0;
-	top:30%;
-	*+top:35%;
+	top:32%;
+	*+top:36%;
 }	
 .user_pink:hover{
 	color: #ef4551;
@@ -1337,6 +1337,7 @@ ul,li{
 .pro_con .pro_r{
 	float:right;
 	width:100px;
+	display:none;
 	}	
 /*	
 .pro_con dd{
@@ -1503,7 +1504,8 @@ ul,li{
 	border-top:2px solid #b9151e;
 	border-left:1px solid #b9151e;
 	border-right:1px solid #b9151e;
-	 line-height: 51px;
+	line-height: 51px;
+	font-weight:bold;
 	}
 .small_nav .sm_nav_fir a{
 	display:inline-block;
@@ -1593,7 +1595,7 @@ ul,li{
     height: auto;
     border:1px solid #ccc;
     float: left;
-    margin-right: 20px;
+    margin-left: 20px;
     border-radius: 5px;
 }
 .user_right{
@@ -2911,8 +2913,15 @@ ul,li{
 }
 .position_top{
     position: absolute;
-    top:45px;
+    top:47px;
     left:200px;
+}
+.position_top div{
+	text-align:left;
+	line-height:35px;
+}
+.position_top p{
+	text-indent:2em;
 }
 .news_wd_color{
 	border: 1px solid #c70e14;
@@ -3107,7 +3116,7 @@ ul,li{
 .user_con_news{
     width: 1100px;
     height: auto;
-    margin: 25px auto;
+    margin: 0px auto;
     position: relative;
 
 }
@@ -3507,14 +3516,14 @@ ul,li{
 	margin:50px auto;
 }
 .blank_block_title{ 
-	width:793px; 
+	width:799px; 
 	height:32px; 
 	background:url(../images/touzi_title.jpg) no-repeat; 
 	text-align:left; 
 	font-size:18px; 
 	font-weight:bold; 
 	padding-top:13px; 
-	padding-left:10px; 
+	padding-left:4px; 
 	color:#fff;
 }
 .blank_block_content{ 
@@ -3560,6 +3569,7 @@ ul,li{
 	height:40px!important; 
 	border:none!important; 
 	cursor:pointer;
+	margin-left: 20%;
 }
 .zh_wby:focus{ 
 	border:none;
@@ -3738,7 +3748,7 @@ ul,li{
 }
 .form-control{
 	float:left; 
-	margin-left:60px; 
+	margin-left:25px; 
 	width:200px; 
 	height:30px; 
 }
@@ -3931,16 +3941,16 @@ ul,li{
 	margin-left:260px;
 }
 .que_btn_new{
-	width:270px; 
-	height:50px; 
+	width:120px; 
+	height:38px; 
 	background:#ff6862; 
 	color:#fff; 
-	font-size:20px; 
+	font-size:16px; 
 	display:inline-block; 
-	line-height:50px; 
+	line-height:38px; 
 	float:left; 
 	text-align:center; 
-	margin-left:260px;
+	margin-left:360px;
 	border:none;
 }
 .mar_chong{
@@ -3948,6 +3958,14 @@ ul,li{
 	}
 .mar_que_top{
 	margin-top:50px;
+	width:120px; 
+	height:38px; 
+	background:#ff6862; 
+	color:#fff; 
+	font-size:16px; 
+	line-height:38px; 
+	text-align:center; 
+	margin-left:40%;
 	}
 .lame .submit01{
 	width:80px; 
