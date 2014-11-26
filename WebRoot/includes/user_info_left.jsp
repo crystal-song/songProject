@@ -99,7 +99,7 @@
                 </li>
               </ul>
            </li>
-           <li>
+           <li style="display:none;">
               <div class="u_left_mian"><i class="mian_pic02"></i><span>投资管理</span></div>
               <ul class="u_left_sec">
                 <li style="display:none;">
