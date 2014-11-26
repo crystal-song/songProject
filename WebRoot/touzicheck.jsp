@@ -114,7 +114,7 @@ function onSubmit(host) {
           </div>
           </li>
           <li>
-          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default que_btn_new">QA</button> 
+          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default que_btn_new">确认</button> 
           <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
           <!-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')">确定</a></div>-->
           </li>

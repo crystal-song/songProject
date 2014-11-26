@@ -483,7 +483,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
             <c:forEach var="s" items="${list}" varStatus="i">
           <li>
             <div class="floor_num01">
-                 <a class="floor_img01">${s.projectPicture}
+                 <a class="floor_img01" href="getProductByid?id=${s.id}">${s.projectPicture}
                   <div class="hot"></div>
                   <div class="last_time01">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div>
                  </a>
