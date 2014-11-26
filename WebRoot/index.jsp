@@ -215,7 +215,7 @@ $(document).ready(function(){
                    <a style="float:right; color:#a4a4a4;" >年化收益率</a></span>
                  </div>
                  <div class="botm_btn">
-                  <a href="product/getProductByid?id=${s.id}">我要投资</a>
+                  <a href="product/getProductByid?id=${s.id}">我要投</a>
                   <a href="product/getProductByid?id=${s.id}" class="btn_org">了解详情</a>
                  </div>
               </div>
