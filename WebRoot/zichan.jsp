@@ -58,16 +58,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
               </div>
             </li>
-            <li>
+<!--             <li>
               <div class="li_pic back03"></div>
               <div class="li_right">
                  <div class="li_top"><span>可用余额</span><strong><span style="text-align:right">500,000</span><i>元</i></strong>
                  </div>
                  <div class="li_loadbar"><div style="background:#bae9ff;"></div></div>
               </div>
-            </li>
+            </li> -->
           </ul>
-          <div class="clear"></div>
+ <!--          <div class="clear"></div>
           <div class="pro_con_title" style="margin-top:5px;"><strong>待收收益</strong></div>
           <div class="zichan_bar">
             <div class="shouyi_left">
@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </span>
           </div> 
         </div>
-      </div>    
+      </div>     -->
   
 </div>
 <div class="clear"></div>
