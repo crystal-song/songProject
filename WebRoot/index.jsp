@@ -316,7 +316,7 @@ $(document).ready(function(){
      </div> 
     </div> 
     <!-- absolute_right start -->
-	<%@ include file="/includes/absolute.jsp" %>
+	<%-- <%@ include file="/includes/absolute.jsp" %> --%>
 	<!-- absolute_right end -->
       
  </div>                  
