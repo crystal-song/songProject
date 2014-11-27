@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	<li><span>金　　额：</span><span>${transferInfo.paymentAmount}</span></li>
    	</ul>
    </div>
-   <div class="title_sec">您可以进行以下操作</div>
+   <%-- <div class="title_sec">您可以进行以下操作</div>
    
    <!-- 
    <div>前去<a href="<%=path%>/touzi.jsp" class="con_link">[浏览项目]</a></div>
@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <li>前去项目中心<strong><a href="<%=path%>/touzi.jsp" class="con_link">[浏览项目]</a></strong>，查看详细信息，进行投资。</li>
    <li>去个人中心查看<strong><a href="<%=path%>/user-info.jsp" class="con_link">[个人信息]</a></strong>。</li>
    <li><a href="<%=path%>/chongzhi.jsp" class="sec_btn_org">去充值页面充值</a></li>
-   </ol>
+   </ol> --%>
    <div class="sec_product">
 	   <div class="sec_pro_show"></div> 
    </div>
