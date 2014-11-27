@@ -377,7 +377,7 @@ function mysubmit(){
     <p class="bianhao">
      <span class="con_pic01"><strong>项目：${product1.projectName}</strong></span>
      <span></span>
-     <span class="bianhao_right">企业编号：ZTH01140954998383  </span>
+     <span class="bianhao_right">企业编号：${product1.enterpriseNumber}  </span>
     </p>
      <div class="pro_msg">
        <div class="pro_pic">${product1.projectPicture}</div>
@@ -443,7 +443,7 @@ function mysubmit(){
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
-         <span class="pro_right_label">100元起投</span>
+         <span class="pro_right_label">100元起投<i class="label_min"></i></span>
        </div>
        </form>
       </div>   
