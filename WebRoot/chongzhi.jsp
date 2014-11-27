@@ -225,13 +225,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
-              class="form-control" id="notifyUrl" name="notifyUrl"  value="http://www.ptobchina.com/bha/gate/exam" />
+              class="form-control" id="notifyUrl" name="notifyUrl"  value="http://192.168.1.207:8080/spring3/gate/examRecharge" />
           </div>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl"
-              value="http://www.ptobchina.com/bha/gate/exam" />
+              value="http://192.168.1.207:8080/spring3/gate/examRecharge" />
           </div>         
           <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')"
             class="btn btn-default">QA</button>
