@@ -9,7 +9,8 @@ public class TRecharge implements java.io.Serializable {
     private String amount; 
     private String feeMode;
     private String callbackUrl;   
-    private String notifyUrl ;     
+    private String notifyUrl ; 
+    private String time ; 
 	public Long getId() {
 		return id;
 	}
@@ -58,7 +59,13 @@ public class TRecharge implements java.io.Serializable {
 	public void setNotifyUrl(String notifyUrl) {
 		this.notifyUrl = notifyUrl;
 	}
-
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+    
     
 	
 	
