@@ -59,8 +59,42 @@ function mysubmit(){
 	    form.submit();	
 }	
 
- $(document).ready(function(e) {  
-	
+ $(document).ready(function(e) { 
+	 //---------收益计算器------------
+	//console.log("-------go-------");
+	    var rate_lv=$(".lev_start").length;
+		calc();
+		$("#preview_amount").change(function(e) {
+			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
+				$(this).val(parseInt($(".lev_start").eq(0).html()));
+				}
+			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
+				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
+				}
+	        calc();
+	    });
+		function calc(){
+			//console.log("-------calc-------");
+			var t=parseInt($("#preview_amount").val());
+			var r=0;
+			for(i=0;i<rate_lv;i++){
+				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
+					if(parseInt($(".lev_mi").eq(i).html())>0){
+					r=parseInt($(".lev_rate").eq(i).html())+parseInt($(".lev_ri").eq(i).html())*(t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html());
+					}else{
+						r=parseInt($(".lev_rate").eq(i).html());
+						}
+					r=r/100;
+					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
+					}
+				}
+			$("#preview_rate").val(r*100+"%");	
+			$("#preview_income").html(t*r+"元");
+			//console.log("|-"+t*r);
+			}
+		//---------收益计算器结束-------------
+		
+		
 	 $("#buyAmount").keyup(function(){
 		  
 		    var str= /^[0-9]*$/;
@@ -458,32 +492,23 @@ function mysubmit(){
          </div>
          <div class="touzi_text">
           <span>投资金额：</span>
-          <span class="touz_right"><input type="text"></input></span>
+          <span class="touz_right"><input type="text" id="preview_amount" value="100"></input></span>
          </div>
          <div class="touzi_text">
-          <span>年化收益：</span>
-          <span class="touz_right"><input type="text" value="10%"></input></span>
+          <span>预期收益率：</span>
+          <span class="touz_right"><input type="text" value="10%" id="preview_rate"></input></span>
          </div>     
-         <div class="touzi_text">
+         <div class="touzi_text"  style="display:none">
           <span>投资期限：</span>
-          <span class="touz_right"><select>
-            <option>一个月</option>
-            <option>二个月</option>
-            <option>三个月</option>
-            <option>四个月</option>
-            <option>五个月</option>
-            <option>六个月</option>
-            <option>七个月</option>
-            <option>八个月</option>
-            <option>九个月</option>
-            <option>十个月</option>
-            <option>十一个月</option>
-            <option>十二个月</option>
+          <span class="touz_right"><select id="preview_period">
+            <option value="6">6个月</option>
+            <option selected="selected" value="12">12个月</option>
+            <option value="24">24个月</option>
           </select></span>
          </div>
          <div class="touzi_text">
-          <span>可获得总收益：</span>
-          <span class="touz_right">12345&nbsp;&nbsp;元</span>
+          <span>预期总收益：</span>
+          <span class="touz_right" id="preview_income">0元</span>
          </div>
          <div class="jisuan_btn">
           <input type="reset" value="重置" class="jisuan_btn_left"></input>
