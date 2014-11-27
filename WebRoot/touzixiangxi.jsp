@@ -430,9 +430,9 @@ function mysubmit(){
              <a class="pro_bac_logo03" href="http://t.qq.com"></a>
            </span>
            </li>
-           <li><span style="width:90px;">融资金额(万元)</span><span style="width:90px;">年化收益</span><span style="width:90px;">还款日期</span></li>
+           <li><span style="width:90px;">融资金额</span><span style="width:90px;">年化收益</span><span style="width:90px;">还款日期</span></li>
            <li class="bac_red_wd">
-              <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}</strong></span>
+              <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}万元</strong></span>
               <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
               <span style="width:90px;"><strong>${product1.repaymentTime}</strong></span>
            </li>
