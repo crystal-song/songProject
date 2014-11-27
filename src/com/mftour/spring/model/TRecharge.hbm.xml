@@ -31,6 +31,9 @@
         <property name="notifyUrl" type="java.lang.String">
             <column name="notifyUrl" length="50" />
         </property>
+         <property name="time" type="java.lang.String">
+            <column name="time" length="50" />
+        </property>
  
     </class>
 </hibernate-mapping>
