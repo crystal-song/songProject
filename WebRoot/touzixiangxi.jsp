@@ -422,7 +422,7 @@ function mysubmit(){
        <div class="pro_con">
        <ul>
          <li class="pro_title">还款方式：按月付息、到期还款</li>
-         <li style="padding-left:15px;">项目周期：6个月</li>
+         <li style="padding-left:15px;">投资周期：6个月</li>
          <li><span style="margin-right:0">信用等级：</span>
            <span style="margin-left:0"><img src="<%=path%>/img/images-2014-11/star_${product1.qualityRating}.png" style="margin-bottom:-3px;"></span>
            <span class="pro_r">
