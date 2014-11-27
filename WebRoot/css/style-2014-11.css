@@ -469,6 +469,7 @@ ul,li{
 	background:url(../img/images-2014-11/wd08.jpg) no-repeat;
 }
 .images_pro{
+	display:inline-block;
 	width:100%;
 	height:70%;
 	*+width:747px;
@@ -1255,11 +1256,8 @@ ul,li{
 	}	
 .bianhao .con_pic01{
 	width:320px;
-
 	height:50px;
-	/*background:url(../img/images-2014-11/con_pic.png) no-repeat;	*/
 	font-size:20px;
-	padding-left:35px;
 	text-align:left;
 	}	
 	
@@ -2057,6 +2055,7 @@ ul,li{
 	padding: 20px;
 	margin-bottom: 40px;
 	background: #fcfcfc;
+	
 }
 .zichan_con01{
 	width: 100%;
@@ -2469,7 +2468,7 @@ ul,li{
 	color:#fff;
 }
 .label_third li{
-	width: 120px;
+	width: 158px;
 	height: 40px;
 	line-height: 40px;
     background: #eee;
@@ -2485,7 +2484,7 @@ ul,li{
 	clear:both
 }
 .jiaoyi_msg li{
-	width: 120px;
+	width: 158px;
 	height: 40px;
 	float: left;
 	margin:0;
@@ -2504,7 +2503,10 @@ ul,li{
 	margin-top: 150px;
 	font-size: 14px;
 }
-
+.list_label .hei_jiao{
+	margin-left:10%;
+	min-height:200px;;
+}
 /*jiaoyi end*/
 .msg_hide{
 	width: 100%;
