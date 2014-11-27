@@ -100,7 +100,12 @@
           <property name="releaseTime" type="java.lang.String">
             <column name="releaseTime" length="30" />
         </property>
-        
+           <property name="targetPlatformUserNo" type="java.lang.String">
+            <column name="targetPlatformUserNo" length="50" />
+        </property>
+          <property name="buyType" type="java.lang.Integer">
+            <column name="buyType" length="50" />
+        </property> 
        
     </class>
 </hibernate-mapping>
