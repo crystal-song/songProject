@@ -1463,6 +1463,7 @@ ul,li{
 	float:left;
 	margin-left:15px;
 	}
+	
 .jisuan:hover{
 	background:url(../img/images-2014-11/jisuan02.png) no-repeat;
 }		
@@ -1604,19 +1605,19 @@ ul,li{
 .user_left li{
     width: 200px;
     height: auto;
-    line-height: 50px;
+    line-height: 40px;
     font-size: 14px;
-    background: #eee;
     cursor: pointer;
 }
 .user_left .u_left_mian{
     width: 200px;
     height: 50px;
     margin-bottom: 3px;
+    font-size:16px;
 }
-.user_left .u_left_red{
-	background: #e81c05;
-	border-radius: 5px 5px 0 0;
+.user_con .user_left .u_left_red{
+	height: 50px;
+	background: url(../img/images-2014-11/user_left_bac.png) no-repeat;	
 	color: #fff;
 }
 .u_left_mian i{
@@ -1690,14 +1691,14 @@ ul,li{
 
 .user_left .u_left_sec li{
     width: 200px;
-    height: 50px;
-    line-height: 50px;
-    background: #fcfcfc;
+    height: 40px;
+    line-height: 40px;
 }
 .u_left_sec a{
 	width: 200px;
-    height: 50px;
+    height: 40px;
     display: inline-block;
+    font-size:12px;
 }
 .u_left_sec a:hover{
 	color: #c70e14;
@@ -2971,7 +2972,7 @@ ul,li{
 	*+margin-top:12px;
 	float: right;
 	display: inline-block;
-	background:url("../img/images-2014-11/news_dowm01.png") no-repeat;;
+	background:url("../img/images-2014-11/news_dowm01.png") no-repeat;
 }
 /* baozhang  xingwen_list end*/
 
@@ -3011,7 +3012,57 @@ ul,li{
 }
 
 /*tanchukuangkou*/
-	.demoHeaders {
+#dialog01{
+	width:300px;
+	height:300px;
+	background:#fff;
+	position:fixed;
+	left:45%;
+	top:30%;
+	border-radius:5px;
+	border:1px solid #ccc;
+	
+	
+}
+.dialog_title{
+	width:280px;
+	height:40px;
+	background:#fc7f7d;
+	color:#fff;
+	border-radius:5px 5px 0 0;
+	padding-left:20px;
+	text-align:left;
+	line-height:40px;
+	font-size:16px;
+	position:relative;
+	}
+.right_cha{
+	width:20px;
+	height:20px;
+	position:absolute;
+	right:10px; 
+	top:9px;
+	background:url("../img/images-2014-11/right_cha.png") no-repeat;
+}
+.jisuan_btn{
+	width:300px;
+	height:50px;
+}
+.jisuan_btn input{
+	width:100px;
+	height:30px;
+	float:left;
+}
+.jisuan_btn_left{
+	margin:10% 0 0 12%;
+}
+.jisuan_btn_right{
+	margin:10% 0 0 10%;
+	background:#f5b594;
+	border:1px solid #d19e84;
+	color:#fff;
+}	
+.demoHeaders {
 		margin-top: 2em;
 }
 	/*
@@ -3103,6 +3154,9 @@ ul,li{
 
 .touzi_text .touz_right{
 	text-align: left;
+	font-weight:bold;
+	font-size:20px;
+	color:#ec6c23
 }
 
 .touzi_text input{
