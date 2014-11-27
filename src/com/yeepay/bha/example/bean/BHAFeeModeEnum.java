@@ -11,4 +11,5 @@ public enum BHAFeeModeEnum {
 	 * 收取用户手续费
 	 */
 	USER
+	
 }
