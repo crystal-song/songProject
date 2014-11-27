@@ -53,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li>
               <div class="li_pic back02"></div>
               <div class="li_right">
-                 <div class="li_top"><span>可用余额</span><strong><span style="text-align:right">500,000</span><i>元</i></strong>
+                 <div class="li_top"><span>冻结余额</span><strong><span style="text-align:right">${freezeAmount}</span><i>元</i></strong>
                  </div>
                  <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
               </div>
