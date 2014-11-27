@@ -1041,7 +1041,10 @@ ul,li{
 .con_name .text-left{
 	text-align: left;
 }
-
+.fir_li{
+	background:#eee;
+	border-radius:5px 5px 0 0;
+}
 /*user-info  end*/
 .floor_num01{
 	width:250px; 
@@ -1345,9 +1348,9 @@ ul,li{
 */	
 .pro_con li{
 	width:390px;
-	height:35px;
+	height:25px;
 	text-align:left;
-	line-height:35px;
+	line-height:25px;
 	margin-top:10px;
 	}	
 	
@@ -1631,7 +1634,7 @@ ul,li{
     width: 20px;
     height: 20px;
     float: left;
-    margin: 16px 0 0 28px
+    margin: 10px 0 0 28px
 }
 .mian_pic01{
 	background:url(../img/images-2014-11/tubiao01.png) no-repeat;
@@ -2475,6 +2478,9 @@ ul,li{
 	background: #e81c05;	
 	color:#fff;
 }
+.label_bak a{
+	color:#fff;
+}
 .label_third li{
 	width: 158px;
 	height: 40px;
@@ -3021,7 +3027,7 @@ ul,li{
 /*tanchukuangkou*/
 #dialog01{
 	width:300px;
-	height:300px;
+	height:260px;
 	background:#fff;
 	position:fixed;
 	left:45%;
