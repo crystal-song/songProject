@@ -234,19 +234,5 @@ public class TProduct implements java.io.Serializable {
 		public void setBuyType(Integer buyType) {
 			this.buyType = buyType;
 		}
-		
-		
-	
-	
-	
-	
-		
-		
-		
-		
-	    
-	    
-	    
-	   
 
 }
