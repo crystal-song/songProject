@@ -162,17 +162,17 @@ function jumpPage(pag){
                     <li>
                       <ul class="label_sec">
                         <li class="label_bak">最近七天</li>
-                        <li>一个月</li>
-                        <li>三个月</li>
-                        <li>全部</li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=onemonth_all">一个月</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=threemonth_all">三个月</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=all_all">全部</a></li>
                       </ul>
                     </li>
                     <li>
                       <ul class="label_sec">
-                        <li class="label_bak">全部</li>
-                        <li>充值</li>
-                        <li>提现</li>
-                        <li>投资</li>
+                        <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time_type=all_all">全部</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=recharge_all">充值</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=drawmoney_all">提现</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=transferinfo_all">投资</a></li>
                         <li>收益</li>
                         <li>回收本金</li>
                       </ul>
@@ -185,14 +185,14 @@ function jumpPage(pag){
                         <li id="bord_right">金额</li>
                       </ul></li>
                     
-                      <c:if test="${userinfo.realName!=null}">
+                      <c:if test="${userinfo.name!=null}">
                       <c:if test="${ not empty list11}">
                       <c:forEach var="t" items="${list11 }">
                       <ul class="jiaoyi_msg">
                             <li>${t.orderNo}</li>
                             <li>${t.transDate }</li>
                             <li>投资</li>
-                            <li>${t.projectName}</li>
+                            <li>${t.projectName }</li>
                             <li>${t.transferAmount }</li>
                             
                       </ul>  
@@ -212,11 +212,26 @@ function jumpPage(pag){
                       </ul>  
                       </c:forEach>    
                       </c:if>          
+                    
+                                      
+                   <!--    充值的交易列表         -->
+                      <c:if test="${ not empty list33}">
+                      <c:forEach var="t" items="${list33}">
+                      <ul class="jiaoyi_msg">
+                            <li>${t.requestNo}</li>
+                            <li>${t.time }</li>
+                            <li>充值</li>
+                            <li></li>
+                            <li>${t.amount }</li>
+                            
+                      </ul>  
+                      </c:forEach>    
+                      </c:if>          
                       </c:if>          
                                       
                   </ul>
                   
-                   <c:if test="${empty list11}">
+                <%--   <c:if test="${empty list11}">
                   <div class="charge">
                     <p>暂无交易记录</p>
                   </div>
@@ -226,6 +241,11 @@ function jumpPage(pag){
                     <p>暂无交易记录</p>
                   </div>
                   </c:if>
+                   <c:if test="${empty list33}">
+                  <div class="charge">
+                    <p>暂无交易记录</p>
+                  </div>
+                  </c:if> --%>
                </div>
                
             <div class="clear"></div>    
