@@ -17,9 +17,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
     var navIndex=3;    
     $(document).ready(function(){
-    	  $(".label_sec li").click(function(){
-    	        $(this).addClass('label_bak').siblings().removeClass('label_bak');
+    	 var url=location.search;
+	       //alert(url);
+	       var str=url.substr(1);
+	       var element=str.split("=");
+	       var canshu=element[1];
+	      
+	       if(canshu=="seven_all"){
+	    	   $(".new_fir li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+	       }
+	       else if(canshu=="onemonth_all"){
+	    	   $(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+	       }
+	       else if(canshu=="threemonth_all"){
+	    	   $(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak')
+	       }
+	       else if(canshu=="all_all"){
+	    	  // if(){}
+	    	   $(".label_sec li").click(function(){
+    	       // $(this).addClass('label_bak').siblings().removeClass('label_bak');
+    	       if($(this).parent().hasClass("new_sec")){
+    	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak')
+    	       }
+    	       else if($(this).parent().hasClass("new_fir")){
+    	    	   $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+    	       }
+    	       
     	   });
+	    	  // $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	  // $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak')
+	       }
+	      
+	       else if(canshu=="recharge_all"){
+	    	   $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+	       }
+	       else if(canshu=="drawmoney_all"){
+	    	   $(".new_sec li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak')
+	       }
+	       else if(canshu=="transferinfo_all"){
+	    	   $(".new_sec li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak')
+	       }
+    	
+    	 
     	    $(".u_left_mian").click(function(){
     	          $(this).siblings().slideToggle("slow");
     	        });
@@ -160,15 +199,17 @@ function jumpPage(pag){
                <div class="con_list">
                   <ul class="list_label">
                     <li>
-                      <ul class="label_sec">
-                        <li class="label_bak">最近七天</li>
+                      <ul class="label_sec new_fir">
+                        <li class="label_bak">
+                        <a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all">最近七天</a>
+</li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=onemonth_all">一个月</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=threemonth_all">三个月</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=all_all">全部</a></li>
                       </ul>
                     </li>
                     <li>
-                      <ul class="label_sec">
+                      <ul class="label_sec new_sec">
                         <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time_type=all_all">全部</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=recharge_all">充值</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=drawmoney_all">提现</a></li>
@@ -183,12 +224,54 @@ function jumpPage(pag){
                         <li>交易类型</li>
                         <li>交易详情</li>
                         <li id="bord_right">金额</li>
+
+                      </ul></li>
+                    
+                       <li>              
+                         <ul class="jiaoyi_msg">
+                          <li>6</li>
+                          <li>7</li>
+                          <li>8</li>
+                          <li>9</li>
+                          <li>10</li>                          
+                        </ul> 
+                      </li>  
+                      <li>              
+                      <ul class="jiaoyi_msg">
+                        <li>11</li>
+                        <li>12</li>
+                        <li>13</li>
+                        <li>14</li>
+                        <li>15</li>                      
+                      </ul> 
+                      </li>
+                      <li>                       
+                      <ul class="jiaoyi_msg">
+                        <li>16</li>
+                        <li>17</li>
+                        <li>18</li>
+                        <li>19</li>
+                        <li>20</li>
+                      
+                      </ul>
+                      </li>
+                      <li>                      
+
                       </ul></li>
                     
                       <c:if test="${userinfo.name!=null}">
                       <c:if test="${ not empty list11}">
                       <c:forEach var="t" items="${list11 }">
+
                       <ul class="jiaoyi_msg">
+
+                        <li>21</li>
+                        <li>22</li>
+                        <li>23</li>
+                        <li>24</li>
+                        <li>25</li>
+                       
+
                             <li>${t.orderNo}</li>
                             <li>${t.transDate }</li>
                             <li>投资</li>
@@ -224,28 +307,49 @@ function jumpPage(pag){
                             <li></li>
                             <li>${t.amount }</li>
                             
+
                       </ul>  
+
+                      </li>
+                      <li>
+                      <ul class="jiaoyi_msg">
+                        <li>11</li>
+                        <li>12</li>
+                        <li>13</li>
+                        <li>14</li>
+                        <li>15</li>
+                       
+                      </ul>
+                      </li>
+                      <li>                        
+                      <ul class="jiaoyi_msg">
+                        <li>16</li>
+                        <li>17</li>
+                        <li>18</li>
+                        <li>19</li>
+                        <li>20</li>
+                      
+                      </ul>
+                      </li>
+                      <li>            
+                                
+                      <ul class="jiaoyi_msg">
+                        <li>21</li>
+                        <li>22</li>
+                        <li>23</li>
+                        <li>24</li>
+                        <li>25</li>
+                       
+                      </ul>
+                   
+                      </li>                          
+
                       </c:forEach>    
                       </c:if>          
                       </c:if>          
                                       
                   </ul>
                   
-                <%--   <c:if test="${empty list11}">
-                  <div class="charge">
-                    <p>暂无交易记录</p>
-                  </div>
-                  </c:if>
-                   <c:if test="${empty list22}">
-                  <div class="charge">
-                    <p>暂无交易记录</p>
-                  </div>
-                  </c:if>
-                   <c:if test="${empty list33}">
-                  <div class="charge">
-                    <p>暂无交易记录</p>
-                  </div>
-                  </c:if> --%>
                </div>
                
             <div class="clear"></div>    
