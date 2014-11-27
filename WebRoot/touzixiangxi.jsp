@@ -422,8 +422,9 @@ function mysubmit(){
        <div class="pro_con">
        <ul>
          <li class="pro_title">还款方式：按月付息、到期还款</li>
-         <li><span>信用等级：</span>
-           <span><img src="<%=path%>/img/images-2014-11/star_${product1.qualityRating}.png" style="margin-bottom:-3px;"></span>
+         <li style="padding-left:15px;">项目周期：6个月</li>
+         <li><span style="margin-right:0">信用等级：</span>
+           <span style="margin-left:0"><img src="<%=path%>/img/images-2014-11/star_${product1.qualityRating}.png" style="margin-bottom:-3px;"></span>
            <span class="pro_r">
              <a class="pro_bac_logo01" href="http://www.sina.com.cn/"></a>
              <a class="pro_bac_logo02" href="http://www.qq.com"></a>
@@ -472,12 +473,12 @@ function mysubmit(){
          <span class="pro_right_title"><strong>投资金额</strong></span>
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元</span>
          <div class="neirong"></div>
-         <span><input type="text" class="text01" value="投资金额不低于100元" id="buyAmount"  name="buyAmount"/></span>
+         <span><input type="text" class="text01" value="投资金额不低于200元" id="buyAmount"  name="buyAmount"/></span>
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
-         <span class="pro_right_label">100元起投<i class="label_min"></i></span>
+         <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </form>
       </div>   
@@ -492,7 +493,7 @@ function mysubmit(){
          </div>
          <div class="touzi_text">
           <span>投资金额：</span>
-          <span class="touz_right"><input type="text" id="preview_amount" value="100"></input></span>
+          <span class="touz_right"><input type="text" id="preview_amount" value="200"></input></span>
          </div>
          <div class="touzi_text">
           <span>预期收益率：</span>
