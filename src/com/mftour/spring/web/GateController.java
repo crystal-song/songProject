@@ -32,7 +32,6 @@ import com.yeepay.bha.example.bean.BHARechargeRequest;
 import com.yeepay.bha.example.bean.BHARegisterRequest;
 import com.yeepay.bha.example.bean.BHATransferRequest;
 import com.yeepay.bha.example.bean.BHAWithdrawRequest;
-
 import com.yeepay.g3.utils.security.cfca.SignUtil;
 
 import java.io.ByteArrayInputStream;
@@ -42,6 +41,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -238,7 +239,9 @@ public class GateController {
 				TtransferInfo.setInterestRate(interestRate);
 			}
 		}
-
+		//添加交易时间
+		String transDate=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+		TtransferInfo.setTransDate(transDate);
 		gateService.addOrUpdateTTransferInfo(TtransferInfo);
 
 		int PaymentAmount = Integer.parseInt(TtransferInfo.getPaymentAmount());

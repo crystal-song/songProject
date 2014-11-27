@@ -99,7 +99,7 @@
                 </li>
               </ul>
            </li>
-           <li style="display:none;">
+           <li style="display:;">
               <div class="u_left_mian"><i class="mian_pic02"></i><span>投资管理</span></div>
               <ul class="u_left_sec">
                 <li style="display:none;">
@@ -109,7 +109,7 @@
                 <a href="<%=path%>/shoucang.jsp">收藏项目</a>
                 </li>
                 <li>
-                <a href="<%=path%>/jiaoyi.jsp">交易记录</a>
+                <a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all">交易记录</a>
                 </li>
                 <li style="display:none;">
                 <a href="<%=path%>/zhaiquan.jsp">债权转让</a>

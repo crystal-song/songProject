@@ -23,10 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
  
-
 <script type="text/javascript">
 
 window.onload=function(){
@@ -147,7 +145,8 @@ function mysubmit(){
  		$(this).css("height","60px");
  	});
  });   
- $(".jisuan").click(function(){
+ 	$("#jisuan").click(function(){
+	 alert("start");
      $( "#dialog01").dialog("open");
      //alert("aaa")
    });
@@ -206,7 +205,9 @@ function mysubmit(){
          }
        ]
      });
+ 
 </script>
+
 </head>
 
 <body>
@@ -488,13 +489,14 @@ function mysubmit(){
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
-         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
+         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><img src="<%=path %>/img/images-2014-11/jisuan02.png" id="jisuan"></img></span>
+<!--          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan" ></i></span> -->
          <span class="pro_right_label">100元起投</span>
        </div>
        </form>
       </div>   
- <!--弹出窗口 -->   
-<!-- 
+<!--  弹出窗口    -->
+
        <div id="dialog" title="投资金额确认">
         <p class="zijin">您成功投资<strong class="touzi_money">2000</strong>元</p>
        </div>
@@ -530,7 +532,7 @@ function mysubmit(){
           <span class="touz_right">12345</span>
          </div>
        </div>
- -->
+
 
 	<div class="syl_table" style="clear:both;">
      <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="2" border="0">

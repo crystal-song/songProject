@@ -14,6 +14,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
+import com.mftour.spring.util.Page;
 
 @Service("gateService")
 public class IGateServiceImpl implements IGateService {
@@ -67,6 +68,11 @@ public class IGateServiceImpl implements IGateService {
 			throws Exception {
 		return gateDao.queryTTransferInfoByNumber(Number);
 
+	}
+	public List<TTransferInfo> queryAllTransRecord(Page page,String platformUserNo)
+			throws Exception {
+		return gateDao.queryAllTransRecord(page,platformUserNo);
+		
 	}
 
 	@Override

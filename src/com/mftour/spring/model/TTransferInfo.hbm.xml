@@ -55,6 +55,9 @@
          <property name="interestRate" type="java.lang.Double">
             <column name="interestRate" length="500" />
         </property>
+         <property name="transDate" type="java.lang.String">
+            <column name="transDate" length="50" />
+        </property>
        
     </class>
 </hibernate-mapping>

@@ -14,9 +14,10 @@ public class TTransferInfo implements java.io.Serializable {
 	private String callbackUrl;
 	private String notifyUrl;
 	private String code;
-	private String enterpriseNumber;
-	private String projectName;
+	private String enterpriseNumber;			//企业编号
+	private String projectName;					//项目名称
 	private Double interestRate;
+	private String transDate;			//交易时间
 
 	public Long getId() {
 		return id;
@@ -138,4 +139,12 @@ public class TTransferInfo implements java.io.Serializable {
 		this.interestRate = interestRate;
 	}
 
+	public String getTransDate() {
+		return transDate;
+	}
+
+	public void setTransDate(String transDate) {
+		this.transDate = transDate;
+	}
+	
 }

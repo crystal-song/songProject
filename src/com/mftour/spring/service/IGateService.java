@@ -9,6 +9,7 @@ import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.util.Page;
 
 public interface IGateService {
 
@@ -30,6 +31,8 @@ public interface IGateService {
 			throws Exception;
 
 	public List<TTransferInfo> queryTTransferInfoByNumber(String Number)
+			throws Exception;
+	public List<TTransferInfo> queryAllTransRecord(Page page,String platformUserNo)
 			throws Exception;
 
 	public void addOrUpdateTEstablishmentRegistration(

@@ -190,54 +190,32 @@ function jumpPage(pag){
                         <li>交易详情</li>
                         <li id="bord_right">金额</li>
                       </ul>
+                      <c:if test="${userinfo.realName!=null}">
+                      <c:if test="${ not empty list1}">
+                      <c:forEach var="t" items="${list1 }">
                       <ul class="jiaoyi_msg">
+                            <li>${t.orderNo}</li>
+                            <li>${t.transDate }</li>
+                            <li>充值</li>
                             <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <li>${t.transferAmount }</li>
                             
-                      </ul>                
-                      <ul class="jiaoyi_msg">
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          <li></li>
-                          
-                      </ul>                 
-                      <ul class="jiaoyi_msg">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                       
-                      </ul>                        
-                      <ul class="jiaoyi_msg">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                      
-                      </ul>                      
-                      <ul class="jiaoyi_msg">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                       
-                      </ul>                                         
+                      </ul>  
+                      </c:forEach>    
+                      </c:if>          
+                      </c:if>          
+                                      
                   </ul>
-                  <div class="clear"></div>
+                  
+                 
+                   <c:if test="${empty list1}">
                   <div class="charge">
                     <p>暂无交易记录</p>
                   </div>
+                  </c:if>
                </div>
-               
-        <div class="next_list">
+            <div class="clear"></div>    
+        	<div class="next_list">
         <!--  
            <a href="#" class="a1">首页</a>
            <a href="#" class="a2"></a>

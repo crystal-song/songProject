@@ -178,7 +178,7 @@ public class userController {
 	public String reset(@RequestParam("userName") String username, Model model,HttpServletRequest request)
 			throws Exception {
 		Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate");
-	
+		System.out.println("aaaaaa"+outDate.getTime()+"bbbbbbb"+System.currentTimeMillis());
 		if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
             request.setAttribute("msg", "链接已经过期,请重新申请找回密码.");
             return "";
