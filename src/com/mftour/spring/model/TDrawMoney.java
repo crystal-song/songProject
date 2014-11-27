@@ -10,7 +10,7 @@ public class TDrawMoney implements java.io.Serializable{
 	    private String notifyUrl ;     //服务器通知URL
 	    private String callbackUrl;   //页面回跳URL
 	    private String amount; //提现金额
-	   
+	    private String transDate;
 		public Long getId() {
 			return id;
 		}
@@ -53,7 +53,13 @@ public class TDrawMoney implements java.io.Serializable{
 		public void setAmount(String amount) {
 			this.amount = amount;
 		}
-	
+		public String getTransDate() {
+			return transDate;
+		}
+		public void setTransDate(String transDate) {
+			this.transDate = transDate;
+		}
+		
 	
 	
 	

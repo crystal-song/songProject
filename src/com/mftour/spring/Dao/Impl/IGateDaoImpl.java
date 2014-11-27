@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.mftour.spring.Dao.IGateDao;
+import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
 import com.mftour.spring.model.TRegisterYeePay;
@@ -73,6 +74,12 @@ public class IGateDaoImpl extends HibernateDaoSupport implements IGateDao {
 	}
 	public List<TTransferInfo> queryAllTransRecord(Page page,String platformUserNo)throws Exception {
 		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo:=platformUserNo order by transferInfo.transDate asc";
+		Query query = getSession().createQuery(hq).setFirstResult((page.getPageNo() - 1) * page.getPageSize()).setMaxResults(page.getPageSize());
+		query.setParameter("platformUserNo", platformUserNo);
+		return query.list();
+	}
+	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception {
+		String hq = "from TDrawMoney drawMoney where drawMoney.platformUserNo:=platformUserNo order by drawMoney.transDate asc";
 		Query query = getSession().createQuery(hq).setFirstResult((page.getPageNo() - 1) * page.getPageSize()).setMaxResults(page.getPageSize());
 		query.setParameter("platformUserNo", platformUserNo);
 		return query.list();

@@ -559,7 +559,7 @@ function mysubmit(){
 
       <ul class="small_nav">
             <li class="sm_nav_fir">
-              <a>投资记录</a>
+              <strong><a>投资记录</a></strong>
             </li> 
             <li><a>项目描述</a></li>
             <li><a>资金运转</a></li>

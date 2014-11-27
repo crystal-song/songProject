@@ -2,6 +2,7 @@ package com.mftour.spring.Dao;
 
 import java.util.List;
 
+import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
 import com.mftour.spring.model.TRegisterYeePay;
@@ -32,6 +33,7 @@ public interface IGateDao {
 	public List<TTransferInfo> queryTTransferInfoByNumber(String Number)
 			throws Exception;
 	public List<TTransferInfo> queryAllTransRecord(Page page,String platformUserNo)throws Exception;
+	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception;
 	public void addOrUpdateTEstablishmentRegistration(
 			TEstablishmentRegistration establishmentRegistration)
 			throws Exception;

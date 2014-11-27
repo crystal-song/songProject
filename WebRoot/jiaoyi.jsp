@@ -118,25 +118,20 @@ function pa(clicked){
 	$("#projectStatus").val(myFilter[4]);
 	$("#pageNo").val(1);
 	console.log(myFilter);
-	//alert("avd");
-	
+	//alert("avd");	
 	$("#form" ).submit();
 }
 
 
 function jumpPage(pag){
 	   
-	    $('#pageNo').val(pag); 
-	    
-	    
-	   $("#yearIncome").val(myFilter[0]);
+	$('#pageNo').val(pag); 	    	    
+	$("#yearIncome").val(myFilter[0]);
 	$("#financingPeriod").val(myFilter[1]);
 	$("#financingMoney").val(myFilter[2]);
 	$("#financingProgress").val(myFilter[3]);
-	$("#projectStatus").val(myFilter[4]);
-	    
-	    
-	 $("#form" ).submit(); 
+	$("#projectStatus").val(myFilter[4]);	    
+	$("#form" ).submit(); 
 
  }
     
@@ -182,23 +177,37 @@ function jumpPage(pag){
                         <li>回收本金</li>
                       </ul>
                     </li>
-                    <li style="padding-left:10%;">
-                     <ul class="label_third">
+                    <li><ul class="label_third">
                         <li>订单编号</li>
                         <li>时间</li>
                         <li>交易类型</li>
                         <li>交易详情</li>
                         <li id="bord_right">金额</li>
-                      </ul>
+                      </ul></li>
+                    
                       <c:if test="${userinfo.realName!=null}">
-                      <c:if test="${ not empty list1}">
-                      <c:forEach var="t" items="${list1 }">
+                      <c:if test="${ not empty list11}">
+                      <c:forEach var="t" items="${list11 }">
                       <ul class="jiaoyi_msg">
                             <li>${t.orderNo}</li>
                             <li>${t.transDate }</li>
-                            <li>充值</li>
-                            <li></li>
+                            <li>投资</li>
+                            <li>${t.projectName}</li>
                             <li>${t.transferAmount }</li>
+                            
+                      </ul>  
+                      </c:forEach>    
+                      </c:if>  
+                      
+                   <!--    提现的交易列表         -->
+                      <c:if test="${ not empty list22}">
+                      <c:forEach var="t" items="${list22}">
+                      <ul class="jiaoyi_msg">
+                            <li>${t.requestNo}</li>
+                            <li>${t.transDate }</li>
+                            <li>提现</li>
+                            <li></li>
+                            <li>${t.amount }</li>
                             
                       </ul>  
                       </c:forEach>    
@@ -207,31 +216,21 @@ function jumpPage(pag){
                                       
                   </ul>
                   
-                 
-                   <c:if test="${empty list1}">
+                   <c:if test="${empty list11}">
+                  <div class="charge">
+                    <p>暂无交易记录</p>
+                  </div>
+                  </c:if>
+                   <c:if test="${empty list22}">
                   <div class="charge">
                     <p>暂无交易记录</p>
                   </div>
                   </c:if>
                </div>
+               
             <div class="clear"></div>    
         	<div class="next_list">
-        <!--  
-           <a href="#" class="a1">首页</a>
-           <a href="#" class="a2"></a>
-           <a href="#">1</a>
-           <a href="#">2</a>
-           <a href="#">3</a>
-           <a href="#">4</a>
-           <a href="#">5</a>
-           <a href="#">...</a>
-           <a href="#">20</a>
-           <a href="#" class="a3"></a>
-           <a href="#" class="a4">尾页</a>
-           <span>跳到</span>
-           <span><input type="text" /></span>
-           <span>页</span>
-           <span><input type="submit" class="btn_sub" value="确定"/></span>-->
+      
            
            <a href="javascript:jumpPage(1)">首页</a> 
 				<c:if test=""></c:if>								 
@@ -239,12 +238,9 @@ function jumpPage(pag){
 				<div class="pageNum"></div>								 
 				<c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  								
 		   <a href="javascript:jumpPage(${page.totalPage})">末页</a>                   
-        </div>
-
-        
-        </div>
-   
-        </div>
+        </div>       
+      </div>   
+    </div>
 </div>
 <div class="clear"></div>
 <!-- footer start -->

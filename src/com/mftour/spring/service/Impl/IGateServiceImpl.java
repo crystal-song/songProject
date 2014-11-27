@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mftour.spring.Dao.ICrowdfundingDao;
 import com.mftour.spring.Dao.IGateDao;
+import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
 import com.mftour.spring.model.TRegisterYeePay;
@@ -73,6 +74,9 @@ public class IGateServiceImpl implements IGateService {
 			throws Exception {
 		return gateDao.queryAllTransRecord(page,platformUserNo);
 		
+	}
+	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception{
+		return gateDao.DrawMonetAllTransRecord(page, platformUserNo);
 	}
 
 	@Override

@@ -28,6 +28,9 @@
         <property name="amount" type="java.lang.String">
             <column name="amount" length="50" />
         </property>
+        <property name="transDate" type="java.lang.String">
+            <column name="transDate" length="50" />
+        </property>
         
     </class>
 </hibernate-mapping>
