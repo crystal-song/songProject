@@ -1412,7 +1412,7 @@ ul,li{
 	border:1px solid #ccc;
 	position:relative;
 	position:fixed;
-	right:0;
+	right:6px;
 	background:#fff;
 	*+position:absolute;
 	*+right:-220px;
@@ -1468,8 +1468,7 @@ ul,li{
 	background:url(../img/images-2014-11/jisuan02.png) no-repeat;
 }		
 .pro_right  .jisuan img{
-	border-radius:20px;
-	
+	border-radius:20px;	
 	}
 .pro_right .pro_right_label{
 	width:80px;
@@ -1482,6 +1481,14 @@ ul,li{
 	font-size:14px;
 	line-height:30px;
 	}
+.label_min{
+	width:6px;
+	height:4px;
+	background:url(../img/images-2014-11/label_bac.png) no-repeat;
+	position:absolute;
+	right:0;
+	top:100%;
+}	
 .small_nav{
 	width:800px;
 	height:50px;
