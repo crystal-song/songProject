@@ -121,7 +121,7 @@ $(document).ready(function(){
   </div>
     <div class="shuju">
        <div class="new_production">
-         <div class="images_pro"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/shanxi01.png"></div>
+         <a class="images_pro" href="product/getProductByid?id=55"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/shanxi01.png"></a>
          <div class="meier_wd">                
            <h3><a href="product/getProductByid?id=55">山西润通工程</a></h3>       	
            <ul class="mei_msg">
