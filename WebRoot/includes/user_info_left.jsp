@@ -51,8 +51,9 @@
                 <span>资产管理</span>
               </a>
               <ul style="display:none">
-                  <li><a href="<%=path%>/zichan.jsp">资产统计</a></li>
-                  <li><a href="<%=path%>/chongzhi.jsp">充值</a></li>
+                  <%-- <li><a href="<%=path%>/zichan.jsp">资产统计</a></li> --%>
+                   <li><a href="<%=path%>/gate/service">资产统计</a></li>
+                  <li><a href="<%=path%>/gate/recharge">充值</a></li>
                   <li><a href="<%=path%>/tixian.jsp">提现</a></li>
               </ul>
           </div>
@@ -86,16 +87,16 @@
               <div class="u_left_mian"><i class="mian_pic01"></i><span>资产管理</span></div>
               <ul class="u_left_sec">
                 <li>
-                 <a href="<%=path%>/zichan.jsp" >资产统计</a>
+                 <a href="<%=path%>/gate/service" >资产统计</a>
                 </li>
                 <li>
                  <a href="<%=path%>/gate/recharge">充值</a>
                 </li>
                 <li>
-                 <a href="<%=path%>/tixian.jsp">提现</a>
+                 <a href="<%=path%>/gate/drawMoney">提现</a>
                 </li>
                 <li>
-                 <a href="<%=path%>/yinhangka.jsp">绑定银行卡</a>
+                 <a href="<%=path%>/gate/binding">绑定银行卡</a>
                 </li>
               </ul>
            </li>
