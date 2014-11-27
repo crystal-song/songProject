@@ -23,8 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
  
+
 <script type="text/javascript">
 
 window.onload=function(){
@@ -144,70 +146,21 @@ function mysubmit(){
  	},function(){
  		$(this).css("height","60px");
  	});
- });   
- 	$("#jisuan").click(function(){
-	 alert("start");
-     $( "#dialog01").dialog("open");
-     //alert("aaa")
-   });
-
-   $("#dialog-link").click(function(){
-    var values= $("#myinput").val();
-       if (values!="投资金额不低于100元") {
-               if(values<100){
-         alert("请输入大于100元投资金额")
-               }else{
-                 $( "#dialog" ).dialog( "open" );
-               }
-        }else{
-         alert("请输入投资金额");
-        }
- });
+ 	
+ 	 $(".jisuan").click(function(){
+ 		 $("#dialog01").css("display","block");
+ 		 
+ 		 
+ 	 });
+ 	$(".right_cha").click(function(){
+ 		$("#dialog01").css("display","none");
+ 	});
+ 	
+ });  
  
-   $( "#dialog" ).dialog({
-       autoOpen: false,
-       width: 500,
-       height:300,
-       buttons: [
-         {
-           text: "确认",
-           click: function() {
-             $( this ).dialog( "close" );    
-              $(".red_touzi").css("background","#ccc").html("投资成功！");
-              values=="投资金额不低于100元";
-           }
-         },
-         {
-           text: "取消",
-           click: function() {
-             $( this ).dialog( "close" );
-           }
-         }
-       ]
-     });
 
-   $( "#dialog01" ).dialog({
-       autoOpen: false,
-       width: 300,
-       height:300,
-       buttons: [
-         {
-           text: "确认",
-           click: function() {
-             $( this ).dialog( "close" );                    
-           }
-         },
-         {
-           text: "取消",
-           click: function() {
-             $( this ).dialog( "close" );
-           }
-         }
-       ]
-     });
- 
+    
 </script>
-
 </head>
 
 <body>
@@ -489,26 +442,27 @@ function mysubmit(){
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
-         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><img src="<%=path %>/img/images-2014-11/jisuan02.png" id="jisuan"></img></span>
-<!--          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan" ></i></span> -->
+         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">100元起投</span>
        </div>
        </form>
       </div>   
-<!--  弹出窗口    -->
-
-       <div id="dialog" title="投资金额确认">
+ <!--弹出窗口 -->   
+ 
+       <div id="dialog" title="投资金额确认" style="display:none">
         <p class="zijin">您成功投资<strong class="touzi_money">2000</strong>元</p>
        </div>
-       <div id="dialog01" title="收益计算器">
-
+       <div id="dialog01" title="收益计算器" style="display:none">
+         <div class="dialog_title"><strong>收益计算器</strong>
+          <div class="right_cha"></div>
+         </div>
          <div class="touzi_text">
           <span>投资金额：</span>
           <span class="touz_right"><input type="text"></input></span>
          </div>
          <div class="touzi_text">
           <span>年化收益：</span>
-          <span class="touz_right"><input type="text" value="5%"></input></span>
+          <span class="touz_right"><input type="text" value="10%"></input></span>
          </div>     
          <div class="touzi_text">
           <span>投资期限：</span>
@@ -529,7 +483,11 @@ function mysubmit(){
          </div>
          <div class="touzi_text">
           <span>可获得总收益：</span>
-          <span class="touz_right">12345</span>
+          <span class="touz_right">12345&nbsp;&nbsp;元</span>
+         </div>
+         <div class="jisuan_btn">
+          <input type="reset" value="重置" class="jisuan_btn_left"></input>
+          <input type="submit" value="开始计算" class="jisuan_btn_right"></input>
          </div>
        </div>
 
@@ -559,7 +517,7 @@ function mysubmit(){
 
       <ul class="small_nav">
             <li class="sm_nav_fir">
-              <strong><a>投资记录</a></strong>
+              <a>投资记录</a>
             </li> 
             <li><a>项目描述</a></li>
             <li><a>资金运转</a></li>
