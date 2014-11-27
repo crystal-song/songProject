@@ -10,6 +10,7 @@ import com.mftour.spring.Dao.IGateDao;
 import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
+import com.mftour.spring.model.TRecharge;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferSucceed;
@@ -72,16 +73,35 @@ public class IGateDaoImpl extends HibernateDaoSupport implements IGateDao {
 		query.setParameter("requestNo", Number);
 		return query.list();
 	}
-	public List<TTransferInfo> queryAllTransRecord(Page page,String platformUserNo)throws Exception {
-		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo:=platformUserNo order by transferInfo.transDate asc";
-		Query query = getSession().createQuery(hq).setFirstResult((page.getPageNo() - 1) * page.getPageSize()).setMaxResults(page.getPageSize());
+	public List<TTransferInfo> queryAllTransRecord(String platformUserNo)throws Exception {
+		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo order by transferInfo.transDate asc";
+		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", platformUserNo);
+		
 		return query.list();
 	}
-	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception {
-		String hq = "from TDrawMoney drawMoney where drawMoney.platformUserNo:=platformUserNo order by drawMoney.transDate asc";
-		Query query = getSession().createQuery(hq).setFirstResult((page.getPageNo() - 1) * page.getPageSize()).setMaxResults(page.getPageSize());
+	public List<TDrawMoney> DrawMonetAllTransRecord(String platformUserNo)throws Exception {
+		String hq = "from TDrawMoney drawMoney where drawMoney.platformUserNo=:platformUserNo order by drawMoney.transDate asc";
+		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", platformUserNo);
+		
+		return query.list();
+	}
+	public List<TRecharge> RechargeAllTransRecord(String platformUserNo)throws Exception{
+		String hq = "from TRecharge Recharge where Recharge.platformUserNo=:platformUserNo order by Recharge.time asc";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("platformUserNo", platformUserNo);
+		
+		return query.list();
+	}
+	public List  AllTransRecord(int pageNo,String platformUserNo)throws Exception{
+		String hq = "from TTransferInfo transferInfo,TDrawMoney drawMoney,TRecharge Recharge where transferInfo.platformUserNo=:platformUserNo1,drawMoney.platformUserNo=:platformUserNo2,Recharge.platformUserNo=:platformUserNo3 order by transferInfo.transDate asc,drawMoney.transDate asc,Recharge.time asc";
+		Query query = getSession().createQuery(hq);
+		query.setFirstResult((pageNo-1)*8);
+		query.setMaxResults(8);
+		query.setParameter("platformUserNo1", platformUserNo);
+		query.setParameter("platformUserNo2", platformUserNo);
+		query.setParameter("platformUserNo3", platformUserNo);
 		return query.list();
 	}
 

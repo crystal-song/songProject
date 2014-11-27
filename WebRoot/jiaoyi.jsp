@@ -226,52 +226,12 @@ function jumpPage(pag){
                         <li id="bord_right">金额</li>
 
                       </ul></li>
-                    
-                       <li>              
-                         <ul class="jiaoyi_msg">
-                          <li>6</li>
-                          <li>7</li>
-                          <li>8</li>
-                          <li>9</li>
-                          <li>10</li>                          
-                        </ul> 
-                      </li>  
-                      <li>              
-                      <ul class="jiaoyi_msg">
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>                      
-                      </ul> 
-                      </li>
-                      <li>                       
-                      <ul class="jiaoyi_msg">
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                      
-                      </ul>
-                      </li>
-                      <li>                      
-
-                      </ul></li>
-                    
+                   
                       <c:if test="${userinfo.name!=null}">
                       <c:if test="${ not empty list11}">
                       <c:forEach var="t" items="${list11 }">
 
                       <ul class="jiaoyi_msg">
-
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                       
-
                             <li>${t.orderNo}</li>
                             <li>${t.transDate }</li>
                             <li>投资</li>
@@ -306,43 +266,8 @@ function jumpPage(pag){
                             <li>充值</li>
                             <li></li>
                             <li>${t.amount }</li>
-                            
 
                       </ul>  
-
-                      </li>
-                      <li>
-                      <ul class="jiaoyi_msg">
-                        <li>11</li>
-                        <li>12</li>
-                        <li>13</li>
-                        <li>14</li>
-                        <li>15</li>
-                       
-                      </ul>
-                      </li>
-                      <li>                        
-                      <ul class="jiaoyi_msg">
-                        <li>16</li>
-                        <li>17</li>
-                        <li>18</li>
-                        <li>19</li>
-                        <li>20</li>
-                      
-                      </ul>
-                      </li>
-                      <li>            
-                                
-                      <ul class="jiaoyi_msg">
-                        <li>21</li>
-                        <li>22</li>
-                        <li>23</li>
-                        <li>24</li>
-                        <li>25</li>
-                       
-                      </ul>
-                   
-                      </li>                          
 
                       </c:forEach>    
                       </c:if>          

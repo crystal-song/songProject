@@ -10,6 +10,7 @@ import com.mftour.spring.Dao.IGateDao;
 import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
+import com.mftour.spring.model.TRecharge;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferSucceed;
@@ -70,15 +71,21 @@ public class IGateServiceImpl implements IGateService {
 		return gateDao.queryTTransferInfoByNumber(Number);
 
 	}
-	public List<TTransferInfo> queryAllTransRecord(Page page,String platformUserNo)
+	public List<TTransferInfo> queryAllTransRecord(String platformUserNo)
 			throws Exception {
-		return gateDao.queryAllTransRecord(page,platformUserNo);
+		return gateDao.queryAllTransRecord(platformUserNo);
 		
 	}
-	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception{
-		return gateDao.DrawMonetAllTransRecord(page, platformUserNo);
+	public List<TDrawMoney> DrawMonetAllTransRecord(String platformUserNo)throws Exception{
+		return gateDao.DrawMonetAllTransRecord(platformUserNo);
 	}
-
+	public List<TRecharge> RechargeAllTransRecord(String platformUserNo)throws Exception{
+		return gateDao.RechargeAllTransRecord(platformUserNo);
+	}
+	public List AllTransRecord(int pageNo, String platformUserNo)
+			throws Exception{
+		return gateDao.AllTransRecord(pageNo, platformUserNo);
+	}
 	@Override
 	public void addOrUpdateTEstablishmentRegistration(
 			TEstablishmentRegistration establishmentRegistration)
