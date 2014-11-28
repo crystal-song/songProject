@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+	<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -40,10 +40,10 @@ function onSubmit(host) {
    <ul> 
          <input type="hidden" id="host" name="host">
          <li> <div class="form-group" style="display:none;height:0px;" >
-             <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10040011137" /> 
-             <!--  <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10012415118" /> -->
+             <!-- <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
+               <label for="platformNo">platformNo</label><input type="text"
+              class="form-control" id="platformNo" name="platformNo" value="10012415118" /> 
           </div></li>
           <li><div class="form-group" style="display:none;height:0px;" >
             <label for="requestNo">requestNo</label><input type="text"
@@ -71,7 +71,7 @@ function onSubmit(host) {
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="targetPlatformUserNo">借款人会员编号</label><input type="text"
-              class="form-control" id="targetPlatformUserNo" name="targetPlatformUserNo" value="18975601645" />
+              class="form-control" id="targetPlatformUserNo" name="targetPlatformUserNo" value="601522539" />
           </div>
           </li>
           <li>
@@ -89,7 +89,7 @@ function onSubmit(host) {
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="expired">投标过期时间</label><input type="text"
-              class="form-control" id="expired" name="expired" value="2014-12-01 22:22:31" />
+              class="form-control" id="expired" name="expired" value="2016-12-01 22:22:31" />
           </div>
           </li>
           
@@ -103,7 +103,7 @@ function onSubmit(host) {
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
-              class="form-control" id="notifyUrl" name="notifyUrl" value="${host}${context}/gate/transferSucceed" />
+              class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/transferNotify" />
           </div>
           </li>
           <li>
@@ -114,9 +114,9 @@ function onSubmit(host) {
           </div>
           </li>
           <li>
-          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default que_btn_new">确认</button> 
-          <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
-          <!-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')">确定</a></div>-->
+          <!-- <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>  -->
+         <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
+          <div class="que_btn"><a src="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')">确定</a></div>
           </li>
           </ul>
         </form>
