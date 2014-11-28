@@ -79,8 +79,7 @@ var navIndex=2;
                 min_label.children(".mian_pic04").css('background-image','url("<%=path%>/img/images-2014-11/tubiao04.png")');
                 return true;
               }
-            });
-       
+            });    
 });
         
 </script>
