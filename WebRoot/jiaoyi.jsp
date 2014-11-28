@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var navIndex=3;    
     var indexs=2;
     $(document).ready(function(){
+    	/*
     	 var url=location.search;
 	       //alert(url);
 	       var str=url.substr(1);
@@ -34,7 +35,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	   $(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="all_all"){
-
 	    	   $(".label_sec li").click(function(){
     	       if($(this).parent().hasClass("new_sec")){
     	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 
     	    $(".u_left_mian").click(function(){
     	          $(this).siblings().slideToggle("slow");
-    	        });
+    	        });*/
 });
  
     
