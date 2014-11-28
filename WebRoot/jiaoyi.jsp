@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
     var navIndex=3;    
+    var indexs=2;
     $(document).ready(function(){
     	 var url=location.search;
 	       //alert(url);
@@ -30,34 +31,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	   $(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="threemonth_all"){
-	    	   $(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak')
+	    	   $(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="all_all"){
-	    	  // if(){}
+
 	    	   $(".label_sec li").click(function(){
-    	       // $(this).addClass('label_bak').siblings().removeClass('label_bak');
     	       if($(this).parent().hasClass("new_sec")){
-    	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak')
+    	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
     	       }
     	       else if($(this).parent().hasClass("new_fir")){
     	    	   $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
-    	       }
-    	       
-    	   });
-	    	  // $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
-	    	  // $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak')
+    	       }    	 
+	         });
 	       }
-	      
 	       else if(canshu=="recharge_all"){
 	    	   $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="drawmoney_all"){
-	    	   $(".new_sec li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak')
+	    	   $(".new_sec li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="transferinfo_all"){
-	    	   $(".new_sec li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak')
-	       }
-    	
+	    	   $(".new_sec li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+	       }  	
     	 
     	    $(".u_left_mian").click(function(){
     	          $(this).siblings().slideToggle("slow");
