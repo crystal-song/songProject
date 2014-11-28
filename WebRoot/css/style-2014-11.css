@@ -1709,9 +1709,7 @@ ul,li{
     height: 40px;
     display: inline-block;
     font-size:12px;
-}
-.u_left_sec a:hover{
-	color: #c70e14;
+    color:#ec6c23;
 }
 .u_r_top{
     width:850px;
