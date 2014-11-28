@@ -41,7 +41,7 @@ function chk_name() {
 					/* alert("dd"+data+'"success"'); */
 					if (data == '"success"') {
 						$("#tip_username").html(
-								'<span class="tip_p01">用户名存在！</span>');
+								'<span class="tip_f01">用户名存在！</span>');
 						/* $('#form').submit(); */
 						/* window.open('<c:url value="/welcome/session"/>', '_self'); */
 					} else {
@@ -76,7 +76,7 @@ function chk_email() {
 			success : function(data) {
 				if (data == '"success"') {
 					$("#tip_useremail").html(
-							'<span class="tip_p01">邮箱存在！</span>');
+							'<span class="tip_f01">邮箱存在！</span>');
 				} else {
 					$("#tip_useremail").html(
 							'<span class="tip_f01">邮箱不存在！</span>');
@@ -129,21 +129,22 @@ function chk_email() {
 					  <td align="left"><span>验证码：</span>
 					      <input name="validatecode" type="text"  id="validatecode" value="" />
 										<img  id="verifyPic_img" type="4" align="absmiddle" src="<%=path%>/image.jsp" style="cursor: pointer;height:24px;margin-bottom:6px;">
-					<a href="javascript:loadimage();"><font size="2">看不清点我</font></a></td>
-					
-					    
+					<a href="javascript:loadimage();"><font size="2">看不清点我</font></a>
+					 <% if (request.getAttribute("error") != null){ %>
+		   			  <font color=red size="2"><%=request.getAttribute("error")%></font>
+		   			 <% }%>
+       
+					</td>
+			    
 					  </tr>
+					  <tr></tr>
                       <tr>
                         <td style="text-align:left;"><input type="submit" value="确定"  class="check_btn01" onclick="query()"/></td>
-                        <td align="left">
-                         <% if (request.getAttribute("error") != null){ %>
-		   			  <font color=red size="2"><b><%=request.getAttribute("error")%></b></font>
+                        <td align="left" id="left_b">
+                        
 		</td>
 	</tr>
-	<%
-     }
-	%>
-                        </td>
+	                 </td>
                       </tr>					
 				  </table>
 				</td>
