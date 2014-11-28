@@ -5,7 +5,7 @@
      <ul class="ban_show">
           <li class="a1"><a href="http://ptobchina.com/guarantee/getTNewsById?id=42"><img src="<%=path%>/img/images-2014-11/banner1.jpg" width="1100" height="300" /></a></li>
           <li style="display:none"><a href="<%=path%>/security.jsp"><img src="<%=path%>/img/images-2014-11/banner2.jpg" width="1100" height="300" /></a></li>
-          <li style="display:none"><a href="<%=path%>/security.jsp"><img src="<%=path%>/img/images-2014-11/banner3.jpg" width="1100" height="300" /></a></li>          
+          <li style="display:none"><a href="<%=path%>/zhuanti/201411guwen/first.jsp"><img src="<%=path%>/img/images-2014-11/banner3.jpg" width="1100" height="300" /></a></li>          
      </ul>
      <ol>
        <li class="current"></li>
