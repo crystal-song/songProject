@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
     var navIndex=3;    
+    var indexs=1;
     $(document).ready(function(){
     	$(".u_left_mian").click(function(){
             $(this).siblings().slideToggle("slow");
