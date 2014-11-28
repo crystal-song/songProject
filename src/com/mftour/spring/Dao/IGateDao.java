@@ -62,5 +62,7 @@ public interface IGateDao {
 				throws Exception;
 		public List AllTransRecord(int pageNo, String platformUserNo)
 				throws Exception;
+		
+}
 	 
 	
