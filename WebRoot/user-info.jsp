@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 var navIndex=2;  
+
     $(document).ready(function(){
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	
@@ -36,50 +37,9 @@ var navIndex=2;
           $(".u_left_mian").click(function(){
               $(this).siblings().slideToggle("slow");
             });
+     
           
-          $(".user_left li").mouseover(function(){
-              var index=$(this).index();
-              var min_label=$(this).children(".u_left_mian");
-
-               if(index==1){
-                     min_label.children(".mian_pic01").css('background-image','url("<%=path%>/img/images-2014-11/tubiao011.png")');
-                     return true;
-                     }
-               if(index==2){
-                     min_label.children(".mian_pic02").css('background-image','url("<%=path%>/img/images-2014-11/tubiao012.png")');
-                     return true;
-                     } 
-               if(index==3){
-                     min_label.children(".mian_pic03").css('background-image','url("<%=path%>/img/images-2014-11/tubiao013.png")');
-                     return true;
-                     }
-               if(index==4){
-                     min_label.children(".mian_pic04").css('background-image','url("<%=path%>/img/images-2014-11/tubiao014.png")');
-                     return true;
-                     }                 
-                     
-            }).mouseout(function(){
-
-               var index=$(this).index();
-               var min_label=$(this).children(".u_left_mian");
-               
-              if(index==1){
-                min_label.children(".mian_pic01").css('background-image','url("<%=path%>/img/images-2014-11/tubiao01.png")');
-                return true;
-              }
-              if(index==2){
-                min_label.children(".mian_pic02").css('background-image','url("<%=path%>/img/images-2014-11/tubiao02.png")');
-                return true;
-              }
-              if(index==3){
-                min_label.children(".mian_pic03").css('background-image','url("<%=path%>/img/images-2014-11/tubiao03.png")');
-                return true;
-              }
-              if(index==4){
-                min_label.children(".mian_pic04").css('background-image','url("<%=path%>/img/images-2014-11/tubiao04.png")');
-                return true;
-              }
-            });    
+          
 });
         
 </script>
