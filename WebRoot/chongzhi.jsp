@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 <script type="text/javascript">
     var navIndex=3;    
+    var indexs=1;
     $(document).ready(function(){
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	  $(".u_left_mian").click(function(){
