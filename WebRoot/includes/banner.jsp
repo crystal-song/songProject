@@ -4,10 +4,12 @@
     <div class="banner_fra">
      <ul class="ban_show">
           <li class="a1"><a href="http://ptobchina.com/guarantee/getTNewsById?id=42"><img src="<%=path%>/img/images-2014-11/banner1.jpg" width="1100" height="300" /></a></li>
-          <li style="display:none"><a href="<%=path%>/security.jsp"><img src="<%=path%>/img/images-2014-11/banner2.jpg" width="1100" height="300" /></a></li>          
+          <li style="display:none"><a href="<%=path%>/security.jsp"><img src="<%=path%>/img/images-2014-11/banner2.jpg" width="1100" height="300" /></a></li>
+          <li style="display:none"><a href="<%=path%>/security.jsp"><img src="<%=path%>/img/images-2014-11/banner3.jpg" width="1100" height="300" /></a></li>          
      </ul>
      <ol>
        <li class="current"></li>
+       <li></li>
        <li></li>
      </ol>
   <div class="ban_left" ></div>
@@ -26,7 +28,7 @@
 		   timer=setInterval(autoplay,3000);
 		   function autoplay(nn){
 			   if(nn!=null)num=nn+num;
-			 if(num>=2){num=0}
+			 if(num>=3){num=0}
 			 if(num<0){num=2}
 			  $('.banner_fra ul li').eq(num).hide().fadeIn().siblings().hide();   
 			  $('.banner_fra ol li').eq(num).addClass('current').siblings().removeClass('current');
