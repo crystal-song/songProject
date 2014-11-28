@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var navIndex=3;    
     var indexs=2;
     $(document).ready(function(){
-    	/*
+    	
     	 var url=location.search;
 	       //alert(url);
 	       var str=url.substr(1);
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 
     	    $(".u_left_mian").click(function(){
     	          $(this).siblings().slideToggle("slow");
-    	        });*/
+    	        });
 });
  
     
