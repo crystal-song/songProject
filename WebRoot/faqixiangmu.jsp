@@ -36,6 +36,8 @@ $(document).ready(function(e) {
     	 
        $(this).children(".news_list_hide").slideToggle();
       
+      
+      
      });
      
      $(".daohang a").click(function(){
