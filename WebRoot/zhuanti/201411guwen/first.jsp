@@ -51,7 +51,7 @@ $(document).ready(function(){
       	<div class="li02"><span class="jingqing">敬请<br/>期待</span></div>
     </div>
   </div>
-  <div class="num2" id="div2" >
+  <div class="num2" id="div2">
   	   <div class="photo">
   	   	 <span class="name"><strong>李言平</strong></span>
   	   	 <span><strong>顾问</strong></span>
@@ -63,9 +63,14 @@ $(document).ready(function(){
 
       <div class="picture">
          <div class="pic1"><img src="<%=path%>/zhuanti/201411guwen/images/li02.jpg" width="500" height="333" /></div>
-         <d
-         iv class="pic2"><img src="<%=path%>/zhuanti/201411guwen/images/li01.jpg" width="500" height="333" /></div>
+         <div class="pic2"><img src="<%=path%>/zhuanti/201411guwen/images/li01.jpg" width="500" height="333" /></div>
          <div class="pic3"><img src="<%=path%>/zhuanti/201411guwen/images/li03.jpg" width="500" height="333" /></div>
+         <!--[if lt IE 8]>
+          <div class="pic11"><img src="<%=path%>/zhuanti/201411guwen/images/li02.jpg" width="500" height="333" /></div>
+         <div class="pic21"><img src="<%=path%>/zhuanti/201411guwen/images/li01.jpg" width="500" height="333" /></div>
+         <div class="pic31"><img src="<%=path%>/zhuanti/201411guwen/images/li03.jpg" width="500" height="333" /></div>
+
+         <![endif]-->
       </div>
   </div>
   <div class="num3" id="div3" >
