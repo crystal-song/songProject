@@ -1,6 +1,6 @@
 package com.mftour.spring.model;
 
-public class TRegisterYeePay {
+public class TRegisterYeePay implements java.io.Serializable{
 
 	private static final long serialVersionUID = -8032736654676548825L;
 	private Long id;
