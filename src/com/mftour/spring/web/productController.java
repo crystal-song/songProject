@@ -32,39 +32,43 @@ public class productController {
 	private IProductService productService;
 
 	@Autowired
-	private IptopService ptopService;
 
-	@RequestMapping(value = "/allProduct", method = { RequestMethod.POST,
-			RequestMethod.GET })
-	public String allProduct(
-			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
-			@RequestParam(value = "pageSize", required = false, defaultValue = "2") int pageSize,
-			@RequestParam(value = "name", required = false, defaultValue = "") String name,
-			Model model, TProduct product) throws Exception {
-		/* int pageNo=product.getPageNo(); */
-
-		Page page = Page.newBuilder(pageNo, pageSize, "allProduct");
-
-		// 加入分页元素
-		/*
-		 * if(null!=product){ Map params=MapUtil.ConvertObjToMap(product);
-		 * page.getParams().put("name",name); }
-		 */
-
-		List<TProduct> list = productService.getProduct(page, product);
-
-		model.addAttribute("list", list);
-		model.addAttribute("page", page);
-		model.addAttribute("product", product);
-
-		List<TNews> list1 = ptopService.getNewsbyTime();
-		model.addAttribute("list1", list1);
-
-		List<TNews> list2 = ptopService.getWebsiteNoticeByChannel();
-		model.addAttribute("list2", list2);
-
-		List<TNews> list3 = ptopService.getRepaymentNoticeByChannel();
-		model.addAttribute("list3", list3);
+    private IptopService ptopService;
+	
+	@RequestMapping(value = "/allProduct", method = {RequestMethod.POST, RequestMethod.GET})
+	public String allProduct( @RequestParam(value = "pageNo",required=false, defaultValue= "1") int pageNo,
+			@RequestParam(value = "pageSize",required=false, defaultValue= "6") int pageSize,
+			@RequestParam(value = "name",required=false,defaultValue="") String name,
+			Model model,
+			TProduct product) throws Exception {
+		    /*int pageNo=product.getPageNo();*/
+		
+		 Page page = Page.newBuilder(pageNo, pageSize, "allProduct");
+		
+		 
+		 
+			//加入分页元素
+				/*if(null!=product){
+					Map params=MapUtil.ConvertObjToMap(product);
+					page.getParams().put("name",name);
+				}*/
+				
+		 
+		 List<TProduct> list=productService.getProduct(page,product);
+		  
+		  model.addAttribute("list", list);
+		  model.addAttribute("page", page);
+		  model.addAttribute("product", product);
+		  
+		  List<TNews> list1=ptopService.getNewsbyTime();
+			model.addAttribute("list1", list1);
+			
+			List<TNews> list2=ptopService.getWebsiteNoticeByChannel();
+			model.addAttribute("list2", list2);
+			
+			List<TNews> list3=ptopService.getRepaymentNoticeByChannel();
+			model.addAttribute("list3", list3);
+		
 
 		return "touzi";
 
