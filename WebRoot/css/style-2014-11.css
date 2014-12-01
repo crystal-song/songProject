@@ -2429,6 +2429,11 @@ ul,li{
 	text-align: center;
 	line-height: 30px; 
 }
+.ame{
+	width:300px;
+	text-align:left;
+	line-height:30px;
+}
 /*tixian end*/
 
 .jin_right{
@@ -2472,7 +2477,11 @@ ul,li{
 	line-height: 30px;
 	cursor: pointer;
 }
-
+.label_sec li a{
+	width: 65px;
+	height: 30px;
+	display:inline-block
+}
 .label_bak{
 	background: #e81c05;	
 	color:#fff;
