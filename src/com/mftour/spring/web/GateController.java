@@ -27,6 +27,7 @@ import com.mftour.spring.model.TRecharge;
 import com.mftour.spring.model.TRechargeSucceed;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
+import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.model.TYeePay;
@@ -483,7 +484,7 @@ public class GateController  {
 		             if(list != null && list.size()!=0){
 		            	 TProduct Product=list.get(0);
 		            	   if(Product.getBuyType()==null)   
-		            	   return "login";
+		            	   return "xianxia";
 		             }
 		
 		 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
@@ -503,7 +504,7 @@ public class GateController  {
 	}
 	
 	@RequestMapping(value="/gate/doTransfer")
-	public String doTransfer(String host, BHATransferRequest request, Model model,TTransferInfo TtransferInfo) throws Exception {
+	public String doTransfer(String host, BHATransferRequest request, Model model,TTransferInfo TtransferInfo,HttpServletRequest request1) throws Exception {
 		int a=0;
 		int b=0;
 		 List<TInterestRate> li=ptopService.queryTInterestRateByNumber(TtransferInfo.getEnterpriseNumber());
@@ -544,8 +545,15 @@ public class GateController  {
 			
 			 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 			 System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
-			 ;
+			 Object o= request1.getSession().getAttribute("name"); 
 			 TInvestmentInfo investmentInfo=new TInvestmentInfo();
+			 if(o!=null){
+				 List<TRegisterYeePay> list=gateService.queryTRegisterYeePayByName(o.toString());
+				 if(list != null && list.size()!=0){
+					 investmentInfo.setIdentityCard(list.get(0).getIdCardNo());
+				 }
+			 }
+			
 			 investmentInfo.setWriteTime(df.format(new Date()));
 			 investmentInfo.setInvestmentAmount(Double.parseDouble(TtransferInfo.getPaymentAmount()));
 			 investmentInfo.setEnterpriseNumber(TtransferInfo.getEnterpriseNumber());
@@ -675,7 +683,7 @@ public class GateController  {
 			
 			
 		
-		return doSign(request, host + "/bha/toTransfer", model);
+		return doSign(request1, host + "/bha/toTransfer", model);
 	}
 	
 	
@@ -1326,7 +1334,7 @@ public class GateController  {
 		      //得到 所有 person节点 
 		      NodeList persons=dm.getElementsByTagName("response");
 		      System.out.println("qqqqqqqqqqqqq");
-		      TBindingSucceed bindingSucceed=new TBindingSucceed();
+		      TTransferNotify transferNotify=new TTransferNotify();
 		      System.out.println("wwwwwwwwwwwwwww");
 		      for(int i=0;i<persons.getLength();i++){
 		          
@@ -1338,59 +1346,41 @@ public class GateController  {
 		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
 		    		 
 		    	  }
-		    	  
-		    	 
+		    	
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
-		    		  /*bindingSucceed.setService(p.item(1).getTextContent());*/
+		    		  transferNotify.setPlatformNo(p.item(1).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
-		    		/*  bindingSucceed.setPlatformNo(p.item(3).getTextContent());*/
+		    		  transferNotify.setBizType(p.item(3).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
-		    		/*  bindingSucceed.setCode(p.item(5).getTextContent());*/
+		    		  transferNotify.setCode(p.item(5).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
 		    		  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(7).getTextContent());*/
+		    		  transferNotify.setMessage(p.item(7).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
 		    		  
 		    	  } 
 		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(9).getTextContent());*/
+		    		  transferNotify.setRequestNo(p.item(9).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
 		    		  
 		    	  } 
-		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
-		    		/*  bindingSucceed.setDescription(p.item(11).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
-		    		  
-		    	  } 
-		    	  if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(13).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(13).getTextContent());
-		    		  
-		    	  } 
-		    	  if(p.item(15).getNodeName()!=null&&p.item(15).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(15).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(15).getTextContent());
-		    		  
-		    	  } 
-		    	  if(p.item(17).getNodeName()!=null&&p.item(17).getTextContent()!=null){
-		    		/*  bindingSucceed.setDescription(p.item(17).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(17).getTextContent());
-		    		  
-		    	  } 
+		    	
+		    	
+		    	
 		    	  
 		    	 
 		    	  
 		      }  
 		      
-		      gateService.addOrUpdateTBindingSucceed(bindingSucceed);
+		      gateService.addOrUpdateTTransferNotify(transferNotify);
 		  
 		  } catch (Exception e) {
 	            // TODO: handle exception
