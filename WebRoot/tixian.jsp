@@ -3,7 +3,6 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
  <%@ include file="/includes/taglibs.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -27,17 +26,32 @@ function onSubmit(host) {
     	$(".u_left_sec:eq(1) li:eq(2)").children("a").css("font-weight","bold");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".u_left_mian").click(function(){
-               $(this).siblings().slideToggle("slow");	
-    	});
-    	
-    	
-	    $(".tixian_money").blur(function(){
-	    	var tixian_val=$(".tixian_money").val();
-	    	if(tixian_val=="提现金额不能为0" || tixian_val==null){
-	    		alert("您输入的金额为空,请重新输入");	    		
+            $(this).siblings().slideToggle("slow");	
+    	});	
+    	/*
+    	$(".tixian_money").focus(function(){
+    		var tixian_val=$(".tixian_money").val();
+    		if(tixian_val=="提现金额不能为0"){
+    			tixian_val="";	
 	    	}else{
 	    		//alert(tixian_val)
-	    	}	    	
+	    	}
+    	});*/
+    	$(".tixian_money").focus(function(){ 
+    		var tixian_val=$(".tixian_money").val();
+    		if(tixian_val=="提现金额不能为0");
+    		    tixian_val="";
+    		//alert("aa")
+    		
+    		
+    		
+    		
+    	});
+	    $(".tixian_money").blur(function(){
+	    	var tixian_val=$(".tixian_money").val();
+	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
+	    		alert("您输入的金额为空,请重新输入");	    		
+	    	}    	
 	    });
 });
     /*
@@ -47,7 +61,8 @@ function onSubmit(host) {
          myblur.value="";
          myblur.style.color="#000";
         }     
-}      
+}   
+    /*  
     myblur.onblur=function(){
 	   if(myblur.value==""){
 	    //myblur.value="投资金额不低于100元";
