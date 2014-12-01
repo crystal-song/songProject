@@ -31,24 +31,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 window.onload=function(){
 
-    var myblur= document.getElementById('buyAmount');
-    
+    var myblur= document.getElementById('buyAmount');    
        myblur.onfocus=function(){
-
          if(myblur.value=="投资金额不低于200元"){        	
            myblur.value="";
-           myblur.style.color="#000"  ;
+           myblur.style.color="#000";
            }     
-      }      
+   }      
      myblur.onblur=function(){      
       if(myblur.value==""){
         myblur.value="投资金额不低于200元";
         myblur.style.color="#ccc" ;  
-        }        
- }
-     
+    }        
+  }  
 }
 
+/*提交表单*/
 
 function mysubmit(){
 	if($("#buyAmount").val()==0){
@@ -58,6 +56,7 @@ function mysubmit(){
 	var form = document.getElementById("form");
 	    form.submit();	
 }	
+
 
  $(document).ready(function(e) { 
 	 //---------收益计算器------------
@@ -93,8 +92,7 @@ function mysubmit(){
 			//console.log("|-"+t*r);
 			}
 		//---------收益计算器结束-------------
-		
-		
+
 	 $("#buyAmount").keyup(function(){
 		  
 		    var str= /^[0-9]*$/;
@@ -192,7 +190,6 @@ function mysubmit(){
  	
  });  
  
-
     
 </script>
 </head>
@@ -422,7 +419,7 @@ function mysubmit(){
        <div class="pro_con">
        <ul>
          <li class="pro_title">还款方式：按月付息、到期还款</li>
-         <li style="padding-left:15px;">投资周期：${product1.financingPeriod}</li>
+         <li style="padding-left:15px;">投资周期：${product1.financingPeriod}个月</li>
          <li><span style="margin-right:0">信用等级：</span>
            <span style="margin-left:0"><img src="<%=path%>/img/images-2014-11/star_${product1.qualityRating}.png" style="margin-bottom:-3px;"></span>
            <span class="pro_r">
@@ -475,7 +472,7 @@ function mysubmit(){
          </span>
          <div class="neirong"></div>
          <span><input type="text" class="text01" value="投资金额不低于200元" id="buyAmount"  name="buyAmount"/></span>
-         <span><a class="red_touzi"  id="dialog-link" href="javascript:;">立即投资</a><i class="jisuan"></i></span>
+         <span ><a class="red_touzi"  id="dialog-link" href="javascript:;">立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </c:if>
@@ -490,7 +487,7 @@ function mysubmit(){
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
-         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
+         <span style="margin-top:-16px"><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </form>
