@@ -20,6 +20,7 @@ import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.util.Page;
 
 @Repository("gateDao")
 public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
@@ -157,35 +158,44 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		
 	}
 	
-	public List<TTransferInfo> queryAllTransRecord(String platformUserNo)throws Exception {
-		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo order by transferInfo.transDate asc";
-		Query query = getSession().createQuery(hq);
-		query.setParameter("platformUserNo", platformUserNo);
+	public List queryAllTransRecord(Page page,String sql,String platformUserNo)throws Exception {
+		Query query = getSession().createSQLQuery(sql);
+		query.setString(0, platformUserNo);
+		query.setString(1, platformUserNo);
+		query.setString(2, platformUserNo);
+		page.setTotalRecord(query.list().size());
+		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
+		query.setMaxResults(page.getPageSize());
+
+		
 		
 		return query.list();
 	}
-	public List<TDrawMoney> DrawMonetAllTransRecord(String platformUserNo)throws Exception {
+	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception {
 		String hq = "from TDrawMoney drawMoney where drawMoney.platformUserNo=:platformUserNo order by drawMoney.transDate asc";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", platformUserNo);
-		
+		page.setTotalRecord(query.list().size());
+		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
+		query.setMaxResults(page.getPageSize());
 		return query.list();
 	}
-	public List<TRecharge> RechargeAllTransRecord(String platformUserNo)throws Exception{
+	public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)throws Exception{
 		String hq = "from TRecharge Recharge where Recharge.platformUserNo=:platformUserNo order by Recharge.time asc";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", platformUserNo);
-		
+		page.setTotalRecord(query.list().size());
+		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
+		query.setMaxResults(page.getPageSize());
 		return query.list();
 	}
-	public List  AllTransRecord(int pageNo,String platformUserNo)throws Exception{
-		String hq = "from TTransferInfo transferInfo,TDrawMoney drawMoney,TRecharge Recharge where transferInfo.platformUserNo=:platformUserNo1,drawMoney.platformUserNo=:platformUserNo2,Recharge.platformUserNo=:platformUserNo3 order by transferInfo.transDate asc,drawMoney.transDate asc,Recharge.time asc";
+	public List  AllTransRecord(Page page,String platformUserNo)throws Exception{
+		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo order by transferInfo.transDate asc";
 		Query query = getSession().createQuery(hq);
-		query.setFirstResult((pageNo-1)*8);
-		query.setMaxResults(8);
-		query.setParameter("platformUserNo1", platformUserNo);
-		query.setParameter("platformUserNo2", platformUserNo);
-		query.setParameter("platformUserNo3", platformUserNo);
+		query.setParameter("platformUserNo", platformUserNo);
+		page.setTotalRecord(query.list().size());
+		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
+		query.setMaxResults(page.getPageSize());
 		return query.list();
 	}
 	

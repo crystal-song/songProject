@@ -22,6 +22,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
+import com.mftour.spring.util.Page;
 
 @Service("gateService")
 public class IGateServiceImpl  implements  IGateService {
@@ -82,9 +83,25 @@ public class IGateServiceImpl  implements  IGateService {
 	public List<TTransferInfo> queryTTransferInfoByNumber(String Number)
 			throws Exception {
 		return gateDao.queryTTransferInfoByNumber(Number);
-		
+
+
+	}
+	public List queryAllTransRecord(Page page,String sql,String platformUserNo)
+			throws Exception {
+		return gateDao.queryAllTransRecord(page,sql,platformUserNo);
+
 	}
 
+	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception{
+		return gateDao.DrawMonetAllTransRecord(page,platformUserNo);
+	}
+	public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)throws Exception{
+		return gateDao.RechargeAllTransRecord(page,platformUserNo);
+	}
+	public List AllTransRecord(Page page, String platformUserNo)
+			throws Exception{
+		return gateDao.AllTransRecord(page, platformUserNo);
+	}
 
 	@Override
 	public void addOrUpdateTEstablishmentRegistration(
@@ -170,19 +187,6 @@ public class IGateServiceImpl  implements  IGateService {
 		
 	}
 	
-	public List<TTransferInfo> queryAllTransRecord(String platformUserNo)
-			throws Exception {
-		return gateDao.queryAllTransRecord(platformUserNo);
-		
-	}
-	public List<TDrawMoney> DrawMonetAllTransRecord(String platformUserNo)throws Exception{
-		return gateDao.DrawMonetAllTransRecord(platformUserNo);
-	}
-	public List<TRecharge> RechargeAllTransRecord(String platformUserNo)throws Exception{
-		return gateDao.RechargeAllTransRecord(platformUserNo);
-	}
-	public List AllTransRecord(int pageNo, String platformUserNo)
-			throws Exception{
-		return gateDao.AllTransRecord(pageNo, platformUserNo);
-	}
+
+	
 }

@@ -15,10 +15,12 @@ import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.util.Page;
 
 public interface IGateDao {
 	
 	public void addOrUpdate(TYeePay YeePay) throws Exception;
+
 	
 	public void addOrUpdateRegisterYeePay(TRegisterYeePay registerYeePay) throws Exception;
 	
@@ -54,15 +56,16 @@ public interface IGateDao {
 	 
 	 public void addOrUpdateTRechargeSucceed(TRechargeSucceed rechargeSucceed) throws Exception;
 	 
-		public List<TTransferInfo> queryAllTransRecord(String platformUserNo)
+	 public List queryAllTransRecord(Page page,String sql,String platformUserNo)
 				throws Exception;
-		public List<TDrawMoney> DrawMonetAllTransRecord(String platformUserNo)
+		public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)
 				throws Exception;
-		public List<TRecharge> RechargeAllTransRecord(String platformUserNo)
+		public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)
 				throws Exception;
-		public List AllTransRecord(int pageNo, String platformUserNo)
+		public List AllTransRecord(Page page, String platformUserNo)
 				throws Exception;
 		
+
 }
 	 
 	

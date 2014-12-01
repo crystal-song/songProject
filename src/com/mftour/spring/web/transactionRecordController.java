@@ -18,6 +18,7 @@ import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TRecharge;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TUser;
+import com.mftour.spring.model.TransactionRecord;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.util.Page;
 
@@ -40,46 +41,26 @@ public class transactionRecordController {
 			   /*start*/
 			if("seven_all".equals(time_type)){
 				//投资七天交易记录
-				List<TTransferInfo> list1=gateService.queryAllTransRecord(user.getName());
-				System.out.println("投资所有的交易记录"+list1.size());
+			String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 1 WEEK) and now()) "
+						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 1 WEEK) and NOW()) union ALL "
+						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 1 WEEK) and NOW()) ORDER BY t ASC";
+				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
 				List list11=new ArrayList();
-				for(TTransferInfo transferInfo:list1){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-				    java.util.Date mydate = myFormatter.parse(transferInfo.getTransDate());
-				    day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-				    if(day<=7){
-				    	list11.add(transferInfo);
-				    }
-				}
-				System.out.println("投资七天交易记录数："+list11.size());
-				model.addAttribute("list11", list11);
-				//提现七天交易记录
-				List<TDrawMoney> list2=gateService.DrawMonetAllTransRecord(user.getName());
-				List list22=new ArrayList();
-				for(TDrawMoney drawMoney:list2){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-					java.util.Date mydate = myFormatter.parse(drawMoney.getTransDate());
-					day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-					if(day<=7){
-						list22.add(drawMoney);
-					}
-				}
-				System.out.println("提现七天交易记录记录数："+list22.size());
-				model.addAttribute("list22", list22);
-				//充值七天交易记录
-				List<TRecharge> list3=gateService.RechargeAllTransRecord(user.getName());
-				List list33=new ArrayList();
-				for(TRecharge recharge:list3){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-					java.util.Date mydate = myFormatter.parse(recharge.getTime());
-					day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-					if(day<=7){
-						list22.add(recharge);
-					}
-				}
-				System.out.println("充值七天交易记录数："+list33.size());
-				model.addAttribute("list33", list33);
 				
+				System.out.println("投资所有的交易记录"+list1.size());
+				for(Object[] obj:list1){
+					TransactionRecord transrecord=new TransactionRecord();
+					transrecord.setCallbackUrl(obj[0].toString());
+					transrecord.setTransferAmount(obj[1].toString());
+					transrecord.setOrderNo(obj[2].toString());
+					transrecord.setTransDate(obj[3].toString());
+					transrecord.setProjectName(obj[4].toString());
+					list11.add(transrecord);
+				}
+				model.addAttribute("list11", list11);
+				System.out.println("list11=============="+list11.size());
+				model.addAttribute("time_type", "seven_all");
+			
 			}
 			/*end*/
 			
@@ -87,42 +68,23 @@ public class transactionRecordController {
 			/*start*/
 			if("onemonth_all".equals(time_type)){
 				//投资一个月交易记录
-				List<TTransferInfo> list1=gateService.queryAllTransRecord(user.getName());
+				String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 1 month) and now()) "
+						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 1 MONTH) and NOW()) union ALL "
+						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 1 MONTH) and NOW()) ORDER BY t ASC";
+				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
 				List list11=new ArrayList();
-				for(TTransferInfo transferInfo:list1){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-					java.util.Date mydate = myFormatter.parse(transferInfo.getTransDate());
-					day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-					if(day<=30){
-						list11.add(transferInfo);
-					}
+				System.out.println("投资所有的交易记录"+list1.size());
+				for(Object[] obj:list1){
+					TransactionRecord transrecord=new TransactionRecord();
+					transrecord.setCallbackUrl(obj[0].toString());
+					transrecord.setTransferAmount(obj[1].toString());
+					transrecord.setOrderNo(obj[2].toString());
+					transrecord.setTransDate(obj[3].toString());
+					transrecord.setProjectName(obj[4].toString());
+					list11.add(transrecord);
 				}
 				model.addAttribute("list11", list11);
-				//提现一个月交易记录
-				List<TDrawMoney> list2=gateService.DrawMonetAllTransRecord(user.getName());
-				List list22=new ArrayList();
-				for(TDrawMoney drawMoney:list2){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-					java.util.Date mydate = myFormatter.parse(drawMoney.getTransDate());
-					day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-					if(day<=7){
-						list22.add(drawMoney);
-					}
-				}
-				model.addAttribute("list22", list22);
-				//充值一个月交易记录
-				List<TRecharge> list3=gateService.RechargeAllTransRecord(user.getName());
-				List list33=new ArrayList();
-				for(TRecharge recharge:list3){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-					java.util.Date mydate = myFormatter.parse(recharge.getTime());
-					day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-					if(day<=7){
-						list22.add(recharge);
-					}
-				}
-				model.addAttribute("list33", list33);
-				
+				model.addAttribute("time_type", "onemonth_all");
 			}
 			/*end*/
 			
@@ -130,66 +92,56 @@ public class transactionRecordController {
 			/*start*/
 			if("threemonth_all".equals(time_type)){
 				//投资三个月交易记录
-				List<TTransferInfo> list1=gateService.queryAllTransRecord(user.getName());
+				String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 3 month) and now()) "
+						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 3 MONTH) and NOW()) union ALL "
+						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 3 MONTH) and NOW()) ORDER BY t ASC";
+				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
 				List list11=new ArrayList();
-				for(TTransferInfo transferInfo:list1){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-					java.util.Date mydate = myFormatter.parse(transferInfo.getTransDate());
-					day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-					if(day<=90){
-						list11.add(transferInfo);
-					}
+				System.out.println("投资所有的交易记录"+list1.size());
+				for(Object[] obj:list1){
+					TransactionRecord transrecord=new TransactionRecord();
+					transrecord.setCallbackUrl(obj[0].toString());
+					transrecord.setTransferAmount(obj[1].toString());
+					transrecord.setOrderNo(obj[2].toString());
+					transrecord.setTransDate(obj[3].toString());
+					transrecord.setProjectName(obj[4].toString());
+					list11.add(transrecord);
 				}
 				model.addAttribute("list11", list11);
-				//提现三个月交易记录
-				List<TDrawMoney> list2=gateService.DrawMonetAllTransRecord(user.getName());
-				List list22=new ArrayList();
-				for(TDrawMoney drawMoney:list2){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-					java.util.Date mydate = myFormatter.parse(drawMoney.getTransDate());
-					day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-					if(day<=90){
-						list22.add(drawMoney);
-					}
-				}
-				model.addAttribute("list22", list22);
-				//充值三个月交易记录
-				List<TRecharge> list3=gateService.RechargeAllTransRecord(user.getName());
-				List list33=new ArrayList();
-				for(TRecharge recharge:list3){
-					java.util.Date date = myFormatter.parse(myFormatter.format(new Date()));
-					java.util.Date mydate = myFormatter.parse(recharge.getTime());
-					day = Math.abs((date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000));
-					if(day<=90){
-						list22.add(recharge);
-					}
-				}
-				model.addAttribute("list33", list33);
-				
+				model.addAttribute("time_type", "threemonth_all");
 			}
 			/*end*/
 			
 			
 			/*start*/
 			if("all_all".equals(time_type)){
-				//投资全部的交易记录
-				List<TTransferInfo> list11=gateService.queryAllTransRecord(user.getName());
+				String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=?"
+						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? union ALL "
+						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=?  ORDER BY t ASC";
+				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
+				List list11=new ArrayList();
+				System.out.println("投资所有的交易记录"+list1.size());
+				for(Object[] obj:list1){
+					TransactionRecord transrecord=new TransactionRecord();
+					transrecord.setCallbackUrl(obj[0].toString());
+					transrecord.setTransferAmount(obj[1].toString());
+					transrecord.setOrderNo(obj[2].toString());
+					transrecord.setTransDate(obj[3].toString());
+					transrecord.setProjectName(obj[4].toString());
+					list11.add(transrecord);
+				}
 				model.addAttribute("list11", list11);
-				//提现全部的交易记录
-				List<TDrawMoney> list22=gateService.DrawMonetAllTransRecord(user.getName());
-				model.addAttribute("list22", list22);
-				//充值全部的交易记录
-				List<TRecharge> list33=gateService.RechargeAllTransRecord(user.getName());
-				model.addAttribute("list33", list33);
+				model.addAttribute("time_type", "all_all");
 				
 			}
 			/*end*/
 			
-			/*start*/
+		/*	start*/
 			if("recharge_all".equals(time_type)){
 				//充值全部的交易记录
-				List<TRecharge> list33=gateService.RechargeAllTransRecord(user.getName());
-				model.addAttribute("list33", list33);
+				List<TRecharge> list11=gateService.RechargeAllTransRecord(page,user.getName());
+				model.addAttribute("list1", list11);
+				model.addAttribute("time_type", "recharge_all");
 				
 			}
 			/*end*/
@@ -197,17 +149,18 @@ public class transactionRecordController {
 			/*start*/
 			if("transferinfo_all".equals(time_type)){
 				//投资全部的交易记录
-				List<TTransferInfo> list11=gateService.queryAllTransRecord(user.getName());
-				System.out.println("ttttttttttttttttt"+list11.size());
-				model.addAttribute("list11", list11);
+				List<TTransferInfo> list11=gateService.AllTransRecord(page,user.getName());
+				model.addAttribute("list2", list11);
+				model.addAttribute("time_type", "transferinfo_all");
 			}
 			/*end*/
 			
 			/*start*/
 			if("drawmoney_all".equals(time_type)){
 				//提现全部的交易记录
-				List<TDrawMoney> list22=gateService.DrawMonetAllTransRecord(user.getName());
-				model.addAttribute("list22", list22);
+				List<TDrawMoney> list11=gateService.DrawMonetAllTransRecord(page,user.getName());
+				model.addAttribute("list3", list11);
+				model.addAttribute("time_type", "drawmoney_all");
 			}
 			/*end*/
 			
