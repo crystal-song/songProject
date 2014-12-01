@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="msg_con">
   <div class="queren_con">
     <div class="termsOfUse mgt-20">
-			<h1 style="text-align: center; font-size: 20px;">投资服务协议</h1>
+			<h1 style=" font-size: 20px;">投资服务协议</h1>
 			<div class="section">甲方：${registerYeePay.realName}</div>
 			<div class="section">证件类型：身份证</div>
 			<div class="section">证件号码：${registerYeePay.idCardNo}</div>
@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">签署时间：{transferInfo.transDate}</div>
 			<div class="section">乙方：中投汇融投资管理有限公司</div>
 			<div class="section">签署时间：{transferInfo.transDate}</div>
-			<h1 style="text-align: center; font-size: 20px;">借款及保证合同</h1>
+			<h1 style=" font-size: 20px;">借款及保证合同</h1>
 			<div class="section">甲方（债权人）：${registerYeePay.realName}</div>
 			<div class="section">身份证（护照号码）：${registerYeePay.idCardNo}</div>
 			<div class="section">乙方（债务人）：${product.projectName}</div>
@@ -187,8 +187,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">乙方（债务人）：${product.projectName}</div>
 			<div class="section">丙方（保证人）：${product.guaranteeInstitution}</div>
 			<div class="section">签署日期： {transferInfo.transDate}</div>
-			<div class="title01">附件一</div>
-			<div class="section">还款详情表：</div>
 
 	   </div>
  
