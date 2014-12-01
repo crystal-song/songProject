@@ -3870,6 +3870,15 @@ ul,li{
 	height:32px; 
 	margin-top:20px;
 }
+.mar_btn{
+	width:120px;
+	height:38px;
+	background: #ff6862;
+	color:#fff;
+	border:none;
+	font-size:16px;
+
+}
 .bt{
 	background:#f60; 
 	width:68px; 
@@ -4158,14 +4167,12 @@ ul,li{
 	height:40px;
 	font-size:12px;
 	line-height:30px;
-
 }
 .check_answer{
 	width:200px;
 	height:40px;
 	font-size:12px;
 	line-height:30px;
-
 }
 
 .zh_right .forget_pwd{
@@ -4186,5 +4193,49 @@ ul,li{
 .postcar_msg li{
 	font-size:14px;
 }
+
+/*xianxia*/
+
+.xian_con{
+	width:800px;
+	height:369px;
+	border:1px solid #ccc;
+	margin:3% auto;
+	background:url(../img/images-2014-11/new_line.png) repeat-x;
+}
+.xian_left{
+	width:200px;
+	height:200px;
+	background:url(../img/images-2014-11/kefu.png);
+	margin:10% 5% 0 15%;
+	float:left;
+}
+.xian_right{
+	width:300px;
+	height:200px;
+	float:left;
+	margin:20% 0 0 0; 
+	text-align:left;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
