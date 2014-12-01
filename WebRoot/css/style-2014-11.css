@@ -3481,7 +3481,7 @@ ul,li{
 
 .termsOfUse {color: #333;font: 14px/28px "SimSun";margin: 10px auto;padding: 25px 50px;width: 900px;}
 .mgt-20 {margin-top: 20px !important;}
-.termsOfUse .section { margin-top: 10px;text-indent: 2em;text-align:left;}
+.termsOfUse .section { margin-top: 10px;text-indent: 2em;text-align:left!important;}
 .termsOfUse .title01 {font-size: 16px;font-weight: bold;line-height: 2em;margin-top: 12px;text-align:left;}
 .termsOfUse .sub_section {margin-top: 8px;text-indent: 4em;text-align:left;}
 .sign{text-align:right;}
@@ -4219,9 +4219,9 @@ ul,li{
 	
 }
 
-
-
-
+.project_list{margin-top:20px;}
+.project_list thead td{font-weight:bold; background:#efefef;}
+.project_list tbody td{ padding-top:3px; border-bottom:1px solid #eee; font-size:12px;}
 
 
 
