@@ -82,48 +82,48 @@ function onSubmit(host) {
              
              <div class="form-group" style="margin-top:50px;">
               <label for="plat">可提现金金额</label>
-              <div class="form-control" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元（面提现手续费额度：0.00元）</div>
+              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元（面提现手续费额度：0.00元）</div>
           </div>
         <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
           <input type="hidden" id="host" name="host"/>
-          <div class="form-group">
+          <div class="form-group" style="display:none">
            <!-- <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
                 <input type="text"class="form-control" id="platformNo" 
                    name="platformNo" value="10012415118" />  
           </div>
-          <div class="form-group">
+          <div class="form-group" style="display:none">
             <label for="requestNo">requestNo</label><input type="text"
               class="form-control" id="requestNo" name="requestNo" value="${now}" />
           </div>
-          <div class="form-group">
+          <div class="form-group" style="display:none">
             <label for="platformUserNo">platformUserNo</label><input
               type="text" class="form-control" id="platformUserNo"
               name="platformUserNo"  value="${registerYeePay}"  />
           </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none">
             <label for="feeMode">feeMode</label><input
               type="text" class="form-control" id="feeMode"
               name="feeMode"  value="${feeMode}"  />
           </div>
-             <div class="form-group">
+             <div class="form-group" style="display:none">
             <label for="amount">amount</label><input
               type="text" class="form-control" id="amount"
               name="amount"  value=""  />
           </div>
            
-          <div class="form-group">
+          <div class="form-group" style="display:none">
             <label for="notifyUrl">notifyUrl</label><input type="text"
               class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
           </div>
-          <div class="form-group">
+          <div class="form-group" style="display:none">
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
           </div>
       
-          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>
-          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button>
+          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button>
+          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default" style="display:none">生产</button>
         </form>
             <%--  <div class="add_postcar" style="display:none">
               <p>填写现金金额</p>
@@ -156,10 +156,11 @@ function onSubmit(host) {
           <div class="tishi" style="margin-top:50px;">
             <p><strong>温馨提示</strong></p>
             <ol>
+              <li class="tishi_red">您充值的资金在24小时内不允许提现。</li>
               <li class="tishi_red">您充值的资金若未投资就提现，第三方支付公司会收取您提现金额的0.5%作为转账费用。</li>
               <li>您的账户资金将由第三方平台托管。</li>
               <li>为了您的资金安全，请您在充值前完成手机绑定，身份认证及支付密码设置。</li>
-              <li>爱投资严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务， 并会影响银行征信记录。</li>
+              <li>中汇宝严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务， 并会影响银行征信记录。</li>
               <li>充值过程遇到问题，请联系客服，010-84243099/3199</li>
             </ol>
             
