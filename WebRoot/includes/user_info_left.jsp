@@ -106,7 +106,7 @@
                 <li>
                  <a href="<%=path%>/gate/recharge">充值</a>
                 </li>
-                <li style="display:none">
+                <li>
                  <a href="<%=path%>/gate/drawMoney">提现</a>
                 </li>
                 <li style="display:none">
