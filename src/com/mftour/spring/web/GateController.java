@@ -189,14 +189,48 @@ public class GateController  {
 	}
 	
 	
+	@RequestMapping(value="/gate/userProject")
+	public String userProject(Model model,HttpServletRequest request) throws Exception {
+		model.addAttribute("now", System.currentTimeMillis());
+		Object o= request.getSession().getAttribute("name"); 
+		if(o!=null){
+			 List<TTransferInfo> li=gateService.queryTTransferInfoByName(o.toString());
+			 model.addAttribute("li", li);
+		}
+		
+		return "wodexiangmu";
+	}
+	
+	@RequestMapping(value="/gate/agreement")
+	public String agreement(Model model,HttpServletRequest request) throws Exception {
+		model.addAttribute("now", System.currentTimeMillis());
+		Object o= request.getSession().getAttribute("name"); 
+		if(o!=null){
+			 List<TTransferInfo> li=gateService.queryTTransferInfoByName(o.toString());
+			 model.addAttribute("li", li);
+		}
+		
+		return "wodexiangmu";
+	}
+	
 	
 	
 	
 	@RequestMapping(value="/gate/authorization")
-	public String authorization(Model model,HttpServletRequest request) throws Exception {
+	public String authorization(Model model,TTransferInfo transferInfo) throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
-		
-		return "payment/repayment";
+		model.addAttribute("transferInfo", transferInfo);
+		 List<TRegisterYeePay> list=gateService.queryTRegisterYeePayByName(transferInfo.getPlatformUserNo());
+		 if(list != null && list.size()!=0){
+			 TRegisterYeePay registerYeePay=list.get(0);
+			 model.addAttribute("registerYeePay", registerYeePay);
+		 }
+		 List<TProduct> li=productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
+		 if(li != null && li.size()!=0){
+			 TProduct product=li.get(0);
+			 model.addAttribute("product", product);
+		 }
+		return "touzixieyi";
 	}
 	
 	
