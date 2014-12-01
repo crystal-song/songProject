@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="li_right">
                  <div class="li_top"><span>可用余额</span><strong><span style="text-align:right">${availableAmount}</span><i>元</i></strong>
                  </div>
-                 <div class="li_loadbar"><div></div></div>
+                 <div class="li_loadbar"><div style="width:${availableAmount==0?1:availableAmount/balance*100}%;"></div></div>
               </div>
             </li>
             <li>
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <div class="li_right">
                  <div class="li_top"><span>冻结余额</span><strong><span style="text-align:right">${freezeAmount}</span><i>元</i></strong>
                  </div>
-                 <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
+                 <div class="li_loadbar"><div style="background:#c7df95;width:${freezeAmount==0?1:freezeAmount/balance*100}%;"></div></div>
               </div>
             </li>
 <!--             <li>
