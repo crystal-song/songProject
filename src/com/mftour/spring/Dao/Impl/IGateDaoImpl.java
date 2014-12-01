@@ -198,6 +198,17 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setMaxResults(page.getPageSize());
 		return query.list();
 	}
+
+	@Override
+	public List<TTransferInfo> queryTTransferInfoByName(String name)
+			throws Exception {
+		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo order by transferInfo.transDate desc";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("platformUserNo",  name);
+		return query.list();
+	}
+	
+	
 	
 }
 	

@@ -56,6 +56,8 @@ public interface IGateDao {
 	 
 	 public void addOrUpdateTRechargeSucceed(TRechargeSucceed rechargeSucceed) throws Exception;
 	 
+	 public List<TTransferInfo> queryTTransferInfoByName(String name)throws Exception;
+	 
 	 public List queryAllTransRecord(Page page,String sql,String platformUserNo)
 				throws Exception;
 		public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)
