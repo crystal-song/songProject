@@ -186,6 +186,15 @@ public class IGateServiceImpl  implements  IGateService {
 		gateDao.addOrUpdateTRechargeSucceed(rechargeSucceed);
 		
 	}
+
+
+	@Override
+	public List<TTransferInfo> queryTTransferInfoByName(String name)
+			throws Exception {
+		return 	gateDao.queryTTransferInfoByName(name);
+		
+	}
+	
 	
 
 	
