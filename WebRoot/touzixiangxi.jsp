@@ -466,7 +466,7 @@ function mysubmit(){
              <div class="gray_bar1"><span>参投人数</span><span>20</span></div>
              <div>百分百本息保障,企业生产经营正常,还款正常</div>
            </li>
-       </ul>
+       </ul>${product1.buyType}
        </div>
        <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
        <div class="pro_right">
