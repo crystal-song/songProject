@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var navIndex=3;    
     var indexs=2;
     $(document).ready(function(){
-    	
+    	$(".u_left_sec:eq(2) li:eq(2)").children("a").css("font-weight","bold");
     	 var url=location.search;
 	       //alert(url);
 	       var str=url.substr(1);
