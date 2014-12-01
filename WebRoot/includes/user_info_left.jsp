@@ -90,7 +90,6 @@
                 </li>
 				<li style="display:block;">
                   <a href="<%=path%>/anquanshezhi.jsp">安全设置</a>
-
                 </li>
                 <li style="border-bottom:0; display:none">
                   <a href="<%=path%>/tongzhishezhi.jsp" >通知设置</a>
@@ -109,7 +108,7 @@
                 <li>
                  <a href="<%=path%>/gate/drawMoney">提现</a>
                 </li>
-                <li style="display:none">
+                <li>
                  <a href="<%=path%>/gate/binding">绑定银行卡</a>
                 </li>
               </ul>
