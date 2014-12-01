@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <div class="user_right">  
         <div class="zichan_con">        
-          <div class="pro_con_title" style="margin-top:5px;"><strong>交易记录</strong>
+          <div class="pro_con_title" style="margin-top:5px;"><strong>我的项目</strong>
           </div>
                <div class="con_list">
                  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="project_list">
