@@ -43,17 +43,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>我的项目</strong>
           </div>
+             <c:if test="${ not empty li}">
+            <c:forEach var="s" items="${li}" varStatus="i">
                <div class="con_list">
                  <table width="100%" border="0" cellpadding="0" cellspacing="0" class="project_list">
 				<tr>
-				<td align="center">项目名称</td><td align="center">投资金额</td><td align="center">投资/计息时间</td><td align="center">到期时间</td><td align="center">预期收益</td><td align="center">查看协议</td>
+				<td align="center">项目名称</td><td align="center">投资金额</td><td align="center">投资时间</td><td align="center">到期时间</td><td align="center">预期收益</td><td align="center">查看协议</td>
 				</tr>
 				<tr>
-				<td align="center">1</td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">1</td>
+				<td align="center">${s.projectName}</td><td align="center">${s.paymentAmount}</td><td align="center">${s.projectName}</td><td align="center">${s.transDate}</td><td align="center">${s.paymentAmount * s.interestRate}</td><td align="center"> <a href="<%=path%>/gate/authorization?platformUserNo=${s.platformUserNo}&enterpriseNumber=${s.enterpriseNumber}&transDate=${s.transDate}">查看</a></td>
 				</tr>
 				</table>
                </div>
-               
+                </c:forEach>
+               </c:if>
             <div class="clear"></div>    
       </div>   
     </div>
