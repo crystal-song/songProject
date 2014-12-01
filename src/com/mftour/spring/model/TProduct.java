@@ -8,6 +8,7 @@ public class TProduct implements java.io.Serializable {
 	    private Long id;
 	    private String projectName;  //产品名称
 	    private String enterpriseNumber;  //企业编号
+	    private String enterpriseBusinessIicense;  //企业营业执照号码
 	    private Integer qualityRating;   //信用等级
 	    private Double yearIncome;     //年化收益率         1
 	    private String repaymentTime;  //偿还日期
@@ -22,6 +23,7 @@ public class TProduct implements java.io.Serializable {
 	    private String enterpriseCertificate;  //企业证书
 	    
 	    private String guaranteeInstitution;  //担保机构
+	    private String guaranteeNumber;  //担保机构营业执照号码
 	    private String collateralOpinion;   //担保意见
 	    private String guaranteeInstitutionIntroduce; //担保机构介绍
 	    private String fundUse;    //资金用途
@@ -234,5 +236,33 @@ public class TProduct implements java.io.Serializable {
 		public void setBuyType(Integer buyType) {
 			this.buyType = buyType;
 		}
+
+		public String getEnterpriseBusinessIicense() {
+			return enterpriseBusinessIicense;
+		}
+		public void setEnterpriseBusinessIicense(String enterpriseBusinessIicense) {
+			this.enterpriseBusinessIicense = enterpriseBusinessIicense;
+		}
+		public String getGuaranteeNumber() {
+			return guaranteeNumber;
+		}
+		public void setGuaranteeNumber(String guaranteeNumber) {
+			this.guaranteeNumber = guaranteeNumber;
+		}
+		
+		
+	
+	
+	
+	
+		
+		
+		
+		
+	    
+	    
+	    
+	   
+
 
 }
