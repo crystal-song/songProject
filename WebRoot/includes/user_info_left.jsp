@@ -106,10 +106,10 @@
                 <li>
                  <a href="<%=path%>/gate/recharge">充值</a>
                 </li>
-                <li>
+                <li style="display:none">
                  <a href="<%=path%>/gate/drawMoney">提现</a>
                 </li>
-                <li>
+                <li style="display:none">
                  <a href="<%=path%>/gate/binding">绑定银行卡</a>
                 </li>
               </ul>
