@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var navIndex=3;    
     var indexs=1;
     $(document).ready(function(){
+    	$(".u_left_sec:eq(1) li:eq(3)").children("a").css("font-weight","bold");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".u_left_mian").click(function(){
             $(this).siblings().slideToggle("slow");
@@ -95,33 +96,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  <div class="clear_height" style="height:40px;"></div>
                <form id="form" role="form" action="<%=path%>/gate/dobinding" method="post" target="_blank">
 		          <input type="hidden" id="host" name="host">
-		          <div class="form-group">
+		          <div class="form-group" style="display:none">
 		         <!--   <label for="platformNo">platformNo</label><input type="text"
 		              class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
 		               <input type="text"class="form-control" id="platformNo" 
 		                   name="platformNo" value="10012415118" />  
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none">
 		            <label for="requestNo">requestNo</label><input type="text"
 		              class="form-control" id="requestNo" name="requestNo" value="${now}" />
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none">
 		            <label for="platformUserNo">platformUserNo</label><input
 		              type="text" class="form-control" id="platformUserNo"
 		              name="platformUserNo"  value="${name}"  />
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none">
 		            <label for="notifyUrl">notifyUrl</label><input type="text"
 		              class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/bindingNotify" />
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none">
 		            <label for="callbackUrl">callbackUrl</label><input
 		              type="text" class="form-control" id="callbackUrl"
 		              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/bindingSucceed" />
 		          </div>
 		      
 		
-		          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>
+		          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button>
 		          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">ç”Ÿäº§</button>
                </form>
             </div>    
