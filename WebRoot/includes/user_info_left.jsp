@@ -124,7 +124,7 @@
                   <a href="<%=path%>/shoucang.jsp">收藏项目</a>
                 </li>
                 <li>
-                  <a href="<%=path%>/wodexiangmu.jsp">已投项目</a>
+                  <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
                 <li>
                   <a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all">交易记录</a>
