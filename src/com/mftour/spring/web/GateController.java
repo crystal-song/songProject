@@ -1414,7 +1414,7 @@ public class GateController  {
 		    	  
 		      }  
 		      
-		      gateService.addOrUpdateTTransferNotify(transferNotify);
+		     /* gateService.addOrUpdateTTransferNotify(transferNotify);*/
 		  
 		  } catch (Exception e) {
 	            // TODO: handle exception
