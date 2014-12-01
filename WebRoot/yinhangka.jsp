@@ -123,7 +123,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		      
 		
 		          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button>
-		          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">ç”Ÿäº§</button>
+		          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default mar_btn">确认</button>
                </form>
             </div>    
            
