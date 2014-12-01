@@ -112,9 +112,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
                 </div>
             </span>
-          </div> 
+          </div> -->
         </div>
-      </div>     -->
+      </div>     
   
 </div>
 <div class="clear"></div>
