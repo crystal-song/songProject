@@ -27,13 +27,35 @@ function onSubmit(host) {
     	$(".u_left_sec:eq(1) li:eq(2)").children("a").css("font-weight","bold");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".u_left_mian").click(function(){
-            $(this).siblings().slideToggle("slow");
-          });
+               $(this).siblings().slideToggle("slow");	
+    	});
+    	
+    	
+	    $(".tixian_money").blur(function(){
+	    	var tixian_val=$(".tixian_money").val();
+	    	if(tixian_val=="提现金额不能为0" || tixian_val==null){
+	    		alert("您输入的金额为空,请重新输入");	    		
+	    	}else{
+	    		//alert(tixian_val)
+	    	}	    	
+	    });
 });
-    
-  
+    /*
+    var myblur= document.getElementById('amount');    
+    myblur.onfocus=function(){
+      if(myblur.value=="提现金额不能为0"){        	
+         myblur.value="";
+         myblur.style.color="#000";
+        }     
+}      
+    myblur.onblur=function(){
+	   if(myblur.value==""){
+	    //myblur.value="投资金额不低于100元";
+	    //alert("您输入的金额不能为空");
+	     myblur.style.color="#ccc" ;  
+ }        
+} */
 </script>
-
 </head>
 
 <body>
@@ -83,7 +105,7 @@ function onSubmit(host) {
              
              <div class="form-group" style="margin-top:50px;">
               <label for="plat">可提现金金额</label>
-              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元（提现手续费额度：0.00元）</div>
+              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元</div>
           </div>
         <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
           <input type="hidden" id="host" name="host"/>
@@ -107,10 +129,10 @@ function onSubmit(host) {
               type="text" class="form-control" id="feeMode"
               name="feeMode"  value="${feeMode}"  />
           </div>
-             <div class="form-group" style="display:none">
-            <label for="amount">amount</label><input
-              type="text" class="form-control" id="amount"
-              name="amount"  value=""  />
+             <div class="form-group" >
+            <label for="amount">提现金额</label><input
+              type="text" class="form-control tixian_money" id="amount"
+              name="amount"  value="提现金额不能为0"  style="color:#ccc"/>
           </div>
            
           <div class="form-group" style="display:none">
@@ -124,7 +146,7 @@ function onSubmit(host) {
           </div>
       
           <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button>
-          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default" style="display:none">生产</button>
+          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default mar_btn" >确认</button>
         </form>
             <%--  <div class="add_postcar" style="display:none">
               <p>填写现金金额</p>
@@ -163,8 +185,7 @@ function onSubmit(host) {
               <li>为了您的资金安全，请您在充值前完成手机绑定，身份认证及支付密码设置。</li>
               <li>中汇宝严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务， 并会影响银行征信记录。</li>
               <li>充值过程遇到问题，请联系客服，010-84243099/3199</li>
-            </ol>
-            
+            </ol>          
           </div>             
           </div> 
         </div>
