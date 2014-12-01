@@ -82,7 +82,7 @@ function onSubmit(host) {
              
              <div class="form-group" style="margin-top:50px;">
               <label for="plat">可提现金金额</label>
-              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元（面提现手续费额度：0.00元）</div>
+              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元（提现手续费额度：0.00元）</div>
           </div>
         <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
           <input type="hidden" id="host" name="host"/>
