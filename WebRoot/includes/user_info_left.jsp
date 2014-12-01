@@ -133,7 +133,7 @@
               </ul>
            </li>
            
-           <li>
+           <li style="display:none">
              <div class="u_left_mian"><i class="mian_pic04"></i><span>消息管理</span></div>
               <ul class="u_left_sec">
                 <li style="border-bottom:0">
