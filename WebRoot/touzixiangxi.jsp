@@ -35,14 +35,14 @@ window.onload=function(){
     
        myblur.onfocus=function(){
 
-         if(myblur.value=="投资金额不低于100元"){        	
+         if(myblur.value=="投资金额不低于200元"){        	
            myblur.value="";
            myblur.style.color="#000"  ;
            }     
       }      
      myblur.onblur=function(){      
       if(myblur.value==""){
-        myblur.value="投资金额不低于100元";
+        myblur.value="投资金额不低于200元";
         myblur.style.color="#ccc" ;  
         }        
  }
@@ -109,8 +109,8 @@ function mysubmit(){
 				   $('.neirong').html("您输入的金额不是数字,请重新输入");
 				   return false;
 			    }
-			    if(val<100){
-				   $('.neirong').html("您输入的金额小于100元,请重新输入");
+			    if(val<200){
+				   $('.neirong').html("您输入的金额小于200元,请重新输入");
 				   return false;
 			    }
 			    if(val>500000){
@@ -422,7 +422,7 @@ function mysubmit(){
        <div class="pro_con">
        <ul>
          <li class="pro_title">还款方式：按月付息、到期还款</li>
-         <li style="padding-left:15px;">投资周期：6个月</li>
+         <li style="padding-left:15px;">投资周期：</li>
          <li><span style="margin-right:0">信用等级：</span>
            <span style="margin-left:0"><img src="<%=path%>/img/images-2014-11/star_${product1.qualityRating}.png" style="margin-bottom:-3px;"></span>
            <span class="pro_r">
@@ -466,12 +466,12 @@ function mysubmit(){
              <div class="gray_bar1"><span>参投人数</span><span>20</span></div>
              <div>百分百本息保障,企业生产经营正常,还款正常</div>
            </li>
-       </ul>${product1.buyType}
+       </ul>
        </div>
        <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
-         <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元</span>
+         <span>可投资金额：${product1.financingMoney*10000-product1.realityMoney}万元</span>
          <div class="neirong"></div>
          <span><input type="text" class="text01" value="投资金额不低于200元" id="buyAmount"  name="buyAmount"/></span>
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
@@ -557,6 +557,7 @@ function mysubmit(){
        <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>状态</span></li>
 		<c:if test="${ not empty list}">
 		<c:forEach var="s" items="${list}" varStatus="i">
+		<c:if test="${ empty product1.buyType}"><!-- 线下 -->
 		<li>
 		<span>${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
 		<span >
@@ -568,6 +569,23 @@ function mysubmit(){
 		<span >${s.investmentAmount}万元</span>
 		<span>成功</span>
 		</li>
+		</c:if>
+		 <c:if test="${ not empty product1.buyType}"><!-- 线上 -->
+		<li>
+		<span>${fn:substring(s.investor,0,2)}
+		<c:forEach var="j" begin="1" end="${fn:length(s.investor)-3}" step="1">*</c:forEach>
+		${fn:substring(s.investor,fn:length(s.investor)-1,fn:length(s.investor))}
+		</span>
+		<span >
+			<c:if test="${fn:length(s.identityCard)==18}">${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
+			</c:if>
+			<c:if test="${fn:length(s.identityCard)!=18}">-
+			</c:if>
+		</span>
+		<span >${s.investmentAmount}元</span>
+		<span>成功</span>
+		</li>
+		</c:if>
 		</c:forEach>
 		</c:if>
 		</ul> 
