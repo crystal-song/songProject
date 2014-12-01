@@ -35,6 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	   $(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="all_all"){
+	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   /*
 	    	   $(".label_sec li").click(function(){
     	       if($(this).parent().hasClass("new_sec")){
     	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
@@ -43,6 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	    	   $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	       }    	 
 	         });
+	    	   */
 	       }
 	       else if(canshu=="recharge_all"){
 	    	   $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
@@ -209,8 +213,8 @@ function jumpPage(pag){
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=recharge_all">充值</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=drawmoney_all">提现</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=transferinfo_all">投资</a></li>
-                        <li>收益</li>
-                        <li>回收本金</li>
+                        <li style="display:none">收益</li>
+                        <li style="display:none">回收本金</li>
                       </ul>
                     </li>
                     <li><ul class="label_third">
@@ -261,13 +265,10 @@ function jumpPage(pag){
                             <li>充值</li>
                             <li></li>
                             <li>${t.amount }</li>
-
                       </ul>  
-
                       </c:forEach>    
                       </c:if>          
-                      </c:if>          
-                                      
+                      </c:if>                                               
                   </ul>
                   
                </div>
