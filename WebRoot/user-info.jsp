@@ -75,7 +75,7 @@ var navIndex=2;
 	                          </div>
 	                 </li>
                      <li><span>真实姓名</span>
-	                      <span class="span_le"><%-- ${user1.realName} --%>
+	                      <span class="span_le">
 	                      <c:if test="${not empty user1.realName}"> 
 	                      ${fn:substring(user1.realName,0,1)}
 	                      <c:forEach var="j" begin="1" end="${fn:length(user1.realName)-1}" step="1">*</c:forEach>
@@ -122,7 +122,11 @@ var navIndex=2;
 	                    </c:if>
 	                 </li>
                      <li><span>手机号码</span>
-	                      <span class="span_le">${user1.phone}</span>
+	                      <span class="span_le">
+	                       <c:if test="${not empty user1.phone}">
+	                      ${fn:substring(user1.phone,0,3)}****${fn:substring(user1.phone,7,11)}
+	                      </c:if>
+	                      </span>
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
