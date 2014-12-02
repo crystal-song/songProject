@@ -3293,7 +3293,7 @@ ul,li{
 .ban_show li a{
 	display:inline-block;
 	height:300px;
-	width:auto;
+	min-width:1200px;;
 }
 .ban01{
 	background:url(../img/images-2014-11/banner_01.jpg) 50% 0 no-repeat;
