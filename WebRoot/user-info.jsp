@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -74,21 +75,43 @@ var navIndex=2;
 	                          </div>
 	                 </li>
                      <li><span>真实姓名</span>
-	                      <span class="span_le">${user1.realName}</span>
+	                      <span class="span_le"><c:if test="${not empty user1.realName}">${${fn:substring(user1.realName,0,1)}<c:forEach var="j" begin="1" end="${fn:length(user1.realName)-1}" step="1">*</c:forEach></c:if></span>
+	                      <c:if test='${ empty registerYeePay1.code}'>
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                      <div id="tishik01">
 	                           <span class="border_left01"></span>
-	                           <div class="border_cent01" ><a href="<%=path%>/anquanshezhi.jsp">您未进行实名认证，请认证</a></div>
+	                           <div class="border_cent01" ><a href="<%=path%>/anquanshezhi.jsp">您未进行实名认证，请认证。</a></div>
 	                           <span class="border_right01"></span>
-	                      </div></li>
+	                      </div>
+	                      </c:if>
+	                 <c:if test='${registerYeePay1.code==1}'>
+	                           <span class="tip" id="green_back">已认证</span>
+	                           <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01"><a href="javascript:;">您已认证真实姓名。</a></div>
+	                           <span class="border_right01"></span>
+	                        </div>
+	                    </c:if>
+	                 </li>
                      <li><span>身份证号码</span>
-	                      <span class="span_le">${user1.identityCard}</span>
+	                      <span class="span_le"><c:if test="${not empty user1.identityCard}">${fn:substring(user1.identityCard,0,7)}********${fn:substring(user1.identityCard,15,18)}</c:if></span>
+	                      <c:if test='${ empty registerYeePay1.code}'>
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                      <div id="tishik01">
 	                           <span class="border_left01"></span>
-	                           <div class="border_cent01"><a href="<%=path%>/anquanshezhi.jsp">您未绑定身份证，请绑定</a></div>
+	                           <div class="border_cent01"><a href="<%=path%>/anquanshezhi.jsp">您未绑定身份证，请绑定。</a></div>
 	                           <span class="border_right01"></span>
-	                      </div></li>
+	                      </div>
+	                      </c:if>
+	                 <c:if test='${registerYeePay1.code==1}'>
+	                           <span class="tip" id="green_back">已认证</span>
+	                           <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01"><a href="javascript:;">您已认证身份证。</a></div>
+	                           <span class="border_right01"></span>
+	                        </div>
+	                    </c:if>
+	                 </li>
                      <li><span>手机号码</span>
 	                      <span class="span_le">${user1.phone}</span>
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
