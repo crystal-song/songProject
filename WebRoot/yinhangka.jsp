@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
       <div class="user_right">  
         <div class="zichan_con">        
-          <div class="pro_con_title" style="margin-top:5px;"><strong>提现</strong></div>
+          <div class="pro_con_title" style="margin-top:5px;"><strong>绑定银行卡</strong></div>
            
             <div class="add_postcar" style="display:none; height:330px;">
               <p>银行卡信息</p>
