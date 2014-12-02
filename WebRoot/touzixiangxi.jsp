@@ -87,8 +87,8 @@ function mysubmit(){
 					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
 					}
 				}
-			$("#preview_rate").val(r*100+"%");	
-			$("#preview_income").html(t*r+"元");
+			$("#preview_rate").val(parseInt(r*100)+"%");	
+			$("#preview_income").html(parseInt(t*r*100)/100+"元");
 			//console.log("|-"+t*r);
 			}
 		//---------收益计算器结束-------------
