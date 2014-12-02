@@ -471,8 +471,8 @@ function mysubmit(){
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元
          </span>
          <div class="neirong"></div>
-         <span><input type="text" class="text01" value="投资金额不低于200元" id="buyAmount"  name="buyAmount"/></span>
-         <span ><a class="red_touzi"  id="dialog-link" href="javascript:;">立即投资</a><i class="jisuan"></i></span>
+         
+         <span ><a class="red_touzi"  id="dialog-link" href="javascript:;">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </c:if>
