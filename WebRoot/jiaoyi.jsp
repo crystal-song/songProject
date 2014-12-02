@@ -31,6 +31,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	   
 	    	   $(".new_fir li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }*/
+	      
+	       
 	        if(canshu=="onemonth_all"){
 	    	   $(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
@@ -40,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       else if(canshu=="all_all"){
 	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
 	    	   $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
-	    	   /*
+	    	  
 	    	   $(".label_sec li").click(function(){
     	       if($(this).parent().hasClass("new_sec")){
     	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
@@ -49,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	    	   $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	       }    	 
 	         });
-	    	   */
+	    	  
 	       }
 	       else if(canshu=="recharge_all"){
 	    	   $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
@@ -60,8 +62,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       else if(canshu=="transferinfo_all"){
 	    	   $(".new_sec li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }  	
-    	 
+           
+           
 
+                  var a=${time_type}
+            	  if(a=='onemonth_all'){            		
+            		  $(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+            	  } 
+            	  if(a=='threemonth_all'){
+            		  $(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
+            	  }
+            	  if(a=='all_all'){
+            		  $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+       	    	      $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+            	  }
+            	  if(a=='recharge_all'){
+            		  $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+            	  }
+
+            
     	    $(".u_left_mian").click(function(){
     	          $(this).siblings().slideToggle("slow");
     	        });
