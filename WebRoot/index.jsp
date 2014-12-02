@@ -121,7 +121,7 @@ $(document).ready(function(){
   </div>
     <div class="shuju">
        <div class="new_production">
-         <a class="images_pro" href="product/getProductByid?id=55"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/cailanzi.jpg"></a>
+         <a class="images_pro" href="product/getProductByid?id=56"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/cailanzi.jpg"></a>
          <div class="meier_wd">                
            <h3><a href="product/getProductByid?id=56" style="color:#ff453e">百家社区生鲜便利连锁店01期</a></h3>       	
            <ul class="mei_msg">
@@ -129,7 +129,7 @@ $(document).ready(function(){
             <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">14%</strong></span></li>
             <li><span>项目状况</span><span class="wd_size" style="font-size:12px;">融资中..</span></li>
             <li><span>信用等级</span><span class="wd_size new_span"><img  src="<%=path%>/img/images-2014-11/star_5.png"></span></li>
-            <li><a href="product/getProductByid?id=55" class="touzi_mei">我要投</a></li>
+            <li><a href="product/getProductByid?id=56" class="touzi_mei">我要投</a></li>
            </ul>
          </div>
        </div>
