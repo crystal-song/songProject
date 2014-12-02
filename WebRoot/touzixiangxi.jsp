@@ -407,7 +407,7 @@ function mysubmit(){
    <div class="con_right01">
     <p class="bianhao">
      <span class="con_pic01"><strong>项目：${product1.projectName}</strong></span>
-     <span></span>
+
      <span class="bianhao_right">企业编号：${product1.enterpriseNumber}  </span>
     </p>
      <div class="pro_msg">
@@ -470,9 +470,8 @@ function mysubmit(){
          <span class="pro_right_title"><strong>投资金额</strong></span>
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元
          </span>
-         <div class="neirong"></div>
-         
-         <span ><a class="red_touzi"  id="dialog-link" href="javascript:;">立即投资</a></span>
+         <div class="neirong"></div>         
+         <span style="margin-top:-16px"><a class="red_touzi"  id="dialog-link" href="javascript:;">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </c:if>
@@ -487,7 +486,7 @@ function mysubmit(){
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
-         <span style="margin-top:-16px"><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
+         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </form>
