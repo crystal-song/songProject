@@ -26,11 +26,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       var element=str.split("=");
 	       var canshu=element[1];
 	      //alert(canshu)
+	      /*
 	       if(canshu=="seven_all"){
-	    	   alert("aa")
+	    	   
 	    	   $(".new_fir li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
-	       }
-	       else if(canshu=="onemonth_all"){
+	       }*/
+	        if(canshu=="onemonth_all"){
 	    	   $(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="threemonth_all"){
@@ -88,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <div class="con_list">
                   <ul class="list_label">
                     <li>
-                      <ul class="label_sec">
+                      <ul class="label_sec new_fir">
                         <li class="label_bak">最近七天</li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=onemonth_all">一个月</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=threemonth_all">三个月</a></li>
@@ -96,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       </ul>
                     </li>
                     <li>
-                      <ul class="label_sec">
+                      <ul class="label_sec new_sec">
                         <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time_type=all_all">全部</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=recharge_all">充值</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=drawmoney_all">提现</a></li>
