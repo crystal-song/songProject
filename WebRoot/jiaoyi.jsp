@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       }  	
            
            
-
+/*
                   var a=${time_type}
             	  if(a=='onemonth_all'){            		
             		  $(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	  if(a=='recharge_all'){
             		  $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
             	  }
-
+*/
             
     	    $(".u_left_mian").click(function(){
     	          $(this).siblings().slideToggle("slow");
