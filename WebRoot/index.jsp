@@ -121,14 +121,14 @@ $(document).ready(function(){
   </div>
     <div class="shuju">
        <div class="new_production">
-         <a class="images_pro" href="product/getProductByid?id=55"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/shanxi01.png"></a>
+         <a class="images_pro" href="product/getProductByid?id=55"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/cailanzi.jpg"></a>
          <div class="meier_wd">                
-           <h3><a href="product/getProductByid?id=55">山西润通工程</a></h3>       	
+           <h3><a href="product/getProductByid?id=56" style="color:#ff453e">百家社区生鲜便利连锁店01期</a></h3>       	
            <ul class="mei_msg">
-            <li><span>融资金额</span><span class="wd_size"><strong>1180,000</strong></span></li>
-            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">12%</strong></span></li>
-            <li><span>借款期限</span><span class="wd_size">90天</span></li>
-            <li><span>融资进度</span><span class="wd_size">0%</span></li>
+            <li><span>融资金额</span><span class="wd_size"><strong>5,000,000</strong></span></li>
+            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">14%</strong></span></li>
+            <li><span>项目状况</span><span class="wd_size" style="font-size:12px;">融资中..</span></li>
+            <li><span>信用等级</span><span class="wd_size new_span"><img  src="<%=path%>/img/images-2014-11/star_5.png"></span></li>
             <li><a href="product/getProductByid?id=55" class="touzi_mei">我要投</a></li>
            </ul>
          </div>
