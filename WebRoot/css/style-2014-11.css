@@ -7,6 +7,7 @@ body {
 	 color:#3e3e3e; 
 	 text-align:center;
 	 position: relative;
+	 line-height:120%;
 	 }
 html,body {
 	 margin:0;
@@ -470,8 +471,8 @@ ul,li{
 }
 .images_pro{
 	display:inline-block;
-	width:100%;
-	height:70%;
+	width:748px;
+	height:180px;
 	*+width:747px;
 	*+height:200px;;
 }
@@ -511,6 +512,7 @@ ul,li{
 	width:100%;
 	display:inline-block;
 	text-align:left;
+	height:20px;
 }
 .wd_size{
 	font-size:14px;
@@ -4224,7 +4226,12 @@ ul,li{
 .project_list thead td{font-weight:bold; background:#efefef;}
 .project_list tbody td{ padding-top:3px; border-bottom:1px solid #eee; font-size:12px;}
 
-
+.mei_msg .new_span{
+	margin-left:-28px;
+	width:118px;
+	height:22px;
+	margin-top:0;
+	}
 
 
 
