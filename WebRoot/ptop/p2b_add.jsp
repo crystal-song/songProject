@@ -333,7 +333,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <dt></dt>
                 </li>  -->
                 
-                
+ <li>               
         <dd>相关证件：</dd>
 <label>
 <!--style给定宽度可以影响编辑器的最终宽度-->
@@ -341,7 +341,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </label> 
 		<dt>请将所有相关的图片上传至此区域内！</dt>       
              
-
+</li>
                 <li>
                 <dd>设置项目属性：</dd>
                  <p>
@@ -356,7 +356,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="date"   />
                     <dt></dt>
                 </li> -->
-               
+                 <li>
+                <dd>线上/线下属性：</dd>
+                 <p>
+                      <label>
+                        <input type="checkbox" name="buyType" id="buyType"   value="1"  />
+                        <span>上线项目</span></label>
+				</p>
+                    <dt></dt>
+                </li>              
                    
                 <li>
                 <dd></dd>
