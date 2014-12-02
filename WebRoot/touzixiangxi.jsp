@@ -471,7 +471,7 @@ function mysubmit(){
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元
          </span>
          <div class="neirong"></div>         
-         <span style="margin-top:-16px"><a class="red_touzi"  id="dialog-link" href="javascript:;">立即投资</a></span>
+         <span><a class="red_touzi"  id="dialog-link" href="javascript:;">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </c:if>
@@ -486,6 +486,7 @@ function mysubmit(){
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
+         
          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
