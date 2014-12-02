@@ -436,7 +436,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        <div class="anquan_hide" style="display:none">
                           <ul>
                           <form action="<%=path %>/welcome/emailVerification" method="post">
-                           <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="mail" name="mail"></input></span><span class="tishitext" style="width:auto;">请输入正确格式邮箱!</span></li>
+                           <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="mail" name="mail"></input></span><span class="tishitext" style="width:auto;"></span></li>
                            <li><span></span><input type="submit" value="提交"  class="anquan_hide_btn"></input></li>
                          </form>
                          </ul>
