@@ -54,7 +54,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          });
          $(".anquan_hide input").blur(function(){
         	 var val=$(this).val();                	        	 
-        	 
+        	 if($(this).is("#answer")){
+       		  
+       		  if(val==""){
+       			  $(this).parent().siblings(".tishitext").text("您输入的答案为空！请重新输入");
+       			  
+       		  }
+       		  
+       	  }
         	 if( $(this).is('#phone') ){
          		
          		if(val==""){
@@ -66,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          		 } 
          	 }          	       	 
         	 
-        	 if($(this).is('#username')){
+        	 if($(this).is('#realName')){
         		 var Expression=/[^\u4E00-\u9FA5]/;  
         		 if(val==""){         			  
          			  $(this).parent().siblings(".tishitext").text("您的姓名为空。");                     	 	                			
@@ -87,14 +94,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          	     } 				  				  		  
 		}
         		        	      	 
-        	 if($(this).is('#card_id')){
+        	 if($(this).is('#identityCard')){
         		 var reg = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/;  
-				  if($('#card_id').val()==""){
+				  if($('#identityCard').val()==""){
 
 					   $(this).parent().siblings(".tishitext").text("您的身份证为空。");
 					   return false;
 					  }				  				  
-				  else if(!reg.test($('#card_id').val())){
+				  else if(!reg.test($('#identityCard').val())){
                       $(this).parent().siblings(".tishitext").text("您的身份证填写不正确。");
 					   return false;      
         		 }else{
@@ -104,12 +111,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  			  				  				 
 			  }
         	         	 
-        	 if($(this).is('#email')){				 
+        	 if($(this).is('#mail')){				 
 				   var cc= /^([a-zA-Z0-9]|[._])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;				  
-				      if($('#email').val()==""){
+				      if($('#mail').val()==""){
       			    	$(this).parent().siblings(".tishitext").text("您的邮箱为空！请重新填写。");     
       			    	return false;
-      			    } else if (!(cc.test($('#email').val()))){        			    	
+      			    } else if (!(cc.test($('#mail').val()))){        			    	
       			    	$(this).parent().siblings(".tishitext").text("您的邮箱格式不正确！请重新填写。");     
       			    	return false;        				      			         				
       			  }else{       			           				  
@@ -125,6 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          			$(this).parent().siblings(".tishitext").text("您的正面证件照上传成功。"); 
          		 } 
          	 }
+        	 
         	 
         	 if( $(this).is('#file02') ){
           		
@@ -165,6 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						  return true;
                      }
 			 }
+        	  
         	  
          });
           
@@ -327,7 +336,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="anquan_label label1">
                          <span>用户名</span>
                          <span>已设置</span>
-                         <span>asdoi</span>
+                         <span>${name}</span>
                         </div> 
                    </li>
                 
@@ -345,7 +354,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                        <div class="anquan_hide" style="display:none;">
                          <ul>
                            <li><span><strong>*</strong>用户名</span>
-                           <span><input type="text" id="name" name="name" value="${name}"></input></span> 
+                             <span><input type="text" id="name" name="name" value="${name}"></input></span> 
                            </li>
                            <li>
                            <span><strong>*</strong>真实姓名</span>
@@ -361,7 +370,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                              <option value="">台胞证</option>
 	                              <option value="">护照</option>
 	                          </select>
-                          </span></li>
+                             </span>
+                          </li>
                            <li><span><strong>*</strong>身份证号码</span>
                            <span>
                            <input type="text" id="identityCard" name="identityCard"></input>
@@ -376,22 +386,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       						 <img id="imgHeadPhoto1" src="noperson.jpg" style="width: 200px; height: 200px; border: solid 1px #d2e2e2;" alt="" />
  							</div>
  							</span>
- 						   </li>
-                          
+ 						   </li>                         
                          <li><span><strong>*</strong>上传背面证件照</span><span>  <input type="file" name="myfiles" onchange="PreviewImage(this,'imgHeadPhoto2','divPreview2')" size="20"/></span><span class="tishitext" style="width:auto"></span></li>
                           <li id="pic_height"><span></span>
                           <span id="postcar"> 
-                          <div id="divPreview2">
+                            <div id="divPreview2">
       						 <img id="imgHeadPhoto2" src="noperson.jpg" style="width: 200px; height: 200px; border: solid 1px #d2e2e2;" alt="" />
- 						  </div>
+ 						    </div>
 				 		  </span>
 				 		  </li>
-                           <li id="text-align_style">  
+                           <li id="text-align_style" style="display:none">  
                                 <span style="width:300px;" id="text-align_style">
-                                <input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="#" class="wd_color">《中租宝服务协议》</a></span>    
+                                <input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="<%=path%>/zhucexieyi.jsp" class="wd_color">《中租宝服务协议》</a></span>    
                            </li>
-                           <li id="text-align_style">  
-                                <span style="width:300px;" id="text-align_style"><input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="#" class="wd_color">《委托收付资金协议》</a></span>    
+                           <li id="text-align_style" style="display:none">  
+                                <span style="width:300px;" id="text-align_style"><input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="<%=path%>/yinsitiaokuan.jsp" class="wd_color">《委托收付资金协议》</a></span>    
                            </li>
                            <li><span><input type="submit" value="提交"  class="anquan_hide_btn"/></span></li>
                          </ul>
@@ -522,7 +531,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </select>
                                </span>
                           </li>
-                           <li><span><strong>*</strong>输入答案</span><span><input type="text" id="answer" name="answer"></input></span></li>
+                           <li><span><strong>*</strong>输入答案</span><span><input type="text" id="answer" name="answer"></input></span><span class="tishitext" style="width:auto"></span></li>
                            <li><span><input type="button" class="anquan_hide_btn" value="提交" onclick="passwordProtection()"> </span></li>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">密码保护设置成功,请重新登录！</div>
