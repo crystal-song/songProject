@@ -97,9 +97,9 @@ function mysubmit(){
 			//console.log("|-"+t*r);
 			}
 		$(".jisuan_btn_left").click(function(){
-			  var jisuan_val=$("#preview_amount").val();
-			 // alert(jisuan_val)
-			  jisuan_val=200
+			  $("#preview_amount").val(200);
+			  $("#preview_income").html(0+"元");
+			  
 			   
 		  });
 		
