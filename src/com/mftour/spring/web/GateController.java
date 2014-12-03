@@ -587,7 +587,7 @@ public class GateController  {
 					 investmentInfo.setIdentityCard(list.get(0).getIdCardNo());
 				 }
 			 }
-			
+			 investmentInfo.setRequestNo(request.getPlatformNo());
 			 investmentInfo.setWriteTime(df.format(new Date()));
 			 investmentInfo.setInvestmentAmount(Double.parseDouble(TtransferInfo.getPaymentAmount()));
 			 investmentInfo.setEnterpriseNumber(TtransferInfo.getEnterpriseNumber());
@@ -1106,6 +1106,13 @@ public class GateController  {
 		    	  }
 		    	  
 		      }  
+		      List<TInvestmentInfo> li=gateService.queryTInvestmentInfoByName(TTransferSucceed.getPlatformNo());
+		      if(li != null && li.size()!=0){
+		    	  TInvestmentInfo investmentInfo = li.get(0);
+		    	  investmentInfo.setCode(TTransferSucceed.getCode());
+		    	  ptopService.addOrUpdateInvestmentInfo(investmentInfo);
+		    	   
+		      }
 		      gateService.addOrUpdateTTransferSucceed(TTransferSucceed);
 		      TTransferInfo transferInfo = gateService.queryTTransferInfoByNumber(TTransferSucceed.getRequestNo()).get(0);
 		      transferInfo.setCode(TTransferSucceed.getCode());
