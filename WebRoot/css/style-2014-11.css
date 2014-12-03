@@ -4126,12 +4126,13 @@ ul,li{
 .neirong{
 	position:absolute; 
 	top:36%; 
-	left:5%; 
-	width:180px; 
+	left:4%; 
+	width:186px; 
 	height:30px; 
 	background:#fdd9c8; 
 	text-align:left; 
 	display:none; 
+	font-size:10px;
 	border:1px solid #ae705e;
 }
 .table_style{
