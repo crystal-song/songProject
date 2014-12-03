@@ -596,9 +596,7 @@ function mysubmit(){
 		</c:if>
 		 <c:if test="${ not empty product1.buyType && not empty s.code}"><!-- 线上 -->
 		<li>
-		<span>${fn:substring(s.investor,0,2)}
-		<c:forEach var="j" begin="1" end="${fn:length(s.investor)-3}" step="1">*</c:forEach>
-		${fn:substring(s.investor,fn:length(s.investor)-1,fn:length(s.investor))}
+		<span>${fn:substring(s.investor,0,2)}<c:forEach var="j" begin="1" end="${fn:length(s.investor)-3}" step="1">*</c:forEach>${fn:substring(s.investor,fn:length(s.investor)-1,fn:length(s.investor))}
 		</span>
 		<span >
 			<c:if test="${fn:length(s.identityCard)==18}">${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
