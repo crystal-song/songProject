@@ -502,7 +502,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                    <a style="float:left; color:#a4a4a4;">已达</a></span>
                    <span><a class="baifenbi01"><em>￥&nbsp;&nbsp;</em>30000</a><a style="color:#a4a4a4;">已筹资</a>
                    </span>
-                   <span><a class="baifenbi01" style="float:right; text-align:right;">${s.yearIncome}</a>
+                   <span><a class="baifenbi01" style="float:right; text-align:right;">${s.yearIncome}%</a>
                    <a style="float:right; color:#a4a4a4;">年华收益率</a></span>
                  </div>
                  <div class="botm_btn01">               
