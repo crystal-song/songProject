@@ -627,6 +627,9 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
     <div class="clear"></div>
 </div>
  -->
+<!-- absolute_right start -->
+<%@ include file="/includes/absolute.jsp" %>
+<!-- absolute_right end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
