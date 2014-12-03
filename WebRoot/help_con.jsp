@@ -25,7 +25,7 @@ $(document).ready(function(e) {
        $(".news_right ul").eq(index).css("display","block").siblings().css("display","none");
     });
     $(".news_ul a").eq(0).addClass("aqbz").siblings().removeClass("aqbz");
-    
+
 });
 </script>
 </head>
@@ -103,6 +103,7 @@ $(document).ready(function(e) {
     </div>
 </div>
 -->
+      
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
