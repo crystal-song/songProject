@@ -1,6 +1,6 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
 <div class="absolute_right">
-      <div>
+      <div style="display:none">
         <span class="absolute_bac3"><a href="<%=path%>/contact.jsp" >联系客服</a></span>
       </div>
       <div style="display:none">
