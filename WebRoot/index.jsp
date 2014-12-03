@@ -307,16 +307,16 @@ $(document).ready(function(){
 	      <div class="news_label">
 		      <ul class="news_con">
 		        <c:if test="${ not empty list1}">
-        <c:forEach var="s" items="${list1}" varStatus="i">
+                   <c:forEach var="s" items="${list1}" varStatus="i">
                     	<li><a href="<%=path%>/guarantee/getTNewsById?id=${s.id}">${s.title}</a></li>
-                    	 </c:forEach>
-						</c:if>
+                   </c:forEach>
+				</c:if>
 		      </ul>  
 	      </div>
      </div> 
     </div> 
     <!-- absolute_right start -->
-	<%-- <%@ include file="/includes/absolute.jsp" %> --%>
+	 <%@ include file="/includes/absolute.jsp" %>
 	<!-- absolute_right end -->
       
  </div>                  
