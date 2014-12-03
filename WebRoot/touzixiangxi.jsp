@@ -115,9 +115,9 @@ function mysubmit(){
 				   $('.neirong').html("您输入的金额小于200元,请重新输入");
 				   return false;
 			    }
-			    if(val>500000){
+			    /* if(val>500000){
 					   $('.neirong').html("您输入的金额大于500000元,请重新输入");
-					   return false;
+					   return false; */
 				    }
 			    if(parseInt(val)%100!=0){	
 				  $('.neirong').html("输入的资金必须是100的整数倍");
