@@ -200,19 +200,19 @@ $(document).ready(function(){
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span>60天</span>
-                   <span><em>¥&nbsp;&nbsp;</em>${s.financingMoney}</span>
+                   <span style="width:110px;"><em>¥&nbsp;&nbsp;</em>${s.financingMoney}万元</span>
                    <a>融资中</a>
                  </div>
                  <div class="loding_bar">
-                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
+                 <div class="l_b" <c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
                  </div>
                  <div class="floor_bottom">
-                   <span><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
-                   <a style="float:left; color:#a4a4a4;">已达</a></span>
-                   <span><a class="baifenbi"><em>¥&nbsp;&nbsp;</em>30000</a><a style="color:#a4a4a4;">已筹资</a>
+                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
                    </span>
-                   <span><a class="baifenbi" style="float:right; text-align:right;">${s.yearIncome}%</a>
-                   <a style="float:right; color:#a4a4a4;" >年化收益率</a></span>
+                   <span style="display:none"  ><a style="color:#a4a4a4; float:left; ">已筹资</a><a class="baifenbi" style="float:left; text-align:left;">¥&nbsp;&nbsp;<c:if test='${empty s.realityMoney}'>0</c:if> ${s.realityMoney}</a>
+                   </span>
+                   <span style="float:right; margin-right:3%;"><a style="float:right; color:#a4a4a4;" >年化收益率</a><a class="baifenbi" style="float:right; text-align:right;">${s.yearIncome}%</a>
+                  </span>
                  </div>
                  <div class="botm_btn">
                   <a href="product/getProductByid?id=${s.id}">我要投</a>
