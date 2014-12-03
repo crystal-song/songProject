@@ -65,7 +65,7 @@ function onSubmit(host) {
           <li>
           <div class="form-group" style="display:none">
             <label for="transferAmount">标的金额</label><input type="text"
-              class="form-control jin_font" id="transferAmount" name="transferAmount" value="${product.financingMoney}" />
+              class="form-control jin_font" id="transferAmount" name="transferAmount" value="${product.financingMoney}0000" />
           </div>
           </li>
           <li>
