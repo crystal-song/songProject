@@ -53,6 +53,10 @@ function mysubmit(){
 		alert("投资金额不能为空！");
 		return false;
 		}
+	if($("#buyAmount").val()<200){
+		alert("投资金额不能低于200元！");
+		return false;
+		}
 	var form = document.getElementById("form");
 	    form.submit();	
 }	
