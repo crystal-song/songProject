@@ -9,6 +9,7 @@ import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TDrawMoneySucceed;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
+import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TLoansucceed;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TRecharge;
@@ -60,6 +61,8 @@ public interface IGateService {
 	 
 	 public List<TTransferInfo> queryTTransferInfoByName(String name)throws Exception;
 	 
+	 public List<TInvestmentInfo> queryTInvestmentInfoByName(String name)throws Exception;
+	 
 	 
 	 public List queryAllTransRecord(Page page,String sql,String platformUserNo)
 				throws Exception;
@@ -69,4 +72,6 @@ public interface IGateService {
 				throws Exception;
 		public List AllTransRecord(Page page, String platformUserNo)
 				throws Exception;
+		
+		
 }

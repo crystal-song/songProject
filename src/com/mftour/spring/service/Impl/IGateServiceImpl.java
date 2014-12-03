@@ -14,6 +14,7 @@ import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TDrawMoneySucceed;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
+import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TLoansucceed;
 import com.mftour.spring.model.TRecharge;
 import com.mftour.spring.model.TRechargeSucceed;
@@ -194,6 +195,16 @@ public class IGateServiceImpl  implements  IGateService {
 		return 	gateDao.queryTTransferInfoByName(name);
 		
 	}
+
+
+	@Override
+	public List<TInvestmentInfo> queryTInvestmentInfoByName(String name)
+			throws Exception {
+		return gateDao.queryTInvestmentInfoByName(name);
+		 
+	}
+	
+	
 	
 	
 
