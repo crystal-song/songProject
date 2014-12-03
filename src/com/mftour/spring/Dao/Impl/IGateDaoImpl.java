@@ -13,6 +13,7 @@ import com.mftour.spring.model.TDrawMoney;
 import com.mftour.spring.model.TDrawMoneySucceed;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
+import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TLoansucceed;
 import com.mftour.spring.model.TRecharge;
 import com.mftour.spring.model.TRechargeSucceed;
@@ -207,6 +208,17 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("platformUserNo",  name);
 		return query.list();
 	}
+
+	@Override
+	public List<TInvestmentInfo> queryTInvestmentInfoByName(String name)
+			throws Exception {
+		String hq = "from TInvestmentInfo investmentInfo where investmentInfo.requestNo = :requestNo";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("requestNo",  name);
+		return query.list();
+	}
+	
+	
 	
 	
 	
