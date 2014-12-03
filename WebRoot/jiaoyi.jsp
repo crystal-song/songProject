@@ -132,8 +132,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li>交易详情</li>
                         <li id="bord_right">金额</li>
                       </ul></li>
-                    
                       <c:if test="${userinfo.name!=null}">
+                       <c:if test="${recordsize==0}">
+                 		 <div >
+                    		<p>暂无交易记录</p>
+                 		 </div>
+                 	   </c:if>
+                  
                       <c:if test="${ not empty list11}">
                       <c:forEach var="t" items="${list11 }">
                       <ul class="jiaoyi_msg">
@@ -185,21 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       </c:if>          
                   </ul>
                   
-                <%--   <c:if test="${empty list11}">
-                  <div class="charge">
-                    <p>暂无交易记录</p>
-                  </div>
-                  </c:if>
-                   <c:if test="${empty list22}">
-                  <div class="charge">
-                    <p>暂无交易记录</p>
-                  </div>
-                  </c:if>
-                   <c:if test="${empty list33}">
-                  <div class="charge">
-                    <p>暂无交易记录</p>
-                  </div>
-                  </c:if> --%>
+                 
                </div> 
                
             <div class="clear"></div>    
