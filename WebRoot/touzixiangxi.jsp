@@ -49,10 +49,14 @@ window.onload=function(){
 /*提交表单*/
 
 function mysubmit(){
-	if($("#buyAmount").val()==0){
+	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
 		alert("投资金额不能为空！");
 		return false;
 		}
+	if($("#buyAmount").val()<200){
+		alert("投资金额不能低于200元！");
+		return false;
+	}
 	var form = document.getElementById("form");
 	    form.submit();	
 }	
@@ -111,8 +115,8 @@ function mysubmit(){
 				   $('.neirong').html("您输入的金额小于200元,请重新输入");
 				   return false;
 			    }
-			    if(val>500000){
-					   $('.neirong').html("您输入的金额大于500000元,请重新输入");
+			    if(val>5000000){
+					   $('.neirong').html("您输入的金额大于5000000元,请重新输入");
 					   return false;
 				    }
 			    if(parseInt(val)%100!=0){	
