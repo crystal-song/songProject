@@ -116,7 +116,7 @@ function mysubmit(){
 				   return false;
 			    }
 			    if(val>5000000){
-					   $('.neirong').html("您输入的金额大于5000000元,请重新输入");
+					   $('.neirong').html("您输入的金额大于五百万元,请重新输入");
 					   return false;
 				    }
 			    if(parseInt(val)%100!=0){	
