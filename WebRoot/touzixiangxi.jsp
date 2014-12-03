@@ -75,6 +75,7 @@ function mysubmit(){
 				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
 				}
 	        calc();
+	        
 	    });
 		function calc(){
 			//console.log("-------calc-------");
@@ -95,6 +96,14 @@ function mysubmit(){
 			$("#preview_income").html(parseInt(t*r*100)/100+"元");
 			//console.log("|-"+t*r);
 			}
+		$(".jisuan_btn_left").click(function(){
+			  var jisuan_val=$("#preview_amount").val();
+			 // alert(jisuan_val)
+			  jisuan_val=200
+			   
+		  });
+		
+		
 		//---------收益计算器结束-------------
 
 	 $("#buyAmount").keyup(function(){
@@ -585,7 +594,7 @@ function mysubmit(){
 		<span>成功</span>
 		</li>
 		</c:if>
-		 <c:if test="${ not empty product1.buyType}"><!-- 线上 -->
+		 <c:if test="${ not empty product1.buyType && not empty s.code}"><!-- 线上 -->
 		<li>
 		<span>${fn:substring(s.investor,0,2)}
 		<c:forEach var="j" begin="1" end="${fn:length(s.investor)-3}" step="1">*</c:forEach>
