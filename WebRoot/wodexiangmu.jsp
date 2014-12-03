@@ -48,20 +48,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="pro_con_title" style="margin-top:5px;"><strong>我的项目</strong>
           </div>
           <div class="con_list">
-                 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="project_list">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="project_list">
 				<thead>
 				<tr>
 				<td align="center" height="40">项目名称</td><td align="center">投资金额</td><td align="center">投资时间</td><td align="center">到期时间</td><td align="center">预期收益</td><td align="center">投资协议</td>
 				</tr>
 				</thead>
 				<tbody>
-             <c:if test="${ not empty li}">
-            <c:forEach var="s" items="${li}" varStatus="i">
-               
+            <c:if test="${ not empty li}">
+            <c:forEach var="s" items="${li}" varStatus="i">            
 				<tr>
 				<td align="center"  height="30">${s.projectName}</td><td align="center">${s.paymentAmount}</td><td align="center">${s.projectName}</td><td align="center">${fn:substring(s.transDate,0,10)}</td><td align="center">${s.paymentAmount * s.interestRate}</td><td align="center"> <a href="<%=path%>/gate/authorization?platformUserNo=${s.platformUserNo}&enterpriseNumber=${s.enterpriseNumber}&transDate=${s.transDate}" title="查看投资协议" style="text-decoration:underline;">点击查看</a></td>
-				</tr>
-				
+				</tr>				
                 </c:forEach>
                </c:if>
                </tbody>
