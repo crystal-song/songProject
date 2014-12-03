@@ -35,6 +35,17 @@ $(document).ready(function(){
       $(".u_left_mian").click(function(){
           $(this).siblings().slideToggle("slow");
         });
+     	$(window).on('scroll', function(){
+	        if($(window).scrollTop()<500){
+	            $(".absolute_bac1").hide();
+	        }
+	        if($(window).scrollTop()>=500){
+	            $(".absolute_bac1").show(); 
+	        }
+	      });
+	            $(".absolute_bac1").click(function(){
+	               $("html,body").animate({scrollTop:0},500);  		            
+	            });	
 });
 </script>
 </head>
@@ -352,9 +363,8 @@ $(document).ready(function(){
 	               </div>     
 	           </div>
          </div>
-  
 </div>
-    
+
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
