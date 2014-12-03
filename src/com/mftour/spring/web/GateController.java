@@ -717,7 +717,7 @@ public class GateController  {
 			
 			
 		
-		return doSign(request1, host + "/bha/toTransfer", model);
+		return doSign(request, host + "/bha/toTransfer", model);
 	}
 	
 	
