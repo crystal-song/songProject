@@ -3206,7 +3206,7 @@ ul,li{
 
 .absolute_right{
 	width: 90px;
-	height: 300px;
+	height: 100px;
 	position: fixed;
 	right: 0;
 	bottom: 0;
