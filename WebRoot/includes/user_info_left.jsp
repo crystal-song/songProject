@@ -148,9 +148,7 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-    	  $(".u_left_mian").click(function(){
-              $(this).siblings().slideToggle("slow");
-            });
+    	 
       $(".u_left_mian").click(function(){    	
     	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
     	  $(this).parent().siblings().children(".u_left_sec").slideUp();
