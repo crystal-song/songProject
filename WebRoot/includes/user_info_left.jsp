@@ -97,7 +97,7 @@
               </ul>
            </li>
            <li>
-              <div class="u_left_mian "><i class="mian_pic01"></i><span>资产管理</span></div>
+              <div class="u_left_mian"><i class="mian_pic01"></i><span>资产管理</span></div>
               <ul class="u_left_sec">
                 <li>
                  <a href="<%=path%>/gate/service" >资产统计</a>
@@ -148,6 +148,9 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
+    	  $(".u_left_mian").click(function(){
+              $(this).siblings().slideToggle("slow");
+            });
       $(".u_left_mian").click(function(){    	
     	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
     	  $(this).parent().siblings().children(".u_left_sec").slideUp();
