@@ -45,7 +45,17 @@ $(document).ready(function(e) {
          $(this).addClass('daohang_bac').siblings().removeClass('daohang_bac');
          $(".webside").eq(index).css("display","block").siblings(".webside").css("display","none")
      });
-	
+  	$(window).on('scroll', function(){
+        if($(window).scrollTop()<500){
+            $(".absolute_bac1").hide();
+        }
+        if($(window).scrollTop()>=500){
+            $(".absolute_bac1").show(); 
+        }
+      });
+            $(".absolute_bac1").click(function(){
+               $("html,body").animate({scrollTop:0},500);  		            
+            });	 
 });
 </script>
 </head>
@@ -168,8 +178,7 @@ $(document).ready(function(e) {
                    <p>请同时提供下面三项资料：</p>
 					<div>1. 结婚证书的原件照片。</div>
 					<div>2. 配偶身份证原件的正、反两面照片。</div>
-                    <div>3. 本人和配偶的近照合影一张。</div>
-                   <div>&nbsp;&nbsp;&nbsp;车辆必须是本人名下所有。</div>
+                    <div>3. 本人和配偶的近照合影一张。</div>                   
                    <p>认证有效期：</p>  
                    <div>&nbsp;&nbsp;&nbsp;&nbsp;永久</div>    
                    
@@ -262,7 +271,9 @@ $(document).ready(function(e) {
      </div>   
    
    </div>
-
+  <!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp" %>
+	<!-- absolute_right end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
