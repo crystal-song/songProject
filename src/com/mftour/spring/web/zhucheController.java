@@ -92,5 +92,17 @@ public class zhucheController {
 
 		return "help";
 	}
+	
+	@RequestMapping(value = "/index",method = {RequestMethod.POST, RequestMethod.GET})
+	public String index(Model model) throws Exception {
+		
+		return "Newproduction/index";
+	}
+	
+	@RequestMapping(value = "/indexs",method = {RequestMethod.POST, RequestMethod.GET})
+	public String indexs(Model model) throws Exception {
+		
+		return "Newproduction/index01";
+	}
 
 }
