@@ -485,7 +485,8 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
             <div class="floor_num01">
                  <a class="floor_img01" href="getProductByid?id=${s.id}">${s.projectPicture}
                   <div class="hot"></div>
-                  <div class="last_time01">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div>
+                  <!--  <div class="last_time01">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div>-->
+                  <div class="last_time01">年化收益率:<strong>&nbsp;&nbsp;${s.yearIncome}%</strong></div>
                  </a>
                  <a class="shuoming01" href="getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a>
                  <div class="aim01">
