@@ -680,9 +680,10 @@ ul,li{
 	 }
 .floor_bottom span{
 	width:95px; 
-	height:45px;  
+	height:36px;  
 	display:block; 
-	float:left;   
+	float:left; 
+	margin-top:5px;  
     }
 .floor_bottom em{
 	font-style: normal;
