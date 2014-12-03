@@ -31,6 +31,12 @@
         <property name="state" type="java.lang.String">
             <column name="state" length="10" />
         </property>
+         <property name="requestNo" type="java.lang.String">
+            <column name="requestNo" length="100" />
+        </property>
+         <property name="code" type="java.lang.String">
+            <column name="code" length="10" />
+        </property>
        
     </class>
 </hibernate-mapping>
