@@ -39,7 +39,17 @@ var navIndex=2;
               $(this).siblings().slideToggle("slow");
             });
      
-          
+         	$(window).on('scroll', function(){
+    	        if($(window).scrollTop()<500){
+    	            $(".absolute_bac1").hide();
+    	        }
+    	        if($(window).scrollTop()>=500){
+    	            $(".absolute_bac1").show(); 
+    	        }
+    	      });
+    	            $(".absolute_bac1").click(function(){
+    	               $("html,body").animate({scrollTop:0},500);  		            
+    	            });	
           
 });
         
