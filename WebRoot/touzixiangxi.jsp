@@ -719,7 +719,9 @@ function mysubmit(){
      </div>
     </div>
 </div> 
-
+<!-- absolute start -->
+<%@ include file="/includes/absolute.jsp" %>
+<!-- absolute end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
