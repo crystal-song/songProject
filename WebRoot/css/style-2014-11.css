@@ -3164,7 +3164,7 @@ ul,li{
     z-index: 100;
 }
 .touzi_text{
-	width: 240px;
+	width: 280px;
 	height: 20px;
 	margin-top: 20px;
 }
@@ -3181,7 +3181,9 @@ ul,li{
 	text-align: left;
 	font-weight:bold;
 	font-size:20px;
-	color:#ec6c23
+	color:#ec6c23;
+	display: inline-block;
+	 width: 160px;
 }
 
 .touzi_text input{
