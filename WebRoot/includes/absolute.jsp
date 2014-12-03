@@ -3,7 +3,7 @@
       <div>
         <span class="absolute_bac3"><a href="<%=path%>/contact.jsp" >联系客服</a></span>
       </div>
-      <div>
+      <div style="display:none">
         <span class="absolute_bac2"><a href="#" >扫二维码</a></span>
         <div class="erweima_bac">
           <div class="erweima_big">            
