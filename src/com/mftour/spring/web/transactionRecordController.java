@@ -41,9 +41,9 @@ public class transactionRecordController {
 			   /*start*/
 			if("seven_all".equals(time_type)){
 				//投资七天交易记录
-			String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 1 WEEK) and now()) "
-						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 1 WEEK) and NOW()) union ALL "
-						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 1 WEEK) and NOW()) ORDER BY t ASC";
+			String sql="SELECT a.callbackUrl,a.transferAmount,a.requestNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 1 WEEK) and now()) and a.requestNo in(select t.requestNo from transfersucceed t) "
+						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 1 WEEK) and NOW()) and b.requestNo in(select t.requestNo from drawmoneysucceed t) union ALL "
+						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 1 WEEK) and NOW()) and c.requestNo in(select t.requestNo from rechargesucceed t) ORDER BY t ASC";
 				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
 				List list11=new ArrayList();
 				for(Object[] obj:list1){
@@ -66,9 +66,9 @@ public class transactionRecordController {
 			/*start*/
 			if("onemonth_all".equals(time_type)){
 				//投资一个月交易记录
-				String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 1 month) and now()) "
-						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 1 MONTH) and NOW()) union ALL "
-						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 1 MONTH) and NOW()) ORDER BY t ASC";
+				String sql="SELECT a.callbackUrl,a.transferAmount,a.requestNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 1 month) and now()) and a.requestNo in(select t.requestNo from transfersucceed t)"
+						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 1 MONTH) and NOW()) and b.requestNo in(select t.requestNo from drawmoneysucceed t) union ALL "
+						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 1 MONTH) and NOW()) and c.requestNo in(select t.requestNo from rechargesucceed t) ORDER BY t ASC";
 				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
 				List list11=new ArrayList();
 				System.out.println("投资所有的交易记录"+list1.size());
@@ -91,9 +91,9 @@ public class transactionRecordController {
 			/*start*/
 			if("threemonth_all".equals(time_type)){
 				//投资三个月交易记录
-				String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 3 month) and now()) "
-						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 3 MONTH) and NOW()) union ALL "
-						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 3 MONTH) and NOW()) ORDER BY t ASC";
+				String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and (a.transDate between date_sub(now(),interval 3 month) and now()) and a.requestNo in(select t.requestNo from transfersucceed t) "
+						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and (b.transDate BETWEEN DATE_SUB(NOW(),INTERVAL 3 MONTH) and NOW()) and b.requestNo in(select t.requestNo from drawmoneysucceed t) union ALL "
+						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 3 MONTH) and NOW()) and c.requestNo in(select t.requestNo from rechargesucceed t) ORDER BY t ASC";
 				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
 				List list11=new ArrayList();
 				System.out.println("投资所有的交易记录"+list1.size());
@@ -115,9 +115,9 @@ public class transactionRecordController {
 			
 			/*start*/
 			if("all_all".equals(time_type)){
-				String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=?"
-						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? union ALL "
-						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=?  ORDER BY t ASC";
+				String sql="SELECT a.callbackUrl,a.transferAmount,a.orderNo,a.transDate as t ,a.projectName FROM transferinfo a where a.platformUserNo=? and a.requestNo in(select t.requestNo from transfersucceed t)"
+						+ "union all SELECT b.callbackUrl,b.amount,b.requestNo,b.transDate as t ,b.id from drawmoney b where b.platformUserNo=? and b.requestNo in(select t.requestNo from drawmoneysucceed t) union ALL "
+						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and c.requestNo in(select t.requestNo from rechargesucceed t) ORDER BY t ASC";
 				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
 				List list11=new ArrayList();
 				System.out.println("投资所有的交易记录"+list1.size());
