@@ -21,6 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function onSubmit(host) {
 		document.getElementById("host").value = host;
 		var form = document.getElementById("form");
+		  document.getElementById("mysubmit_btn").disabled=true;
+		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
 		form.submit();
 	}
 </script>
@@ -189,7 +191,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p><a href=""></a><span><input type="checkbox"> </input>我已阅读并确认下方重要提示信息</span></p>
             <p><a href=""></a><span><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" class="chongzhi_btn">立即充值</a></span></p>
           </div>                  
-     <form role="form" action="<%=path%>/gate/doRecharge" method="post" id="form">      
+     <form role="form" action="<%=path%>/gate/doRecharge" method="post" id="form" target="_blank">      
           <ul class="chong">
             <li style="height:0px;"> <input type="hidden" id="host" name="host"></input>
 		<div class="form-group" style="display:none;height:0px;" >
@@ -241,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             class="btn btn-default">QA</button> -->
           <!-- <button onclick="onSubmit('https://member.yeepay.com/member')"
             class="btn btn-default">立即充值</button> -->
-            <div  class="mar_que_top"><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" style="text-align:center; color:#fff">确定</a></div>
+            <div  class="mar_que_top"><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" style="text-align:center; color:#fff" id="mysubmit_btn">确定</a></div>
         </li>
         </ul>
          </form>                     

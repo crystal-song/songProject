@@ -44,6 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  if(document.getElementById("requestNo").value==""){alert("数据超时！请刷新页面！");return false}
 	  document.getElementById("host").value = host;
 	  var form = document.getElementById("form");
+	  document.getElementById("mysubmit_btn").disabled=true;
+	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
 	  form.submit();
 	}
 </script>
@@ -68,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </div>        
    <div class="user_con01">                 
       <div class="container">
-        <form id="form" role="form" action="<%=path%>/gate/doRegister" method="post" style="padding:0px;">
+        <form id="form" role="form" action="<%=path%>/gate/doRegister" method="post" style="padding:0px;" target="_blank">
           <input type="hidden" id="host" name="host"/>
           <div class="form-group" style="display:none;height:0px;">
             <label for="platformNo">platformNo</label>
@@ -120,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/exam"   />
           </div>
 
-          <div class="jin_input" style="padding-left:200px;"><a href="javascript:;" title="立即注册" onclick="onSubmit('https://member.yeepay.com/member')">立即注册</a></div>
+          <div class="jin_input" style="padding-left:200px;"><a href="javascript:;" title="立即注册" onclick="onSubmit('https://member.yeepay.com/member')" id="mysubmit_btn">立即注册</a></div>
           <!-- <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button>
           <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">生产</button> -->
 

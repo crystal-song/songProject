@@ -18,6 +18,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function onSubmit(host) {
 	  document.getElementById("host").value = host;
 	  var form = document.getElementById("form");
+	  document.getElementById("mysubmit_btn").disabled=true;
+	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
 	  form.submit();
 }
     var navIndex=3; 
@@ -122,7 +124,7 @@ function onSubmit(host) {
               <label for="plat">可提现金金额</label>
               <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元</div>
           </div>
-        <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post">
+        <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
           <input type="hidden" id="host" name="host"/>
           <div class="form-group" style="display:none">
            <!-- <label for="platformNo">platformNo</label><input type="text"
@@ -161,7 +163,7 @@ function onSubmit(host) {
           </div>
       
           <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button>
-          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default mar_btn" >确认</button>
+          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default mar_btn" id="mysubmit_btn" >确认</button>
         </form>
             <%--  <div class="add_postcar" style="display:none">
               <p>填写现金金额</p>

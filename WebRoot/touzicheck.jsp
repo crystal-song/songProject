@@ -22,6 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 function onSubmit(host) {
   document.getElementById("host").value = host;
+  document.getElementById("mysubmit_btn").disabled=true;
+  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
   var form = document.getElementById("form");
   form.submit();
 }
@@ -36,7 +38,7 @@ function onSubmit(host) {
 <div class="msg_con">
   <div class="queren_con">
    <div class="con_title"><strong>投资信息确认</strong></div>
-   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post">
+   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank">
    <ul> 
          <input type="hidden" id="host" name="host">
          <li> <div class="form-group" style="display:none;height:0px;" >
@@ -65,7 +67,7 @@ function onSubmit(host) {
           <li>
           <div class="form-group" style="display:none">
             <label for="transferAmount">标的金额</label><input type="text"
-              class="form-control jin_font" id="transferAmount" name="transferAmount" value="${product.financingMoney}0000" />
+              class="form-control jin_font" id="transferAmount" name="transferAmount" value="${product.financingMoney*10000}" />
           </div>
           </li>
           <li>
@@ -116,7 +118,7 @@ function onSubmit(host) {
           <li>
           <!-- <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>  -->
          <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
-          <div class="que_btn"><a src="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')">确定</a></div>
+          <div class="que_btn"><a src="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" id="mysubmit_btn">确定</a></div>
           </li>
           </ul>
         </form>
