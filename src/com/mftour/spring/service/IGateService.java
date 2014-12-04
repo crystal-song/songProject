@@ -75,5 +75,7 @@ public interface IGateService {
 
 		public List<TRecharge> queryTRechargeByRequestNo(String requestno)
 				throws Exception;
+		public List<TDrawMoney> queryTDrawMoneyByRequestNo(String requestno)
+				throws Exception;
 
 }
