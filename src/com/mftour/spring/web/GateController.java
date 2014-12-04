@@ -450,7 +450,23 @@ public class GateController  {
 	@RequestMapping(value="/gate/doRegister")
 	public String doRegister(String host, BHARegisterRequest request, Model model,TRegisterYeePay  registerYeePay) throws Exception {
 		System.out.println("dddddddddddddddddddd"+registerYeePay.getPlatformUserNo());
-		gateService.addOrUpdateRegisterYeePay(registerYeePay);
+		 List<TRegisterYeePay> li=gateService.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo());
+		 if(li != null && li.size()!=0){
+			 TRegisterYeePay registerYeePay1 = li.get(0);
+			 registerYeePay1.setRequestNo(registerYeePay.getRequestNo());
+			 registerYeePay1.setIdCardNo(registerYeePay.getIdCardNo());
+			 registerYeePay1.setMobile(registerYeePay.getMobile());
+			 registerYeePay1.setPlatformUserNo(registerYeePay.getPlatformUserNo());
+			 registerYeePay1.setEmail(registerYeePay.getEmail());
+			 registerYeePay1.setPlatformNo(registerYeePay.getPlatformNo());
+			 registerYeePay1.setPlatformUserNo(registerYeePay.getPlatformUserNo());
+			 registerYeePay1.setIdCardType(registerYeePay.getIdCardType());
+			 registerYeePay1.setRealName(registerYeePay.getRealName());
+			 gateService.addOrUpdateRegisterYeePay(registerYeePay1);
+		 }else{
+			 gateService.addOrUpdateRegisterYeePay(registerYeePay);
+		 }
+		 
 		
 		 TUser user=userService.getUserByAccount(registerYeePay.getPlatformUserNo());
 
@@ -481,8 +497,10 @@ public class GateController  {
  		   }
 				 }
 			 }else{
+				 TUser user=userService.getUserByAccount(o.toString());
+					model.addAttribute("user", user);
  			 return "register";
- 		 
+ 		       
 		 }
  		  }
 		 TUser user=userService.getUserByAccount(o.toString());
@@ -890,14 +908,14 @@ public class GateController  {
 		    		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
 		    		  model.addAttribute("now", System.currentTimeMillis());
 		    		  System.out.println("ddddddddddddddd"+registerYeePay1.getPlatformUserNo()+"ddddddddd"+registerYeePay1.getCode());
-		    		  if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){
-			        	  model.addAttribute("registerYeePay1", registerYeePay1);
+		    		  /*if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){
+			        	  model.addAttribute("registerYeePay1", registerYeePay1);*/
 			        	  return "zhuce";
-			          }else if(registerYeePay1.getCode()!="1"){
+			         /* }else if(registerYeePay1.getCode()!="1"){
 			        	  
 			        	  return "register";
 			          }
-			     
+			     */
 		    	  
 		    	 
 		    	  
