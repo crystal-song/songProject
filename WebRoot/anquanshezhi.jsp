@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var navIndex=3;  
     var indexs=0;
     $(document).ready(function(){
-    	$(".u_left_sec:first li:eq(1)").children("a").css("font-weight","bold");
+    	$(".u_left_sec:first li:eq(1)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
         $(".anquan_right").click(function(){
         	
