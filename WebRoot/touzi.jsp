@@ -504,7 +504,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                    <span style="display:none" ><a class="baifenbi01" style="width:80px; float:left; text-align:left;">￥&nbsp;&nbsp;<c:if test='${empty s.realityMoney}'>0</c:if> ${s.realityMoney}</a><a style="color:#a4a4a4; text-align:left; float:left;">已筹资</a>
                    </span>
                    <span style="float:right; margin-right:3%;"><a class="baifenbi01" style="float:right; text-align:right;">${s.yearIncome}%</a>
-                   <a style="float:right; color:#a4a4a4;">年华收益率</a></span>
+                   <a style="float:right; color:#a4a4a4;">年化收益率</a></span>
                  </div>
                  <div class="botm_btn01">               
                    <a href="getProductByid?id=${s.id}">我要投</a>
