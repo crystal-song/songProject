@@ -1421,6 +1421,7 @@ ul,li{
 	position:relative;
 	position:fixed;
 	right:6px;
+	top:28%;
 	background:#fff;
 	*+position:absolute;
 	*+right:-220px;
@@ -4135,6 +4136,7 @@ ul,li{
 	text-align:left; 
 	display:none; 
 	font-size:10px;
+	*+font-size:8px;
 	border:1px solid #ae705e;
 }
 .table_style{
