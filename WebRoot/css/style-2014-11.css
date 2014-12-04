@@ -1418,10 +1418,12 @@ ul,li{
 	height:240px;
 	float:right;
 	border:1px solid #ccc;
-	position:relative;
+	/*position:relative;*/
 	position:fixed;
+	bottom:40%;
 	right:6px;
-	top:28%;
+	/*top:28%;*/
+	
 	background:#fff;
 	*+position:absolute;
 	*+right:-220px;
