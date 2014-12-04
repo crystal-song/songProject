@@ -28,8 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-<div class="one"></div>
-<div class="clear_height"></div>
+<div class="clear"></div>
 <div class="msg_con">
   <div class="queren_con" style="height:675px;">
    <div class="sucess_title"><strong>投资成功!</strong></div>
@@ -52,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <li>去个人中心查看<strong><a href="<%=path%>/user-info.jsp" class="con_link">[个人信息]</a></strong>。</li>
    <li><a href="<%=path%>/chongzhi.jsp" class="sec_btn_org">去充值页面充值</a></li>
    </ol> --%>
-   <div class="sec_product">
+   <div class="sec_product" style="display:none;">
 	   <div class="sec_pro_show"></div> 
    </div>
    
