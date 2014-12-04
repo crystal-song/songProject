@@ -144,7 +144,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <ul class="jiaoyi_msg">
                             <li>${t.orderNo}</li>
                             <li>${t.transDate }</li>
-                            <li>${t.callbackUrl=='http://192.168.1.207:8080/spring3/gate/transferSucceed'?'投资':t.callbackUrl=='http://192.168.1.207:8080/spring3/gate/drawMoneySucceed'?'提现':'充值' }</li>
+                            <li>${t.callbackUrl=='http://www.ptobchina.com/gate/transferSucceed'?'投资':t.callbackUrl=='http://www.ptobchina.com/gate/drawMoneySucceed'?'提现':'充值' }</li>
                             <li>${t.projectName}</li>
                             <li>${t.transferAmount }</li>
                             
