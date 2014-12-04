@@ -21,7 +21,7 @@ function onSubmit() {
 	var url = document.getElementById("url").value;
 	var form = document.getElementById("form");
 	form.action = url;
-	//form.submit();
+	form.submit();
 }
 window.onload=function(){
 	setTimeout(onSubmit,2000);
