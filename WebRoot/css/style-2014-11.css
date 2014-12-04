@@ -3977,7 +3977,7 @@ ul,li{
 	width:600px; 
 	height:38px; 
 	margin:10px 0 10px 360px; 
-	list-style-type:decimal;
+	list-style-type:none;
 }
 .sec_btn_org{
 	width:200px; 
