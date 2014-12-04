@@ -2982,12 +2982,17 @@ ul,li{
 .news_right li{
 	height: auto;
 	border-bottom: 1px dashed #ccc;
-	padding-left: 20px;
+	padding-left: 10px;
 	line-height: 40px;
 	text-align: left;
 	z-index: 1;
 	cursor:pointer;
 }
+
+.news_right h1{
+	font-family:"Microsoft YaHei";
+}
+
 .webside span{
 	width: 60%;
 	height: 40px;
