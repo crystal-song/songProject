@@ -26,6 +26,8 @@ function onSubmit(host) {
   document.getElementById("mysubmit_btn").innerHTML="正在提交...";
   var form = document.getElementById("form");
   form.submit();
+ // document.getElementById("que_btn_ok").disabled()
+  
 }
 </script>
 </head>
@@ -118,7 +120,10 @@ function onSubmit(host) {
           <li>
           <!-- <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>  -->
          <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
+
+
           <div class="que_btn"><a src="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" id="mysubmit_btn">确定</a></div>
+
           </li>
           </ul>
         </form>
