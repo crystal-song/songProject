@@ -208,7 +208,10 @@ public class IGateServiceImpl  implements  IGateService {
 		return gateDao.queryTRechargeByRequestNo(requestno);
 	}
 	
-	
+	public List<TDrawMoney> queryTDrawMoneyByRequestNo(String requestno)
+			throws Exception{
+		return gateDao.queryTDrawMoneyByRequestNo(requestno);
+	}
 	
 
 	
