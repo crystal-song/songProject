@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 $(".u_left_mian").click(function(){
              $(this).siblings().slideToggle("slow");
            });
-    	$(".u_left_sec:eq(2) li:eq(2)").children("a").css("font-weight","bold");
+    	$(".u_left_sec:eq(2) li:eq(2)").children("a").css("color","#fc652e");
 
 });
  
