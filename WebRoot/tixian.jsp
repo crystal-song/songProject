@@ -122,7 +122,7 @@ function onSubmit(host) {
               <label for="plat">可提现金金额</label>
               <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元</div>
           </div>
-        <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
+        <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post">
           <input type="hidden" id="host" name="host"/>
           <div class="form-group" style="display:none">
            <!-- <label for="platformNo">platformNo</label><input type="text"

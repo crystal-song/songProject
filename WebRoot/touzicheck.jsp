@@ -36,7 +36,7 @@ function onSubmit(host) {
 <div class="msg_con">
   <div class="queren_con">
    <div class="con_title"><strong>投资信息确认</strong></div>
-   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank">
+   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post">
    <ul> 
          <input type="hidden" id="host" name="host">
          <li> <div class="form-group" style="display:none;height:0px;" >

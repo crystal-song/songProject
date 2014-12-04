@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </div>        
    <div class="user_con01">                 
       <div class="container">
-        <form id="form" role="form" action="<%=path%>/gate/doRegister" method="post" target="_blank" style="padding:0px;">
+        <form id="form" role="form" action="<%=path%>/gate/doRegister" method="post" style="padding:0px;">
           <input type="hidden" id="host" name="host"/>
           <div class="form-group" style="display:none;height:0px;">
             <label for="platformNo">platformNo</label>

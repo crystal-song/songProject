@@ -189,7 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p><a href=""></a><span><input type="checkbox"> </input>我已阅读并确认下方重要提示信息</span></p>
             <p><a href=""></a><span><a href="javascript:;" onclick="onSubmit('https://member.yeepay.com/member')" class="chongzhi_btn">立即充值</a></span></p>
           </div>                  
-     <form role="form" action="<%=path%>/gate/doRecharge" method="post" target="_blank" id="form">      
+     <form role="form" action="<%=path%>/gate/doRecharge" method="post" id="form">      
           <ul class="chong">
             <li style="height:0px;"> <input type="hidden" id="host" name="host"></input>
 		<div class="form-group" style="display:none;height:0px;" >
