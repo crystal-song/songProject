@@ -166,11 +166,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <c:if test="${ not empty list2}">
                       <c:forEach var="t" items="${list2 }">
                       <ul class="jiaoyi_msg">
-                           <li>${t.orderNo}</li>
+                           <li>${t.requestNo}</li>
                             <li>${t.transDate }</li>
                             <li>投资</li>
                             <li>${t.projectName}</li>
-                            <li>${t.transferAmount }</li>
+                            <li>${t.paymentAmount }</li>
                             
                       </ul>  
                       </c:forEach>    
