@@ -85,7 +85,7 @@
                     	 </c:forEach>
 						</c:if>
       </ul>
-      <div class="left_title"><strong>媒体报道</strong></div>
+      <div class="left_title"><strong>新闻报道</strong></div>
       <ul>
         <c:if test="${ not empty list1}">
         <c:forEach var="s" items="${list1}" varStatus="i">
