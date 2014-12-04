@@ -21,7 +21,7 @@ function onSubmit() {
 	var url = document.getElementById("url").value;
 	var form = document.getElementById("form");
 	form.action = url;
-	form.submit();
+	//form.submit();
 }
 window.onload=function(){
 	setTimeout(onSubmit,2000);
@@ -30,9 +30,9 @@ window.onload=function(){
 </script>
 </head>
 <body>
-<div>
-<h1>正在为您转至第三方支付平台，请稍后...</h1>
-<h2><a href="javascript:;" onclick="onSubmit">立即跳转</a></h2>
+<div id="tiaozhuan">
+<h1 style="margin-top:100px; text-align:center; font-size:24px; color:#3e3e3e;">正在为您转至第三方支付平台，请稍后...</h1>
+<h3 style="margin-top:46px; text-align:center; font-size:20px; color:#3e3e3e;"><a href="javascript:;" onclick="onSubmit">立即跳转</a></h3>
 </div>
   <div class="container" style="display:none;">
     <div class="row clearfix">
