@@ -71,6 +71,8 @@ public interface IGateDao {
 				throws Exception;
 		public List<TRecharge> queryTRechargeByRequestNo(String requestno)
 				throws Exception;
+		public List<TDrawMoney> queryTDrawMoneyByRequestNo(String requestno)
+				throws Exception;
 
 }
 	 
