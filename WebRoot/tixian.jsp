@@ -193,7 +193,7 @@ function onSubmit(host) {
               </div>
             </div>     --%>
 
-          <div class="tishi" style="margin-top:50px;">
+          <div class="tishi ai" style="margin-top:50px;">
             <p><strong>温馨提示</strong></p>
             <ol>
               <li class="tishi_red">您充值的资金在24小时内不允许提现。</li>
