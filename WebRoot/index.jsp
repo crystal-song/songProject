@@ -121,7 +121,7 @@ $(document).ready(function(){
   </div>
     <div class="shuju">
        <div class="new_production">
-         <a class="images_pro" href="product/getProductByid?id=56"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/cailanzi.jpg"></a>
+         <a class="images_pro" href="product/getProductByid?id=56"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/shengxian03.jpg"></a>
          <div class="meier_wd">                
            <h3><a href="product/getProductByid?id=56" style="color:#ff453e">百家社区生鲜便利连锁店01期</a></h3>       	
            <ul class="mei_msg">
