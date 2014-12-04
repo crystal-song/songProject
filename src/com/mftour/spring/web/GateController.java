@@ -26,6 +26,7 @@ import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TRecharge;
 import com.mftour.spring.model.TRechargeSucceed;
 import com.mftour.spring.model.TRegisterYeePay;
+import com.mftour.spring.model.TTransNotice;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
@@ -33,10 +34,13 @@ import com.mftour.spring.model.TUser;
 import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IProductService;
+import com.mftour.spring.service.ITransNoticeService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.HttpClientTest;
-import com.mftour.spring.util.ccc;
+import com.mftour.spring.util.MailSenderInfo;
+import com.mftour.spring.util.SimpleMailSender;
+/*import com.mftour.spring.util.ccc;*/
 import com.yeepay.bha.example.bean.BHAAuthorization;
 import com.yeepay.bha.example.bean.BHAEstablishmentRegistration;
 import com.yeepay.bha.example.bean.BHAFeeModeEnum;
@@ -111,6 +115,9 @@ public class GateController  {
 	@Autowired
     private IProductService productService;
 	
+	@Autowired
+	private ITransNoticeService transNoticeService;
+
 	@RequestMapping(value="/gate/service")
 	public String service(Model model,HttpServletRequest request) throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
@@ -1027,10 +1034,88 @@ public class GateController  {
 		    	  gateService.addOrUpdateTRechargeSucceed(rechargeSucceed);;
 		    	  /*TRegisterYeePay registerYeePay=new TRegisterYeePay();*/
 		    	 
-
-		    	
+		    	  //充值成功后发送邮件
+		    	  TRecharge recharge=gateService.queryTRechargeByRequestNo(rechargeSucceed.getRequestNo()).get(0);
+		    	  TUser user=(TUser)request.getSession().getAttribute("userinfo");
+		    	  TTransNotice transnotice=transNoticeService.queryTransNoticeByName(user.getName()).get(0);
+		    	  if(transnotice!=null){
+		    	  if("邮件通知".equals(transnotice.getRechargeNoticeType())){
+		    		  boolean flag = false;
+		    		// 这个类主要是设置邮件
+		    			MailSenderInfo mailInfo = new MailSenderInfo();
+		    			mailInfo.setMailServerHost("smtp.ptobchina.com");
+		    			mailInfo.setMailServerPort("25");
+		    			mailInfo.setValidate(true);
+		    			mailInfo.setUserName("cs@ptobchina.com");
+		    			mailInfo.setPassword("12qwaszx");
+		    			mailInfo.setFromAddress("cs@ptobchina.com");
+		    			mailInfo.setToAddress(user.getEmail());
+		    			mailInfo.setSubject("中租宝-充值成功"); // 设置邮箱标题
+		    			String mainjsp = "http://www.ptobchina.com/wel";
+		    			String msgContent = "亲爱的用户"
+		    					+ user.getName()
+		    					+ "，您好，<br/><br/>"
+		    					+ "您在"
+		    					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+		    			.format(new Date())
+		    			+ "充值成功！<br/><br/>"
+		    			+ "订单编号："+recharge.getRequestNo()+"<br/><br/>"
+		    			+ "充值金额："+recharge.getAmount()+"元<br/><br/>"
+		    			+ "中租宝   <a href=" + mainjsp
+		    			+ "><font color='green'>http://www.ptobchina.com/</font></a>"
+		    			+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+		    			mailInfo.setContent(msgContent); //
+		    			// 这个类主要来发送邮件
+		    			SimpleMailSender sms = new SimpleMailSender();
+		    			// sms.sendTextMail(mailInfo);//发送文体格式
+		    			flag = sms.sendHtmlMail(mailInfo);// 发送html格式
+		    			if (flag != true) {
+		    				mailInfo.setUserName("no-reply@ptobchina.com");
+		    				mailInfo.setPassword("12qwaszx");// 您的邮箱密码
+		    				mailInfo.setFromAddress("no-reply@ptobchina.com");
+		    				flag = sms.sendHtmlMail(mailInfo);
+		    			}
+		    	  }
 		    	   
-		    	
+		    	  }
+		    	  if(transnotice==null){
+		    			  boolean flag = false;
+		    			  // 这个类主要是设置邮件
+		    			  MailSenderInfo mailInfo = new MailSenderInfo();
+		    			  mailInfo.setMailServerHost("smtp.ptobchina.com");
+		    			  mailInfo.setMailServerPort("25");
+		    			  mailInfo.setValidate(true);
+		    			  mailInfo.setUserName("cs@ptobchina.com");
+		    			  mailInfo.setPassword("12qwaszx");
+		    			  mailInfo.setFromAddress("cs@ptobchina.com");
+		    			  mailInfo.setToAddress(user.getEmail());
+		    			  mailInfo.setSubject("中租宝-充值成功"); // 设置邮箱标题
+		    			  String mainjsp = "http://www.ptobchina.com/wel";
+		    			  String msgContent = "亲爱的用户"
+		    					  + user.getName()
+		    					  + "，您好，<br/><br/>"
+		    					  + "您在"
+		    					  + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+		    			  .format(new Date())
+		    			  + "充值成功！<br/><br/>"
+		    			  + "订单编号："+recharge.getRequestNo()+"<br/><br/>"
+		    			  + "充值金额："+recharge.getAmount()+"元<br/><br/>"
+		    			  + "中租宝   <a href=" + mainjsp
+		    			  + "><font color='green'>http://www.ptobchina.com/</font></a>"
+		    			  + "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+		    			  mailInfo.setContent(msgContent); //
+		    			  // 这个类主要来发送邮件
+		    			  SimpleMailSender sms = new SimpleMailSender();
+		    			  // sms.sendTextMail(mailInfo);//发送文体格式
+		    			  flag = sms.sendHtmlMail(mailInfo);// 发送html格式
+		    			  if (flag != true) {
+		    				  mailInfo.setUserName("no-reply@ptobchina.com");
+		    				  mailInfo.setPassword("12qwaszx");// 您的邮箱密码
+		    				  mailInfo.setFromAddress("no-reply@ptobchina.com");
+		    				  flag = sms.sendHtmlMail(mailInfo);
+		    			  }
+		    		
+		    	  }
 		    	  
 		    	 
 		  
@@ -1354,6 +1439,8 @@ public class GateController  {
 	
 	
 	
+	
+	
 	@RequestMapping(value="/gate/transferNotify", method = {RequestMethod.POST, RequestMethod.GET})
 	public String transferNotify( String notify, String sign,Model model)throws Exception {
 		model.addAttribute("notify", notify);
@@ -1421,7 +1508,7 @@ public class GateController  {
 		    	  
 		      }  
 		      
-		     /* gateService.addOrUpdateTTransferNotify(transferNotify);*/
+		      /*gateService.addOrUpdateTTransferNotify(transferNotify);*/
 		  
 		  } catch (Exception e) {
 	            // TODO: handle exception
@@ -1433,8 +1520,7 @@ public class GateController  {
 		
 		return "payment/binding";
 	}
-	
-	
+
 	
 	@RequestMapping(value="/gate/bindingNotify", method = {RequestMethod.POST, RequestMethod.GET})
 	public String bindingNotify(Model model, String notify, String sign,HttpServletRequest request)throws Exception {
@@ -1526,11 +1612,7 @@ public class GateController  {
 		  } catch (Exception e) {
 	            // TODO: handle exception
 	            e.printStackTrace();
-	        } finally {
 	        }
-		
-		
-		
 		return "payment/binding";
 	}
 		

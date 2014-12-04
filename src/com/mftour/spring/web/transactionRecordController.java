@@ -46,8 +46,6 @@ public class transactionRecordController {
 						+"select c.callbackUrl,c.amount,c.requestNo,c.time as t,c.id from recharge c  WHERE c.platformUserNo=? and (c.time  BETWEEN DATE_SUB(NOW(),INTERVAL 1 WEEK) and NOW()) ORDER BY t ASC";
 				List<Object[]> list1=gateService.queryAllTransRecord(page,sql,user.getName());
 				List list11=new ArrayList();
-				
-				System.out.println("投资所有的交易记录"+list1.size());
 				for(Object[] obj:list1){
 					TransactionRecord transrecord=new TransactionRecord();
 					transrecord.setCallbackUrl(obj[0].toString());
@@ -58,7 +56,7 @@ public class transactionRecordController {
 					list11.add(transrecord);
 				}
 				model.addAttribute("list11", list11);
-				System.out.println("list11=============="+list11.size());
+				model.addAttribute("recordsize", list11.size());
 				model.addAttribute("time_type", "seven_all");
 			
 			}
@@ -84,6 +82,7 @@ public class transactionRecordController {
 					list11.add(transrecord);
 				}
 				model.addAttribute("list11", list11);
+				model.addAttribute("recordsize", list11.size());
 				model.addAttribute("time_type", "onemonth_all");
 			}
 			/*end*/
@@ -108,6 +107,7 @@ public class transactionRecordController {
 					list11.add(transrecord);
 				}
 				model.addAttribute("list11", list11);
+				model.addAttribute("recordsize", list11.size());
 				model.addAttribute("time_type", "threemonth_all");
 			}
 			/*end*/
@@ -131,6 +131,7 @@ public class transactionRecordController {
 					list11.add(transrecord);
 				}
 				model.addAttribute("list11", list11);
+				model.addAttribute("recordsize", list11.size());
 				model.addAttribute("time_type", "all_all");
 				
 			}
@@ -141,6 +142,7 @@ public class transactionRecordController {
 				//充值全部的交易记录
 				List<TRecharge> list11=gateService.RechargeAllTransRecord(page,user.getName());
 				model.addAttribute("list1", list11);
+				model.addAttribute("recordsize", list11.size());
 				model.addAttribute("time_type", "recharge_all");
 				
 			}
@@ -151,6 +153,7 @@ public class transactionRecordController {
 				//投资全部的交易记录
 				List<TTransferInfo> list11=gateService.AllTransRecord(page,user.getName());
 				model.addAttribute("list2", list11);
+				model.addAttribute("recordsize", list11.size());
 				model.addAttribute("time_type", "transferinfo_all");
 			}
 			/*end*/
@@ -160,6 +163,7 @@ public class transactionRecordController {
 				//提现全部的交易记录
 				List<TDrawMoney> list11=gateService.DrawMonetAllTransRecord(page,user.getName());
 				model.addAttribute("list3", list11);
+				model.addAttribute("recordsize", list11.size());
 				model.addAttribute("time_type", "drawmoney_all");
 			}
 			/*end*/

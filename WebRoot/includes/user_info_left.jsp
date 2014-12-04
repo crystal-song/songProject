@@ -91,7 +91,7 @@
 				<li style="display:block;">
                   <a href="<%=path%>/anquanshezhi.jsp">安全设置</a>
                 </li>
-                <li style="border-bottom:0; display:none">
+                <li style="border-bottom:0; display:">
                   <a href="<%=path%>/tongzhishezhi.jsp" >通知设置</a>
                 </li>
               </ul>

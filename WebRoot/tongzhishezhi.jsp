@@ -33,7 +33,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             }); 
       
 });
-        
+    
+ $(function(){
+		$("#sub").click(function(){
+			 $.ajax({
+	                type: 'POST',
+	                url: '<c:url value="/transnotice/add"/>',
+	                data: 'rechargeNoticeType='+$("input[name='rechargeNoticeType']:checked").val()+'&drawNoticeType='+$("input[name='drawNoticeType']:checked").val()+'&jiangliNoticeType='+$("input[name='jiangliNoticeType']:checked").val(),
+	                dataType: 'text',
+	                success: function(data) {
+	                    if(data == '"success"') {
+	                    	 alert("设置成功!");
+	                    }
+	                }
+	            });
+		});
+	});       
 </script>
 
 </head>
@@ -54,13 +69,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="pro_con_title" style="margin-top:5px;"><strong>通知设置</strong>
                 </div>
                 <div class="con_list_life">
+                
                   <ul class="tong">
                      <li style="background:#f3f3f3"><span></span><span>系统消息通知</span><span>邮件通知</span><span>短信通知</span></li>
-                     <li><span>充值操作</span><span><input type="checkbox" checked="checked"></input></span><span><input type="checkbox"></input></span><span><input type="checkbox"></input></span></li>
-                     <li><span>提现操作</span><span><input type="checkbox" checked="checked"></input></span><span><input type="checkbox"></input></span><span><input type="checkbox"></input></span></li>
-                     <li><span>奖励兑付</span><span><input type="checkbox" checked="checked"></input></span><span><input type="checkbox"></input></span><span><input type="checkbox"></input></span></li>
+                     <li><span>充值操作</span><span><input type="radio" name="rechargeNoticeType" value="系统消息通知"></input></span><span><input type="radio" checked="checked" name="rechargeNoticeType" value="邮件通知"></input></span><span><input type="radio" name="rechargeNoticeType" value="短信通知"></input></span></li>
+                     <li><span>提现操作</span><span><input type="radio" name="drawNoticeType" value="系统消息通知"></input></span><span><input type="radio" name="drawNoticeType" checked="checked" value="邮件通知"></input></span><span><input type="radio" name="drawNoticeType" value="短信通知"></input></span></li>
+                     <li><span>奖励兑付</span><span><input type="radio" name="jiangliNoticeType" value="系统消息通知"></input></span><span><input type="radio" name="jiangliNoticeType" checked="checked" value="邮件通知"></input></span><span><input type="radio" name="jiangliNoticeType" value="短信通知"></input></span></li>
                  </ul> 
-                  <a class="anquan_hide_btn">确认提交</a>            
+                  <input type="button" id="sub" value="确定"/>
+                 
                 </div>
               </div>       
       </div>

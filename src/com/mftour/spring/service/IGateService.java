@@ -72,6 +72,8 @@ public interface IGateService {
 				throws Exception;
 		public List AllTransRecord(Page page, String platformUserNo)
 				throws Exception;
-		
-		
+
+		public List<TRecharge> queryTRechargeByRequestNo(String requestno)
+				throws Exception;
+
 }

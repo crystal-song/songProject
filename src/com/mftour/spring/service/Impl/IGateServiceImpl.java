@@ -32,7 +32,6 @@ public class IGateServiceImpl  implements  IGateService {
 	@Autowired
     private IGateDao gateDao;
 	
-	
 	@Override
 	public void addOrUpdate(TYeePay YeePay) throws Exception {
 		gateDao.addOrUpdate(YeePay);
@@ -204,6 +203,10 @@ public class IGateServiceImpl  implements  IGateService {
 		 
 	}
 	
+	public List<TRecharge> queryTRechargeByRequestNo(String requestno)
+			throws Exception{
+		return gateDao.queryTRechargeByRequestNo(requestno);
+	}
 	
 	
 	

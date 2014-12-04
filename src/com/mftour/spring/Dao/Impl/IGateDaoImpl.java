@@ -209,6 +209,14 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		return query.list();
 	}
 
+	public List<TRecharge> queryTRechargeByRequestNo(String requestno)
+			throws Exception {
+		String hq = "from TRecharge recharge where recharge.requestNo=:requestNo";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("requestNo",  requestno);
+		return query.list();
+	}
+
 	@Override
 	public List<TInvestmentInfo> queryTInvestmentInfoByName(String name)
 			throws Exception {
