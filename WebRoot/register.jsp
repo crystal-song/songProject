@@ -41,6 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
    function onSubmit(host) {
 	  if(!allcheck){return false};
+	  if(document.getElementById("requestNo").value==""){alert("数据超时！请刷新页面！");return false}
 	  document.getElementById("host").value = host;
 	  var form = document.getElementById("form");
 	  form.submit();
