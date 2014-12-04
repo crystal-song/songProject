@@ -247,7 +247,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </li>
         </ul>
          </form>                     
-          <div class="tishi">
+          <div class="tishi ai">
             <p><strong>温馨提示</strong></p>
             <ul>
               <li class="tishi_red">您充值的资金若未投资就提现，第三方支付公司会收取您提现金额的0.5%作为转账费用。</li>
