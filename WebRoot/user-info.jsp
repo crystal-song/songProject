@@ -162,7 +162,7 @@ var navIndex=2;
 	                        </div>
 	                    </c:if>
 	                  </li>
-	                 <li>
+	                 <li style="margin-top:70px;">
 	                      <span>易宝账号</span>
 	                      <span class="span_le"><%-- ${registerYeePay1.platformUserNo} --%>${user1.realName}</span>
 	                      <c:if test='${ empty registerYeePay1.code}'>
