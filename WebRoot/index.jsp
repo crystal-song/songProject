@@ -199,12 +199,12 @@ $(document).ready(function(){
                  <h3><a class="shuoming" href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></h3>
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
-                   <span>60天</span>
-                   <span style="width:110px;"><em>¥&nbsp;&nbsp;</em>${s.financingMoney}万元</span>
+                   <span><%-- ${s.financingPeriod}个月 --%>30天</span>
+                   <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
                    <a>融资中</a>
                  </div>
                  <div class="loding_bar">
-                 <div class="l_b" <c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
+                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>1</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
                  </div>
                  <div class="floor_bottom">
                    <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>

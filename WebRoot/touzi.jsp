@@ -490,9 +490,9 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
                  </a>
                  <a class="shuoming01" href="getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a>
                  <div class="aim01">
-                   <span style="color:#a4a4a4;">目标:</span>
-                   <span>60天</span>
-                   <span style="width:80px; margin-right:0">￥&nbsp;&nbsp;${s.financingMoney}万元</span>
+                   <span style="color:#a4a4a4;">目标：</span>
+                   <span><%-- ${s.financingPeriod}个月 --%>30天</span>
+                   <span style="width:80px; margin-right:0">￥&nbsp;${s.financingMoney}万元</span>
                    <a>融资中</a>
                  </div>
                  <div class="loding_bar">
