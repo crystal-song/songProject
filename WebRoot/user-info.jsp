@@ -84,7 +84,7 @@ var navIndex=2;
 	                            <span class="border_right01"></span>
 	                          </div>
 	                 </li>
-                     <li><span>真实姓名</span>
+                     <li style="display:none"><span>真实姓名</span>
 	                      <span class="span_le">
 	                      <c:if test="${not empty user1.realName}"> 
 	                      ${fn:substring(user1.realName,0,1)}
@@ -108,7 +108,7 @@ var navIndex=2;
 	                        </div>
 	                    </c:if>
 	                 </li>
-                     <li><span>身份证号码</span>
+                     <li style="display:none"><span>身份证号码</span>
 	                      <span class="span_le">
 	                      <c:if test="${not empty user1.identityCard}">
 	                      ${fn:substring(user1.identityCard,0,7)}********${fn:substring(user1.identityCard,15,18)}
@@ -131,7 +131,7 @@ var navIndex=2;
 	                        </div>
 	                    </c:if>
 	                 </li>
-                     <li><span>手机号码</span>
+                     <li style="display:none"><span>手机号码</span>
 	                      <span class="span_le">
 	                       <c:if test="${not empty user1.phone}">
 	                      ${fn:substring(user1.phone,0,3)}****${fn:substring(user1.phone,7,11)}
@@ -143,7 +143,7 @@ var navIndex=2;
 	                           <div class="border_cent01"><a href="<%=path%>/anquanshezhi.jsp">您未绑定手机号码，请绑定</a></div>
 	                           <span class="border_right01"></span>
 	                        </div></li>
-                     <li><span>邮箱地址</span>
+                     <li style="display:none"><span>邮箱地址</span>
 	                      <span class="span_le">${user1.email}</span>
 	                      <c:if test="${user1.regState==null||user1.regState=='f' }">
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
