@@ -4121,6 +4121,7 @@ ul,li{
 	font-size:16px; 
 	line-height:38px; 
 	text-align:center; 
+	margin-left:5%;
 	display:inline-block;
 	}
 .lame .submit01{
@@ -4254,14 +4255,20 @@ ul,li{
 	height:200px;
 	float:left;
 	margin:20% 0 0 0; 
-	text-align:left;
-	
+	text-align:left;	
 }
-
-.project_list{margin-top:20px;}
-.project_list thead td{font-weight:bold; background:#efefef;}
-.project_list tbody td{ padding-top:3px; border-bottom:1px solid #eee; font-size:12px;}
-
+.project_list{
+	margin-top:20px;
+	}
+.project_list thead td{
+	font-weight:bold;
+	background:#efefef;
+}
+.project_list tbody td{ 
+	padding-top:3px; 
+	border-bottom:1px solid #eee; 
+	font-size:12px;
+}
 .mei_msg .new_span{
 	margin-left:-28px;
 	width:118px;
