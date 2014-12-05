@@ -121,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/bindingSucceed" />
 		          </div>		      	
 		          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button>
-		          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default mar_btn">绑定银行卡</button>
+		          <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default mar_btn">去绑定银行卡</button>
                </form>
             </div>    
            
