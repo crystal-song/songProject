@@ -342,7 +342,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<dt>请将所有相关的图片上传至此区域内！</dt>       
              
 </li>
+                 <li>
+                    <dd>融资方营业执照号：</dd>
+                    <input type="text" name="enterpriseBusinessIicense"  id="enterpriseBusinessIicense"  value="${product1.enterpriseBusinessIicense}" />
+                    <dt></dt>
+                </li>
+                                 <li>
+                    <dd>担保方营业执照号：</dd>
+                    <input type="text" name="guaranteeNumber"  id="guaranteeNumber"  value="${product1.guaranteeNumber}" />
+                    <dt></dt>
+                </li>
                 <li>
+                
                 <dd>设置项目属性：</dd>
                  <p>
                       <label>
