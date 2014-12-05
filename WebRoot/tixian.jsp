@@ -49,27 +49,28 @@ function onSubmit(host) {
     		
     		
     	});
+    	/*
 	    $(".tixian_money").blur(function(){
 	    	var tixian_val=$(".tixian_money").val();
 	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
 	    		alert("您输入的金额为空,请重新输入");	    		
 	    	}    	
-	    });
+	    });*/
 });
-    /*
+  /*
     var myblur= document.getElementById('amount');    
     myblur.onfocus=function(){
       if(myblur.value=="提现金额不能为0"){        	
          myblur.value="";
-         myblur.style.color="#000";
+        // myblur.style.color="#000";
         }     
 }   
-    /*  
+   
     myblur.onblur=function(){
 	   if(myblur.value==""){
-	    //myblur.value="投资金额不低于100元";
+	    myblur.value="投资金额不低于100元";
 	    //alert("您输入的金额不能为空");
-	     myblur.style.color="#ccc" ;  
+	    // myblur.style.color="#ccc" ;  
  }        
 } */
 </script>
@@ -123,7 +124,7 @@ function onSubmit(host) {
              <div class="form-group" style="margin-top:50px;">
               <label for="plat">可提现金金额</label>
               <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元</div>
-          </div>
+             </div>
         <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
           <input type="hidden" id="host" name="host"/>
           <div class="form-group" style="display:none">
