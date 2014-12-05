@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <ul class="list_label">
                     <li>
                       <ul class="label_sec new_fir">
-                        <li class="label_bak">最近七天</li>
+                        <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all">最近七天</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=onemonth_all">一个月</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=threemonth_all">三个月</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=all_all">全部</a></li>
@@ -145,7 +145,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${t.orderNo}</li>
                             <li>${t.transDate }</li>
                             <li>${t.callbackUrl=='http://www.ptobchina.com/gate/transferSucceed'?'投资':t.callbackUrl=='http://www.ptobchina.com/gate/drawMoneySucceed'?'提现':'充值' }</li>
-                            <li>${t.projectName}</li>
+                            <li>${t.callbackUrl=='http://www.ptobchina.com/gate/transferSucceed'?t.projectName:''}</li>
                             <li>${t.transferAmount }</li>
                             
                       </ul>  
