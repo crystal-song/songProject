@@ -145,12 +145,23 @@ var navIndex=2;
 	                        </div></li>
                      <li><span>邮箱地址</span>
 	                      <span class="span_le">${user1.email}</span>
+	                      <c:if test="${user1.regState==null||user1.regState=='f' }">
 	                      <span class="tip"><a href="<%=path%>/anquanshezhi.jsp">立即认证</a></span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
 	                           <div class="border_cent01"><a href="<%=path%>/anquanshezhi.jsp">您未绑定邮箱，请绑定</a></div>
 	                           <span class="border_right01"></span>
-	                        </div></li>
+	                        </div>
+	                        </c:if>
+	                         <c:if test="${user1.regState=='s'}">
+	                           <span class="tip" id="green_back">已认证</span>
+	                           <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01"><a href="javascript:;">您已绑定邮箱。</a></div>
+	                           <span class="border_right01"></span>
+	                        </div>
+	                    </c:if>
+	                  </li>
 	                 <li>
 	                      <span>易宝账号</span>
 	                      <span class="span_le"><%-- ${registerYeePay1.platformUserNo} --%>${user1.realName}</span>
