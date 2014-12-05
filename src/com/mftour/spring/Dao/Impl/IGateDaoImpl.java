@@ -173,7 +173,7 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		return query.list();
 	}
 	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception {
-		String hq = "from TDrawMoney drawMoney where drawMoney.platformUserNo=:platformUserNo  and drawMoney.requestNo in(select t.requestNo from TDrawMoneySucceed t)  order by drawMoney.transDate asc";
+		String hq = "from TDrawMoney drawMoney where drawMoney.platformUserNo=:platformUserNo  and drawMoney.requestNo in(select t.requestNo from TDrawMoneySucceed t)  order by drawMoney.transDate desc";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", platformUserNo);
 		page.setTotalRecord(query.list().size());
@@ -182,7 +182,7 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		return query.list();
 	}
 	public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)throws Exception{
-		String hq = "from TRecharge Recharge where Recharge.platformUserNo=:platformUserNo  and Recharge.requestNo in(select t.requestNo from TRechargeSucceed t) order by Recharge.time asc";
+		String hq = "from TRecharge Recharge where Recharge.platformUserNo=:platformUserNo  and Recharge.requestNo in(select t.requestNo from TRechargeSucceed t) order by Recharge.time desc";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", platformUserNo);
 		page.setTotalRecord(query.list().size());
@@ -191,7 +191,7 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		return query.list();
 	}
 	public List  AllTransRecord(Page page,String platformUserNo)throws Exception{
-		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo  and transferInfo.requestNo in(select t.requestNo from TTransferSucceed t) order by transferInfo.transDate asc";
+		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo  and transferInfo.requestNo in(select t.requestNo from TTransferSucceed t) order by transferInfo.transDate desc";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", platformUserNo);
 		page.setTotalRecord(query.list().size());
