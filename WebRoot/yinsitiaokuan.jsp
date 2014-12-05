@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
 		<div class="termsOfUse mgt-20">
 			<h1 style="font-size:20px;text-align:center;">中租宝网站隐私条款</h1>
-			<div class="section">以下是本网站（http://ptobchina.com）及其运营公司中投汇融投资管理有限公司（以下合称“本网站”）的隐私规则条款。</div>
+			<div class="section">以下是本网站<a href="http://ptobchina.com">（http://ptobchina.com）</a>及其运营公司中投汇融投资管理有限公司（以下合称“本网站”）的隐私规则条款。</div>
 			<div class="section">您成为本网站用户前务必仔细阅读本隐私条款并同意本隐私条款。作为本网站服务的正常操作程序的一部分，本网站收集、使用并（在一些情况下）向第三方披露有关您的资料。本隐私条款作为本网站服务协议的附件，在您注册成为本网站用户后立即生效，并对您及本网站产生约束力。</div>
 			<div class="title01">1. 用户身份限制</div>
 			<div class="section">未成年人（年龄18周岁以下人士）、限制行为能力人、中国（包括港澳台地区）以外地区人士及自然人以外的组织无资格注册成为本网站用户并使用本网站的服务，本网站要求未成年人、限制行为能力人、中国（包括港澳台地区）以外地区人士及各类组织不要向本网站提交任何个人资料。</div>
