@@ -95,9 +95,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">9.4 双方确认，本合同的签署、生效和履行以不违反中国的法律法规为前提。如果本合同中的任何一条或多条违反适用的法律法规，则该条将被视为无效，但该无效条款并不影响本合同其他条款的效力；</div>
 			<div class="section">9.5 本协议一式两份，甲、乙双方各保留一份。</div>
 			<div class="section">甲方：</div>
-			<div class="section">签署时间：{transferInfo.transDate}</div>
+			<div class="section">签署时间：${transferInfo.transDate}</div>
 			<div class="section">乙方：中投汇融投资管理有限公司</div>
-			<div class="section">签署时间：{transferInfo.transDate}</div>
+			<div class="section">签署时间：${transferInfo.transDate}</div>
 			<h1 style=" font-size: 20px;">借款及保证合同</h1>
 			<div class="section">甲方（债权人）：${registerYeePay.realName}</div>
 			<div class="section">身份证（护照号码）：${registerYeePay.idCardNo}</div>
@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">营业执照号码：${product.enterpriseBusinessIicense}</div>
 			<div class="section">丙方（保证人）：${product.guaranteeInstitution}</div>
 			<div class="section">营业执照号码：${product. guaranteeNumber}</div>
-			<div class="title01">借款内容:</div>
+			<div class="title01">借款内容:${product.fundUse}</div>
 			<div class="section">借款用途：${product.projectIntroduce}</div>
 			<div class="section">借款金额：${product.financingMoney}</div>
 			<div class="section">借款利率(365天/年)： ${product.yearIncome}</div>
@@ -186,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">甲方（债权人）：${registerYeePay.realName}</div>
 			<div class="section">乙方（债务人）：${product.projectName}</div>
 			<div class="section">丙方（保证人）：${product.guaranteeInstitution}</div>
-			<div class="section">签署日期： {transferInfo.transDate}</div>
+			<div class="section">签署日期： ${transferInfo.transDate}</div>
 
 	   </div>
  
