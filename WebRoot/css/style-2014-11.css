@@ -2206,6 +2206,30 @@ ul,li{
 	height: 86px;
 	float: left;
 }
+.three_btn{
+	width:810px;
+	height:100px;
+	
+}
+.char{
+	margin-right:20px;
+	font-size:14px;
+	color:#fc652e;
+}
+.char:hover{
+	color:#fc652e;
+}
+.three_btn a{
+	display:inline-block;
+    background: #ff6862;
+    color: #fff;
+    font-size: 16px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    width: 120px;
+    margin:0 20px;
+}
 /*zichan end*/
 
 .money{
@@ -4101,6 +4125,7 @@ ul,li{
 	line-height:38px; 
 	text-align:center; 
 	margin-left:40%;
+	display:inline-block;
 	}
 .lame .submit01{
 	width:80px; 
