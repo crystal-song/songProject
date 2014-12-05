@@ -2209,12 +2209,9 @@ ul,li{
 .three_btn{
 	width:810px;
 	height:100px;
-	
 }
 .char{
-	margin-right:20px;
-	font-size:14px;
-	color:#fc652e;
+	margin-right:20px;	
 }
 .char:hover{
 	color:#fc652e;
