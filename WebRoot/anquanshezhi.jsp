@@ -340,7 +340,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div> 
                    </li>
                 
-                   <li >
+                   <li style="display:none">
                    <form action="<%=path%>/welcome/identityCardVerification" method="post" enctype="multipart/form-data">
                         <div class="anquan_label label2">
                          <span>实名认证</span>
@@ -503,7 +503,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
                    </li>
-                   <li>
+                   <li style="display:none">
                         <div class="anquan_label label7">
                          <span>密码保护</span>
                          
