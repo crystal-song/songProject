@@ -30,32 +30,22 @@ function onSubmit(host) {
     	$(".u_left_mian").click(function(){
             $(this).siblings().slideToggle("slow");	
     	});	
-    	/*
-    	$(".tixian_money").focus(function(){
-    		var tixian_val=$(".tixian_money").val();
-    		if(tixian_val=="提现金额不能为0"){
-    			tixian_val="";	
-	    	}else{
-	    		//alert(tixian_val)
-	    	}
-    	});*/
+
+    	
     	$(".tixian_money").focus(function(){ 
     		var tixian_val=$(".tixian_money").val();
     		if(tixian_val=="提现金额不能为0");
-    		    tixian_val="";
-    		//alert("aa")
-    		
-    		
-    		
+    		  $(".tixian_money").val("");
+    		//alert("aa")		
     		
     	});
-    	/*
+    	
 	    $(".tixian_money").blur(function(){
 	    	var tixian_val=$(".tixian_money").val();
 	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
 	    		alert("您输入的金额为空,请重新输入");	    		
 	    	}    	
-	    });*/
+	    });
 });
   /*
     var myblur= document.getElementById('amount');    
