@@ -42,7 +42,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="user_right">  
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>资产统计</strong></div>
-          <p class="zichan_num"><span>资产总值:</span><strong><span>${balance}</span><i>元</i></strong></p>
+          <p class="zichan_num"><span>资产总值:</span><strong><span>${balance}</span><i>元</i></strong>
+          <a href="<%=path%>/gate/recharge" class="char">充值</a>
+          <a href="<%=path%>/gate/drawMoney" class="char">提现</a>
+          <a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all" class="char">交易记录</a>          
+          </p>
           <ul class="zichan_bar">
             <li>
               <div class="li_pic back01"></div>
@@ -69,6 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
             </li> -->
           </ul>
+          <div class="clear"></div>
  <!--          <div class="clear"></div>
           <div class="pro_con_title" style="margin-top:5px;"><strong>待收收益</strong></div>
           <div class="zichan_bar">
