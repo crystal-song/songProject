@@ -227,7 +227,7 @@ $(document).ready(function(){
 	                           <span class="border_right01"></span>
 	                           </div>
 	                     </li>
-	                     <li>
+	                     <li style="display:none">
 	                      <span>真实姓名</span>
 	                      <span>${user1.realName}</span>
 	                      <span class="tip">立即认证</span>
@@ -237,7 +237,7 @@ $(document).ready(function(){
 	                           <span class="border_right01"></span>
 	                      </div>
 	                    </li>
-	                     <li>
+	                     <li style="display:none">
 	                      <span>身份证号码</span>
 	                      <span>${user1.identityCard}</span>
 	                      <span class="tip">立即认证</span>
@@ -247,7 +247,7 @@ $(document).ready(function(){
 	                           <span class="border_right01"></span>
 	                      </div>
 	                    </li>
-	                     <li>
+	                     <li style="display:none">
 	                      <span>手机号码</span>
 	                      <span>${user1.phone}</span>
 	                      <span class="tip">立即认证</span>
@@ -257,7 +257,7 @@ $(document).ready(function(){
 	                           <span class="border_right01"></span>
 	                        </div>
 	                    </li>
-	                     <li>
+	                     <li style="display:none">
 	                      <span>邮箱地址</span>
 	                      <span>${user1.email}</span>
 	                      <span class="tip">立即认证</span>
