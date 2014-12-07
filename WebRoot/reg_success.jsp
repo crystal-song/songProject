@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td  style="color:#FF6633;font-weight:bold" width="100%">您现在可以直接登录中租宝。 </td>
 			</tr>
 			<tr>
-				<td  style="color:#FF6633;font-weight:bold" width="100%"><a href="<%=path%>/login.jsp">直接登录</a></td>
+				<td  style="color:#FF6633;font-weight:bold" width="100%"><a href="<%=path%>/login.jsp">请重新登录</a></td>
 			</tr>
 			
      		    </c:when>
