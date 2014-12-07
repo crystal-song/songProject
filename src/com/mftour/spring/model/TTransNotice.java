@@ -2,45 +2,26 @@ package com.mftour.spring.model;
 
 public class TTransNotice {
 	private Long id;
-	private String rechargeNoticeType;
-	private String drawNoticeType;
-	private String jiangliNoticeType;
+	private String type;
+	private String noticeType;
 	private String userName;
-	
-	public TTransNotice() {
-		super();
-	}
-	public TTransNotice(String rechargeNoticeType, String drawNoticeType,
-			String jiangliNoticeType, String userName) {
-		super();
-		this.rechargeNoticeType = rechargeNoticeType;
-		this.drawNoticeType = drawNoticeType;
-		this.jiangliNoticeType = jiangliNoticeType;
-		this.userName = userName;
-	}
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getRechargeNoticeType() {
-		return rechargeNoticeType;
+	public String getType() {
+		return type;
 	}
-	public void setRechargeNoticeType(String rechargeNoticeType) {
-		this.rechargeNoticeType = rechargeNoticeType;
+	public void setType(String type) {
+		this.type = type;
 	}
-	public String getDrawNoticeType() {
-		return drawNoticeType;
+	public String getNoticeType() {
+		return noticeType;
 	}
-	public void setDrawNoticeType(String drawNoticeType) {
-		this.drawNoticeType = drawNoticeType;
-	}
-	public String getJiangliNoticeType() {
-		return jiangliNoticeType;
-	}
-	public void setJiangliNoticeType(String jiangliNoticeType) {
-		this.jiangliNoticeType = jiangliNoticeType;
+	public void setNoticeType(String noticeType) {
+		this.noticeType = noticeType;
 	}
 	public String getUserName() {
 		return userName;
@@ -48,5 +29,6 @@ public class TTransNotice {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
 	
 }
