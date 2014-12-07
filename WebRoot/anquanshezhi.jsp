@@ -438,7 +438,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <c:if test="${userinfo.regState=='s'}">
                          <span>已设置</span>
                      	</c:if>
-                     	<c:if test="${userinfo.regState=='f'}">
+                     	<c:if test="${userinfo.regState==null||userinfo.regState=='f'}">
                          <span class="anquan_right">认证</span>
                         </c:if>
                         </div>
