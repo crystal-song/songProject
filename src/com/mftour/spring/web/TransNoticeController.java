@@ -24,25 +24,52 @@ public class TransNoticeController  {
 	
 
 	@RequestMapping(value="/add")
-	@ResponseBody
-	public String addTransNotice(@RequestParam("rechargeNoticeType") String rechargeNoticeType,@RequestParam("drawNoticeType") String drawNoticeType
-			,@RequestParam("jiangliNoticeType") String jiangliNoticeType,HttpServletRequest request) throws Exception {
+	public String addTransNotice(@RequestParam("noticeType1") String[] noticeType1,@RequestParam("noticeType2") String[] noticeType2
+			,HttpServletRequest request) throws Exception {
+		String type1="充值";
+		String type2="提现";
 		TUser user=(TUser)request.getSession().getAttribute("userinfo");
 		List<TTransNotice> list=transNoticeService.queryTransNoticeByName(user.getName());
+		List<TTransNotice> list1=transNoticeService.queryTransNoticeByNameAndtype(user.getName(),type1);
+		List<TTransNotice> list2=transNoticeService.queryTransNoticeByNameAndtype(user.getName(),type2);
+		
 		int i=list.size();
 		System.out.println("lllllll"+i);
 		if(i==0){
-		TTransNotice transnotice=new TTransNotice(rechargeNoticeType,drawNoticeType,jiangliNoticeType,user.getName());
-		transNoticeService.addOrUpdate(transnotice);
+			for(String reNoticeType:noticeType1){
+				TTransNotice transnotice=new TTransNotice();
+				transnotice.setType("充值");
+				transnotice.setNoticeType(reNoticeType);
+				transnotice.setUserName(user.getName());
+				transNoticeService.addOrUpdate(transnotice);
+			}
+			for(String drawNoticeType:noticeType2){
+				TTransNotice transnotice=new TTransNotice();
+				transnotice.setType("提现");
+				transnotice.setNoticeType(drawNoticeType);
+				transnotice.setUserName(user.getName());
+				transNoticeService.addOrUpdate(transnotice);
+			}
+		
+		
 		}else{
-			for(TTransNotice transnotice:list){
-				transnotice.setRechargeNoticeType(rechargeNoticeType);
-				transnotice.setDrawNoticeType(drawNoticeType);
-				transnotice.setJiangliNoticeType(jiangliNoticeType);
+			transNoticeService.delTransNoticeByName(user.getName());
+			for(String reNoticeType:noticeType1){
+				TTransNotice transnotice=new TTransNotice();
+				transnotice.setType("充值");
+				transnotice.setNoticeType(reNoticeType);
+				transnotice.setUserName(user.getName());
+				transNoticeService.addOrUpdate(transnotice);
+			}
+			for(String drawNoticeType:noticeType2){
+				TTransNotice transnotice=new TTransNotice();
+				transnotice.setType("提现");
+				transnotice.setNoticeType(drawNoticeType);
+				transnotice.setUserName(user.getName());
 				transNoticeService.addOrUpdate(transnotice);
 			}
 		}
-		return "success";
+		return "index";
 	}
 	
 }
