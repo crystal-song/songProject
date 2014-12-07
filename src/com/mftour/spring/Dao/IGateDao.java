@@ -61,6 +61,8 @@ public interface IGateDao {
 	 
 	 public List<TInvestmentInfo> queryTInvestmentInfoByName(String name)throws Exception;
 	 
+	 public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(String  enterpriseNumber)throws Exception;
+	 
 	 public List queryAllTransRecord(Page page,String sql,String platformUserNo)
 				throws Exception;
 		public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)
