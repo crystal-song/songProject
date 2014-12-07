@@ -631,7 +631,7 @@ public class GateController  {
 					 investmentInfo.setIdentityCard(list.get(0).getIdCardNo());
 				 }
 			 }
-			 investmentInfo.setRequestNo(request.getPlatformNo());
+			 investmentInfo.setRequestNo(request.getRequestNo());
 			 investmentInfo.setWriteTime(df.format(new Date()));
 			 investmentInfo.setInvestmentAmount(Double.parseDouble(TtransferInfo.getPaymentAmount()));
 			 investmentInfo.setEnterpriseNumber(TtransferInfo.getEnterpriseNumber());
