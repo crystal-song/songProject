@@ -576,6 +576,7 @@ public class GateController  {
 		 
 		 TUser user=userService.getUserByAccount(o.toString());
 			model.addAttribute("user", user);
+			model.addAttribute("now", System.currentTimeMillis());
 		 return "register";
 		/*return "payment/transfer";*/
 	}
@@ -1244,19 +1245,19 @@ public class GateController  {
 		      
 		    	 
 		      
-		      List<TProduct> list=productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
+		     /* List<TProduct> list=productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
 				TProduct product=list.get(0);
 				model.addAttribute("now", System.currentTimeMillis());
 				 System.out.println("dddddddddddddddddddd"+transferInfo.getPlatformUserNo());
 				 System.out.println("dddddddddddddddddddd"+transferInfo.getTransferAmount());
 			
 				 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-			    			/*+"<request platformNo='10040011137'>"*/
+			    			+"<request platformNo='10040011137'>"
 						 +"<request platformNo='10012415118'>"
-			    			/*+"<platformUserNo>gg123456</platformUserNo> "*/
+			    			+"<platformUserNo>gg123456</platformUserNo> "
 			    			+"<orderNo>"+transferInfo.getOrderNo()+"</orderNo> "
 			    			+"<requestNo>"+System.currentTimeMillis()+"</requestNo> "
-			    			/*+"<fee>"+"fee"+"</fee> "*/
+			    			+"<fee>"+"fee"+"</fee> "
 			    			+"<transfers>"
 			    			+"<transfer>"
 			    			+"<requestNo>"+transferInfo.getRequestNo()+"</requestNo> "
@@ -1265,16 +1266,16 @@ public class GateController  {
 			    			+"<sourcePlatformUserNo>"+transferInfo.getPlatformUserNo()+"</sourcePlatformUserNo> "
 			    			+"<targetUserType>"+"MEMBER"+"</targetUserType> "
 			    			+"<targetPlatformUserNo>"+product.getTargetPlatformUserNo()+"</targetPlatformUserNo> "
-			    			/*+"<targetPlatformUserNo>"+"601522539"+"</targetPlatformUserNo> "*/
+			    			+"<targetPlatformUserNo>"+"601522539"+"</targetPlatformUserNo> "
 			    			+"</transfer>"
 			    			+"</transfers>"
 			    			+"<notifyUrl>"+"http://192.168.1.207:8080/spring3/gate/loanexam"+"</notifyUrl> "
 			                +"</request>";
 		       String service="LOAN";
-			  /* String host="http://qa.yeepay.com/member";	*/
+			   String host="http://qa.yeepay.com/member";	
 		    	   String host="https://member.yeepay.com/member";	
 		    	  
-		       doloan(host, req,service, model);
+		       doloan(host, req,service, model);*/
 				
 		    		 
 		    		
