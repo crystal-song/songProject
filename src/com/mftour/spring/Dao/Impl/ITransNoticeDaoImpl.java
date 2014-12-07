@@ -36,4 +36,27 @@ public class ITransNoticeDaoImpl extends HibernateDaoSupport implements
 		query.setParameter("userName", username);
 		return query.list();
 	}
+	public List<TTransNotice> queryTransNoticeByNameAndtype(String username,String type)
+			throws Exception{
+		String hql="from TTransNotice transnotice where transnotice.userName=:userName and transnotice.type=:type";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("userName", username);
+		query.setParameter("type", type);
+		return query.list();
+	}
+	public List<TTransNotice> queryTransNoticeByNameAndtypes(String username,String type,String noticeType)
+			throws Exception{
+		String hql="from TTransNotice transnotice where transnotice.userName=:userName and transnotice.type=:type and transnotice.noticeType=:noticeType";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("userName", username);
+		query.setParameter("type", type);
+		query.setParameter("noticeType", noticeType);
+		return query.list();
+	}
+	public void delTransNoticeByName(String username){
+		String hql="delete from TTransNotice transnotice where transnotice.userName=:userName";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("userName", username);
+		query.executeUpdate();
+	}
 }
