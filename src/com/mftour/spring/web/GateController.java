@@ -1229,7 +1229,7 @@ public class GateController  {
 		    	  }
 		    	  
 		      }  
-		      List<TInvestmentInfo> li=gateService.queryTInvestmentInfoByName(TTransferSucceed.getPlatformNo());
+		      List<TInvestmentInfo> li=gateService.queryTInvestmentInfoByName(TTransferSucceed.getRequestNo());
 		      if(li != null && li.size()!=0){
 		    	  TInvestmentInfo investmentInfo = li.get(0);
 		    	  investmentInfo.setCode(TTransferSucceed.getCode());
