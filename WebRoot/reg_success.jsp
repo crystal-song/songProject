@@ -47,11 +47,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 			
      		    </c:when>
-     		    <%request.getAttribute("msg"); %>
+     		   
        			<c:when test="${regState=='f'}">
 					注册失败！
       		    </c:when>
 		  </c:choose>
+		   <%request.getAttribute("msg"); %>
 				</td>
 			</tr>
 			
