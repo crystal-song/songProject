@@ -63,6 +63,8 @@ public interface IGateService {
 	 
 	 public List<TInvestmentInfo> queryTInvestmentInfoByName(String name)throws Exception;
 	 
+	 public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(String  enterpriseNumber)throws Exception;
+	 
 	 
 	 public List queryAllTransRecord(Page page,String sql,String platformUserNo)
 				throws Exception;
