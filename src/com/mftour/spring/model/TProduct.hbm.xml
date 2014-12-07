@@ -106,10 +106,10 @@
           <property name="buyType" type="java.lang.Integer">
             <column name="buyType" length="50" />
         </property> 
-             <property name="enterpriseBusinessIicense" type="java.lang.Integer">
+             <property name="enterpriseBusinessIicense" type="java.lang.String">
             <column name="enterpriseBusinessIicense" length="50" />
         </property> 
-             <property name="guaranteeNumber" type="java.lang.Integer">
+             <property name="guaranteeNumber" type="java.lang.String">
             <column name="guaranteeNumber" length="50" />
         </property> 
        
