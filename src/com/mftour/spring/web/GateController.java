@@ -128,6 +128,11 @@ public class GateController  {
 			 if(li != null && li.size()!=0){
 				 TRegisterYeePay registerYeePay=li.get(0);
 				  name= registerYeePay.getPlatformUserNo();
+			 }else{
+				 
+				 TUser user=userService.getUserByAccount(o.toString());
+					model.addAttribute("user", user);
+				 return "register";
 			 }
 			 List<TEstablishmentRegistration> list= gateService.queryTEstablishmentRegistrationByName(o.toString());
 			 if(list != null && list.size()!=0){
@@ -233,6 +238,7 @@ public class GateController  {
 			 model.addAttribute("registerYeePay", registerYeePay);
 		 }
 		 List<TProduct> li=productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
+		 List<TTransferInfo> list1= gateService.queryTTransferInfoByEnterpriseNumber(transferInfo.getEnterpriseNumber());
 		 if(li != null && li.size()!=0){
 			 TProduct product=li.get(0);
 			 model.addAttribute("product", product);
@@ -547,7 +553,12 @@ public class GateController  {
 		             }
 		
 		 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
-		 if(li != null && li.size()!=0){
+		/* if(li != null && li.size()!=0){
+			 TUser user=userService.getUserByAccount(o.toString());
+				model.addAttribute("user", user);
+				TRegisterYeePay registerYeePay= li.get(0);
+			 return "register";	 
+		 }else*/ if(li != null && li.size()!=0&&li.get(0).getCode()!=null){
 			 TRegisterYeePay registerYeePay1=li.get(0);
 		System.out.println("ddddd"+buyAmount);
 		model.addAttribute("registerYeePay1", registerYeePay1);
@@ -555,7 +566,14 @@ public class GateController  {
 		model.addAttribute("product", product);
 		model.addAttribute("now", System.currentTimeMillis());
 		return "touzicheck";
-		 }
+			 }else if(li != null && li.size()!=0){
+				 TUser user=userService.getUserByAccount(o.toString());
+					model.addAttribute("user", user);
+					model.addAttribute("now", System.currentTimeMillis());
+					TRegisterYeePay registerYeePay= li.get(0);
+				 return "register";
+			 }
+		 
 		 TUser user=userService.getUserByAccount(o.toString());
 			model.addAttribute("user", user);
 		 return "register";
