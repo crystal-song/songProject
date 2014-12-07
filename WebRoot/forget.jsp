@@ -41,7 +41,7 @@ function chk_name() {
 					/* alert("dd"+data+'"success"'); */
 					if (data == '"success"') {
 						$("#tip_username").html(
-								'<span class="tip_f01">用户名存在！</span>');
+								'<span class="tip_f01" style="color:#390">用户名存在！</span>');
 						/* $('#form').submit(); */
 						/* window.open('<c:url value="/welcome/session"/>', '_self'); */
 					} else {
@@ -76,7 +76,7 @@ function chk_email() {
 			success : function(data) {
 				if (data == '"success"') {
 					$("#tip_useremail").html(
-							'<span class="tip_f01">邮箱存在！</span>');
+							'<span class="tip_f01" style="color:#390">邮箱存在！</span>');
 				} else {
 					$("#tip_useremail").html(
 							'<span class="tip_f01">邮箱不存在！</span>');
@@ -139,7 +139,7 @@ function chk_email() {
 					  </tr>
 					  <tr></tr>
                       <tr>
-                        <td style="text-align:left;"><input type="submit" value="确定"  class="check_btn01" onclick="query()"/></td>
+                        <td style="text-align:left;"><input type="submit" value="找回密码"  class="check_btn01" onclick="query()"/></td>
                         <td align="left" id="left_b">
                         
 		</td>
