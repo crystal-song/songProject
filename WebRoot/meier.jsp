@@ -5,7 +5,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
- <%@ include file="/includes/taglibs.jsp" %> 
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>无标题文档</title>
 <link rel="stylesheet" href="css/meier.css">
 <link rel="stylesheet" href="css/jquery.fullPage.css">
-
+<%@ include file="/includes/taglibs.jsp" %> 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
 <script src="<%=path%>/js/jquery-1.8.3.min.js"></script>
 <script src="<%=path%>/js/jquery-ui-1.10.3.min.js"></script>
