@@ -30,6 +30,18 @@ public class ITransNoticeServiceImpl  implements  ITransNoticeService {
 		return transNoticeDao.queryTransNoticeByName(username);
 	}
 
+	public List<TTransNotice> queryTransNoticeByNameAndtype(String username,String type)
+			throws Exception{
+		return transNoticeDao.queryTransNoticeByNameAndtype(username, type);
+	}
+	public List<TTransNotice> queryTransNoticeByNameAndtypes(String username,String type,String noticeType)
+			throws Exception{
+		return transNoticeDao.queryTransNoticeByNameAndtypes(username, type, noticeType);
+	}
+	public void delTransNoticeByName(String username)
+			throws Exception{
+		 transNoticeDao.delTransNoticeByName(username);
+	}
 
 	
 }
