@@ -822,7 +822,7 @@ ul,li{
 .foo01{
 	width:1100px;
 	height:80px;
-	background:url(../img/images-2014-11/footer.jpg) 0 80px no-repeat;
+	background:url(../img/images-2014-11/footer.png) 0 80px no-repeat;
 	margin:0 auto;
 	font-size:16px;
 	color:#000;
@@ -841,7 +841,7 @@ ul,li{
 .foo02{
 	width:1100px;
 	height:60px;
-	background:url(../img/images-2014-11/footer.jpg) 0 50px no-repeat;
+	background:url(../img/images-2014-11/footer.png) 0 50px no-repeat;
 	margin:0 auto;
 	font-size:16px;
 	color:#000;
@@ -996,8 +996,8 @@ ul,li{
 	background:url(../img/images-2014-11/xiugai_msg.png) 2px -4px no-repeat;
 	position: absolute;
 	right: 0;
-	top:32%;
-	*+top:36%;
+	top:15%;
+
 }	
 .user_pink:hover{
 	color: #ef4551;
@@ -1011,7 +1011,7 @@ ul,li{
     border: 1px solid #ccc;
 }
 .con_name{
-	height:300px;
+	height:130px;
 	margin-top: 50px;
 }
 
@@ -3335,13 +3335,13 @@ ul,li{
 	min-width:1200px;;
 }
 .ban01{
-	background:url(../img/images-2014-11/banner_01.jpg) 50% 0 no-repeat;
+	background:url(../img/images-2014-11/banner_001.jpg) 50% 0 no-repeat;
 }
 .ban02{
-	background:url(../img/images-2014-11/banner_02.jpg) 80% 0 no-repeat;
+	background:url(../img/images-2014-11/banner_002.jpg) 80% 0 no-repeat;
 }
 .ban03{
-	background:url(../img/images-2014-11/banner_03.jpg) 50% 0 no-repeat;
+	background:url(../img/images-2014-11/banner_003.jpg) 50% 0 no-repeat;
 }
 .one{ 
 	width:100%; 
