@@ -42,7 +42,7 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 	@Override
 	public List<TRegisterYeePay> queryTRegisterYeePayByName(String name)
 			throws Exception {
-		String hq = "from TRegisterYeePay registerYeePay where registerYeePay.platformUserNo = :platformUserNo";
+		String hq = "from TRegisterYeePay registerYeePay where registerYeePay.platformUserNo = :platformUserNo ";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", name);
 		return query.list();
@@ -69,6 +69,17 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 			throws Exception {
 		getHibernateTemplate().saveOrUpdate(TTransferInfo);
 		
+	}
+	
+	
+
+	@Override
+	public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(
+			String enterpriseNumber) throws Exception {
+		String hq = "from TTransferInfo transferInfo where transferInfo.enterpriseNumber = :enterpriseNumber";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
 	}
 
 	@Override
@@ -203,9 +214,10 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByName(String name)
 			throws Exception {
-		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo order by transferInfo.transDate desc";
+		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo and transferInfo.code=:code order by transferInfo.transDate desc";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo",  name);
+		query.setParameter("code", "1");
 		return query.list();
 	}
 
