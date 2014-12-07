@@ -383,7 +383,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            <li id="pic_height"><span></span>
                             <span id="postcar">
                             <div id="divPreview1">
-      						 <img id="imgHeadPhoto1" src="noperson.jpg" style="width: 200px; height: 200px; border: solid 1px #d2e2e2;" alt="" />
+      						 <img id="imgHeadPhoto1" src="" style="width: 200px; height: 200px; border: solid 1px #d2e2e2;" alt="" />
  							</div>
  							</span>
  						   </li>                         
@@ -391,7 +391,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <li id="pic_height"><span></span>
                           <span id="postcar"> 
                             <div id="divPreview2">
-      						 <img id="imgHeadPhoto2" src="noperson.jpg" style="width: 200px; height: 200px; border: solid 1px #d2e2e2;" alt="" />
+      						 <img id="imgHeadPhoto2" src="" style="width: 200px; height: 200px; border: solid 1px #d2e2e2;" alt="" />
  						    </div>
 				 		  </span>
 				 		  </li>
