@@ -103,7 +103,6 @@ window.onload=function(){
 <%-- <%@ include file="/includes/banner.jsp" %> --%>
 <!-- banner end  -->
 <div class="clear"></div>
-<div class="one"></div>
 <div class="clear_height"></div>
 
 
