@@ -186,6 +186,16 @@ public class IGateServiceImpl  implements  IGateService {
 		gateDao.addOrUpdateTRechargeSucceed(rechargeSucceed);
 		
 	}
+	
+	
+
+
+	@Override
+	public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(
+			String enterpriseNumber) throws Exception {
+		return gateDao.queryTTransferInfoByEnterpriseNumber(enterpriseNumber);
+		 
+	}
 
 
 	@Override
@@ -213,6 +223,6 @@ public class IGateServiceImpl  implements  IGateService {
 		return gateDao.queryTDrawMoneyByRequestNo(requestno);
 	}
 	
-
+    
 	
 }
