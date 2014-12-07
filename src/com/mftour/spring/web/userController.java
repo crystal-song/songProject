@@ -114,7 +114,7 @@ public class userController {
 			@RequestParam("validatecode") String validatecode,
 			HttpServletRequest request, Model model) throws Exception {
 		boolean flag = false;
-		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 30 * 60 * 1000);// 30分钟后过期
+		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*60 * 60 * 1000);// 30分钟后过期
         request.getSession().setAttribute("outDate", outDate);
 		TUser user = userService.getUserByAccount(name);
 		// 获取验证码的值
@@ -154,7 +154,7 @@ public class userController {
 				+ "><font color='green'>http://www.ptobchina.com/user/reset?userName="
 				+ user.getName() + "</font></a><br/><br/>"
 				+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-				+ "(本邮件超过30分钟，链接将会失效，需要重新申请找回密码！)<br/><br/>"
+				+ "(本邮件超过24小时，链接将会失效，需要重新申请找回密码！)<br/><br/>"
 				+ "中租宝   <a href=" + mainjsp
 				+ "><font color='green'>http://www.ptobchina.com/</font></a>"
 				+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
@@ -181,14 +181,12 @@ public class userController {
 		System.out.println("aaaaaa"+outDate.getTime()+"bbbbbbb"+System.currentTimeMillis());
 		if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
             request.setAttribute("msg", "链接已经过期,请重新申请找回密码.");
-            return "";
 		}else{
 		TUser user = (TUser) userService.getUserByAccount(username);
 		model.addAttribute("answer", user.getAnswer());
 		model.addAttribute("name", username);
-		return "resetPassword";
 		}
-		
+		return "resetPassword";
 
 	}
 
