@@ -10,14 +10,11 @@
             <column name="id" />
             <generator class="native" />
         </id>
-        <property name="rechargeNoticeType" type="java.lang.String">
-            <column name="rechargeNoticeType" length="50" />
+        <property name="type" type="java.lang.String">
+            <column name="type" length="50" />
         </property>
-        <property name="drawNoticeType" type="java.lang.String">
-            <column name="drawNoticeType" length="50" />
-        </property>
-         <property name="jiangliNoticeType" type="java.lang.String">
-            <column name="jiangliNoticeType" length="50" />
+        <property name="noticeType" type="java.lang.String">
+            <column name="noticeType" length="50" />
         </property>
          <property name="userName" type="java.lang.String">
             <column name="userName" length="50" />
