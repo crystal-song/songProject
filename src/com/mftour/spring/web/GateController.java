@@ -1075,8 +1075,9 @@ public class GateController  {
 		    	  TRecharge recharge=gateService.queryTRechargeByRequestNo(rechargeSucceed.getRequestNo()).get(0);
 		    	  TUser user=(TUser)request.getSession().getAttribute("userinfo");
 		    	  TTransNotice transnotice=transNoticeService.queryTransNoticeByName(user.getName()).get(0);
+		    	  List list=transNoticeService.queryTransNoticeByNameAndtypes(user.getName(), "充值", "邮件通知");
 		    	  if(transnotice!=null){
-		    	  if("邮件通知".equals(transnotice.getRechargeNoticeType())){
+		    	  if(list.size()!=0){
 		    		  boolean flag = false;
 		    		// 这个类主要是设置邮件
 		    			MailSenderInfo mailInfo = new MailSenderInfo();
@@ -1717,8 +1718,9 @@ public class GateController  {
 	    	  TDrawMoney drawmoney=gateService.queryTDrawMoneyByRequestNo(drawMoneySucceed.getRequestNo()).get(0);
 	    	  TUser user=(TUser)request.getSession().getAttribute("userinfo");
 	    	  TTransNotice transnotice=transNoticeService.queryTransNoticeByName(user.getName()).get(0);
+	    	  List list=transNoticeService.queryTransNoticeByNameAndtypes(user.getName(), "提现", "邮件通知");
 	    	  if(transnotice!=null){
-	    	  if("邮件通知".equals(transnotice.getDrawNoticeType())){
+	    	  if(list.size()!=0){
 	    		  boolean flag = false;
 	    		// 这个类主要是设置邮件
 	    			MailSenderInfo mailInfo = new MailSenderInfo();
@@ -1729,7 +1731,7 @@ public class GateController  {
 	    			mailInfo.setPassword("12qwaszx");
 	    			mailInfo.setFromAddress("cs@ptobchina.com");
 	    			mailInfo.setToAddress(user.getEmail());
-	    			mailInfo.setSubject("中租宝-充值成功"); // 设置邮箱标题
+	    			mailInfo.setSubject("中租宝-提现成功"); // 设置邮箱标题
 	    			String mainjsp = "http://www.ptobchina.com/wel";
 	    			String msgContent = "亲爱的用户"
 	    					+ user.getName()
@@ -1768,7 +1770,7 @@ public class GateController  {
 		    			mailInfo.setPassword("12qwaszx");
 		    			mailInfo.setFromAddress("cs@ptobchina.com");
 		    			mailInfo.setToAddress(user.getEmail());
-		    			mailInfo.setSubject("中租宝-充值成功"); // 设置邮箱标题
+		    			mailInfo.setSubject("中租宝-提现成功"); // 设置邮箱标题
 		    			String mainjsp = "http://www.ptobchina.com/wel";
 		    			String msgContent = "亲爱的用户"
 		    					+ user.getName()
