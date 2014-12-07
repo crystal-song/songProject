@@ -3,6 +3,7 @@ package com.mftour.spring.web;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -76,6 +77,8 @@ public class WelcomeController {
 		return "login";
 	}
 
+	
+
 	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
 	public String regEemail(TUser user, Model model, HttpServletRequest request)
 			throws Exception {
@@ -87,6 +90,8 @@ public class WelcomeController {
 			e.printStackTrace();
 			throw e;
 		}
+		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
+		request.getSession().setAttribute("outDate1", outDate);
 		model.addAttribute("user1", user);
 		// 这个类主要是设置邮件
 		MailSenderInfo mailInfo = new MailSenderInfo();
@@ -115,8 +120,9 @@ public class WelcomeController {
 				+ "<a href="
 				+ resetPassHref
 				+ "><font color='green'>http://www.ptobchina.com/welcome/register?username="
-				+ user.getName() + "</font></a><br/><br/>"
+				+ user.getName() + "&checkcode=gfe3r4245hdasr43t90dcscdsvf</font></a><br/><br/>"
 				+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
+				+ "(该链接在24小时内有效，24小时后会重新获取。)<br/><br/>"
 				+ "中租宝   <a href=" + mainjsp
 				+ "><font color='green'>http://www.ptobchina.com/</font></a>"
 				+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
@@ -130,7 +136,7 @@ public class WelcomeController {
 			mailInfo.setUserName("no-reply@ptobchina.com");
 			mailInfo.setPassword("12qwaszx");// 您的邮箱密码
 			mailInfo.setFromAddress("no-reply@ptobchina.com");
-			flag = sms.sendHtmlMail(mailInfo);
+			sms.sendHtmlMail(mailInfo);
 		}
 
 		return "reg_email";
@@ -144,6 +150,7 @@ public class WelcomeController {
 		TUser user = userService.getUserByAccount(username);
 		user.setEmail(mail);
 		userService.addOrUpdate(user);
+		
 		// 这个类主要是设置邮件
 		MailSenderInfo mailInfo = new MailSenderInfo();
 		mailInfo.setMailServerHost("smtp.ptobchina.com");
@@ -194,11 +201,18 @@ public class WelcomeController {
 	@RequestMapping(value = "/register", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String register(@RequestParam("username") String username,
-			Model model) throws Exception {
+			Model model,HttpServletRequest request) throws Exception {
+		Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate1");
+		System.out.println("outDate"+outDate);
+		System.out.println("aaaaaa"+outDate.getTime()+"bbbbbbb"+System.currentTimeMillis());
+		if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
+            request.setAttribute("msg", "链接已经过期,请重新做认证！");
+		}else{
 		TUser user = userService.getUserByAccount(username);
 		user.setRegState("s");
 		userService.addOrUpdate(user);
 		model.addAttribute("regState", user.getRegState());
+		}
 		return "reg_success";
 	}
 
