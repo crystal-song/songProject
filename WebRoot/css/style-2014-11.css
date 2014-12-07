@@ -1011,8 +1011,9 @@ ul,li{
     border: 1px solid #ccc;
 }
 .con_name{
-	height:130px;
+	min-height:130px;
 	margin-top: 50px;
+	position:relative;
 }
 
 .con_name li{
