@@ -80,9 +80,6 @@ public class WelcomeController {
 	public String regEemail(TUser user, Model model, HttpServletRequest request)
 			throws Exception {
 		boolean flag = false;
-		if (user.getName() != null && user.getName() != ""
-				&& user.getPassword() != null)
-			;
 		try {
 			user.setRegState("f");
 			userService.addOrUpdate(user);
