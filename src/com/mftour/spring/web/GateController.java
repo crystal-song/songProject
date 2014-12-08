@@ -584,18 +584,28 @@ public class GateController  {
 			 return "register";	 
 		 }else*/ 
 		 
-		 if(li != null && li.size()!=0&&lis != null && lis.size()!=0){
-			   
-		 if(li.get(0).getCode().equals("1")||lis.get(0).getCode().equals("1")){
+		 if(li != null && li.size()!=0&&li.get(0).getCode().equals("1")){
 			 TRegisterYeePay registerYeePay1=li.get(0);
-		System.out.println("ddddd"+buyAmount);
-		model.addAttribute("registerYeePay1", registerYeePay1);
-		model.addAttribute("buyAmount", buyAmount);
-		model.addAttribute("product", product);
-		model.addAttribute("now", System.currentTimeMillis());
-		return "touzicheck";
+				System.out.println("ddddd"+buyAmount);
+				model.addAttribute("registerYeePay1", registerYeePay1);
+				model.addAttribute("buyAmount", buyAmount);
+				model.addAttribute("product", product);
+				System.out.println("wwwwwwwwwwwwwwwwwwwwww"+product.getTargetPlatformUserNo());
+				model.addAttribute("now", System.currentTimeMillis());
+				return "touzicheck";
+			   
+		 } else if(lis != null && lis.size()!=0){
+			 TRegisterYeePay registerYeePay1=li.get(0);
+				System.out.println("ddddd"+buyAmount);
+				model.addAttribute("registerYeePay1", registerYeePay1);
+				model.addAttribute("buyAmount", buyAmount);
+				model.addAttribute("product", product);
+				System.out.println("wwwwwwwwwwwwwwwwwwwwww"+product.getTargetPlatformUserNo());
+				model.addAttribute("now", System.currentTimeMillis());
+				return "touzicheck";
+		
 			 }
-		 }else if(li != null && li.size()!=0){
+		else if(li != null && li.size()!=0){
 				 TUser user=userService.getUserByAccount(o.toString());
 					model.addAttribute("user", user);
 					model.addAttribute("now", System.currentTimeMillis());
