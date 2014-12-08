@@ -1,4 +1,4 @@
-platformNo=10012415118
-callbackUrl=http://www.ptobchina.com
-notifyUrl=http://www.ptobchina.com
+platformNo=10040011137
+callbackUrl=http://192.168.1.207:8080/spring3
+notifyUrl=http://106.2.184.190/spring3
 url=/Users/jfreebird/src/spring3/WebRoot
