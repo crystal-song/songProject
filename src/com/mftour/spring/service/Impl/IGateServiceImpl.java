@@ -9,17 +9,22 @@ import org.springframework.stereotype.Service;
 import com.mftour.spring.Dao.ICrowdfundingDao;
 import com.mftour.spring.Dao.IGateDao;
 import com.mftour.spring.model.TBinding;
+import com.mftour.spring.model.TBindingNotify;
 import com.mftour.spring.model.TBindingSucceed;
 import com.mftour.spring.model.TDrawMoney;
+import com.mftour.spring.model.TDrawMoneyNotify;
 import com.mftour.spring.model.TDrawMoneySucceed;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TLoansucceed;
 import com.mftour.spring.model.TRecharge;
+import com.mftour.spring.model.TRechargeNotify;
 import com.mftour.spring.model.TRechargeSucceed;
+import com.mftour.spring.model.TRegisterNotify;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
+import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
@@ -222,6 +227,67 @@ public class IGateServiceImpl  implements  IGateService {
 			throws Exception{
 		return gateDao.queryTDrawMoneyByRequestNo(requestno);
 	}
+
+
+	@Override
+	public void addOrUpdateTRegisterNotify(TRegisterNotify registerNotify)
+			throws Exception {
+		  gateDao.addOrUpdateTRegisterNotify(registerNotify);
+		
+	}
+
+
+	@Override
+	public List<TRegisterNotify> queryTRegisterNotifyByName(String name)
+			throws Exception {
+		return  gateDao.queryTRegisterNotifyByName(name);
+		
+	}
+
+
+	@Override
+	public void addOrUpdateTRechargeNotify(TRechargeNotify rechargeNotify)
+			throws Exception {
+		  gateDao.addOrUpdateTRechargeNotify(rechargeNotify);
+		
+	}
+
+
+	@Override
+	public void addOrUpdateTBindingNotify(TBindingNotify bindingNotify)
+			throws Exception {
+		gateDao.addOrUpdateTBindingNotify(bindingNotify);
+		
+	}
+
+
+	@Override
+	public void addOrUpdateTTransferNotify(TTransferNotify transferNotify)
+			throws Exception {
+		gateDao.addOrUpdateTTransferNotify(transferNotify);
+		
+	}
+
+
+	@Override
+	public void addOrUpdateTDrawMoneyNotify(TDrawMoneyNotify drawMoneyNotify)
+			throws Exception {
+		gateDao.addOrUpdateTDrawMoneyNotify(drawMoneyNotify);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
     
 	
