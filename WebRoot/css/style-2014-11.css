@@ -2828,7 +2828,7 @@ ul,li{
 	width: 175px;
 	height: 28px;
 }
-.anquan_hide_btn{
+.anquan_hide input.anquan_hide_btn{
    display: inline-block;
    width: 80px;
    height: 30px;
@@ -2839,6 +2839,7 @@ ul,li{
    border:none;
 
 }
+
 .anquan_hide_btn:hover{
 	background:#e81c05;
 }
