@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		if(chkNickName==""){alert("用户昵称不能为空！");return false}
 		var chkRealName=document.getElementById("realName").value;
 		if(chkRealName==""){alert("真实姓名不能为空！");return false}
-		var chkIdCardNo=document.getElementById("idCardNo").value();
+		var chkIdCardNo=document.getElementById("idCardNo").value;
 		var regId = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
 	   if(regId.test(chkIdCardNo) == false)  
 	   {  
