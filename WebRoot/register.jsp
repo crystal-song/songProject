@@ -74,7 +74,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="form-group" style="display:none;height:0px;">
             <label for="platformNo">platformNo</label>
              <input type="text"class="form-control" id="platformNo" 
-                   name="platformNo" value="10012415118" /> 
+             name="platformNo" value="${f.platformNo}" /> 
+                   <!-- name="platformNo" value="10012415118" />  -->
            <!--  <input type="text"class="form-control" id="platformNo" 
                    name="platformNo" value="10040011137" /> -->
           </div>
@@ -113,17 +114,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
-              class="form-control" id="notifyUrl" name="notifyUrl" value="${host}${context}/gate/exam"   />
+              class="form-control" id="notifyUrl" name="notifyUrl" value="${f.notifyUrl}/gate/registerNotify"   />
           </div>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
-              name="callbackUrl" value="http://127.0.0.1/spring3/gate/exam"   />
+               name="callbackUrl" value="${f.callbackUrl}/gate/exam"   />
+             <!--  name="callbackUrl" value="http://www.ptobchina.com/spring3/gate/exam"   /> -->
+
+
           </div>
 
           <div class="jin_input" style="padding-left:200px;"><a href="javascript:;" title="立即注册" onclick="onSubmit('https://member.yeepay.com/member')" id="mysubmit_btn">立即注册</a></div>
-          <!-- <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button>
-          <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">生产</button> -->
+        <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button> -->
+           <!-- <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">生产</button> -->
 
 
         </form>
