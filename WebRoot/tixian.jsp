@@ -122,7 +122,8 @@ function onSubmit(host) {
            <!-- <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
                 <input type="text"class="form-control" id="platformNo" 
-                   name="platformNo" value="10012415118" />  
+                 name="platformNo" value="${f.platformNo}" />  
+                  <!--  name="platformNo" value="10012415118" />   -->
           </div>
           <div class="form-group" style="display:none">
             <label for="requestNo">requestNo</label><input type="text"
@@ -146,15 +147,15 @@ function onSubmit(host) {
            
           <div class="form-group" style="display:none">
             <label for="notifyUrl">notifyUrl</label><input type="text"
-              class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
+              class="form-control" id="notifyUrl" name="notifyUrl" value="${f.notifyUrl}/gate/drawMoneyNotify" />
           </div>
           <div class="form-group" style="display:none">
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
-              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/drawMoneySucceed" />
+              name="callbackUrl" value="${f.callbackUrl}/gate/drawMoneySucceed" />
           </div>
       
-          <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button>
+         <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button> -->
           <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default mar_btn" id="mysubmit_btn" >确认</button>
         </form>
             <%--  <div class="add_postcar" style="display:none">
