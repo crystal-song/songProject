@@ -47,7 +47,8 @@ function onSubmit(host) {
              <!-- <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
                <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10012415118" /> 
+                class="form-control" id="platformNo" name="platformNo" value="${f.platformNo}" /> 
+             <!--  class="form-control" id="platformNo" name="platformNo" value="10012415118" />  -->
           </div></li>
           <li><div class="form-group" style="display:none;height:0px;" >
             <label for="requestNo">requestNo</label><input type="text"
@@ -107,18 +108,19 @@ function onSubmit(host) {
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
-              class="form-control" id="notifyUrl" name="notifyUrl" value="http://192.168.1.207:8080/spring3/gate/transferNotify" />
+              class="form-control" id="notifyUrl" name="notifyUrl" value="${f.notifyUrl}/gate/transferNotify" />
           </div>
           </li>
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
-              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/transferSucceed" />
+               name="callbackUrl" value="${f.callbackUrl}/gate/transferSucceed" />
+             <!--  name="callbackUrl" value="http://www.ptobchina.com/spring3/gate/transferSucceed" /> -->
           </div>
           </li>
           <li>
-          <!-- <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>  -->
+          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>  --> 
          <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
 
 
