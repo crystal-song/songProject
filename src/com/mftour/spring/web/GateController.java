@@ -37,8 +37,10 @@ import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.ITransNoticeService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.File;
 import com.mftour.spring.util.HttpClientTest;
 import com.mftour.spring.util.MailSenderInfo;
+import com.mftour.spring.util.ReadWirtePropertis;
 import com.mftour.spring.util.SimpleMailSender;
 /*import com.mftour.spring.util.ccc;*/
 import com.yeepay.bha.example.bean.BHAAuthorization;
@@ -175,6 +177,9 @@ public class GateController  {
 
 	@RequestMapping(value="/gate/binding")
 	public String binding(Model model,HttpServletRequest request) throws Exception {
+		File f=ReadWirtePropertis.file();
+	    System.out.println(f.getPlatformNo()); 
+	    model.addAttribute("f", f);
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name"); 
 		String name=null;
@@ -347,6 +352,9 @@ public class GateController  {
 	
 	@RequestMapping(value="/gate/drawMoney")
 	public String drawMoney(Model model,HttpServletRequest request) throws Exception {
+		File f=ReadWirtePropertis.file();
+	    System.out.println(f.getPlatformNo()); 
+	    model.addAttribute("f", f);
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name"); 
 		if(o!=null){
@@ -438,6 +446,9 @@ public class GateController  {
 			TUser user=userService.getUserByAccount(o.toString());
 			model.addAttribute("user", user);
 			/*return "payment/register";*/
+			 File f=ReadWirtePropertis.file();
+			    System.out.println(f.getPlatformNo()); 
+			    model.addAttribute("f", f);
 			return "register";
 		}
 		return "login";
@@ -486,6 +497,9 @@ public class GateController  {
 	
 	@RequestMapping(value="/gate/recharge",method = {RequestMethod.POST, RequestMethod.GET})
 	public String recharge(Model model,HttpServletRequest request)throws Exception {
+		 File f=ReadWirtePropertis.file();
+		    System.out.println(f.getPlatformNo()); 
+		    model.addAttribute("f", f);
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name");
 		 if(o!=null){
@@ -541,6 +555,9 @@ public class GateController  {
 	
 	@RequestMapping(value="/gate/transfer")
 	public String Transfer(Model model,HttpServletRequest request,String buyAmount,TProduct product) throws Exception {
+		File f=ReadWirtePropertis.file();
+	    System.out.println(f.getPlatformNo()); 
+	    model.addAttribute("f", f);
 		Object o= request.getSession().getAttribute("name");
 		if(o==null){
 			return "login";
