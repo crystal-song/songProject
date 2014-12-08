@@ -19,12 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 	function allcheck(){
-		var chkNickName=$("#nickName").val();
+		var chkNickName=document.getElementById("nickName").value;
 		if(chkNickName==""){alert("用户昵称不能为空！");return false}
-		var chkRealName=$("#realName").val();
-		if(chkRealName==""){{alert("真实姓名不能为空！");return false}
-		}
-		var chkIdCardNo=$("#idCardNo").val();
+		var chkRealName=document.getElementById("realName").value;
+		if(chkRealName==""){alert("真实姓名不能为空！");return false}
+		var chkIdCardNo=document.getElementById("idCardNo").value();
 		var regId = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
 	   if(regId.test(chkIdCardNo) == false)  
 	   {  
@@ -32,15 +31,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   return  false;  
 	   } 
 	   var regMobile=/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/;
-	   var chkMobile=$("#mobile").val();
+	   var chkMobile=document.getElementById("mobile").value;
 	   if(regMobile.test(chkMobile)){
 		   alert("手机号输入不合法！");  
 		   return  false;  
 		   }
-	
+	return true;
 	}
    function onSubmit(host) {
-	  if(!allcheck){return false};
+	  if(!allcheck()){return false};
 	  if(document.getElementById("requestNo").value==""){alert("数据超时！请刷新页面！");return false}
 	  document.getElementById("host").value = host;
 	  var form = document.getElementById("form");
@@ -119,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
-              name="callbackUrl" value="http://192.168.1.207:8080/spring3/gate/exam"   />
+              name="callbackUrl" value="http://127.0.0.1/spring3/gate/exam"   />
           </div>
 
           <div class="jin_input" style="padding-left:200px;"><a href="javascript:;" title="立即注册" onclick="onSubmit('https://member.yeepay.com/member')" id="mysubmit_btn">立即注册</a></div>
