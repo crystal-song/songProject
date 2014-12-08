@@ -18,11 +18,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
     var navIndex=3;    
     var indexs=1;
+    var ap=0;
+    var fp=0;
+    
     $(document).ready(function(){
     	$(".u_left_sec:eq(1) li:eq(0)").children("a").css("color","#fc652e");
     	$(".u_left_mian").click(function(){
             $(this).siblings().slideToggle("slow");
           });
+    	ap=parseInt($("#availableAmount_info").html());
+    	fp=parseInt($("#freezeAmount_info").html());
+    	$("#availableAmount_bar").width(ap);
+    	$("#freezeAmount_bar").width(fp);
 });
         
 </script>
@@ -43,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="user_right">  
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>资产统计</strong></div>
-          <p class="zichan_num"><span>资产总值:</span><strong><span>${balance}</span><i>元</i></strong>
+          <p class="zichan_num"><span>资产总值:</span><strong><span id="balance_info">${balance}</span><i>元</i></strong>
           <a href="<%=path%>/gate/recharge" class="char">充值</a>
           <a href="<%=path%>/gate/drawMoney" class="char">提现</a>
           <a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all" class="char">交易记录</a>          
@@ -52,17 +59,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li>
               <div class="li_pic back01"></div>
               <div class="li_right">
-                 <div class="li_top"><span>可用余额</span><strong><span style="text-align:right">${availableAmount}</span><i>元</i></strong>
+                 <div class="li_top"><span>可用余额</span><strong><span style="text-align:right" id="availableAmount_info">${availableAmount}</span><i>元</i></strong>
                  </div>
-                 <div class="li_loadbar"><div></div></div>
+                 <div class="li_loadbar"><div id="availableAmount_bar"></div></div>
               </div>
             </li>
             <li>
               <div class="li_pic back02"></div>
               <div class="li_right">
-                 <div class="li_top"><span>冻结余额</span><strong><span style="text-align:right">${freezeAmount}</span><i>元</i></strong>
+                 <div class="li_top"><span>冻结余额</span><strong><span style="text-align:right" id="freezeAmount_info">${freezeAmount}</span><i>元</i></strong>
                  </div>
-                 <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
+                 <div class="li_loadbar"><div style="background:#c7df95;" id="freezeAmount_bar"></div></div>
               </div>
             </li>
 <!--             <li>
