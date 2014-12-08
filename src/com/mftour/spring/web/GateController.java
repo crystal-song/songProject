@@ -589,6 +589,7 @@ public class GateController  {
 				System.out.println("ddddd"+buyAmount);
 				model.addAttribute("registerYeePay1", registerYeePay1);
 				model.addAttribute("buyAmount", buyAmount);
+				model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
 				model.addAttribute("product", product);
 				System.out.println("wwwwwwwwwwwwwwwwwwwwww"+product.getTargetPlatformUserNo());
 				model.addAttribute("now", System.currentTimeMillis());
@@ -599,6 +600,7 @@ public class GateController  {
 				System.out.println("ddddd"+buyAmount);
 				model.addAttribute("registerYeePay1", registerYeePay1);
 				model.addAttribute("buyAmount", buyAmount);
+				model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
 				model.addAttribute("product", product);
 				System.out.println("wwwwwwwwwwwwwwwwwwwwww"+product.getTargetPlatformUserNo());
 				model.addAttribute("now", System.currentTimeMillis());
@@ -615,6 +617,7 @@ public class GateController  {
 		 
 		 TUser user=userService.getUserByAccount(o.toString());
 			model.addAttribute("user", user);
+			
 			model.addAttribute("now", System.currentTimeMillis());
 		 return "register";
 		/*return "payment/transfer";*/
