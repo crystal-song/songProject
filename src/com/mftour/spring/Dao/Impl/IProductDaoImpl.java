@@ -277,6 +277,9 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 				sb.append(" where product.existType = 0 ");
 			}
 
+			sb.append(" order by product.releaseTime desc ");
+
+
 		}
 
 		// 查询总数可以用getHibernateTemplate()，我下面用的是createQuery
@@ -341,7 +344,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 		Query query = getSession().createQuery(hql);
 		query.setParameter("recommendType", type);
 		query.setParameter("existType", "0");
-		query.setMaxResults(4);
+		query.setMaxResults(3);
 		return query.list();
 	}
 
