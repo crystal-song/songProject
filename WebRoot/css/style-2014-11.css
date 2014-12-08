@@ -2935,6 +2935,7 @@ ul,li{
     border:1px solid #ccc;
     float: left;   
     cursor: pointer;
+    padding-bottom:5px;
 }
 .news_right{
     width: 850px;
