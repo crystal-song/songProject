@@ -4,6 +4,7 @@ public class File {
     private String platformNo;    
     private String callbackUrl;   
     private String notifyUrl;
+    private String onSubmit;
     private String url;
 	public String getPlatformNo() {
 		return platformNo;
@@ -28,7 +29,14 @@ public class File {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	public String getOnSubmit() {
+		return onSubmit;
+	}
+	public void setOnSubmit(String onSubmit) {
+		this.onSubmit = onSubmit;
 	} 
+	
 	
    
 }
