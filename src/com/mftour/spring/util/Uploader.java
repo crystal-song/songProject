@@ -1,9 +1,15 @@
 package com.mftour.spring.util;
 
-import java.io.*;
+import java.io.File;
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.BufferedOutputStream;
 import java.text.SimpleDateFormat;
+import java.io.OutputStream;
 import java.util.*;
-
+import com.mftour.spring.util.ReadWirtePropertis;
 import org.apache.commons.fileupload.*;
 import org.apache.commons.fileupload.FileUploadBase.InvalidContentTypeException;
 import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
@@ -12,11 +18,12 @@ import org.apache.commons.fileupload.servlet.*;
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 
-import Decoder.BASE64Decoder;
 
-//import sun.misc.BASE64Decoder;
+
+
+import sun.misc.BASE64Decoder;
+
 import javax.servlet.http.HttpServletRequest;
-
 /**
  * UEditor文件上传辅助类
  *
@@ -41,17 +48,16 @@ public class Uploader {
 	// 保存路径
 	private String savePath = "upload";
 	// 文件允许格式
-	private String[] allowFiles = { ".rar", ".doc", ".docx", ".zip", ".pdf",
-			".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp" };
+	private String[] allowFiles = { ".rar", ".doc", ".docx", ".zip", ".pdf",".txt", ".swf", ".wmv", ".gif", ".png", ".jpg", ".jpeg", ".bmp" };
 	// 文件大小限制，单位KB
 	private int maxSize = 10000;
-
+	
 	private HashMap<String, String> errorInfo = new HashMap<String, String>();
 
 	public Uploader(HttpServletRequest request) {
 		this.request = request;
 		HashMap<String, String> tmp = this.errorInfo;
-		tmp.put("SUCCESS", "SUCCESS"); // 默认成功
+		tmp.put("SUCCESS", "SUCCESS"); //默认成功
 		tmp.put("NOFILE", "未包含文件上传域");
 		tmp.put("TYPE", "不允许的文件格式");
 		tmp.put("SIZE", "文件大小超出限制");
@@ -60,19 +66,19 @@ public class Uploader {
 		tmp.put("IO", "IO异常");
 		tmp.put("DIR", "目录创建失败");
 		tmp.put("UNKNOWN", "未知错误");
-
+		
 	}
 
 	public void upload() throws Exception {
-		boolean isMultipart = ServletFileUpload
-				.isMultipartContent(this.request);
+		boolean isMultipart = ServletFileUpload.isMultipartContent(this.request);
 		if (!isMultipart) {
 			this.state = this.errorInfo.get("NOFILE");
 			return;
 		}
+		
 		DiskFileItemFactory dff = new DiskFileItemFactory();
 		String savePath = this.getFolder(this.savePath);
-		dff.setRepository(new File(savePath));
+		dff.setRepository(new java.io.File(savePath));
 		try {
 			ServletFileUpload sfu = new ServletFileUpload(dff);
 			sfu.setSizeMax(this.maxSize * 1024);
@@ -81,9 +87,7 @@ public class Uploader {
 			while (fii.hasNext()) {
 				FileItemStream fis = fii.next();
 				if (!fis.isFormField()) {
-					this.originalName = fis.getName().substring(
-							fis.getName().lastIndexOf(
-									System.getProperty("file.separator")) + 1);
+					this.originalName = fis.getName().substring(fis.getName().lastIndexOf(System.getProperty("file.separator")) + 1);
 					if (!this.checkFileType(this.originalName)) {
 						this.state = this.errorInfo.get("TYPE");
 						continue;
@@ -91,34 +95,30 @@ public class Uploader {
 					this.fileName = this.getName(this.originalName);
 					this.type = this.getFileExt(this.fileName);
 					this.url = savePath + "/" + this.fileName;
-					BufferedInputStream in = new BufferedInputStream(
-							fis.openStream());
+					BufferedInputStream in = new BufferedInputStream(fis.openStream());
 					File file = new File(this.getPhysicalPath(this.url));
-					FileOutputStream out = new FileOutputStream(file);
+					FileOutputStream out = new FileOutputStream( file );
 					BufferedOutputStream output = new BufferedOutputStream(out);
 					Streams.copy(in, output, true);
-					this.state = this.errorInfo.get("SUCCESS");
+					this.state=this.errorInfo.get("SUCCESS");
 					this.size = file.length();
-					// UE中只会处理单张上传，完成后即退出
+					//UE中只会处理单张上传，完成后即退出
 					break;
 				} else {
 					String fname = fis.getFieldName();
-					// 只处理title，其余表单请自行处理
-					if (!fname.equals("pictitle")) {
+					//只处理title，其余表单请自行处理
+					if(!fname.equals("pictitle")){
 						continue;
 					}
-					BufferedInputStream in = new BufferedInputStream(
-							fis.openStream());
-					BufferedReader reader = new BufferedReader(
-							new InputStreamReader(in));
-					StringBuffer result = new StringBuffer();
-					while (reader.ready()) {
-						result.append((char) reader.read());
-					}
-					this.title = new String(result.toString().getBytes(),
-							"utf-8");
-					reader.close();
-
+                    BufferedInputStream in = new BufferedInputStream(fis.openStream());
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                    StringBuffer result = new StringBuffer();  
+                    while (reader.ready()) {  
+                        result.append((char)reader.read());  
+                    }
+                    this.title = new String(result.toString().getBytes(),"utf-8");
+                    reader.close();  
+                    
 				}
 			}
 		} catch (SizeLimitExceededException e) {
@@ -131,20 +131,19 @@ public class Uploader {
 			this.state = this.errorInfo.get("UNKNOWN");
 		}
 	}
-
+	
 	/**
 	 * 接受并保存以base64格式上传的文件
-	 * 
 	 * @param fieldName
 	 */
-	public void uploadBase64(String fieldName) {
+	public void uploadBase64(String fieldName){
 		String savePath = this.getFolder(this.savePath);
 		String base64Data = this.request.getParameter(fieldName);
 		this.fileName = this.getName("test.png");
 		this.url = savePath + "/" + this.fileName;
 		BASE64Decoder decoder = new BASE64Decoder();
 		try {
-			File outFile = new File(this.getPhysicalPath(this.url));
+			File outFile = new java.io.File(this.getPhysicalPath(this.url));
 			OutputStream ro = new FileOutputStream(outFile);
 			byte[] b = decoder.decodeBuffer(base64Data);
 			for (int i = 0; i < b.length; ++i) {
@@ -155,7 +154,7 @@ public class Uploader {
 			ro.write(b);
 			ro.flush();
 			ro.close();
-			this.state = this.errorInfo.get("SUCCESS");
+			this.state=this.errorInfo.get("SUCCESS");
 		} catch (Exception e) {
 			this.state = this.errorInfo.get("IO");
 		}
@@ -189,7 +188,6 @@ public class Uploader {
 
 	/**
 	 * 依据原始文件名生成新文件名
-	 * 
 	 * @return
 	 */
 	private String getName(String fileName) {
@@ -200,13 +198,15 @@ public class Uploader {
 
 	/**
 	 * 根据字符串创建本地目录 并按照日期建立子目录返回
-	 * 
-	 * @param path
-	 * @return
+	 * @param path 
+	 * @return 
 	 */
 	private String getFolder(String path) {
+	
+	
+	
 		SimpleDateFormat formater = new SimpleDateFormat("yyyyMMdd");
-		path += "/" + formater.format(new Date());
+		path+= "/" + formater.format(new Date());
 		File dir = new File(this.getPhysicalPath(path));
 		if (!dir.exists()) {
 			try {
@@ -226,10 +226,15 @@ public class Uploader {
 	 * @return
 	 */
 	private String getPhysicalPath(String path) {
-		String servletPath = this.request.getServletPath();
+		com.mftour.spring.util.File f =  ReadWirtePropertis.file();
+		 String fi= f.getUrl();
+		/*String servletPath = this.request.getServletPath();
 		String realPath = this.request.getSession().getServletContext()
-				.getRealPath(servletPath);
-		return new File(realPath).getParent() + "/" + path;
+				.getRealPath(servletPath);*/
+		/*return new java.io.File(realPath).getParent() +"/" +path;*/
+		 System.out.println("ffwwwwwwwwwwwwwwwwwwww"+path+fi);
+		return fi +"/" +path;
+		
 	}
 
 	public void setSavePath(String savePath) {
@@ -259,7 +264,7 @@ public class Uploader {
 	public String getState() {
 		return this.state;
 	}
-
+	
 	public String getTitle() {
 		return this.title;
 	}
