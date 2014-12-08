@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ServletContextAware;
 
 import com.mftour.spring.model.TBinding;
+import com.mftour.spring.model.TBindingNotify;
 import com.mftour.spring.model.TBindingSucceed;
 import com.mftour.spring.model.TDrawMoney;
+import com.mftour.spring.model.TDrawMoneyNotify;
 import com.mftour.spring.model.TDrawMoneySucceed;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
@@ -24,7 +26,9 @@ import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TLoansucceed;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TRecharge;
+import com.mftour.spring.model.TRechargeNotify;
 import com.mftour.spring.model.TRechargeSucceed;
+import com.mftour.spring.model.TRegisterNotify;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransNotice;
 import com.mftour.spring.model.TTransferInfo;
@@ -505,16 +509,18 @@ public class GateController  {
 		 if(o!=null){
 		
 			 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
+			 List<TRegisterNotify> list= gateService.queryTRegisterNotifyByName(o.toString());
  		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
 			 if(li != null && li.size()!=0){
 				 TRegisterYeePay registerYeePay1=li.get(0);
 				 System.out.println("dddddddd"+registerYeePay1.getPlatformUserNo());
 				 System.out.println("dddddddd"+registerYeePay1.getCode());
-				 if(registerYeePay1.getCode()!=null){
- 		  if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){
+				 if(list!=null && list.size()!=0){
+ 		 /* if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){*/
+			      if(li.get(0).getCode().equals("1")||list.get(0).getCode().equals("1")){
 	        	  model.addAttribute("registerYeePay1", registerYeePay1);
 	        	  return "chongzhi";
- 		   }
+ 		  /* }*/}
 				 }
 			 }else{
 				 TUser user=userService.getUserByAccount(o.toString());
@@ -570,12 +576,17 @@ public class GateController  {
 		             }
 		
 		 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
+		 List<TRegisterNotify> lis= gateService.queryTRegisterNotifyByName(o.toString());
 		/* if(li != null && li.size()!=0){
 			 TUser user=userService.getUserByAccount(o.toString());
 				model.addAttribute("user", user);
 				TRegisterYeePay registerYeePay= li.get(0);
 			 return "register";	 
-		 }else*/ if(li != null && li.size()!=0&&li.get(0).getCode()!=null){
+		 }else*/ 
+		 
+		 if(li != null && li.size()!=0&&lis != null && lis.size()!=0){
+			   
+		 if(li.get(0).getCode().equals("1")||lis.get(0).getCode().equals("1")){
 			 TRegisterYeePay registerYeePay1=li.get(0);
 		System.out.println("ddddd"+buyAmount);
 		model.addAttribute("registerYeePay1", registerYeePay1);
@@ -583,7 +594,8 @@ public class GateController  {
 		model.addAttribute("product", product);
 		model.addAttribute("now", System.currentTimeMillis());
 		return "touzicheck";
-			 }else if(li != null && li.size()!=0){
+			 }
+		 }else if(li != null && li.size()!=0){
 				 TUser user=userService.getUserByAccount(o.toString());
 					model.addAttribute("user", user);
 					model.addAttribute("now", System.currentTimeMillis());
@@ -1496,6 +1508,198 @@ public class GateController  {
 	
 	
 	
+	@RequestMapping(value="/gate/registerNotify", method = {RequestMethod.POST, RequestMethod.GET})
+	public String registerNotify( String notify, String sign,Model model)throws Exception {
+		model.addAttribute("notify", notify);
+		model.addAttribute("sign", sign);
+		System.out.println("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"+notify);
+		
+		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+         
+		  try {
+		            
+		      //    通过 解析器 工厂 创建 一个 解析 器 
+		      DocumentBuilder db=dbf.newDocumentBuilder();
+		      System.out.println("eeeeeeeeeee");
+		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
+		     
+		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
+		     Document dm=db.parse(iStream);
+		     System.out.println("oooooooooooooooooooooooo"+notify);
+		      //得到 所有 person节点 
+		      NodeList persons=dm.getElementsByTagName("notify");
+		      System.out.println("qqqqqqqqqqqqq");
+		      TRegisterNotify registerNotify=new TRegisterNotify();
+		      System.out.println("wwwwwwwwwwwwwww");
+		      for(int i=0;i<persons.getLength();i++){
+		          
+		    	  Element personElement = (Element)persons.item(i);
+		    	  
+		    	  NodeList p=personElement.getChildNodes();
+		    	  for(int j=0;j<p.getLength();j++){
+		    		  Node e= p.item(j);
+		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+		    		 
+		    	  }
+		    	
+		    	  
+		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
+		    		  registerNotify.setRequestNo(p.item(1).getTextContent());
+		    		 
+		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		    	  }
+		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
+		    		  registerNotify.setPlatformNo(p.item(3).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
+		    		  registerNotify.setBizType(p.item(5).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
+		    		  registerNotify.setCode(p.item(7).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    		  
+		    	  } 
+		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
+		    		  registerNotify.setMessage(p.item(9).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+		    		  
+		    	  } 
+		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
+		    		  registerNotify.setPlatformUserNo(p.item(11).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+		    		  
+		    	  } 
+		    	 
+		    	
+		    	   /* <requestNo>1417974396427</requestNo>
+		    	    <platformNo>10040011137</platformNo>
+		    	    <bizType>REGISTER</bizType>
+		    	    <code>1</code>
+		    	    <message>注册成功</message>
+		    	    <platformUserNo>cccccc</platformUserNo>*/
+		    	  
+		    	 
+		    	  
+		      }  
+		      gateService.addOrUpdateTRegisterNotify(registerNotify);
+		      
+		      /*gateService.addOrUpdateTTransferNotify(transferNotify);*/
+		  
+		  } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	        } finally {
+	        }
+		
+		
+		
+		return "payment/binding";
+	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/gate/rechargeNotify", method = {RequestMethod.POST, RequestMethod.GET})
+	public String rechargeNotify( String notify, String sign,Model model)throws Exception {
+		model.addAttribute("notify", notify);
+		model.addAttribute("sign", sign);
+		System.out.println("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"+notify);
+		
+		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+         
+		  try {
+		            
+		      //    通过 解析器 工厂 创建 一个 解析 器 
+		      DocumentBuilder db=dbf.newDocumentBuilder();
+		      System.out.println("eeeeeeeeeee");
+		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
+		     
+		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
+		     Document dm=db.parse(iStream);
+		     System.out.println("oooooooooooooooooooooooo"+notify);
+		      //得到 所有 person节点 
+		      NodeList persons=dm.getElementsByTagName("notify");
+		      System.out.println("qqqqqqqqqqqqq");
+		      TRechargeNotify rechargeNotify=new TRechargeNotify();
+		      System.out.println("wwwwwwwwwwwwwww");
+		      for(int i=0;i<persons.getLength();i++){
+		          
+		    	  Element personElement = (Element)persons.item(i);
+		    	  
+		    	  NodeList p=personElement.getChildNodes();
+		    	  for(int j=0;j<p.getLength();j++){
+		    		  Node e= p.item(j);
+		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+		    		 
+		    	  }
+		    	
+		    	  
+		    	  
+		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
+		    		  rechargeNotify.setRequestNo(p.item(1).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		    	  }
+		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
+		    		  rechargeNotify.setPlatformNo(p.item(3).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
+		    		  rechargeNotify.setBizType(p.item(5).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
+		    		  rechargeNotify.setCode(p.item(7).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    		  
+		    	  } 
+		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
+		    		  rechargeNotify.setMessage(p.item(9).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+		    		  
+		    	  } 
+		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
+		    		  rechargeNotify.setPlatformUserNo(p.item(11).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+		    		  
+		    	  } 
+		    	
+		    	
+		    	
+		    	  
+		    	 
+		    	  
+		      }  
+		      
+		      gateService.addOrUpdateTRechargeNotify(rechargeNotify);
+		      
+		      /*gateService.addOrUpdateTTransferNotify(transferNotify);*/
+		  
+		  } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	        } finally {
+	        }
+		
+		
+		
+		return "payment/binding";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value="/gate/transferNotify", method = {RequestMethod.POST, RequestMethod.GET})
 	public String transferNotify( String notify, String sign,Model model)throws Exception {
 		model.addAttribute("notify", notify);
@@ -1515,7 +1719,7 @@ public class GateController  {
 		     Document dm=db.parse(iStream);
 		     System.out.println("oooooooooooooooooooooooo"+notify);
 		      //得到 所有 person节点 
-		      NodeList persons=dm.getElementsByTagName("response");
+		      NodeList persons=dm.getElementsByTagName("notify");
 		      System.out.println("qqqqqqqqqqqqq");
 		      TTransferNotify transferNotify=new TTransferNotify();
 		      System.out.println("wwwwwwwwwwwwwww");
@@ -1563,6 +1767,8 @@ public class GateController  {
 		    	  
 		      }  
 		      
+		      gateService.addOrUpdateTTransferNotify(transferNotify);
+		      
 		      /*gateService.addOrUpdateTTransferNotify(transferNotify);*/
 		  
 		  } catch (Exception e) {
@@ -1596,9 +1802,9 @@ public class GateController  {
 		     Document dm=db.parse(iStream);
 		     System.out.println("oooooooooooooooooooooooo"+notify);
 		      //得到 所有 person节点 
-		      NodeList persons=dm.getElementsByTagName("response");
+		      NodeList persons=dm.getElementsByTagName("notify");
 		      System.out.println("qqqqqqqqqqqqq");
-		      TBindingSucceed bindingSucceed=new TBindingSucceed();
+		      TBindingNotify bindingNotify=new TBindingNotify();
 		      System.out.println("wwwwwwwwwwwwwww");
 		      for(int i=0;i<persons.getLength();i++){
 		          
@@ -1614,55 +1820,56 @@ public class GateController  {
 		    	 
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
-		    		  /*bindingSucceed.setService(p.item(1).getTextContent());*/
+		    		  bindingNotify.setRequestNo(p.item(1).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
-		    		/*  bindingSucceed.setPlatformNo(p.item(3).getTextContent());*/
+		    		  bindingNotify.setPlatformNo(p.item(3).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
-		    		/*  bindingSucceed.setCode(p.item(5).getTextContent());*/
+		    		  bindingNotify.setBizType(p.item(5).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
 		    		  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(7).getTextContent());*/
+		    		  bindingNotify.setCode(p.item(7).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
 		    		  
 		    	  } 
 		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(9).getTextContent());*/
+		    		  bindingNotify.setMessage(p.item(9).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
 		    		  
 		    	  } 
 		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
-		    		/*  bindingSucceed.setDescription(p.item(11).getTextContent());*/
+		    		  bindingNotify.setPlatformUserNo(p.item(11).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
 		    		  
 		    	  } 
 		    	  if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(13).getTextContent());*/
+		    		  bindingNotify.setBankCardNo(p.item(13).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(13).getTextContent());
 		    		  
 		    	  } 
 		    	  if(p.item(15).getNodeName()!=null&&p.item(15).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(15).getTextContent());*/
+		    		  bindingNotify.setCardStatus(p.item(15).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(15).getTextContent());
 		    		  
 		    	  } 
 		    	  if(p.item(17).getNodeName()!=null&&p.item(17).getTextContent()!=null){
-		    		/*  bindingSucceed.setDescription(p.item(17).getTextContent());*/
+		    		  bindingNotify.setBank(p.item(17).getTextContent());
 		    		  System.out.println("ddddddd"+p.item(17).getTextContent());
 		    		  
 		    	  } 
 		    	  
-		    	 
+		    	  
+	
 		    	  
 		      }  
 		      
-		      gateService.addOrUpdateTBindingSucceed(bindingSucceed);
+		      gateService.addOrUpdateTBindingNotify(bindingNotify);
 		  
 		  } catch (Exception e) {
 	            // TODO: handle exception
@@ -1670,6 +1877,103 @@ public class GateController  {
 	        }
 		return "payment/binding";
 	}
+	
+	
+	
+	
+	@RequestMapping(value="/gate/drawMoneyNotify", method = {RequestMethod.POST, RequestMethod.GET})
+	public String drawMoneyNotify(Model model, String notify, String sign,HttpServletRequest request)throws Exception {
+		model.addAttribute("notify", notify);
+		model.addAttribute("sign", sign);
+		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq"+notify);
+		
+		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+         
+		  try {
+		            
+		      //    通过 解析器 工厂 创建 一个 解析 器 
+		      DocumentBuilder db=dbf.newDocumentBuilder();
+		      System.out.println("eeeeeeeeeee");
+		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
+		     
+		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
+		     Document dm=db.parse(iStream);
+		     System.out.println("oooooooooooooooooooooooo"+notify);
+		      //得到 所有 person节点 
+		      NodeList persons=dm.getElementsByTagName("notify");
+		      System.out.println("qqqqqqqqqqqqq");
+		      TDrawMoneyNotify drawMoneyNotify=new TDrawMoneyNotify();
+		      System.out.println("wwwwwwwwwwwwwww");
+		      for(int i=0;i<persons.getLength();i++){
+		          
+		    	  Element personElement = (Element)persons.item(i);
+		    	  
+		    	  NodeList p=personElement.getChildNodes();
+		    	  for(int j=0;j<p.getLength();j++){
+		    		  Node e= p.item(j);
+		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+		    		 
+		    	  }
+		    	  
+		    	 
+		    	  
+		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
+		    		  drawMoneyNotify.setPlatformNo(p.item(1).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		    	  }
+		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
+		    		  drawMoneyNotify.setBizType(p.item(3).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
+		    		  drawMoneyNotify.setCode(p.item(5).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
+		    		  drawMoneyNotify.setMessage(p.item(7).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    		  
+		    	  } 
+		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
+		    		  drawMoneyNotify.setRequestNo(p.item(9).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+		    		  
+		    	  } 
+		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
+		    		  drawMoneyNotify.setPlatformUserNo(p.item(11).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+		    		  
+		    	  } 
+		    	  if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
+		    		  drawMoneyNotify.setCardNo(p.item(13).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(13).getTextContent());
+		    		  
+		    	  } 
+		    	  if(p.item(15).getNodeName()!=null&&p.item(15).getTextContent()!=null){
+		    		  drawMoneyNotify.setBank(p.item(15).getTextContent());
+		    		  System.out.println("ddddddd"+p.item(15).getTextContent());
+		    		  
+		    	  } 
+		    	
+		    	  
+		    	 
+	
+		    	  
+		      }  
+		      
+		      gateService.addOrUpdateTDrawMoneyNotify(drawMoneyNotify);
+		  
+		  } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	        }
+		return "payment/binding";
+	}
+	
+	
+	
 		
 	
 	@RequestMapping(value="/gate/drawMoneySucceed", method = {RequestMethod.POST, RequestMethod.GET})
