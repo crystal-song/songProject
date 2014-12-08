@@ -340,7 +340,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div> 
                    </li>
                 
-                   <li style="display:none">
+                   <li>
                    <form action="<%=path%>/welcome/identityCardVerification" method="post" enctype="multipart/form-data">
                         <div class="anquan_label label2">
                          <span>实名认证</span>
@@ -353,7 +353,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                        <div class="anquan_hide" style="display:none;">
                          <ul>
-                           <li><span><strong>*</strong>用户名</span>
+                           <li>
+                             <span><strong>*</strong>用户名</span>
                              <span><input type="text" id="name" name="name" value="${name}"></input></span> 
                            </li>
                            <li>
@@ -402,7 +403,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            <li id="text-align_style" style="display:none">  
                                 <span style="width:300px;" id="text-align_style"><input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="<%=path%>/yinsitiaokuan.jsp" class="wd_color">《委托收付资金协议》</a></span>    
                            </li>
-                           <li><span><input type="submit" value="提交"  class="anquan_hide_btn"/></span></li>
+                           <li><span></span><span><input type="submit" value="提交"  class="anquan_hide_btn" style="width:80px; float:left;"/></span></li>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
@@ -446,14 +447,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <ul>
                           <form action="<%=path %>/welcome/emailVerification" method="post">
                            <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="mail" name="mail"></input></span><span class="tishitext" style="width:auto;"></span></li>
-                           <li><span></span><input type="submit" value="提交"  class="anquan_hide_btn"></input></li>
+                           <li><span></span><input type="submit" value="提交"  class="anquan_hide_btn" style="width:80px;"></input></li>
                          </form>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">邮箱验证成功,请重新登录！</div>
                        </div>
                    </li>
                    <li >
-                       <div class="anquan_label label5">
+                        <div class="anquan_label label5">
                          <span>登录密码</span>
                          <span class="anquan_right">修改</span>
                         </div>
@@ -482,7 +483,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					     </li>
 						 <li><span><strong>*</strong>请输入答案：</span><span><input type="text" id="answer" name="answer" onblur="checkAnswer()"></input></span><span id="Tip_Answer"></span></li>
                            </c:if>
-                         <li><span><input type="button" class="anquan_hide_btn" value="提交" onclick="updatePassword();" id="ensure"/></span></li>
+                         <li><span></span><span><input type="button" class="anquan_hide_btn" value="提交" onclick="updatePassword();" id="ensure" style="width:80px; float:left;"/></span></li>
                          </ul>
                     
                          <div class="tijiao_checkok" style="display:none">密码修改成功,请重新登录！</div>
