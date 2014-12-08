@@ -47,7 +47,7 @@ $(document).ready(function(){
   <div class="num1" id="div1">
   	<div class="top"><img src="<%=path%>/img/images-2014-11/huodong/images/wenzi.png"></div>
     <div class="bottom">
-      	<div class="li01"><span>李炎平</span></div>
+      	<div class="li01"><span>李言平</span></div>
       	<div class="li02"><span class="jingqing">敬请<br/>期待</span>  	
         </div>
       	<div class="li02"><span class="jingqing">敬请<br/>期待</span></div>
