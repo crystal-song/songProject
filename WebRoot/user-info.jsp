@@ -165,7 +165,11 @@ var indexs=0;
 	                  </li>
 	                 <li>
 	                      <span>易宝账号</span>
-	                      <span class="span_le"><%-- ${registerYeePay1.platformUserNo} --%>${user1.realName}</span>
+	                      <span class="span_le"><%-- ${registerYeePay1.platformUserNo} --%>
+	                      <c:if test="${not empty user1.realName}"> 
+	                      ${fn:substring(user1.realName,0,1)}<c:forEach var="j" begin="1" end="${fn:length(user1.realName)-1}" step="1">*</c:forEach>
+	                      </c:if>
+	                      </span>
 	                      <c:if test='${ empty registerYeePay1.code}'>
 	                      <span class="tip"><a href="<%=path%>/gate/register" target="_blank">立即认证</a></span>
 	                        <div id="tishik01">
