@@ -201,7 +201,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               value="10040011137" /> -->
                <label for="platformNo">platformNo</label><input type="text"
               class="form-control" id="platformNo" name="platformNo"
-              value="10012415118" />
+              value="${f.platformNo}" />
+              <!-- value="10012415118" /> -->
           </div>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="requestNo">requestNo</label><input type="text"
@@ -230,17 +231,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="notifyUrl">notifyUrl</label><input type="text"
-              class="form-control" id="notifyUrl" name="notifyUrl"  value="http://192.168.1.207:8080/spring3/gate/examRecharge" />
+              class="form-control" id="notifyUrl" name="notifyUrl"  value="${f.notifyUrl}/gate/rechargeNotify" />
           </div>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="callbackUrl">callbackUrl</label><input
               type="text" class="form-control" id="callbackUrl"
               name="callbackUrl"
-              value="http://192.168.1.207:8080/spring3/gate/examRecharge" />
+               value="${f.callbackUrl}/gate/examRecharge" />
+             <!--  value="http://www.ptobchina.com/spring3/gate/examRecharge" /> -->
           </div>         
-          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')"
-            class="btn btn-default">QA</button>
-          <button onclick="onSubmit('http://qa.yeepay.com/bha-toolkit')"
+           <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')"
+            class="btn btn-default">QA</button> -->
+         <!-- <button onclick="onSubmit('http://qa.yeepay.com/bha-toolkit')"
             class="btn btn-default">QA</button> -->
           <!-- <button onclick="onSubmit('https://member.yeepay.com/member')"
             class="btn btn-default">立即充值</button> -->
