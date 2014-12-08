@@ -8,17 +8,22 @@ import org.springframework.stereotype.Repository;
 
 import com.mftour.spring.Dao.IGateDao;
 import com.mftour.spring.model.TBinding;
+import com.mftour.spring.model.TBindingNotify;
 import com.mftour.spring.model.TBindingSucceed;
 import com.mftour.spring.model.TDrawMoney;
+import com.mftour.spring.model.TDrawMoneyNotify;
 import com.mftour.spring.model.TDrawMoneySucceed;
 import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TLoansucceed;
 import com.mftour.spring.model.TRecharge;
+import com.mftour.spring.model.TRechargeNotify;
 import com.mftour.spring.model.TRechargeSucceed;
+import com.mftour.spring.model.TRegisterNotify;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
+import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.util.Page;
@@ -244,6 +249,63 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("requestNo",  requestno);
 		return query.list();
 	}
+
+	@Override
+	public void addOrUpdateTRegisterNotify(TRegisterNotify registerNotify)
+			throws Exception {
+		getHibernateTemplate().saveOrUpdate(registerNotify);
+		
+	}
+
+	@Override
+	public List<TRegisterNotify> queryTRegisterNotifyByName(String name){
+		
+	String hq="from TRegisterNotify registerNotify where registerNotify.platformUserNo=:platformUserNo";
+	Query query = getSession().createQuery(hq);
+	query.setParameter("platformUserNo",  name);
+	return query.list();
+	}
+
+	@Override
+	public void addOrUpdateTRechargeNotify(TRechargeNotify rechargeNotify)
+			throws Exception {
+		getHibernateTemplate().saveOrUpdate(rechargeNotify);
+		
+	}
+
+	@Override
+	public void addOrUpdateTBindingNotify(TBindingNotify bindingNotify)
+			throws Exception {
+		getHibernateTemplate().saveOrUpdate(bindingNotify);
+		
+	}
+
+	@Override
+	public void addOrUpdateTTransferNotify(TTransferNotify transferNotify)
+			throws Exception {
+		getHibernateTemplate().saveOrUpdate(transferNotify);
+		
+	}
+
+	@Override
+	public void addOrUpdateTDrawMoneyNotify(TDrawMoneyNotify drawMoneyNotify)
+			throws Exception {
+		getHibernateTemplate().saveOrUpdate(drawMoneyNotify);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
