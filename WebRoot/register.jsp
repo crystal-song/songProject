@@ -30,9 +30,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   alert("身份证输入不合法！");  
 		   return  false;  
 	   } 
-	   var regMobile=/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/;
+	   //var regMobile=/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/;
 	   var chkMobile=document.getElementById("mobile").value;
-	   if(regMobile.test(chkMobile)){
+	   //if(regMobile.test(chkMobile)){
+		  if(chkMobile==""){
 		   alert("手机号输入不合法！");  
 		   return  false;  
 		   }
