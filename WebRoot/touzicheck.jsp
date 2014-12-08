@@ -76,7 +76,7 @@ function onSubmit(host) {
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="targetPlatformUserNo">借款人会员编号</label><input type="text"
-              class="form-control" id="targetPlatformUserNo" name="targetPlatformUserNo" value="601522539" />
+              class="form-control" id="targetPlatformUserNo" name="targetPlatformUserNo" value="${product.targetPlatformUserNo}" />
           </div>
           </li>
           <li>
