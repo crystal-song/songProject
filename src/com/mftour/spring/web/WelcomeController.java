@@ -224,6 +224,12 @@ public class WelcomeController {
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
 		model.addAttribute("user1", user1);
+		List<TRegisterYeePay> li = gateService
+				.queryTRegisterYeePayByName(user1.getName());
+		if (li != null && li.size() != 0) {
+			TRegisterYeePay registerYeePay1 = li.get(0);
+			model.addAttribute("registerYeePay1", registerYeePay1);
+		}
 		// TRegisterYeePay registerYeePay1=
 		// gateService.queryTRegisterYeePayByName(user1.getName()).get(0);
 		// model.addAttribute("registerYeePay1", registerYeePay1);
