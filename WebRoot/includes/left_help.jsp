@@ -22,6 +22,7 @@
              <li><a href="<%=path%>/notice.jsp">法律声明</a></li>
              <li><a href="<%=path%>/faqixiangmu.jsp">发起项目</a></li>
              <li><a href="<%=path%>/contact.jsp">联系客服</a></li>
+             <li><a href="<%=path%>/guanjianci.jsp">名词解释</a></li>
            </ul>  
 <!-- 
  <script type="text/javascript">
