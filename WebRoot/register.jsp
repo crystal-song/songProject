@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
           </div>
 
-          <div class="jin_input" style="padding-left:200px;"><a href="javascript:;" title="立即注册" onclick="onSubmit('https://member.yeepay.com/member')" id="mysubmit_btn">立即注册</a></div>
+          <div class="jin_input" style="padding-left:200px;"><a href="javascript:;" title="立即注册" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">立即注册</a></div>
         <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button> -->
            <!-- <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">生产</button> -->
 
