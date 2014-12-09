@@ -514,6 +514,9 @@ public class GateController  {
 		    model.addAttribute("f", f);
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name");
+		  if(o==null){
+			  return "login";
+		  }
 		 if(o!=null){
 		
 			 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
