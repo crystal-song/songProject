@@ -30,7 +30,7 @@ import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
 import com.mftour.spring.util.Env;
-import com.mftour.spring.util.MD5_Encoding;
+//import com.mftour.spring.util.MD5_Encoding;
 //import com.mftour.spring.util.File;
 import com.mftour.spring.util.MailSenderInfo;
 import com.mftour.spring.util.ReadWirtePropertis;
