@@ -30,9 +30,9 @@ import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
 import com.mftour.spring.util.Env;
-//import com.mftour.spring.util.MD5_Encoding;
 //import com.mftour.spring.util.File;
 import com.mftour.spring.util.MailSenderInfo;
+import com.mftour.spring.util.RandomCode;
 import com.mftour.spring.util.ReadWirtePropertis;
 import com.mftour.spring.util.SimpleMailSender;
 import com.sms.webservice.client.SmsReturnObj;
@@ -50,6 +50,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
 /*
  * 不需要实现任何接口，也不需要继承任何的类，也不需要任何 Servlet API
@@ -95,87 +105,59 @@ public class WelcomeController {
 	
 
 	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
-	public String regEemail(TUser user, Model model, HttpServletRequest request)
-			throws Exception {
+	public String regEemail(TUser user, Model model, HttpServletRequest request){
 		try {
-			
+			Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*60* 60 * 1000);
+			RandomCode randomcode=new RandomCode();
+			String code=randomcode.getRandomString(5);
+			user.setRegTime(outDate);
+			user.setRandomCode(code);
 			user.setRegState("f");
 			userService.addOrUpdate(user);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
-		    String SENDCLOUD_SMTP_HOST = "smtpcloud.sohu.com";
-		    int SENDCLOUD_SMTP_PORT = 25;
-		    Properties props = System.getProperties();
-	        props.setProperty("mail.transport.protocol", "smtp");
-	        props.put("mail.smtp.host", SENDCLOUD_SMTP_HOST);
-	        props.put("mail.smtp.port", SENDCLOUD_SMTP_PORT);
-	        props.setProperty("mail.smtp.auth", "true");
-	        props.put("mail.smtp.connectiontimeout", 180);
-	        props.put("mail.smtp.timeout", 600);
-
-	        props.setProperty("mail.mime.encodefilename", "true");
-
-	        // 使用api_user和api_key进行验证
-	        final String apiUser = "ptobchina_test_U1BqG6";
-	        final String apiKey = "xkP8cQXYryMAyKBe";
-
-	        Session mailSession = Session.getInstance(props, new Authenticator() {
-	            @Override
-	            protected PasswordAuthentication getPasswordAuthentication() {
-	                return new PasswordAuthentication(apiUser, apiKey);
-	            }
-	        });
-
-	        Transport transport = mailSession.getTransport();
-	        MimeMessage message = new MimeMessage(mailSession);
-	        Multipart multipart = new MimeMultipart("alternative");
-	        
-	        Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
-			request.getSession().setAttribute("outDate1", outDate);
-			model.addAttribute("user1", user);
-	        // 添加html形式的邮件正文
-	        BodyPart part1 = new MimeBodyPart();
-	        part1.setHeader("Content-Type", "text/html;charset=UTF-8");
-	        part1.setHeader("Content-Transfer-Encoding", "base64");
-	        com.mftour.spring.util.File f=ReadWirtePropertis.file();
+			com.mftour.spring.util.File f=ReadWirtePropertis.file();
 			String basePath =f.getBasePath();
-			String resetPassHref =basePath+ "welcome/register?username="
-					+ user.getName();
+			String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
 			String mainjsp = "http://www.ptobchina.com/wel";
-
-	        String htmlContent = "亲爱的用户"
+			String htmlContent = "亲爱的用户"
 					+ user.getName()
 					+ "，您好，<br/><br/>"
 					+ "您在"
 					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-							.format(new Date())
-					+ "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
-					+ "<a href="
-					+ resetPassHref
-					+ "><font color='green'>http://www.ptobchina.com/welcome/register?username="
-					+ user.getName() + "&checkcode=gfe3r4245hdasr43t90dcscdsvf</font></a><br/><br/>"
-					+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-					+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
-					+ "中租宝   <a href=" + mainjsp
-					+ "><font color='green'>http://www.ptobchina.com/</font></a>"
-					+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
-	        part1.setContent(htmlContent, "text/html;charset=UTF-8");
-	        multipart.addBodyPart(part1);
-	        message.setContent(multipart);
+			.format(new Date())
+			+ "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
+			+ "<a href="
+			+ resetPassHref
+			+ "><font color='green'>http://www.ptobchina.com/welcome/register?username="
+			+ user.getName() + "&checkcode="+code+"</font></a><br/><br/>"
+			+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
+			+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
+			+ "中租宝   <a href=" + mainjsp
+			+ "><font color='green'>http://www.ptobchina.com/</font></a>"
+			+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+			 String url = "https://sendcloud.sohu.com/webapi/mail.send.xml";
+		        HttpClient httpclient = new DefaultHttpClient();
+		        HttpPost httpost = new HttpPost(url);
 
-	        // 发信人，用正确邮件地址替代 
-	        message.setFrom(new InternetAddress("cs@ptobchina.com", "管理员", "UTF-8"));
-	        // 收件人地址，用正确邮件地址替代
-	        message.addRecipient(RecipientType.TO, new InternetAddress(user.getEmail()));
-	        // 邮件主题
-	        message.setSubject("中租宝—用户注册确认", "UTF-8");
+		        List nvps = new ArrayList();
+		        nvps.add(new BasicNameValuePair("api_user", "ptobchina_test_U1BqG6")); //# 使用api_user和api_key进行验证
+		        nvps.add(new BasicNameValuePair("api_key", "xkP8cQXYryMAyKBe"));
+		        nvps.add(new BasicNameValuePair("from", "cs@ptobchina.com")); //# 发信人，用正确邮件地址替代
+		        nvps.add(new BasicNameValuePair("to", user.getEmail()));// # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+		        nvps.add(new BasicNameValuePair("subject", "中租宝—用户注册确认"));
+		        nvps.add(new BasicNameValuePair("html",htmlContent ));
+		        httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
 
-	        // 连接sendcloud服务器，发送邮件
-	        transport.connect();
-	        transport.sendMessage(message, message.getRecipients(RecipientType.TO));
-	        transport.close();
+		        HttpResponse response = httpclient.execute(httpost);
+
+		        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { // 正常返回
+		            System.out.println(EntityUtils.toString(response.getEntity()));
+		        } else {
+		            System.err.println("error");
+		        }
+
+	        } catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		return "reg_email";
 	}
@@ -183,105 +165,95 @@ public class WelcomeController {
 	@RequestMapping(value = "/emailVerification", method = RequestMethod.POST)
 	public String emailVerification(@RequestParam("mail") String mail,
 			Model model, HttpServletRequest request) throws Exception {
-		boolean flag = false;
+		try{
 		String username = (String) request.getSession().getAttribute("name");
 		TUser user = userService.getUserByAccount(username);
 		user.setEmail(mail);
 		userService.addOrUpdate(user);
+		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
+		request.getSession().setAttribute("outDate1", outDate);
+		model.addAttribute("user1", user);
+		com.mftour.spring.util.File f=ReadWirtePropertis.file();
+		String basePath =f.getBasePath();
+		String resetPassHref = basePath + "welcome/verregister?username="
+				+ user.getName();
+		String mainjsp = "http://www.ptobchina.com/wel";
 		
-		 String SENDCLOUD_SMTP_HOST = "smtpcloud.sohu.com";
-		    int SENDCLOUD_SMTP_PORT = 25;
-		    Properties props = System.getProperties();
-	        props.setProperty("mail.transport.protocol", "smtp");
-	        props.put("mail.smtp.host", SENDCLOUD_SMTP_HOST);
-	        props.put("mail.smtp.port", SENDCLOUD_SMTP_PORT);
-	        props.setProperty("mail.smtp.auth", "true");
-	        props.put("mail.smtp.connectiontimeout", 180);
-	        props.put("mail.smtp.timeout", 600);
+		String htmlContent = "亲爱的用户"
+				+ user.getName()
+				+ "，您好，<br/><br/>"
+				+ "您在"
+				+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+		.format(new Date())
+		+ "进行邮箱认证，请点击以下链接完成认证：<br/><br/>"
+		+ "<a href="
+		+ resetPassHref
+		+ "><font color='green'>http://www.ptobchina.com/welcome/verregister?username="
+		+ user.getName() + "&checkcode=gfe3r4245hdasr43t90dcscdsvf</font></a><br/><br/>"
+		+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
+		+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
+		+ "中租宝   <a href=" + mainjsp
+		+ "><font color='green'>http://www.ptobchina.com/</font></a>"
+		+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+		 String url = "https://sendcloud.sohu.com/webapi/mail.send.xml";
+	        HttpClient httpclient = new DefaultHttpClient();
+	        HttpPost httpost = new HttpPost(url);
 
-	        props.setProperty("mail.mime.encodefilename", "true");
+	        List nvps = new ArrayList();
+	        nvps.add(new BasicNameValuePair("api_user", "ptobchina_test_U1BqG6")); //# 使用api_user和api_key进行验证
+	        nvps.add(new BasicNameValuePair("api_key", "xkP8cQXYryMAyKBe"));
+	        nvps.add(new BasicNameValuePair("from", "cs@ptobchina.com")); //# 发信人，用正确邮件地址替代
+	        nvps.add(new BasicNameValuePair("to", user.getEmail()));// # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+	        nvps.add(new BasicNameValuePair("subject", "中租宝—邮箱认证"));
+	        nvps.add(new BasicNameValuePair("html",htmlContent ));
+	        httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
 
-	        // 使用api_user和api_key进行验证
-	        final String apiUser = "ptobchina_test_U1BqG6";
-	        final String apiKey = "xkP8cQXYryMAyKBe";
+	        HttpResponse response = httpclient.execute(httpost);
 
-	        Session mailSession = Session.getInstance(props, new Authenticator() {
-	            @Override
-	            protected PasswordAuthentication getPasswordAuthentication() {
-	                return new PasswordAuthentication(apiUser, apiKey);
-	            }
-	        });
-
-	        Transport transport = mailSession.getTransport();
-	        MimeMessage message = new MimeMessage(mailSession);
-	        Multipart multipart = new MimeMultipart("alternative");
-	        
-	        Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
-			request.getSession().setAttribute("outDate1", outDate);
-			model.addAttribute("user1", user);
-	        // 添加html形式的邮件正文
-	        BodyPart part1 = new MimeBodyPart();
-	        part1.setHeader("Content-Type", "text/html;charset=UTF-8");
-	        part1.setHeader("Content-Transfer-Encoding", "base64");
-	        com.mftour.spring.util.File f=ReadWirtePropertis.file();
-			String basePath =f.getBasePath();
-			String resetPassHref = basePath + "welcome/register?username="
-					+ user.getName();
-			String mainjsp = "http://www.ptobchina.com/wel";
-			/*//加密用户名
-			MD5_Encoding md=new MD5_Encoding();*/
-			
-	        String htmlContent = "亲爱的用户"
-					+ user.getName()
-					+ "，您好，<br/><br/>"
-					+ "您在"
-					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-							.format(new Date())
-					+ "进行邮箱认证，请点击以下链接完成认证：<br/><br/>"
-					+ "<a href="
-					+ resetPassHref
-					+ "><font color='green'>http://www.ptobchina.com/welcome/register?username="
-					+ user.getName() + "&checkcode=gfe3r4245hdasr43t90dcscdsvf</font></a><br/><br/>"
-					+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-					+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
-					+ "中租宝   <a href=" + mainjsp
-					+ "><font color='green'>http://www.ptobchina.com/</font></a>"
-					+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
-	        part1.setContent(htmlContent, "text/html;charset=UTF-8");
-	        multipart.addBodyPart(part1);
-	        message.setContent(multipart);
-
-	        // 发信人，用正确邮件地址替代 
-	        message.setFrom(new InternetAddress("cs@ptobchina.com", "管理员", "UTF-8"));
-	        // 收件人地址，用正确邮件地址替代
-	        message.addRecipient(RecipientType.TO, new InternetAddress(user.getEmail()));
-	        // 邮件主题
-	        message.setSubject("中租宝—邮箱认证", "UTF-8");
-
-	        // 连接sendcloud服务器，发送邮件
-	        transport.connect();
-	        transport.sendMessage(message, message.getRecipients(RecipientType.TO));
-	        transport.close();
+	        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { // 正常返回
+	            System.out.println(EntityUtils.toString(response.getEntity()));
+	        } else {
+	            System.err.println("error");
+	        }
+    } catch (Exception e) {
+		e.printStackTrace();
+	}
 
 
 		return "reg_email";
 	}
 
-	@RequestMapping(value = "/register", method = { RequestMethod.POST,
+	@RequestMapping(value = "/verregister", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String register(@RequestParam("username") String username,
+	public String verregister(@RequestParam("username") String username,
 			Model model,HttpServletRequest request) throws Exception {
 		Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate1");
 		System.out.println("outDate"+outDate);
 		System.out.println("aaaaaa"+outDate.getTime()+"bbbbbbb"+System.currentTimeMillis());
+		TUser user = userService.getUserByAccount(username);
 		if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
             request.setAttribute("msg", "链接已经过期,请重新做认证！");
 		}else{
-		TUser user = userService.getUserByAccount(username);
-		user.setRegState("s");
-		userService.addOrUpdate(user);
-		model.addAttribute("regState", user.getRegState());
+			user.setRegState("s");
+			userService.addOrUpdate(user);
 		}
+			model.addAttribute("regState", user.getRegState());
+			return "reg_success";
+	}
+
+	@RequestMapping(value = "/register", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String register(@RequestParam("username") String username,@RequestParam("checkcode") String checkcode,
+			Model model,HttpServletRequest request) throws Exception {
+		TUser user = userService.getUserByAccount(username);
+		Timestamp outDate =user.getRegTime();
+		if(outDate.getTime()>= System.currentTimeMillis()&&checkcode.equals(user.getRandomCode())){ //表示已经过期
+			user.setRegState("s");
+			userService.addOrUpdate(user);
+		}else{
+			request.setAttribute("msg", "链接已经过期,请重新做认证！");
+		}
+		model.addAttribute("regState", user.getRegState());
 		return "reg_success";
 	}
 
