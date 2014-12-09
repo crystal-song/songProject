@@ -80,5 +80,11 @@
         <property name="answer" type="java.lang.String">
             <column name="answer" length="50" />
         </property>
+        <property name="regTime" type="java.sql.Timestamp">
+            <column name="regTime" length="50" />
+        </property>
+        <property name="randomCode" type="java.lang.String">
+            <column name="randomCode" length="50" />
+        </property>
     </class>
 </hibernate-mapping>
