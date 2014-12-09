@@ -58,6 +58,9 @@
          <property name="transDate" type="java.lang.String">
             <column name="transDate" length="50" />
         </property>
+        <property name="financingPeriod" type="java.lang.Integer">
+            <column name="financingPeriod" length="50" />
+        </property>
        
     </class>
 </hibernate-mapping>

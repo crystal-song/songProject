@@ -18,6 +18,7 @@ public class TTransferInfo implements java.io.Serializable {
 	private String projectName;					//项目名称
 	private Double interestRate;
 	private String transDate;			//交易时间
+	private Integer financingPeriod;	
 
 	public Long getId() {
 		return id;
@@ -146,5 +147,17 @@ public class TTransferInfo implements java.io.Serializable {
 	public void setTransDate(String transDate) {
 		this.transDate = transDate;
 	}
+
+	public Integer getFinancingPeriod() {
+		return financingPeriod;
+	}
+
+	public void setFinancingPeriod(Integer financingPeriod) {
+		this.financingPeriod = financingPeriod;
+	}
+
+    
+	
+	
 	
 }
