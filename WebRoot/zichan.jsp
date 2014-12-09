@@ -26,10 +26,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	$(".u_left_mian").click(function(){
             $(this).siblings().slideToggle("slow");
           });
-    	ap=parseInt($("#availableAmount_info").html());
-    	fp=parseInt($("#freezeAmount_info").html());
-    	$("#availableAmount_bar").width(ap);
-    	$("#freezeAmount_bar").width(fp);
+    	var ta=parseInt($("#balance_info").html());
+    	var aa=parseInt($("#availableAmount_info").html());
+    	var fa=parseInt($("#freezeAmount_info").html());
+    	if(ta==0){
+	    	$("#availableAmount_bar").css("width","1%");
+	    	$("#freezeAmount_bar").css("width","1%");
+    	}else{
+	    	$("#availableAmount_bar").css("width",aa/ta*100+"%");
+	    	$("#freezeAmount_bar").css("width",fa/ta*100+"%");
+    	}
 });
         
 </script>
@@ -59,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li>
               <div class="li_pic back01"></div>
               <div class="li_right">
-                 <div class="li_top"><span>可用余额</span><strong><span style="text-align:right" id="availableAmount_info">${availableAmount}</span><i>元</i></strong>
+                 <div class="li_top"><span title="即用户可用来投资的账户余额。">可用余额</span><strong><span style="text-align:right" id="availableAmount_info">${availableAmount}</span><i>元</i></strong>
                  </div>
                  <div class="li_loadbar"><div id="availableAmount_bar"></div></div>
               </div>
@@ -67,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li>
               <div class="li_pic back02"></div>
               <div class="li_right">
-                 <div class="li_top"><span>冻结余额</span><strong><span style="text-align:right" id="freezeAmount_info">${freezeAmount}</span><i>元</i></strong>
+                 <div class="li_top"><span title="即已用来投资的金额。">冻结余额</span><strong><span style="text-align:right" id="freezeAmount_info">${freezeAmount}</span><i>元</i></strong>
                  </div>
                  <div class="li_loadbar"><div style="background:#c7df95;" id="freezeAmount_bar"></div></div>
               </div>
