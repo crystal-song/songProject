@@ -37,6 +37,7 @@ public class TProduct implements java.io.Serializable {
 	    private String  existType;
 	    private String  releaseTime;
 	    private String  targetPlatformUserNo;
+	    private String  enterpriseName;
 	    private Integer buyType;
 	    
 	    
@@ -248,6 +249,12 @@ public class TProduct implements java.io.Serializable {
 		}
 		public void setGuaranteeNumber(String guaranteeNumber) {
 			this.guaranteeNumber = guaranteeNumber;
+		}
+		public String getEnterpriseName() {
+			return enterpriseName;
+		}
+		public void setEnterpriseName(String enterpriseName) {
+			this.enterpriseName = enterpriseName;
 		}
 		
 		
