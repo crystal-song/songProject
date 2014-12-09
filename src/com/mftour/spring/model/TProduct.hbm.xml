@@ -109,6 +109,9 @@
              <property name="enterpriseBusinessIicense" type="java.lang.String">
             <column name="enterpriseBusinessIicense" length="50" />
         </property> 
+               <property name="enterpriseName" type="java.lang.String">
+            <column name="enterpriseName" length="50" />
+        </property> 
              <property name="guaranteeNumber" type="java.lang.String">
             <column name="guaranteeNumber" length="50" />
         </property> 
