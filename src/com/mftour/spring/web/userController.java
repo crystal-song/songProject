@@ -2,7 +2,9 @@ package com.mftour.spring.web;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -22,6 +24,14 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -119,6 +129,7 @@ public class userController {
 			@RequestParam("email") String email,
 			@RequestParam("validatecode") String validatecode,
 			HttpServletRequest request, Model model) throws Exception {
+		try{
 		TUser user = userService.getUserByAccount(name);
 		// 获取验证码的值
 		String random = (String) request.getSession().getAttribute("random");
@@ -127,82 +138,59 @@ public class userController {
 			return "forget";
 		}
 		
+		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
+		request.getSession().setAttribute("outDate", outDate);
 		model.addAttribute("user1", user);
-		  String SENDCLOUD_SMTP_HOST = "smtpcloud.sohu.com";
-		    int SENDCLOUD_SMTP_PORT = 25;
-		    Properties props = System.getProperties();
-	        props.setProperty("mail.transport.protocol", "smtp");
-	        props.put("mail.smtp.host", SENDCLOUD_SMTP_HOST);
-	        props.put("mail.smtp.port", SENDCLOUD_SMTP_PORT);
-	        props.setProperty("mail.smtp.auth", "true");
-	        props.put("mail.smtp.connectiontimeout", 180);
-	        props.put("mail.smtp.timeout", 600);
+		com.mftour.spring.util.File f=ReadWirtePropertis.file();
+		String basePath =f.getBasePath();
+		String resetPassHref = basePath + "user/reset?username="
+				+ user.getName();
+		String mainjsp = "http://www.ptobchina.com/wel";
+		
+		String htmlContent = "亲爱的用户"
+				+ user.getName()
+				+ "，您好，<br/><br/>"
+				+ "您在"
+				+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+		.format(new Date())
+		+ "提交找回密码的请求,请点击此链接重置您的密码<br/><br/>"
+		+ "<a href="
+		+ resetPassHref
+		+ "><font color='green'>http://www.ptobchina.com/user/reset?username="
+		+ user.getName() + "&checkcode=gfe3r4245hdasr43t90dcscdsvf</font></a><br/><br/>"
+		+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
+		+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
+		+ "中租宝   <a href=" + mainjsp
+		+ "><font color='green'>http://www.ptobchina.com/</font></a>"
+		+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+		 String url = "https://sendcloud.sohu.com/webapi/mail.send.xml";
+	        HttpClient httpclient = new DefaultHttpClient();
+	        HttpPost httpost = new HttpPost(url);
 
-	        props.setProperty("mail.mime.encodefilename", "true");
+	        List nvps = new ArrayList();
+	        nvps.add(new BasicNameValuePair("api_user", "ptobchina_test_U1BqG6")); //# 使用api_user和api_key进行验证
+	        nvps.add(new BasicNameValuePair("api_key", "xkP8cQXYryMAyKBe"));
+	        nvps.add(new BasicNameValuePair("from", "cs@ptobchina.com")); //# 发信人，用正确邮件地址替代
+	        nvps.add(new BasicNameValuePair("to", user.getEmail()));// # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+	        nvps.add(new BasicNameValuePair("subject", "中租宝—找回密码通知"));
+	        nvps.add(new BasicNameValuePair("html",htmlContent ));
+	        httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
 
-	        // 使用api_user和api_key进行验证
-	        final String apiUser = "ptobchina_test_U1BqG6";
-	        final String apiKey = "xkP8cQXYryMAyKBe";
+	        HttpResponse response = httpclient.execute(httpost);
 
-	        Session mailSession = Session.getInstance(props, new Authenticator() {
-	            @Override
-	            protected PasswordAuthentication getPasswordAuthentication() {
-	                return new PasswordAuthentication(apiUser, apiKey);
-	            }
-	        });
-
-	        Transport transport = mailSession.getTransport();
-	        MimeMessage message = new MimeMessage(mailSession);
-	        Multipart multipart = new MimeMultipart("alternative");
-	        
-	        Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
-			request.getSession().setAttribute("outDate", outDate);
-			model.addAttribute("user1", user);
-	        // 添加html形式的邮件正文
-	        BodyPart part1 = new MimeBodyPart();
-	        part1.setHeader("Content-Type", "text/html;charset=UTF-8");
-	        part1.setHeader("Content-Transfer-Encoding", "base64");
-	        com.mftour.spring.util.File f=ReadWirtePropertis.file();
-			String basePath =f.getBasePath();
-			String resetPassHref = basePath + "user/reset?username="
-					+ user.getName();
-			String mainjsp = "http://www.ptobchina.com/wel";
-
-	        String htmlContent = "亲爱的用户"
-					+ user.getName()
-					+ "，您好，<br/><br/>"
-					+ "您在"
-					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-							.format(new Date())
-					+ "提交找回密码的请求,请点击此链接重置您的密码<br/><br/>"
-					+ "<a href="
-					+ resetPassHref
-					+ "><font color='green'>http://www.ptobchina.com/user/reset?username="
-					+ user.getName() + "&checkcode=gfe3r4245hdasr43t90dcscdsvf</font></a><br/><br/>"
-					+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-					+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
-					+ "中租宝   <a href=" + mainjsp
-					+ "><font color='green'>http://www.ptobchina.com/</font></a>"
-					+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
-	        part1.setContent(htmlContent, "text/html;charset=UTF-8");
-	        multipart.addBodyPart(part1);
-	        message.setContent(multipart);
-
-	        // 发信人，用正确邮件地址替代 
-	        message.setFrom(new InternetAddress("cs@ptobchina.com", "管理员", "UTF-8"));
-	        // 收件人地址，用正确邮件地址替代
-	        message.addRecipient(RecipientType.TO, new InternetAddress(user.getEmail()));
-	        // 邮件主题
-	        message.setSubject("中租宝—找回密码通知", "UTF-8");
-
-	        // 连接sendcloud服务器，发送邮件
-	        transport.connect();
-	        transport.sendMessage(message, message.getRecipients(RecipientType.TO));
-	        transport.close();
-
+	        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { // 正常返回
+	            System.out.println(EntityUtils.toString(response.getEntity()));
+	        } else {
+	            System.err.println("error");
+	        }
+    } catch (Exception e) {
+		e.printStackTrace();
+	}
 
 		return "FindToMail";
 	}
+
+
 
 	@RequestMapping(value = "/reset", method = { RequestMethod.POST,RequestMethod.GET })
 	public String reset(@RequestParam("username") String username, Model model,HttpServletRequest request)
