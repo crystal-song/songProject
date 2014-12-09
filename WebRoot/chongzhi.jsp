@@ -21,6 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 	function onSubmit(host) {
+		if($("#amount").val()==0||$("#amount").val()==""){
+			alert("充值金额不能为0!");
+			return false;}
 		document.getElementById("host").value = host;
 		var form = document.getElementById("form");
 		  document.getElementById("mysubmit_btn").disabled=true;

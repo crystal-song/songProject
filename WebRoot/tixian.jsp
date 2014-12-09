@@ -17,17 +17,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 
 function onSubmit(host) {
+	if(!checkval()){return false}
 	  document.getElementById("host").value = host;
 	  var form = document.getElementById("form");
 	  document.getElementById("mysubmit_btn").disabled=true;
 	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-	  
-		if($(".tixian_money").val()==0){
-			alert("提现金额不能为空！");
-			return false;
-			}
-	        form.submit();
+	form.submit();
+
 		
+}
+
+function checkval(){
+	if($(".tixian_money").val()==0||$(".tixian_money").val()=="提现金额不能为0"||$(".tixian_money").val()==""){
+		alert("提现金额不能为空!!");
+		return false;
+		}
+	return true;
 }
     var navIndex=3; 
     var indexs=1;
@@ -162,7 +167,7 @@ function onSubmit(host) {
           </div>
       
          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button> -->
-          <button onclick="onSubmit('${f.onSubmit}')" class="btn btn-default mar_btn" id="mysubmit_btn" >确认</button>
+          <div class="mar_que_top"><a onclick="onSubmit('${f.onSubmit}')" class="btn btn-default mar_btn" id="mysubmit_btn" style="color:#fff;" >确认</a></div>
         </form>
             <%--  <div class="add_postcar" style="display:none">
               <p>填写现金金额</p>
