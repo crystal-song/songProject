@@ -148,12 +148,14 @@ public class GateController  {
 		}      
 		
 		File f=ReadWirtePropertis.file();
-	    System.out.println(f.getPlatformNo()); 
+		String platformNo=f.getPlatformNo();
+	    System.out.println("ddddddddd"+f.getPlatformNo()); 
+	    System.out.println("ddddddddd"+f.getOnSubmit()); 
 	    model.addAttribute("f", f);
 		
 		 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-	    			/*+"<request platformNo='10040011137'>"   */           
-				     +"<request platformNo="+f.getPlatformNo()+">"
+	    			/*+"<request platformNo='10040011137'>" */           
+				    +"<request platformNo='"+platformNo+"'>" 
 	    			/*+"<platformUserNo>gg123456</platformUserNo> "*/
 	    			+"<platformUserNo>"+name+"</platformUserNo> "
 	                +"</request>";
@@ -254,7 +256,9 @@ public class GateController  {
 		 List<TTransferInfo> list1= gateService.queryTTransferInfoByEnterpriseNumber(transferInfo.getEnterpriseNumber());
 		 if(li != null && li.size()!=0){
 			 TProduct product=li.get(0);
+			 TTransferInfo transferInfo1=list1.get(0);
 			 model.addAttribute("product", product);
+			 model.addAttribute("transferInfo1", transferInfo1);
 		 }
 		return "touzixieyi";
 	}
