@@ -191,7 +191,7 @@ public class userController {
 	        // 发信人，用正确邮件地址替代 
 	        message.setFrom(new InternetAddress("cs@ptobchina.com", "管理员", "UTF-8"));
 	        // 收件人地址，用正确邮件地址替代
-	        message.addRecipient(RecipientType.TO, new InternetAddress("1309445000@qq.com"));
+	        message.addRecipient(RecipientType.TO, new InternetAddress(user.getEmail()));
 	        // 邮件主题
 	        message.setSubject("中租宝—找回密码通知", "UTF-8");
 
