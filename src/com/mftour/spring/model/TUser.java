@@ -2,8 +2,10 @@ package com.mftour.spring.model;
 
 import com.mftour.spring.constants.enums.AuthorityEnum;
 import com.mftour.spring.util.CustomDateSerializer;
+
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -38,6 +40,8 @@ public class TUser implements java.io.Serializable {
 	private String sendTime; // 发送时间
 	private Integer messageCount; // 发送短信的次数
 	private String answer; // 密码保护答案
+	private Timestamp regTime;
+	private String randomCode;
 
 	/**
 	 * default constructor
@@ -238,5 +242,21 @@ public class TUser implements java.io.Serializable {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+	public Timestamp getRegTime() {
+		return regTime;
+	}
+
+	public void setRegTime(Timestamp regTime) {
+		this.regTime = regTime;
+	}
+
+	public String getRandomCode() {
+		return randomCode;
+	}
+
+	public void setRandomCode(String randomCode) {
+		this.randomCode = randomCode;
+	}
+
 
 }
