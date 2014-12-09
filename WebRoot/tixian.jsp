@@ -21,7 +21,13 @@ function onSubmit(host) {
 	  var form = document.getElementById("form");
 	  document.getElementById("mysubmit_btn").disabled=true;
 	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-	  form.submit();
+	  
+		if($(".tixian_money").val()==0){
+			alert("提现金额不能为空！");
+			return false;
+			}
+	        form.submit();
+		
 }
     var navIndex=3; 
     var indexs=1;
