@@ -50,10 +50,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		    </c:when>
      		   
        			<c:when test="${regState=='f'}">
-					注册失败！
+					注册失败！<%=request.getAttribute("msg") %>
       		    </c:when>
 		  </c:choose>
-		   <%request.getAttribute("msg"); %>
+		  
 				</td>
 			</tr>
 			
