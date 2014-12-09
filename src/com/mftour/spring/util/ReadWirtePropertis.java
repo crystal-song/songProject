@@ -65,6 +65,7 @@ public class ReadWirtePropertis {
                      f.setNotifyUrl(pro.getProperty("notifyUrl"));
                      f.setUrl(pro.getProperty("url"));
                      f.setOnSubmit(pro.getProperty("onSubmit"));
+                     f.setBasePath(pro.getProperty("basePath"));
                      return f;
             } catch (IOException e) {
                 // TODO Auto-generated catch block

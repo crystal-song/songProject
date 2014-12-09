@@ -6,6 +6,13 @@ public class File {
     private String notifyUrl;
     private String onSubmit;
     private String url;
+    private String basePath;
+	public String getBasePath() {
+		return basePath;
+	}
+	public void setBasePath(String basePath) {
+		this.basePath = basePath;
+	}
 	public String getPlatformNo() {
 		return platformNo;
 	}

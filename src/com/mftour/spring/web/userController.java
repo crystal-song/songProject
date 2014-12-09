@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IUserService;
+import com.mftour.spring.util.ReadWirtePropertis;
 
 @Controller
 @RequestMapping("/user")
@@ -161,9 +162,8 @@ public class userController {
 	        BodyPart part1 = new MimeBodyPart();
 	        part1.setHeader("Content-Type", "text/html;charset=UTF-8");
 	        part1.setHeader("Content-Transfer-Encoding", "base64");
-	        String path = request.getContextPath();
-			String basePath = request.getScheme() + "://" + request.getServerName()
-					+ ":" + request.getServerPort() + path + "/";
+	        com.mftour.spring.util.File f=ReadWirtePropertis.file();
+			String basePath =f.getBasePath();
 			String resetPassHref = basePath + "user/reset?username="
 					+ user.getName();
 			String mainjsp = "http://www.ptobchina.com/wel";
@@ -204,9 +204,8 @@ public class userController {
 		return "FindToMail";
 	}
 
-	@RequestMapping(value = "/reset", method = { RequestMethod.POST,
-			RequestMethod.GET })
-	public String reset(@RequestParam("userName") String username, Model model,HttpServletRequest request)
+	@RequestMapping(value = "/reset", method = { RequestMethod.POST,RequestMethod.GET })
+	public String reset(@RequestParam("username") String username, Model model,HttpServletRequest request)
 			throws Exception {
 		Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate");
 		System.out.println("aaaaaa"+outDate.getTime()+"bbbbbbb"+System.currentTimeMillis());

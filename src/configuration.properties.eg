@@ -3,3 +3,4 @@ callbackUrl=http://192.168.1.207:8080/spring3
 notifyUrl=http://106.2.184.190/spring3
 onSubmit=http://qa.yeepay.com/member
 url=/Users/jfreebird/src/spring3/WebRoot
+basePath=http://localhost:8080/spring3/

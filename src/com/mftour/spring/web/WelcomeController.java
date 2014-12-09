@@ -1,7 +1,7 @@
 package com.mftour.spring.web;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.File;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -30,7 +30,10 @@ import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
 import com.mftour.spring.util.Env;
+import com.mftour.spring.util.MD5_Encoding;
+//import com.mftour.spring.util.File;
 import com.mftour.spring.util.MailSenderInfo;
+import com.mftour.spring.util.ReadWirtePropertis;
 import com.mftour.spring.util.SimpleMailSender;
 import com.sms.webservice.client.SmsReturnObj;
 import com.sms.webservice.client.SmsWebClient;
@@ -95,6 +98,7 @@ public class WelcomeController {
 	public String regEemail(TUser user, Model model, HttpServletRequest request)
 			throws Exception {
 		try {
+			
 			user.setRegState("f");
 			userService.addOrUpdate(user);
 		} catch (Exception e) {
@@ -135,10 +139,9 @@ public class WelcomeController {
 	        BodyPart part1 = new MimeBodyPart();
 	        part1.setHeader("Content-Type", "text/html;charset=UTF-8");
 	        part1.setHeader("Content-Transfer-Encoding", "base64");
-	        String path = request.getContextPath();
-			String basePath = request.getScheme() + "://" + request.getServerName()
-					+ ":" + request.getServerPort() + path + "/";
-			String resetPassHref = basePath + "welcome/register?username="
+	        com.mftour.spring.util.File f=ReadWirtePropertis.file();
+			String basePath =f.getBasePath();
+			String resetPassHref =basePath+ "welcome/register?username="
 					+ user.getName();
 			String mainjsp = "http://www.ptobchina.com/wel";
 
@@ -220,13 +223,14 @@ public class WelcomeController {
 	        BodyPart part1 = new MimeBodyPart();
 	        part1.setHeader("Content-Type", "text/html;charset=UTF-8");
 	        part1.setHeader("Content-Transfer-Encoding", "base64");
-	        String path = request.getContextPath();
-			String basePath = request.getScheme() + "://" + request.getServerName()
-					+ ":" + request.getServerPort() + path + "/";
+	        com.mftour.spring.util.File f=ReadWirtePropertis.file();
+			String basePath =f.getBasePath();
 			String resetPassHref = basePath + "welcome/register?username="
 					+ user.getName();
 			String mainjsp = "http://www.ptobchina.com/wel";
-
+			/*//加密用户名
+			MD5_Encoding md=new MD5_Encoding();*/
+			
 	        String htmlContent = "亲爱的用户"
 					+ user.getName()
 					+ "，您好，<br/><br/>"
