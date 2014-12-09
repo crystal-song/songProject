@@ -41,9 +41,7 @@ $(document).ready(function(e) {
         	<h1 style="text-align: left; font-size: 20px; border-bottom:1px solid #ccc;" >名词解释</h1>			
 			<div class="title01">等额本息</div>
 			<div class="section">指在还款期内，每月偿还同等数额的贷款(包括本金和利息)；公式如下：</div>
-			<div class="section">每月还款额=[还款本金×月利率×（1+月利率）^还款月数]÷[（1+月利率）^还款月数－1]</div>
-			<div class="title01">垫付</div>
-			<div class="section">指严重逾期的债权根据中租宝本金保障计划，由中租宝风险准备金代为偿还的动作，垫付完成后，债权转让至中租宝名下。</div>		
+			<div class="section">每月还款额=[还款本金×月利率×（1+月利率）^还款月数]÷[（1+月利率）^还款月数－1]</div>				
 			<div class="title01">放款</div>
         	<div class="section">指一个项目的满标后且已符合放款标准，该项目所筹资金从出借人账户转入企业账户的过程，即企业成功获得了借款。</div>
         	 
