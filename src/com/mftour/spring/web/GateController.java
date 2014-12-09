@@ -147,16 +147,20 @@ public class GateController  {
 			 }
 		}      
 		
+		File f=ReadWirtePropertis.file();
+	    System.out.println(f.getPlatformNo()); 
+	    model.addAttribute("f", f);
+		
 		 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
 	    			/*+"<request platformNo='10040011137'>"   */           
-				     +"<request platformNo='10012415118'>"
+				     +"<request platformNo="+f.getPlatformNo()+">"
 	    			/*+"<platformUserNo>gg123456</platformUserNo> "*/
 	    			+"<platformUserNo>"+name+"</platformUserNo> "
 	                +"</request>";
 		 model.addAttribute("req", req);
 		String service="ACCOUNT_INFO";
 		/*String host="http://qa.yeepay.com/member";*/
-		 String host="https://member.yeepay.com/member";
+		 String host=f.getOnSubmit();
 		return  doService(host, req, service, model);
 		/*return "payment/service";*/
 		/*return "";*/
