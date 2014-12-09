@@ -213,7 +213,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="text" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />
                     <dt></dt>
                 </li>
-                
+                 <li>
+                    <dd>融资方名称：</dd>
+                    <input type="text" name="enterpriseName"  id="enterpriseName"  value="${product1.enterpriseName}"   />
+                    <dt></dt>
+                </li>               
                 <li>
                     <dd>融资方易宝编号：</dd>
                     <input type="text" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"   />
