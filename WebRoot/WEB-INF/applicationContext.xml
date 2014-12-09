@@ -40,8 +40,12 @@
         <property name="acquireIncrement" value="5"/>
         <property name="idleConnectionTestPeriod" value="60"/>
         <property name="acquireRetryAttempts" value="30"/>
-        <property name="breakAfterAcquireFailure" value="true"/>
-
+		<property name="acquireRetryDelay">
+    		<value>100</value>
+		</property>
+		<property name="breakAfterAcquireFailure">
+    		<value>false</value>
+		</property>
 
 	</bean>
 
