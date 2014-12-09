@@ -90,7 +90,9 @@ import java.io.FileOutputStream;
 import java.io.IOException; 
 import java.io.InputStream; 
 import java.io.PrintWriter; 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -223,6 +225,7 @@ public class GateController  {
 		if(o!=null){
 			 List<TTransferInfo> li=gateService.queryTTransferInfoByName(o.toString());
 			 model.addAttribute("li", li);
+			 System.out.println("ssssssssssssssssssssssss"+li.get(0).getFinancingPeriod());
 		}
 		
 		return "wodexiangmu";
@@ -257,6 +260,7 @@ public class GateController  {
 		 if(li != null && li.size()!=0){
 			 TProduct product=li.get(0);
 			 TTransferInfo transferInfo1=list1.get(0);
+			 
 			 model.addAttribute("product", product);
 			 model.addAttribute("transferInfo1", transferInfo1);
 		 }
@@ -669,6 +673,12 @@ public class GateController  {
 		
 			/*List<TProduct> list=productService.queryProductByNumber(TtransferInfo.getEnterpriseNumber());
 			TProduct product=list.get(0);*/
+			List<TProduct> list1=productService.queryProductByNumber(TtransferInfo.getEnterpriseNumber());
+			if(list1 != null && list1.size()!=0){
+				TProduct product=list1.get(0);
+				TtransferInfo.setFinancingPeriod(product.getFinancingPeriod());
+			}
+			
 			gateService.addOrUpdateTTransferInfo(TtransferInfo);
 			
 			
