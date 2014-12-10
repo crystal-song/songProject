@@ -523,13 +523,15 @@ public class GateController  {
 		  if(o==null){
 			  return "login";
 		  }
+		  TRegisterYeePay registerYeePay1=null;
 		 if(o!=null){
 		
 			 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
 			 List<TRegisterNotify> list= gateService.queryTRegisterNotifyByName(o.toString());
  		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
-			 TRegisterYeePay registerYeePay1=li.get(0);
+			 
 			 if(li!=null){
+				 registerYeePay1=li.get(0);
 				  String code= li.get(0).getCode();
 			 if(code!=null&&code.equals("1")){
 				 
