@@ -38,7 +38,7 @@ $(document).ready(function(e) {
        </div>
        <div class="right_news_con">   
         <div class="termsOfUse" style="margin:0; padding:0; width:838px; ">
-        	<h1 style="text-align: left; font-size: 20px; border-bottom:1px solid #ccc;" >名词解释</h1>			
+        	<h1  class="mingtitle">名词解释</h1>			
 			<div class="title01">等额本息</div>
 			<div class="section">指在还款期内，每月偿还同等数额的贷款(包括本金和利息)；公式如下：</div>
 			<div class="section">每月还款额=[还款本金×月利率×（1+月利率）^还款月数]÷[（1+月利率）^还款月数－1]</div>				
