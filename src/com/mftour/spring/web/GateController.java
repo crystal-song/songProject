@@ -542,7 +542,7 @@ public class GateController  {
 			   }
 			 }
 			    if(list!=null){
-			    	String code= li.get(0).getCode(); 
+			    	String code= list.get(0).getCode(); 
 				 if(code!=null && code.equals("1")){
  		 /* if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){*/
 			     /* if(li.get(0).getCode().equals("1")||list.get(0).getCode().equals("1")){*/
