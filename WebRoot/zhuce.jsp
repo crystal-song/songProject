@@ -28,10 +28,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="msg_con">
   <div class="queren_con" style="height:750px">
     <div class="ren_pass01"><strong>您的易宝账号已注册成功</strong></div> 
-    <p class="jin_font">现在需要您重新登录！</p>
-    <ol class="sec_list">
-      <li><a class="sec_btn_org" href="<%=path%>/login.jsp">立即重新登录</a></li>
-    </ol>
+
+   <ol class="sec_list">
+    <li>前去项目中心<strong><a href="<%=path%>/touzi.jsp" class="con_link">[浏览项目]</a></strong>，查看详细信息，进行投资。</li>
+    <li>去个人中心查看<strong><a href="<%=path%>/user-info.jsp" class="con_link">[个人信息]</a></strong>。</li>
+    <li><a href="<%=path%>/gate/recharge" class="sec_btn_org">去充值</a></li>
+    <li><a href="<%=path%>/tixian.jsp" class="sec_btn_org">去提现</a></li>
+   </ol>
     <%-- <p class="jin_font">您可以做以下操作</p>
    <ol class="sec_list">
       <li>去项目中心<a class="con_link" href="<%=path%>/touzi.jsp"><strong>[浏览项目]</strong></a></li>
