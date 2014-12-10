@@ -227,7 +227,7 @@ public class GateController  {
 		if(o!=null){
 			 List<TTransferInfo> li=gateService.queryTTransferInfoByName(o.toString());
 			 model.addAttribute("li", li);
-			 System.out.println("ssssssssssssssssssssssss"+li.get(0).getFinancingPeriod());
+			 
 		}
 		
 		return "wodexiangmu";
