@@ -129,10 +129,16 @@ public class GateController  {
 	@RequestMapping(value="/gate/service")
 	public String service(Model model,HttpServletRequest request) throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
+		File f=ReadWirtePropertis.file();
+		String platformNo=f.getPlatformNo();
+	    System.out.println("ddddddddd"+f.getPlatformNo()); 
+	    System.out.println("ddddddddd"+f.getOnSubmit()); 
+	    model.addAttribute("f", f);
 		Object o= request.getSession().getAttribute("name"); 
 		String name=null;
 		if(o!=null){
 			 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
+			 
 			 if(li != null && li.size()!=0){
 				 TRegisterYeePay registerYeePay=li.get(0);
 				  name= registerYeePay.getPlatformUserNo();
@@ -149,11 +155,7 @@ public class GateController  {
 			 }
 		}      
 		
-		File f=ReadWirtePropertis.file();
-		String platformNo=f.getPlatformNo();
-	    System.out.println("ddddddddd"+f.getPlatformNo()); 
-	    System.out.println("ddddddddd"+f.getOnSubmit()); 
-	    model.addAttribute("f", f);
+	
 		
 		 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
 	    			/*+"<request platformNo='10040011137'>" */           
@@ -599,7 +601,10 @@ public class GateController  {
 			 return "register";	 
 		 }else*/ 
 		 
-		 if(li != null && li.size()!=0&&li.get(0).getCode().equals("1")){
+		 if(li!=null&& li.size()!=0){
+			 String code=li.get(0).getCode();
+		
+		 if(li != null && li.size()!=0&&code.equals("1")){
 			 TRegisterYeePay registerYeePay1=li.get(0);
 				System.out.println("ddddd"+buyAmount);
 				model.addAttribute("registerYeePay1", registerYeePay1);
@@ -609,8 +614,8 @@ public class GateController  {
 				System.out.println("wwwwwwwwwwwwwwwwwwwwww"+product.getTargetPlatformUserNo());
 				model.addAttribute("now", System.currentTimeMillis());
 				return "touzicheck";
-			   
-		 } else if(lis != null && lis.size()!=0){
+		 }	   
+		  } else if(lis != null && lis.size()!=0){
 			 TRegisterYeePay registerYeePay1=li.get(0);
 				System.out.println("ddddd"+buyAmount);
 				model.addAttribute("registerYeePay1", registerYeePay1);
