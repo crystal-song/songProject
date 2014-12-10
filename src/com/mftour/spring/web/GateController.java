@@ -546,10 +546,11 @@ public class GateController  {
 				 if(code!=null && code.equals("1")){
  		 /* if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){*/
 			     /* if(li.get(0).getCode().equals("1")||list.get(0).getCode().equals("1")){*/
+					 if(li!=null){
 					 registerYeePay1=li.get(0);
 	        	  model.addAttribute("registerYeePay1", registerYeePay1);
 	        	  return "chongzhi";
- 		  /* }*/
+ 		  /* }*/}
 				 }
 			 }/*else{
 				 TUser user=userService.getUserByAccount(o.toString());
