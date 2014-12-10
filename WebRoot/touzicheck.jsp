@@ -82,13 +82,13 @@ function onSubmit(host) {
           </li>
           <li>
           <div class="form-group" >
-            <label for="projectName">项目名称</label><input type="text"
-              class="form-control" id="projectName" name="projectName" value="${product.projectName}" />
+            <label for="projectName">项目名称：</label><span id="protext">${product.projectName}</span>
+            <div style="display:none"><input type="text" readonly="readonly" class="form-control" id="projectName" name="projectName" value="${product.projectName}" /></div>
           </div>
           </li>
           <li>
           <div class="form-group" >
-            <label for="paymentAmount">投资金额</label><input type="text"
+            <label for="paymentAmount">投资金额：</label><input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
           </div>
           </li>
