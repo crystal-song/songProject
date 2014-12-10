@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		              name="callbackUrl" value="${f.callbackUrl}/gate/bindingSucceed" />
 		          </div>		      	
 		         <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button> -->
-		          <button onclick="onSubmit('${f.onSubmit}')" class="btn btn-default mar_btn">去绑定银行卡</button>
+		          <button onclick="onSubmit('${f.onSubmit}')" class="btn btn-default mar_btn">绑定银行卡</button>
                </form>
             </div>    
            
