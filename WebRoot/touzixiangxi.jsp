@@ -87,16 +87,17 @@ function mysubmit(){
 			for(i=0;i<rate_lv;i++){
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
 					if(parseInt($(".lev_mi").eq(i).html())>0){
-					r=parseInt($(".lev_rate").eq(i).html())+parseInt($(".lev_ri").eq(i).html())*(t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html());
+					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
+					
 					}else{
-						r=parseInt($(".lev_rate").eq(i).html());
+						r=parseFloat($(".lev_rate").eq(i).html());
 						}
 					r=r/100;
 					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
 					}
 				}
-			$("#preview_rate").val(parseInt(r*100)+"%");	
-			$("#preview_income").html(parseInt(t*r*100)/100+"元");
+			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
+			$("#preview_income").html(parseFloat(parseInt(t*r*100)/100)+"元");
 			//console.log("|-"+t*r);
 			}
 		$(".jisuan_btn_left").click(function(){
