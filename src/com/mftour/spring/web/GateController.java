@@ -528,23 +528,32 @@ public class GateController  {
 			 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
 			 List<TRegisterNotify> list= gateService.queryTRegisterNotifyByName(o.toString());
  		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
-			 if(li != null && li.size()!=0){
-				 TRegisterYeePay registerYeePay1=li.get(0);
+			 TRegisterYeePay registerYeePay1=li.get(0);
+			 if(li!=null){
+				  String code= li.get(0).getCode();
+			 if(code!=null&&code.equals("1")){
+				 
 				 System.out.println("dddddddd"+registerYeePay1.getPlatformUserNo());
 				 System.out.println("dddddddd"+registerYeePay1.getCode());
-				 if(list!=null && list.size()!=0){
+				 model.addAttribute("registerYeePay1", registerYeePay1);
+	        	  return "chongzhi";
+			   }
+			 }
+			    if(list!=null){
+			    	String code= li.get(0).getCode(); 
+				 if(code!=null && code.equals("1")){
  		 /* if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){*/
-			      if(li.get(0).getCode().equals("1")||list.get(0).getCode().equals("1")){
+			     /* if(li.get(0).getCode().equals("1")||list.get(0).getCode().equals("1")){*/
 	        	  model.addAttribute("registerYeePay1", registerYeePay1);
 	        	  return "chongzhi";
- 		  /* }*/}
+ 		  /* }*/
 				 }
-			 }else{
+			 }/*else{
 				 TUser user=userService.getUserByAccount(o.toString());
 					model.addAttribute("user", user);
- 			 return "register";
+ 			 return "register";*/
  		       
-		 }
+		 /*}*/
  		  }
 		 TUser user=userService.getUserByAccount(o.toString());
 			model.addAttribute("user", user);
