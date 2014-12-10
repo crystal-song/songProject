@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 <script type="text/javascript" >
 $(document).ready(function(e){
-	  $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
     $(".right_lable li").click(function(){
       var index = $(this).index();
       $(this).addClass('right_lable_red').siblings().removeClass('right_lable_red');
