@@ -530,7 +530,7 @@ public class GateController  {
 			 List<TRegisterNotify> list= gateService.queryTRegisterNotifyByName(o.toString());
  		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
 			 
-			 if(li!=null){
+			 if(li!=null&&li.size()!=0){
 				 registerYeePay1=li.get(0);
 				  String code= li.get(0).getCode();
 			 if(code!=null&&code.equals("1")){
@@ -541,12 +541,12 @@ public class GateController  {
 	        	  return "chongzhi";
 			   }
 			 }
-			    if(list!=null){
+			    if(list!=null&&list.size()!=0){
 			    	String code= list.get(0).getCode(); 
 				 if(code!=null && code.equals("1")){
  		 /* if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){*/
 			     /* if(li.get(0).getCode().equals("1")||list.get(0).getCode().equals("1")){*/
-					 if(li!=null){
+					 if(li!=null&&li.size()!=0){
 					 registerYeePay1=li.get(0);
 	        	  model.addAttribute("registerYeePay1", registerYeePay1);
 	        	  return "chongzhi";
