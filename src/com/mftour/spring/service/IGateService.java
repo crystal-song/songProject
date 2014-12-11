@@ -67,7 +67,7 @@ public interface IGateService {
 	 
 	 public List<TInvestmentInfo> queryTInvestmentInfoByName(String name)throws Exception;
 	 
-	 public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(String  enterpriseNumber)throws Exception;
+	 public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(TTransferInfo transferInfo)throws Exception;
 	 
 	 public void addOrUpdateTRegisterNotify(TRegisterNotify registerNotify) throws Exception;
 	 

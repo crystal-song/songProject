@@ -197,8 +197,8 @@ public class IGateServiceImpl  implements  IGateService {
 
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(
-			String enterpriseNumber) throws Exception {
-		return gateDao.queryTTransferInfoByEnterpriseNumber(enterpriseNumber);
+			TTransferInfo transferInfo) throws Exception {
+		return gateDao.queryTTransferInfoByEnterpriseNumber(transferInfo);
 		 
 	}
 
