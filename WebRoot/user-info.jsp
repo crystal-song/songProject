@@ -80,7 +80,7 @@ var indexs=0;
                      <li>
                          <span>用户名</span>
 	                        <span class="span_le">${user1.name}</span>
-	                        <span class="tip">详情</span>
+	                        <span class="tip" style="background: url('<%=path%>/img/images-2014-11/renzheng01.png') 40px 7px no-repeat;">详情</span>
 	                          <div id="tishik01">
 	                            <span class="border_left01"></span>
 	                            <div  class="border_cent01">注册时的用户名不可更改</div>
