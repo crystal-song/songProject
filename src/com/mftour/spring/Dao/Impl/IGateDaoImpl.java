@@ -81,10 +81,11 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(
-			String enterpriseNumber) throws Exception {
-		String hq = "from TTransferInfo transferInfo where transferInfo.enterpriseNumber = :enterpriseNumber";
+			TTransferInfo transferInfo) throws Exception {
+		String hq = "from TTransferInfo transferInfo where transferInfo.enterpriseNumber = :enterpriseNumber and transferInfo.transDate= :transDate";
 		Query query = getSession().createQuery(hq);
-		query.setParameter("enterpriseNumber", enterpriseNumber);
+		query.setParameter("enterpriseNumber", transferInfo.getEnterpriseNumber());
+		query.setParameter("transDate", transferInfo.getTransDate());
 		return query.list();
 	}
 
