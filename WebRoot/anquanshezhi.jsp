@@ -20,59 +20,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
     var navIndex=3;  
     var indexs=0;
-/*  
-    function onSubmit() {
-		if($("#mail").val()==""){
-			alert("邮箱不能为空!");
-			return false;
-			}
-		
-		// $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 
-  	  
-  	    // $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
-  /*      
-	  $(".anquan_hide_btn").click(function(){
-        	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 
-        	  //$(this).parent().parent().siblinds().children(".anquan_label").children(".yishe").css("display","block");
-        	  $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
-        	 // alert(a)
-         });
-		 
-	
-		var form = document.getElementById("form");
-	    document.getElementById("anquan_hide_btn").disabled=true;
-	    document.getElementById("anquan_hide_btn").innerHTML="正在提交...";
-		form.submit();
-	}
-	*/	
-    /*
-    function onSubmitone() {
-    	
-		if($("#realName").val()=="" ){
-			alert("您的信息没有填写完整，请重新填写");
-			return false;
-			}
 
-		var formone = document.getElementById("formone");
-	    document.getElementById("anquan_hide_btn").disabled=true;
-	    document.getElementById("anquan_hide_btn").innerHTML="正在提交...";
-		formone.submit();
-	}
-   */
     $(document).ready(function(){
     	$(".u_left_sec:first li:eq(1)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-    /*	
-    	 function onSubmit() {
-    			if($("input").val()==""){
-    				alert("充值金额不能为0!");
-    				return false;}
-    			$(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 
-    	  	  //$(this).parent().parent().siblinds().children(".anquan_label").children(".yishe").css("display","block");
-    	  	  $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
-    	
-    	 }
-    */
+    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+
+        function onSubmit() {
+    		if($("#mail").val()==""){
+    			alert("邮箱不能为空!");
+    			return false;
+    			}
+    		var form = document.getElementById("form");
+    	    //document.getElementById("anquan_hide_btn").disabled=true;
+    	    //document.getElementById("anquan_hide_btn").innerHTML="正在提交...";
+    		form.submit();
+    	}
+   	   	
         $(".anquan_right").click(function(){
         	
             $(this).parent().siblings(".anquan_hide").slideToggle();
@@ -98,17 +62,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               $(this).siblings().slideToggle("slow");
             }); 
          
-       
+         $(".anquan_hide_btn").click(function(){
+       	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 
+       	  $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
+        });
          
          $(".anquan_hide input").blur(function(){
         	 var val=$(this).val();                	        	 
         	 if($(this).is("#answer")){
        		  
        		  if(val==""){
-       			  $(this).parent().siblings(".tishitext").text("您输入的答案为空！请重新输入");
-       			  
-       		  }
-       		  
+       			  $(this).parent().siblings(".tishitext").text("您输入的答案为空！请重新输入");      			  
+       		  }       		  
        	  }
         	 if( $(this).is('#phone') ){
          		
@@ -221,8 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						  return true;
                      }
 			 }
-        	  
-        	  
+        	         	  
          });
           
      	$(window).on('scroll', function(){
@@ -387,7 +351,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                          <span>${name}</span>
                         </div> 
                    </li>
-                
                    <li style="display:none">
                    <form action="<%=path%>/welcome/identityCardVerification" method="post" enctype="multipart/form-data" id="formone">
                         <div class="anquan_label label2">
@@ -451,7 +414,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            <li id="text-align_style" style="display:none">  
                                 <span style="width:300px;" id="text-align_style"><input type="checkbox" class="box_wh"></input>我已阅读并同意签署 <a href="<%=path%>/yinsitiaokuan.jsp" class="wd_color">《委托收付资金协议》</a></span>    
                            </li>
-                           <li><span></span><span><a onclick="onSubmitone()"    class="anquan_hide_btn" style="width:80px; float:left;">提交</a></span></li>
+                           <li><span></span><span><a onclick="onSubmitone()" class="anquan_hide_btn" style="width:80px; float:left;">提交</a></span></li>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">实名认证已成功！</div>
                        </div>
@@ -495,7 +458,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <ul>
                           <form action="<%=path %>/welcome/emailVerification" method="post" id="form">
                            <li><span><strong>*</strong>邮箱验证</span><span><input type="text" id="mail" name="mail"></input></span><span class="tishitext" style="width:auto;"></span></li>
-                           <li><span></span><a value="提交"  class="anquan_hide_btn" style="width:80px;" onclick="onSubmit()">提交</a></li>
+                           <!-- <li><span></span><a class="anquan_hide_btn" style="width:80px;" onclick="onSubmit()">提交</a></li> -->
+                           <li><span></span><input type="submit" value="提交"  class="anquan_hide_btn" style="width:80px;"></input></li>
                          </form>
                          </ul>
                          <div class="tijiao_checkok" style="display:none">邮箱验证成功,请重新登录！</div>
@@ -531,6 +495,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					     </li>
 						 <li><span><strong>*</strong>请输入答案：</span><span><input type="text" id="answer" name="answer" onblur="checkAnswer()"></input></span><span id="Tip_Answer"></span></li>
                            </c:if>
+                         <!-- <li><span></span><span><input type="button" class="anquan_hide_btn" value="提交" onclick="updatePassword();" id="ensure" style="width:80px; float:left;"/></span></li> -->
                          <li><span></span><span><input type="button" class="anquan_hide_btn" value="提交" onclick="updatePassword();" id="ensure" style="width:80px; float:left;"/></span></li>
                          </ul>
                     
