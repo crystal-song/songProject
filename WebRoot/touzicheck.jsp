@@ -22,6 +22,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 <script type="text/javascript">
 function onSubmit(host) {
+	var a=document.getElementById("paymentAmount").value;
+	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
+	//if(a%100!=0){alert("投资金额必须为100的整数倍！");return false;}
+	//if(a<200){alert("投资金额不能低于200元！");return false;
+	document.getElementById("paymentAmount").value=parseInt(a);
   document.getElementById("host").value = host;
   document.getElementById("mysubmit_btn").disabled=true;
   document.getElementById("mysubmit_btn").innerHTML="正在提交...";
