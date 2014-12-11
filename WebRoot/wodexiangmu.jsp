@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <c:forEach var="s" items="${li}" varStatus="i">            
 				<tr>
 
-				<td align="center"  height="30">${s.projectName}</td><td align="center">${s.paymentAmount}</td><td align="center">${fn:substring(s.transDate,0,10)}</td><td align="center">${s.financingPeriod*30}天</td><td align="center">${s.paymentAmount * s.interestRate/100}</td><td align="center"><a href="<%=path%>/gate/authorization?platformUserNo=${s.platformUserNo}&enterpriseNumber=${s.enterpriseNumber}&transDate=${s.transDate}" title="查看投资协议" style="text-decoration:underline;">点击查看</a></td>
+				<td align="center"  height="30">${s.projectName}</td><td align="center"><fmt:formatNumber type="number" value="${s.paymentAmount}" maxFractionDigits="2"/>元</td><td align="center">${fn:substring(s.transDate,0,10)}</td><td align="center">${s.financingPeriod*30}天</td><td align="center"><fmt:formatNumber type="number" value="${s.paymentAmount * s.interestRate/100/365*s.financingPeriod*30}" maxFractionDigits="2"/>元</td><td align="center"><a href="<%=path%>/gate/authorization?platformUserNo=${s.platformUserNo}&enterpriseNumber=${s.enterpriseNumber}&transDate=${s.transDate}" title="查看投资协议" style="text-decoration:underline;">点击查看</a></td>
 
 				</tr>				
                 </c:forEach>

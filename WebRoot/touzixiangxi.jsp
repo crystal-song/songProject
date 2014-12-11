@@ -86,6 +86,7 @@ function mysubmit(){
 			//console.log("-------calc-------");
 			var t=parseInt($("#preview_amount").val());
 			var r=0;
+			var p=parseInt($("#preview_Period").html());
 			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
 			for(i=0;i<rate_lv;i++){
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
@@ -100,7 +101,7 @@ function mysubmit(){
 					}
 				}
 			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			$("#preview_income").html(parseFloat(parseInt(t*r*100)/100)+"元");
+			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
 			//console.log("|-"+t*r);
 			}
 		$(".jisuan_btn_left").click(function(){
@@ -531,13 +532,9 @@ function mysubmit(){
           <span>预期收益率：</span>
           <span class="touz_right"><input type="text" value="10%" id="preview_rate"></input></span>
          </div>     
-         <div class="touzi_text"  style="display:none">
-          <span>投资期限：</span>
-          <span class="touz_right"><select id="preview_period">
-            <option value="6">6个月</option>
-            <option selected="selected" value="12">12个月</option>
-            <option value="24">24个月</option>
-          </select></span>
+         <div class="touzi_text" >
+          <span>投资周期：</span>
+          <span class="touz_right"><a id="preview_Period">${product1.financingPeriod*30}</a>天</span>
          </div>
          <div class="touzi_text">
           <span>预期总收益：</span>
