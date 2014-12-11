@@ -86,8 +86,18 @@
   <div class="nav">
           <div class="logo"></div>
           <ul class="nav_big">
-            <li><a href="<%=path%>/wel"><span><strong>首页</strong></span><p>Home</p></a></li>
-            <li><a href="<%=path%>/product/allProduct"><span><strong>我要投资</strong></span><p>Investment</p></a></li>
+            <li>
+              <a href="<%=path%>/wel">
+                <span><strong>首页</strong></span>
+                <p>Home</p>
+              </a>
+            </li>
+            <li>
+               <a href="<%=path%>/product/allProduct">
+                 <span><strong>我要投资</strong></span>
+                 <p>Investment</p>
+               </a>
+            </li>
             <li><a href="<%=path%>/wel/account"><span><strong>我的账户</strong></span><p>Account</p></a></li>
             <li><a href="<%=path%>/guarantee/getchannel"><span><strong>新闻公告</strong></span><p>News</p></a></li>
             <li><a href="<%=path%>/help_con.jsp"><span><strong>帮助中心</strong></span><p>Help</p></a></li>
@@ -118,7 +128,13 @@ $(document).ready(function(){
 	  
 	$('.res').click(function(){
 		$('.ie_text').css('display','none');
-	  });	
+	  });
+	
+	$(".nav_big li").click(function(){
+		$(this).addClass("bd_btom").siblings().removeClass("bd_btom");
+	//	$(this).children("a").children("span").children("p").addClass("headwd_color").siblings().removeClass("headwd_color");
+	});
+	
 
     $(".header li").mouseover(function(){ 
       var index=$(this).index();      
