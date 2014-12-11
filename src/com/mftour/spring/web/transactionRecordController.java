@@ -40,14 +40,16 @@ public class transactionRecordController {
 				SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			    long day = 0;
 			   /*start*/
-			
+			if(user==null){
+				return "login";
+			}
 			if("seven_all".equals(time_type)){
 				//投资七天交易记录
 			String sql="SELECT * FROM transrecord a where a.userName=? and (a.transDate between date_sub(now(),interval 1 WEEK) and now()) ORDER BY a.transDate DESC ";
 			//String sql="SELECT a.requestNo,a.transDate as t ,a.projectName,a.transAmount,a.type FROM transrecord a where a.userName=? and (a.transDate between date_sub(now(),interval 1 WEEK) and now()) ORDER BY t DESC ";
-				List<TTransRecord> list11=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("list11", list11);
-				model.addAttribute("recordsize", list11.size());
+				List<TTransRecord> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
+				model.addAttribute("transRecordList", transRecordList);
+				model.addAttribute("recordsize", transRecordList.size());
 				model.addAttribute("time_type", "seven_all");
 			
 			}
@@ -58,9 +60,9 @@ public class transactionRecordController {
 			if("onemonth_all".equals(time_type)){
 				//投资一个月交易记录
 				String sql="SELECT * FROM transrecord a where a.userName=? and (a.transDate between date_sub(now(),interval 1 MONTH) and now()) ORDER BY a.transDate DESC ";
-				List<Object[]> list11=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("list11", list11);
-				model.addAttribute("recordsize", list11.size());
+				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
+				model.addAttribute("transRecordList", transRecordList);
+				model.addAttribute("recordsize", transRecordList.size());
 				model.addAttribute("time_type", "onemonth_all");
 			}
 			/*end*/
@@ -70,9 +72,9 @@ public class transactionRecordController {
 			if("threemonth_all".equals(time_type)){
 				//投资三个月交易记录
 				String sql="SELECT * FROM transrecord a where a.userName=? and (a.transDate between date_sub(now(),interval 3 MONTH) and now()) ORDER BY a.transDate DESC ";
-				List<Object[]> list11=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("list11", list11);
-				model.addAttribute("recordsize", list11.size());
+				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
+				model.addAttribute("transRecordList", transRecordList);
+				model.addAttribute("recordsize", transRecordList.size());
 				model.addAttribute("time_type", "threemonth_all");
 			}
 			/*end*/
@@ -81,9 +83,9 @@ public class transactionRecordController {
 			/*start*/
 			if("all_all".equals(time_type)){
 				String sql="SELECT * FROM transrecord a where a.userName=? ORDER BY a.transDate DESC ";
-				List<Object[]> list11=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("list11", list11);
-				model.addAttribute("recordsize", list11.size());
+				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
+				model.addAttribute("transRecordList", transRecordList);
+				model.addAttribute("recordsize", transRecordList.size());
 				model.addAttribute("time_type", "all_all");
 				
 			}
@@ -94,9 +96,9 @@ public class transactionRecordController {
 				
 				//充值全部的交易记录
 				String sql="SELECT * FROM transrecord a where a.userName=? and a.type='充值' ORDER BY a.transDate DESC ";
-				List<Object[]> list11=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("list11", list11);
-				model.addAttribute("recordsize", list11.size());
+				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
+				model.addAttribute("transRecordList", transRecordList);
+				model.addAttribute("recordsize", transRecordList.size());
 				model.addAttribute("time_type", "recharge_all");
 				
 			}
@@ -106,9 +108,9 @@ public class transactionRecordController {
 			if("transferinfo_all".equals(time_type)){
 				//投资全部的交易记录
 				String sql="SELECT * FROM transrecord a where a.userName=? and a.type='投资' ORDER BY a.transDate DESC ";
-				List<Object[]> list11=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("list11", list11);
-				model.addAttribute("recordsize", list11.size());
+				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
+				model.addAttribute("transRecordList", transRecordList);
+				model.addAttribute("recordsize", transRecordList.size());
 				model.addAttribute("time_type", "transferinfo_all");
 			}
 			/*end*/
@@ -117,9 +119,9 @@ public class transactionRecordController {
 			if("drawmoney_all".equals(time_type)){
 				//提现全部的交易记录
 				String sql="SELECT * FROM transrecord a where a.userName=? and a.type='提现' ORDER BY a.transDate DESC ";
-				List<Object[]> list11=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("list11", list11);
-				model.addAttribute("recordsize", list11.size());
+				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
+				model.addAttribute("transRecordList", transRecordList);
+				model.addAttribute("recordsize", transRecordList.size());
 				model.addAttribute("time_type", "drawmoney_all");
 			}
 			/*end*/

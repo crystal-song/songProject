@@ -142,8 +142,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  		 </div>
                  	   </c:if>
                   
-                      <c:if test="${ not empty list11}">
-                      <c:forEach var="t" items="${list11 }">
+                      <c:if test="${ not empty transRecordList}">
+                      <c:forEach var="t" items="${transRecordList }">
                       <ul class="jiaoyi_msg">
                             <li>${t.requestNo}</li>
                             <li>${t.transDate }</li>
