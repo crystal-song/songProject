@@ -250,7 +250,10 @@ ul,li{
 	border-bottom:4px solid #ba171e;
 	color:#e73636;
     display: inline-block;
-	}	
+	}
+.nav_big .headwd_color{
+	color:#e73636;	
+}		
 .login{
 	width:155px; 
 	height:76px;
