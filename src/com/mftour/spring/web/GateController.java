@@ -175,6 +175,37 @@ public class GateController  {
 		/*return "payment/service";*/
 		/*return "";*/
 	}
+	
+	
+	
+	
+	
+
+	@RequestMapping(value="/gate/info")
+	public String info(Model model,HttpServletRequest request) throws Exception {
+	
+		String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
+			    +"<request platformNo='10012415118'>"
+    			+"<date>"+"2014-12-05"+"</date> "
+                +"</request>";
+		
+		String service="RECONCILIATION";
+		/*String host="http://qa.yeepay.com/member";*/
+		 String host="https://member.yeepay.com/member";
+
+		 return  doinfo(host, req, service, model);
+		
+	}
+	
+	
+	public String doinfo(String host, String req, String service, Model model) {
+
+		return doSigns(req, host + "/bhaexter/bhaController", model, service);
+	}
+	
+	
+	
+	
 	 
 	@RequestMapping(value="/gate/doService")
 	public String doService(String host, String req, String service, Model model) {
@@ -262,10 +293,11 @@ public class GateController  {
 			 model.addAttribute("registerYeePay", registerYeePay);
 		 }
 		 List<TProduct> li=productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
-		 List<TTransferInfo> list1= gateService.queryTTransferInfoByEnterpriseNumber(transferInfo.getEnterpriseNumber());
+		 List<TTransferInfo> list1= gateService.queryTTransferInfoByEnterpriseNumber(transferInfo);
 		 if(li != null && li.size()!=0){
 			 TProduct product=li.get(0);
 			 TTransferInfo transferInfo1=list1.get(0);
+			 System.out.print("dddddddddd"+transferInfo1.getPaymentAmount()+"ddddddddd"+transferInfo1.getInterestRate());
 			 
 			 model.addAttribute("product", product);
 			 model.addAttribute("transferInfo1", transferInfo1);
