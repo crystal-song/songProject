@@ -48,10 +48,9 @@ var navIndex=0;
 
 $(document).ready(function(){
 	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
-		  
-			
-
-		 $(".news_title li").click(function(){
+	$(".nav_big a").eq(0).children("p").addClass("headwd_color")
+		
+	$(".news_title li").click(function(){
 		        var index= $(this).index();
 		        $(this).addClass('news_title_bac').siblings().removeClass('news_title_bac');
 		        $(".news_label ul").eq(index).css("display","block").siblings().css("display","none")
