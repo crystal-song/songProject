@@ -35,10 +35,8 @@ $(document).ready(function(e) {
         $(this).siblings().children("div").removeClass("news_wd_color");
         $(".news_right ul").eq(index).css("display","block").siblings().css("display","none")
      });
-     $(".webside li").click(function(){
-    	 
+     $(".webside li").click(function(){    	 
        $(this).children(".news_list_hide").slideToggle();
- 
      });
      
      $(".daohang a").click(function(){
