@@ -42,9 +42,10 @@ window.onload=function(){
    }      
      myblur.onblur=function(){      
       if(myblur.value==""){
-        myblur.value="投资金额不低于200元";
+        myblur.value="200";
         myblur.style.color="#ccc" ;  
-    }        
+    }
+      document.getElementById("preview_amount").value=myblur.value;
   }  
 }
 
@@ -55,6 +56,7 @@ function mysubmit(){
 		alert("投资金额不能为空！");
 		return false;
 		}
+	//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
 	/*
 	if($("#buyAmount").val()<200){
 		alert("投资金额不能低于200元！");
@@ -84,6 +86,7 @@ function mysubmit(){
 			//console.log("-------calc-------");
 			var t=parseInt($("#preview_amount").val());
 			var r=0;
+			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
 			for(i=0;i<rate_lv;i++){
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
 					if(parseInt($(".lev_mi").eq(i).html())>0){
@@ -499,7 +502,7 @@ function mysubmit(){
          <span>可投资金额： ${product1.financingMoney*10000-product1.realityMoney}元
          </span>
          <div class="neirong"></div>
-         <span><input type="text" class="text01" value="投资金额不低于200元" id="buyAmount"  name="buyAmount"/></span>
+         <span><input type="number" class="text01" value="200" id="buyAmount"  name="buyAmount" min="200"/></span>
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
