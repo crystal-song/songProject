@@ -144,6 +144,7 @@ function mysubmit(){
 	 });	
  
 	 $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
+	 $(".nav_big a").eq(1).children("p").addClass("headwd_color");
        $(window).on('scroll', function(){
                checkText();
               // alert($(this).scrollTop())
