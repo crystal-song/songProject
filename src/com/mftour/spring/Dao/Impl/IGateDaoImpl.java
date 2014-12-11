@@ -22,6 +22,7 @@ import com.mftour.spring.model.TRechargeNotify;
 import com.mftour.spring.model.TRechargeSucceed;
 import com.mftour.spring.model.TRegisterNotify;
 import com.mftour.spring.model.TRegisterYeePay;
+import com.mftour.spring.model.TTransRecord;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
@@ -175,17 +176,12 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		
 	}
 	
-	public List queryAllTransRecord(Page page,String sql,String platformUserNo)throws Exception {
-		Query query = getSession().createSQLQuery(sql);
+	public List<TTransRecord> queryAllTransRecord(Page page,String sql,String platformUserNo)throws Exception {
+		Query query = getSession().createSQLQuery(sql).addEntity(TTransRecord.class);
 		query.setString(0, platformUserNo);
-		query.setString(1, platformUserNo);
-		query.setString(2, platformUserNo);
 		page.setTotalRecord(query.list().size());
 		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
 		query.setMaxResults(page.getPageSize());
-
-		
-		
 		return query.list();
 	}
 	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception {

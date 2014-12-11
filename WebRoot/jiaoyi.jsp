@@ -144,48 +144,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <c:if test="${ not empty list11}">
                       <c:forEach var="t" items="${list11 }">
                       <ul class="jiaoyi_msg">
-                            <li>${t.orderNo}</li>
-                            <li>${t.transDate }</li>
-                            <li>${t.callbackUrl=='http://www.ptobchina.com/spring3/gate/transferSucceed'?'投资':t.callbackUrl=='http://www.ptobchina.com/spring3/gate/drawMoneySucceed'?'提现':'充值' }</li>
-                            <li>${t.callbackUrl=='http://www.ptobchina.com/spring3/gate/transferSucceed'?t.projectName:''}</li>
-                            <li>${t.transferAmount }</li>
-                            
-                      </ul>  
-                      </c:forEach>    
-                      </c:if>  
-                      <c:if test="${ not empty list1}">
-                      <c:forEach var="t" items="${list1 }">
-                      <ul class="jiaoyi_msg">
                             <li>${t.requestNo}</li>
-                            <li>${t.time }</li>
-                            <li>充值</li>
-                            <li></li>
-                            <li>${t.amount }</li>
-                            
-                      </ul>  
-                      </c:forEach>    
-                      </c:if>  
-                      <c:if test="${ not empty list2}">
-                      <c:forEach var="t" items="${list2 }">
-                      <ul class="jiaoyi_msg">
-                           <li>${t.requestNo}</li>
                             <li>${t.transDate }</li>
-                            <li>投资</li>
+                            <li>${t.type}</li>
                             <li>${t.projectName}</li>
-                            <li>${t.paymentAmount }</li>
+                            <li>${t.transAmount }</li>
                             
-                      </ul>  
-                      </c:forEach>    
-                      </c:if>  
-                      <c:if test="${ not empty list3}">
-                      <c:forEach var="t" items="${list3 }">
-                      <ul class="jiaoyi_msg">
-                            
-                             <li>${t.requestNo}</li>
-                            <li>${t.transDate }</li>
-                            <li>提现</li>
-                            <li></li>
-                            <li>${t.amount }</li>
                       </ul>  
                       </c:forEach>    
                       </c:if>  

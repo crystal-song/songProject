@@ -31,6 +31,7 @@ import com.mftour.spring.model.TRechargeSucceed;
 import com.mftour.spring.model.TRegisterNotify;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransNotice;
+import com.mftour.spring.model.TTransRecord;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
@@ -39,6 +40,7 @@ import com.mftour.spring.model.TYeePay;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.ITransNoticeService;
+import com.mftour.spring.service.ITransRecordService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.File;
@@ -125,6 +127,8 @@ public class GateController  {
 	
 	@Autowired
 	private ITransNoticeService transNoticeService;
+	@Autowired
+	private ITransRecordService transRecordService;
 
 	@RequestMapping(value="/gate/service")
 	public String service(Model model,HttpServletRequest request) throws Exception {
@@ -1149,15 +1153,19 @@ public class GateController  {
 		      }  
 		    	  
 		    	  
-		    	  gateService.addOrUpdateTRechargeSucceed(rechargeSucceed);;
+		    	  gateService.addOrUpdateTRechargeSucceed(rechargeSucceed);
 		    	  /*TRegisterYeePay registerYeePay=new TRegisterYeePay();*/
 		    	 
-		    	  //充值成功后发送邮件
+		    	  
 		    	  TRecharge recharge=gateService.queryTRechargeByRequestNo(rechargeSucceed.getRequestNo()).get(0);
-		    	  TUser user=(TUser)request.getSession().getAttribute("userinfo");
-		    	  TTransNotice transnotice=transNoticeService.queryTransNoticeByName(user.getName()).get(0);
+		    	  TUser user=userService.getUserByAccount(recharge.getPlatformUserNo());
+		    	  //添加交易记录
+		    	  TTransRecord transrecord=new TTransRecord(recharge.getPlatformUserNo(),recharge.getRequestNo(),recharge.getTime(),"",recharge.getAmount(),"充值");
+		    	  transRecordService.addOrUpdate(transrecord);
+		    	//充值成功后发送邮件
+		    	  List list1=transNoticeService.queryTransNoticeByName(user.getName());
 		    	  List list=transNoticeService.queryTransNoticeByNameAndtypes(user.getName(), "充值", "邮件通知");
-		    	  if(transnotice!=null){
+		    	  if(list1.size()!=0){
 		    	  if(list.size()!=0){
 		    		  boolean flag = false;
 		    		// 这个类主要是设置邮件
@@ -1197,7 +1205,7 @@ public class GateController  {
 		    	  }
 		    	   
 		    	  }
-		    	  if(transnotice==null){
+		    	  if(list1.size()==0){
 		    			  boolean flag = false;
 		    			  // 这个类主要是设置邮件
 		    			  MailSenderInfo mailInfo = new MailSenderInfo();
@@ -1322,9 +1330,83 @@ public class GateController  {
 		      transferInfo.setCode(TTransferSucceed.getCode());
 		      gateService.addOrUpdateTTransferInfo(transferInfo);
 		      model.addAttribute("transferInfo", transferInfo);
-		    	  
-		    
+		    	 
 		      
+	    	  //添加投资交易记录
+	    	  TTransRecord transrecord=new TTransRecord(transferInfo.getPlatformUserNo(),transferInfo.getRequestNo(),transferInfo.getTransDate(),transferInfo.getProjectName(),transferInfo.getPaymentAmount(),"投资");
+	    	  transRecordService.addOrUpdate(transrecord);
+		      
+	    	  //投资成功发送邮件
+	    	 TUser user= userService.getUserByAccount(transferInfo.getPlatformUserNo());
+	    	  List list1=transNoticeService.queryTransNoticeByName(user.getName());
+	    	  List list=transNoticeService.queryTransNoticeByNameAndtypes(user.getName(), "投资", "邮件通知");
+	    	  if(list1.size()!=0){
+	    	  if(list.size()!=0){
+	    		  boolean flag = false;
+	    		// 这个类主要是设置邮件
+	    			MailSenderInfo mailInfo = new MailSenderInfo();
+	    			mailInfo.setMailServerHost("smtp.ptobchina.com");
+	    			mailInfo.setMailServerPort("25");
+	    			mailInfo.setValidate(true);
+	    			mailInfo.setUserName("cs@ptobchina.com");
+	    			mailInfo.setPassword("12qwaszx");
+	    			mailInfo.setFromAddress("cs@ptobchina.com");
+	    			mailInfo.setToAddress(user.getEmail());
+	    			mailInfo.setSubject("中租宝-投资成功"); // 设置邮箱标题
+	    			String mainjsp = "http://www.ptobchina.com/wel";
+	    			String msgContent = "亲爱的用户"
+	    					+ user.getName()
+	    					+ "，您好，<br/><br/>"
+	    					+ "您在"
+	    					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+	    			.format(new Date())
+	    			+ "投资成功！<br/><br/>"
+	    			+ "订单编号："+transferInfo.getRequestNo()+"<br/><br/>"
+	    			+ "投资金额："+transferInfo.getPaymentAmount()+"元<br/><br/>"
+	    			+ "中租宝   <a href=" + mainjsp
+	    			+ "><font color='green'>http://www.ptobchina.com/</font></a>"
+	    			+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+	    			mailInfo.setContent(msgContent); //
+	    			// 这个类主要来发送邮件
+	    			SimpleMailSender sms = new SimpleMailSender();
+	    			// sms.sendTextMail(mailInfo);//发送文体格式
+	    			flag = sms.sendHtmlMail(mailInfo);// 发送html格式
+	    	  }
+	    	   
+	    	  }
+	    	  if(list1.size()==0){
+	    			  boolean flag = false;
+	    			  // 这个类主要是设置邮件
+	    				MailSenderInfo mailInfo = new MailSenderInfo();
+		    			mailInfo.setMailServerHost("smtp.ptobchina.com");
+		    			mailInfo.setMailServerPort("25");
+		    			mailInfo.setValidate(true);
+		    			mailInfo.setUserName("cs@ptobchina.com");
+		    			mailInfo.setPassword("12qwaszx");
+		    			mailInfo.setFromAddress("cs@ptobchina.com");
+		    			mailInfo.setToAddress(user.getEmail());
+		    			mailInfo.setSubject("中租宝-投资成功"); // 设置邮箱标题
+		    			String mainjsp = "http://www.ptobchina.com/wel";
+		    			String msgContent = "亲爱的用户"
+		    					+ user.getName()
+		    					+ "，您好，<br/><br/>"
+		    					+ "您在"
+		    					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+		    			.format(new Date())
+		    			+ "投资成功！<br/><br/>"
+		    			+ "订单编号："+transferInfo.getRequestNo()+"<br/><br/>"
+		    			+ "投资金额："+transferInfo.getPaymentAmount()+"元<br/><br/>"
+		    			+ "中租宝   <a href=" + mainjsp
+		    			+ "><font color='green'>http://www.ptobchina.com/</font></a>"
+		    			+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
+		    			mailInfo.setContent(msgContent); //
+		    			// 这个类主要来发送邮件
+		    			SimpleMailSender sms = new SimpleMailSender();
+		    			// sms.sendTextMail(mailInfo);//发送文体格式
+		    			flag = sms.sendHtmlMail(mailInfo);// 发送html格式
+	    		
+	    	  }
+	    	  
 		    	 
 		      
 		     /* List<TProduct> list=productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
@@ -2087,12 +2169,16 @@ public class GateController  {
 		      gateService.addOrUpdateTDrawMoneySucceed(drawMoneySucceed);
 		      
 		      
-		      //提现成功后发送邮件
+		     
 	    	  TDrawMoney drawmoney=gateService.queryTDrawMoneyByRequestNo(drawMoneySucceed.getRequestNo()).get(0);
-	    	  TUser user=(TUser)request.getSession().getAttribute("userinfo");
-	    	  TTransNotice transnotice=transNoticeService.queryTransNoticeByName(user.getName()).get(0);
+	    	  TUser user=userService.getUserByAccount(drawmoney.getPlatformUserNo());
+	    	  //添加提现交易记录
+	    	  TTransRecord transrecord=new TTransRecord(drawmoney.getPlatformUserNo(),drawmoney.getRequestNo(),drawmoney.getTransDate(),"",drawmoney.getAmount(),"提现");
+	    	  transRecordService.addOrUpdate(transrecord);
+	    	  //提现成功后发送邮件
+	    	  List list1=transNoticeService.queryTransNoticeByName(user.getName());
 	    	  List list=transNoticeService.queryTransNoticeByNameAndtypes(user.getName(), "提现", "邮件通知");
-	    	  if(transnotice!=null){
+	    	  if(list1.size()!=0){
 	    	  if(list.size()!=0){
 	    		  boolean flag = false;
 	    		// 这个类主要是设置邮件
@@ -2123,16 +2209,11 @@ public class GateController  {
 	    			SimpleMailSender sms = new SimpleMailSender();
 	    			// sms.sendTextMail(mailInfo);//发送文体格式
 	    			flag = sms.sendHtmlMail(mailInfo);// 发送html格式
-	    			if (flag != true) {
-	    				mailInfo.setUserName("no-reply@ptobchina.com");
-	    				mailInfo.setPassword("12qwaszx");// 您的邮箱密码
-	    				mailInfo.setFromAddress("no-reply@ptobchina.com");
-	    				flag = sms.sendHtmlMail(mailInfo);
-	    			}
+	    			
 	    	  }
 	    	   
 	    	  }
-	    	  if(transnotice==null){
+	    	  if(list1.size()==0){
 	    			  boolean flag = false;
 	    			  // 这个类主要是设置邮件
 	    			  MailSenderInfo mailInfo = new MailSenderInfo();
@@ -2162,13 +2243,7 @@ public class GateController  {
 		    			SimpleMailSender sms = new SimpleMailSender();
 		    			// sms.sendTextMail(mailInfo);//发送文体格式
 		    			flag = sms.sendHtmlMail(mailInfo);// 发送html格式
-		    			if (flag != true) {
-		    				mailInfo.setUserName("no-reply@ptobchina.com");
-		    				mailInfo.setPassword("12qwaszx");// 您的邮箱密码
-		    				mailInfo.setFromAddress("no-reply@ptobchina.com");
-		    				flag = sms.sendHtmlMail(mailInfo);
-		    			}
-	    		
+		    			
 	    	  }
 	    	  
 	    	 

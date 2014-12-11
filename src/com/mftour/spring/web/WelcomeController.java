@@ -114,6 +114,7 @@ public class WelcomeController {
 			user.setRandomCode(code);
 			user.setRegState("f");
 			userService.addOrUpdate(user);
+			request.getSession().setAttribute("name", user.getName());
 			com.mftour.spring.util.File f=ReadWirtePropertis.file();
 			String basePath =f.getBasePath();
 			String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
