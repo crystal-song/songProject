@@ -57,13 +57,13 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 		 * String hql =
 		 * "select new map(product as product) from TProduct product";
 		 */
-		// 这里需要用new map()，jquery easyui datagrid有一个小bug，必须把idField单独列出来，要不然不能多选
+		// ���������������new map()���jquery easyui datagrid������������bug������������idField���������������������������������������
 		/*
 		 * String orderString = ""; if (StringUtils.isNotBlank(dgm.getSort())) {
 		 * orderString = " order by " + dgm.getSort() + " " + dgm.getOrder(); //
-		 * 排序 }
+		 * ������ }
 		 */
-		// 增加条件
+		// ������������
 		StringBuffer sb = new StringBuffer();
 		Map<String, Object> params = new HashMap<String, Object>();
 		if (product != null) {
@@ -282,8 +282,8 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 
 		}
 
-		// 查询总数可以用getHibernateTemplate()，我下面用的是createQuery
-		// Hibernate的动态条件查询用DetachedCriteria是一个比较好的解决
+		// ���������������������getHibernateTemplate()���������������������createQuery
+		// Hibernate������������������������DetachedCriteria���������������������������
 		// List totalList = getHibernateTemplate().findByNamedParam(countQuery,
 		// params.keySet().toArray(new String[0]), params.values().toArray());
 		// int total = ((Long)totalList.iterator().next()).intValue();
@@ -307,7 +307,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 				queryList.setParameter(key, params.get(key));
 			}
 		}
-		/* int total = ((Long) queryTotal.uniqueResult()).intValue(); */// 这里必须先转成Long再取intValue，不能转成Integer
+		/* int total = ((Long) queryTotal.uniqueResult()).intValue(); */// ���������������������Long������intValue���������������Integer
 		int total = ((Long) queryTotal.uniqueResult()).intValue();
 		page.setTotalRecord(total);
 
@@ -317,17 +317,6 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 
 		return list;
 
-		// TODO Auto-generated method stub
-		/*
-		 * String hql = "from TProduct ";
-		 * 
-		 * if(page!=null){
-		 * 
-		 * } Query query = getSession().createQuery(hql);
-		 * 
-		 * List li= query.list(); System.out.print("dddddddddddddddd"); return
-		 * li;
-		 */
 
 	}
 

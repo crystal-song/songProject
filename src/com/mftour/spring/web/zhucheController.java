@@ -66,10 +66,9 @@ public class zhucheController {
 		Object o = request.getSession().getAttribute("name");
 
 		if (o != null) {
-			System.out.println("zhanghu" + o.toString());
+	
 			TUser user1 = userService.getUserByAccount(o.toString());
-			System.out.println("zhanghu" + user1.getName() + "ddd"
-					+ user1.getPassword());
+		
 
 			List<TRegisterYeePay> li = gateService
 					.queryTRegisterYeePayByName(user1.getName());

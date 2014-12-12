@@ -143,6 +143,7 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		return query.list();
 	}
 
+
 	@Override
 	public List<TNews> getNewsbyTime() throws Exception {
 		String hql = "from TNews news where news.state = :state and news.channel = :channel  order by news.time desc";
@@ -186,10 +187,8 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		Query query = getSession().createQuery(hql);
 		query.setParameter("number", number);
 		query.setParameter("state", "0");
-		System.out.println("dddddd" + number);
-
 		Double d = (Double) query.list().get(0);
-		System.out.println("cccccc" + d);
+	
 		return d;
 	}
 

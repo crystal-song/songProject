@@ -108,8 +108,8 @@ public class WelcomeController {
 	public String regEemail(TUser user, Model model, HttpServletRequest request){
 		try {
 			Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*60* 60 * 1000);
-			RandomCode randomcode=new RandomCode();
-			String code=randomcode.getRandomString(5);
+	
+			String code=RandomCode.getRandomString(5);
 			user.setRegTime(outDate);
 			user.setRandomCode(code);
 			user.setRegState("f");
@@ -161,8 +161,7 @@ public class WelcomeController {
 	public String verregister(@RequestParam("username") String username,
 			Model model,HttpServletRequest request) throws Exception {
 		Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate1");
-		System.out.println("outDate"+outDate);
-		System.out.println("aaaaaa"+outDate.getTime()+"bbbbbbb"+System.currentTimeMillis());
+
 		TUser user = userService.getUserByAccount(username);
 		if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
             request.setAttribute("msg", "链接已经过期,请重新做认证！");
@@ -237,18 +236,10 @@ public class WelcomeController {
 			user1.setIdentityCardPic2(myfiles[1].getOriginalFilename());
 			userService.addOrUpdate(user1);
 			for (MultipartFile myfile : myfiles) {
-				if (myfile.isEmpty()) {
-					System.out.println("文件未上传");
-				} else {
-					System.out.println("文件长度: " + myfile.getSize());
-					System.out.println("文件类型: " + myfile.getContentType());
-					System.out.println("文件名称: " + myfile.getName());
-					System.out.println("文件原名: " + myfile.getOriginalFilename());
-					System.out
-							.println("========================================");
+				if (!myfile.isEmpty()) {
 					FileUtils.copyInputStreamToFile(myfile.getInputStream(),
 							new File(realPath, myfile.getOriginalFilename()));
-				}
+				} 
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -306,7 +297,7 @@ public class WelcomeController {
 		/** 发送短信之前先统计一个已经发送的短信条数 */
 		TUser user = (TUser) request.getSession().getAttribute("userinfo");
 		int messageCount = userService.findAllRecord(mobilephone);
-		System.out.println("已发短信条数为：" + messageCount);
+		
 		if (messageCount < 5) {
 			/** 单个手机号发送短信 */
 			if (!sendMessage(mobilephone, content, operId, tosend_time, sms_id,
@@ -323,7 +314,7 @@ public class WelcomeController {
 				userService.addOrUpdate(user);
 			}
 		} else {
-			System.out.println("该手机号码今天发送验证码过多");
+			
 			result = "2";// 一个手机号码最多发送3条短信验证码
 		}
 		response.setContentType("application/json;charset=UTF-8");
@@ -345,13 +336,13 @@ public class WelcomeController {
 			try {
 				ret = SmsWebClient.init("url", "userName", "passWord");
 				if (ret == -1 || !SmsWebClient.enable()) {
-					System.out.println("短信平台接口初始化失败！");
+				
 					return false;
 				}
-				System.out.println("短信平台接口初始化成功！" + ret + "----------");
+			
 			} catch (Exception ex) {
 				ex.printStackTrace();
-				System.out.println("短信平台接口初始化过程中异常！");
+			
 			}
 		}
 		return true;
@@ -389,15 +380,15 @@ public class WelcomeController {
 					content, operId, tosend_time, sms_id, backlist_filter,
 					fbdword_filter, priority, valid_time);
 			if (retObj.getReturnCode() != 1) {
-				System.out.println("短信发送失败，原因为：" + retObj.getReturnMsg());
+				
 				return false;
 			} else {
-				System.out.println("短信发送成功！返回结果为：" + retObj.getReturnMsg());
+			
 				return true;
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("短信发送过程发生异常!");
+		
 		}
 		return true;
 	}

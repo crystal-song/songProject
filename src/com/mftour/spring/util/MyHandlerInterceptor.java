@@ -11,7 +11,7 @@ public class MyHandlerInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		// 就简单判断了一下，如果要详细控制可以用spring security
-		String url = request.getRequestURI();
+	
 		/* if(url.endsWith("welcome")) */
 		return true;
 		/*

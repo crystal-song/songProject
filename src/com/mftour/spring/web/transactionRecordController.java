@@ -37,8 +37,7 @@ public class transactionRecordController {
 			try {
 				TUser user=(TUser)request.getSession().getAttribute("userinfo");
 				Page page = Page.newBuilder(pageNo, pageSize, "queryTransRecord");
-				SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			    long day = 0;
+				
 			   /*start*/
 			if(user==null){
 				return "login";

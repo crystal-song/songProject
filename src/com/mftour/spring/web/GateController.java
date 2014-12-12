@@ -1,17 +1,27 @@
 package com.mftour.spring.web;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXB;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.ServletContextAware;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import com.mftour.spring.model.TBinding;
 import com.mftour.spring.model.TBindingNotify;
@@ -23,14 +33,12 @@ import com.mftour.spring.model.TEstablishmentNotify;
 import com.mftour.spring.model.TEstablishmentRegistration;
 import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
-import com.mftour.spring.model.TLoansucceed;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TRecharge;
 import com.mftour.spring.model.TRechargeNotify;
 import com.mftour.spring.model.TRechargeSucceed;
 import com.mftour.spring.model.TRegisterNotify;
 import com.mftour.spring.model.TRegisterYeePay;
-import com.mftour.spring.model.TTransNotice;
 import com.mftour.spring.model.TTransRecord;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
@@ -45,9 +53,7 @@ import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.File;
 import com.mftour.spring.util.HttpClientTest;
-import com.mftour.spring.util.MailSenderInfo;
 import com.mftour.spring.util.ReadWirtePropertis;
-import com.mftour.spring.util.SimpleMailSender;
 /*import com.mftour.spring.util.ccc;*/
 import com.yeepay.bha.example.bean.BHAAuthorization;
 import com.yeepay.bha.example.bean.BHAEstablishmentRegistration;
@@ -56,57 +62,8 @@ import com.yeepay.bha.example.bean.BHARechargeRequest;
 import com.yeepay.bha.example.bean.BHARegisterRequest;
 import com.yeepay.bha.example.bean.BHATransferRequest;
 import com.yeepay.bha.example.bean.BHAWithdrawRequest;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import com.yeepay.bha.example.bean.BHAbindingRequest;
 import com.yeepay.g3.utils.security.cfca.SignUtil;
-
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream; 
-import java.io.FileNotFoundException; 
-import java.io.FileOutputStream; 
-import java.io.IOException; 
-import java.io.InputStream; 
-import java.io.PrintWriter; 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder; 
-import javax.xml.parsers.DocumentBuilderFactory; 
-import javax.xml.parsers.ParserConfigurationException; 
-
-import org.w3c.dom.Document; 
-import org.w3c.dom.Element; 
-import org.w3c.dom.Node; 
-import org.w3c.dom.NodeList; 
-import org.xml.sax.SAXException; 
 
 @Controller
 public class GateController  {
@@ -135,8 +92,7 @@ public class GateController  {
 		model.addAttribute("now", System.currentTimeMillis());
 		File f=ReadWirtePropertis.file();
 		String platformNo=f.getPlatformNo();
-	    System.out.println("ddddddddd"+f.getPlatformNo()); 
-	    System.out.println("ddddddddd"+f.getOnSubmit()); 
+
 	    model.addAttribute("f", f);
 		Object o= request.getSession().getAttribute("name"); 
 		String name=null;
@@ -227,7 +183,7 @@ public class GateController  {
 	@RequestMapping(value="/gate/binding")
 	public String binding(Model model,HttpServletRequest request) throws Exception {
 		File f=ReadWirtePropertis.file();
-	    System.out.println(f.getPlatformNo()); 
+	
 	    model.addAttribute("f", f);
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name"); 
@@ -297,8 +253,7 @@ public class GateController  {
 		 if(li != null && li.size()!=0){
 			 TProduct product=li.get(0);
 			 TTransferInfo transferInfo1=list1.get(0);
-			 System.out.print("dddddddddd"+transferInfo1.getPaymentAmount()+"ddddddddd"+transferInfo1.getInterestRate());
-			 
+		
 			 model.addAttribute("product", product);
 			 model.addAttribute("transferInfo1", transferInfo1);
 		 }
@@ -314,100 +269,12 @@ public class GateController  {
 		return doSign(request, host + "/bha/toAuthorizeAutoRepayment", model );
 	}
 	
-	@RequestMapping(value="/gate/repayment")
-	public void repayment(Model model) throws Exception {
-		model.addAttribute("now", System.currentTimeMillis());
-		
-		 /*String request="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-	    			
-				    +"<request platformNo='10040011137'>"
-	    			
-	    			+"<platformUserNo>"+"18975601645"+"</platformUserNo> "
-	    			+"<requestNo>"+System.currentTimeMillis()+"</requestNo> "
-	    			+"<orderNo>"+"1416170104284"+"</orderNo> "
-	    			+"<properties>"
-	    			+"<property name='name' value='value' />"
-	    			+"</properties> "
-	    			+"<repayments> "
-	    			+"<repayment> "
-	    			+"<paymentRequestNo>"+"1416170104284"+"</paymentRequestNo> "
-	    			+"<targetUserNo>"+"gg123456"+"</targetUserNo> "
-	    			+"<amount>"+"10"+"</amount> "
-	    			+"<fee>"+"1"+"</fee> "
-	    			+"</repayment>"
-	    			+"</repayments>"
-	    			+"<notifyUrl>"+"http://192.168.1.207:8080/spring3/gate/loanexam"+"</notifyUrl> "
-	    			
-	                +"</request>";
-		 String host="http://qa.yeepay.com/member";*/
-		
-		
-		String request="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-				    +"<request platformNo='10040011137'>"
-	    			+"<platformUserNo>"+"18975601645"+"</platformUserNo> "
-	    			+"<requestNo>"+System.currentTimeMillis()+"</requestNo> "
-	    			+"<orderNo>"+"1416170104284"+"</orderNo> "
-	    			+"<repayments>"
-	    			+"<repayment> "
-	    			+"<paymentRequestNo>"+"1416170104284"+"</paymentRequestNo> "
-	    			+"<targetUserNo>"+"gg123456"+"</targetUserNo> "
-	    			+"<amount>"+"10"+"</amount> "
-	    			+"<fee>"+"1"+"</fee> "
-	    			+"</repayment>"
-	    			+"</repayments>"
-	    			+"<notifyUrl>"+"http://192.168.1.207:8080/spring3/gate/loanexam"+"</notifyUrl> "
-	                +"</request>";
-		
-		 
-		 
-		 String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
-		
-			String s = request;
-			s = s.replaceAll("[\\r\\n]", "");
-			String service="AUTO_REPAYMENT";
-			String host="http://qa.yeepay.com/member";
-			
-			 /*ccc.da(service,url,s);*/
-			 HttpClientTest d=new HttpClientTest();
-			         /* String resp=d.postForm( url, s, SignUtil.sign(s, pfx, "liukai123"));*/
-			 String resp=d.postForm(service, host + "/bhaexter/bhaController", s, SignUtil.sign(s, pfx, "liukai123"));
-		               System.out.println("dddddd"+resp);
-		 
-		              /* return "bangding_ok";*/
-		/* return doSign(request, host + "/bha/toRepayment", model,"" );*/
-		 
-	}
 	
-	
-	
-	
-	/*@RequestMapping(value="/gate/binding")
-	public void binding(Model model,HttpServletRequest request) throws Exception {
-		model.addAttribute("now", System.currentTimeMillis());
-		Object o= request.getSession().getAttribute("name"); 
-		 TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
-		           String name= registerYeePay1.getPlatformUserNo();
-		 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-	    			+"<request platformNo='10040011137'>"
-	    			+"<requestNo>"+System.currentTimeMillis()+"</requestNo> "
-	    			+"<notifyUrl>"+"http://192.168.1.207:8080/spring3/gate/loanexam"+"</notifyUrl> "
-	    			+"<callbackUrl>"+"http://192.168.1.207:8080/spring3/gate/loanexam"+"</callbackUrl> "
-	    			+"<platformUserNo>"+name+"</platformUserNo> "
-	    			+"<platformUserNo>"+"q459384843"+"</platformUserNo> "
-	                +"</request>";
-		 
-		
-		 String host="http://qa.yeepay.com/member";
-		 dobinding( host,  req,  model);
-		
-		return "payment/service";
-	}*/
 	
 	
 	@RequestMapping(value="/gate/drawMoney")
 	public String drawMoney(Model model,HttpServletRequest request) throws Exception {
 		File f=ReadWirtePropertis.file();
-	    System.out.println(f.getPlatformNo()); 
 	    model.addAttribute("f", f);
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name"); 
@@ -426,21 +293,7 @@ public class GateController  {
 			 model.addAttribute("feeMode", BHAFeeModeEnum.PLATFORM);
 		 }
 		}
-		/* String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-	    			+"<request platformNo='10040011137'>"
-	    			+"<requestNo>"+System.currentTimeMillis()+"</requestNo> "
-	    			+"<notifyUrl>"+"http://192.168.1.207:8080/spring3/gate/loanexam"+"</notifyUrl> "
-	    			+"<callbackUrl>"+"http://192.168.1.207:8080/spring3/gate/loanexam"+"</callbackUrl> "
-	    			+"<platformUserNo>"+name+"</platformUserNo> "
-	                +"</request>";
-		 
 		
-		 
-		 String service="toBindBankCard";
-		 String host="http://qa.yeepay.com/member";*/
-		/* dobinding( host,  req,  service, model);*/
-		
-		/*return "payment/drawMoney";*/
 		return "tixian";
 	}
 	
@@ -501,7 +354,7 @@ public class GateController  {
 			model.addAttribute("user", user);
 			/*return "payment/register";*/
 			 File f=ReadWirtePropertis.file();
-			    System.out.println(f.getPlatformNo()); 
+			  
 			    model.addAttribute("f", f);
 			return "register";
 		}
@@ -509,18 +362,10 @@ public class GateController  {
 	}
 	
 	
-	/*@RequestMapping(value="/gate/exam")
-	public String exam(Model model, String resp, String sign) {
-		System.out.println("dddddddddddddddddddd");
-		model.addAttribute("resp", resp);
-		model.addAttribute("sign", sign);
-		return "payment/exam";
-	}*/
 	
-	//
 	@RequestMapping(value="/gate/doRegister")
 	public String doRegister(String host, BHARegisterRequest request, Model model,TRegisterYeePay  registerYeePay) throws Exception {
-		System.out.println("dddddddddddddddddddd"+registerYeePay.getPlatformUserNo());
+
 		 List<TRegisterYeePay> li=gateService.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo());
 		 if(li != null && li.size()!=0){
 			 TRegisterYeePay registerYeePay1 = li.get(0);
@@ -552,7 +397,7 @@ public class GateController  {
 	@RequestMapping(value="/gate/recharge",method = {RequestMethod.POST, RequestMethod.GET})
 	public String recharge(Model model,HttpServletRequest request)throws Exception {
 		 File f=ReadWirtePropertis.file();
-		    System.out.println(f.getPlatformNo()); 
+		 
 		    model.addAttribute("f", f);
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o= request.getSession().getAttribute("name");
@@ -564,15 +409,13 @@ public class GateController  {
 		
 			 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
 			 List<TRegisterNotify> list= gateService.queryTRegisterNotifyByName(o.toString());
- 		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
-			 
+ 		
 			 if(li!=null&&li.size()!=0){
 				 registerYeePay1=li.get(0);
 				  String code= li.get(0).getCode();
 			 if(code!=null&&code.equals("1")){
 				 
-				 System.out.println("dddddddd"+registerYeePay1.getPlatformUserNo());
-				 System.out.println("dddddddd"+registerYeePay1.getCode());
+			
 				 model.addAttribute("registerYeePay1", registerYeePay1);
 	        	  return "chongzhi";
 			   }
@@ -580,24 +423,18 @@ public class GateController  {
 			    if(list!=null&&list.size()!=0){
 			    	String code= list.get(0).getCode(); 
 				 if(code!=null && code.equals("1")){
- 		 /* if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){*/
-			     /* if(li.get(0).getCode().equals("1")||list.get(0).getCode().equals("1")){*/
+
 					 if(li!=null&&li.size()!=0){
 					 registerYeePay1=li.get(0);
 	        	  model.addAttribute("registerYeePay1", registerYeePay1);
 	        	  return "chongzhi";
- 		  /* }*/}
+					 	}
 				 }
-			 }/*else{
-				 TUser user=userService.getUserByAccount(o.toString());
-					model.addAttribute("user", user);
- 			 return "register";*/
- 		       
-		 /*}*/
+			 }
  		  }
 		 TUser user=userService.getUserByAccount(o.toString());
 			model.addAttribute("user", user);
-			/*return "payment/register";*/
+			
 			return "register";
 	}
 	
@@ -627,8 +464,7 @@ public class GateController  {
 	
 	@RequestMapping(value="/gate/transfer")
 	public String Transfer(Model model,HttpServletRequest request,String buyAmount,TProduct product) throws Exception {
-		File f=ReadWirtePropertis.file();
-	    System.out.println(f.getPlatformNo()); 
+		File f=ReadWirtePropertis.file(); 
 	    model.addAttribute("f", f);
 		Object o= request.getSession().getAttribute("name");
 		if(o==null){
@@ -643,35 +479,30 @@ public class GateController  {
 		
 		 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
 		 List<TRegisterNotify> lis= gateService.queryTRegisterNotifyByName(o.toString());
-		/* if(li != null && li.size()!=0){
-			 TUser user=userService.getUserByAccount(o.toString());
-				model.addAttribute("user", user);
-				TRegisterYeePay registerYeePay= li.get(0);
-			 return "register";	 
-		 }else*/ 
+	
 		 
 		 if(li!=null&& li.size()!=0){
 			 String code=li.get(0).getCode();
 		
 		 if(code!=null&&code.equals("1")){
 			 TRegisterYeePay registerYeePay1=li.get(0);
-				System.out.println("ddddd"+buyAmount);
+			
 				model.addAttribute("registerYeePay1", registerYeePay1);
 				model.addAttribute("buyAmount", buyAmount);
 				model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
 				model.addAttribute("product", product);
-				System.out.println("wwwwwwwwwwwwwwwwwwwwww"+product.getTargetPlatformUserNo());
+
 				model.addAttribute("now", System.currentTimeMillis());
 				return "touzicheck";
 		 }	   
 		  } else if(lis != null && lis.size()!=0){
 			 TRegisterYeePay registerYeePay1=li.get(0);
-				System.out.println("ddddd"+buyAmount);
+			
 				model.addAttribute("registerYeePay1", registerYeePay1);
 				model.addAttribute("buyAmount", buyAmount);
 				model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
 				model.addAttribute("product", product);
-				System.out.println("wwwwwwwwwwwwwwwwwwwwww"+product.getTargetPlatformUserNo());
+
 				model.addAttribute("now", System.currentTimeMillis());
 				return "touzicheck";
 		
@@ -680,7 +511,7 @@ public class GateController  {
 				 TUser user=userService.getUserByAccount(o.toString());
 					model.addAttribute("user", user);
 					model.addAttribute("now", System.currentTimeMillis());
-					TRegisterYeePay registerYeePay= li.get(0);
+				
 				 return "register";
 			 }
 		 
@@ -697,7 +528,7 @@ public class GateController  {
 		int a=0;
 		int b=0;
 		 List<TInterestRate> li=ptopService.queryTInterestRateByNumber(TtransferInfo.getEnterpriseNumber());
-		 System.out.println("rrrrrrrrrrrrrrrrrrrrrrrr"+TtransferInfo.getEnterpriseNumber());
+
 		     int paymentAmount= Integer.parseInt(TtransferInfo.getPaymentAmount());
 			for(int i=0;i<li.size();i++){
 				if(i<li.size()-1){
@@ -707,26 +538,17 @@ public class GateController  {
 					a=li.get(i).getStartMoney();
 				}   b=li.get(i).getHighestMoney();
 				if(a<=paymentAmount&&paymentAmount<b){
-					/*Double StartInterestRate=li.get(i).getStartInterestRate();*/
-					/*int  MoneyIncrease=li.get(i).getMoneyIncrease();
-					int  StartMoney= li.get(i).getStartMoney();*/
-					/*Double InterestRateIncrease= li.get(i).getInterestRateIncrease();*/
-					/*int c=(paymentAmount- StartMoney)/MoneyIncrease;*/
-					/*Double d=c*InterestRateIncrease;*/
-					/*Double interestRate= StartInterestRate+d;*/
-				
+					
 					Double StartInterest=li.get(i).getStartInterestRate();
-					System.out.println("aaaaaaaaaaaaaaa"+StartInterest);
+					
 					TtransferInfo.setInterestRate(StartInterest);
 				}
 			}
 		
-			//添加交易时间
+	
 			String transDate=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 			TtransferInfo.setTransDate(transDate);
 		
-			/*List<TProduct> list=productService.queryProductByNumber(TtransferInfo.getEnterpriseNumber());
-			TProduct product=list.get(0);*/
 			List<TProduct> list1=productService.queryProductByNumber(TtransferInfo.getEnterpriseNumber());
 			if(list1 != null && list1.size()!=0){
 				TProduct product=list1.get(0);
@@ -738,8 +560,8 @@ public class GateController  {
 			
 			
 			
-			 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-			 System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+			 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 			 Object o= request1.getSession().getAttribute("name"); 
 			 TInvestmentInfo investmentInfo=new TInvestmentInfo();
 			 if(o!=null){
@@ -761,7 +583,7 @@ public class GateController  {
 	         TProduct t=lis.get(0);
 	          
 	            Double RealityMoney=t.getRealityMoney();
-	            System.out.println("vvvvvvvvvv"+investmentInfo.getInvestmentAmount()+"vvvvvvvvvvvvvvvv"+RealityMoney);
+
 	            if(RealityMoney==null||RealityMoney==0.0){
 	            	Double money = Double.parseDouble(TtransferInfo.getPaymentAmount());
 	            	t.setRealityMoney(money);
@@ -776,7 +598,7 @@ public class GateController  {
 	            	t.setFinancingProgress(d/t.getFinancingMoney()*100/10000);
 	            }
 	            
-	            System.out.println("vvvvvvvvvvvvvvvvvvvvvvvvvv");
+	   
 	            
 	           ptopService.addOrUpdate(t);	
 			
@@ -896,14 +718,14 @@ public class GateController  {
 	public String doEstablishmentRegistration(String host, Model model,BHAEstablishmentRegistration  request, TEstablishmentRegistration establishmentRegistration) throws Exception {
 		
 		gateService.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
-	    System.out.println("ddddddddddddddddddd"+establishmentRegistration.getTaxNo());
+
 		return doSign(request, host + "/bha/toEnterpriseRegister", model );
 	}
 	
 	
 	@RequestMapping(value="/gate/examEstablishmentRegistration", method = {RequestMethod.POST, RequestMethod.GET})
 	public String examEstablishmentRegistration(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
+	
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
 		
@@ -911,15 +733,15 @@ public class GateController  {
 		  
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
+		      //    ������ ��������� ������ ������ ������ ������ ��� 
 		      DocumentBuilder db=dbf.newDocumentBuilder();
 		      
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
+		      //������ ��� ��������� ��� ������ ������ ������ -->dom��� 
 		     
 		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
 		     Document dm=db.parse(iStream);
 		      
-		      //得到 所有 person节点 
+		      //������ ������ person������ 
 		      NodeList persons=dm.getElementsByTagName("response");
 		     
 		      TEstablishmentNotify establishmentNotify=new TEstablishmentNotify();
@@ -930,9 +752,8 @@ public class GateController  {
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		  
+		    		  p.item(j);
+		    		 
 		    	  }
 		    	  
 		    	 
@@ -965,9 +786,6 @@ public class GateController  {
 	        } finally {
 	        }
 		    	  
-		
-		
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
 		return "payment/establishmentRegistration";
 	
 	}
@@ -977,22 +795,18 @@ public class GateController  {
 	public String exam(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
 		
 		
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 		  
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
 		      DocumentBuilder db=dbf.newDocumentBuilder();
 		      
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-		     
 		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
 		     Document dm=db.parse(iStream);
 		      
-		      //得到 所有 person节点 
+		
 		      NodeList persons=dm.getElementsByTagName("response");
 		     
 		      TYeePay YeePay=new TYeePay();
@@ -1003,9 +817,8 @@ public class GateController  {
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		  
+		    		  p.item(j);
+		    		 
 		    	  }
 		    	  
 		    	 
@@ -1037,21 +850,12 @@ public class GateController  {
 		    	 registerYeePay.setCode(YeePay.getCode());
 		    	    gateService.addOrUpdateRegisterYeePay(registerYeePay);
 		    	   
-		    	   /* Object o= request.getSession().getAttribute("name");
-		    	  System.out.println("aaaaaaaaaaaaa"+o.toString());*/
-		    	 
 		    		  TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo()).get(0);
-		    		 /* System.out.println(registerYeePay1.getPlatformUserNo()+"sssssssss"+o.toString());*/
+		    
 		    		  model.addAttribute("now", System.currentTimeMillis());
-		    		  System.out.println("ddddddddddddddd"+registerYeePay1.getPlatformUserNo()+"ddddddddd"+registerYeePay1.getCode());
-		    		  /*if(registerYeePay1.getPlatformUserNo()!=null&&registerYeePay1.getCode().equals("1")){
-			        	  model.addAttribute("registerYeePay1", registerYeePay1);*/
+		
 			        	  return "zhuce";
-			         /* }else if(registerYeePay1.getCode()!="1"){
-			        	  
-			        	  return "register";
-			          }
-			     */
+			      
 		    	  
 		    	 
 		    	  
@@ -1066,57 +870,6 @@ public class GateController  {
 		    
 		
 		
-		
-		
-		
-		
-		/*String a="<?xml version='1.0' encoding='UTF-8'?>"
-		+"<employees>"
-		+"<employee>"
-		+"<name>ddviplinux</name>"
-		+"<sex>m</sex>"
-		+"<age>30</age>"
-		+"</employee>"
-		+"</employees>";
-		
-		System.out.println("xxxxxxxxx"+a);
-		
-		
-	
-			try { 
-				System.out.println("解ddddddddddddddddddd1"); 
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance(); 
-			System.out.println("解ccccccccccccccccccccccc2"); 
-			DocumentBuilder db = dbf.newDocumentBuilder(); 
-			System.out.println("解ccccccccccccccccccccccc3"); 
-			Document document = db.parse(a); 
-			System.out.println("解ccccccccccccccccccccccc4"); 
-			NodeList employees = document.getChildNodes(); 
-			System.out.println("解ccccccccccccccccccccccc5"); 
-			for (int i = 0; i < employees.getLength(); i++) { 
-				System.out.println("解ssssssssssssssssssss6"); 
-			Node employee = employees.item(i); 
-			System.out.println(employee.getNodeName() 
-					+ ":" + employee.getTextContent()); 
-			NodeList employeeInfo = employee.getChildNodes(); 
-			
-			} 
-			System.out.println("解析完毕"); 
-			} catch (FileNotFoundException e) { 
-			System.out.println(e.getMessage()); 
-			} catch (ParserConfigurationException e) { 
-			System.out.println(e.getMessage()); 
-			} catch (SAXException e) { 
-			System.out.println(e.getMessage()); 
-			} catch (IOException e) { 
-			System.out.println(e.getMessage()); 
-			} */
-			 
-			 
-		
-		
-		  
-		/*return "payment/exam";*/
 		  
 		return "register";
 	}
@@ -1128,22 +881,16 @@ public class GateController  {
 	public String examRecharge(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
-		
-		
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 		  
 		  try {
-		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
-		      DocumentBuilder db=dbf.newDocumentBuilder();
+		     	      DocumentBuilder db=dbf.newDocumentBuilder();
 		      
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-		     
+		   
 		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
 		     Document dm=db.parse(iStream);
 		      
-		      //得到 所有 person节点 
+		  
 		      NodeList persons=dm.getElementsByTagName("response");
 		     
 		      TRechargeSucceed rechargeSucceed=new TRechargeSucceed();
@@ -1155,8 +902,7 @@ public class GateController  {
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
 		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		  
+		    		 
 		    	  }
 		    	  
 		    	 
@@ -1190,8 +936,8 @@ public class GateController  {
 		    	 
 		    	  
 		    	  TRecharge recharge=gateService.queryTRechargeByRequestNo(rechargeSucceed.getRequestNo()).get(0);
-		    	  //添加交易记录
-		    	  TTransRecord transrecord=new TTransRecord(recharge.getPlatformUserNo(),recharge.getRequestNo(),recharge.getTime(),"",recharge.getAmount(),"充值");
+		    	  //������������������
+		    	  TTransRecord transrecord=new TTransRecord(recharge.getPlatformUserNo(),recharge.getRequestNo(),recharge.getTime(),"",recharge.getAmount(),"������");
 		    	  transRecordService.addOrUpdate(transrecord);
 		    	
 		        } catch (Exception e) {
@@ -1212,22 +958,17 @@ public class GateController  {
 	public String transferSucceed(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
-		System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzz");
-		
 		
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 		  
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
-		      DocumentBuilder db=dbf.newDocumentBuilder();
+		     DocumentBuilder db=dbf.newDocumentBuilder();
 		      
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-		     
 		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
 		     Document dm=db.parse(iStream);
 		      
-		      //得到 所有 person节点 
+		    
 		      NodeList persons=dm.getElementsByTagName("response");
 		     
 		      TTransferSucceed TTransferSucceed=new TTransferSucceed();
@@ -1238,9 +979,8 @@ public class GateController  {
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		 
+		    		  p.item(j);
+		    		  
 		    	  }
 		    	  
 		    	 
@@ -1277,60 +1017,20 @@ public class GateController  {
 		      model.addAttribute("transferInfo", transferInfo);
 		    	 
 		      
-	    	  //添加投资交易记录
-	    	  TTransRecord transrecord=new TTransRecord(transferInfo.getPlatformUserNo(),transferInfo.getRequestNo(),transferInfo.getTransDate(),transferInfo.getProjectName(),transferInfo.getPaymentAmount(),"投资");
+	    	
+	    	  TTransRecord transrecord=new TTransRecord(transferInfo.getPlatformUserNo(),transferInfo.getRequestNo(),transferInfo.getTransDate(),transferInfo.getProjectName(),transferInfo.getPaymentAmount(),"������");
 	    	  transRecordService.addOrUpdate(transrecord);
-		    
-		      
-		     /* List<TProduct> list=productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
-				TProduct product=list.get(0);
-				model.addAttribute("now", System.currentTimeMillis());
-				 System.out.println("dddddddddddddddddddd"+transferInfo.getPlatformUserNo());
-				 System.out.println("dddddddddddddddddddd"+transferInfo.getTransferAmount());
-			
-				 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-			    			+"<request platformNo='10040011137'>"
-						 +"<request platformNo='10012415118'>"
-			    			+"<platformUserNo>gg123456</platformUserNo> "
-			    			+"<orderNo>"+transferInfo.getOrderNo()+"</orderNo> "
-			    			+"<requestNo>"+System.currentTimeMillis()+"</requestNo> "
-			    			+"<fee>"+"fee"+"</fee> "
-			    			+"<transfers>"
-			    			+"<transfer>"
-			    			+"<requestNo>"+transferInfo.getRequestNo()+"</requestNo> "
-			    			+"<transferAmount>"+transferInfo.getPaymentAmount()+"</transferAmount> "
-			    			+"<sourceUserType>"+"MEMBER"+"</sourceUserType> "
-			    			+"<sourcePlatformUserNo>"+transferInfo.getPlatformUserNo()+"</sourcePlatformUserNo> "
-			    			+"<targetUserType>"+"MEMBER"+"</targetUserType> "
-			    			+"<targetPlatformUserNo>"+product.getTargetPlatformUserNo()+"</targetPlatformUserNo> "
-			    			+"<targetPlatformUserNo>"+"601522539"+"</targetPlatformUserNo> "
-			    			+"</transfer>"
-			    			+"</transfers>"
-			    			+"<notifyUrl>"+"http://192.168.1.207:8080/spring3/gate/loanexam"+"</notifyUrl> "
-			                +"</request>";
-		       String service="LOAN";
-			   String host="http://qa.yeepay.com/member";	
-		    	   String host="https://member.yeepay.com/member";	
-		    	  
-		       doloan(host, req,service, model);*/
-				
-		    		 
-		    		
-		    		
-		      
+		   
 		      
 		        } catch (Exception e) {
 		            // TODO: handle exception
 		            e.printStackTrace();
 		        } finally {
 		        }
-		   
-		
 		  
-		/*return "payment/exam";*/
 		  return "buy_ok";
 		  
-		/*return "chong";*/
+
 	}
 
 	
@@ -1341,55 +1041,49 @@ public class GateController  {
 	public String binding(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
-		
+
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
          
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
 		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      System.out.println("eeeeeeeeeee");
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
 		     
 		      InputStream iStream=new ByteArrayInputStream(resp.getBytes("UTF-8"));
 		     Document dm=db.parse(iStream);
-		     System.out.println("ssssssssssssss"+resp);
-		      //得到 所有 person节点 
+		  
 		      NodeList persons=dm.getElementsByTagName("response");
-		      System.out.println("qqqqqqqqqqqqq");
+		     
 		      TBindingSucceed bindingSucceed=new TBindingSucceed();
-		      System.out.println("wwwwwwwwwwwwwww");
+		     
 		      for(int i=0;i<persons.getLength();i++){
 		          
 		    	  Element personElement = (Element)persons.item(i);
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		 
+		    		  p.item(j);
+		    		  
 		    	  }
 		    	  
 		    	 
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
 		    		  bindingSucceed.setService(p.item(1).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		  
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
 		    		  bindingSucceed.setPlatformNo(p.item(3).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    		
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
 		    		  bindingSucceed.setCode(p.item(5).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    		 
 		    		  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
 		    		  bindingSucceed.setDescription(p.item(7).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    		
 		    		  
 		    	  } 
 		    	  
@@ -1415,82 +1109,32 @@ public class GateController  {
 	public String loanexam(Model model, String notify, String sign)throws Exception {
 		model.addAttribute("notify", notify);
 		model.addAttribute("sign", sign);
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq"+notify);
-		
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
          
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
 		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      System.out.println("eeeeeeeeeee");
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-		     
+		    
 		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
 		     Document dm=db.parse(iStream);
-		     System.out.println("oooooooooooooooooooooooo"+notify);
-		      //得到 所有 person节点 
+	
 		      NodeList persons=dm.getElementsByTagName("response");
-		      System.out.println("qqqqqqqqqqqqq");
+		  
 		      TBindingSucceed bindingSucceed=new TBindingSucceed();
-		      System.out.println("wwwwwwwwwwwwwww");
+		    
 		      for(int i=0;i<persons.getLength();i++){
 		          
 		    	  Element personElement = (Element)persons.item(i);
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		 
+		    		 p.item(j);
+		    		  
 		    	  }
 		    	  
 		    	 
 		    	  
-		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
-		    		  /*bindingSucceed.setService(p.item(1).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
-		    	  }
-		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
-		    		/*  bindingSucceed.setPlatformNo(p.item(3).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
-		    		  
-		    	  }
-		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
-		    		/*  bindingSucceed.setCode(p.item(5).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
-		    		  
-		    	  }
-		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(7).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
-		    		  
-		    	  } 
-		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(9).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
-		    		  
-		    	  } 
-		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
-		    		/*  bindingSucceed.setDescription(p.item(11).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
-		    		  
-		    	  } 
-		    	  if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(13).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(13).getTextContent());
-		    		  
-		    	  } 
-		    	  if(p.item(15).getNodeName()!=null&&p.item(15).getTextContent()!=null){
-		    		 /* bindingSucceed.setDescription(p.item(15).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(15).getTextContent());
-		    		  
-		    	  } 
-		    	  if(p.item(17).getNodeName()!=null&&p.item(17).getTextContent()!=null){
-		    		/*  bindingSucceed.setDescription(p.item(17).getTextContent());*/
-		    		  System.out.println("ddddddd"+p.item(17).getTextContent());
-		    		  
-		    	  } 
+		    	 
 		    	  
 		    	 
 		    	  
@@ -1519,75 +1163,56 @@ public class GateController  {
 	public String registerNotify( String notify, String sign,Model model)throws Exception {
 		model.addAttribute("notify", notify);
 		model.addAttribute("sign", sign);
-		System.out.println("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"+notify);
-		
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
          
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
 		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      System.out.println("eeeeeeeeeee");
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-		     
+		   
 		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
 		     Document dm=db.parse(iStream);
-		     System.out.println("oooooooooooooooooooooooo"+notify);
-		      //得到 所有 person节点 
+		    
 		      NodeList persons=dm.getElementsByTagName("notify");
-		      System.out.println("qqqqqqqqqqqqq");
+		     
 		      TRegisterNotify registerNotify=new TRegisterNotify();
-		      System.out.println("wwwwwwwwwwwwwww");
+		   
 		      for(int i=0;i<persons.getLength();i++){
 		          
 		    	  Element personElement = (Element)persons.item(i);
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		 
+		    		  p.item(j);
+		    		  
 		    	  }
 		    	
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
 		    		  registerNotify.setRequestNo(p.item(1).getTextContent());
 		    		 
-		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
 		    		  registerNotify.setPlatformNo(p.item(3).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    		
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
-		    		  registerNotify.setBizType(p.item(5).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
-		    		  
+		    		  registerNotify.setBizType(p.item(5).getTextContent());	  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
 		    		  registerNotify.setCode(p.item(7).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
 		    		  
 		    	  } 
 		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
 		    		  registerNotify.setMessage(p.item(9).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
 		    		  
 		    	  } 
 		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
 		    		  registerNotify.setPlatformUserNo(p.item(11).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
 		    		  
 		    	  } 
 		    	 
 		    	
-		    	   /* <requestNo>1417974396427</requestNo>
-		    	    <platformNo>10040011137</platformNo>
-		    	    <bizType>REGISTER</bizType>
-		    	    <code>1</code>
-		    	    <message>注册成功</message>
-		    	    <platformUserNo>cccccc</platformUserNo>*/
 		    	  
 		    	 
 		    	  
@@ -1616,33 +1241,29 @@ public class GateController  {
 	public String rechargeNotify( String notify, String sign,Model model)throws Exception {
 		model.addAttribute("notify", notify);
 		model.addAttribute("sign", sign);
-		System.out.println("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"+notify);
 		
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
          
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
+
 		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      System.out.println("eeeeeeeeeee");
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-		     
+		   
 		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
 		     Document dm=db.parse(iStream);
-		     System.out.println("oooooooooooooooooooooooo"+notify);
-		      //得到 所有 person节点 
+		 
 		      NodeList persons=dm.getElementsByTagName("notify");
-		      System.out.println("qqqqqqqqqqqqq");
+		 
 		      TRechargeNotify rechargeNotify=new TRechargeNotify();
-		      System.out.println("wwwwwwwwwwwwwww");
+		   
 		      for(int i=0;i<persons.getLength();i++){
 		          
 		    	  Element personElement = (Element)persons.item(i);
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+		    		  p.item(j);
+		    		 
 		    		 
 		    	  }
 		    	
@@ -1650,31 +1271,31 @@ public class GateController  {
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
 		    		  rechargeNotify.setRequestNo(p.item(1).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		    
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
 		    		  rechargeNotify.setPlatformNo(p.item(3).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    	
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
 		    		  rechargeNotify.setBizType(p.item(5).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    		 
 		    		  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
 		    		  rechargeNotify.setCode(p.item(7).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    	
 		    		  
 		    	  } 
 		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
 		    		  rechargeNotify.setMessage(p.item(9).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+		    
 		    		  
 		    	  } 
 		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
 		    		  rechargeNotify.setPlatformUserNo(p.item(11).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+		    		
 		    		  
 		    	  } 
 		    	
@@ -1711,59 +1332,53 @@ public class GateController  {
 	public String transferNotify( String notify, String sign,Model model)throws Exception {
 		model.addAttribute("notify", notify);
 		model.addAttribute("sign", sign);
-		System.out.println("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"+notify);
-		
+	
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
          
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
 		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      System.out.println("eeeeeeeeeee");
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
 		     
 		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
 		     Document dm=db.parse(iStream);
-		     System.out.println("oooooooooooooooooooooooo"+notify);
-		      //得到 所有 person节点 
+		
 		      NodeList persons=dm.getElementsByTagName("notify");
-		      System.out.println("qqqqqqqqqqqqq");
+	
 		      TTransferNotify transferNotify=new TTransferNotify();
-		      System.out.println("wwwwwwwwwwwwwww");
+		
 		      for(int i=0;i<persons.getLength();i++){
 		          
 		    	  Element personElement = (Element)persons.item(i);
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		 
+		    		 p.item(j);
+		    		  
 		    	  }
 		    	
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
 		    		  transferNotify.setPlatformNo(p.item(1).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		    	
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
 		    		  transferNotify.setBizType(p.item(3).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    		
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
 		    		  transferNotify.setCode(p.item(5).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    	
 		    		  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
 		    		  transferNotify.setMessage(p.item(7).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    		
 		    		  
 		    	  } 
 		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
 		    		  transferNotify.setRequestNo(p.item(9).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+		    	
 		    		  
 		    	  } 
 		    	
@@ -1794,80 +1409,74 @@ public class GateController  {
 	public String bindingNotify(Model model, String notify, String sign,HttpServletRequest request)throws Exception {
 		model.addAttribute("notify", notify);
 		model.addAttribute("sign", sign);
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq"+notify);
-		
+	
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
          
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
+
 		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      System.out.println("eeeeeeeeeee");
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-		     
+		    
 		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
 		     Document dm=db.parse(iStream);
-		     System.out.println("oooooooooooooooooooooooo"+notify);
-		      //得到 所有 person节点 
+		 
 		      NodeList persons=dm.getElementsByTagName("notify");
-		      System.out.println("qqqqqqqqqqqqq");
+	
 		      TBindingNotify bindingNotify=new TBindingNotify();
-		      System.out.println("wwwwwwwwwwwwwww");
+		  
 		      for(int i=0;i<persons.getLength();i++){
 		          
 		    	  Element personElement = (Element)persons.item(i);
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-		    		 
+		    		 p.item(j);
+		    		  
 		    	  }
 		    	  
 		    	 
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
 		    		  bindingNotify.setRequestNo(p.item(1).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		    	
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
 		    		  bindingNotify.setPlatformNo(p.item(3).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    	
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
 		    		  bindingNotify.setBizType(p.item(5).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    	
 		    		  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
 		    		  bindingNotify.setCode(p.item(7).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    		
 		    		  
 		    	  } 
 		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
 		    		  bindingNotify.setMessage(p.item(9).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
-		    		  
+		    		
 		    	  } 
 		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
 		    		  bindingNotify.setPlatformUserNo(p.item(11).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+		    		 
 		    		  
 		    	  } 
 		    	  if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
 		    		  bindingNotify.setBankCardNo(p.item(13).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(13).getTextContent());
+		    		
 		    		  
 		    	  } 
 		    	  if(p.item(15).getNodeName()!=null&&p.item(15).getTextContent()!=null){
 		    		  bindingNotify.setCardStatus(p.item(15).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(15).getTextContent());
+		    	
 		    		  
 		    	  } 
 		    	  if(p.item(17).getNodeName()!=null&&p.item(17).getTextContent()!=null){
 		    		  bindingNotify.setBank(p.item(17).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(17).getTextContent());
+		    		 
 		    		  
 		    	  } 
 		    	  
@@ -1892,33 +1501,26 @@ public class GateController  {
 	public String drawMoneyNotify(Model model, String notify, String sign,HttpServletRequest request)throws Exception {
 		model.addAttribute("notify", notify);
 		model.addAttribute("sign", sign);
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq"+notify);
 		
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
          
 		  try {
-		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
 		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      System.out.println("eeeeeeeeeee");
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
 		     
 		      InputStream iStream=new ByteArrayInputStream(notify.getBytes("UTF-8"));
-		     Document dm=db.parse(iStream);
-		     System.out.println("oooooooooooooooooooooooo"+notify);
-		      //得到 所有 person节点 
+		      Document dm=db.parse(iStream);
+		    
 		      NodeList persons=dm.getElementsByTagName("notify");
-		      System.out.println("qqqqqqqqqqqqq");
+		    
 		      TDrawMoneyNotify drawMoneyNotify=new TDrawMoneyNotify();
-		      System.out.println("wwwwwwwwwwwwwww");
+		    
 		      for(int i=0;i<persons.getLength();i++){
 		          
 		    	  Element personElement = (Element)persons.item(i);
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+		    		 p.item(j);
 		    		 
 		    	  }
 		    	  
@@ -1926,41 +1528,41 @@ public class GateController  {
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
 		    		  drawMoneyNotify.setPlatformNo(p.item(1).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		    	
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
 		    		  drawMoneyNotify.setBizType(p.item(3).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    		
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
 		    		  drawMoneyNotify.setCode(p.item(5).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    		 
 		    		  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
 		    		  drawMoneyNotify.setMessage(p.item(7).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    	
 		    		  
 		    	  } 
 		    	  if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
 		    		  drawMoneyNotify.setRequestNo(p.item(9).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+		    		
 		    		  
 		    	  } 
 		    	  if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
 		    		  drawMoneyNotify.setPlatformUserNo(p.item(11).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+		    		 
 		    		  
 		    	  } 
 		    	  if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
 		    		  drawMoneyNotify.setCardNo(p.item(13).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(13).getTextContent());
+		    		
 		    		  
 		    	  } 
 		    	  if(p.item(15).getNodeName()!=null&&p.item(15).getTextContent()!=null){
 		    		  drawMoneyNotify.setBank(p.item(15).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(15).getTextContent());
+		    	
 		    		  
 		    	  } 
 		    	
@@ -1987,32 +1589,27 @@ public class GateController  {
 	public String drawMoneySucceed(Model model, String resp, String sign,HttpServletRequest request)throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
-		System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqq");
+	
 		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
          
 		  try {
 		            
-		      //    通过 解析器 工厂 创建 一个 解析 器 
-		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      System.out.println("eeeeeeeeeee");
-		      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
+		     DocumentBuilder db=dbf.newDocumentBuilder();
+		    
+
 		      TDrawMoneySucceed drawMoneySucceed =new TDrawMoneySucceed();
 		      InputStream iStream=new ByteArrayInputStream(resp.getBytes("UTF-8"));
 		     Document dm=db.parse(iStream);
-		     System.out.println("ssssssssssssss"+resp);
-		      //得到 所有 person节点 
+		    
 		      NodeList persons=dm.getElementsByTagName("response");
-		      System.out.println("qqqqqqqqqqqqq");
-		     /* TBindingSucceed bindingSucceed=new TBindingSucceed();*/
-		      System.out.println("wwwwwwwwwwwwwww");
+		   
 		      for(int i=0;i<persons.getLength();i++){
 		          
 		    	  Element personElement = (Element)persons.item(i);
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
-		    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+		    		  p.item(j);
 		    		 
 		    	  }
 		    	  
@@ -2020,21 +1617,21 @@ public class GateController  {
 		    	  
 		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
 		    		  drawMoneySucceed.setService(p.item(1).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(1).getTextContent());
+		    		
 		    	  }
 		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
 		    		  drawMoneySucceed.setRequestNo(p.item(3).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(3).getTextContent());
+		    		
 		    		  
 		    	  }
 		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
 		    		  drawMoneySucceed.setCode(p.item(5).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(5).getTextContent());
+		    		
 		    		  
 		    	  }
 		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
 		    		  drawMoneySucceed.setDescription(p.item(7).getTextContent());
-		    		  System.out.println("ddddddd"+p.item(7).getTextContent());
+		    	
 		    		  
 		    	  } 
 		    	  
@@ -2044,9 +1641,9 @@ public class GateController  {
 		      
 		     
 	    	  TDrawMoney drawmoney=gateService.queryTDrawMoneyByRequestNo(drawMoneySucceed.getRequestNo()).get(0);
-	    	  TUser user=userService.getUserByAccount(drawmoney.getPlatformUserNo());
-	    	  //添加提现交易记录
-	    	  TTransRecord transrecord=new TTransRecord(drawmoney.getPlatformUserNo(),drawmoney.getRequestNo(),drawmoney.getTransDate(),"",drawmoney.getAmount(),"提现");
+	    	  userService.getUserByAccount(drawmoney.getPlatformUserNo());
+	    
+	    	  TTransRecord transrecord=new TTransRecord(drawmoney.getPlatformUserNo(),drawmoney.getRequestNo(),drawmoney.getTransDate(),"",drawmoney.getAmount(),"������");
 	    	  transRecordService.addOrUpdate(transrecord);
 		      
 		     /* gateService.addOrUpdateTBindingSucceed(bindingSucceed);*/
@@ -2069,116 +1666,73 @@ public class GateController  {
 	}
 	
 	private String doSign(String xml, String url, Model model, String service) {
-		System.out.println("ssssssssssssss");
+	
 		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
-		System.out.println("wwwwwwwwwwwwwwwwwww1"+xml);
+	
 		String s = xml;
 		s = s.replaceAll("[\\r\\n]", "");
 		
-		System.out.println("wwwwwwwwwwwwwwwwwww1"+s);
-		System.out.println("wwwwwwwwwwwwwwwwwww2"+service);
-		System.out.println("wwwwwwwwwwwwwwwwwww3"+url);
+	
 		model.addAttribute("service", service);
 		model.addAttribute("url", url);
 		model.addAttribute("req", s);
 		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
-		/*model.addAttribute("sign","ddd");*/
-		System.out.println("wwwwwwwwwwwwwwwwwww");
-		System.out.println("url"+url);
-		 /*ccc.da(service,url,s);*/
-		/* HttpClientTest d=new HttpClientTest();
-		 String resp= d.postForm(service, url, s);
-		 System.out.println("ffffffffffffffff"+resp);*/
+	
 		return "post";
-		/*return "payment/post";*/
+	
 	}
 	
 	private String doSigns(String xml, String url, Model model, String service) {
-		System.out.println("ssssssssssssss");
+		
 		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
-		System.out.println("wwwwwwwwwwwwwwwwwww1"+xml);
+
 		String s = xml;
 		s = s.replaceAll("[\\r\\n]", "");
 		
-		System.out.println("wwwwwwwwwwwwwwwwwww1"+s);
-		System.out.println("wwwwwwwwwwwwwwwwwww2"+service);
-		System.out.println("wwwwwwwwwwwwwwwwwww3"+url);
+	
 		model.addAttribute("service", service);
 		model.addAttribute("url", url);
 		model.addAttribute("req", s);
 		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
-		/*model.addAttribute("sign","ddd");*/
-		System.out.println("wwwwwwwwwwwwwwwwwww");
-		System.out.println("url"+url);
+
 		 /*ccc.da(service,url,s);*/
 		 HttpClientTest d=new HttpClientTest();
 		          String resp=d.postForm(service, url, s, SignUtil.sign(s, pfx, "liukai123"));
-		          
-		          System.out.println("yyyyyyyyyyyyyyyy"+resp);   
-		          System.out.println("yyyyyyyyyyyyyyyy"+resp);    
-		    
-		          
+		        
 		          DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
-		          System.out.println("yyyyyyyyyyyyyyyy"+resp);
+		       
 				  try {
 				            
-				      //    通过 解析器 工厂 创建 一个 解析 器 
-				      DocumentBuilder db=dbf.newDocumentBuilder();
-				      System.out.println("eeeeeeeeeee");
-				      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-				     
+				   	      DocumentBuilder db=dbf.newDocumentBuilder();
+				    
 				      InputStream iStream=new ByteArrayInputStream(resp.getBytes("UTF-8"));
 				     Document dm=db.parse(iStream);
-				     System.out.println("ssssssssssssss");
-				      //得到 所有 person节点 
+				 
 				      NodeList persons=dm.getElementsByTagName("response");
-				      System.out.println("qqqqqqqqqqqqq");
-				      TTransferSucceed TTransferSucceed=new TTransferSucceed();
-				      System.out.println("wwwwwwwwwwwwwww");
+				     
 				      for(int i=0;i<persons.getLength();i++){
 				          
 				    	  Element personElement = (Element)persons.item(i);
 				    	  
 				    	  NodeList p=personElement.getChildNodes();
 				    	  for(int j=0;j<p.getLength();j++){
-				    		  Node e= p.item(j);
-				    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
+				    		  p.item(j);
+				    		 
 				    		 
 				    	  }
 				    	  
 				    	 
 				    	  
-				    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
-				    		  /*TTransferSucceed.setService(p.item(1).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(1).getTextContent());
-				    	  }
-				    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
-				    		 /* TTransferSucceed.setRequestNo(p.item(3).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(3).getTextContent());
-				    		  
-				    	  }
-				    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
-				    		 /* TTransferSucceed.setCode(p.item(5).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(5).getTextContent());
-				    		  
-				    	  }
-				    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
-				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(7).getTextContent());
-				    		  
-				    	  } if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
-				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+				    	 if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
+				    	
 				    		  model.addAttribute("balance", p.item(9).getTextContent());
 				    		  
 				    	  } if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
-				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+				    		 
 				    		  model.addAttribute("availableAmount", p.item(11).getTextContent());
 				    		  
 				    	  }if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
-				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(13).getTextContent());
+				    		
 				    		  model.addAttribute("freezeAmount", p.item(13).getTextContent());
 				    		  
 				    	  }
@@ -2196,89 +1750,44 @@ public class GateController  {
 	
 	
 	private String doloan(String xml, String url, Model model, String service) {
-		System.out.println("ssssssssssssss");
+	
 		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
-		System.out.println("wwwwwwwwwwwwwwwwwww1"+xml);
+	
 		String s = xml;
 		s = s.replaceAll("[\\r\\n]", "");
 		
-		System.out.println("wwwwwwwwwwwwwwwwwww1"+s);
-		System.out.println("wwwwwwwwwwwwwwwwwww2"+service);
-		System.out.println("wwwwwwwwwwwwwwwwwww3"+url);
 		model.addAttribute("service", service);
 		model.addAttribute("url", url);
 		model.addAttribute("req", s);
 		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
-		/*model.addAttribute("sign","ddd");*/
-		System.out.println("wwwwwwwwwwwwwwwwwww");
-		System.out.println("url"+url);
+	
 		 /*ccc.da(service,url,s);*/
 		 HttpClientTest d=new HttpClientTest();
 		          String resp=d.postForm(service, url, s,SignUtil.sign(s, pfx, "liukai123"));
 		          DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
-		          System.out.println("rrrrrrrrrrrrrrrrrrr"+resp);
+		 
 				  try {
 				            
-				      //    通过 解析器 工厂 创建 一个 解析 器 
 				      DocumentBuilder db=dbf.newDocumentBuilder();
-				      System.out.println("eeeeeeeeeee");
-				      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-				     
+				 
 				      InputStream iStream=new ByteArrayInputStream(resp.getBytes("UTF-8"));
 				     Document dm=db.parse(iStream);
-				     System.out.println("ssssssssssssss");
-				      //得到 所有 person节点 
+				    
 				      NodeList persons=dm.getElementsByTagName("response");
-				      System.out.println("qqqqqqqqqqqqq");
-				      TLoansucceed loansucceed=new TLoansucceed();
-				      System.out.println("wwwwwwwwwwwwwww");
+			
+				    
+				  
 				      for(int i=0;i<persons.getLength();i++){
 				          
 				    	  Element personElement = (Element)persons.item(i);
 				    	  
 				    	  NodeList p=personElement.getChildNodes();
 				    	  for(int j=0;j<p.getLength();j++){
-				    		  Node e= p.item(j);
-				    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-				    		 
+				    		  p.item(j);
+				    		
 				    	  }
 				    	  
-				    	 
-				    	  
-				    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
-				    		 /* TTransferSucceed.setCode(p.item(1).getTextContent());*/
-				    		  System.out.println("ddddddd123"+p.item(1).getTextContent());
-				    	  }
-				    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
-				    		 /* TTransferSucceed.setCode(p.item(3).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(3).getTextContent());
-				    		  
-				    	  }
-				    	/*  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
-				    		  TTransferSucceed.setCode(p.item(5).getTextContent());
-				    		  System.out.println("ddddddd"+p.item(5).getTextContent());
-				    		  
-				    	  }
-				    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
-				    		  TTransferSucceed.setDescription(p.item(7).getTextContent());
-				    		  System.out.println("ddddddd"+p.item(7).getTextContent());
-				    		  
-				    	  } if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
-				    		  TTransferSucceed.setDescription(p.item(7).getTextContent());
-				    		  System.out.println("ddddddd"+p.item(9).getTextContent());
-				    		  model.addAttribute("balance", p.item(9).getTextContent());
-				    		  
-				    	  } if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
-				    		  TTransferSucceed.setDescription(p.item(7).getTextContent());
-				    		  System.out.println("ddddddd"+p.item(11).getTextContent());
-				    		  model.addAttribute("availableAmount", p.item(11).getTextContent());
-				    		  
-				    	  }if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
-				    		  TTransferSucceed.setDescription(p.item(7).getTextContent());
-				    		  System.out.println("ddddddd"+p.item(13).getTextContent());
-				    		  model.addAttribute("freezeAmount", p.item(13).getTextContent());
-				    		  
-				    	  }*/
+				    	
 				    	  
 				      }  
 				     
@@ -2294,86 +1803,53 @@ public class GateController  {
 	
 	
 	private String dobinding(String xml, String url, Model model, String service) {
-		System.out.println("ssssssssssssss");
+	
 		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
-		System.out.println("wwwwwwwwwwwwwwwwwww1"+xml);
+	
 		String s = xml;
 		s = s.replaceAll("[\\r\\n]", "");
-		
-		System.out.println("wwwwwwwwwwwwwwwwwww1"+s);
-		System.out.println("wwwwwwwwwwwwwwwwwww2"+service);
-		System.out.println("wwwwwwwwwwwwwwwwwww3"+url);
+
 		model.addAttribute("service", service);
 		model.addAttribute("url", url);
 		model.addAttribute("req", s);
 		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
 		/*model.addAttribute("sign","ddd");*/
-		System.out.println("wwwwwwwwwwwwwwwwwww");
-		System.out.println("url"+url);
+
 		 /*ccc.da(service,url,s);*/
 		 HttpClientTest d=new HttpClientTest();
 		          String resp=d.postForm(service, url, s,SignUtil.sign(s, pfx, "liukai123"));
 		          DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
-		          System.out.println("yyyyyyyyyyyyyyyy"+resp);
+		    
 				  try {
 				            
-				      //    通过 解析器 工厂 创建 一个 解析 器 
 				      DocumentBuilder db=dbf.newDocumentBuilder();
-				      System.out.println("eeeeeeeeeee");
-				      //告诉 改 解析器 去 解析 那个 文件 -->dom树 
-				     
+				  
 				      InputStream iStream=new ByteArrayInputStream(resp.getBytes("UTF-8"));
 				     Document dm=db.parse(iStream);
-				     System.out.println("ssssssssssssss");
-				      //得到 所有 person节点 
+				
 				      NodeList persons=dm.getElementsByTagName("response");
-				      System.out.println("qqqqqqqqqqqqq");
-				      TTransferSucceed TTransferSucceed=new TTransferSucceed();
-				      System.out.println("wwwwwwwwwwwwwww");
+				
 				      for(int i=0;i<persons.getLength();i++){
 				          
 				    	  Element personElement = (Element)persons.item(i);
 				    	  
 				    	  NodeList p=personElement.getChildNodes();
 				    	  for(int j=0;j<p.getLength();j++){
-				    		  Node e= p.item(j);
-				    		  System.out.println("wwwwwww="+e.getNodeName()+"wwwwwww"+e.getTextContent());
-				    		 
+				    		  p.item(j);
+				    		  
 				    	  }
 				    	  
 				    	 
-				    	  
-				    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
-				    		  /*TTransferSucceed.setService(p.item(1).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(1).getTextContent());
-				    	  }
-				    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
-				    		 /* TTransferSucceed.setRequestNo(p.item(3).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(3).getTextContent());
-				    		  
-				    	  }
-				    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
-				    		 /* TTransferSucceed.setCode(p.item(5).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(5).getTextContent());
-				    		  
-				    	  }
-				    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
-				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(7).getTextContent());
-				    		  
-				    	  } if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
-				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(9).getTextContent());
+				    	if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
+				    		
 				    		  model.addAttribute("balance", p.item(9).getTextContent());
 				    		  
 				    	  } if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
-				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(11).getTextContent());
+				    		
 				    		  model.addAttribute("availableAmount", p.item(11).getTextContent());
 				    		  
 				    	  }if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
-				    		 /* TTransferSucceed.setDescription(p.item(7).getTextContent());*/
-				    		  System.out.println("ddddddd"+p.item(13).getTextContent());
+				    	
 				    		  model.addAttribute("freezeAmount", p.item(13).getTextContent());
 				    		  
 				    	  }
@@ -2392,10 +1868,10 @@ public class GateController  {
 	
 	
 	private String doSign(Object obj, String url, Model model ) {
-		System.out.println("cccccccccccccccccc"+url);
+	
 		StringWriter w = new StringWriter();
 		JAXB.marshal(obj, w);
-		/*System.out.println("eeeeeeeeeeeeeeee"+w.toString());*/
+	
 		return doSign(w.toString(), url, model, "");
 	}
 }

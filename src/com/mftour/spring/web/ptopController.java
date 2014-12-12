@@ -55,8 +55,7 @@ public class ptopController {
 			@RequestParam("name") String name,
 			@RequestParam("password") String password,
 			HttpServletRequest request) throws Exception {
-		System.out.println("dddd" + administrator.getName());
-		System.out.println("dddddd" + administrator.getPassword());
+	
 
 		/* TUser user1 = userService.getUserByAccount(user.getName()); */
 		TAdministrator administrator1 = ptopService
@@ -69,10 +68,9 @@ public class ptopController {
 				return "success";
 			}
 		}
-		/* System.out.println(user1.getName()+"www"+user1.getPassword()); */
-
+	
 		return "fail";
-		/* return "user/chpasswd"; */
+	
 
 	}
 
@@ -92,13 +90,11 @@ public class ptopController {
 	public String addproduct(Model model, TProduct product,
 			HttpServletRequest request) throws Exception {
 
-		System.out.println("ddddddddddddddd" + product.getProjectPicture()
-				+ "id" + product.getId());
 
 		try {
 
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-			System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+			
 			product.setReleaseTime(df.format(new Date()));
 			ptopService.addOrUpdate(product);
 
@@ -164,10 +160,8 @@ public class ptopController {
 	public String investmentinfo(Model model, HttpServletRequest request,
 			TInvestmentInfo investmentInfo) throws Exception {
 
-		System.out.println("rrrrrrrrrrrrrrrrrrrrrrrrrrr");
-
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-		System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+	
 		investmentInfo.setWriteTime(df.format(new Date()));
 		;
 		Object o = request.getSession().getAttribute("Administrator");
@@ -179,8 +173,7 @@ public class ptopController {
 		TProduct t = lis.get(0);
 
 		Double RealityMoney = t.getRealityMoney();
-		System.out.println("vvvvvvvvvv" + investmentInfo.getInvestmentAmount()
-				+ "vvvvvvvvvvvvvvvv" + RealityMoney);
+
 		if (RealityMoney == null || RealityMoney == 0.0) {
 			t.setRealityMoney(investmentInfo.getInvestmentAmount());
 			t.setFinancingProgress(investmentInfo.getInvestmentAmount()
@@ -198,11 +191,9 @@ public class ptopController {
 			t.setFinancingProgress(d / t.getFinancingMoney() * 100);
 		}
 
-		System.out.println("vvvvvvvvvvvvvvvvvvvvvvvvvv");
 
 		ptopService.addOrUpdate(t);
-		/* ptopService.querySum(); */
-
+	
 		List<TInvestmentInfo> list = ptopService
 				.queryInvestmentInfoByNumber(investmentInfo
 						.getEnterpriseNumber());
@@ -308,12 +299,11 @@ public class ptopController {
 			RequestMethod.GET })
 	public String allnews(Model model, HttpServletRequest request, TNews news)
 			throws Exception {
-		System.out.println("cccccccccc" + news.getTitle());
-		System.out.println("cccccccccc" + news.getChannel());
+
 
 		try {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-			System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+		
 			news.setTime(df.format(new Date()));
 			ptopService.addOrUpdateTNews(news);
 
@@ -324,7 +314,7 @@ public class ptopController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			systemLogService.saveSystemLog(request, "后台信息", "添加新闻失败", 1);
-			/* map.put("mes", "操作失败"); */
+	
 			throw e;
 		}
 
@@ -338,13 +328,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
-			System.out.println("ddddcccccccccccccccccc");
+		
 
 			List<TChannel> list = ptopService.getChannel();
-			/*
-			 * System.out.println("ddddcccccccccccccccccc"+list.get(0).getName())
-			 * ;
-			 */
+			
 			model.addAttribute("list", list);
 			systemLogService.saveSystemLog(request, "后台信息", "频道管理", 1);
 
@@ -390,7 +377,7 @@ public class ptopController {
 
 		try {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-			System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+	
 			channel.setTime(df.format(new Date()));
 
 			ptopService.addOrUpdateTChannel(channel);
@@ -559,14 +546,13 @@ public class ptopController {
 	public String saveInterestRate(Model model, TInterestRate InterestRate,
 			HttpServletRequest request) throws Exception {
 
-		System.out.println("ddddddddddddddddddddddddddddddddd");
 
 		ptopService.addOrUpdateTInterestRate(InterestRate);
-		System.out.println("ddddddddddddddddddddddddddddddddd");
+	
 		List<TInterestRate> li = ptopService
 				.queryTInterestRateByNumber(InterestRate.getEnterpriseNumber());
 		model.addAttribute("li", li);
-		System.out.println("ddddddddddddddddddddddddddddddddd");
+	
 		model.addAttribute("ms", "添加成功");
 		TProduct product1 = productService.queryProductByNumber(
 				InterestRate.getEnterpriseNumber()).get(0);

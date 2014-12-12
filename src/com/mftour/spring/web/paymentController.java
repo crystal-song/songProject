@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class paymentController {
 
 	public static void testPost(String urlStr) {
-		System.out.println("ffffffffffffffff");
+		
 		try {
 			URL url = new URL(urlStr);
 			URLConnection con = url.openConnection();
@@ -26,8 +26,7 @@ public class paymentController {
 			OutputStreamWriter out = new OutputStreamWriter(
 					con.getOutputStream());
 			String xmlInfo = getXmlInfo();
-			System.out.println("urlStr=" + urlStr);
-			// System.out.println("xmlInfo=" + xmlInfo);
+		
 			out.write(new String(xmlInfo.getBytes("UTF-8")));
 			out.flush();
 			out.close();

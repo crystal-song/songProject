@@ -91,10 +91,8 @@ public class productController {
 	public String helloWorld(Model model, @RequestParam("name") String username)
 			throws Exception {
 
-		/* System.out.println(user1.getName()+"www"+user1.getPassword()); */
-
 		return "fail";
-		/* return "user/chpasswd"; */
+	
 
 	}
 
@@ -108,12 +106,9 @@ public class productController {
 				.queryInvestmentInfoByNumber(product1.getEnterpriseNumber());
 		List<TInterestRate> li = ptopService
 				.queryTInterestRateByNumber(product1.getEnterpriseNumber());
-		System.out.println("dddddddddddd" + product1.getEnterpriseNumber());
 		if (li != null && li.size() != 0) {
 			model.addAttribute("li", li);
-			System.out.println("cccccccc" + li.get(0).getEnterpriseNumber());
-			System.out.println("eeeeeeeee"
-					+ li.get(0).getInterestRateIncrease());
+			
 		}
 
 		model.addAttribute("product1", product1);
@@ -142,10 +137,8 @@ public class productController {
 
 		model.addAttribute("list", list);
 
-		/* System.out.println(user1.getName()+"www"+user1.getPassword()); */
-
 		return "index";
-		/* return "user/chpasswd"; */
+	
 
 	}
 

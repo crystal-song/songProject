@@ -36,15 +36,11 @@ public class crowdfundingController {
 
 		Page page = Page.newBuilder(pageNo, pageSize, "allProduct");
 
-		// 加入分页元素
-		/*
-		 * if(null!=product){ Map params=MapUtil.ConvertObjToMap(product);
-		 * page.getParams().put("name",name); }
-		 */
+	
 
 		List<TCrowdfunding> list = crowdfundingService.getCrowdfunding(page,
 				crowdfunding);
-		/* System.out.println("dddddddddddddddddddd"+list.get(3).getName()); */
+
 
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);

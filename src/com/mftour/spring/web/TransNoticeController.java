@@ -26,15 +26,12 @@ public class TransNoticeController  {
 	@RequestMapping(value="/add")
 	public String addTransNotice(@RequestParam("noticeType1") String[] noticeType1,@RequestParam("noticeType2") String[] noticeType2
 			,HttpServletRequest request) throws Exception {
-		String type1="充值";
-		String type2="提现";
+	
 		TUser user=(TUser)request.getSession().getAttribute("userinfo");
 		List<TTransNotice> list=transNoticeService.queryTransNoticeByName(user.getName());
-		List<TTransNotice> list1=transNoticeService.queryTransNoticeByNameAndtype(user.getName(),type1);
-		List<TTransNotice> list2=transNoticeService.queryTransNoticeByNameAndtype(user.getName(),type2);
 		
 		int i=list.size();
-		System.out.println("lllllll"+i);
+	
 		if(i==0){
 			for(String reNoticeType:noticeType1){
 				TTransNotice transnotice=new TTransNotice();

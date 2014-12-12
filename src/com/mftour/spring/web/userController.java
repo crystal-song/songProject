@@ -106,11 +106,10 @@ public class userController {
 
 			return "success";
 		}
-		/* System.out.println(user1.getName()+"www"+user1.getPassword()); */
+
 
 		return "fail";
-		/* return "user/chpasswd"; */
-
+		
 	}
 
 	@RequestMapping(value = "/queryByEmail", method = RequestMethod.POST)
