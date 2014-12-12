@@ -128,27 +128,19 @@ public class userController {
 			RequestMethod.GET })
 	public String findPassword(@RequestParam("name") String name,
 			@RequestParam("email") String email,
-			@RequestParam("validatecode") String validatecode,
 			HttpServletRequest request, Model model) throws Exception {
 		try{
 		TUser user = userService.getUserByAccount(name);
-		// 获取验证码的值
-		String random = (String) request.getSession().getAttribute("random");
-		if (!random.equals(validatecode)) {
-			request.setAttribute("error", "输入的验证码不正确！");
-			return "forget";
-		}
-		
 		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
 		request.getSession().setAttribute("outDate", outDate);
-		model.addAttribute("user1", user);
+		model.addAttribute("email", email);
 		com.mftour.spring.util.File f=ReadWirtePropertis.file();
 		String basePath =f.getBasePath();
 		String resetPassHref = basePath + "user/reset?username="
 				+ user.getName();
 		String operate="提交找回密码的请求,请点击此链接重置您的密码";
 		String title="中租宝—找回密码通知";
-		EmailTemplate.SendMail(user, resetPassHref, operate, title);
+		EmailTemplate.SendMail(email, resetPassHref, operate, title);
     } catch (Exception e) {
 		e.printStackTrace();
 	}

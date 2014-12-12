@@ -19,11 +19,11 @@ import com.mftour.spring.model.TUser;
 public class EmailTemplate {
 			
 	
-			public  static void SendMail(TUser user,String resetPassHref,String operate,String title){
+			public  static boolean SendMail(String email,String resetPassHref,String operate,String title){
+				boolean flag=false;
 				try{
-				String htmlContent = "亲爱的用户"
-						+ user.getName()
-						+ "，您好，<br/><br/>"
+				
+				String htmlContent = "亲爱的会员：<br/><br/>"
 						+ "您在"
 						+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 				.format(new Date())
@@ -43,7 +43,7 @@ public class EmailTemplate {
 			        nvps.add(new BasicNameValuePair("api_user", "ptobchina_test_U1BqG6")); //# 使用api_user和api_key进行验证
 			        nvps.add(new BasicNameValuePair("api_key", "xkP8cQXYryMAyKBe"));
 			        nvps.add(new BasicNameValuePair("from", "cs@ptobchina.com")); //# 发信人，用正确邮件地址替代
-			        nvps.add(new BasicNameValuePair("to", user.getEmail()));// # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
+			        nvps.add(new BasicNameValuePair("to", email));// # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
 			        nvps.add(new BasicNameValuePair("subject", title));
 			        nvps.add(new BasicNameValuePair("html",htmlContent ));
 			        httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
@@ -52,14 +52,18 @@ public class EmailTemplate {
 
 			        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { // 正常返回
 			            System.out.println(EntityUtils.toString(response.getEntity()));
+			            flag= true;
 			        } else {
 			            System.err.println("error");
+			            flag= false;
 			        }
 
 		        } catch (Exception e) {
 					e.printStackTrace();
 				}
-
+				
+				return flag;
 			}
+			
 
 }

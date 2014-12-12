@@ -22,6 +22,7 @@ var c_name=false;
 var c_pwd=false;
 var c_repwd=false;
 var c_email=false;
+var validate=false;
 function chk_name(){
 	
 	 var name = $("#name").val();
@@ -115,8 +116,8 @@ function chk_email(){
 		chk_pwd();
 		chk_repwd();
 		chk_email();
-		
-		if(c_name&&c_pwd&&c_repwd&&c_email){
+		validate();
+		if(c_name&&c_pwd&&c_repwd&&c_email&&validate){
 	
 	/* alert("all check pass!"); */
 	/*  Form.action="welcome/register"; 
@@ -144,15 +145,18 @@ function createCode(){
     }  
     return code;  
 }  
-function validate (){  
+function validateCode (){  
     var inputCode = document.getElementById("vcode").value.toLowerCase();  
-    if(inputCode.length <=0){  
+    if(inputCode.length <=0){ 
+    	validate=false;
     	$("#tip_validatecode").html('<span class="tip_f">请输入验证码！</span>');
     }  
     else if(inputCode != code.toLowerCase()){  
+    	validate=false;
     	$("#tip_validatecode").html('<span class="tip_f">验证码不正确！</span>');
         show();//刷新验证码  
     }else{  
+    	validate=true;
     	$("#tip_validatecode").html('<span class="tip_P">验证码正确！</span>');
     }  
 }  
@@ -184,7 +188,7 @@ window.onload = function() {
           <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
           <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/></p>
           <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div> 
-          <p>　验证码：  <input type="text"  id="vcode" value="" class="input_item" onblur="validate()"/>
+          <p>　验证码：  <input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
 					<img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
 					<a href="#" mce_href="#" onclick="javascript:show();return false;">看不清,换一张!</a>
 					 <div id="tip_validatecode"><span class="tip_n">请输入验证码！</span></div> 

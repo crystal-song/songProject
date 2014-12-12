@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    检查您的信箱。 </td>
 			</tr>
 			<tr>
-				<td  style="color:#FF6633;font-weight:bold" width="100%">Email:${user1.email} </td>
+				<td  style="color:#FF6633;font-weight:bold" width="100%">Email:${email} </td>
 			</tr>
 			
 			<tr>

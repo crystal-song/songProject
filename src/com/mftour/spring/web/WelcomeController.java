@@ -105,15 +105,8 @@ public class WelcomeController {
 	
 
 	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
-	public String regEemail(TUser user, Model model,@RequestParam("validatecode") String validatecode, HttpServletRequest request){
+	public String regEemail(TUser user, Model model, HttpServletRequest request){
 		try {
-			// 获取验证码的值
-			String random = (String) request.getSession().getAttribute("random");
-			if (!random.equals(validatecode)) {
-				request.setAttribute("error", "输入的验证码不正确！");
-				return "reg";
-			}
-			
 			Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*60* 60 * 1000);
 			RandomCode randomcode=new RandomCode();
 			String code=randomcode.getRandomString(5);
@@ -127,7 +120,8 @@ public class WelcomeController {
 			String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
 			String operate="注册中租宝帐号，请点击以下链接完成注册";
 			String title="中租宝—用户注册确认";
-			EmailTemplate.SendMail(user, resetPassHref, operate, title);
+			String email=user.getEmail();
+			EmailTemplate.SendMail(email, resetPassHref, operate, title);
 	        } catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -152,7 +146,8 @@ public class WelcomeController {
 				+ user.getName();
 		String operate="进行邮箱认证，请点击以下链接完成认证";
 		String title="中租宝—邮箱认证";
-		EmailTemplate.SendMail(user, resetPassHref, operate, title);
+		String email=user.getEmail();
+		EmailTemplate.SendMail(email, resetPassHref, operate, title);
     } catch (Exception e) {
 		e.printStackTrace();
 	}

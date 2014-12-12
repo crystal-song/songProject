@@ -98,19 +98,16 @@ function createCode(){
     }  
     return code;  
 }  
-function validate (){  
+function validateCode (){  
     var inputCode = document.getElementById("vcode").value.toLowerCase();  
     if(inputCode.length <=0){  
     	$("#tip_validatecode").html('<span class="tip_f01">请输入验证码！</span>');
-        return false;  
     }  
     else if(inputCode != code.toLowerCase()){  
     	$("#tip_validatecode").html('<span class="tip_f01">验证码不正确！</span>');
         show();//刷新验证码  
-        return false;  
     }else{  
     	$("#tip_validatecode").html('<span class="tip_f01" style="color:#390">验证码正确！</span>');
-        return true;  
     }  
 }  
 function show(){  
@@ -164,7 +161,7 @@ window.onload = function() {
 			<tr>
 					  <td align="left"><span>验证码：</span>
 					  <label>
-					      <input name="validatecode" type="text"  id="vcode" value="" onblur="validate()"/>
+					      <input name="validatecode" type="text"  id="vcode" value="" onblur="validateCode()"/>
 						  <img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
 					<a href="#" mce_href="#" onclick="javascript:show();return false;">看不清,换一张!</a>
 					</label>&nbsp;&nbsp;
