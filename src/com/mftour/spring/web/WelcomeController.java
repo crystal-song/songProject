@@ -29,6 +29,7 @@ import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
+import com.mftour.spring.util.EmailTemplate;
 import com.mftour.spring.util.Env;
 //import com.mftour.spring.util.File;
 import com.mftour.spring.util.MailSenderInfo;
@@ -50,7 +51,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
@@ -105,8 +105,15 @@ public class WelcomeController {
 	
 
 	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
-	public String regEemail(TUser user, Model model, HttpServletRequest request){
+	public String regEemail(TUser user, Model model,@RequestParam("validatecode") String validatecode, HttpServletRequest request){
 		try {
+			// 获取验证码的值
+			String random = (String) request.getSession().getAttribute("random");
+			if (!random.equals(validatecode)) {
+				request.setAttribute("error", "输入的验证码不正确！");
+				return "reg";
+			}
+			
 			Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*60* 60 * 1000);
 			RandomCode randomcode=new RandomCode();
 			String code=randomcode.getRandomString(5);
@@ -118,44 +125,9 @@ public class WelcomeController {
 			com.mftour.spring.util.File f=ReadWirtePropertis.file();
 			String basePath =f.getBasePath();
 			String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
-			String mainjsp = "http://www.ptobchina.com/wel";
-			String htmlContent = "亲爱的用户"
-					+ user.getName()
-					+ "，您好，<br/><br/>"
-					+ "您在"
-					+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-			.format(new Date())
-			+ "注册中租宝帐号，请点击以下链接完成注册：<br/><br/>"
-			+ "<a href="
-			+ resetPassHref
-			+ "><font color='green'>http://www.ptobchina.com/welcome/register?username="
-			+ user.getName() + "&checkcode="+code+"</font></a><br/><br/>"
-			+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-			+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
-			+ "中租宝   <a href=" + mainjsp
-			+ "><font color='green'>http://www.ptobchina.com/</font></a>"
-			+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
-			 String url = "https://sendcloud.sohu.com/webapi/mail.send.xml";
-		        HttpClient httpclient = new DefaultHttpClient();
-		        HttpPost httpost = new HttpPost(url);
-
-		        List nvps = new ArrayList();
-		        nvps.add(new BasicNameValuePair("api_user", "ptobchina_test_U1BqG6")); //# 使用api_user和api_key进行验证
-		        nvps.add(new BasicNameValuePair("api_key", "xkP8cQXYryMAyKBe"));
-		        nvps.add(new BasicNameValuePair("from", "cs@ptobchina.com")); //# 发信人，用正确邮件地址替代
-		        nvps.add(new BasicNameValuePair("to", user.getEmail()));// # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
-		        nvps.add(new BasicNameValuePair("subject", "中租宝—用户注册确认"));
-		        nvps.add(new BasicNameValuePair("html",htmlContent ));
-		        httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
-
-		        HttpResponse response = httpclient.execute(httpost);
-
-		        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { // 正常返回
-		            System.out.println(EntityUtils.toString(response.getEntity()));
-		        } else {
-		            System.err.println("error");
-		        }
-
+			String operate="注册中租宝帐号，请点击以下链接完成注册";
+			String title="中租宝—用户注册确认";
+			EmailTemplate.SendMail(user, resetPassHref, operate, title);
 	        } catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -178,44 +150,9 @@ public class WelcomeController {
 		String basePath =f.getBasePath();
 		String resetPassHref = basePath + "welcome/verregister?username="
 				+ user.getName();
-		String mainjsp = "http://www.ptobchina.com/wel";
-		
-		String htmlContent = "亲爱的用户"
-				+ user.getName()
-				+ "，您好，<br/><br/>"
-				+ "您在"
-				+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-		.format(new Date())
-		+ "进行邮箱认证，请点击以下链接完成认证：<br/><br/>"
-		+ "<a href="
-		+ resetPassHref
-		+ "><font color='green'>http://www.ptobchina.com/welcome/verregister?username="
-		+ user.getName() + "&checkcode=gfe3r4245hdasr43t90dcscdsvf</font></a><br/><br/>"
-		+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-		+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
-		+ "中租宝   <a href=" + mainjsp
-		+ "><font color='green'>http://www.ptobchina.com/</font></a>"
-		+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
-		 String url = "https://sendcloud.sohu.com/webapi/mail.send.xml";
-	        HttpClient httpclient = new DefaultHttpClient();
-	        HttpPost httpost = new HttpPost(url);
-
-	        List nvps = new ArrayList();
-	        nvps.add(new BasicNameValuePair("api_user", "ptobchina_test_U1BqG6")); //# 使用api_user和api_key进行验证
-	        nvps.add(new BasicNameValuePair("api_key", "xkP8cQXYryMAyKBe"));
-	        nvps.add(new BasicNameValuePair("from", "cs@ptobchina.com")); //# 发信人，用正确邮件地址替代
-	        nvps.add(new BasicNameValuePair("to", user.getEmail()));// # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
-	        nvps.add(new BasicNameValuePair("subject", "中租宝—邮箱认证"));
-	        nvps.add(new BasicNameValuePair("html",htmlContent ));
-	        httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
-
-	        HttpResponse response = httpclient.execute(httpost);
-
-	        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { // 正常返回
-	            System.out.println(EntityUtils.toString(response.getEntity()));
-	        } else {
-	            System.err.println("error");
-	        }
+		String operate="进行邮箱认证，请点击以下链接完成认证";
+		String title="中租宝—邮箱认证";
+		EmailTemplate.SendMail(user, resetPassHref, operate, title);
     } catch (Exception e) {
 		e.printStackTrace();
 	}

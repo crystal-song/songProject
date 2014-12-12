@@ -42,6 +42,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IUserService;
+import com.mftour.spring.util.EmailTemplate;
 import com.mftour.spring.util.ReadWirtePropertis;
 
 @Controller
@@ -145,44 +146,9 @@ public class userController {
 		String basePath =f.getBasePath();
 		String resetPassHref = basePath + "user/reset?username="
 				+ user.getName();
-		String mainjsp = "http://www.ptobchina.com/wel";
-		
-		String htmlContent = "亲爱的用户"
-				+ user.getName()
-				+ "，您好，<br/><br/>"
-				+ "您在"
-				+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-		.format(new Date())
-		+ "提交找回密码的请求,请点击此链接重置您的密码<br/><br/>"
-		+ "<a href="
-		+ resetPassHref
-		+ "><font color='green'>http://www.ptobchina.com/user/reset?username="
-		+ user.getName() + "&checkcode=gfe3r4245hdasr43t90dcscdsvf</font></a><br/><br/>"
-		+ "(如果无法点击该URL链接地址，请将它复制并粘帖到浏览器的地址输入框，然后单击回车即可。)<br/><br/>"
-		+ "(该链接在24小时内有效，24小时后请重新获取。)<br/><br/>"
-		+ "中租宝   <a href=" + mainjsp
-		+ "><font color='green'>http://www.ptobchina.com/</font></a>"
-		+ "<br/><br/>" + "此为自动发送邮件，请勿直接回复！";
-		 String url = "https://sendcloud.sohu.com/webapi/mail.send.xml";
-	        HttpClient httpclient = new DefaultHttpClient();
-	        HttpPost httpost = new HttpPost(url);
-
-	        List nvps = new ArrayList();
-	        nvps.add(new BasicNameValuePair("api_user", "ptobchina_test_U1BqG6")); //# 使用api_user和api_key进行验证
-	        nvps.add(new BasicNameValuePair("api_key", "xkP8cQXYryMAyKBe"));
-	        nvps.add(new BasicNameValuePair("from", "cs@ptobchina.com")); //# 发信人，用正确邮件地址替代
-	        nvps.add(new BasicNameValuePair("to", user.getEmail()));// # 收件人地址，用正确邮件地址替代，多个地址用';'分隔
-	        nvps.add(new BasicNameValuePair("subject", "中租宝—找回密码通知"));
-	        nvps.add(new BasicNameValuePair("html",htmlContent ));
-	        httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
-
-	        HttpResponse response = httpclient.execute(httpost);
-
-	        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { // 正常返回
-	            System.out.println(EntityUtils.toString(response.getEntity()));
-	        } else {
-	            System.err.println("error");
-	        }
+		String operate="提交找回密码的请求,请点击此链接重置您的密码";
+		String title="中租宝—找回密码通知";
+		EmailTemplate.SendMail(user, resetPassHref, operate, title);
     } catch (Exception e) {
 		e.printStackTrace();
 	}

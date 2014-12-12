@@ -18,10 +18,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 
 <script type="text/javascript" >
-
-function loadimage(){ 
-	document.getElementById("verifyPic_img").src = "image.jsp?"+Math.random(); 
-	} 
 function chk_name() {
 	//alert("aaa");
 	var name = $("#name").val();
@@ -86,7 +82,46 @@ function chk_email() {
 		});
 	}
 }
-
+var code ; //在全局 定义验证码 
+function createCode(){  
+    code = "";  
+    var codeLength = 5;//验证码的长度  
+    //所有候选组成验证码的字符，可以用中文  
+    var selectChar = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C',
+    		'D','E','F','G','H','I','J','K','L','M','N','O','P',
+    		'Q','R','S','T','U','V','W','X','Y','Z','a','b','c',
+    		'd','e','f','g','h','i','j','k','l','m','n','o','p',
+    		'q','r','s','t','u','v','w','x','y','z');  
+    for(var i=0;i<codeLength;i++){  
+        var charIndex = Math.floor(Math.random()*60);  
+        code +=selectChar[charIndex];  
+    }  
+    return code;  
+}  
+function validate (){  
+    var inputCode = document.getElementById("vcode").value.toLowerCase();  
+    if(inputCode.length <=0){  
+    	$("#tip_validatecode").html('<span class="tip_f01">请输入验证码！</span>');
+        return false;  
+    }  
+    else if(inputCode != code.toLowerCase()){  
+    	$("#tip_validatecode").html('<span class="tip_f01">验证码不正确！</span>');
+        show();//刷新验证码  
+        return false;  
+    }else{  
+    	$("#tip_validatecode").html('<span class="tip_f01" style="color:#390">验证码正确！</span>');
+        return true;  
+    }  
+}  
+function show(){  
+        //显示验证码  
+        document.getElementById("code").src="CodeServlet?code="+createCode();  
+}  
+window.onload = function() {
+		//document.onload=show();  
+        show();//页面加载时加载验证码  
+        //这时无论在ie还是在firefox中，js没有加载完，页面的东西是不会被执行的；  
+    }  
 </script>
 
 </head>
@@ -128,13 +163,12 @@ function chk_email() {
 			 </tr>
 			<tr>
 					  <td align="left"><span>验证码：</span>
-					      <input name="validatecode" type="text"  id="validatecode" value="" />
-										<img  id="verifyPic_img" type="4" align="absmiddle" src="<%=path%>/image.jsp" style="cursor: pointer;height:24px;margin-bottom:6px;">
-					<a href="javascript:loadimage();"><font size="2">看不清点我</font></a>
-					 <% if (request.getAttribute("error") != null){ %>
-		   			  <font color=red size="2"><%=request.getAttribute("error")%></font>
-		   			 <% }%>
-       
+					  <label>
+					      <input name="validatecode" type="text"  id="vcode" value="" onblur="validate()"/>
+						  <img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
+					<a href="#" mce_href="#" onclick="javascript:show();return false;">看不清,换一张!</a>
+					</label>&nbsp;&nbsp;
+					 <div id="tip_validatecode" style="float:left"></div> 
 					</td>
 			    
 					  </tr>
