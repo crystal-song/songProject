@@ -8,14 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.mftour.spring.model.TCrowdfunding;
 import com.mftour.spring.model.TCrowdfundingCommodity;
-import com.mftour.spring.model.TInvestmentInfo;
-import com.mftour.spring.model.TNews;
-import com.mftour.spring.model.TProduct;
 import com.mftour.spring.service.ICrowdfundingService;
-import com.mftour.spring.service.IGuaranteeService;
 import com.mftour.spring.util.Page;
 
 @Controller
