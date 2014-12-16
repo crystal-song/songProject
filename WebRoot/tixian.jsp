@@ -209,7 +209,7 @@ function checkval(){
               <li>充值过程遇到问题，请联系客服，010-84243099/3199</li>
             </ol>          
           </div> 
-          <div id="dialog01"  style="display:none">
+          <div id="dialog01"  style="display:none; height:210px;">
 	         <div class="dialog_title">
                <strong>温馨提示</strong>
 	           <div class="right_cha"></div>
@@ -218,7 +218,7 @@ function checkval(){
 	           <p style="background:url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">如果您成功提现：<a href="<%=path%>/gate/service">查看我的资产</a></p>          
 	         </div>
 	         <div class="touzi_text">
-	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您提现失败：<a href="<%=path%>/gate/recharge">重新提现</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您提现失败：<a href="<%=path%>/gate/drawMoney">重新提现</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
 	         </div>	       
             </div>                      
           </div> 

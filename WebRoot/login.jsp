@@ -11,6 +11,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+
+<body>
+<!-- top start  -->
+<%@ include file="/includes/header.jsp" %>
+<!-- top end  -->
+<!-- <div class="clear"></div> -->
+<!-- banner start -->
+<%-- <%@ include file="/includes/banner.jsp" %> --%>
+<!-- banner end  -->
+<div class="clear"></div>
+<div class="clear_height"></div>
+
+
+ <form action="<%=path%>/welcome/session"  id="form" method="post">
+<div class="zh">
+	<div class="zh_fra">
+    	<div class="zh_left"><img src="<%=path%>/images/dl_09.jpg"></div>
+    	 
+        <div class="zh_right">
+        	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名"/></div>
+            <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码"/></div>
+            <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="<%=path%>/reg.jsp"><img src="<%=path%>/images/dl01_05.jpg" /></a>
+</div>
+     <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
+        </div>
+         
+    </div>
+</div>
+</form>
+<div class="clear"></div>
+<!-- footer start -->
+<%@ include file="/includes/footer.jsp" %>
+<!-- footer end -->
+</body>
 <script type="text/javascript" >
 
 function query(){
@@ -84,41 +122,4 @@ window.onload=function(){
            
 
 </script>
-
-</head>
-
-
-<body>
-<!-- top start  -->
-<%@ include file="/includes/header.jsp" %>
-<!-- top end  -->
-<!-- <div class="clear"></div> -->
-<!-- banner start -->
-<%-- <%@ include file="/includes/banner.jsp" %> --%>
-<!-- banner end  -->
-<div class="clear"></div>
-<div class="clear_height"></div>
-
-
- <form action="<%=path%>/welcome/session"  id="form" method="post">
-<div class="zh">
-	<div class="zh_fra">
-    	<div class="zh_left"><img src="<%=path%>/images/dl_09.jpg"></div>
-    	 
-        <div class="zh_right">
-        	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名"/></div>
-            <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码"/></div>
-            <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="<%=path%>/reg.jsp"><img src="<%=path%>/images/dl01_05.jpg" /></a>
-</div>
-     <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
-        </div>
-         
-    </div>
-</div>
-</form>
-<div class="clear"></div>
-<!-- footer start -->
-<%@ include file="/includes/footer.jsp" %>
-<!-- footer end -->
-</body>
 </html>

@@ -9,37 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
   
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript">
-var indexs=0;
-    var navIndex=3;    
-    $(document).ready(function(){
-    	$(".u_left_sec:first li:eq(2)").children("a").css("color","#fc652e");
-        $(".anquan_right").click(function(){
-            $(this).parent().siblings(".anquan_hide").slideToggle();
-            //alert($(this).text());
-            if($(this).text()=="认证"){
 
-               $(this).text("取消认证");
-
-            }else if($(this).text()=="取消认证"){
-              $(this).text("认证");
-            }
-         }); 
-         $(".u_left_mian").click(function(){
-              $(this).siblings().slideToggle("slow");
-            }); 
-      
-});
-
- $(function(){
-		$("#sub").click(function(){
-			
-	                    	 alert("设置成功!");
-	                  
-	            });
-		
-	});       
-</script>
 
 </head>
 
@@ -82,4 +52,35 @@ var indexs=0;
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript">
+var indexs=0;
+    var navIndex=3;    
+    $(document).ready(function(){
+    	$(".u_left_sec:first li:eq(2)").children("a").css("color","#fc652e");
+        $(".anquan_right").click(function(){
+            $(this).parent().siblings(".anquan_hide").slideToggle();
+            //alert($(this).text());
+            if($(this).text()=="认证"){
+
+               $(this).text("取消认证");
+
+            }else if($(this).text()=="取消认证"){
+              $(this).text("认证");
+            }
+         }); 
+         $(".u_left_mian").click(function(){
+              $(this).siblings().slideToggle("slow");
+            }); 
+      
+});
+
+ $(function(){
+		$("#sub").click(function(){
+			
+	                    	 alert("设置成功!");
+	                  
+	            });
+		
+	});       
+</script>
 </html>

@@ -13,18 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>正在提交数据...</title>
 <link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
-<script type="text/javascript">
-function onSubmit() {
-	var url = document.getElementById("url").value;
-	var form = document.getElementById("form");
-	form.action = url;
-	form.submit();
-}
-window.onload=function(){
-	setTimeout(onSubmit,2000);
-	
-}
-</script>
+
 </head>
 <body>
 <div id="tiaozhuan">
@@ -59,4 +48,16 @@ window.onload=function(){
     </div>
   </div>
 </body>
+<script type="text/javascript">
+function onSubmit() {
+	var url = document.getElementById("url").value;
+	var form = document.getElementById("form");
+	form.action = url;
+	form.submit();
+}
+window.onload=function(){
+	setTimeout(onSubmit,2000);
+	
+}
+</script>
 </html>
