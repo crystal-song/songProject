@@ -127,7 +127,7 @@
                   <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
                 <li>
-                  <a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all">交易记录</a>
+                  <a href="<%=path%>/transRecord/queryTransRecord?time=7&type=typeall">交易记录</a>
                 </li>
                 <li style="display:none;">
                   <a href="<%=path%>/zhaiquan.jsp">债权转让</a>

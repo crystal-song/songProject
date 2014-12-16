@@ -119,17 +119,20 @@ public class userController {
 
 
 	@RequestMapping(value = "/reset", method = { RequestMethod.POST,RequestMethod.GET })
-	public String reset(@RequestParam("username") String username, Model model,HttpServletRequest request)
-			throws Exception {
-		Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate");
-		System.out.println("aaaaaa"+outDate.getTime()+"bbbbbbb"+System.currentTimeMillis());
-		if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
-            request.setAttribute("msg", "链接已经过期,请重新申请找回密码.");
-		}else{
-		TUser user = (TUser) userService.getUserByAccount(username);
-		model.addAttribute("answer", user.getAnswer());
-		model.addAttribute("name", username);
+	public String reset(@RequestParam("username") String username, Model model,HttpServletRequest request){
+		try {
+			Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate");
+			if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
+	            request.setAttribute("msg", "链接已经过期,请重新申请找回密码.");
+			}else{
+			TUser user = (TUser) userService.getUserByAccount(username);
+			model.addAttribute("answer", user.getAnswer());
+			model.addAttribute("name", username);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
 		return "resetPassword";
 
 	}

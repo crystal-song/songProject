@@ -101,6 +101,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="user_con">
     <div class="user_left">
          <!-- user_left start -->
+         <input type="hidden" id="time" value="${time}"></input>
+         <input type="hidden" id="type" value="${type}"></input>
            <%@ include file="/includes/user_info_left.jsp" %>
          <!-- user_left end -->
     </div>
@@ -112,18 +114,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <ul class="list_label">
                     <li>
                       <ul class="label_sec new_fir">
-                        <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all">最近七天</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=onemonth_all">一个月</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=threemonth_all">三个月</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=all_all">全部</a></li>
+                        <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=7&type=all">最近七天</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=30&type=all">一个月</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=90&type=all">三个月</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=all">全部</a></li>
                       </ul>
                     </li>
                     <li>
                       <ul class="label_sec new_sec">
-                        <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time_type=all_all">全部</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=recharge_all">充值</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=drawmoney_all">提现</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time_type=transferinfo_all">投资</a></li>
+                        <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=typeall">全部</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=充值">充值</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=提现">提现</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=投资">投资</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到利息</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到本金</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">还款</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">融资</a></li>
                         <li style="display:none">收益</li>
                         <li style="display:none">回收本金</li>
                       </ul>
@@ -163,11 +169,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="clear"></div>    
         	<div class="next_list">
       
-           <a href="<%=path %>/transRecord/queryTransRecord?pageNo=1&time_type=${time_type}">首页</a> 
-				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.pageNo-1}&time_type=${time_type}">上一页</a>  </c:if> 
+           <a href="<%=path %>/transRecord/queryTransRecord?pageNo=1&time=${time}&type=${type}">首页</a> 
+				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.pageNo-1}&time=${time}&type=${type}">上一页</a>  </c:if> 
 				<div class="pageNum"></div>								 
-				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.pageNo+1}&time_type=${time_type}">下一页</a>  </c:if>  								
-		   <a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.totalPage}&time_type=${time_type}">末页</a>                   
+				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.pageNo+1}&time=${time}&type=${type}">下一页</a>  </c:if>  								
+		   <a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.totalPage}&time=${time}&type=${type}">末页</a>                   
         </div>       
       </div>   
     </div>

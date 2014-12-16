@@ -83,7 +83,7 @@ public interface IGateDao {
 	 
 	 
 	 
-	 public List queryAllTransRecord(Page page,String sql,String platformUserNo)
+	 public List queryAllTransRecord(Page page,String sql,Object[] para)
 				throws Exception;
 		public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)
 				throws Exception;
