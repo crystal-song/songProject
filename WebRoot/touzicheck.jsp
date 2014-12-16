@@ -22,6 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 <script type="text/javascript">
 function onSubmit(host) {
+
+
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
 	//if(a%100!=0){alert("投资金额必须为100的整数倍！");return false;}
@@ -31,7 +33,12 @@ function onSubmit(host) {
   document.getElementById("mysubmit_btn").disabled=true;
   document.getElementById("mysubmit_btn").innerHTML="正在提交...";
   var form = document.getElementById("form");
-  form.submit();
+  $("#dialog01").css("display","block");
+  $(".black_bac").css("display","block");
+  $(".right_cha").click(function(){
+  $("#dialog01").css("display","none");
+  });
+  //sform.submit();
  // document.getElementById("que_btn_ok").disabled()
   
 }
@@ -39,6 +46,7 @@ function onSubmit(host) {
 </head>
 
 <body>
+<div class="black_bac"></div>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
@@ -134,8 +142,20 @@ function onSubmit(host) {
 
           </li>
           </ul>
+          
         </form>
-   
+        <div id="dialog01"  style="display:none">
+	         <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	         </div>
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">如果您成功投资：<a href="<%=path%>/gate/userProject">查看我的项目</a></p>          
+	         </div>
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您投资失败：<a href="<%=path%>/product/allProduct">重新投资</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
+	         </div>	       
+        </div>
   </div>        
 </div>
 

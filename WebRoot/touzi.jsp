@@ -4,303 +4,15 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-
-
-  <%-- <%@ taglib prefix="tags" tagdir="/WEB-INF/tags"%> --%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
+<%@ include file="/includes/taglibs.jsp" %> 
 <title>我要投资 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
- <%@ include file="/includes/taglibs.jsp" %> 
+<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" /> 
  <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 
 <script type="text/javascript" >
 
-
 </script>
-<script type="text/javascript" >
-$(document).ready(function(e){
-	$(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(1).children("p").addClass("headwd_color");
-    $(".right_lable li").click(function(){
-      var index = $(this).index();
-      $(this).addClass('right_lable_red').siblings().removeClass('right_lable_red');
-      $(".touzi_cont div.con_list").eq(index).css("display","block").siblings().css("display","none");
-    });
-});
 
-
-var myFilter=new Array();
-
-function filterChange(){
-	var filterIndex= new Array();
-	switch (myFilter[0]){
-	case 10:
-		filterIndex[0]=1;
-		break;
-	case 15:
-		filterIndex[0]=2;
-		break;
-	case 20:
-		filterIndex[0]=3;
-		break;
-		break;
-	default:
-		filterIndex[0]=0;
-	}
-	switch (myFilter[1]){
-	case 3:
-		filterIndex[1]=1;
-		break;
-	case 6:
-		filterIndex[1]=2;
-		break;
-	case 12:
-		filterIndex[1]=3;
-		break;
-	case 24:
-		filterIndex[1]=4;
-		break;	
-	default:
-		filterIndex[1]=0;
-	}
-	switch (myFilter[2]){
-	case 200:
-		filterIndex[2]=1;
-		break;
-	case 500:
-		filterIndex[2]=2;
-		break;
-	case 1000:
-		filterIndex[2]=3;
-		break;
-	case 2000:
-		filterIndex[2]=4;
-		break;
-	default:
-		filterIndex[2]=0;
-	}
-	switch (myFilter[3]){
-	case 50:
-		filterIndex[3]=1;
-		break;
-	case 80:
-		filterIndex[3]=2;
-		break;
-	case 100:
-		filterIndex[3]=3;
-		break;
-	default:
-		filterIndex[3]=0;
-	}
-
-	switch (myFilter[4]){
-	case 2:
-		filterIndex[4]=1;
-		break;
-	case 3:
-		filterIndex[4]=2;
-		break;
-	case 4:
-		filterIndex[4]=3;
-		break;
-	default:
-		filterIndex[4]=0;
-	}
-	$(".filter li").removeClass("dq");
-	for(i=0;i<5;i++){
-		$(".filter").eq(i).children("li").eq(filterIndex[i]).addClass("dq");
-	}
-}
-
-function pa(clicked){
-	myFilter[clicked.parent().index(".filter")]=clicked.attr("value");
-/* 	for(i=0;i<5;i++){
-		$("#form input").eq(i).val(myFilter[i]);
-		console.log(i+">>"+$("#form input").eq(i).val());
-	} */
-	$("#yearIncome").val(myFilter[0]);
-	$("#financingPeriod").val(myFilter[1]);
-	$("#financingMoney").val(myFilter[2]);
-	$("#financingProgress").val(myFilter[3]);
-	$("#projectStatus").val(myFilter[4]);
-	$("#pageNo").val(1);
-	console.log(myFilter);
-	//alert("avd");
-	
-	$("#form" ).submit();
-}
-
- /*  $(document).ready(function(){
-    
-$('.tz_nr li').click(function(){
-	
-	var n=0;
- $(this).addClass('dq').siblings().removeClass('dq');     
-	$('.tz_nr .dq').each(function(){
-		var param=[];
-		var b=['a','b','c','d','e'];
-		param.push($(this).val());	
-		alert(b[n]+'='+param);
-		n++;		
-		
-		
-		});
-	
-	});
-
-});	   */
-
-
-
-	    
-	    
-	/* $("#form" ).submit(); */
-
-/*  }
-	 */
- 
- 
-
-    /*  function pa(){   */
-/*  $(document).ready(function(){ 
-	 
-	    $('.tz_nr li').click(function(){    
-			
-			var n=0;
-		 $(this).addClass('dq').siblings().removeClass('dq');     
-			$('.tz_nr .dq').each(function(){
-				
-				var param=[];
-				var b=['a','b','c','d','e'];
-				param.push($(this).val()); */	
-				
-				/*  alert(b[n]+'='+param);  */
-				/*  alert("n"+n);
-				 alert("param"+param); */
-/* 				 if(n==0){
-			     $('#yearIncome').val(param); 
-				 }if(n==1){
-					 $('#financingPeriod').val(param);
-				 }if(n==2){
-					 $('#financingMoney').val(param);
-				 }if(n==3){
-					 $('#financingProgress').val(param);
-				 }if(n==4){
-					 $('#projectStatus').val(param);
-				 }
-				n++;	 */	
-				/* alert(b[0]); */
-				/* alert(param); */
-				 
-				
-				
-/* 				});
-			alert("avd");
-			
-			 $("#form" ).submit();
-			
-	  	});
-			 });     */
-
-/*   }    */
-  
-
-function jumpPage(pag){
-	/* alert("ccccccccccc"+pag); */
-	   
-	    $('#pageNo').val(pag); 
-	    
-	   /*  pa(); */
-	    
-	   $("#yearIncome").val(myFilter[0]);
-	$("#financingPeriod").val(myFilter[1]);
-	$("#financingMoney").val(myFilter[2]);
-	$("#financingProgress").val(myFilter[3]);
-	$("#projectStatus").val(myFilter[4]);
-	    
-	    
-	 $("#form" ).submit(); 
-
- }
-	
-	
-
-	
-	/*  var pageNo=1;
-	 var  pageSize=2;
-	 var  name="ddddd";
-	  */
-	
- 	/* window.open('<c:url value="/product/allProduct"/>', '_self');   */
- /* 	$.post("/product/allProduct", { name: "name"} ); */
-/*  if($('#pageNo').val() != ''){
-	 alert("ddddddddddd");
-	 alert("ccccc"+$('#pageNo').val()); */
-            /* $.ajax({
-                type: 'POST',
-                url: '<c:url value="/product/session"/>',  */
-               /*  data: 'pageNo='+$('#pageNo').val(),
-                dataType: 'text',
-                success: function(data) {
-                	alert("ddddddd")
-                	alert("dd"+data+'"success"');
-                   
-                } */
-          /*   });   */
-/*  }   */  
-          
-
-        
-	
-
-
-
-window.onload=function(e) {
-	pagerInit(${page.totalPage},${page.pageNo});//${page.totalPage},${page.pageNo}
-	myFilter=[${product.yearIncome},${product.financingPeriod},${product.financingMoney},${product.financingProgress},${product.projectStatus}]
-	if(myFilter[0]==null){
-		myFilter=[1,1,1,1,1];
-	}
-	console.log(myFilter);
-	filterChange();
-	$(".filter li").bind("click",function(e){
-		pa($(this));
-	});
-}
-   
-function pagerInit(a,b){//${page.totalPage},${page.pageNo}
-	var totalPages=a;
-	var curPage=b;
-	if(curPage>totalPages)return false;
-	var endPage=curPage+5>totalPages-1?totalPages-1:curPage+5;
-	var startPage=endPage-7>2?endPage-7:2;
-	endPage=startPage+7>totalPages?totalPages:startPage+7;
-	console.log(startPage+"/"+endPage+"/"+curPage);
-	var str='';
-	var spl='<span>...</span>';
-	$(".pageNum").html('<a href="javascript:jumpPage(1)" class="pager">1</a>');
-	if(startPage>2){$(".pageNum").html($(".pageNum").html()+spl);}
-      for(i=startPage;i<endPage;i++){
-    	  str='<a href="javascript:jumpPage('+i+')" class="pager">'+i+'</a>';
-    	  $(".pageNum").html($(".pageNum").html()+str);
-		}
-      if(endPage<totalPages-1){$(".pageNum").html($(".pageNum").html()+spl);}
-    if(totalPages>1)$(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
-    $(".pager").eq(curPage-startPage+1).addClass("pageNumCur");
-	$(".pageNumCur").attr("href","javascript:;");	
-}
-   
-                
-           
-
-</script>
 </head>
 
 <body>
@@ -638,4 +350,280 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript" >
+$(document).ready(function(e){
+	$(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(1).children("p").addClass("headwd_color");
+    $(".right_lable li").click(function(){
+      var index = $(this).index();
+      $(this).addClass('right_lable_red').siblings().removeClass('right_lable_red');
+      $(".touzi_cont div.con_list").eq(index).css("display","block").siblings().css("display","none");
+    });
+});
+
+
+var myFilter=new Array();
+
+function filterChange(){
+	var filterIndex= new Array();
+	switch (myFilter[0]){
+	case 10:
+		filterIndex[0]=1;
+		break;
+	case 15:
+		filterIndex[0]=2;
+		break;
+	case 20:
+		filterIndex[0]=3;
+		break;
+		break;
+	default:
+		filterIndex[0]=0;
+	}
+	switch (myFilter[1]){
+	case 3:
+		filterIndex[1]=1;
+		break;
+	case 6:
+		filterIndex[1]=2;
+		break;
+	case 12:
+		filterIndex[1]=3;
+		break;
+	case 24:
+		filterIndex[1]=4;
+		break;	
+	default:
+		filterIndex[1]=0;
+	}
+	switch (myFilter[2]){
+	case 200:
+		filterIndex[2]=1;
+		break;
+	case 500:
+		filterIndex[2]=2;
+		break;
+	case 1000:
+		filterIndex[2]=3;
+		break;
+	case 2000:
+		filterIndex[2]=4;
+		break;
+	default:
+		filterIndex[2]=0;
+	}
+	switch (myFilter[3]){
+	case 50:
+		filterIndex[3]=1;
+		break;
+	case 80:
+		filterIndex[3]=2;
+		break;
+	case 100:
+		filterIndex[3]=3;
+		break;
+	default:
+		filterIndex[3]=0;
+	}
+
+	switch (myFilter[4]){
+	case 2:
+		filterIndex[4]=1;
+		break;
+	case 3:
+		filterIndex[4]=2;
+		break;
+	case 4:
+		filterIndex[4]=3;
+		break;
+	default:
+		filterIndex[4]=0;
+	}
+	$(".filter li").removeClass("dq");
+	for(i=0;i<5;i++){
+		$(".filter").eq(i).children("li").eq(filterIndex[i]).addClass("dq");
+	}
+}
+
+function pa(clicked){
+	myFilter[clicked.parent().index(".filter")]=clicked.attr("value");
+/* 	for(i=0;i<5;i++){
+		$("#form input").eq(i).val(myFilter[i]);
+		console.log(i+">>"+$("#form input").eq(i).val());
+	} */
+	$("#yearIncome").val(myFilter[0]);
+	$("#financingPeriod").val(myFilter[1]);
+	$("#financingMoney").val(myFilter[2]);
+	$("#financingProgress").val(myFilter[3]);
+	$("#projectStatus").val(myFilter[4]);
+	$("#pageNo").val(1);
+	console.log(myFilter);
+	//alert("avd");
+	
+	$("#form" ).submit();
+}
+
+ /*  $(document).ready(function(){
+    
+$('.tz_nr li').click(function(){
+	
+	var n=0;
+ $(this).addClass('dq').siblings().removeClass('dq');     
+	$('.tz_nr .dq').each(function(){
+		var param=[];
+		var b=['a','b','c','d','e'];
+		param.push($(this).val());	
+		alert(b[n]+'='+param);
+		n++;		
+		
+		
+		});
+	
+	});
+
+});	   */
+
+
+
+	    
+	    
+	/* $("#form" ).submit(); */
+
+/*  }
+	 */
+ 
+ 
+
+    /*  function pa(){   */
+/*  $(document).ready(function(){ 
+	 
+	    $('.tz_nr li').click(function(){    
+			
+			var n=0;
+		 $(this).addClass('dq').siblings().removeClass('dq');     
+			$('.tz_nr .dq').each(function(){
+				
+				var param=[];
+				var b=['a','b','c','d','e'];
+				param.push($(this).val()); */	
+				
+				/*  alert(b[n]+'='+param);  */
+				/*  alert("n"+n);
+				 alert("param"+param); */
+/* 				 if(n==0){
+			     $('#yearIncome').val(param); 
+				 }if(n==1){
+					 $('#financingPeriod').val(param);
+				 }if(n==2){
+					 $('#financingMoney').val(param);
+				 }if(n==3){
+					 $('#financingProgress').val(param);
+				 }if(n==4){
+					 $('#projectStatus').val(param);
+				 }
+				n++;	 */	
+				/* alert(b[0]); */
+				/* alert(param); */
+				 
+				
+				
+/* 				});
+			alert("avd");
+			
+			 $("#form" ).submit();
+			
+	  	});
+			 });     */
+
+/*   }    */
+  
+
+function jumpPage(pag){
+	/* alert("ccccccccccc"+pag); */
+	   
+	    $('#pageNo').val(pag); 
+	    
+	   /*  pa(); */
+	    
+	   $("#yearIncome").val(myFilter[0]);
+	$("#financingPeriod").val(myFilter[1]);
+	$("#financingMoney").val(myFilter[2]);
+	$("#financingProgress").val(myFilter[3]);
+	$("#projectStatus").val(myFilter[4]);
+	    
+	    
+	 $("#form" ).submit(); 
+
+ }
+	
+	
+
+	
+	/*  var pageNo=1;
+	 var  pageSize=2;
+	 var  name="ddddd";
+	  */
+	
+ 	/* window.open('<c:url value="/product/allProduct"/>', '_self');   */
+ /* 	$.post("/product/allProduct", { name: "name"} ); */
+/*  if($('#pageNo').val() != ''){
+	 alert("ddddddddddd");
+	 alert("ccccc"+$('#pageNo').val()); */
+            /* $.ajax({
+                type: 'POST',
+                url: '<c:url value="/product/session"/>',  */
+               /*  data: 'pageNo='+$('#pageNo').val(),
+                dataType: 'text',
+                success: function(data) {
+                	alert("ddddddd")
+                	alert("dd"+data+'"success"');
+                   
+                } */
+          /*   });   */
+/*  }   */  
+          
+
+        
+	
+
+
+
+window.onload=function(e) {
+	pagerInit(${page.totalPage},${page.pageNo});//${page.totalPage},${page.pageNo}
+	myFilter=[${product.yearIncome},${product.financingPeriod},${product.financingMoney},${product.financingProgress},${product.projectStatus}]
+	if(myFilter[0]==null){
+		myFilter=[1,1,1,1,1];
+	}
+	console.log(myFilter);
+	filterChange();
+	$(".filter li").bind("click",function(e){
+		pa($(this));
+	});
+}
+   
+function pagerInit(a,b){//${page.totalPage},${page.pageNo}
+	var totalPages=a;
+	var curPage=b;
+	if(curPage>totalPages)return false;
+	var endPage=curPage+5>totalPages-1?totalPages-1:curPage+5;
+	var startPage=endPage-7>2?endPage-7:2;
+	endPage=startPage+7>totalPages?totalPages:startPage+7;
+	console.log(startPage+"/"+endPage+"/"+curPage);
+	var str='';
+	var spl='<span>...</span>';
+	$(".pageNum").html('<a href="javascript:jumpPage(1)" class="pager">1</a>');
+	if(startPage>2){$(".pageNum").html($(".pageNum").html()+spl);}
+      for(i=startPage;i<endPage;i++){
+    	  str='<a href="javascript:jumpPage('+i+')" class="pager">'+i+'</a>';
+    	  $(".pageNum").html($(".pageNum").html()+str);
+		}
+      if(endPage<totalPages-1){$(".pageNum").html($(".pageNum").html()+spl);}
+    if(totalPages>1)$(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
+    $(".pager").eq(curPage-startPage+1).addClass("pageNumCur");
+	$(".pageNumCur").attr("href","javascript:;");	
+
+   
+}                
+          
+</script>
 </html>

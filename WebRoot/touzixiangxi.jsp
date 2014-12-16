@@ -5,215 +5,19 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+ <%@ include file="/includes/taglibs.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <Link href="/favicon.ico" rel="Shortcut Icon">
 <title>项目：${product1.projectName} - 我要投资 - 中租宝</title>
-
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
- <%@ include file="/includes/taglibs.jsp" %> 
-<script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
 
 <link href="<%=path%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
- 
  <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
- 
 
-<script type="text/javascript">
-
-window.onload=function(){
-
-    var myblur= document.getElementById('buyAmount');    
-       myblur.onfocus=function(){
-         if(myblur.value=="投资金额不低于200元"){        	
-           myblur.value="";
-           myblur.style.color="#000";
-           }     
-   }      
-     myblur.onblur=function(){      
-      if(myblur.value==""){
-        myblur.value="200";
-        myblur.style.color="#ccc" ;  
-    }
-      document.getElementById("preview_amount").value=myblur.value;
-  }  
-}
-
-/*提交表单*/
-
-function mysubmit(){
-	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
-		alert("投资金额不能为空！");
-		return false;
-		}
-	//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-	/*
-	if($("#buyAmount").val()<200){
-		alert("投资金额不能低于200元！");
-		return false;
-	}*/
-	var form = document.getElementById("form");
-	    form.submit();	
-}	
-
-
- $(document).ready(function(e) { 
-	 //---------收益计算器------------
-	//console.log("-------go-------");
-	    var rate_lv=$(".lev_start").length;
-		calc();
-		$("#preview_amount").change(function(e) {
-			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
-				$(this).val(parseInt($(".lev_start").eq(0).html()));
-				}
-			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
-				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
-				}
-	        calc();
-	        
-	    });
-		function calc(){
-			//console.log("-------calc-------");
-			var t=parseInt($("#preview_amount").val());
-			var r=0;
-			var p=parseInt($("#preview_Period").html());
-			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-			for(i=0;i<rate_lv;i++){
-				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
-					if(parseInt($(".lev_mi").eq(i).html())>0){
-					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-					
-					}else{
-						r=parseFloat($(".lev_rate").eq(i).html());
-						}
-					r=r/100;
-					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
-					}
-				}
-			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
-			//console.log("|-"+t*r);
-			}
-		$(".jisuan_btn_left").click(function(){
-			  $("#preview_amount").val(200);
-			  $("#preview_income").html(0+"元");
-			  
-			   
-		  });
-		
-		
-		//---------收益计算器结束-------------
-
-	 $("#buyAmount").keyup(function(){
-		  
-		    var str= /^[0-9]*$/;
-		    var val=$("#buyAmount").val();
-		    if(!(str.test(val))){  	   
-				   $('.neirong').html("您输入的金额不是数字,请重新输入");
-				   return false;
-			    }
-		    $('.neirong').css('display','block');
-	
-		    if(!(str.test(val))){  	   
-				   $('.neirong').html("您输入的金额不是数字,请重新输入");
-				   return false;
-			    }
-			    if(val<200){
-				   $('.neirong').html("您输入的金额小于200元,请重新输入");
-				   return false;
-			    }
-			    if(val>5000000){
-					   $('.neirong').html("您输入的金额大于五百万元,请重新输入");
-					   return false;
-				    }
-			    if(parseInt(val)%100!=0){	
-				  $('.neirong').html("输入的资金必须是100的整数倍");
-				  return false;
-				   }
-			      $('.neirong').html('您要投入的实际金额为:'+val);	   
-	 
-	 });	
- 
-	 $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
-	 $(".nav_big a").eq(1).children("p").addClass("headwd_color");
-       $(window).on('scroll', function(){
-               checkText();
-              // alert($(this).scrollTop())
-       });
-
-       var nav_height=parseInt($('.small_nav').offset().top);
-     
-       function checkText(){
-           var top = parseInt($(this).scrollTop());
-           if(top>nav_height){
-              $(".small_nav").addClass("text");
-           }else if($(".small_nav").hasClass('text')&&(top!=nav_height)){
-              $(".small_nav").removeClass("text");
-           }
-       }
-
-      $(".small_nav li").click(function(){
-           var i=$(this).index();
-           var top = parseInt($(this).scrollTop());
-           var title_top=parseInt($('.pro_con_title').eq(i).offset().top);
-           var small_height=$(".small_nav").height();
-           $(".small_nav").addClass("text");
-           $(this).addClass('sm_nav_fir').siblings().removeClass('sm_nav_fir');
-           $(window).scrollTop(title_top-small_height-50);
-      });
-      
-      var timer=null;
-      var num=1;
-      timer=setInterval(autoplay,3000);
-      function autoplay(nn){
-        if(nn!=null)num=nn+num;
-        if(num>22){num=0}
-        if(num<0){num=22}
-        $('.ziliao_pic li').eq(num).hide().fadeIn().siblings().hide();          
-        num++; 
-        }
- 
-      $(".ban_right").click(function(){
-        autoplay(0);
-        clearInterval(timer);
-           timer=setInterval(autoplay,3000);
-        });
-      $(".ban_left").click(function(){
-
-        var index=$('.ziliao_pic li').index();
-        autoplay(-2);
-        clearInterval(timer);
-           timer=setInterval(autoplay,3000);
-        });
- 	$(".syl_table").hover(function(){
- 		$(this).css("height","auto");
- 	},function(){
- 		$(this).css("height","60px");
- 	});
- 	
- 	 $(".jisuan").click(function(){
- 		 $("#dialog01").css("display","block");
- 		 
- 		 
- 	 });
- 	$(".right_cha").click(function(){
- 		$("#dialog01").css("display","none");
- 	});
- 	
- });  
- 
-    
-</script>
 </head>
 
 <body>
@@ -746,4 +550,189 @@ function mysubmit(){
 
 
 </body>
+<script type="text/javascript">
+
+window.onload=function(){
+
+    var myblur= document.getElementById('buyAmount');    
+       myblur.onfocus=function(){
+         if(myblur.value=="投资金额不低于200元"){        	
+           myblur.value="";
+           myblur.style.color="#000";
+           }     
+   }      
+     myblur.onblur=function(){      
+      if(myblur.value==""){
+        myblur.value="200";
+        myblur.style.color="#ccc" ;  
+    }
+      document.getElementById("preview_amount").value=myblur.value;
+  }  
+}
+
+/*提交表单*/
+
+function mysubmit(){
+	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
+		alert("投资金额不能为空！");
+		return false;
+		}
+	//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
+	/*
+	if($("#buyAmount").val()<200){
+		alert("投资金额不能低于200元！");
+		return false;
+	}*/
+	var form = document.getElementById("form");
+	    form.submit();	
+}	
+
+
+ $(document).ready(function(e) { 
+	 //---------收益计算器------------
+	//console.log("-------go-------");
+	    var rate_lv=$(".lev_start").length;
+		calc();
+		$("#preview_amount").change(function(e) {
+			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
+				$(this).val(parseInt($(".lev_start").eq(0).html()));
+				}
+			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
+				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
+				}
+	        calc();
+	        
+	    });
+		function calc(){
+			//console.log("-------calc-------");
+			var t=parseInt($("#preview_amount").val());
+			var r=0;
+			var p=parseInt($("#preview_Period").html());
+			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
+			for(i=0;i<rate_lv;i++){
+				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
+					if(parseInt($(".lev_mi").eq(i).html())>0){
+					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
+					
+					}else{
+						r=parseFloat($(".lev_rate").eq(i).html());
+						}
+					r=r/100;
+					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
+					}
+				}
+			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
+			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
+			//console.log("|-"+t*r);
+			}
+		$(".jisuan_btn_left").click(function(){
+			  $("#preview_amount").val(200);
+			  $("#preview_income").html(0+"元");
+			  
+			   
+		  });
+		
+		
+		//---------收益计算器结束-------------
+
+	 $("#buyAmount").keyup(function(){
+		  
+		    var str= /^[0-9]*$/;
+		    var val=$("#buyAmount").val();
+		    if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是数字,请重新输入");
+				   return false;
+			    }
+		    $('.neirong').css('display','block');
+	
+		    if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是数字,请重新输入");
+				   return false;
+			    }
+			    if(val<200){
+				   $('.neirong').html("您输入的金额小于200元,请重新输入");
+				   return false;
+			    }
+			    if(val>5000000){
+					   $('.neirong').html("您输入的金额大于五百万元,请重新输入");
+					   return false;
+				    }
+			    if(parseInt(val)%100!=0){	
+				  $('.neirong').html("输入的资金必须是100的整数倍");
+				  return false;
+				   }
+			      $('.neirong').html('您要投入的实际金额为:'+val);	   
+	 
+	 });	
+ 
+	 $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
+	 $(".nav_big a").eq(1).children("p").addClass("headwd_color");
+       $(window).on('scroll', function(){
+               checkText();
+              // alert($(this).scrollTop())
+       });
+
+       var nav_height=parseInt($('.small_nav').offset().top);
+     
+       function checkText(){
+           var top = parseInt($(this).scrollTop());
+           if(top>nav_height){
+              $(".small_nav").addClass("text");
+           }else if($(".small_nav").hasClass('text')&&(top!=nav_height)){
+              $(".small_nav").removeClass("text");
+           }
+       }
+
+      $(".small_nav li").click(function(){
+           var i=$(this).index();
+           var top = parseInt($(this).scrollTop());
+           var title_top=parseInt($('.pro_con_title').eq(i).offset().top);
+           var small_height=$(".small_nav").height();
+           $(".small_nav").addClass("text");
+           $(this).addClass('sm_nav_fir').siblings().removeClass('sm_nav_fir');
+           $(window).scrollTop(title_top-small_height-50);
+      });
+      
+      var timer=null;
+      var num=1;
+      timer=setInterval(autoplay,3000);
+      function autoplay(nn){
+        if(nn!=null)num=nn+num;
+        if(num>22){num=0}
+        if(num<0){num=22}
+        $('.ziliao_pic li').eq(num).hide().fadeIn().siblings().hide();          
+        num++; 
+        }
+ 
+      $(".ban_right").click(function(){
+        autoplay(0);
+        clearInterval(timer);
+           timer=setInterval(autoplay,3000);
+        });
+      $(".ban_left").click(function(){
+
+        var index=$('.ziliao_pic li').index();
+        autoplay(-2);
+        clearInterval(timer);
+           timer=setInterval(autoplay,3000);
+        });
+ 	$(".syl_table").hover(function(){
+ 		$(this).css("height","auto");
+ 	},function(){
+ 		$(this).css("height","60px");
+ 	});
+ 	
+ 	 $(".jisuan").click(function(){
+ 		 $("#dialog01").css("display","block");
+ 		 
+ 		 
+ 	 });
+ 	$(".right_cha").click(function(){
+ 		$("#dialog01").css("display","none");
+ 	});
+ 	
+ });  
+ 
+    
+</script>
 </html>

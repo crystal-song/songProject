@@ -5,51 +5,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
  <%@ include file="/includes/taglibs.jsp" %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <title>充值 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
- <%@ include file="/includes/taglibs.jsp" %>
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>  --%> 
 
 
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript">
-	function onSubmit(host) {
-		if($("#amount").val()==0||$("#amount").val()==""){
-			alert("充值金额不能为0!");
-			return false;}
-		document.getElementById("host").value = host;
-		var form = document.getElementById("form");
-		  document.getElementById("mysubmit_btn").disabled=true;
-		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-		form.submit();
-	}
-</script>
-<script type="text/javascript">
-    var navIndex=3;    
-    var indexs=1;
-    $(document).ready(function(){
-    	$(".u_left_sec:eq(1) li:eq(1)").children("a").css("color","#fc652e");
-    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
-    	  $(".u_left_mian").click(function(){
-              $(this).siblings().slideToggle("slow");
-            });
-     
-});
-         
 
-</script>
 </head>
 
 <body>
 <!-- top start  -->
+<div class="black_bac"></div>
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
@@ -263,15 +229,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <li>为了您的资金安全，请您在充值前完成手机绑定，身份认证及支付密码设置。</li>
               <li>中租宝严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务， 并会影响银行征信记录。</li>
               <li>充值过程遇到问题，请联系客服，010-84243099/3199</li>
-             </ul>            
-           </div>              
+            </ul>            
+           </div>
+         <!-- class="chong_font" -->  
+          <div id="dialog01"  style="display:none">
+	         <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	         </div>
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">如果您成功充值：<a href="<%=path%>/gate/service">查看我的资产</a></p>          
+	         </div>
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您充值失败：<a href="<%=path%>/gate/recharge">重新支付</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
+	         </div>	       
+            </div>                                  
           </div> 
         </div>
       </div>
-
+ 
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
+
 </body>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+<script type="text/javascript">
+	function onSubmit(host) {
+		if($("#amount").val()==0||$("#amount").val()==""){
+			alert("充值金额不能为0!");
+			return false;}
+		document.getElementById("host").value = host;
+		var form = document.getElementById("form");
+		  document.getElementById("mysubmit_btn").disabled=true;
+		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+		  $(".black_bac").css("display","block");
+		  $("#dialog01").css("display","block");		  
+		  $(".right_cha").click(function(){
+ 	      $("#dialog01").css("display","none");
+ 	      
+ 	});
+		  
+		//form.submit();
+	}
+</script>
+<script type="text/javascript">
+    var navIndex=3;    
+    var indexs=1;
+    $(document).ready(function(){
+    	$(".u_left_sec:eq(1) li:eq(1)").children("a").css("color","#fc652e");
+    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
+    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+    	  $(".u_left_mian").click(function(){
+              $(this).siblings().slideToggle("slow");
+            });
+     
+});
+         
+
+</script>
 </html>
