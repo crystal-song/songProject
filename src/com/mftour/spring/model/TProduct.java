@@ -1,5 +1,9 @@
 package com.mftour.spring.model;
 
+
+
+
+
 public class TProduct implements java.io.Serializable {
 
 	private static final long serialVersionUID = -8032736954376546625L;
@@ -39,14 +43,15 @@ public class TProduct implements java.io.Serializable {
 	    private String  targetPlatformUserNo;
 	    private String  enterpriseName;
 	    private Integer buyType;
-	    
-	    
-	    
-	    
 	   
-	  
-	   
-	    
+	    private String loaned = "0"; //是否已放款
+	 
+		public String getLoaned() {
+			return loaned;
+		}
+		public void setLoaned(String loaned) {
+			this.loaned = loaned;
+		}
 		public Long getId() {
 			return id;
 		}

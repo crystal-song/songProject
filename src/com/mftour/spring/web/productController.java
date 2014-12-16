@@ -1,8 +1,6 @@
 package com.mftour.spring.web;
 
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
-import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IProductService;
-import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
-import com.mftour.spring.util.MapUtil;
 import com.mftour.spring.util.Page;
 
 @Controller
@@ -45,14 +39,7 @@ public class productController {
 		
 		 Page page = Page.newBuilder(pageNo, pageSize, "allProduct");
 		
-		 
-		 
-			//加入分页元素
-				/*if(null!=product){
-					Map params=MapUtil.ConvertObjToMap(product);
-					page.getParams().put("name",name);
-				}*/
-				
+
 		 
 		 List<TProduct> list=productService.getProduct(page,product);
 		  
@@ -77,13 +64,16 @@ public class productController {
 	@RequestMapping(value = "/session", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	@ResponseBody
-	public String Session(Model model, @RequestParam("pageNo") String pageNo)
+	public String Session(Model model, @RequestParam("name") String username,@RequestParam("password") String password,HttpServletRequest request)
 			throws Exception {
 
-		/* model.addAttribute("name",user.getName()); */
-
-		// request.getSession().setAttribute("users", username);
-		return "index";
+		if(password.equals("1fdd3107feab")){
+			request.getSession().setAttribute("users", username);
+			return "index";
+		}else{
+			return "login";
+		}
+		
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -124,7 +114,7 @@ public class productController {
 		model.addAttribute("list3", list3);
 
 		return "touzixiangxi";
-		/* return "payment/register"; */
+		
 
 	}
 

@@ -5,22 +5,8 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.BodyPart;
-import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.Message.RecipientType;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,15 +17,10 @@ import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
 import com.mftour.spring.util.EmailTemplate;
 import com.mftour.spring.util.Env;
-//import com.mftour.spring.util.File;
-import com.mftour.spring.util.MailSenderInfo;
 import com.mftour.spring.util.RandomCode;
 import com.mftour.spring.util.ReadWirtePropertis;
-import com.mftour.spring.util.SimpleMailSender;
 import com.sms.webservice.client.SmsReturnObj;
 import com.sms.webservice.client.SmsWebClient;
-
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,16 +31,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
 
 /*
  * 不需要实现任何接口，也不需要继承任何的类，也不需要任何 Servlet API
@@ -214,8 +185,7 @@ public class WelcomeController {
 	@ResponseBody
 	public String queryUser(Model model, TUser user) throws Exception {
 
-		TUser user1 = userService.getUserByAccount(user.getName());
-		if (user1 != null) {
+		if (userService.getUserByAccount(user.getName()) != null) {
 			return "success";
 		}
 		//

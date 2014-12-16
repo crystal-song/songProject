@@ -56,8 +56,7 @@
         </property>
          
         
-        
-        
+  
          <property name="guaranteeInstitution" type="java.lang.String">
             <column name="guaranteeInstitution" length="200" />
         </property>
@@ -115,7 +114,9 @@
              <property name="guaranteeNumber" type="java.lang.String">
             <column name="guaranteeNumber" length="50" />
         </property> 
-       
+        <property name="loaned" type="java.lang.String">
+            <column name="loaned" length="1"  />
+        </property> 
        
     </class>
 </hibernate-mapping>

@@ -36,6 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td>融资金额</td>
     <td>融资进度</td>
     <td>年化收益率</td>
+    <td>是否放款</td>
     <td>项目管理</td>
   </tr>
    <c:if test="${ not empty list}">
@@ -46,44 +47,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td>${s.financingMoney}万</td>
     <td>${s.financingProgress}%</td>
     <td>${s.yearIncome}</td>
+    <td> <c:if test="${ s.loaned == null}">未放款</c:if>
+    <c:if test="${ s.loaned == '1'}">已放款</c:if>
+     </td>
 
-    <td><p><a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a><a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a><a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteproduct?id=${s.id}'">删除</a><a href="<%=path%>/Login/addyield?id=${s.id}">收益率</a></p></td>
+    <td>
+    <p>
+    <a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a>
+     <a href="javascript:void(0)" onclick="loan($(a.id))">放款${s.loaned}</a>
+    <a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a>
+    <a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteproduct?id=${s.id}'">删除</a>
+    <a href="<%=path%>/Login/addyield?id=${s.id}">收益率</a>
+    </p>
+    </td>
   </tr>
   </c:forEach>
       
         </c:if>
-  <!-- <tr>
-    <td><img width="50" /></td>
-    <td>光耀东方 投资项目</td>
-    <td>3000万</td>
-    <td>25%</td>
-    <td>2014-8-4 14:32:35</td>
-    <td><a href="#">修改</a></td>
-  </tr>
-  <tr>
-    <td><img width="50" /></td>
-    <td>光耀东方 投资项目</td>
-    <td>3000万</td>
-    <td>25%</td>
-    <td>2014-8-4 14:32:35</td>
-    <td><a href="#">修改</a></td>
-  </tr>
-  <tr>
-    <td><img width="50" /></td>
-    <td>光耀东方 投资项目</td>
-    <td>3000万</td>
-    <td>25%</td>
-    <td>2014-8-4 14:32:35</td>
-    <td><a href="#">修改</a></td>
-  </tr>
-  <tr>
-    <td><img width="50" /></td>
-    <td>光耀东方 投资项目</td>
-    <td>3000万</td>
-    <td>25%</td>
-    <td>2014-8-4 14:32:35</td>
-    <td><a href="#">修改</a></td>
-  </tr> -->
+
 </table>
 
     </div>
@@ -92,3 +73,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </body>
 </html>
+<script>
+function loan(id){
+	$.ajax({url:"/Login/loanProduct",
+		    type:"GET",
+		    params: {id: id},
+		    success: function(data){
+		  		if(data.success === true){
+		  			alert("放款成功");
+		  			location.reload();
+		  		}else{
+		  			alert("放款失败");
+		  		}
+		    }});
+}
+</script>

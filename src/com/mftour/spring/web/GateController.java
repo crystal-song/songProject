@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXB;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import com.mftour.spring.model.TBinding;
 import com.mftour.spring.model.TBindingNotify;
 import com.mftour.spring.model.TBindingSucceed;
@@ -54,7 +51,6 @@ import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.File;
 import com.mftour.spring.util.HttpClientTest;
 import com.mftour.spring.util.ReadWirtePropertis;
-/*import com.mftour.spring.util.ccc;*/
 import com.yeepay.bha.example.bean.BHAAuthorization;
 import com.yeepay.bha.example.bean.BHAEstablishmentRegistration;
 import com.yeepay.bha.example.bean.BHAFeeModeEnum;
@@ -63,11 +59,12 @@ import com.yeepay.bha.example.bean.BHARegisterRequest;
 import com.yeepay.bha.example.bean.BHATransferRequest;
 import com.yeepay.bha.example.bean.BHAWithdrawRequest;
 import com.yeepay.bha.example.bean.BHAbindingRequest;
+
 import com.yeepay.g3.utils.security.cfca.SignUtil;
 
 @Controller
 public class GateController  {
-	
+	private static final File f=ReadWirtePropertis.file();
 	private ServletContext servletContext = null;
 	
 	@Autowired
@@ -90,7 +87,7 @@ public class GateController  {
 	@RequestMapping(value="/gate/service")
 	public String service(Model model,HttpServletRequest request) throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
-		File f=ReadWirtePropertis.file();
+	
 		String platformNo=f.getPlatformNo();
 
 	    model.addAttribute("f", f);
@@ -125,11 +122,10 @@ public class GateController  {
 	                +"</request>";
 		 model.addAttribute("req", req);
 		String service="ACCOUNT_INFO";
-		/*String host="http://qa.yeepay.com/member";*/
+	
 		 String host=f.getOnSubmit();
 		return  doService(host, req, service, model);
-		/*return "payment/service";*/
-		/*return "";*/
+	
 	}
 	
 	
@@ -156,7 +152,7 @@ public class GateController  {
 	
 	public String doinfo(String host, String req, String service, Model model) {
 
-		return doSigns(req, host + "/bhaexter/bhaController", model, service);
+		return doSigns(req, f.getUrl() + "/bhaexter/bhaController", model, service);
 	}
 	
 	
@@ -315,8 +311,8 @@ public class GateController  {
 			 TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(o.toString()).get(0);
 			           String name= registerYeePay1.getPlatformUserNo();
 			 String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-		    			+"<request platformNo='10040011137'>"
-		    			/*+"<platformUserNo>gg123456</platformUserNo> "*/
+		    			+"<request platformNo='"+f.getPlatformNo()+"'>"
+		    		
 		    			+"<orderNo>"+name+"</orderNo> "
 		    			+"<requestNo>"+name+"</requestNo> "
 		    			+"<fee>"+name+"</fee> "
@@ -396,7 +392,7 @@ public class GateController  {
 	
 	@RequestMapping(value="/gate/recharge",method = {RequestMethod.POST, RequestMethod.GET})
 	public String recharge(Model model,HttpServletRequest request)throws Exception {
-		 File f=ReadWirtePropertis.file();
+		 
 		 
 		    model.addAttribute("f", f);
 		model.addAttribute("now", System.currentTimeMillis());
@@ -440,10 +436,10 @@ public class GateController  {
 	
 	@RequestMapping(value="/gate/doRecharge")
 	public String doRecharge(String host, BHARechargeRequest request, Model model,TRecharge recharge) throws Exception {
-		Date dt = new Date();   
+	   
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");   
 	    
-	    recharge.setTime(sdf.format(dt).toString());
+	    recharge.setTime(sdf.format(new Date()).toString());
 		gateService.addOrUpdateTRecharge(recharge);
 		return doSign(request, host + "/bha/toRecharge", model);
 	}
@@ -605,100 +601,6 @@ public class GateController  {
 			
 			
 			
-			/*model.addAttribute("now", System.currentTimeMillis());*/
-			/* String req="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-		    			+"<request platformNo='10040011137'>"
-		    			+"<platformUserNo>gg123456</platformUserNo> "
-		    			+"<orderNo>"+TtransferInfo.getOrderNo()+"</orderNo> "
-		    			+"<requestNo>"+System.currentTimeMillis()+"</requestNo> "
-		    			+"<fee>"+1+"</fee> "
-		    			+"<transfer>"+name+"</transfer> "
-		    			+"<requestNo>"+name+"</requestNo> "
-		    			+"<transferAmount>"+name+"</transferAmount> "
-		    			+"<sourceUserType>"+name+"</sourceUserType> "
-		    			+"<sourcePlatformUserNo>"+name+"</sourcePlatformUserNo> "
-		    			+"<targetUserType>"+name+"</targetUserType> "
-		                +"</request>";*/
-			
-			
-			
-		 
-		/*  int PaymentAmount= Integer.parseInt(TtransferInfo.getPaymentAmount());
-		if(PaymentAmount>100&&PaymentAmount<200){
-			TtransferInfo.setInterestRate(7.0);
-		}if(PaymentAmount>200&&PaymentAmount<300){
-			TtransferInfo.setInterestRate(7.1);
-		}if(PaymentAmount>300&&PaymentAmount<400){
-			TtransferInfo.setInterestRate(7.2);
-		}if(PaymentAmount>400&&PaymentAmount<500){
-			TtransferInfo.setInterestRate(7.4);
-		}if(PaymentAmount>500&&PaymentAmount<600){
-			TtransferInfo.setInterestRate(7.5);
-		}if(PaymentAmount>600&&PaymentAmount<700){
-			TtransferInfo.setInterestRate(7.6);
-		}if(PaymentAmount>700&&PaymentAmount<800){
-			TtransferInfo.setInterestRate(7.7);
-		}if(PaymentAmount>800&&PaymentAmount<900){
-			TtransferInfo.setInterestRate(7.8);
-		}if(PaymentAmount>900&&PaymentAmount<1000){
-			TtransferInfo.setInterestRate(7.8);
-		}if(PaymentAmount>1000&&PaymentAmount<2000){
-			TtransferInfo.setInterestRate(8.0);
-		}if(PaymentAmount>2000&&PaymentAmount<3000){
-			TtransferInfo.setInterestRate(8.1);
-		}if(PaymentAmount>3000&&PaymentAmount<4000){
-			TtransferInfo.setInterestRate(8.2);
-		}if(PaymentAmount>4000&&PaymentAmount<5000){
-			TtransferInfo.setInterestRate(8.3);
-		}if(PaymentAmount>5000&&PaymentAmount<6000){
-			TtransferInfo.setInterestRate(8.4);
-		}if(PaymentAmount>6000&&PaymentAmount<7000){
-			TtransferInfo.setInterestRate(8.5);
-		}if(PaymentAmount>7000&&PaymentAmount<8000){
-			TtransferInfo.setInterestRate(8.6);
-		}if(PaymentAmount>8000&&PaymentAmount<9000){
-			TtransferInfo.setInterestRate(8.7);
-		}if(PaymentAmount>9000&&PaymentAmount<10000){
-			TtransferInfo.setInterestRate(8.8);
-		}if(PaymentAmount>10000&&PaymentAmount<20000){
-			TtransferInfo.setInterestRate(9.0);
-		}if(PaymentAmount>20000&&PaymentAmount<30000){
-			TtransferInfo.setInterestRate(9.1);
-		}if(PaymentAmount>30000&&PaymentAmount<40000){
-			TtransferInfo.setInterestRate(9.2);
-		}if(PaymentAmount>40000&&PaymentAmount<50000){
-			TtransferInfo.setInterestRate(9.3);
-		}if(PaymentAmount>50000&&PaymentAmount<60000){
-			TtransferInfo.setInterestRate(9.4);
-		}if(PaymentAmount>60000&&PaymentAmount<70000){
-			TtransferInfo.setInterestRate(9.5);
-		}if(PaymentAmount>70000&&PaymentAmount<80000){
-			TtransferInfo.setInterestRate(9.6);
-		}if(PaymentAmount>80000&&PaymentAmount<90000){
-			TtransferInfo.setInterestRate(9.7);
-		}if(PaymentAmount>90000&&PaymentAmount<100000){
-			TtransferInfo.setInterestRate(9.8);
-		}if(PaymentAmount>100000&&PaymentAmount<200000){
-			TtransferInfo.setInterestRate(10.0);
-		}if(PaymentAmount>200000&&PaymentAmount<300000){
-			TtransferInfo.setInterestRate(10.1);
-		}if(PaymentAmount>300000&&PaymentAmount<400000){
-			TtransferInfo.setInterestRate(10.2);
-		}if(PaymentAmount>400000&&PaymentAmount<500000){
-			TtransferInfo.setInterestRate(10.3);
-		}if(PaymentAmount>500000&&PaymentAmount<600000){
-			TtransferInfo.setInterestRate(10.4);
-		}if(PaymentAmount>600000&&PaymentAmount<700000){
-			TtransferInfo.setInterestRate(10.5);
-		}if(PaymentAmount>700000&&PaymentAmount<800000){
-			TtransferInfo.setInterestRate(10.6);
-		}if(PaymentAmount>800000&&PaymentAmount<900000){
-			TtransferInfo.setInterestRate(10.7);
-		}if(PaymentAmount>900000&&PaymentAmount<100000){
-			TtransferInfo.setInterestRate(10.8);
-		}*/
-			
-			
 		
 		return doSign(request, host + "/bha/toTransfer", model);
 	}
@@ -733,15 +635,14 @@ public class GateController  {
 		  
 		  try {
 		            
-		      //    ������ ��������� ������ ������ ������ ������ ��� 
+		    
 		      DocumentBuilder db=dbf.newDocumentBuilder();
 		      
-		      //������ ��� ��������� ��� ������ ������ ������ -->dom��� 
+	
 		     
 		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
 		     Document dm=db.parse(iStream);
-		      
-		      //������ ������ person������ 
+	
 		      NodeList persons=dm.getElementsByTagName("response");
 		     
 		      TEstablishmentNotify establishmentNotify=new TEstablishmentNotify();
@@ -850,17 +751,11 @@ public class GateController  {
 		    	 registerYeePay.setCode(YeePay.getCode());
 		    	    gateService.addOrUpdateRegisterYeePay(registerYeePay);
 		    	   
-		    		  TRegisterYeePay registerYeePay1= gateService.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo()).get(0);
-		    
 		    		  model.addAttribute("now", System.currentTimeMillis());
 		
 			        	  return "zhuce";
 			      
-		    	  
-		    	 
-		    	  
-		         
-		      
+		    	
 		      
 		        } catch (Exception e) {
 		            // TODO: handle exception
@@ -901,7 +796,7 @@ public class GateController  {
 		    	  
 		    	  NodeList p=personElement.getChildNodes();
 		    	  for(int j=0;j<p.getLength();j++){
-		    		  Node e= p.item(j);
+		    		  p.item(j);
 		    		 
 		    	  }
 		    	  
@@ -1695,7 +1590,7 @@ public class GateController  {
 		model.addAttribute("req", s);
 		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
 
-		 /*ccc.da(service,url,s);*/
+
 		 HttpClientTest d=new HttpClientTest();
 		          String resp=d.postForm(service, url, s, SignUtil.sign(s, pfx, "liukai123"));
 		        
@@ -1794,74 +1689,9 @@ public class GateController  {
 				  
 				  } catch (Exception e) {
 			            // TODO: handle exception
-			            e.printStackTrace();
-			        } finally {
-			        }
+			            logger.info(e.getMessage());
+			        } 
 				  return "post";
-		          
-	}
-	
-	
-	private String dobinding(String xml, String url, Model model, String service) {
-	
-		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
-	
-		String s = xml;
-		s = s.replaceAll("[\\r\\n]", "");
-
-		model.addAttribute("service", service);
-		model.addAttribute("url", url);
-		model.addAttribute("req", s);
-		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
-		/*model.addAttribute("sign","ddd");*/
-
-		 /*ccc.da(service,url,s);*/
-		 HttpClientTest d=new HttpClientTest();
-		          String resp=d.postForm(service, url, s,SignUtil.sign(s, pfx, "liukai123"));
-		          DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
-		    
-				  try {
-				            
-				      DocumentBuilder db=dbf.newDocumentBuilder();
-				  
-				      InputStream iStream=new ByteArrayInputStream(resp.getBytes("UTF-8"));
-				     Document dm=db.parse(iStream);
-				
-				      NodeList persons=dm.getElementsByTagName("response");
-				
-				      for(int i=0;i<persons.getLength();i++){
-				          
-				    	  Element personElement = (Element)persons.item(i);
-				    	  
-				    	  NodeList p=personElement.getChildNodes();
-				    	  for(int j=0;j<p.getLength();j++){
-				    		  p.item(j);
-				    		  
-				    	  }
-				    	  
-				    	 
-				    	if(p.item(9).getNodeName()!=null&&p.item(9).getTextContent()!=null){
-				    		
-				    		  model.addAttribute("balance", p.item(9).getTextContent());
-				    		  
-				    	  } if(p.item(11).getNodeName()!=null&&p.item(11).getTextContent()!=null){
-				    		
-				    		  model.addAttribute("availableAmount", p.item(11).getTextContent());
-				    		  
-				    	  }if(p.item(13).getNodeName()!=null&&p.item(13).getTextContent()!=null){
-				    	
-				    		  model.addAttribute("freezeAmount", p.item(13).getTextContent());
-				    		  
-				    	  }
-				    	  
-				      }  
-				  
-				  } catch (Exception e) {
-			            // TODO: handle exception
-			            e.printStackTrace();
-			        } finally {
-			        }
-				return resp;
 		          
 	}
 	
