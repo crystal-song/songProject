@@ -232,7 +232,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </ul>            
            </div>
          <!-- class="chong_font" -->  
-          <div id="dialog01"  style="display:none">
+          <div id="dialog01"  style="display:none; height:210px;">
 	         <div class="dialog_title">
                <strong>温馨提示</strong>
 	           <div class="right_cha"></div>
@@ -265,13 +265,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  document.getElementById("mysubmit_btn").disabled=true;
 		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
 		  $(".black_bac").css("display","block");
-		  $("#dialog01").css("display","block");		  
+		  $("#dialog01").css("display","block");	
+		  
 		  $(".right_cha").click(function(){
- 	      $("#dialog01").css("display","none");
+ 	        $("#dialog01").css("display","none");
  	      
  	});
 		  
-		//form.submit();
+		form.submit();
 	}
 </script>
 <script type="text/javascript">
