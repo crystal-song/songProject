@@ -484,7 +484,7 @@ public class GateController  {
 		 if(li!=null&& li.size()!=0){
 			 String code=li.get(0).getCode();
 		
-		 if(code!=null&&code.equals("1")){
+		 if(list!=null && list.size()>0 &&  code!=null&&code.equals("1")){
 			 TRegisterYeePay registerYeePay1=li.get(0);
 			
 				model.addAttribute("registerYeePay1", registerYeePay1);

@@ -4,19 +4,52 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
+<%@ include file="/includes/taglibs.jsp" %> 
 
 <title>用户注册 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<%@ include file="/includes/taglibs.jsp" %> 
 </head>
+
+<body>
+<!-- top start  -->
+<%@ include file="/includes/header.jsp" %>
+<!-- top end  -->
+<div class="frame">
+<!-- page content -->
+<div class="blank_block">
+  <div class="blank_block_title">新用户注册</div>
+    <form action="<%=path %>/welcome/regEmail" id="Form1"  method="post" style="padding:0px;">
+        <div class="blank_block_content reg">
+          <p>　用户名：<input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /></p>
+          <div id="tip_username"><span class="tip_n">请输入用户名！</span></div>
+          <p>　密　码：<input name="password" id="password" type="password" class="input_item" onblur="chk_pwd()"/></p>
+          <div id="tip_userpwd"><span class="tip_n">请输入密码！</span></div>
+          <p>确认密码：<input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/></p>
+          <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
+          <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/></p>
+          <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div> 
+          <p>　验证码：  <input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
+					<img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
+					<a href="#" mce_href="#" onclick="javascript:show();return false;">看不清,换一张!</a>
+					 <div id="tip_validatecode"><span class="tip_n">请输入验证码！</span></div> 
+		  </p>
+<!--           <p>　推荐人：<input name="referee" id="referee" type="text" class="input_item"/></p>
+          <div id="tip_referee"><span class="tip_n"></span></div>           -->
+          <p class="xieyi_font"><input  type="checkbox" checked="checked" id="agreement">我已阅读并同意中租宝
+           <a target="_blank" href="<%=path%>/zhucexieyi.jsp">《使用协议》</a>及
+           <a target="_blank" href="<%=path%>/yinsitiaokuan.jsp">《隐私条款》</a></p>
+           <p><input name="imgbtn" type="button"  onclick="check()" class="btn_reg"></p>
+          </div>          
+          <div class="two_pic"></div>
+      </form>
+    </div>
+ <!-- page content end -->   
+</div>
+<div class="clear"></div>
+<!-- footer start -->
+<%@ include file="/includes/footer.jsp" %>
+<!-- footer end -->
+</body>
 <script type="text/javascript" >
 var c_name=false;
 var c_pwd=false;
@@ -170,44 +203,4 @@ window.onload = function() {
         //这时无论在ie还是在firefox中，js没有加载完，页面的东西是不会被执行的；  
     }  
 </script>
-<body>
-<!-- top start  -->
-<%@ include file="/includes/header.jsp" %>
-<!-- top end  -->
-<div class="frame">
-<!-- page content -->
-<div class="blank_block">
-  <div class="blank_block_title">新用户注册</div>
-    <form action="<%=path %>/welcome/regEmail" id="Form1"  method="post" style="padding:0px;">
-        <div class="blank_block_content reg">
-          <p>　用户名：<input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /></p>
-          <div id="tip_username"><span class="tip_n">请输入用户名！</span></div>
-          <p>　密　码：<input name="password" id="password" type="password" class="input_item" onblur="chk_pwd()"/></p>
-          <div id="tip_userpwd"><span class="tip_n">请输入密码！</span></div>
-          <p>确认密码：<input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/></p>
-          <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
-          <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/></p>
-          <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div> 
-          <p>　验证码：  <input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
-					<img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
-					<a href="#" mce_href="#" onclick="javascript:show();return false;">看不清,换一张!</a>
-					 <div id="tip_validatecode"><span class="tip_n">请输入验证码！</span></div> 
-		  </p>
-<!--           <p>　推荐人：<input name="referee" id="referee" type="text" class="input_item"/></p>
-          <div id="tip_referee"><span class="tip_n"></span></div>           -->
-          <p class="xieyi_font"><input  type="checkbox" checked="checked" id="agreement">我已阅读并同意中租宝
-           <a target="_blank" href="<%=path%>/zhucexieyi.jsp">《使用协议》</a>及
-           <a target="_blank" href="<%=path%>/yinsitiaokuan.jsp">《隐私条款》</a></p>
-           <p><input name="imgbtn" type="button"  onclick="check()" class="btn_reg"></p>
-          </div>          
-          <div class="two_pic"></div>
-      </form>
-    </div>
- <!-- page content end -->   
-</div>
-<div class="clear"></div>
-<!-- footer start -->
-<%@ include file="/includes/footer.jsp" %>
-<!-- footer end -->
-</body>
 </html>
