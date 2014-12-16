@@ -30,11 +30,13 @@ public class transactionRecordController {
 	private IGateService gateService;
 	//查询交易记录（订单编号（orderNo）、时间()、交易类型(充值、提现、投资（notifyUrl）)、交易详情(投资｛项目名称(projectName)｝)、金额（paymentAmount））
 		@RequestMapping(value="/queryTransRecord",method={RequestMethod.POST,RequestMethod.GET})
-		public String queryTransRecode(@RequestParam("time_type") String time_type,Model model,
+		public String queryTransRecode(@RequestParam("time") String time,@RequestParam("type") String type,Model model,
 				@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
 				@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 				HttpServletRequest request){
 			try {
+				String sessiontime=(String) request.getSession().getAttribute("time");
+				String sessiontype=(String) request.getSession().getAttribute("type");
 				TUser user=(TUser)request.getSession().getAttribute("userinfo");
 				Page page = Page.newBuilder(pageNo, pageSize, "queryTransRecord");
 				
@@ -42,92 +44,36 @@ public class transactionRecordController {
 			if(user==null){
 				return "login";
 			}
-			if("seven_all".equals(time_type)){
-				//投资七天交易记录
-			String sql="SELECT * FROM transrecord a where a.userName=? and (a.transDate between date_sub(now(),interval 1 WEEK) and now()) ORDER BY a.transDate DESC ";
-			//String sql="SELECT a.requestNo,a.transDate as t ,a.projectName,a.transAmount,a.type FROM transrecord a where a.userName=? and (a.transDate between date_sub(now(),interval 1 WEEK) and now()) ORDER BY t DESC ";
-				List<TTransRecord> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("transRecordList", transRecordList);
-				model.addAttribute("recordsize", transRecordList.size());
-				model.addAttribute("time_type", "seven_all");
-			
-			}
-			/*end*/
-			
-			
-			/*start*/
-			if("onemonth_all".equals(time_type)){
-				//投资一个月交易记录
-				String sql="SELECT * FROM transrecord a where a.userName=? and (a.transDate between date_sub(now(),interval 1 MONTH) and now()) ORDER BY a.transDate DESC ";
-				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("transRecordList", transRecordList);
-				model.addAttribute("recordsize", transRecordList.size());
-				model.addAttribute("time_type", "onemonth_all");
-			}
-			/*end*/
-			
-			
-			/*start*/
-			if("threemonth_all".equals(time_type)){
-				//投资三个月交易记录
-				String sql="SELECT * FROM transrecord a where a.userName=? and (a.transDate between date_sub(now(),interval 3 MONTH) and now()) ORDER BY a.transDate DESC ";
-				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("transRecordList", transRecordList);
-				model.addAttribute("recordsize", transRecordList.size());
-				model.addAttribute("time_type", "threemonth_all");
-			}
-			/*end*/
-			
-			
-			/*start*/
-			if("all_all".equals(time_type)){
-				String sql="SELECT * FROM transrecord a where a.userName=? ORDER BY a.transDate DESC ";
-				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("transRecordList", transRecordList);
-				model.addAttribute("recordsize", transRecordList.size());
-				model.addAttribute("time_type", "all_all");
 				
+			if("all".equals(time)){
+				time=sessiontime;
 			}
-			/*end*/
-			
-		/*	start*/
-			if("recharge_all".equals(time_type)){
-				
-				//充值全部的交易记录
-				String sql="SELECT * FROM transrecord a where a.userName=? and a.type='充值' ORDER BY a.transDate DESC ";
-				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("transRecordList", transRecordList);
-				model.addAttribute("recordsize", transRecordList.size());
-				model.addAttribute("time_type", "recharge_all");
-				
+			if("all".equals(type)){
+				type=sessiontype;
 			}
-			/*end*/
-			
-			/*start*/
-			if("transferinfo_all".equals(time_type)){
-				//投资全部的交易记录
-				String sql="SELECT * FROM transrecord a where a.userName=? and a.type='投资' ORDER BY a.transDate DESC ";
-				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("transRecordList", transRecordList);
-				model.addAttribute("recordsize", transRecordList.size());
-				model.addAttribute("time_type", "transferinfo_all");
+			request.getSession().setAttribute("time", time);
+			request.getSession().setAttribute("type", type);
+			String sql="SELECT * FROM transrecord a where a.userName=?";
+			StringBuffer sb = new StringBuffer(sql);
+			List paramlist=new ArrayList();
+			paramlist.add(user.getName());
+			if(!"typeall".equals(type)&&!"timeall".equals(time)){
+				sql+=" and TO_DAYS( NOW( ) )-TO_DAYS(a.transDate)<=? and a.type=? ORDER BY a.transDate DESC ";
+				paramlist.add(time);
+				paramlist.add(type);
 			}
-			/*end*/
-			
-			/*start*/
-			if("drawmoney_all".equals(time_type)){
-				//提现全部的交易记录
-				String sql="SELECT * FROM transrecord a where a.userName=? and a.type='提现' ORDER BY a.transDate DESC ";
-				List<Object[]> transRecordList=gateService.queryAllTransRecord(page,sql,user.getName());
-				model.addAttribute("transRecordList", transRecordList);
-				model.addAttribute("recordsize", transRecordList.size());
-				model.addAttribute("time_type", "drawmoney_all");
-			}
-			/*end*/
-			
-			
+			if("typeall".equals(type)&&!"timeall".equals(time)){
+				sql+=" and TO_DAYS( NOW( ) )-TO_DAYS(a.transDate)<=? ORDER BY a.transDate DESC ";
+				paramlist.add(time);
+				}
+			if(!"typeall".equals(type)&&"timeall".equals(time)){
+				sql+=" and a.type=? ORDER BY a.transDate DESC ";
+				paramlist.add(type);
+				}
+			List<TTransRecord> transRecordList=gateService.queryAllTransRecord(page,sql,paramlist.toArray());
+			model.addAttribute("transRecordList", transRecordList);
+			model.addAttribute("recordsize", transRecordList.size());
 			model.addAttribute("page", page);
-			
 			} catch (Exception e) {
 					e.printStackTrace();
 				

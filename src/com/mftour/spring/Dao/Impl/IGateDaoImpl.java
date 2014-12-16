@@ -177,9 +177,13 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		
 	}
 	
-	public List<TTransRecord> queryAllTransRecord(Page page,String sql,String platformUserNo)throws Exception {
+	public List<TTransRecord> queryAllTransRecord(Page page,String sql,Object[] para)throws Exception {
 		Query query = getSession().createSQLQuery(sql).addEntity(TTransRecord.class);
-		query.setString(0, platformUserNo);
+		if(para!=null){
+			for(int i=0;i<para.length;i++){
+				query.setParameter(i, para[i]);
+			}
+		}
 		page.setTotalRecord(query.list().size());
 		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
 		query.setMaxResults(page.getPageSize());
