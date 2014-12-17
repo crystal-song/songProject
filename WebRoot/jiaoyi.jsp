@@ -45,10 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=充值">充值</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=提现">提现</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=投资">投资</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到利息</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到本金</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">还款</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">融资</a></li>
+                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到利息</a></li>
+                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到本金</a></li>
+                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">还款</a></li>
+                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">融资</a></li>
                         <li style="display:none">收益</li>
                         <li style="display:none">回收本金</li>
                       </ul>
@@ -59,12 +59,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li>交易类型</li>
                         <li>交易详情</li>
                         <li id="bord_right">金额</li>
-                      </ul></li>
+                      </ul>
+                      </li>
                       <c:if test="${userinfo.name!=null}">
                        <c:if test="${recordsize==0}">
-                 		 <div >
-                    		<p>暂无交易记录</p>
-                 		 </div>
+                 		 <li >
+                    		暂无交易记录
+                 		 </li>
                  	   </c:if>
                   
                       <c:if test="${ not empty transRecordList}">
@@ -173,6 +174,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	    $(".u_left_mian").click(function(){
     	          $(this).siblings().slideToggle("slow");
     	        });
+    	        
+    	        
+    	
+    	    	//alert("aa")
+    	    	var vale=$("#time").val();
+    	    	var type_vale=$("#type").val();   	    	
+    	    	//alert(vale1)
+    	    	//alert(vale)
+    	    	if(vale==7){
+    	    		$(".new_fir li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(vale==30){
+    	    		$(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(vale==90){
+    	    		$(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(vale=="timeall"){
+    	    		$(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(type_vale=="typeall"){
+    	    		$(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(type_vale=="充值"){
+    	    		$(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(type_vale=="提现"){
+    	    		$(".new_sec li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(type_vale=="投资"){
+    	    		$(".new_sec li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(type_vale=="收到利息"){
+    	    		$(".new_sec li:eq(4)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(type_vale=="收到本金"){
+    	    		$(".new_sec li:eq(5)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(type_vale=="还款"){
+    	    		$(".new_sec li:eq(6)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
+    	    	if(type_vale=="融资"){
+    	    		$(".new_sec li:eq(7)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	}
 });
 
 </script>
