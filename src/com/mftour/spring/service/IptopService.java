@@ -20,7 +20,7 @@ public interface IptopService {
 	public void addOrUpdateInvestmentInfo(TInvestmentInfo investmentInfo)
 			throws Exception;
 
-	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number);
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number);
 
 	public void deleteTInvestmentInfo(Long id) throws Exception;
 

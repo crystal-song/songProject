@@ -599,7 +599,7 @@ function mysubmit(){
 		<span>成功</span>
 		</li>
 		</c:if>
-		 <c:if test="${ not empty product1.buyType && not empty s.code}"><!-- 线上 -->
+		 <c:if test="${ not empty product1.buyType}"><!-- 线上 -->
 		<li>
 		<span>${fn:substring(s.investor,0,2)}<c:forEach var="j" begin="1" end="${fn:length(s.investor)-3}" step="1">*</c:forEach>${fn:substring(s.investor,fn:length(s.investor)-1,fn:length(s.investor))}
 		</span>
@@ -616,6 +616,16 @@ function mysubmit(){
 		</c:forEach>
 		</c:if>
 		</ul> 
+		<div class="clear"></div>    
+        	<div class="next_list">
+      
+           <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> 
+				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo-1}&id=${product1.id}">上一页</a>  </c:if> 
+				<div class="pageNum"></div>								 
+				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
+		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>                   
+        </div>       
+      </div>   
 <!--       <ul class="table_mag">
         <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>投资时间</span><span>状态</span></li>
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
