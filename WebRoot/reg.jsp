@@ -8,6 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>用户注册 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 </head>
 
 <body>
