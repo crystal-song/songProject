@@ -15,6 +15,7 @@ import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.Page;
 
 @Service("ptopService")
 public class PtopServiceImpl implements IptopService {
@@ -46,9 +47,13 @@ public class PtopServiceImpl implements IptopService {
 	}
 
 	@Override
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number) {
+		return ptopDao.queryInvestmentInfoByNumber(page,Number);
+
+	}
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number) {
 		return ptopDao.queryInvestmentInfoByNumber(Number);
-
+		
 	}
 
 	@Override

@@ -13,6 +13,7 @@ import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.util.Page;
 
 @Repository("ptopDao")
 public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
@@ -46,6 +47,17 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		Query query = getSession().createQuery(hql);
 		query.setParameter("name", Number);
 		query.setParameter("state", "0");
+		return query.list();
+	}
+	@SuppressWarnings("unchecked")
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number) {
+		String hql = "from TInvestmentInfo investmentInfo where investmentInfo.enterpriseNumber = :name  and  investmentInfo.state = :state and investmentInfo.investmentAmount>=200 and investmentInfo.code=1";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("name", Number);
+		query.setParameter("state", "0");
+		page.setTotalRecord(query.list().size());
+		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
+		query.setMaxResults(page.getPageSize());
 		return query.list();
 	}
 

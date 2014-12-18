@@ -1563,8 +1563,7 @@ ul,li{
 	
 .table_mag{
 	width:800px;
-	height:300px; 
-	overflow:auto;
+	height:; 
 	margin-top:40px;
 	border-top:1px solid #ccc;
 	}
