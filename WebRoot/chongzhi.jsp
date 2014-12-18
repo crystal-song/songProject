@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>充值 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>  --%> 
-
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 
 
 </head>
@@ -254,7 +254,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 
 </body>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+ 
 <script type="text/javascript">
 	function onSubmit(host) {
 		if($("#amount").val()==0||$("#amount").val()==""){
@@ -282,9 +282,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	$(".u_left_sec:eq(1) li:eq(1)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
-    	  $(".u_left_mian").click(function(){
-              $(this).siblings().slideToggle("slow");
-            });
+    /* 	 $(".u_left_mian").click(function(){    	
+       	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
+       	  $(this).parent().siblings().children(".u_left_sec").slideUp();
+       	  $(this).siblings().slideToggle("slow");
+         }); */
      
 });
          

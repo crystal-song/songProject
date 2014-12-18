@@ -113,15 +113,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 <script type="text/javascript">
-    var navIndex=3;    
-    var indexs=1;
+var navIndex=3; 
+var indexs=1;
     $(document).ready(function(){
     	$(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
-    	$(".u_left_mian").click(function(){
-            $(this).siblings().slideToggle("slow");
-          });
+
 });
     
     function onSubmit(host) {

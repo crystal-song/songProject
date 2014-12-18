@@ -169,6 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 var navIndex=2;  
 var indexs=0;
     $(document).ready(function(){
+    	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
     	
@@ -186,9 +187,7 @@ var indexs=0;
              $(this).siblings("#tishik01").css("display","none");      
           });
           
-          $(".u_left_mian").click(function(){
-              $(this).siblings().slideToggle("slow");
-            });
+
      
          	$(window).on('scroll', function(){
     	        if($(window).scrollTop()<500){

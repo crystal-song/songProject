@@ -114,14 +114,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var indexs=1;
     var ap=0;
     var fp=0;
-    
+
     $(document).ready(function(){
     	$(".u_left_sec:eq(1) li:eq(0)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
-    	$(".u_left_mian").click(function(){
-            $(this).siblings().slideToggle("slow");
-          });
     	var ta=parseInt($("#balance_info").html());
     	var aa=parseInt($("#availableAmount_info").html());
     	var fa=parseInt($("#freezeAmount_info").html());

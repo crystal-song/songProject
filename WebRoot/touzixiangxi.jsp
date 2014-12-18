@@ -234,7 +234,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <p class="bianhao">
      <span class="con_pic01"><strong>项目：${product1.projectName}</strong></span>
 
-     <span class="bianhao_right">企业编号：${product1.enterpriseNumber}  </span>
+     <span class="bianhao_right">项目编号：${product1.enterpriseNumber}  </span>
     </p>
      <div class="pro_msg">
        <div class="pro_pic">${product1.projectPicture}</div>

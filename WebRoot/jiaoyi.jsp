@@ -170,10 +170,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             		  $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
             	  }
 */
-            
-    	    $(".u_left_mian").click(function(){
-    	          $(this).siblings().slideToggle("slow");
-    	        });
+
     	        
     	        
     	
