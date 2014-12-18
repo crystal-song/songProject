@@ -21,6 +21,7 @@ public interface IptopService {
 			throws Exception;
 
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number);
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number);
 
 	public void deleteTInvestmentInfo(Long id) throws Exception;
 
