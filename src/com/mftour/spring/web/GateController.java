@@ -733,15 +733,12 @@ public class GateController  {
 		  
 		  try {
 		            
-		      //    ������ ��������� ������ ������ ������ ������ ��� 
 		      DocumentBuilder db=dbf.newDocumentBuilder();
 		      
-		      //������ ��� ��������� ��� ������ ������ ������ -->dom��� 
 		     
 		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
 		     Document dm=db.parse(iStream);
 		      
-		      //������ ������ person������ 
 		      NodeList persons=dm.getElementsByTagName("response");
 		     
 		      TEstablishmentNotify establishmentNotify=new TEstablishmentNotify();
@@ -936,8 +933,7 @@ public class GateController  {
 		    	 
 		    	  
 		    	  TRecharge recharge=gateService.queryTRechargeByRequestNo(rechargeSucceed.getRequestNo()).get(0);
-		    	  //������������������
-		    	  TTransRecord transrecord=new TTransRecord(recharge.getPlatformUserNo(),recharge.getRequestNo(),recharge.getTime(),"",recharge.getAmount(),"������");
+		    	  TTransRecord transrecord=new TTransRecord(recharge.getPlatformUserNo(),recharge.getRequestNo(),recharge.getTime(),"",recharge.getAmount(),"充值");
 		    	  transRecordService.addOrUpdate(transrecord);
 		    	
 		        } catch (Exception e) {
@@ -1018,7 +1014,7 @@ public class GateController  {
 		    	 
 		      
 	    	
-	    	  TTransRecord transrecord=new TTransRecord(transferInfo.getPlatformUserNo(),transferInfo.getRequestNo(),transferInfo.getTransDate(),transferInfo.getProjectName(),transferInfo.getPaymentAmount(),"������");
+	    	  TTransRecord transrecord=new TTransRecord(transferInfo.getPlatformUserNo(),transferInfo.getRequestNo(),transferInfo.getTransDate(),transferInfo.getProjectName(),transferInfo.getPaymentAmount(),"投资");
 	    	  transRecordService.addOrUpdate(transrecord);
 		   
 		      
@@ -1643,7 +1639,7 @@ public class GateController  {
 	    	  TDrawMoney drawmoney=gateService.queryTDrawMoneyByRequestNo(drawMoneySucceed.getRequestNo()).get(0);
 	    	  userService.getUserByAccount(drawmoney.getPlatformUserNo());
 	    
-	    	  TTransRecord transrecord=new TTransRecord(drawmoney.getPlatformUserNo(),drawmoney.getRequestNo(),drawmoney.getTransDate(),"",drawmoney.getAmount(),"������");
+	    	  TTransRecord transrecord=new TTransRecord(drawmoney.getPlatformUserNo(),drawmoney.getRequestNo(),drawmoney.getTransDate(),"",drawmoney.getAmount(),"提现");
 	    	  transRecordService.addOrUpdate(transrecord);
 		      
 		     /* gateService.addOrUpdateTBindingSucceed(bindingSucceed);*/

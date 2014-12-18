@@ -51,6 +51,10 @@ public class PtopServiceImpl implements IptopService {
 		return ptopDao.queryInvestmentInfoByNumber(page,Number);
 
 	}
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number) {
+		return ptopDao.queryInvestmentInfoByNumber(Number);
+		
+	}
 
 	@Override
 	public void deleteTInvestmentInfo(Long id) throws Exception {
