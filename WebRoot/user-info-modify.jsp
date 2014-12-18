@@ -336,7 +336,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 var navIndex=3;
 var indexs=0;
 $(document).ready(function(){
-	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
 	$(".tip").mouseover(function(){
         //alert("aa");
@@ -352,9 +352,7 @@ $(document).ready(function(){
          $(this).siblings("#tishik01").css("display","none");      
       });
       
-      $(".u_left_mian").click(function(){
-          $(this).siblings().slideToggle("slow");
-        });
+
      	$(window).on('scroll', function(){
 	        if($(window).scrollTop()<500){
 	            $(".absolute_bac1").hide();

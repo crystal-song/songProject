@@ -209,6 +209,13 @@ ul,li{
 	float:left;
 	background:url(../img/images-2014-11/logo_new.jpg) no-repeat;
 	}
+.wel_reg{
+	width:156px;
+	height:54px;
+	background:url(../img/images-2014-11/wel_reg.gif) no-repeat;
+	float:left;
+	margin-top:10px;
+}	
 .nav_big{
 	width:700px;
 	*+width:655px;
@@ -1556,8 +1563,7 @@ ul,li{
 	
 .table_mag{
 	width:800px;
-	height:300px; 
-	overflow:auto;
+	height:; 
 	margin-top:40px;
 	border-top:1px solid #ccc;
 	}
@@ -3706,30 +3712,50 @@ ul,li{
 }
 .blank_block{ 
 	width:803px; 
+	border:1px solid #ccc;
+	border-radius:5px;
 	min-height:160px; 
 	background:#FFF;  
 	padding:0px; 
 	margin:50px auto;
+	z-index:1000
 }
 .blank_block_title{ 
-	width:799px; 
-	height:32px; 
-	background:url(../images/touzi_title.jpg) no-repeat; 
+	width:759px; 
+	height:45px; 
+    border-bottom:1px solid #ccc;
 	text-align:left; 
 	font-size:18px; 
 	font-weight:bold; 
-	padding-top:13px; 
-	padding-left:4px; 
+	padding:10px 0px; 
 	color:#fff;
+	margin:0 auto
 }
 .blank_block_content{ 
 	padding:20px; 
 	text-align:left; 
-	background:#f6f6f6;
+	margin-top:40px
 }
-
+.top_head{
+	width:1000px;
+	height:80px;
+	margin:0 auto;
+	
+}
+.new_reg01{
+	padding-left:18px;
+	width:140px;
+	height:40px;
+	font-size:24px;
+	font-weight:bold;
+	display:inline-block;
+	color:#666;
+	line-height:40px;
+	margin-top:10px;
+    background:url(../img/images-2014-11/reg_title_bac.gif) 0 4px  no-repeat;
+}
 .reg{ 
-	font-size:18px; 
+	font-size:14px; 
 	line-height:36px; 
 	font-family: 'Microsoft YaHei','Helvetica Neue',Helvetica,Arial,STHeiti,simsun,sans-serif;
 	padding-left:25%;
@@ -3737,12 +3763,13 @@ ul,li{
 .reg p{ 
 	padding:3px; 
 	margin:0px;
+	width:316px;
 }
 .reg div{ 
 	font-size:12px;
 }
 .reg .input_item{ 
-	height:36px; 
+	height:26px; 
 	line-height:36px; 
 	border: solid 1px #adadad; 
 	margin-bottom:-5px; 
@@ -3751,6 +3778,45 @@ ul,li{
 }
 .reg .input_item:focus{ 
 	border:1px solid #0F9;
+}
+.green_right{
+	width:30px;
+	height:30px;
+	background:url(../img/images-2014-11/green_right.jpg) 0 4px  no-repeat; 
+	display:inline-block;
+	float:right;
+	
+	
+}
+.new1{
+	display:none;
+}
+.new2{
+	display:none;
+}
+.new3{
+	display:none;
+}
+.new4{
+	display:none;
+}
+.blank_right{
+	float:right;
+	width:200px;
+	height:28px;
+	line-height:30px;
+	color:#666;
+	font-size:12px;
+	margin-top:28px;
+	font-weight:lighter;
+	text-align:right;
+	padding-right:10px;
+	
+}
+.blank_block_title .blank_right a{
+	display:inline-block;
+	width:50px;
+	font-size:12px;
 }
 .btn_login{ 
 	background:url(../images/dl01_03.jpg) no-repeat center; 
@@ -3766,6 +3832,20 @@ ul,li{
 	border:none!important; 
 	cursor:pointer;
 	margin-left: 20%;
+}
+.btn_reg_new{
+	width:200px;
+	height:40px;
+	background:#fe726e;
+	border:none;
+	border-radius:3px;
+	margin-left: 75px;
+	color:#fff;
+	font-size:20px;
+	font-weight:bold
+}
+.btn_reg_new:hover{
+    background:#e62e2e;
 }
 .zh_wby:focus{ 
 	border:none;
@@ -4351,12 +4431,12 @@ ul,li{
 	margin-top:40px;
 }
 .tui_li {
-	width:800px;
-	height:300px;
+	width:500px;
+	height:200px;
 	margin-top:20px;
 }
 .tui_li li {
-	width:300px;
+	width:500px;
 	height:30px;
 	line-height:30px;
 	margin:10px auto;
@@ -4364,13 +4444,101 @@ ul,li{
 }
 
 .tui_li li span{
-	width:100px;
+	width:150px;
 	height:30px;
-	background:green;
 	display:inline-block;
 	text-align:right;
-	margin-right:10px;
+	margin-right:15px;
 }
+.tui_pic{
+	width:515px;
+	height:142px;
+	margin: 1% 18% ;
+}
+.tui_left{
+	width:210px;
+	height:142px;
+	background:#eee;
+	border:1px solid #ccc;
+	float:left;
+	margin:0 3px;
+}
+
+.tui_right{
+	width:285px;
+	height:140px;
+    float:left;	
+    border:1px solid #ccc;
+    color:#ccc;
+}
+.tui_num{
+	width:500px;
+	margin:40px auto 10px;
+	text-align:left;
+	padding-left:20px;
+}
+.tui_tab {
+    width:510px;
+	height:35px;
+	border:1px solid #ccc;
+	margin:0 auto
+}
+.tui_tab td{  
+	height:35px;
+	width:150px;
+}
+
+/*liquan*/
+.quan_label{
+	width:810px;
+	height:30px;
+	border-bottom:2px solid #ec1c04;
+	margin-top:35px;
+}
+.quan_label div{
+	width:80px;
+	height:30px;
+	float:left;
+	line-height:30px;
+	cursor:pointer;
+}
+.quan_red{
+	background:#ec1c04;
+	color:#fff;
+}
+.quan_tab{
+	width:810px;
+	margin-top:38px;
+}
+.quan_tab tr{
+	height:30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
