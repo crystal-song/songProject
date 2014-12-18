@@ -91,9 +91,9 @@ public class IGateServiceImpl  implements  IGateService {
 
 
 	}
-	public List queryAllTransRecord(Page page,String sql,String platformUserNo)
+	public List queryAllTransRecord(Page page,String sql,Object[] para)
 			throws Exception {
-		return gateDao.queryAllTransRecord(page,sql,platformUserNo);
+		return gateDao.queryAllTransRecord(page,sql,para);
 
 	}
 

@@ -8,6 +8,7 @@ import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.util.Page;
 
 public interface IptopDao {
 
@@ -19,6 +20,7 @@ public interface IptopDao {
 			throws Exception;
 
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number);
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number);
 
 	public void deleteTInvestmentInfo(Long id) throws Exception;
 
