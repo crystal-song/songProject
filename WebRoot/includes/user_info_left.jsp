@@ -111,6 +111,9 @@
                 <li>
                  <a href="<%=path%>/gate/binding">绑定银行卡</a>
                 </li>
+                <li>
+                 <a href="<%=path%>/liquan.jsp">我的礼券</a>
+                </li>
               </ul>
            </li>
 
