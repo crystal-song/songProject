@@ -297,7 +297,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元
          </span>
          <div class="neirong"></div>         
-         <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp">立即投资</a></span>
+         <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp" style="margin:24px 0 0 30px">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </c:if>
@@ -547,9 +547,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </ul> --%>
       
      </div>
-     </div>
-    </div> 
-
+    </div>
+</div> 
 <!-- absolute start -->
 <%@ include file="/includes/absolute.jsp" %>
 <!-- absolute end -->
