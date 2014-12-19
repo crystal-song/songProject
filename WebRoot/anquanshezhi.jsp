@@ -291,9 +291,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              }
             
          }); 
-         $(".u_left_mian").click(function(){
-              $(this).siblings().slideToggle("slow");
-            }); 
+      
          
          $(".anquan_hide_btn").click(function(){
        	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 

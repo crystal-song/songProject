@@ -11,47 +11,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 </head>
 
-<body>
-<!-- top start  -->
-<%@ include file="/includes/header.jsp" %>
-<!-- top end  -->
+<body style="background:#f7f7f7">
+<!-- 
 <div class="frame">
 <!-- page content -->
+ <div class="top_head">
+   <div class="logo"></div>
+   <div class="wel_reg"></div>
+ </div>
 <div class="blank_block">
-  <div class="blank_block_title">新用户注册</div>
+  <div class="blank_block_title"><span class="new_reg01">新用户注册</span><div class="blank_right">已有中租宝账户? 请<a href="<%=path%>/login.jsp" style="color:#e72634">直接登录</a></div></div>
     <form action="<%=path %>/welcome/regEmail" id="Form1"  method="post" style="padding:0px;">
         <div class="blank_block_content reg">
-          <p>　用户名：<input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /></p>
+          <p>　用户名：<input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /><span class="green_right new1"></span></p>
           <div id="tip_username"><span class="tip_n">请输入用户名！</span></div>
-          <p>　密　码：<input name="password" id="password" type="password" class="input_item" onblur="chk_pwd()"/></p>
+          <p>　密　码：<input name="password" id="password" type="password" class="input_item" onblur="chk_pwd()"/><span class="green_right new2"></span></p>
           <div id="tip_userpwd"><span class="tip_n">请输入密码！</span></div>
-          <p>确认密码：<input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/></p>
+          <p>确认密码：<input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/><span class="green_right new3"></span></p>
           <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
-          <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/></p>
+          <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/><span class="green_right new4"></span></p>
           <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div> 
-          <p>　验证码：  <input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
+          <p style="width:480px">　验证码：  <input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
 					<img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
-					<a href="#" mce_href="#" onclick="javascript:show();return false;">看不清,换一张!</a>
+					<a href="#" mce_href="#" onclick="javascript:show();return false; " style="font-size:12px;">看不清,换一张!</a>
 					 <div id="tip_validatecode"><span class="tip_n">请输入验证码！</span></div> 
 		  </p>
 <!--           <p>　推荐人：<input name="referee" id="referee" type="text" class="input_item"/></p>
-          <div id="tip_referee"><span class="tip_n"></span></div>           -->
+          <div id="tip_referee"><span class="tip_n"></span></div>      
+ -->
+ 
           <p class="xieyi_font"><input  type="checkbox" checked="checked" id="agreement">我已阅读并同意中租宝
            <a target="_blank" href="<%=path%>/zhucexieyi.jsp">《使用协议》</a>及
            <a target="_blank" href="<%=path%>/yinsitiaokuan.jsp">《隐私条款》</a></p>
-           <p><input name="imgbtn" type="button"  onclick="check()" class="btn_reg"></p>
+           <p><input name="imgbtn" type="button"  onclick="check()" class="btn_reg_new" value="立即注册"></p>
           </div>          
           <div class="two_pic"></div>
       </form>
-    </div>
- <!-- page content end -->   
+    </div> 
 </div>
-<div class="clear"></div>
-<!-- footer start -->
-<%@ include file="/includes/footer.jsp" %>
-<!-- footer end -->
+
+
 </body>
 <script type="text/javascript" >
+
 var c_name=false;
 var c_pwd=false;
 var c_repwd=false;
@@ -86,8 +88,10 @@ function chk_name(){
 		                        /* window.open('<c:url value="/welcome/session"/>', '_self'); */
 		                    } else {
 		                    	
-		                    $("#tip_username").html('<span class="tip_p">用户名可以使用！</span>');
-		               		  c_name=true; 
+		                   // $("#tip_username").html('<span class="tip_p">用户名可以使用！</span>');
+		                   // $(".green_right").css("backfround","url(/img/images-2014-11/green_right.jpg) 0 4px  no-repeat")
+		               		$(".new1").css("display","block");  
+		                   c_name=true; 
 		                    }
 		                }
 		            });		       
@@ -106,7 +110,8 @@ function chk_pwd(){
 		// return false; 
 	  }else{
 		  c_pwd=true;
-		  $("#tip_userpwd").html('<span class="tip_p">密码可以使用！</span>');
+		 // $("#tip_userpwd").html('<span class="tip_p">密码可以使用！</span>');
+		  $(".new2").css("display","block"); 
 	  }  
 }
 
@@ -123,7 +128,8 @@ function chk_repwd(){
    	// return false; 
     }else{
     	c_repwd=true;
-		  $("#tip_userrepwd").html('<span class="tip_p">两次输入一致！</span>');
+		  //$("#tip_userrepwd").html('<span class="tip_p">两次输入一致！</span>');
+		  $(".new3").css("display","block"); 
     }
 }
 function chk_email(){
@@ -141,7 +147,8 @@ function chk_email(){
 		// return false; 
 	  }else{
 		  c_email=true;
-		  $("#tip_useremail").html('<span class="tip_p">邮箱可以使用！</span>');
+		  //$("#tip_useremail").html('<span class="tip_p">邮箱可以使用！</span>');
+		  $(".new4").css("display","block"); 
 	  }
 }
    function check(){ 

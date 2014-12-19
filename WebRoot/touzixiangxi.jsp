@@ -234,7 +234,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <p class="bianhao">
      <span class="con_pic01"><strong>项目：${product1.projectName}</strong></span>
 
-     <span class="bianhao_right">企业编号：${product1.enterpriseNumber}  </span>
+     <span class="bianhao_right">项目编号：${product1.enterpriseNumber}  </span>
     </p>
      <div class="pro_msg">
        <div class="pro_pic">${product1.projectPicture}</div>
@@ -297,7 +297,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元
          </span>
          <div class="neirong"></div>         
-         <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp">立即投资</a></span>
+         <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp" style="margin:24px 0 0 30px">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </c:if>
@@ -429,7 +429,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
 		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>                   
         </div>       
-      </div>   
+        
 <!--       <ul class="table_mag">
         <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>投资时间</span><span>状态</span></li>
         <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
@@ -545,7 +545,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140731170538603860.jpg" width="355px" height="500px"></li>
          <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140731170564286428.jpg" width="355px" height="500px"></li>
        </ul> --%>
-       
+      
      </div>
     </div>
 </div> 
