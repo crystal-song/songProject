@@ -1,6 +1,6 @@
 *.class
 .classpath
-WebRoot/WEB-INF/applicationContext.xml
+/WebRoot/WEB-INF/applicationContext.xml
 .project
 .settings
 # Package Files #
