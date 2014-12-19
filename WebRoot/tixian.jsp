@@ -10,72 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript">
 
-function onSubmit(host) {
-	if(!checkval()){return false}
-	  document.getElementById("host").value = host;
-	  var form = document.getElementById("form");
-	  document.getElementById("mysubmit_btn").disabled=true;
-	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-	  $("#dialog01").css("display","block");
-	  $(".black_bac").css("display","block");
-	  $(".right_cha").click(function(){		  
-	  $("#dialog01").css("display","none");
-	  
-	  });
-	  
-	form.submit();		
-}
-
-function checkval(){
-	if($(".tixian_money").val()==0||$(".tixian_money").val()=="提现金额不能为0"||$(".tixian_money").val()==""){
-		alert("提现金额不能为空!!");
-		return false;
-		}
-	return true;
-}
-    var navIndex=3; 
-    var indexs=1;
-    $(document).ready(function(){
-    	$(".u_left_sec:eq(1) li:eq(2)").children("a").css("color","#fc652e");
-    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	$(".u_left_mian").click(function(){
-            $(this).siblings().slideToggle("slow");	
-    	});	
-    	
-    	$(".tixian_money").focus(function(){ 
-    		var tixian_val=$(".tixian_money").val();
-    		if(tixian_val=="提现金额不能为0");
-    		  $(".tixian_money").val("");
-    		//alert("aa")		
-    		
-    	});
-    	
-	    $(".tixian_money").blur(function(){
-	    	var tixian_val=$(".tixian_money").val();
-	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
-	    		alert("您输入的金额为空,请重新输入");	    		
-	    	}    	
-	    });
-});
-  /*
-    var myblur= document.getElementById('amount');    
-    myblur.onfocus=function(){
-      if(myblur.value=="提现金额不能为0"){        	
-         myblur.value="";
-        // myblur.style.color="#000";
-        }     
-}   
-   
-    myblur.onblur=function(){
-	   if(myblur.value==""){
-	    myblur.value="投资金额不低于100元";
-	    //alert("您输入的金额不能为空");
-	    // myblur.style.color="#ccc" ;  
- }        
-} */
-</script>
 </head>
 
 <body>
@@ -230,4 +165,67 @@ function checkval(){
 <!-- footer end -->
 <div class="black_bac"></div>
 </body>
+<script type="text/javascript">
+
+function onSubmit(host) {
+	if(!checkval()){return false}
+	  document.getElementById("host").value = host;
+	  var form = document.getElementById("form");
+	  document.getElementById("mysubmit_btn").disabled=true;
+	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+	  $("#dialog01").css("display","block");
+	  $(".black_bac").css("display","block");
+	  $(".right_cha").click(function(){		  
+	  $("#dialog01").css("display","none");
+	  
+	  });
+	  
+	form.submit();		
+}
+
+function checkval(){
+	if($(".tixian_money").val()==0||$(".tixian_money").val()=="提现金额不能为0"||$(".tixian_money").val()==""){
+		alert("提现金额不能为空!!");
+		return false;
+		}
+	return true;
+}
+    var navIndex=3; 
+    var indexs=1;
+    $(document).ready(function(){
+    	$(".u_left_sec:eq(1) li:eq(2)").children("a").css("color","#fc652e");
+    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");   
+    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+    	$(".tixian_money").focus(function(){ 
+    		var tixian_val=$(".tixian_money").val();
+    		if(tixian_val=="提现金额不能为0");
+    		  $(".tixian_money").val("");
+    		//alert("aa")		
+    		
+    	});
+    	
+	    $(".tixian_money").blur(function(){
+	    	var tixian_val=$(".tixian_money").val();
+	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
+	    		alert("您输入的金额为空,请重新输入");	    		
+	    	}    	
+	    });
+});
+  /*
+    var myblur= document.getElementById('amount');    
+    myblur.onfocus=function(){
+      if(myblur.value=="提现金额不能为0"){        	
+         myblur.value="";
+        // myblur.style.color="#000";
+        }     
+}   
+   
+    myblur.onblur=function(){
+	   if(myblur.value==""){
+	    myblur.value="投资金额不低于100元";
+	    //alert("您输入的金额不能为空");
+	    // myblur.style.color="#ccc" ;  
+ }        
+} */
+</script>
 </html>

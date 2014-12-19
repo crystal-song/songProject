@@ -94,6 +94,9 @@
                 <li style="border-bottom:0; display:none">
                   <a href="<%=path%>/tongzhishezhi.jsp" >通知设置</a>
                 </li>
+                <li style="border-bottom:0;">
+                  <a href="<%=path%>/tuijian.jsp" >推荐管理</a>
+                </li>
               </ul>
            </li>
            <li>
@@ -110,6 +113,9 @@
                 </li>
                 <li>
                  <a href="<%=path%>/gate/binding">绑定银行卡</a>
+                </li>
+                <li>
+                 <a href="<%=path%>/liquan.jsp">我的礼券</a>
                 </li>
               </ul>
            </li>
@@ -148,17 +154,21 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-    	 
+      
+     // $(".u_left_sec:first li:eq(0)").children("a").css("color","#fc652e");
       $(".u_left_mian").click(function(){    	
     	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
     	  $(this).parent().siblings().children(".u_left_sec").slideUp();
+    	  $(this).siblings().slideToggle("slow");
       });
     	if(indexs!=null){
     		$(".u_left_mian").eq(indexs).addClass("u_left_red").parent().siblings().children(".u_left_mian").removeClass("u_left_red");
     		$(".u_left_mian").eq(indexs).siblings(".u_left_sec").css("display","block");
     		//.css("display","block")
     	}
-    	
+    	$(".u_left_mian").click(function(){
+         	
+    	});
     });
 </script>
         
