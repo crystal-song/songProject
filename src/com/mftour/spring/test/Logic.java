@@ -8,11 +8,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import com.alibaba.fastjson.JSON;
 import com.mftour.spring.base.JsonBaseBean;
 import com.mftour.spring.util.Rest;
-
+import com.mftour.spring.logic.YeePay;;
 
 public class Logic {
 
@@ -34,8 +33,8 @@ public class Logic {
 
 	@Test
 	public void test() {
-		String s = new Rest().getRestful("/rest/repay.json");
-		JsonBaseBean vo = JSON.parseObject(s, JsonBaseBean.class);
-	    assertEquals(vo.isSuccess(), true);
+		boolean s = YeePay.doLoan(19);
+		//JsonBaseBean vo = JSON.parseObject(s, JsonBaseBean.class);
+	    assertEquals(s, true);
 	}
 }

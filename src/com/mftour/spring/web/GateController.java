@@ -6,6 +6,7 @@ import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -55,6 +57,7 @@ import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.File;
 import com.mftour.spring.util.HttpClientTest;
 import com.mftour.spring.util.ReadWirtePropertis;
+import com.mftour.spring.util.Xml;
 import com.yeepay.bha.example.bean.BHAAuthorization;
 import com.yeepay.bha.example.bean.BHAEstablishmentRegistration;
 import com.yeepay.bha.example.bean.BHAFeeModeEnum;
@@ -444,24 +447,28 @@ public class GateController {
 		if (o == null) {
 			return "login";
 		}
-		List<TProduct> list = productService.queryProductByNumber(product
-				.getEnterpriseNumber());
-		if (list != null && list.size() != 0) {
-			TProduct Product = list.get(0);
-			if (Product.getBuyType() == null)
-				return "xianxia";
-		}
 
-		List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(o
-				.toString());
-		List<TRegisterNotify> lis = gateService.queryTRegisterNotifyByName(o
-				.toString());
-
-		if (li != null && li.size() != 0) {
-			String code = li.get(0).getCode();
-
-			if (code != null && code.equals("1")) {
-				TRegisterYeePay registerYeePay1 = li.get(0);
+		List<TProduct> list=productService.queryProductByNumber(product.getEnterpriseNumber());
+		             if(list != null && list.size()!=0){
+		            	 TProduct Product=list.get(0);
+		            	   if(Product.getBuyType()==null)   
+		            	   return "xianxia";
+		             }
+		
+		 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
+		 List<TRegisterNotify> lis= gateService.queryTRegisterNotifyByName(o.toString());
+	
+		 
+		 if(li!=null&& li.size()!=0){
+			 String code=li.get(0).getCode();
+		
+		 if(list!=null && list.size()>0 &&  code!=null&&code.equals("1")){
+			 TRegisterYeePay registerYeePay1=li.get(0);
+			
+				model.addAttribute("registerYeePay1", registerYeePay1);
+				model.addAttribute("buyAmount", buyAmount);
+				model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
+				model.addAttribute("product", product);
 
 				model.addAttribute("registerYeePay1", registerYeePay1);
 				model.addAttribute("buyAmount", buyAmount);
@@ -616,66 +623,61 @@ public class GateController {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
 
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-		try {
-
-			DocumentBuilder db = dbf.newDocumentBuilder();
-
-			InputStream iStream = new ByteArrayInputStream(resp.getBytes());
-			Document dm = db.parse(iStream);
-
-			NodeList persons = dm.getElementsByTagName("response");
-
-			TEstablishmentNotify establishmentNotify = new TEstablishmentNotify();
-
-			for (int i = 0; i < persons.getLength(); i++) {
-
-				Element personElement = (Element) persons.item(i);
-
-				NodeList p = personElement.getChildNodes();
-				for (int j = 0; j < p.getLength(); j++) {
-					p.item(j);
-
-				}
-
-				if (p.item(1).getNodeName() != null
-						&& p.item(1).getTextContent() != null) {
-					establishmentNotify.setService(p.item(1).getTextContent());
-
-				}
-				if (p.item(3).getNodeName() != null
-						&& p.item(3).getTextContent() != null) {
-					establishmentNotify
-							.setRequestNo(p.item(3).getTextContent());
-
-				}
-				if (p.item(5).getNodeName() != null
-						&& p.item(5).getTextContent() != null) {
-					establishmentNotify.setCode(p.item(5).getTextContent());
-
-				}
-				if (p.item(7).getNodeName() != null
-						&& p.item(7).getTextContent() != null) {
-					establishmentNotify.setDescription(p.item(7)
-							.getTextContent());
-
-				}
-
-			}
-			gateService.addOrUpdateTEstablishmentNotify(establishmentNotify);
-			TEstablishmentRegistration establishmentRegistration = gateService
-					.queryTEstablishmentRegistrationByNumber(
-							establishmentNotify.getRequestNo()).get(0);
-			establishmentRegistration.setCode(establishmentNotify.getCode());
-			gateService
-					.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-		}
-
+		
+		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
+		  
+		  try {
+		            
+		      DocumentBuilder db=dbf.newDocumentBuilder();
+		      
+		     
+		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
+		     Document dm=db.parse(iStream);
+		      
+		      NodeList persons=dm.getElementsByTagName("response");
+		     
+		      TEstablishmentNotify establishmentNotify=new TEstablishmentNotify();
+		      
+		      for(int i=0;i<persons.getLength();i++){
+		          
+		    	  Element personElement = (Element)persons.item(i);
+		    	  
+		    	  NodeList p=personElement.getChildNodes();
+		    	  for(int j=0;j<p.getLength();j++){
+		    		  p.item(j);
+		    		 
+		    	  }
+		    	  
+		    	 
+		    	  
+		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
+		    		  establishmentNotify.setService(p.item(1).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
+		    		  establishmentNotify.setRequestNo(p.item(3).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
+		    		  establishmentNotify.setCode(p.item(5).getTextContent());
+		    		  
+		    	  }
+		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
+		    		  establishmentNotify.setDescription(p.item(7).getTextContent());
+		    		  
+		    	  }
+		    	  
+		      }  
+		      gateService.addOrUpdateTEstablishmentNotify(establishmentNotify);
+		      TEstablishmentRegistration establishmentRegistration= gateService.queryTEstablishmentRegistrationByNumber(establishmentNotify.getRequestNo()).get(0);
+		      establishmentRegistration.setCode( establishmentNotify.getCode());
+		      gateService.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
+		  } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	        } finally {
+	        }
+		    	  
 		return "payment/establishmentRegistration";
 
 	}
@@ -813,10 +815,9 @@ public class GateController {
 
 			TRecharge recharge = gateService.queryTRechargeByRequestNo(
 					rechargeSucceed.getRequestNo()).get(0);
-			// ������������������
 			TTransRecord transrecord = new TTransRecord(
 					recharge.getPlatformUserNo(), recharge.getRequestNo(),
-					recharge.getTime(), "", recharge.getAmount(), "������");
+					recharge.getTime(), "", recharge.getAmount(), "充值");
 			transRecordService.addOrUpdate(transrecord);
 
 		} catch (Exception e) {
@@ -900,7 +901,7 @@ public class GateController {
 					transferInfo.getPlatformUserNo(),
 					transferInfo.getRequestNo(), transferInfo.getTransDate(),
 					transferInfo.getProjectName(),
-					transferInfo.getPaymentAmount(), "������");
+					transferInfo.getPaymentAmount(), "投资");
 			transRecordService.addOrUpdate(transrecord);
 
 		} catch (Exception e) {
@@ -1090,13 +1091,39 @@ public class GateController {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			logger.error("error "+ e);
 		} finally {
 		}
 
 		return "payment/binding";
 	}
 
+	
+	@RequestMapping(value = "/gate/loanNotify", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	@ResponseBody
+	public String loanNotify(String notify, String sign, Model model)
+			throws Exception {
+
+		try {
+
+	        Map<String, Object> m = Xml.Dom2Map(notify);
+	        if(m.get("code").equals("1")){
+	        	
+	        }else{
+	            logger.error("error loan "+ m.get("description"));
+	        	
+	        }
+			return "success";
+			
+		} catch (Exception e) {
+			logger.error("error "+ e);
+			return "error";
+		}
+
+	}
+
+	
 	@RequestMapping(value = "/gate/rechargeNotify", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String rechargeNotify(String notify, String sign, Model model)

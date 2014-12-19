@@ -3,43 +3,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@ include file="/includes/taglibs.jsp" %> 
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <title>中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
-<%@ include file="/includes/taglibs.jsp" %> 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
-<script type="text/javascript">
-var navIndex=0;
-
-
-$(document).ready(function(){
-	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(0).children("p").addClass("headwd_color")
-		
-	$(".news_title li").click(function(){
-		        var index= $(this).index();
-		        $(this).addClass('news_title_bac').siblings().removeClass('news_title_bac');
-		        $(".news_label ul").eq(index).css("display","block").siblings().css("display","none")
-		    });
-		    		            
-	});
-</script>
 
 </head>
 <body>
-
-
 
 <!-- top start  -->
 
@@ -222,7 +193,7 @@ $(document).ready(function(){
     <!-- absolute_right start -->
 	 <%@ include file="/includes/absolute.jsp" %>
 	<!-- absolute_right end -->
-      
+     
  </div>                  
   
 <!-- links end -->
@@ -231,4 +202,43 @@ $(document).ready(function(){
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript">
+var navIndex=0;
+
+	// if(var navIndex!=null&&navIndex!=-1)$(".nav_big li").eq(0).addClass("bd_btom");
+	
+/*
+    $(".header li").mouseover(function(){ 
+      var index=$(this).index();
+      $('.top div').eq(index).show();
+
+    $(this).addClass('head_red').siblings().removeClass('head_red');     
+    }).mouseout(function(){
+       var index=$(this).index();
+       $('.top div').eq(index).hide();
+    });
+
+    $(".top div").mouseover(function(){ 
+      var index=$(this).index();
+      $(this).show();
+     
+    }).mouseout(function(){
+       var index=$(this).index();
+       $(this).hide();
+    });
+
+*/
+
+$(document).ready(function(){
+	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(0).children("p").addClass("headwd_color")
+		
+	$(".news_title li").click(function(){
+		        var index= $(this).index();
+		        $(this).addClass('news_title_bac').siblings().removeClass('news_title_bac');
+		        $(".news_label ul").eq(index).css("display","block").siblings().css("display","none")
+		    });
+		    		            
+	});
+</script>
 </html>

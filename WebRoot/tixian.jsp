@@ -3,16 +3,12 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+ <%@ include file="/includes/taglibs.jsp" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
+
 <title>提现 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
- <%@ include file="/includes/taglibs.jsp" %> 
+
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 
@@ -22,9 +18,14 @@ function onSubmit(host) {
 	  var form = document.getElementById("form");
 	  document.getElementById("mysubmit_btn").disabled=true;
 	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-	form.submit();
-
-		
+	  $("#dialog01").css("display","block");
+	  $(".black_bac").css("display","block");
+	  $(".right_cha").click(function(){		  
+	  $("#dialog01").css("display","none");
+	  
+	  });
+	  
+	form.submit();		
 }
 
 function checkval(){
@@ -42,7 +43,6 @@ function checkval(){
     	$(".u_left_mian").click(function(){
             $(this).siblings().slideToggle("slow");	
     	});	
-
     	
     	$(".tixian_money").focus(function(){ 
     		var tixian_val=$(".tixian_money").val();
@@ -79,6 +79,7 @@ function checkval(){
 </head>
 
 <body>
+<div class="black_bac"></div>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
@@ -167,7 +168,7 @@ function checkval(){
           </div>
       
          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button> -->
-          <div class="mar_que_top"><a onclick="onSubmit('${f.onSubmit}')" class="btn btn-default mar_btn" id="mysubmit_btn" style="color:#fff;" >确认</a></div>
+          <div class="mar_que_top"><a onclick="onSubmit('${f.onSubmit}')" class="btn mar_btn" id="mysubmit_btn" style="color:#fff;" >确认</a></div>
         </form>
             <%--  <div class="add_postcar" style="display:none">
               <p>填写现金金额</p>
@@ -207,7 +208,19 @@ function checkval(){
               <li>中租宝严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务， 并会影响银行征信记录。</li>
               <li>充值过程遇到问题，请联系客服，010-84243099/3199</li>
             </ol>          
-          </div>             
+          </div> 
+          <div id="dialog01"  style="display:none; height:210px;">
+	         <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	         </div>
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">如果您成功提现：<a href="<%=path%>/gate/service">查看我的资产</a></p>          
+	         </div>
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您提现失败：<a href="<%=path%>/gate/drawMoney">重新提现</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
+	         </div>	       
+            </div>                      
           </div> 
         </div>
       </div>
@@ -215,5 +228,6 @@ function checkval(){
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
+<div class="black_bac"></div>
 </body>
 </html>

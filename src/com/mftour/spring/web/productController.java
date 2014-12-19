@@ -89,11 +89,13 @@ public class productController {
 	@RequestMapping(value = "/getProductByid", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String getProductByid(@RequestParam("id") Long id, Model model,
+			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			TProduct product) throws Exception {
-
+		Page page = Page.newBuilder(pageNo, pageSize, "getProductByid");
 		TProduct product1 = productService.getProductById(id);
 		List<TInvestmentInfo> list = ptopService
-				.queryInvestmentInfoByNumber(product1.getEnterpriseNumber());
+				.queryInvestmentInfoByNumber(page,product1.getEnterpriseNumber());
 		List<TInterestRate> li = ptopService
 				.queryTInterestRateByNumber(product1.getEnterpriseNumber());
 		if (li != null && li.size() != 0) {
@@ -113,6 +115,7 @@ public class productController {
 		List<TNews> list3 = ptopService.getRepaymentNoticeByChannel();
 		model.addAttribute("list3", list3);
 
+		model.addAttribute("page", page);
 		return "touzixiangxi";
 		
 
