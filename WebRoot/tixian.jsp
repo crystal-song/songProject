@@ -194,7 +194,8 @@ function checkval(){
     var indexs=1;
     $(document).ready(function(){
     	$(".u_left_sec:eq(1) li:eq(2)").children("a").css("color","#fc652e");
-    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");    	
+    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");   
+    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
     	$(".tixian_money").focus(function(){ 
     		var tixian_val=$(".tixian_money").val();
     		if(tixian_val=="提现金额不能为0");

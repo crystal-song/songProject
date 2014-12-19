@@ -166,12 +166,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 <script type="text/javascript">
-var navIndex=2;  
-var indexs=0;
+ 
+var indexs=0;//侧边栏下拉，决定哪一个展开
     $(document).ready(function(){
-    	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
-    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+    	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");//侧边栏黄色背景
+    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");//文字下面红色横线
+    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");//英文红色背景
     	
     	$(".tip").mouseover(function(){
             //alert("aa");

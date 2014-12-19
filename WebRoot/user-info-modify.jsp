@@ -333,10 +333,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 <script type="text/javascript">
-var navIndex=3;
+
 var indexs=0;
+
 $(document).ready(function(){
-	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
+	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
 	$(".tip").mouseover(function(){
         //alert("aa");
