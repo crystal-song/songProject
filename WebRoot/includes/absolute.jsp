@@ -3,7 +3,10 @@
       <div style="display:none">
         <span class="absolute_bac3"><a href="<%=path%>/contact.jsp" >联系客服</a></span>
       </div>
-      <div style="display:none">
+      <div style="width:50px; height:50px;">
+        <span class="absolute_bac1"><a href="#" >返回顶部</a></span>
+      </div>
+      <div style="width:50px; height:50px; margin-top:10px;">
         <span class="absolute_bac2"><a href="#" >扫二维码</a></span>
         <div class="erweima_bac">
           <div class="erweima_big">            
@@ -13,16 +16,13 @@
       </div>   
       <div style="display:none">
         <span class="absolute_bac4"><a href="#" >意见反馈</a></span>
-      </div>
-      
-      <div>
-        <span class="absolute_bac1"><a href="#" >返回顶部</a></span>
-      </div>
+      </div>      
     </div>
     
     <script type="text/javascript">
        
     $(document).ready(function(){
+    $(".absolute_bac1").hide();
     $(".absolute_right a").hide();
     $(".absolute_right span").mouseover(function(){
        $(this).children().show();

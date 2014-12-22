@@ -96,7 +96,7 @@ function jumpPage(pag){
 	    
 	   /*  pa(); */
 	    
-	   $("#yearIncome").val(myFilter[0]);
+	$("#yearIncome").val(myFilter[0]);
 	$("#financingPeriod").val(myFilter[1]);
 	$("#financingMoney").val(myFilter[2]);
 	$("#financingProgress").val(myFilter[3]);
@@ -115,7 +115,7 @@ window.onload=function(e) {
 	if(myFilter[0]==null){
 		myFilter=[1,1,1,1,1];
 	}
-	console.log(myFilter);
+	//console.log(myFilter);
 	filterChange();
 	$(".filter li").bind("click",function(e){
 		pa($(this));
