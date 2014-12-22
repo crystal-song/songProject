@@ -88,7 +88,7 @@ function chk_name(){
 		                        /* window.open('<c:url value="/welcome/session"/>', '_self'); */
 		                    } else {
 		                    	
-		                   // $("#tip_username").html('<span class="tip_p">用户名可以使用！</span>');
+		                    $("#tip_username").html('<span class="tip_p">用户名可以使用！</span>');
 		                   // $(".green_right").css("backfround","url(/img/images-2014-11/green_right.jpg) 0 4px  no-repeat")
 		               		$(".new1").css("display","block");  
 		                   c_name=true; 
@@ -110,7 +110,7 @@ function chk_pwd(){
 		// return false; 
 	  }else{
 		  c_pwd=true;
-		 // $("#tip_userpwd").html('<span class="tip_p">密码可以使用！</span>');
+		  $("#tip_userpwd").html('<span class="tip_p">密码可以使用！</span>');
 		  $(".new2").css("display","block"); 
 	  }  
 }
@@ -128,7 +128,7 @@ function chk_repwd(){
    	// return false; 
     }else{
     	c_repwd=true;
-		  //$("#tip_userrepwd").html('<span class="tip_p">两次输入一致！</span>');
+		  $("#tip_userrepwd").html('<span class="tip_p">两次输入一致！</span>');
 		  $(".new3").css("display","block"); 
     }
 }
@@ -147,7 +147,7 @@ function chk_email(){
 		// return false; 
 	  }else{
 		  c_email=true;
-		  //$("#tip_useremail").html('<span class="tip_p">邮箱可以使用！</span>');
+		  $("#tip_useremail").html('<span class="tip_p">邮箱可以使用！</span>');
 		  $(".new4").css("display","block"); 
 	  }
 }
@@ -196,7 +196,7 @@ function validateCode (){
         show();//刷新验证码  
     }else{  
     	validate=true;
-    	$("#tip_validatecode").html('<span class="tip_P">验证码正确！</span>');
+    	$("#tip_validatecode").html('<span class="tip_p">验证码正确！</span>');
     }  
 }  
 function show(){  
