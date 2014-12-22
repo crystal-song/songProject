@@ -3116,7 +3116,7 @@ ul,li{
 /*tanchukuangkou*/
 #dialog01{
 	width:300px;
-	height:280px;
+	height:285px;
 	background:#fff;
 	position:fixed;
 	left:45%;
@@ -3291,7 +3291,7 @@ ul,li{
 
 .absolute_right{
 	width: 90px;
-	height: 100px;
+	height: 200px;
 	position: fixed;
 	right: 0;
 	bottom: 0;
@@ -3306,11 +3306,12 @@ ul,li{
 }
 .absolute_right .absolute_bac1{
 	background: url(../img/images-2014-11/erweima02.png) no-repeat;
+	
 }
 .absolute_right .absolute_bac2{
 	background: url(../img/images-2014-11/erweima.png) no-repeat;
 	position: relative;
-
+    
 }
 .absolute_right .absolute_bac3{
 	background: url(../img/images-2014-11/erweima03.png) no-repeat;
@@ -3331,8 +3332,7 @@ ul,li{
 .erweima_big{
 	width: 130px;
 	height: 130px;
-	
-	background: url(../img/images-2014-11/erweima01.png) 4px 4px no-repeat;
+	background: url(../img/images-2014-11/zhongzubao.jpg) 4px 4px no-repeat;
 	border: 1px solid #c2c2c2;
 	z-index: 50;
 } 
@@ -3341,9 +3341,9 @@ ul,li{
 	height: 130px;
 	background: #fff;	
 	position: absolute;
-	left: -157%;
+	left: -180%;
 	top: 12%;
-	display: none;
+	display:none;
 }
 .erweima_small{
 	width: 30px;

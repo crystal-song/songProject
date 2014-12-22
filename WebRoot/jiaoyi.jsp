@@ -33,8 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <ul class="list_label">
                     <li>
                       <ul class="label_sec new_fir">
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=all">全部</a></li>
-                        <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=7&type=all">最近七天</a></li>
+                        <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=all">全部</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=7&type=all">最近七天</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=30&type=all">一个月</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=90&type=all">三个月</a></li>
                       </ul>
@@ -98,6 +98,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>   
     </div>
 </div>
+<!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp" %>
+<!-- absolute_right end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
@@ -152,45 +155,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       else if(canshu=="transferinfo_all"){
 	    	   $(".new_sec li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }  	
-           
-           
-/*
-                  var a=${time_type}
-            	  if(a=='onemonth_all'){            		
-            		  $(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
-            	  } 
-            	  if(a=='threemonth_all'){
-            		  $(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
-            	  }
-            	  if(a=='all_all'){
-            		  $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
-       	    	      $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
-            	  }
-            	  if(a=='recharge_all'){
-            		  $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
-            	  }
-*/
+                   
 
-    	        
-    	        
-    	
-    	    	//alert("aa")
     	    	var vale=$("#time").val();
     	    	var type_vale=$("#type").val();   	    	
-    	    	//alert(vale1)
-    	    	//alert(vale)
-    	    	if(vale==7){
+    	    	if(vale=="timeall"){
     	    		$(".new_fir li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(vale==30){
+    	    	if(vale==7){
     	    		$(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(vale==90){
+    	    	if(vale==30){
     	    		$(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(vale=="timeall"){
+    	    	if(vale==90){
     	    		$(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
+  	    	
     	    	if(type_vale=="typeall"){
     	    		$(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
