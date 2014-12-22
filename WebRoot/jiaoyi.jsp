@@ -33,10 +33,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <ul class="list_label">
                     <li>
                       <ul class="label_sec new_fir">
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=all">全部</a></li>
                         <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=7&type=all">最近七天</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=30&type=all">一个月</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=90&type=all">三个月</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=all">全部</a></li>
                       </ul>
                     </li>
                     <li>

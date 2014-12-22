@@ -117,6 +117,9 @@
                 <li>
                  <a href="<%=path%>/liquan.jsp">我的礼券</a>
                 </li>
+                <li>
+                 <a href="<%=path%>/liquan.jsp">我的礼券</a>
+                </li>
               </ul>
            </li>
 
@@ -133,7 +136,7 @@
                   <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
                 <li>
-                  <a href="<%=path%>/transRecord/queryTransRecord?time=7&type=typeall">交易记录</a>
+                  <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
                 <li style="display:none;">
                   <a href="<%=path%>/zhaiquan.jsp">债权转让</a>
