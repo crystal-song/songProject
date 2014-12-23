@@ -103,27 +103,7 @@ $(function(){
 
 </script>
 <script>
-function jumpPage(pag){
-	/* alert("ccccccccccc"+pag); */
-	   
-	    $('#pageNo').val(pag); 
-	    
-	   /*  pa(); */
-	    
-	   $("#yearIncome").val(myFilter[0]);
-	$("#financingPeriod").val(myFilter[1]);
-	$("#financingMoney").val(myFilter[2]);
-	$("#financingProgress").val(myFilter[3]);
-	$("#projectStatus").val(myFilter[4]);
-	    
-	    
-	 $("#form" ).submit(); 
 
- }
-	
-	
-
-	
 	/*  var pageNo=1;
 	 var  pageSize=2;
 	 var  name="ddddd";
@@ -147,48 +127,7 @@ function jumpPage(pag){
           /*   });   */
 /*  }   */  
           
-
-        
-	
-
-
-
-window.onload=function(e) {
-	pagerInit(${page.totalPage},${page.pageNo});//${page.totalPage},${page.pageNo}
-	myFilter=[${product.yearIncome},${product.financingPeriod},${product.financingMoney},${product.financingProgress},${product.projectStatus}]
-	if(myFilter[0]==null){
-		myFilter=[1,1,1,1,1];
-	}
-	console.log(myFilter);
-	filterChange();
-	$(".filter li").bind("click",function(e){
-		pa($(this));
-	});
-}
-   
-function pagerInit(a,b){//${page.totalPage},${page.pageNo}
-	var totalPages=a;
-	var curPage=b;
-	if(curPage>totalPages)return false;
-	var endPage=curPage+5>totalPages-1?totalPages-1:curPage+5;
-	var startPage=endPage-7>2?endPage-7:2;
-	endPage=startPage+7>totalPages?totalPages:startPage+7;
-	console.log(startPage+"/"+endPage+"/"+curPage);
-	var str='';
-	var spl='<span>...</span>';
-	$(".pageNum").html('<a href="javascript:jumpPage(1)" class="pager">1</a>');
-	if(startPage>2){$(".pageNum").html($(".pageNum").html()+spl);}
-      for(i=startPage;i<endPage;i++){
-    	  str='<a href="javascript:jumpPage('+i+')" class="pager">'+i+'</a>';
-    	  $(".pageNum").html($(".pageNum").html()+str);
-		}
-      if(endPage<totalPages-1){$(".pageNum").html($(".pageNum").html()+spl);}
-    if(totalPages>1)$(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
-    $(".pager").eq(curPage-startPage+1).addClass("pageNumCur");
-	$(".pageNumCur").attr("href","javascript:;");	
-
-   
-}               
+         
 
 </script>
 <!-- 百度分享js代码 -->
@@ -224,7 +163,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 <!--复制功能js代码  -->
  <script>
 	function CopyAll(T){
-		alert("aa");
+		//alert("aa");
 		T.focus() //使文本框得到焦点
 		T.select() //把文本框中的内容全选
 		if (document.all){
