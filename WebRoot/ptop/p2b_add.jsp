@@ -386,7 +386,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</p>
                     <dt></dt>
                 </li>              
-                   
+                <li>
+                    <dd>平台费用：</dd>
+                    <input type="number" name="platformFee"  id="platformFee" value="${product1.platformFee}"  />
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>保证金金额：</dd>
+                    <input type="number" name="margin"  id="margin" value="${product1.margin}"  />
+                    <dt></dt>
+                </li>
                 <li>
                 <dd></dd>
                  <input type="button"  title="提交"  onclick="getContent()"   value="提交" class="b"/>

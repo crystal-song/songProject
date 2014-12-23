@@ -43,13 +43,18 @@ public class TProduct implements java.io.Serializable {
 	    private String  targetPlatformUserNo;
 	    private String  enterpriseName;
 	    private Integer buyType;
+	    
+	    private Float platformFee;	//平台费用
+	    private Float margin;   //保证金
+	  
 	   
-	    private String loaned = "0"; //是否已放款
+	    private boolean loaned; //是否已放款
 	 
-		public String getLoaned() {
+		
+		public boolean isLoaned() {
 			return loaned;
 		}
-		public void setLoaned(String loaned) {
+		public void setLoaned(boolean loaned) {
 			this.loaned = loaned;
 		}
 		public Long getId() {
@@ -261,20 +266,19 @@ public class TProduct implements java.io.Serializable {
 		public void setEnterpriseName(String enterpriseName) {
 			this.enterpriseName = enterpriseName;
 		}
+		public Float getPlatformFee() {
+			return platformFee;
+		}
+		public void setPlatformFee(Float platformFee) {
+			this.platformFee = platformFee;
+		}
+		public Float getMargin() {
+			return margin;
+		}
+		public void setMargin(Float margin) {
+			this.margin = margin;
+		}
 		
-		
-	
-	
-	
-	
-		
-		
-		
-		
-	    
-	    
-	    
-	   
 
 
 }

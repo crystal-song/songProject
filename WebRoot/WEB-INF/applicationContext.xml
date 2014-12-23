@@ -50,7 +50,7 @@
 	</bean>
 
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSourcez"/>
+        <property name="dataSource" ref="dataSource"/>
         <property name="mappingDirectoryLocations">
             <!-- 这里直接映射的pojo类所在的包，简单方便不用没次加一个pojo类都需要到这里来添加 -->
             <list>
@@ -63,7 +63,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				
                 <prop key="hibernate.autoReconnect">true</prop>
                 <prop key="hibernate.generate_statistics">true</prop>
                 <prop key="hibernate.connection.release_mode">auto</prop>

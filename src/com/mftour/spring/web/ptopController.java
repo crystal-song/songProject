@@ -118,6 +118,12 @@ public class ptopController {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 			
 			product.setReleaseTime(df.format(new Date()));
+			if(product.getPlatformFee()==null){
+				product.setPlatformFee((float) 0);
+			}
+			if(product.getMargin()==null){
+				product.setMargin((float) 0);
+			}
 			ptopService.addOrUpdate(product);
 
 			model.addAttribute("mes", "操作成功");

@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="blank_block_title"><span class="new_reg01">新用户注册</span><div class="blank_right">已有中租宝账户? 请<a href="<%=path%>/login.jsp" style="color:#e72634">直接登录</a></div></div>
     <form action="<%=path %>/welcome/regEmail" id="Form1"  method="post" style="padding:0px;">
         <div class="blank_block_content reg">
+			<input type="hidden" value="${ref}" name="ref">
           <p>　用户名：<input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /><span class="green_right new1"></span></p>
           <div id="tip_username"><span class="tip_n">请输入用户名！</span></div>
           <p>　密　码：<input name="password" id="password" type="password" class="input_item" onblur="chk_pwd()"/><span class="green_right new2"></span></p>
@@ -201,7 +202,7 @@ function validateCode (){
 }  
 function show(){  
         //显示验证码  
-        document.getElementById("code").src="CodeServlet?code="+createCode();  
+        document.getElementById("code").src="/CodeServlet?code="+createCode();
 }  
 window.onload = function() {
 		//document.onload=show();  

@@ -86,5 +86,9 @@
         <property name="randomCode" type="java.lang.String">
             <column name="randomCode" length="50" />
         </property>
+
+        <property name="ref" type="java.lang.String">
+            <column name="ref" length="100" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXB;
@@ -26,6 +25,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.mftour.spring.logic.Account;
+import com.mftour.spring.model.Accounts;
 import com.mftour.spring.model.TBinding;
 import com.mftour.spring.model.TBindingNotify;
 import com.mftour.spring.model.TBindingSucceed;
@@ -48,6 +49,7 @@ import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.rest.bean.AccountResponse;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.ITransNoticeService;
@@ -57,7 +59,9 @@ import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.File;
 import com.mftour.spring.util.HttpClientTest;
 import com.mftour.spring.util.ReadWirtePropertis;
+import com.mftour.spring.util.Rest;
 import com.mftour.spring.util.Xml;
+import com.mftour.spring.logic.Account;
 import com.yeepay.bha.example.bean.BHAAuthorization;
 import com.yeepay.bha.example.bean.BHAEstablishmentRegistration;
 import com.yeepay.bha.example.bean.BHAFeeModeEnum;
@@ -95,75 +99,38 @@ public class GateController {
 	@RequestMapping(value = "/gate/service")
 	public String service(Model model, HttpServletRequest request)
 			throws Exception {
-		model.addAttribute("now", System.currentTimeMillis());
 
-		String platformNo = f.getPlatformNo();
-
-		model.addAttribute("f", f);
 		Object o = request.getSession().getAttribute("name");
-		String name = null;
+	
 		if (o != null) {
 			List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(o
 					.toString());
 
-			if (li != null && li.size() != 0) {
-				TRegisterYeePay registerYeePay = li.get(0);
-				name = registerYeePay.getPlatformUserNo();
+			if (li != null && li.size() > 0) {
+				AccountResponse account = Account.getAccount(o.toString());
+				if (account.isSuccess()){
+					model.addAttribute("account", account.getAccount());
+					return "zichan";
+				}else{
+					return "error";
+				}
 			} else {
 
 				TUser user = userService.getUserByAccount(o.toString());
 				model.addAttribute("user", user);
 				return "register";
 			}
-			List<TEstablishmentRegistration> list = gateService
-					.queryTEstablishmentRegistrationByName(o.toString());
-			if (list != null && list.size() != 0) {
-				TEstablishmentRegistration establishmentRegistration = list
-						.get(0);
-				name = establishmentRegistration.getPlatformUserNo();
-			}
+			
+		
+		}else{
+			return "login";
 		}
 
-		String req = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-		/* +"<request platformNo='10040011137'>" */
-		+ "<request platformNo='" + platformNo + "'>"
-		/* +"<platformUserNo>gg123456</platformUserNo> " */
-		+ "<platformUserNo>" + name + "</platformUserNo> " + "</request>";
-		model.addAttribute("req", req);
-		String service = "ACCOUNT_INFO";
 
-		String host = f.getOnSubmit();
-		return doService(host, req, service, model);
 
 	}
 
-	@RequestMapping(value = "/gate/info")
-	public String info(Model model, HttpServletRequest request)
-			throws Exception {
 
-		String req = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
-				+ "<request platformNo='10012415118'>" + "<date>"
-				+ "2014-12-05" + "</date> " + "</request>";
-
-		String service = "RECONCILIATION";
-		/* String host="http://qa.yeepay.com/member"; */
-		String host = "https://member.yeepay.com/member";
-
-		return doinfo(host, req, service, model);
-
-	}
-
-	public String doinfo(String host, String req, String service, Model model) {
-
-		return doSigns(req, f.getUrl() + "/bhaexter/bhaController", model,
-				service);
-	}
-
-	@RequestMapping(value = "/gate/doService")
-	public String doService(String host, String req, String service, Model model) {
-
-		return doSigns(req, host + "/bhaexter/bhaController", model, service);
-	}
 
 
 	public String dobinding(String host, String req, Model model) {
@@ -822,7 +789,7 @@ public class GateController {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			logger.error("error " +e);
 		} finally {
 		}
 
@@ -1191,7 +1158,6 @@ public class GateController {
 
 			gateService.addOrUpdateTRechargeNotify(rechargeNotify);
 
-			/* gateService.addOrUpdateTTransferNotify(transferNotify); */
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -1544,73 +1510,7 @@ public class GateController {
 
 	}
 
-	private String doSigns(String xml, String url, Model model, String service) {
 
-		String pfx = servletContext.getRealPath("/WEB-INF/zhengshu.pfx");
-
-		String s = xml;
-		s = s.replaceAll("[\\r\\n]", "");
-
-		model.addAttribute("service", service);
-		model.addAttribute("url", url);
-		model.addAttribute("req", s);
-		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
-
-		HttpClientTest d = new HttpClientTest();
-		String resp = d.postForm(service, url, s,
-				SignUtil.sign(s, pfx, "liukai123"));
-
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-		try {
-
-			DocumentBuilder db = dbf.newDocumentBuilder();
-
-			InputStream iStream = new ByteArrayInputStream(
-					resp.getBytes("UTF-8"));
-			Document dm = db.parse(iStream);
-
-			NodeList persons = dm.getElementsByTagName("response");
-
-			for (int i = 0; i < persons.getLength(); i++) {
-
-				Element personElement = (Element) persons.item(i);
-
-				NodeList p = personElement.getChildNodes();
-				for (int j = 0; j < p.getLength(); j++) {
-					p.item(j);
-
-				}
-
-				if (p.item(9).getNodeName() != null
-						&& p.item(9).getTextContent() != null) {
-
-					model.addAttribute("balance", p.item(9).getTextContent());
-
-				}
-				if (p.item(11).getNodeName() != null
-						&& p.item(11).getTextContent() != null) {
-
-					model.addAttribute("availableAmount", p.item(11)
-							.getTextContent());
-
-				}
-				if (p.item(13).getNodeName() != null
-						&& p.item(13).getTextContent() != null) {
-
-					model.addAttribute("freezeAmount", p.item(13)
-							.getTextContent());
-
-				}
-
-			}
-
-		} catch (Exception e) {
-			logger.info(e.getMessage());
-		}
-
-		return "zichan";
-	}
 
 	private String doSign(Object obj, String url, Model model) {
 

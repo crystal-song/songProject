@@ -38,6 +38,15 @@ public class TUser implements java.io.Serializable {
 	private String answer; // 密码保护答案
 	private Timestamp regTime;
 	private String randomCode;
+	private String ref;
+
+	public String getRef() {
+		return ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
 
 	/**
 	 * default constructor

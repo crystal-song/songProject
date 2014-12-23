@@ -23,16 +23,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="user_right">  
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>资产统计</strong></div>
-          <p class="zichan_num"><span>资产总值:</span><strong><span id="balance_info">${balance}</span><i>元</i></strong>
+          <p class="zichan_num"><span>资产总值:</span><strong><span id="balance_info">${account.balanceTotal}</span><i>元</i></strong>
           <a href="<%=path%>/gate/recharge" class="char red">充值</a>
           <a href="<%=path%>/gate/drawMoney" class="char">提现</a>
-          <a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all" class="char">交易记录</a>          
+          <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall" class="char">交易记录</a>          
           </p>
           <ul class="zichan_bar">
             <li>
               <div class="li_pic back01"></div>
               <div class="li_right">
-                 <div class="li_top"><span title="即用户可用来投资的账户余额。">可用余额</span><strong><span style="text-align:right" id="availableAmount_info">${availableAmount}</span><i>元</i></strong>
+                 <div class="li_top"><span title="即用户可用来投资的账户余额。">可用余额</span><strong><span style="text-align:right" id="availableAmount_info">${account.availableMoney}</span><i>元</i></strong>
                  </div>
                  <div class="li_loadbar"><div id="availableAmount_bar"></div></div>
               </div>
@@ -40,66 +40,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li>
               <div class="li_pic back02"></div>
               <div class="li_right">
-                 <div class="li_top"><span title="即已用来投资的金额。">冻结余额</span><strong><span style="text-align:right" id="freezeAmount_info">${freezeAmount}</span><i>元</i></strong>
+                 <div class="li_top"><span title="即已用来投资的金额。">冻结余额</span><strong><span style="text-align:right" id="freezeAmount_info">${account.frozen_money_invest}</span><i>元</i></strong>
                  </div>
                  <div class="li_loadbar"><div style="background:#c7df95;" id="freezeAmount_bar"></div></div>
               </div>
             </li>
-<!--             <li>
-              <div class="li_pic back03"></div>
-              <div class="li_right">
-                 <div class="li_top"><span>可用余额</span><strong><span style="text-align:right">500,000</span><i>元</i></strong>
-                 </div>
-                 <div class="li_loadbar"><div style="background:#bae9ff;"></div></div>
-              </div>
-            </li> -->
+
           </ul>
           <div class="clear"></div>
- <!--          <div class="clear"></div>
-          <div class="pro_con_title" style="margin-top:5px;"><strong>待收收益</strong></div>
-          <div class="zichan_bar">
-            <div class="shouyi_left">
-               <p>待收收益总计<strong><span>20000</span>元</strong></p>
-               <p>9月预收收益<strong><span>10000</span>元</strong></p>
-             </div>
-            <div class="shouyi_right" style="display:none"><img src="images/tibiao_r2_c2.png" /></div>
-          </div>
-          <div class="pro_con_title" style="margin-top:5px;"><strong>已收收益</strong></div>
-          <div class="zichan_bar">
-               <span class="lan">
-                 <div class="li_right_01">
-                   <div class="li_top"><span>已收收益总计</span><strong><span style="text-align:right">500,000</span><i>元</i></strong>
-                   </div>
-                   <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
-                </div>
-              </span>
 
-              <span class="lan">
-                <div class="li_right_01">
-                   <div class="li_top"><span>×××项目收益</span><strong><span style="text-align:right">500,000</span><i>元</i></strong>
-                   </div>
-                   <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
-                </div>
-            </span>
-          </div> 
-          <div class="pro_con_title" style="margin-top:5px;"><strong>累计投资</strong></div>
-          <div class="zichan_bar">
-               <span class="lan">
-                 <div class="li_right_01">
-                   <div class="li_top"><span>累计投资</span><strong><span style="text-align:right">500,000</span><i>元</i></strong>
-                   </div>
-                   <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
-                </div>
-              </span>
-            
-              <span class="lan">
-                <div class="li_right_01">
-                   <div class="li_top"><span>可用金额</span><strong><span style="text-align:right">500,000</span><i>元</i></strong>
-                   </div>
-                   <div class="li_loadbar"><div style="background:#c7df95;"></div></div>
-                </div>
-            </span>
-          </div> -->
         </div>
       </div>     
   
