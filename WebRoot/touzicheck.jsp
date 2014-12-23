@@ -159,9 +159,10 @@ function onSubmit(host) {
   $(".black_bac").css("display","block");
   $(".right_cha").click(function(){
   $("#dialog01").css("display","none");
+  $(".black_bac").css("display","none");
   });
-  //sform.submit();
- // document.getElementById("que_btn_ok").disabled()
+  form.submit();
+  document.getElementById("que_btn_ok").disabled()
   
 }
 </script>

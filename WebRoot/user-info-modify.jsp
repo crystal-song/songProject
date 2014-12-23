@@ -326,7 +326,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           </div>
          </div>
 </div>
-
+<!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp" %>
+<!-- absolute_right end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
@@ -354,18 +356,6 @@ $(document).ready(function(){
          $(this).siblings("#tishik01").css("display","none");      
       });
       
-
-     	$(window).on('scroll', function(){
-	        if($(window).scrollTop()<500){
-	            $(".absolute_bac1").hide();
-	        }
-	        if($(window).scrollTop()>=500){
-	            $(".absolute_bac1").show(); 
-	        }
-	      });
-	            $(".absolute_bac1").click(function(){
-	               $("html,body").animate({scrollTop:0},500);  		            
-	            });	
 });
 </script>
 </html>

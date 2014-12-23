@@ -79,9 +79,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </div>
 -->
-<div class="clear_height"></div>
-
-
+<!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp" %>
+<!-- absolute_right end -->
+<div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->

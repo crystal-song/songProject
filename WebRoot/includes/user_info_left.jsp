@@ -38,6 +38,9 @@
                 <li>
                  <a href="<%=path%>/account/liquan?page=1&catlog=0">我的礼券</a>
                 </li>
+                <li>
+                 <a href="<%=path%>/liquan.jsp">我的礼券</a>
+                </li>
               </ul>
            </li>
 

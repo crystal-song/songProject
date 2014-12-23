@@ -85,10 +85,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	</div>
+<!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp" %>
+<!-- absolute_right end -->	
 	<div class="clear"></div>
-	<!-- footer start -->
+<!-- footer start -->
 	<%@ include file="/includes/footer.jsp"%>
-	<!-- footer end -->
+<!-- footer end -->
 </body>
 <script type="text/javascript">
 var navIndex=3; 

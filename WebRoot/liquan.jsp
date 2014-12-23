@@ -61,11 +61,11 @@
 
             <div class="clear"></div>
             <div class="next_list">
-                <a href="<%=path %>/transRecord/queryTransRecord?pageNo=1&time=timeall&type=typeall">首页</a>
-                <c:if test="${page.page > 1}"><a href="<%=path %>/transRecord/queryTransRecord?page=${page.page-1}">上一页</a>  </c:if>
+                <a href="<%=path %>/account/liquan?page=1&catlog=0">首页</a>
+                <c:if test="${page.page > 1}"><a href="<%=path %>/account/liquan?page=${page.page-1}&catlog=${catlog}">上一页</a>  </c:if>
                 <div class="pageNum"></div>
-                <c:if test="${page.page < page.pagecount}">  <a href="<%=path %>/transRecord/queryTransRecord?page=${page.page+1}">下一页</a>  </c:if>
-                <a href="<%=path %>/transRecord/queryTransRecord?page=${page.pagecount}">末页</a>
+                <c:if test="${page.page < page.pagecount}">  <a href="<%=path %>/account/liquan?page=${page.page+1}&catlog=${catlog}">下一页</a>  </c:if>
+                <a href="<%=path %>/account/liquan?page=${page.pagecount}&catlog=${catlog}">末页</a>
             </div>
         </div>
     </div>
