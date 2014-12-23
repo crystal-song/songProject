@@ -4471,8 +4471,7 @@ ul,li{
 .tui_left{
 	width:210px;
 	height:142px;
-	background:#eee;
-	border:1px solid #ccc;
+	background:url(../img/images-2014-11/fenxiang_pic.gif) no-repeat;
 	float:left;
 	margin:0 3px;
 }

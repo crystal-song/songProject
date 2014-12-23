@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a class="bds_count" data-cmd="count"></a>
                           </div>                                      
                       </span>
-                      <a><INPUT TYPE="BUTTON" VALUE="复制" onclick="CopyAll()" class="fuzhi"></a> 
+                      <a><INPUT TYPE="BUTTON" VALUE="复制" onclick="CopyAll()" class="fuzhi" id="biao1"></a> 
                   </li>    
                </ul>                            
                <div class="tui_pic">
@@ -148,57 +148,17 @@ function jumpPage(pag){
 /*  }   */  
           
 
-        
-	
 
-
-
-window.onload=function(e) {
-	pagerInit(${page.totalPage},${page.pageNo});//${page.totalPage},${page.pageNo}
-	myFilter=[${product.yearIncome},${product.financingPeriod},${product.financingMoney},${product.financingProgress},${product.projectStatus}]
-	if(myFilter[0]==null){
-		myFilter=[1,1,1,1,1];
-	}
-	console.log(myFilter);
-	filterChange();
-	$(".filter li").bind("click",function(e){
-		pa($(this));
-	});
-}
-   
-function pagerInit(a,b){//${page.totalPage},${page.pageNo}
-	var totalPages=a;
-	var curPage=b;
-	if(curPage>totalPages)return false;
-	var endPage=curPage+5>totalPages-1?totalPages-1:curPage+5;
-	var startPage=endPage-7>2?endPage-7:2;
-	endPage=startPage+7>totalPages?totalPages:startPage+7;
-	console.log(startPage+"/"+endPage+"/"+curPage);
-	var str='';
-	var spl='<span>...</span>';
-	$(".pageNum").html('<a href="javascript:jumpPage(1)" class="pager">1</a>');
-	if(startPage>2){$(".pageNum").html($(".pageNum").html()+spl);}
-      for(i=startPage;i<endPage;i++){
-    	  str='<a href="javascript:jumpPage('+i+')" class="pager">'+i+'</a>';
-    	  $(".pageNum").html($(".pageNum").html()+str);
-		}
-      if(endPage<totalPages-1){$(".pageNum").html($(".pageNum").html()+spl);}
-    if(totalPages>1)$(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
-    $(".pager").eq(curPage-startPage+1).addClass("pageNumCur");
-	$(".pageNumCur").attr("href","javascript:;");	
-
-   
-}               
-
+  
 </script>
 <!-- 百度分享js代码 -->
  <script>
 					window._bd_share_config = {
 						common : {
 							bdText : '理财生活两手抓！ 中租宝帮您发发发',	
-							bdDesc : '理财生活两手抓！ 中租宝帮您发发发。',	
+							bdDesc : '',	
 							bdUrl : 'http://www.ptobchina.com', 	
-							bdPic : '自定义分享图片'
+							bdPic : '../img/images-2014-11/fenxiang_pic.gif'
 						},
 						share : [{
 							"bdSize" : 16
@@ -222,14 +182,16 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 					with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 				</script>
 <!--复制功能js代码  -->
+
  <script>
 	function CopyAll(){
 		var Url2=document.getElementById("biao1"); 
 		Url2.focus() ;//使文本框得到焦点
 		Url2.select() ;//把文本框中的内容全选
+		//document.execCommand("Copy");
 		if (document.all){
 		therange=Url2.createTextRange();
-		therange.execCommand("Copy"); //复制
+		therange.execCommand("Copy"); //复制		
 	}
 }
 </script>
