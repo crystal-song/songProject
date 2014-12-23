@@ -5,7 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ include file="/includes/taglibs.jsp" %>
   
-<title>交易记录 - 我的账户 - 中租宝</title>
+<title>推荐管理 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
@@ -30,15 +30,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <ul class="tui_li">
                   <li><span>用户名：</span><span>aaa</span></li>      
                   <li><span>我的推荐人：</span><span>bbb</span></li>
-                  <li><span>我的推广链接：</span><span>www.pppp.com</span></li>
-                  <li>
-                     <span style="padding-left:18px;">我的推广内容：</span>
-                     <span style="width:168px"><div class="bshare-custom"><a title="分享到微信" class="bshare-weixin"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script> </span>
+                  <li><span>我的推广链接：</span><span style="margin:0; width:142px">www.pppp.com</span></li>
+                  <li style="width:700px"><span>我的分享：</span>
+                      <span style="width:260px">
+                          <div class="bdsharebuttonbox" data-tag="share_1">
+							<a class="bds_mshare" data-cmd="mshare"></a>
+							<a class="bds_qzone" data-cmd="qzone" href="#"></a>
+							<a class="bds_tsina" data-cmd="tsina"></a>
+							<a class="bds_baidu" data-cmd="baidu"></a>
+							<a class="bds_renren" data-cmd="renren"></a>
+							<a class="bds_tqq" data-cmd="tqq"></a>
+							<a class="bds_more" data-cmd="more">更多</a>
+							<a class="bds_count" data-cmd="count"></a>
+                          </div>                                      
+                      </span>
+                      <a ><INPUT TYPE="BUTTON" VALUE="复制" onclick="CopyAll(MSG)" class="fuzhi"></a> 
                   </li>    
                </ul>                            
                <div class="tui_pic">
                   <div class="tui_left"></div>
-                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" cols=33 rows=4></textarea>               
+                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" cols=33 rows=4>理财生活两手抓！ 中租宝帮您发发发。www.ptobchina.com/j?rf=user1201</textarea>               
                </div>
                <p class="tui_num">我推荐的 1/3</p> 
                
@@ -180,4 +191,65 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 }               
 
 </script>
+<!-- 百度分享js代码 -->
+ <script>
+					window._bd_share_config = {
+						common : {
+							bdText : '理财生活两手抓！ 中租宝帮您发发发',	
+							bdDesc : '理财生活两手抓！ 中租宝帮您发发发。',	
+							bdUrl : 'http://www.ptobchina.com', 	
+							bdPic : '自定义分享图片'
+						},
+						share : [{
+							"bdSize" : 16
+						}],
+						slide : [{	   
+							bdImg : 0,
+							bdPos : "right",
+							bdTop : 100
+						}],
+						image : [{
+							viewType : 'list',
+							viewPos : 'top',
+							viewColor : 'black',
+							viewSize : '16',
+							viewList : ['qzone','tsina','huaban','tqq','renren']
+						}],
+						selectShare : [{
+							"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+						}]
+					}
+					with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+				</script>
+<!--复制功能js代码  -->
+ <script>
+	function CopyAll(T){
+		alert("aa");
+		T.focus() //使文本框得到焦点
+		T.select() //把文本框中的内容全选
+		if (document.all){
+		therange=T.createTextRange()
+		therange.execCommand("Copy") //复制
+	}
+}
+</script>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
 </html>
