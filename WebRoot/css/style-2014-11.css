@@ -4430,17 +4430,29 @@ ul,li{
 .ai{
 	margin-top:40px;
 }
+/*tuijian*/
 .tui_li {
 	width:500px;
 	height:200px;
 	margin-top:20px;
 }
+.tui_li .fuzhi{
+	width:auto;
+	height:100%;
+	margin:0;
+	color:#e62e2e;
+	text-decoration:underline;
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+	border:none;
+	background:none;
+}
 .tui_li li {
 	width:500px;
 	height:30px;
 	line-height:30px;
-	margin:10px auto;
-	
+	margin:10px 16%;;	
 }
 
 .tui_li li span{
@@ -4449,6 +4461,7 @@ ul,li{
 	display:inline-block;
 	text-align:right;
 	margin-right:15px;
+	float:left;
 }
 .tui_pic{
 	width:515px;
@@ -4469,7 +4482,6 @@ ul,li{
 	height:140px;
     float:left;	
     border:1px solid #ccc;
-    color:#ccc;
 }
 .tui_num{
 	width:500px;
