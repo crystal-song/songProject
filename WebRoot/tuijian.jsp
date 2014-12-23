@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <ul class="tui_li">
                   <li><span>用户名：</span><span>aaa</span></li>      
                   <li><span>我的推荐人：</span><span>bbb</span></li>
-                  <li><span>我的推广链接：</span><span style="margin:0; width:142px">www.pppp.com</span></li>
+                  <li><span>我的推广链接：</span><span style="margin:0; width:auto">www.pppp.com</span></li>
                   <li style="width:700px"><span>我的分享：</span>
                       <span style="width:260px">
                           <div class="bdsharebuttonbox" data-tag="share_1">
@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a class="bds_count" data-cmd="count"></a>
                           </div>                                      
                       </span>
-                      <a ><INPUT TYPE="BUTTON" VALUE="复制" onclick="CopyAll(MSG)" class="fuzhi"></a> 
+                      <a><INPUT TYPE="BUTTON" VALUE="复制" onclick="CopyAll()" class="fuzhi"></a> 
                   </li>    
                </ul>                            
                <div class="tui_pic">
@@ -223,13 +223,13 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 				</script>
 <!--复制功能js代码  -->
  <script>
-	function CopyAll(T){
-		alert("aa");
-		T.focus() //使文本框得到焦点
-		T.select() //把文本框中的内容全选
+	function CopyAll(){
+		var Url2=document.getElementById("biao1"); 
+		Url2.focus() ;//使文本框得到焦点
+		Url2.select() ;//把文本框中的内容全选
 		if (document.all){
-		therange=T.createTextRange()
-		therange.execCommand("Copy") //复制
+		therange=Url2.createTextRange();
+		therange.execCommand("Copy"); //复制
 	}
 }
 </script>
