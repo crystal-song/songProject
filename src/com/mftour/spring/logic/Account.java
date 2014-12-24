@@ -38,10 +38,10 @@ public class Account {
 	}
 	
 	//获取优惠券分页
-	public static Page<Rewards> getRewardsPage(String name ,int page, String catlog) {
+	public static Page<Rewards> getRewardsPage(String username, int page, String catlog) {
 		try {
 			
-			String s = rest.getRestful("/rest/reward/get-page-by-user-name/"+name +"/"+ Integer.toString(page)+"/"+catlog);
+			String s = rest.getRestful("/rest/reward/get-page-by-user-name/"+username +"/"+ Integer.toString(page)+"/"+catlog);
 			@SuppressWarnings("unchecked")
 			Page<Rewards> r = JSON.parseObject(s, Page.class);
 			
@@ -55,10 +55,10 @@ public class Account {
 
 
 	//获取优惠券分页
-	public static Page<TUser> getRefsPage(String name ,int page) {
+	public static Page<TUser> getRefsPage(String id ,int page) {
 		try {
 
-			String s = rest.getRestful("/rest/user/ref-page-list/"+name +"/"+ Integer.toString(page)+"/");
+			String s = rest.getRestful("/rest/user/ref-page-list/"+id +"/"+ Integer.toString(page)+"");
 			@SuppressWarnings("unchecked")
 			Page<TUser> r = JSON.parseObject(s, Page.class);
 

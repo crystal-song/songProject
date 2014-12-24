@@ -28,9 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="pro_con_title" style="margin-top:5px;"><strong>推荐管理</strong></div>
             
                <ul class="tui_li">
-                  <li><span>用户名：</span><span>aaa</span></li>      
-                  <li><span>我的推荐人：</span><span>bbb</span></li>
-                  <li><span>我的推广链接：</span><span style="margin:0; width:142px">www.pppp.com</span></li>
+                  <li><span>用户名：</span><span>${username}</span></li>
+                  <li><span>我的推荐人：</span><span>${ref}</span></li>
+                  <li><span>我的推广链接：</span><span style="margin:0; width:142px">${ref_link}</span></li>
                   <li style="width:700px"><span>我的分享：</span>
                       <span style="width:260px">
                           <div class="bdsharebuttonbox" data-tag="share_1">
@@ -49,36 +49,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </ul>                            
                <div class="tui_pic">
                   <div class="tui_left"></div>
-                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" cols=33 rows=4>理财生活两手抓！ 中租宝帮您发发发。www.ptobchina.com/j?rf=user1201</textarea>               
+                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" cols=33 rows=4>理财生活两手抓！ 中租宝帮您发发发。${ref_link}</textarea>
                </div>
-               <p class="tui_num">我推荐的 1/3</p> 
+               <p class="tui_num">我推荐的 </p>
                
 				<table border="0" cellpadding="0" cellspacing="1" bgcolor="#ccc" class="tui_tab">
 					  <tr>
 					    <td bgcolor="#FFFFFF">用户名&nbsp;&nbsp;</td>
 					    <td bgcolor="#FFFFFF">注册时间</td>
 					  </tr>
-					  <tr>
-					    <td bgcolor="#FFFFFF">&nbsp;11111</td>
-					    <td bgcolor="#FFFFFF">&nbsp;22</td>
-					  </tr>
-					  <tr>
-					    <td bgcolor="#FFFFFF">&nbsp;33333333</td>
-					    <td bgcolor="#FFFFFF">&nbsp;</td>
-					  </tr>
-					  <tr>
-					    <td bgcolor="#FFFFFF">&nbsp;55</td>
-					    <td bgcolor="#FFFFFF">&nbsp;6</td>
-					  </tr>
-				</table>       
-            <div class="clear"></div>    
-        	<div class="next_list">     
-              <a href="<%=path %>/transRecord/queryTransRecord?pageNo=1&time=${time}&type=${type}">首页</a> 
-				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.pageNo-1}&time=${time}&type=${type}">上一页</a>  </c:if> 
-				  <div class="pageNum"></div>								 
-				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.pageNo+1}&time=${time}&type=${type}">下一页</a>  </c:if>  								
-		      <a href="<%=path %>/transRecord/queryTransRecord?pageNo=${page.totalPage}&time=${time}&type=${type}">末页</a>                   
-           </div>       
+					<c:if test="${ not empty list}">
+						<c:forEach var="t" items="${list}">
+							<tr>
+								<td bgcolor="#FFFFFF">${t.name}</td>
+								<td bgcolor="#FFFFFF">${t.regTime}</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+				</table>
+			<c:if test="${empty list}">
+				<li >
+					暂无交易记录
+				</li>
+			</c:if>
+            <div class="clear"></div>
+			<div class="next_list">
+				<a href="<%=path %>/account/tuijian">首页</a>
+				<c:if test="${page.page > 1}"><a href="<%=path %>/account/tujian?page=${page.page-1}">上一页</a>  </c:if>
+				<div class="pageNum"></div>
+				<c:if test="${page.page < page.pagecount}">  <a href="<%=path %>/account/tuijian?page=${page.page+1}">下一页</a>  </c:if>
+				<a href="<%=path %>/account/tuijian?page=${page.pagecount}">末页</a>
+			</div>
       </div>   
     </div>
 </div>
@@ -102,41 +103,14 @@ $(function(){
   
 
 </script>
-<script>
 
-	/*  var pageNo=1;
-	 var  pageSize=2;
-	 var  name="ddddd";
-	  */
-	
- 	/* window.open('<c:url value="/product/allProduct"/>', '_self');   */
- /* 	$.post("/product/allProduct", { name: "name"} ); */
-/*  if($('#pageNo').val() != ''){
-	 alert("ddddddddddd");
-	 alert("ccccc"+$('#pageNo').val()); */
-            /* $.ajax({
-                type: 'POST',
-                url: '<c:url value="/product/session"/>',  */
-               /*  data: 'pageNo='+$('#pageNo').val(),
-                dataType: 'text',
-                success: function(data) {
-                	alert("ddddddd")
-                	alert("dd"+data+'"success"');
-                   
-                } */
-          /*   });   */
-/*  }   */  
-          
-         
-
-</script>
 <!-- 百度分享js代码 -->
  <script>
 					window._bd_share_config = {
 						common : {
 							bdText : '理财生活两手抓！ 中租宝帮您发发发',	
 							bdDesc : '理财生活两手抓！ 中租宝帮您发发发。',	
-							bdUrl : 'http://www.ptobchina.com', 	
+							bdUrl : '${ref_link}',
 							bdPic : '自定义分享图片'
 						},
 						share : [{

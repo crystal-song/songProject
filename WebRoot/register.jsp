@@ -29,18 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="container">
         <form id="form" role="form" action="<%=path%>/gate/doRegister" method="post" style="padding:0px;" target="_blank">
           <input type="hidden" id="host" name="host"/>
-          <div class="form-group" style="display:none;height:0px;">
-            <label for="platformNo">platformNo</label>
-             <input type="text"class="form-control" id="platformNo" 
-             name="platformNo" value="${f.platformNo}" /> 
-                   <!-- name="platformNo" value="10012415118" />  -->
-           <!--  <input type="text"class="form-control" id="platformNo" 
-                   name="platformNo" value="10040011137" /> -->
-          </div>
-          <div class="form-group" style="display:none;height:0px;" >
-            <label for="requestNo">requestNo</label><input type="text"
-              class="form-control" id="requestNo" name="requestNo" value="${now}"  />
-          </div>
+
           <div class="form-group" style="display:none;height:0px;" >
             <label for="platformUserNo">platformUserNo</label><input
               type="text" class="form-control" id="platformUserNo"
@@ -83,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
           </div>
 
-          <div class="jin_input" style="padding-left:200px;"><a href="javascript:;" title="立即注册" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">立即注册</a></div>
+          <div class="jin_input" style="padding-left:200px;"><a href="javascript:;" title="立即注册" onclick="onSubmit()" id="mysubmit_btn">立即注册</a></div>
         <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn-default">OA</button> -->
            <!-- <button onclick="onSubmit('https://member.yeepay.com/member')" class="bt">生产</button> -->
 
@@ -134,10 +123,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   }
 	return true;
 	}
-   function onSubmit(host) {
+   function onSubmit() {
 	  if(!allcheck()){return false};
-	  if(document.getElementById("requestNo").value==""){alert("数据超时！请刷新页面！");return false}
-	  document.getElementById("host").value = host;
 	  var form = document.getElementById("form");
 	  document.getElementById("mysubmit_btn").disabled=true;
 	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";

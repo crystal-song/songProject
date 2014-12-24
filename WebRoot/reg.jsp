@@ -31,16 +31,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <p>确认密码：<input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/><span class="green_right new3"></span></p>
           <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
           <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/><span class="green_right new4"></span></p>
-          <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div> 
+			<div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div>
+			<p>理财经理电话：<input name="servicePhone" id="servicePhone" type="text" class="input_item"/><span class="green_right new4"></span></p>
+
           <p style="width:480px">　验证码：  <input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
 					<img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
 					<a href="#" mce_href="#" onclick="javascript:show();return false; " style="font-size:12px;">看不清,换一张!</a>
 					 <div id="tip_validatecode"><span class="tip_n">请输入验证码！</span></div> 
 		  </p>
-<!--           <p>　推荐人：<input name="referee" id="referee" type="text" class="input_item"/></p>
-          <div id="tip_referee"><span class="tip_n"></span></div>      
- -->
- 
           <p class="xieyi_font"><input  type="checkbox" checked="checked" id="agreement">我已阅读并同意中租宝
            <a target="_blank" href="<%=path%>/zhucexieyi.jsp">《使用协议》</a>及
            <a target="_blank" href="<%=path%>/yinsitiaokuan.jsp">《隐私条款》</a></p>

@@ -16,7 +16,7 @@
                   <a href="<%=path%>/tongzhishezhi.jsp" >通知设置</a>
                 </li>
                 <li style="border-bottom:0;">
-                  <a href="<%=path%>/tuijian.jsp" >推荐管理</a>
+                  <a href="<%=path%>/account/tuijian" >推荐管理</a>
                 </li>
               </ul>
            </li>
@@ -38,9 +38,7 @@
                 <li>
                  <a href="<%=path%>/account/liquan?page=1&catlog=0">我的礼券</a>
                 </li>
-                <li>
-                 <a href="<%=path%>/liquan.jsp">我的礼券</a>
-                </li>
+
               </ul>
            </li>
 

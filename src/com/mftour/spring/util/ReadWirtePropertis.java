@@ -18,7 +18,7 @@ public class ReadWirtePropertis {
 		Properties pro = new Properties();
 
 		InputStream path = Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream("configuration.properties.eg");
+				.getResourceAsStream("configuration.properties");
 
 		try {
 

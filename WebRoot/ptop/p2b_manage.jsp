@@ -47,14 +47,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td>${s.financingMoney}万</td>
     <td>${s.financingProgress}%</td>
     <td>${s.yearIncome}</td>
-    <td> <c:if test="${ s.loaned == null}">未放款</c:if>
-    <c:if test="${ s.loaned == '1'}">已放款</c:if>
+    <td> ${ s.loaned?"已放款":"未放款"}
      </td>
 
     <td>
     <p>
     <a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a>
-     <a href="javascript:void(0)" onclick="loan($(a.id))">放款${s.loaned}</a>
+     <a href="javascript:void(0)" onclick="loan($(a.id))">放款</a>
     <a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a>
     <a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteproduct?id=${s.id}'">删除</a>
     <a href="<%=path%>/Login/addyield?id=${s.id}">收益率</a>

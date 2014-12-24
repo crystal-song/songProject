@@ -33,8 +33,8 @@ public class Logic {
 
 	@Test
 	public void test() {
-		boolean s = YeePay.doLoan(19);
+		//boolean s = YeePay.doLoan(19);
 		//JsonBaseBean vo = JSON.parseObject(s, JsonBaseBean.class);
-	    assertEquals(s, true);
+	    //assertEquals(s, true);
 	}
 }

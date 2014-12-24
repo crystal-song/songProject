@@ -83,6 +83,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
           </div>
           </li>
+
+       <li>
+           <div class="form-group" style="${reward==null?"display:none":""}">
+               <label for="paymentAmount">使用50元礼卷</label><input type="checkbox"
+                                                              class="form-control" id="reward" name="rewardCheck"  />
+           </div>
+       </li>
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="expired">投标过期时间</label><input type="text"
@@ -148,22 +155,33 @@ function onSubmit(host) {
 
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
-	//if(a%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-	//if(a<200){alert("投资金额不能低于200元！");return false;
-	document.getElementById("paymentAmount").value=parseInt(a);
-  document.getElementById("host").value = host;
-  document.getElementById("mysubmit_btn").disabled=true;
-  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-  var form = document.getElementById("form");
-  $("#dialog01").css("display","block");
-  $(".black_bac").css("display","block");
-  $(".right_cha").click(function(){
-  $("#dialog01").css("display","none");
-  $(".black_bac").css("display","none");
-  });
-  form.submit();
-  document.getElementById("que_btn_ok").disabled()
-  
+    if(parseInt(a) < 200){
+        alert("投资金额必须大于200");
+        return false;
+    }
+    $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+            success: function(resp){
+                if(resp === "success"){
+
+                    document.getElementById("paymentAmount").value=parseInt(a);
+                    document.getElementById("host").value = host;
+                    document.getElementById("mysubmit_btn").disabled=true;
+                    document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+                    var form = document.getElementById("form");
+                    $("#dialog01").css("display","block");
+                    $(".black_bac").css("display","block");
+                    $(".right_cha").click(function(){
+                        $("#dialog01").css("display","none");
+                        $(".black_bac").css("display","none");
+                    });
+                    form.submit();
+                    document.getElementById("que_btn_ok").disabled()
+
+                }else{
+                    alert(resp);
+                }
+            }});
+
 }
 </script>
 </html>

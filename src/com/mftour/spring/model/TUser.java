@@ -38,7 +38,16 @@ public class TUser implements java.io.Serializable {
 	private String answer; // 密码保护答案
 	private Timestamp regTime;
 	private String randomCode;
+	private String servicePhone;
 	private String ref;
+
+	public String getServicePhone() {
+		return servicePhone;
+	}
+
+	public void setServicePhone(String servicePhone) {
+		this.servicePhone = servicePhone;
+	}
 
 	public String getRef() {
 		return ref;

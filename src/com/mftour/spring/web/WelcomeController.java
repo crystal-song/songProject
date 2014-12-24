@@ -106,12 +106,14 @@ public class WelcomeController {
 			map.put("password", user.getPassword());
 			map.put("email", user.getEmail());
 			map.put("ref", user.getRef());
+			map.put("service-phone",user.getServicePhone());
 			String s = rest.postRestful("/rest/user/reg", map);
 			JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 			if (r.isSuccess()){
 				request.getSession().setAttribute("name", user.getName());
 
-				request.getSession().setAttribute("userinfo", user);
+				TUser userInfo = userService.getUserByAccount(user.getName());
+				request.getSession().setAttribute("userinfo", userInfo);
 				com.mftour.spring.util.File f=ReadWirtePropertis.file();
 				String basePath =f.getBasePath();
 				String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
