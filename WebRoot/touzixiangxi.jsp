@@ -578,7 +578,7 @@ function mysubmit(){
 	}
 	
 	if($("#buyAmount").val()>touzi_money){
-		alert("投资金额不能高于投资金额！");
+		alert("投资金额不能高于可投资金额！");
 		return false;
 	}
 	
@@ -655,7 +655,7 @@ function mysubmit(){
 				   return false;
 			    }
 			    if(val>touzi_money){
-					   $('.neirong').html("您输入的金额大于投资金额,请重新输入");
+					   $('.neirong').html("您的投资金额大于可投资投资金额");
 					   return false;
 				    }
 			    if(parseInt(val)%100!=0){	
