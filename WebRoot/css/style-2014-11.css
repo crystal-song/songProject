@@ -3763,10 +3763,17 @@ ul,li{
 .reg p{ 
 	padding:3px; 
 	margin:0px;
-	width:316px;
+	width:500px;
 }
 .reg div{ 
 	font-size:12px;
+}
+.reg_left_style{
+	width:100px;
+	height:100%;
+	display:inline-block;
+	margin-right:10px;
+	text-align:right;
 }
 .reg .input_item{ 
 	height:26px; 
@@ -3877,7 +3884,7 @@ ul,li{
 	padding:5px;
 	color:#F66;
 	display:block;
-	text-indent:100px;
+	text-indent:112px;
 	line-height:16px;
 	height:16px;
 	width:90%;
@@ -3904,7 +3911,7 @@ ul,li{
 	padding:5px; 
 	color:#999;  
 	display:block; 
-    text-indent:100px; 
+    text-indent:112px; 
     line-height:16px; 
     height:16px; 
     width:90%;
@@ -4471,7 +4478,7 @@ ul,li{
 .tui_left{
 	width:210px;
 	height:142px;
-	background:url(../img/images-2014-11/fenxiang_pic.gif) no-repeat;
+	/* background:url(../img/images-2014-11/fenxiang_pic.gif) no-repeat; */
 	float:left;
 	margin:0 3px;
 }
@@ -4525,8 +4532,18 @@ ul,li{
 	height:30px;
 }
 
-
-
+.newpro_right .spanhign_right{
+	width:210px;
+	height:40px;
+}
+.newpro_right .spanhign_right a{
+	display:inline-block;
+	width:100%;
+	height:20px;
+	line-height:20px;
+	font-size: 14px;
+	
+}
 
 
 

@@ -105,8 +105,8 @@
           </ul>
           <div class="login">
                <c:if test="${empty name}">
-                <a class="wd_red a_fir" href="<%=path%>/reg.jsp" style="line-height:40px; font-size:16px;" ><strong>注册</strong></a>
-                <a class="a_sec" href="<%=path%>/login.jsp" style="line-height:40px; font-size:16px;"><strong>登录</strong></a>
+                <a class="a_fir" href="<%=path%>/reg.jsp" style="line-height:40px; font-size:16px;" ><strong>注册</strong></a>
+                <a class="wd_red a_sec" href="<%=path%>/login.jsp" style="line-height:40px; font-size:16px;"><strong>登录</strong></a>
               </c:if>
              
              <c:if test="${!empty name}">
@@ -125,7 +125,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-	  
+	var index_reg="";
 	$('.res').click(function(){
 		$('.ie_text').css('display','none');
 	  });

@@ -44,12 +44,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a class="bds_count" data-cmd="count"></a>
                           </div>                                      
                       </span>
-                      <a><INPUT TYPE="BUTTON" VALUE="复制" onclick="CopyAll()" class="fuzhi" id="biao1"></a> 
+                      <a>
+                      <button id="d_clip_button"  data-clipboard-target="fe_text" class="fuzhi"><b>复制</b></button>
+                      </a> 
                   </li>    
                </ul>                            
                <div class="tui_pic">
-                  <div class="tui_left"></div>
-                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" cols=33 rows=4>理财生活两手抓！ 中租宝帮您发发发。www.ptobchina.com/j?rf=user1201</textarea>               
+                  <div class="tui_left"><img src="<%=path%>/img/images-2014-11/fenxiang_pic.gif"></div>
+                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" id="fe_text" cols=33 rows=4>理财生活两手抓！ 中租宝帮您发发发。www.ptobchina.com/j?rf=user1201</textarea>               
                </div>
                <p class="tui_num">我推荐的 1/3</p> 
                
@@ -82,6 +84,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>   
     </div>
 </div>
+
+<br/>
+<!-- <textarea id="fe_text" cols="50" rows="3">输入需要复制的内容</textarea>
+<button id="d_clip_button" class="anquan_hide_btn" data-clipboard-target="fe_text"><b>复制到剪贴板</b></button> -->
 <!-- absolute_right start -->
 	<%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->
@@ -90,6 +96,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+
+
+<!--复制功能js代码  -->
+<script type="text/javascript" src="<%=path%>/js/ZeroClipboard.js"></script>
+<script type="text/javascript">
+// 定义一个新的复制对象
+var clip = new ZeroClipboard( document.getElementById("d_clip_button"), {
+  moviePath: "<%=path%>/js/ZeroClipboard.swf"
+} );
+
+// 复制内容到剪贴板成功后的操作
+clip.on( 'complete', function(client, args) {
+	
+} );
+
+</script>
+
 <script>
 var navIndex=3; 
 var indexs=0;
@@ -102,63 +125,16 @@ $(function(){
   
 
 </script>
-<script>
-function jumpPage(pag){
-	/* alert("ccccccccccc"+pag); */
-	   
-	    $('#pageNo').val(pag); 
-	    
-	   /*  pa(); */
-	    
-	   $("#yearIncome").val(myFilter[0]);
-	$("#financingPeriod").val(myFilter[1]);
-	$("#financingMoney").val(myFilter[2]);
-	$("#financingProgress").val(myFilter[3]);
-	$("#projectStatus").val(myFilter[4]);
-	    
-	    
-	 $("#form" ).submit(); 
 
- }
-	
-	
-
-	
-	/*  var pageNo=1;
-	 var  pageSize=2;
-	 var  name="ddddd";
-	  */
-	
- 	/* window.open('<c:url value="/product/allProduct"/>', '_self');   */
- /* 	$.post("/product/allProduct", { name: "name"} ); */
-/*  if($('#pageNo').val() != ''){
-	 alert("ddddddddddd");
-	 alert("ccccc"+$('#pageNo').val()); */
-            /* $.ajax({
-                type: 'POST',
-                url: '<c:url value="/product/session"/>',  */
-               /*  data: 'pageNo='+$('#pageNo').val(),
-                dataType: 'text',
-                success: function(data) {
-                	alert("ddddddd")
-                	alert("dd"+data+'"success"');
-                   
-                } */
-          /*   });   */
-/*  }   */  
-          
-
-
-  
-</script>
 <!-- 百度分享js代码 -->
  <script>
 					window._bd_share_config = {
 						common : {
 							bdText : '理财生活两手抓！ 中租宝帮您发发发',	
-							bdDesc : '',	
+							bdDesc : '理财生活两手抓！ 中租宝帮您发发发',	
 							bdUrl : 'http://www.ptobchina.com', 	
-							bdPic : '../img/images-2014-11/fenxiang_pic.gif'
+							<%-- bdPic : '<%=path%>/img/images-2014-11/fenxiang_pic.gif' --%>
+							bdPic : '	http://ptobchina.com/img/images-2014-11/fenxiang_pic.gif'
 						},
 						share : [{
 							"bdSize" : 16
@@ -181,36 +157,6 @@ function jumpPage(pag){
 					}
 					with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 				</script>
-<!--复制功能js代码  -->
-
- <script>
-	function CopyAll(){
-		var Url2=document.getElementById("biao1"); 
-		Url2.focus() ;//使文本框得到焦点
-		Url2.select() ;//把文本框中的内容全选
-		//document.execCommand("Copy");
-		if (document.all){
-		therange=Url2.createTextRange();
-		therange.execCommand("Copy"); //复制		
-	}
-}
-</script>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 				
