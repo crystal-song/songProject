@@ -231,49 +231,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </ul>            
      </div>
         <div class="clear"></div>
-      <div class="next_list">
-       
-							
-								 
-								 <a href="javascript:jumpPage(1)">首页</a> 
-								 
-								<c:if test=""></c:if>
-								 
-								 <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
-								 <div class="pageNum"></div>
-								 
-								   <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  
-								
-								<a href="javascript:jumpPage(${page.totalPage})">末页</a> 
-								
-							
-      <!--  
-      <a href="#" class="a1">首页</a>
-         <a href="#" class="a2"></a>
-         <a href="#">1</a>
-         <a href="#">2</a>
-         <a href="#">3</a>
-         <a href="#">4</a>
-         <a href="#">5</a>
-         <a href="#">...</a>
-         <a href="#">20</a>
-         <a href="#" class="a3"></a>
-         <a href="#" class="a4">尾页</a>
-         <span>跳到</span>
-         <span><input type="text" /></span>
-         <span>页</span>
-         <span><input type="submit" class="btn_sub" value="确定"/></span>   
-      -->
-      <!-- 
-        <a href="javascript:jumpPage(1)">首页</a> 
-			<c:if test=""></c:if>								 
-			<c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
-			<div class="pageNum"></div>								 
-			<c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  
-			<a href="javascript:jumpPage(${page.totalPage})">末页</a>   
-			
-      -->			     
-        </div>
+      <div class="next_list">						 
+				<a href="javascript:jumpPage(1)">首页</a> 
+				<c:if test=""></c:if>
+				<c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
+				<div class="pageNum"></div>
+				<c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  
+				<a href="javascript:jumpPage(${page.totalPage})">末页</a> 
+      </div>
      </div>
    </div>
   
@@ -463,80 +428,7 @@ function pa(clicked){
 	$("#form" ).submit();
 }
 
- /*  $(document).ready(function(){
-    
-$('.tz_nr li').click(function(){
-	
-	var n=0;
- $(this).addClass('dq').siblings().removeClass('dq');     
-	$('.tz_nr .dq').each(function(){
-		var param=[];
-		var b=['a','b','c','d','e'];
-		param.push($(this).val());	
-		alert(b[n]+'='+param);
-		n++;		
-		
-		
-		});
-	
-	});
 
-});	   */
-
-
-
-	    
-	    
-	/* $("#form" ).submit(); */
-
-/*  }
-	 */
- 
- 
-
-    /*  function pa(){   */
-/*  $(document).ready(function(){ 
-	 
-	    $('.tz_nr li').click(function(){    
-			
-			var n=0;
-		 $(this).addClass('dq').siblings().removeClass('dq');     
-			$('.tz_nr .dq').each(function(){
-				
-				var param=[];
-				var b=['a','b','c','d','e'];
-				param.push($(this).val()); */	
-				
-				/*  alert(b[n]+'='+param);  */
-				/*  alert("n"+n);
-				 alert("param"+param); */
-/* 				 if(n==0){
-			     $('#yearIncome').val(param); 
-				 }if(n==1){
-					 $('#financingPeriod').val(param);
-				 }if(n==2){
-					 $('#financingMoney').val(param);
-				 }if(n==3){
-					 $('#financingProgress').val(param);
-				 }if(n==4){
-					 $('#projectStatus').val(param);
-				 }
-				n++;	 */	
-				/* alert(b[0]); */
-				/* alert(param); */
-				 
-				
-				
-/* 				});
-			alert("avd");
-			
-			 $("#form" ).submit();
-			
-	  	});
-			 });     */
-
-/*   }    */
-  
 
 function jumpPage(pag){
 	/* alert("ccccccccccc"+pag); */
@@ -559,29 +451,7 @@ function jumpPage(pag){
 	
 
 	
-	/*  var pageNo=1;
-	 var  pageSize=2;
-	 var  name="ddddd";
-	  */
 	
- 	/* window.open('<c:url value="/product/allProduct"/>', '_self');   */
- /* 	$.post("/product/allProduct", { name: "name"} ); */
-/*  if($('#pageNo').val() != ''){
-	 alert("ddddddddddd");
-	 alert("ccccc"+$('#pageNo').val()); */
-            /* $.ajax({
-                type: 'POST',
-                url: '<c:url value="/product/session"/>',  */
-               /*  data: 'pageNo='+$('#pageNo').val(),
-                dataType: 'text',
-                success: function(data) {
-                	alert("ddddddd")
-                	alert("dd"+data+'"success"');
-                   
-                } */
-          /*   });   */
-/*  }   */  
-          
 
         
 	

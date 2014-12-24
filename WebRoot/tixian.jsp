@@ -178,10 +178,7 @@ function onSubmit(host) {
 	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
 	  $("#dialog01").css("display","block");
 	  $(".black_bac").css("display","block");
-	  $(".right_cha").click(function(){		  
-	  $("#dialog01").css("display","none");
 	  
-	  });
 	  
 	form.submit();		
 }
@@ -196,6 +193,7 @@ function checkval(){
     var navIndex=3; 
     var indexs=1;
     $(document).ready(function(){
+    	
     	$(".u_left_sec:eq(1) li:eq(2)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");   
     	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
@@ -207,6 +205,10 @@ function checkval(){
     		
     	});
     	
+    	$(".right_cha").click(function(){		  
+    		 window.location.reload(true);  		  
+    	});
+    	
 	    $(".tixian_money").blur(function(){
 	    	var tixian_val=$(".tixian_money").val();
 	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
@@ -214,21 +216,6 @@ function checkval(){
 	    	}    	
 	    });
 });
-  /*
-    var myblur= document.getElementById('amount');    
-    myblur.onfocus=function(){
-      if(myblur.value=="提现金额不能为0"){        	
-         myblur.value="";
-        // myblur.style.color="#000";
-        }     
-}   
-   
-    myblur.onblur=function(){
-	   if(myblur.value==""){
-	    myblur.value="投资金额不低于100元";
-	    //alert("您输入的金额不能为空");
-	    // myblur.style.color="#ccc" ;  
- }        
-} */
+
 </script>
 </html>

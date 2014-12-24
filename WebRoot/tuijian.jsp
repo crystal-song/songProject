@@ -28,9 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="pro_con_title" style="margin-top:5px;"><strong>推荐管理</strong></div>
             
                <ul class="tui_li">
+
                   <li><span>用户名：</span><span>${username}</span></li>
                   <li><span>我的推荐人：</span><span>${ref}</span></li>
-                  <li><span>我的推广链接：</span><span style="margin:0; width:142px">${ref_link}</span></li>
+                  <li><span>我的推广链接：</span><span style="margin:0; width:auto">${ref_link}</span></li>
+
                   <li style="width:700px"><span>我的分享：</span>
                       <span style="width:260px">
                           <div class="bdsharebuttonbox" data-tag="share_1">
@@ -44,12 +46,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a class="bds_count" data-cmd="count"></a>
                           </div>                                      
                       </span>
-                      <a ><INPUT TYPE="BUTTON" VALUE="复制" onclick="CopyAll(MSG)" class="fuzhi"></a> 
+                      <a>
+                      <button id="d_clip_button"  data-clipboard-target="fe_text" class="fuzhi"><b>复制</b></button>
+                      </a> 
                   </li>    
                </ul>                            
                <div class="tui_pic">
-                  <div class="tui_left"></div>
-                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" cols=33 rows=4>理财生活两手抓！ 中租宝帮您发发发。${ref_link}</textarea>
+
+				   <div class="tui_left"><img src="<%=path%>/img/images-2014-11/fenxiang_pic.gif"></div>
+                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" id="fe_text" cols=33 rows=4>理财生活两手抓！ 中租宝帮您发发发。${ref_link}</textarea>
                </div>
                <p class="tui_num">我推荐的 </p>
                
@@ -83,6 +88,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>   
     </div>
 </div>
+
+<br/>
+<!-- <textarea id="fe_text" cols="50" rows="3">输入需要复制的内容</textarea>
+<button id="d_clip_button" class="anquan_hide_btn" data-clipboard-target="fe_text"><b>复制到剪贴板</b></button> -->
 <!-- absolute_right start -->
 	<%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->
@@ -91,6 +100,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+
+
+<!--复制功能js代码  -->
+<script type="text/javascript" src="<%=path%>/js/ZeroClipboard.js"></script>
+<script type="text/javascript">
+// 定义一个新的复制对象
+var clip = new ZeroClipboard( document.getElementById("d_clip_button"), {
+  moviePath: "<%=path%>/js/ZeroClipboard.swf"
+} );
+
+// 复制内容到剪贴板成功后的操作
+clip.on( 'complete', function(client, args) {
+	
+} );
+
+</script>
+
 <script>
 var navIndex=3; 
 var indexs=0;
@@ -109,9 +135,10 @@ $(function(){
 					window._bd_share_config = {
 						common : {
 							bdText : '理财生活两手抓！ 中租宝帮您发发发',	
+
 							bdDesc : '理财生活两手抓！ 中租宝帮您发发发。',	
 							bdUrl : '${ref_link}',
-							bdPic : '自定义分享图片'
+							bdPic : 'http://ptobchina.com/img/images-2014-11/fenxiang_pic.gif'
 						},
 						share : [{
 							"bdSize" : 16
@@ -134,35 +161,5 @@ $(function(){
 					}
 					with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 				</script>
-<!--复制功能js代码  -->
- <script>
-	function CopyAll(T){
-		//alert("aa");
-		T.focus() //使文本框得到焦点
-		T.select() //把文本框中的内容全选
-		if (document.all){
-		therange=T.createTextRange()
-		therange.execCommand("Copy") //复制
-	}
-}
-</script>
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				
+			
 </html>

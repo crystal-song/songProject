@@ -561,24 +561,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 <script type="text/javascript">
-
-window.onload=function(){
-
-    var myblur= document.getElementById('buyAmount');    
-       myblur.onfocus=function(){
-         if(myblur.value=="投资金额不低于200元"){        	
-           myblur.value="";
-           myblur.style.color="#000";
-           }     
-   }      
-     myblur.onblur=function(){      
-      if(myblur.value==""){
-        myblur.value="200";
-        myblur.style.color="#ccc" ;  
-    }
-      document.getElementById("preview_amount").value=myblur.value;
-  }  
-}
+var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
 /*提交表单*/
 
@@ -588,11 +571,17 @@ function mysubmit(){
 		return false;
 		}
 	//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-	/*
+	
 	if($("#buyAmount").val()<200){
 		alert("投资金额不能低于200元！");
 		return false;
-	}*/
+	}
+	
+	if($("#buyAmount").val()>touzi_money){
+		alert("投资金额不能高于可投资金额！");
+		return false;
+	}
+	
 	var form = document.getElementById("form");
 	    form.submit();	
 }	
@@ -644,7 +633,9 @@ function mysubmit(){
 		
 		
 		//---------收益计算器结束-------------
-
+		
+/*验证输入的投资金额是否正确*/
+ 
 	 $("#buyAmount").keyup(function(){
 		  
 		    var str= /^[0-9]*$/;
@@ -663,8 +654,8 @@ function mysubmit(){
 				   $('.neirong').html("您输入的金额小于200元,请重新输入");
 				   return false;
 			    }
-			    if(val>5000000){
-					   $('.neirong').html("您输入的金额大于五百万元,请重新输入");
+			    if(val>touzi_money){
+					   $('.neirong').html("您的投资金额大于可投资投资金额");
 					   return false;
 				    }
 			    if(parseInt(val)%100!=0){	
@@ -743,6 +734,12 @@ function mysubmit(){
  	
  });  
  
+ /*获取投资额焦点*/
+ $("#buyAmount").focus(function(){
+ 	var tixian_val=$("#buyAmount").val();
+ 	$("#buyAmount").val("");	  	
+ });
+	             
     
 </script>
 </html>

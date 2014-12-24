@@ -110,7 +110,8 @@ public class productController {
 		if (o!=null){
 
 			Accounts account = userService.getAccountByName(o.toString());
-			model.addAttribute("account",account);
+			model.addAttribu
+			te("account",account);
 		}
 		model.addAttribute("product1", product1);
 		model.addAttribute("list", list);

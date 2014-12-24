@@ -23,18 +23,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="blank_block_title"><span class="new_reg01">新用户注册</span><div class="blank_right">已有中租宝账户? 请<a href="<%=path%>/login.jsp" style="color:#e72634">直接登录</a></div></div>
     <form action="<%=path %>/welcome/regEmail" id="Form1"  method="post" style="padding:0px;">
         <div class="blank_block_content reg">
-			<input type="hidden" value="${ref}" name="ref">
-          <p>　用户名：<input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /><span class="green_right new1"></span></p>
-          <div id="tip_username"><span class="tip_n">请输入用户名！</span></div>
-          <p>　密　码：<input name="password" id="password" type="password" class="input_item" onblur="chk_pwd()"/><span class="green_right new2"></span></p>
-          <div id="tip_userpwd"><span class="tip_n">请输入密码！</span></div>
-          <p>确认密码：<input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/><span class="green_right new3"></span></p>
-          <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
-          <p>安全邮箱：<input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/><span class="green_right new4"></span></p>
-			<div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div>
-			<p>理财经理电话：<input name="servicePhone" id="servicePhone" type="text" class="input_item"/><span class="green_right new4"></span></p>
 
-          <p style="width:480px">　验证码：  <input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
+          <p><span class="reg_left_style">用户名：</span><input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /><span class="green_right new1"></span></p>
+
+          <div id="tip_username"><span class="tip_n">请输入用户名！</span></div>
+          <p><span class="reg_left_style">密　码：</span><input name="password" id="password" type="password" class="input_item" onblur="chk_pwd()"/><span class="green_right new2"></span></p>
+          <div id="tip_userpwd"><span class="tip_n">请输入密码！</span></div>
+          <p><span class="reg_left_style">确认密码：</span><input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/><span class="green_right new3"></span></p>
+          <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
+          <p><span class="reg_left_style">安全邮箱：</span><input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/><span class="green_right new4"></span></p>
+          <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div>
+
+			<p><span class="reg_left_style">理财经理电话：</span><input name="servicePhone" id="servicePhone" type="text" class="input_item"/><span class="green_right new4"></span></p>
+          <p style="width:480px"><span class="reg_left_style">　验证码：  </span><input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
+
 					<img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
 					<a href="#" mce_href="#" onclick="javascript:show();return false; " style="font-size:12px;">看不清,换一张!</a>
 					 <div id="tip_validatecode"><span class="tip_n">请输入验证码！</span></div> 

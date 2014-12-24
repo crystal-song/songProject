@@ -36,7 +36,8 @@
        
        </li>
        <li class="foo02"><strong>友情链接</strong>
-           <a href="http://www.ptobchina.com/">中投汇融</a>          
+           <a href="http://www.ptobchina.com/">中投汇融</a>
+           <a href="http://www.wdlm.cn/">网贷联盟 </a>            
            <a href="http://www.itouzi.com/">爱投资</a>
            <a href="http://www.lufax.com/">陆金所</a>
            <a href="http://fund.creditcities.com/">安信普华</a>
@@ -45,7 +46,6 @@
            <a href="http://www.jinshangdai.cn/">晋商贷</a>         
            <a href="http://www.p2peye.com/">网贷天眼</a>
            <a href="http://www.jinshangdai.cn/">晋商贷</a>
-           <a href="http://www.zhazhi.com/qikan/jingji/">经济管理期刊</a>
        </li>
        <li>
          <ul class="min_label">

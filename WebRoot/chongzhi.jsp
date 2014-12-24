@@ -169,12 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
 		  $(".black_bac").css("display","block");
 		  $("#dialog01").css("display","block");	
-		  
-		  $(".right_cha").click(function(){
- 	        $("#dialog01").css("display","none");
- 	      
- 	});
-		  
+	  
 		form.submit();
 	}
 </script>
@@ -185,6 +180,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	$(".u_left_sec:eq(1) li:eq(1)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+    	$(".right_cha").click(function(){		  
+   		 window.location.reload(true);  		  
+   	});
     /* 	 $(".u_left_mian").click(function(){    	
        	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
        	  $(this).parent().siblings().children(".u_left_sec").slideUp();
