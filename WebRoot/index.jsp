@@ -77,10 +77,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="newpro_right">
          <dl>
            <dt><strong>企业定位</strong></dt>
-           <dd><a class="newpro_wd01"></a><span>打造专业化金融信息交易平台。</span></dd>
-           <dd><a class="newpro_wd02"></a><span>实现高净值资产管理规模。</span></dd>
-           <dd><a class="newpro_wd03"></a><span>创造国际化资产管理服务水平。</span></dd>
-           <dd><a class="newpro_wd04"></a><span>成就顶级国际私人银行服务平台。</span></dd>
+           <dd><a class="newpro_wd01"></a>
+           <span class="spanhign_right">
+	           <a>灵活投资，低门槛 </a> 
+	           <a style="font-size:12px;"><label style="color:red">200元起投</label>，操作灵活便捷</a>
+           </span>         
+           </dd>           
+           <dd> 
+              <a class="newpro_wd02"></a> 
+              <span class="spanhign_right">
+               <a>五层保障</a> 
+	           <a style="font-size:12px;"><label style="color:red">200元起投</label>，操作灵活便捷</a>
+              </span>
+           </dd>
+           <dd><a class="newpro_wd03"></a>
+             <span class="spanhign_right">
+               <a>高收益率 </a> 
+	           <a style="font-size:12px; line-height:12px;">平均年化收益率<label style="color:red">12%</label>，最高<label style="color:red">14%</label>， 高于银行活期<label style="color:red">30倍</label>以上收益率</a>
+             </span></dd>
+           <dd><a class="newpro_wd04"></a><span class="spanhign_right">
+           <a>专注P2B</a>  
+           <a style="font-size:12px;">精选优质企业，远超P2P安全保障。</a>          
+           </span></dd>
        </dl>
        </div>    
     </div> 
