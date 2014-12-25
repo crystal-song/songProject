@@ -4581,7 +4581,13 @@ ul,li{
 	display:inline-block;
 	color:#666;
 }
-
+.queren_con .liquan_check{
+	width:200px;
+	height:30px;
+	display:inline-block;
+	margin:0 31%;
+	
+}
 
 
 
