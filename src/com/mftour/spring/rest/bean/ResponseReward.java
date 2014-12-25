@@ -3,13 +3,13 @@ import com.mftour.spring.base.JsonBaseBean;
 import com.mftour.spring.model.Rewards;
 
 public class ResponseReward extends JsonBaseBean{
-    private Rewards res;
+    private Rewards reward;
 
-    public Rewards getRes() {
-        return res;
+    public Rewards getReward() {
+        return reward;
     }
 
-    public void setRes(Rewards res) {
-        this.res = res;
+    public void setReward(Rewards reward) {
+        this.reward = reward;
     }
 }

@@ -219,7 +219,7 @@ public class GateController {
 			throws Exception {
 		File f = ReadWirtePropertis.file();
 		model.addAttribute("f", f);
-		model.addAttribute("now", System.currentTimeMillis());
+		model.addAttribute("now", UUID.randomUUID().toString());
 		Object o = request.getSession().getAttribute("name");
 		if (o != null) {
 			List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(o
@@ -239,8 +239,12 @@ public class GateController {
 						registerYeePay.getPlatformUserNo());
 				model.addAttribute("feeMode", BHAFeeModeEnum.PLATFORM);
 			}
+		}else{
+			return "login";
 		}
 
+		Accounts accounts = userService.getAccountByName(o.toString());
+		model.addAttribute("account",accounts);
 		return "tixian";
 	}
 
@@ -494,18 +498,18 @@ public class GateController {
 			return "login";
 		}
 
-		if(Integer.parseInt(buyAmount)>= 10000){
+		if(Integer.parseInt(buyAmount)>= 3000){
 
 			Rest rest = new Rest();
 
-			String s = rest.getRestful("/rest/yeepay/update-success");
+			String s = rest.getRestful("/rest/reward/get-valid-by-user-id/"+o.toString()+"/"+buyAmount);
 			ResponseReward r = JSON.parseObject(s, ResponseReward.class);
 			if(!r.isSuccess()){
 				logger.error("error get reward ");
 				return "error";
 			}
 
-			Rewards reward = r.getRes();
+			Rewards reward = r.getReward();
 			model.addAttribute("reward",reward);
 		}else{
 			model.addAttribute("reward",new Rewards());
@@ -576,7 +580,7 @@ public class GateController {
 	public String EstablishmentRegistration(Model model,
 			HttpServletRequest request) throws Exception {
 
-		model.addAttribute("now", System.currentTimeMillis());
+		model.addAttribute("now", UUID.randomUUID().toString());
 		return "payment/establishmentRegistration";
 		/* return "payment/transfer"; */
 	}
@@ -698,7 +702,6 @@ public class GateController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		} finally {
 		}
 
 		return "register";
@@ -790,13 +793,13 @@ public class GateController {
 
 			Object o = request.getSession().getAttribute("name");
 			if(o==null){
-				return "您已退出登陆请重新登陆";
+				return "请登录";
 			}
 			BigDecimal bamount= new BigDecimal(amount);
 			Accounts accounts = userService.getAccountByName(o.toString());
 			int bool = accounts.getAvailableMoney().compareTo(bamount);
 			if(bool < 0){
-				return "您的可余额不足";
+				return "您的可用余额不足";
 			}
 			List<TProduct> lis = productService.queryProductByNumber(id);
 			TProduct t = lis.get(0);
@@ -970,54 +973,9 @@ public class GateController {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
 
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
 		try {
 
-			DocumentBuilder db = dbf.newDocumentBuilder();
 
-			InputStream iStream = new ByteArrayInputStream(
-					resp.getBytes("UTF-8"));
-			Document dm = db.parse(iStream);
-
-			NodeList persons = dm.getElementsByTagName("response");
-
-			TBindingSucceed bindingSucceed = new TBindingSucceed();
-
-			for (int i = 0; i < persons.getLength(); i++) {
-
-				Element personElement = (Element) persons.item(i);
-
-				NodeList p = personElement.getChildNodes();
-				for (int j = 0; j < p.getLength(); j++) {
-					p.item(j);
-
-				}
-
-				if (p.item(1).getNodeName() != null
-						&& p.item(1).getTextContent() != null) {
-					bindingSucceed.setService(p.item(1).getTextContent());
-
-				}
-				if (p.item(3).getNodeName() != null
-						&& p.item(3).getTextContent() != null) {
-					bindingSucceed.setPlatformNo(p.item(3).getTextContent());
-
-				}
-				if (p.item(5).getNodeName() != null
-						&& p.item(5).getTextContent() != null) {
-					bindingSucceed.setCode(p.item(5).getTextContent());
-
-				}
-				if (p.item(7).getNodeName() != null
-						&& p.item(7).getTextContent() != null) {
-					bindingSucceed.setDescription(p.item(7).getTextContent());
-
-				}
-
-			}
-
-			gateService.addOrUpdateTBindingSucceed(bindingSucceed);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -1041,80 +999,8 @@ public class GateController {
 		model.addAttribute("notify", notify);
 		model.addAttribute("sign", sign);
 
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
 		try {
 
-			DocumentBuilder db = dbf.newDocumentBuilder();
-
-			InputStream iStream = new ByteArrayInputStream(
-					notify.getBytes("UTF-8"));
-			Document dm = db.parse(iStream);
-
-			NodeList persons = dm.getElementsByTagName("notify");
-
-			TBindingNotify bindingNotify = new TBindingNotify();
-
-			for (int i = 0; i < persons.getLength(); i++) {
-
-				Element personElement = (Element) persons.item(i);
-
-				NodeList p = personElement.getChildNodes();
-				for (int j = 0; j < p.getLength(); j++) {
-					p.item(j);
-
-				}
-
-				if (p.item(1).getNodeName() != null
-						&& p.item(1).getTextContent() != null) {
-					bindingNotify.setRequestNo(p.item(1).getTextContent());
-
-				}
-				if (p.item(3).getNodeName() != null
-						&& p.item(3).getTextContent() != null) {
-					bindingNotify.setPlatformNo(p.item(3).getTextContent());
-
-				}
-				if (p.item(5).getNodeName() != null
-						&& p.item(5).getTextContent() != null) {
-					bindingNotify.setBizType(p.item(5).getTextContent());
-
-				}
-				if (p.item(7).getNodeName() != null
-						&& p.item(7).getTextContent() != null) {
-					bindingNotify.setCode(p.item(7).getTextContent());
-
-				}
-				if (p.item(9).getNodeName() != null
-						&& p.item(9).getTextContent() != null) {
-					bindingNotify.setMessage(p.item(9).getTextContent());
-
-				}
-				if (p.item(11).getNodeName() != null
-						&& p.item(11).getTextContent() != null) {
-					bindingNotify
-							.setPlatformUserNo(p.item(11).getTextContent());
-
-				}
-				if (p.item(13).getNodeName() != null
-						&& p.item(13).getTextContent() != null) {
-					bindingNotify.setBankCardNo(p.item(13).getTextContent());
-
-				}
-				if (p.item(15).getNodeName() != null
-						&& p.item(15).getTextContent() != null) {
-					bindingNotify.setCardStatus(p.item(15).getTextContent());
-
-				}
-				if (p.item(17).getNodeName() != null
-						&& p.item(17).getTextContent() != null) {
-					bindingNotify.setBank(p.item(17).getTextContent());
-
-				}
-
-			}
-
-			gateService.addOrUpdateTBindingNotify(bindingNotify);
 
 		} catch (Exception e) {
 			// TODO: handle exception

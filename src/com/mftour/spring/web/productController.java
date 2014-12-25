@@ -103,15 +103,12 @@ public class productController {
 				.queryTInterestRateByNumber(product1.getEnterpriseNumber());
 		if (li != null && li.size() != 0) {
 			model.addAttribute("li", li);
-			
 		}
 
 		Object o = request.getSession().getAttribute("name");
 		if (o!=null){
-
 			Accounts account = userService.getAccountByName(o.toString());
-			model.addAttribu
-			te("account",account);
+			model.addAttribute("account",account);
 		}
 		model.addAttribute("product1", product1);
 		model.addAttribute("list", list);

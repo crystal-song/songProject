@@ -38,7 +38,7 @@ public class YeePay {
 		String pfx = f.getYeepayCfaFile();
 		String requestNo = UUID.randomUUID().toString();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", "19");
+		map.put("id", product);
 		map.put("notifyurl", "/gate/loanNotify");
 
 		map.put("requestno", requestNo);
@@ -53,7 +53,7 @@ public class YeePay {
 				m.put("request-no", requestNo);
 				m.put("service", "LOAN");
 				m.put("request-xml", s);
-				String res = rest.postRestful("/rest/yeepay/create", map);
+				String res = rest.postRestful("/rest/yeepay/create", m);
 				JsonBaseBean rr = JSON.parseObject(res, JsonBaseBean.class);
 				if (rr.isSuccess()){
 
@@ -63,9 +63,15 @@ public class YeePay {
 
 
 					Map<String, Object> mm = Xml.Dom2Map(resp);
+
+					Map<String, Object> mapResp = new HashMap<String, Object>();
+					mapResp.put("request-no", requestNo);
+					mapResp.put("service", "LOAN");
+					mapResp.put("code", mm.get("code"));
+					mapResp.put("response-xml", resp);
 					if(mm.get("code").equals("1")){
 
-						String updateRes = rest.postRestful("/rest/yeepay/update-success", map);
+						String updateRes = rest.postRestful("/rest/yeepay/update-success", mapResp);
 						JsonBaseBean updateReturn = JSON.parseObject(s, JsonBaseBean.class);
 						if (updateReturn.isSuccess()){
 							return true;
@@ -74,6 +80,9 @@ public class YeePay {
 							return false;
 						}
 					}else{
+
+						String updateRes = rest.postRestful("/rest/yeepay/update-error", mapResp);
+						JsonBaseBean updateReturn = JSON.parseObject(s, JsonBaseBean.class);
 						return false;
 					}
 

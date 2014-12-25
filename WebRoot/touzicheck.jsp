@@ -79,13 +79,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
           <div class="form-group" >
+              ${reward}
             <label for="paymentAmount">投资金额：</label><input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
           </div>
           </li>
 
        <li>
-           <div class="form-group" style="${reward==null?"display:none":""}">
+
+           <div class="form-group" style="${reward.userId==null?"display:none":""}">
                <label for="paymentAmount">使用50元礼卷</label><input type="checkbox"
                                                               class="form-control" id="reward" name="rewardCheck"  />
            </div>

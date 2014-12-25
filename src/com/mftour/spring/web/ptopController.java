@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+
+import com.mftour.spring.logic.YeePay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -89,15 +91,21 @@ public class ptopController {
 	@RequestMapping(value = "/loanProduct", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	@ResponseBody
-	public String loanProduct(Model model, TProduct product,
+	public String loanProduct(@RequestParam("id") int id,Model model, TProduct product,
 			HttpServletRequest request) throws Exception {
 
 
 		try {
-			
-			
-			return "success";
 
+
+			boolean b = YeePay.doLoan(id);
+			if (b){
+				return "success";
+			}else{
+
+				return "error";
+
+			}
 		} catch (Exception e) {
 			
 		    logger.info(e.getMessage());

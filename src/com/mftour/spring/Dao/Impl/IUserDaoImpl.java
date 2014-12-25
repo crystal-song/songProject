@@ -33,7 +33,7 @@ public class IUserDaoImpl extends HibernateDaoSupport implements IUserDao {
 	}
 
 	public Accounts getAccountByName(String name) throws Exception {
-		String hql = "from Accounts user where accounts.userId = :userId";
+		String hql = "from Accounts accounts where accounts.userId = :userId";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("userId", name);
 		return (Accounts)query.list().get(0);

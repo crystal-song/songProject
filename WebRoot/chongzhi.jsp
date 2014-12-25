@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           
           <div class="money">
-            <p><span>可用余额</span><span><strong>0.00</strong>元</span></p>
+            <p><span>可用余额</span><span><strong>${account.availableMoney}</strong>元</span></p>
             <p class="position_money" style="display:none"><span>充值金额</span><span class="money_text"><input type="text" value="100"></input>元</span></p>
           </div>   
                 

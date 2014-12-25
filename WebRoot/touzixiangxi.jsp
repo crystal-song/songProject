@@ -581,9 +581,17 @@ function mysubmit(){
 		alert("投资金额不能高于可投资金额！");
 		return false;
 	}
-	
-	var form = document.getElementById("form");
-	    form.submit();	
+
+    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
+        success: function(resp){
+            if(resp === "success"){
+
+                var form = document.getElementById("form");
+                form.submit();
+            }else{
+                alert(resp);
+            }
+        }});
 }	
 
 

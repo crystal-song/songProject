@@ -11,6 +11,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>管理PtoB项目</title>
 <link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
+    <script>
+        function loan(id){
+            $.ajax({url:"/Login/loanProduct?id="+id,
+                type:"GET",
+                success: function(data){
+                    if(data.success === true){
+                        alert("放款成功");
+                        location.reload();
+                    }else{
+                        alert("放款失败");
+                    }
+                }});
+        }
+    </script>
+
 </head>
 
 <body>
@@ -43,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <c:forEach var="s" items="${list}" varStatus="i">
   <tr>
    <!--  <td><img width="50" /></td> -->
-    <td><a href="<%=path%>/product/getProductByid?id=${s.id}" target="_blank" title="点击进入项目前台页面">${s.projectName}</a></td>
+    <td><a href="<%=path%>/product/getProductByid?id=${s.id}"  target="_blank" title="点击进入项目前台页面">${s.projectName}</a></td>
     <td>${s.financingMoney}万</td>
     <td>${s.financingProgress}%</td>
     <td>${s.yearIncome}</td>
@@ -53,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td>
     <p>
     <a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a>
-     <a href="javascript:void(0)" onclick="loan($(a.id))">放款</a>
+     <a href="javascript:void(0)" onclick="loan(${s.id})">放款</a>
     <a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a>
     <a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteproduct?id=${s.id}'">删除</a>
     <a href="<%=path%>/Login/addyield?id=${s.id}">收益率</a>
@@ -72,18 +87,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 </body>
 </html>
-<script>
-function loan(id){
-	$.ajax({url:"/Login/loanProduct",
-		    type:"GET",
-		    params: {id: id},
-		    success: function(data){
-		  		if(data.success === true){
-		  			alert("放款成功");
-		  			location.reload();
-		  		}else{
-		  			alert("放款失败");
-		  		}
-		    }});
-}
-</script>
