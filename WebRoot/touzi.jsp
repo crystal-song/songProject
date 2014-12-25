@@ -422,7 +422,7 @@ function filterChange(){
 	$("#financingProgress").val(myFilter[3]);
 	$("#projectStatus").val(myFilter[4]);
 	$("#pageNo").val(1);
-	console.log(myFilter);
+	//console.log(myFilter);
 	//alert("avd");	
 	$("#form" ).submit();
 } 
