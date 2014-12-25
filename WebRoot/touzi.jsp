@@ -136,8 +136,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="con_right">
      <div class="right_lable">
       <ul>
-        <li class="right_lable_red">全部项目</li>
-        <li style="display:none">融资中</li>
+        <li class="right_lable_red"><a href="<%=path%>/product/allProduct">全部项目</a></li>
+        <li style="display:none"><a href="<%=path%>/product/allProduct?projectStatus=2">融资中</a></li>
         <li style="display:none">已成功</li>
         <li style="display:none">按条件查找</li>      
       </ul>
@@ -207,14 +207,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span style="color:#a4a4a4;">目标：</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
                    <span style="width:80px; margin-right:0">￥&nbsp;${s.financingMoney}万元</span>
-                   <a>融资中</a>
+                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'还款中':'已完成' }</a>
                  </div>
                  <div class="loding_bar">
                  <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
                  </div>
                  <div class="floor_bottom01">
+                  <c:if test="${s.projectStatus!=1 }">
                    <span style="float:left; margin-left:3%;"><a class="baifenbi01" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
                    <a style="float:left; color:#a4a4a4;">已达</a></span>
+                  </c:if>
+                  <c:if test="${s.projectStatus==1 }">
+                   <span style="float:left; margin-left:3%;"><a class="baifenbi01" style="float:left; text-align:left;">${s.financeTime}</a>
+                   <a style="float:left; color:#a4a4a4;">融资时间</a></span>
+                  </c:if>
                    <span style="display:none" ><a class="baifenbi01" style="width:80px; float:left; text-align:left;">￥&nbsp;&nbsp;<c:if test='${empty s.realityMoney}'>0</c:if> ${s.realityMoney}</a><a style="color:#a4a4a4; text-align:left; float:left;">已筹资</a>
                    </span>
                    <span style="float:right; margin-right:3%;"><a class="baifenbi01" style="float:right; text-align:right;">${s.yearIncome}%</a>

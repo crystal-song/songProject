@@ -70,6 +70,9 @@ public class transactionRecordController {
 				sql+=" and a.type=? ORDER BY a.transDate DESC ";
 				paramlist.add(type);
 				}
+			if("typeall".equals(type)&&"timeall".equals(time)){
+				sql+=" ORDER BY a.transDate DESC ";
+			}
 			List<TTransRecord> transRecordList=gateService.queryAllTransRecord(page,sql,paramlist.toArray());
 			model.addAttribute("transRecordList", transRecordList);
 			model.addAttribute("recordsize", transRecordList.size());

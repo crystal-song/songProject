@@ -1,5 +1,7 @@
 package com.mftour.spring.web;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -55,8 +57,21 @@ public class productController {
 				
 		 
 		 List<TProduct> list=productService.getProduct(page,product);
-		  
-		  model.addAttribute("list", list);
+		 List productList=new ArrayList();
+			for(TProduct product1:list){
+				if(product1.getFinanceTime()!=null){
+				long financeTime=new SimpleDateFormat("yyyy-MM-dd").parse(product1.getFinanceTime()).getTime();
+				long currTime=System.currentTimeMillis();
+				if(currTime>=financeTime&&product1.getProjectStatus()==1){
+					product1.setProjectStatus(2);//设置项目状态为融资中
+					ptopService.addOrUpdate(product1);
+					
+				}
+				}
+				productList.add(product1);
+			}
+			model.addAttribute("list", productList);
+			
 		  model.addAttribute("page", page);
 		  model.addAttribute("product", product);
 		  

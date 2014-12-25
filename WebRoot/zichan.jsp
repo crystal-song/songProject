@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <p class="zichan_num"><span>资产总值:</span><strong><span id="balance_info">${balance}</span><i>元</i></strong>
           <a href="<%=path%>/gate/recharge" class="char red">充值</a>
           <a href="<%=path%>/gate/drawMoney" class="char">提现</a>
-          <a href="<%=path%>/transRecord/queryTransRecord?time_type=seven_all" class="char">交易记录</a>          
+          <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall" class="char">交易记录</a>          
           </p>
           <ul class="zichan_bar">
             <li>

@@ -302,7 +302,6 @@ public class GateController  {
 	public String dodrawMoney(String host,BHAWithdrawRequest request, Model model,TDrawMoney drawMoney) throws Exception {
 		Date dt = new Date();   
 	    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");   
-	    
 	    drawMoney.setTransDate(sdf.format(dt).toString());
 		gateService.addOrUpdateTDrawMoney(drawMoney);
 		return doSign(request, host + "/bha/toWithdraw", model );
@@ -536,11 +535,15 @@ public class GateController  {
 				 b=li.get(i+1).getStartMoney();
 				}else{
 					a=li.get(i).getStartMoney();
-				}   b=li.get(i).getHighestMoney();
+				    b=li.get(i).getHighestMoney();
+				} 
 				if(a<=paymentAmount&&paymentAmount<b){
-					
-					Double StartInterest=li.get(i).getStartInterestRate();
-					
+					 Double StartInterest;
+					if(li.get(i).getMoneyIncrease()!=0){
+					    StartInterest=li.get(i).getStartInterestRate()+li.get(i).getInterestRateIncrease()*(paymentAmount-a)/li.get(i).getMoneyIncrease();
+					}else{
+						StartInterest=li.get(i).getStartInterestRate();
+					}
 					TtransferInfo.setInterestRate(StartInterest);
 				}
 			}
@@ -579,7 +582,7 @@ public class GateController  {
 		         ptopService.addOrUpdateInvestmentInfo(investmentInfo);
 			
 			
-		    List<TProduct> lis= productService.queryProductByNumber(TtransferInfo.getEnterpriseNumber());
+		   /* List<TProduct> lis= productService.queryProductByNumber(TtransferInfo.getEnterpriseNumber());
 	         TProduct t=lis.get(0);
 	          
 	            Double RealityMoney=t.getRealityMoney();
@@ -589,9 +592,9 @@ public class GateController  {
 	            	t.setRealityMoney(money);
 	            	t.setFinancingProgress(money/t.getFinancingMoney()*100/10000);
 	            }else{
-	            	/*Double  money=RealityMoney+investmentInfo.getInvestmentAmount();
+	            	Double  money=RealityMoney+investmentInfo.getInvestmentAmount();
 	            	t.setRealityMoney(money);
-	            	t.setFinancingProgress(money/t.getFinancingMoney()*100);*/
+	            	t.setFinancingProgress(money/t.getFinancingMoney()*100);
 	            	
 	            	Double d=ptopService.querySum(TtransferInfo.getEnterpriseNumber());
 	            	t.setRealityMoney(d);
@@ -600,7 +603,7 @@ public class GateController  {
 	            
 	   
 	            
-	           ptopService.addOrUpdate(t);	
+	           ptopService.addOrUpdate(t);	*/
 			
 			
 			
@@ -1017,7 +1020,32 @@ public class GateController  {
 	    	  TTransRecord transrecord=new TTransRecord(transferInfo.getPlatformUserNo(),transferInfo.getRequestNo(),transferInfo.getTransDate(),transferInfo.getProjectName(),transferInfo.getPaymentAmount(),"投资");
 	    	  transRecordService.addOrUpdate(transrecord);
 		   
-		      
+	    	  List<TProduct> lis= productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
+		         TProduct t=lis.get(0);
+		          
+		            Double RealityMoney=t.getRealityMoney();
+
+		            if(RealityMoney==null||RealityMoney==0.0){
+		            	Double money = Double.parseDouble(transferInfo.getPaymentAmount());
+		            	t.setRealityMoney(money);
+		            	t.setFinancingProgress(money/t.getFinancingMoney()*100/10000);
+		            }else{
+		            	Double  money=RealityMoney+li.get(0).getInvestmentAmount();
+		            	t.setRealityMoney(money);
+		            	t.setFinancingProgress(money/t.getFinancingMoney()*100/10000);
+		            	/*
+		            	Double d=ptopService.querySum(transferInfo.getEnterpriseNumber());
+		            	t.setRealityMoney(d);
+		            	t.setFinancingProgress(d/t.getFinancingMoney()*100/10000);*/
+		            }
+		            if(t.getRepaymentTime()!=null){
+		    		long l1 = new SimpleDateFormat("yyyy-MM-dd").parse(t.getRepaymentTime()).getTime();
+		    		long l2 = System.currentTimeMillis();
+		            if(t.getFinancingProgress()==100||l2>=l1){
+		            	t.setProjectStatus(3);//设置还款中
+		            }
+		            }
+		           ptopService.addOrUpdate(t);
 		        } catch (Exception e) {
 		            // TODO: handle exception
 		            e.printStackTrace();
@@ -1127,13 +1155,7 @@ public class GateController  {
 		    		 p.item(j);
 		    		  
 		    	  }
-		    	  
 		    	 
-		    	  
-		    	 
-		    	  
-		    	 
-		    	  
 		      }  
 		      
 		      gateService.addOrUpdateTBindingSucceed(bindingSucceed);
