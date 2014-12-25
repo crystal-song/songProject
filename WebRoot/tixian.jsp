@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              
              <div class="form-group" style="margin-top:50px; dislplay:none">
               <label for="plat">可提现金金额</label>
-              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">0.00</strong>元</div>
+              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">100</strong>元</div>
              </div>
         <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
           <input type="hidden" id="host" name="host"/>
@@ -175,12 +175,22 @@ function onSubmit(host) {
 	  document.getElementById("host").value = host;
 	  var form = document.getElementById("form");
 	  document.getElementById("mysubmit_btn").disabled=true;
-	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-	  $("#dialog01").css("display","block");
-	  $(".black_bac").css("display","block");
-	  
-	  
-	form.submit();		
+
+	    	var tixian_val=parseInt($(".tixian_money").val());
+		    var old_amount=parseInt($(".wd_org").text());
+
+	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
+	    		alert("您输入的金额为空,请重新输入");	    	    		
+	    	}    	
+	    	 if(tixian_val>old_amount){
+	    		alert("您提现的金额不能超出可提现金额");
+	    		return false;	    		
+	    	}else{
+	    		  $("#dialog01").css("display","block");
+	    		  $(".black_bac").css("display","block");
+	    		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+	    		  //form.submit();
+	    	}		
 }
 
 function checkval(){
@@ -209,12 +219,11 @@ function checkval(){
     		 window.location.reload(true);  		  
     	});
     	
-	    $(".tixian_money").blur(function(){
-	    	var tixian_val=$(".tixian_money").val();
-	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
-	    		alert("您输入的金额为空,请重新输入");	    		
-	    	}    	
-	    });
+
+	    
+	    
+	    
+	    
 });
 
 </script>
