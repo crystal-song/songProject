@@ -327,7 +327,7 @@ $(document).ready(function(e){
 });
 
 
-var myFilter=new Array();
+ var myFilter=new Array();
 
 function filterChange(){
 	var filterIndex= new Array();
@@ -408,67 +408,49 @@ function filterChange(){
 	for(i=0;i<5;i++){
 		$(".filter").eq(i).children("li").eq(filterIndex[i]).addClass("dq");
 	}
-}
+} 
 
-function pa(clicked){
+ function pa(clicked){
 	myFilter[clicked.parent().index(".filter")]=clicked.attr("value");
-/* 	for(i=0;i<5;i++){
+ 	for(i=0;i<5;i++){
 		$("#form input").eq(i).val(myFilter[i]);
 		console.log(i+">>"+$("#form input").eq(i).val());
-	} */
-	$("#yearIncome").val(myFilter[0]);
+	} 
+	 $("#yearIncome").val(myFilter[0]);
 	$("#financingPeriod").val(myFilter[1]);
 	$("#financingMoney").val(myFilter[2]);
 	$("#financingProgress").val(myFilter[3]);
 	$("#projectStatus").val(myFilter[4]);
 	$("#pageNo").val(1);
 	console.log(myFilter);
-	//alert("avd");
-	
+	//alert("avd");	
 	$("#form" ).submit();
-}
-
-
-
-function jumpPage(pag){
-	/* alert("ccccccccccc"+pag); */
-	   
-	    $('#pageNo').val(pag); 
-	    
-	   /*  pa(); */
-	    
-	   $("#yearIncome").val(myFilter[0]);
+} 
+ 
+ function jumpPage(pag){
+	/* alert("ccccccccccc"+pag); */	   
+	$('#pageNo').val(pag); 	    	    
+	$("#yearIncome").val(myFilter[0]);
 	$("#financingPeriod").val(myFilter[1]);
 	$("#financingMoney").val(myFilter[2]);
 	$("#financingProgress").val(myFilter[3]);
-	$("#projectStatus").val(myFilter[4]);
-	    
-	    
+	$("#projectStatus").val(myFilter[4]);    
 	 $("#form" ).submit(); 
-
- }
+ } 
 	
-	
-
-	
-	
-
-        
-	
-
-
 
 window.onload=function(e) {
-	pagerInit(${page.totalPage},${page.pageNo});//${page.totalPage},${page.pageNo}
-	myFilter=[${product.yearIncome},${product.financingPeriod},${product.financingMoney},${product.financingProgress},${product.projectStatus}]
+	//pagerInit(11,3);//${page.totalPage},${page.pageNo}
+	pagerInit(${page.totalPage},${page.pageNo});
+	/* myFilter=[${product.yearIncome},${product.financingPeriod},${product.financingMoney},${product.financingProgress},${product.projectStatus}]
 	if(myFilter[0]==null){
 		myFilter=[1,1,1,1,1];
 	}
-	console.log(myFilter);
+	//console.log(myFilter);
 	filterChange();
 	$(".filter li").bind("click",function(e){
 		pa($(this));
-	});
+	}); */
 }
    
 function pagerInit(a,b){//${page.totalPage},${page.pageNo}
@@ -478,7 +460,7 @@ function pagerInit(a,b){//${page.totalPage},${page.pageNo}
 	var endPage=curPage+5>totalPages-1?totalPages-1:curPage+5;
 	var startPage=endPage-7>2?endPage-7:2;
 	endPage=startPage+7>totalPages?totalPages:startPage+7;
-	console.log(startPage+"/"+endPage+"/"+curPage);
+	//console.log(startPage+"/"+endPage+"/"+curPage);
 	var str='';
 	var spl='<span>...</span>';
 	$(".pageNum").html('<a href="javascript:jumpPage(1)" class="pager">1</a>');

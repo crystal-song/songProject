@@ -84,6 +84,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           </li>
           <li>
+             <div class="form-group">
+                <span class="liquan_check"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
+             </div>            
+          </li>
+          <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="expired">投标过期时间</label><input type="text"
               class="form-control" id="expired" name="expired" value="2016-12-01 22:22:31" />
