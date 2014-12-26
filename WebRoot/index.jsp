@@ -180,7 +180,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   </span>
                  </div>
                  <div class="botm_btn">
+                  <c:if test="${s.projectStatus==2 }">
                   <a href="product/getProductByid?id=${s.id}">我要投</a>
+                  </c:if>
                   <a href="product/getProductByid?id=${s.id}" class="btn_org">了解详情</a>
                  </div>
               </div>

@@ -226,8 +226,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span style="float:right; margin-right:3%;"><a class="baifenbi01" style="float:right; text-align:right;">${s.yearIncome}%</a>
                    <a style="float:right; color:#a4a4a4;">年化收益率</a></span>
                  </div>
-                 <div class="botm_btn01">               
+                 <div class="botm_btn01">    
+                   <c:if test="${s.projectStatus==2 }">           
                    <a href="getProductByid?id=${s.id}">我要投</a>
+                   </c:if>
                   <a href="getProductByid?id=${s.id}" class="btn_org">了解详情</a>
                  </div>
             </div> 
