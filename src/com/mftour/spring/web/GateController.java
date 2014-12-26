@@ -1041,7 +1041,11 @@ public class GateController  {
 		            if(t.getRepaymentTime()!=null){
 		    		long l1 = new SimpleDateFormat("yyyy-MM-dd").parse(t.getRepaymentTime()).getTime();
 		    		long l2 = System.currentTimeMillis();
-		            if(t.getFinancingProgress()==100||l2>=l1){
+		            if(t.getFinancingProgress()==100){
+		            	t.setProjectStatus(3);//设置还款中
+		            	t.setRepaymentTime(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));//如果还款时间没到但已满标设置还款时间为当时时间
+		            }
+		            if(l2>=l1){
 		            	t.setProjectStatus(3);//设置还款中
 		            }
 		            }
