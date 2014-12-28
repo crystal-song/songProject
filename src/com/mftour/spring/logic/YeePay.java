@@ -3,6 +3,7 @@ package com.mftour.spring.logic;
 import java.io.ByteArrayInputStream;
 
 import com.mftour.spring.base.JsonBaseBean;
+import com.mftour.spring.rest.bean.YeepayAccountInfo;
 import org.dom4j.Document;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -31,7 +32,7 @@ public class YeePay {
 			.getLogger(YeePay.class);
   
 	private static Rest rest = new Rest();
-	public static boolean doLoan(int product) throws Exception {
+	public static boolean doLoan(int product, String enterpriceNumber) throws Exception {
 		{
 
 
@@ -53,6 +54,7 @@ public class YeePay {
 				m.put("request-no", requestNo);
 				m.put("service", "LOAN");
 				m.put("request-xml", s);
+				m.put("project-id", enterpriceNumber);
 				String res = rest.postRestful("/rest/yeepay/create", m);
 				JsonBaseBean rr = JSON.parseObject(res, JsonBaseBean.class);
 				if (rr.isSuccess()){
@@ -72,7 +74,7 @@ public class YeePay {
 					if(mm.get("code").equals("1")){
 
 						String updateRes = rest.postRestful("/rest/yeepay/update-success", mapResp);
-						JsonBaseBean updateReturn = JSON.parseObject(s, JsonBaseBean.class);
+						JsonBaseBean updateReturn = JSON.parseObject(updateRes, JsonBaseBean.class);
 						if (updateReturn.isSuccess()){
 							return true;
 						}else{
@@ -96,6 +98,37 @@ public class YeePay {
 			return false;
 		}
 	}}
+
+	public static YeepayAccountInfo getAccountInfo(String username) throws Exception {
+		{
+			try{
+
+
+				YeepayAccountInfo accountInfo = new YeepayAccountInfo();
+
+				String pfx = f.getYeepayCfaFile();
+				String s = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
+						+"<request platformNo='"+f.getPlatformNo()+"'>"
+						+"<platformUserNo>"+username+"</platformUserNo> "
+						+"</request>";;
+				s = s.replaceAll("[\\r\\n]", "");
+
+
+				HttpClientTest d = new HttpClientTest();
+				String resp = d.postForm("ACCOUNT_INFO", f.getOnSubmit()+"/bhaexter/bhaController", s,
+						SignUtil.sign(s, pfx, "liukai123"));
+
+				Map<String, Object> mm = Xml.Dom2Map(resp);
+				accountInfo.setCode(mm.get("code").toString());
+				accountInfo.setBank(mm.get("bank").toString());
+				accountInfo.setCardStatus(mm.get("cardStatus").toString());
+				accountInfo.setCardNo(mm.get("cardNo").toString());
+				return  accountInfo;
+			}catch(Exception e){
+				return new YeepayAccountInfo();
+			}
+		}
+	}
 }
 	
 		

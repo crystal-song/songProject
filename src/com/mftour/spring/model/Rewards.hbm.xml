@@ -6,6 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="com.mftour.spring.model.Rewards" table="rewards">
+
         <id name="userId" type="java.lang.String">
             <column name="userId" length="100" not-null="true"/>
             <generator class="native" />
@@ -19,6 +20,7 @@
         <property name="expireTime" type="java.sql.Timestamp">
             <column name="expireTime" />
         </property>
+
         <property name="giveTime" type="java.sql.Timestamp">
             <column name="giveTime" />
         </property>

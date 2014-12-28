@@ -1,5 +1,7 @@
 package com.mftour.spring.model;
 
+import java.math.BigDecimal;
+
 public class TTransRecord implements java.io.Serializable {
 	private static final long serialVersionUID = -8032768954376668825L;
 	private Long id;
@@ -7,16 +9,27 @@ public class TTransRecord implements java.io.Serializable {
 	private String requestNo;
 	private String transDate;			//交易时间
 	private String projectName;
-	private String transAmount;
+	private BigDecimal reward;
+
+	private BigDecimal transAmount;
 	private String type;
 	
 	public TTransRecord() {
 		super();
 	}
-	
+
+	public BigDecimal getReward() {
+		return reward;
+	}
+
+	public void setReward(BigDecimal reward) {
+		this.reward = reward;
+	}
+
 	public TTransRecord(String userName, String requestNo, String transDate,
-			String projectName, String transAmount, String type) {
+			String projectName, BigDecimal transAmount, String type) {
 		super();
+
 		this.userName = userName;
 		this.requestNo = requestNo;
 		this.transDate = transDate;
@@ -56,10 +69,10 @@ public class TTransRecord implements java.io.Serializable {
 		this.projectName = projectName;
 	}
 	
-	public String getTransAmount() {
+	public BigDecimal getTransAmount() {
 		return transAmount;
 	}
-	public void setTransAmount(String transAmount) {
+	public void setTransAmount(BigDecimal transAmount) {
 		this.transAmount = transAmount;
 	}
 	public String getType() {

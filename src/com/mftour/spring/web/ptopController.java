@@ -91,14 +91,13 @@ public class ptopController {
 	@RequestMapping(value = "/loanProduct", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	@ResponseBody
-	public String loanProduct(@RequestParam("id") int id,Model model, TProduct product,
+	public String loanProduct(@RequestParam("id") int id,@RequestParam("enterpriceNumber") String enterpriceNumber,Model model, TProduct product,
 			HttpServletRequest request) throws Exception {
 
 
 		try {
 
-
-			boolean b = YeePay.doLoan(id);
+			boolean b = YeePay.doLoan(id, enterpriceNumber);
 			if (b){
 				return "success";
 			}else{
@@ -108,7 +107,7 @@ public class ptopController {
 			}
 		} catch (Exception e) {
 			
-		    logger.info(e.getMessage());
+		    logger.info("error" +e);
 			return "error";
 		}
 

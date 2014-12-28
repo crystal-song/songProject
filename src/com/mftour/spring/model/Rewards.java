@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Rewards {
+
 	private String userId;
 	private BigDecimal amount;
 	private Boolean used;

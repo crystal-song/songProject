@@ -33,9 +33,6 @@
                  <a href="<%=path%>/gate/drawMoney">提现</a>
                 </li>
                 <li>
-                 <a href="<%=path%>/gate/binding">绑定银行卡</a>
-                </li>
-                <li>
                  <a href="<%=path%>/account/liquan?page=1&catlog=0">我的礼券</a>
                 </li>
 

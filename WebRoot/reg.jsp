@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
           <p><span class="reg_left_style">安全邮箱：</span><input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/><span class="green_right new4"></span></p>
           <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div>
-
+		  <input type="hidden" name="ref" value="${ref}">
 			<p><span class="reg_left_style">理财经理电话：</span><input name="servicePhone" id="servicePhone" type="text" class="input_item"/><span class="green_right new4"></span></p>
           <p style="width:480px"><span class="reg_left_style">　验证码：  </span><input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
 

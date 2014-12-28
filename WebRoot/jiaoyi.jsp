@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${t.transDate }</li>
                             <li>${t.type}</li>
                             <li>${t.projectName}</li>
-                            <li>${t.transAmount }</li>
+                            <li>${t.transAmount + t.reward}</li>
                             
                       </ul>  
                       </c:forEach>    

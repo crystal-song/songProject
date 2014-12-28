@@ -35,30 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank">
    <ul> 
          <input type="hidden" id="host" name="host">
-         <li> <div class="form-group" style="display:none;height:0px;" >
-             <!-- <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
-               <label for="platformNo">platformNo</label><input type="text"
-                class="form-control" id="platformNo" name="platformNo" value="${f.platformNo}" /> 
-             <!--  class="form-control" id="platformNo" name="platformNo" value="10012415118" />  -->
-          </div></li>
-          <li><div class="form-group" style="display:none;height:0px;" >
-            <label for="requestNo">requestNo</label><input type="text"
-              class="form-control" id="requestNo" name="requestNo" value="${now}" />
-          </div></li>
-          <li>
-          <div class="form-group" style="display:none;height:0px;" >
-            <label for="platformUserNo">platformUserNo</label><input
-              type="text" class="form-control" id="platformUserNo"
-              name="platformUserNo"  value="${registerYeePay1.platformUserNo}"  />
-          </div>
-          </li>
-          <li>
-          <div class="form-group" style="display:none;height:0px;" >
-            <label for="orderNo">标的号</label><input type="text"
-              class="form-control" id="orderNo" name="orderNo" value="${product.enterpriseName}" />
-          </div>
-          </li>
+
           <li>
           <div class="form-group" style="display:none">
             <label for="transferAmount">标的金额</label><input type="text"
@@ -79,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
           <div class="form-group" >
-              ${reward}
+
             <label for="paymentAmount">投资金额：</label><input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
           </div>
@@ -92,6 +69,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                               class="form-control" id="reward" name="rewardCheck"  />
            </div>
        </li>
+          <li>
+             <div class="form-group">
+                <span class="liquan_check"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
+             </div>            
+          </li>
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="expired">投标过期时间</label><input type="text"
@@ -121,8 +103,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           </li>
           <li>
-          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>  --> 
-         <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
 
 
           <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>

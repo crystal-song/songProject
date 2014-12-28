@@ -14,8 +14,10 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import com.alibaba.fastjson.JSON;
 import com.mftour.spring.base.JsonBaseBean;
+import com.mftour.spring.logic.YeePay;
 import com.mftour.spring.model.*;
 import com.mftour.spring.rest.bean.ResponseReward;
+import com.mftour.spring.rest.bean.YeepayAccountInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +71,7 @@ public class GateController {
 	@Autowired
 	private IptopService ptopService;
 
+	private Rest rest = new Rest();
 	@Autowired
 	private IProductService productService;
 
@@ -77,6 +80,55 @@ public class GateController {
 	@Autowired
 	private ITransRecordService transRecordService;
 
+	boolean isYeepay(String userName) throws  Exception{
+		boolean b = false;
+		List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(userName);
+		List<TRegisterNotify> list = gateService
+				.queryTRegisterNotifyByName(userName);
+
+		if (li != null && li.size() != 0) {
+			String code = li.get(0).getCode();
+			if (code != null && code.equals("1")) {
+
+				b=true;
+			}
+		}
+		if (list != null && list.size() != 0) {
+			String code = list.get(0).getCode();
+			if (code != null && code.equals("1")) {
+
+				if (li != null && li.size() != 0) {
+					b= true;
+				}
+			}
+		}
+		return b;
+	}
+
+	private String doSign(String xml, String url, Model model, String service) {
+
+		String pfx = f.getYeepayCfaFile();
+
+		String s = xml;
+		s = s.replaceAll("[\\r\\n]", "");
+
+		model.addAttribute("service", service);
+		model.addAttribute("url", url);
+		model.addAttribute("req", s);
+		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
+
+		return "post";
+
+	}
+
+
+
+	private String doSign(Object obj, String url, Model model) {
+
+		StringWriter w = new StringWriter();
+		JAXB.marshal(obj, w);
+		return doSign(w.toString(), url, model, "");
+	}
 	@RequestMapping(value = "/gate/service")
 	public String service(Model model, HttpServletRequest request)
 			throws Exception {
@@ -113,44 +165,25 @@ public class GateController {
 
 	}
 
-
-
-
-	public String dobinding(String host, String req, Model model) {
-
-		return doSign(req, host + "/bha/toBindBankCard", model);
-	}
-
-	@RequestMapping(value = "/gate/binding")
-	public String binding(Model model, HttpServletRequest request)
-			throws Exception {
-		File f = ReadWirtePropertis.file();
-
-		model.addAttribute("f", f);
-		model.addAttribute("now", System.currentTimeMillis());
-		Object o = request.getSession().getAttribute("name");
-		String name = null;
-		if (o != null) {
-			List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(o
-					.toString());
-			if (li != null && li.size() != 0) {
-				TRegisterYeePay registerYeePay = li.get(0);
-				name = registerYeePay.getPlatformUserNo();
-			}
-
-		}
-		/* Object o= request.getSession().getAttribute("name"); */
-		model.addAttribute("name", name);
-		/* return "payment/binding"; */
-		return "yinhangka";
-	}
-
 	@RequestMapping(value = "/gate/dobinding")
 	public String dobinding(String host, BHAbindingRequest request,
 			Model model, TBinding binding) throws Exception {
-
-		gateService.addOrUpdateTBinding(binding);
-		return doSign(request, host + "/bha/toBindBankCard", model);
+		StringWriter w = new StringWriter();
+		JAXB.marshal(request, w);
+		request.setRequestNo(UUID.randomUUID().toString());
+		request.setPlatformNo(f.getPlatformNo());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("request-no", request.getRequestNo());
+		map.put("service", "toBindBankCard");
+		map.put("username", request.getPlatformUserNo());
+		map.put("request-xml", w.toString());
+		String s = rest.postRestful("/rest/yeepay/create", map);
+		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+		if (r.isSuccess()){
+			return doSign(request, f.getOnSubmit() + "/bha/toBindBankCard", model);
+		}else{
+			return "error";
+		}
 	}
 
 	@RequestMapping(value = "/gate/userProject")
@@ -158,14 +191,17 @@ public class GateController {
 			throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o = request.getSession().getAttribute("name");
+
 		if (o != null) {
 			List<TTransferInfo> li = gateService.queryTTransferInfoByName(o
 					.toString());
 			model.addAttribute("li", li);
-
+			return "wodexiangmu";
+		}else{
+			return "login";
 		}
 
-		return "wodexiangmu";
+
 	}
 
 	@RequestMapping(value = "/gate/agreement")
@@ -219,66 +255,85 @@ public class GateController {
 			throws Exception {
 		File f = ReadWirtePropertis.file();
 		model.addAttribute("f", f);
-		model.addAttribute("now", UUID.randomUUID().toString());
 		Object o = request.getSession().getAttribute("name");
 		if (o != null) {
 			List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(o
 					.toString());
 			if (li != null && li.size() != 0) {
-				TRegisterYeePay registerYeePay = li.get(0);
-				model.addAttribute("registerYeePay",
-						registerYeePay.getPlatformUserNo());
 				model.addAttribute("feeMode", BHAFeeModeEnum.USER);
 			}
 			List<TEstablishmentRegistration> list = gateService
 					.queryTEstablishmentRegistrationByNumber(o.toString());
 			if (list != null && list.size() != 0) {
-
-				TEstablishmentRegistration registerYeePay = list.get(0);
-				model.addAttribute("registerYeePay",
-						registerYeePay.getPlatformUserNo());
 				model.addAttribute("feeMode", BHAFeeModeEnum.PLATFORM);
 			}
 		}else{
 			return "login";
 		}
-
+		if(!isYeepay(o.toString())){
+			return "register";
+		}
+		YeepayAccountInfo yeepayAccount;
 		Accounts accounts = userService.getAccountByName(o.toString());
+		if(accounts.getYeepayBindcardIsok()){
+			yeepayAccount = new YeepayAccountInfo();
+			yeepayAccount.setCardStatus("VERIFIED");
+			yeepayAccount.setCardNo(accounts.getYeepayBindcardCardno());
+			yeepayAccount.setBank(accounts.getYeepayBindcardBank());
+		}else {
+
+			yeepayAccount = YeePay.getAccountInfo(o.toString());
+		}
+		model.addAttribute("yeepay", yeepayAccount);
+		model.addAttribute("name", o.toString());
+		if(yeepayAccount.getCardStatus()!=null){
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("bank", yeepayAccount.getBank());
+			map.put("cardStatus", yeepayAccount.getCardStatus());
+			map.put("bankCardNo", yeepayAccount.getCardNo());
+			map.put("username", o.toString());
+			rest.postRestful("/rest/account/update", map);
+		}
 		model.addAttribute("account",accounts);
 		return "tixian";
 	}
 
+
+
 	@RequestMapping(value = "/gate/dodrawMoney")
-	public String dodrawMoney(String host, BHAWithdrawRequest request,
-			Model model, TDrawMoney drawMoney) throws Exception {
-		Date dt = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	public String dodrawMoney(BHAWithdrawRequest request,
+			Model model) throws Exception {
 
-		drawMoney.setTransDate(sdf.format(dt).toString());
-		gateService.addOrUpdateTDrawMoney(drawMoney);
-		return doSign(request, host + "/bha/toWithdraw", model);
+		StringWriter w = new StringWriter();
+		JAXB.marshal(request, w);
+		request.setRequestNo(UUID.randomUUID().toString());
+		request.setPlatformNo(f.getPlatformNo());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("request-no", request.getRequestNo());
+		map.put("service", "toWithdraw");
+
+		map.put("username", request.getPlatformUserNo());
+		map.put("amount", request.getAmount());
+
+		map.put("request-xml", w.toString());
+		String s = rest.postRestful("/rest/yeepay/create", map);
+		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+		if (r.isSuccess()){
+
+			return doSign(request, f.getOnSubmit() + "/bha/toWithdraw", model);
+		}else{
+			return "error";
+		}
 	}
 
-
-	@RequestMapping(method = { RequestMethod.POST, RequestMethod.GET })
-	public String helloWorld(Model model, HttpServletRequest request)
-			throws Exception {
-
-		/* return "news_add"; */
-		/* return "ptop/p2b_add"; */
-		return "payment/register";
-		/* return "indexs"; */
-	}
 
 	@RequestMapping(value = "/gate/register")
 	public String register(Model model, HttpServletRequest request)
 			throws Exception {
-		model.addAttribute("now", System.currentTimeMillis());
 		Object o = request.getSession().getAttribute("name");
 		if (o != null) {
 			TUser user = userService.getUserByAccount(o.toString());
 			model.addAttribute("user", user);
-			/* return "payment/register"; */
 			File f = ReadWirtePropertis.file();
 
 			model.addAttribute("f", f);
@@ -293,7 +348,7 @@ public class GateController {
 
 		List<TRegisterYeePay> li = gateService
 				.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo());
-		String uuid = UUID.randomUUID().toString().replace("-", "");
+		String uuid = UUID.randomUUID().toString();
 		request.setRequestNo(uuid);
 		if (li != null && li.size() != 0) {
 
@@ -332,42 +387,18 @@ public class GateController {
 			throws Exception {
 
 		model.addAttribute("f", f);
-		String uuid =  UUID.randomUUID().toString();
-		model.addAttribute("now", uuid);
 		Object o = request.getSession().getAttribute("name");
 		if (o == null) {
 			return "login";
 		}
-		TRegisterYeePay registerYeePay1 = null;
 		boolean b = false;
 		if (o != null) {
 
-			List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(o
-					.toString());
-			List<TRegisterNotify> list = gateService
-					.queryTRegisterNotifyByName(o.toString());
-
-			if (li != null && li.size() != 0) {
-				registerYeePay1 = li.get(0);
-				String code = li.get(0).getCode();
-				if (code != null && code.equals("1")) {
-
-					model.addAttribute("registerYeePay1", registerYeePay1);
-					b=true;
-				}
-			}
-			if (list != null && list.size() != 0) {
-				String code = list.get(0).getCode();
-				if (code != null && code.equals("1")) {
-
-					if (li != null && li.size() != 0) {
-						registerYeePay1 = li.get(0);
-						model.addAttribute("registerYeePay1", registerYeePay1);
-						b= true;
-					}
-				}
-			}
+			b = isYeepay(o.toString());
 		}
+
+		Accounts accounts = userService.getAccountByName(o.toString());
+		model.addAttribute("account",accounts);
 		TUser user = userService.getUserByAccount(o.toString());
 		model.addAttribute("user", user);
 		if(b){
@@ -381,15 +412,21 @@ public class GateController {
 
 	@RequestMapping(value = "/gate/doRecharge")
 	public String doRecharge(String host, BHARechargeRequest request,
-			Model model, TRecharge recharge) throws Exception {
-
+			Model model, TRecharge recharge,HttpServletRequest request1) throws Exception {
+		Object o = request1.getSession().getAttribute("name");
+		if (o == null) {
+			return "login";
+		}else{
+			request.setPlatformUserNo(o.toString());
+		}
+		request.setRequestNo(UUID.randomUUID().toString());
 		Rest rest = new Rest();
-
 		StringWriter w = new StringWriter();
 		JAXB.marshal(request, w);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("request-no", request.getRequestNo());
 		map.put("service", "toRecharge");
+		map.put("username",o.toString());
 		map.put("amount", request.getAmount());
 		map.put("request-xml", w.toString());
 		String s = rest.postRestful("/rest/yeepay/create", map);
@@ -421,6 +458,7 @@ public class GateController {
 		Rest rest = new Rest();
 
 		Object o = request1.getSession().getAttribute("name");
+
 		if(o==null){
 			return "login";
 		}
@@ -433,20 +471,31 @@ public class GateController {
 			model.addAttribute("error", "非法操作");
 			return "/gate/transfer";
 		}
-		StringWriter w = new StringWriter();
-		JAXB.marshal(request, w);
+		request.setRequestNo(UUID.randomUUID().toString());
+		request.setPlatformUserNo(o.toString());
+		request.setOrderNo(t.getEnterpriseNumber());
+		request.setPlatformUserNo(o.toString());
+		request.setPlatformNo(f.getPlatformNo());
+
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("request-no", request.getRequestNo());
-		map.put("service", "toTransfer");
-		map.put("username", o.toString());
-		map.put("amount", paymentAmount);
-		map.put("project-name", t.getProjectName());
-		map.put("project-id", t.getEnterpriseNumber());
-		if(rewardCheck!=null && rewardCheck.equals("on") && paymentAmount >= 10000){
+		if(rewardCheck!=null && rewardCheck.equals("on") && paymentAmount >= 3000){
+			request.setPaymentAmount(String.valueOf(paymentAmount -50));
+			map.put("amount", paymentAmount - 50);
 			map.put("reward","50");
 		}else{
 			map.put("reward","0");
+			map.put("amount", paymentAmount);
 		}
+
+		StringWriter w = new StringWriter();
+		JAXB.marshal(request, w);
+		map.put("request-no", request.getRequestNo());
+		map.put("service", "toTransfer");
+		map.put("username", o.toString());
+
+		map.put("project-name", t.getProjectName());
+		map.put("project-id", t.getEnterpriseNumber());
+
 		request.setOrderNo(t.getEnterpriseNumber());
 		map.put("request-xml", w.toString());
 		String s = rest.postRestful("/rest/yeepay/create", map);
@@ -454,35 +503,6 @@ public class GateController {
 		if (r.isSuccess()){
 
 			return doSign(request, f.getOnSubmit() + "/bha/toTransfer", model);
-		}else{
-			return "error";
-		}
-	}
-
-
-	@RequestMapping(value = "/gate/withdraw")
-	public String withdraw(Model model) {
-		model.addAttribute("now", UUID.randomUUID().toString());
-		return "gate/withdraw";
-	}
-
-	@RequestMapping(value = "/gate/doWithdraw")
-	public String doWithdraw(String host, BHAWithdrawRequest request,
-			Model model) {
-		Rest rest = new Rest();
-
-		StringWriter w = new StringWriter();
-		JAXB.marshal(request, w);
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("request-no", request.getRequestNo());
-		map.put("service", "toWithdraw");
-		map.put("amount", request.getAmount());
-		map.put("request-xml", w.toString());
-		String s = rest.postRestful("/rest/yeepay/create", map);
-		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-		if (r.isSuccess()){
-
-			return doSign(request, f.getOnSubmit() + "/bha/toWithdraw", model);
 		}else{
 			return "error";
 		}
@@ -514,64 +534,30 @@ public class GateController {
 		}else{
 			model.addAttribute("reward",new Rewards());
 		}
-		String uuid = UUID.randomUUID().toString();
 		List<TProduct> list=productService.queryProductByNumber(product.getEnterpriseNumber());
 		             if(list != null && list.size()!=0){
 		            	 TProduct Product=list.get(0);
 		            	   if(Product.getBuyType()==null)   
 		            	   return "xianxia";
 		             }
-		
-		 List<TRegisterYeePay> li= gateService.queryTRegisterYeePayByName(o.toString());
-		 List<TRegisterNotify> lis= gateService.queryTRegisterNotifyByName(o.toString());
-	
-		 
-		 if(li!=null&& li.size()!=0){
-			 String code=li.get(0).getCode();
-		
-		 if(list!=null && list.size()>0 &&  code!=null&&code.equals("1")){
-			 TRegisterYeePay registerYeePay1=li.get(0);
-			
-				model.addAttribute("registerYeePay1", registerYeePay1);
-				model.addAttribute("buyAmount", buyAmount);
-				model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
-				model.addAttribute("product", product);
 
-				model.addAttribute("registerYeePay1", registerYeePay1);
-				model.addAttribute("buyAmount", buyAmount);
-				model.addAttribute("targetPlatformUserNo", list.get(0)
-						.getTargetPlatformUserNo());
-				model.addAttribute("product", product);
+		 if(isYeepay(o.toString())){
 
-				model.addAttribute("now", uuid);
-				return "touzicheck";
-			}
-		} else if (lis != null && lis.size() != 0) {
-			TRegisterYeePay registerYeePay1 = li.get(0);
+			 model.addAttribute("buyAmount", buyAmount);
+			 model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
+			 model.addAttribute("product", product);
 
-			model.addAttribute("registerYeePay1", registerYeePay1);
-			model.addAttribute("buyAmount", buyAmount);
-			model.addAttribute("targetPlatformUserNo", list.get(0)
-					.getTargetPlatformUserNo());
-			model.addAttribute("product", product);
+			 model.addAttribute("product", product);
 
-			model.addAttribute("now", uuid);
-			return "touzicheck";
+			 return "touzicheck";
+		 }else{
+			 TUser user = userService.getUserByAccount(o.toString());
+			 model.addAttribute("user", user);
 
-		} else if (li != null && li.size() != 0) {
-			TUser user = userService.getUserByAccount(o.toString());
-			model.addAttribute("user", user);
-			model.addAttribute("now", uuid);
+			 model.addAttribute("now", UUID.randomUUID().toString());
+			 return "register";
+		 }
 
-			return "register";
-		}
-
-		TUser user = userService.getUserByAccount(o.toString());
-		model.addAttribute("user", user);
-
-		model.addAttribute("now", UUID.randomUUID().toString());
-		return "register";
-		/* return "payment/transfer"; */
 	}
 
 
@@ -655,9 +641,7 @@ public class GateController {
 		      establishmentRegistration.setCode( establishmentNotify.getCode());
 		      gateService.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
 		  } catch (Exception e) {
-	            // TODO: handle exception
-	            e.printStackTrace();
-	        } finally {
+	            logger.error("error "+ resp+ e );
 	        }
 		    	  
 		return "payment/establishmentRegistration";
@@ -674,8 +658,6 @@ public class GateController {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
 		try {
-
-
 
 			Map<String, Object> m = Xml.Dom2Map(resp);
 			if(m.get("code").equals("1")){
@@ -719,8 +701,6 @@ public class GateController {
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			if(m.get("code").equals("1")){
 
-			/* TRegisterYeePay registerYeePay=new TRegisterYeePay(); */
-
 				TRegisterYeePay registerYeePay = gateService
 						.queryTRegisterYeePayByNumber((String)m.get("requestNo")).get(0);
 				registerYeePay.setCode("1");
@@ -736,12 +716,9 @@ public class GateController {
 				return "error";
 			}
 
-
-			/* gateService.addOrUpdateTTransferNotify(transferNotify); */
-
 		} catch (Exception e) {
 			// TODO: handle exception
-			logger.error("error "+ e);
+			logger.error("error "+ e + notify);
 			return "error";
 		}
 	}
@@ -934,10 +911,7 @@ public class GateController {
 			RequestMethod.POST, RequestMethod.GET })
 	public String transferNotify(String notify, String sign, Model model)
 			throws Exception {
-
-
 		try {
-
 
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			Rest rest = new Rest();
@@ -975,36 +949,64 @@ public class GateController {
 
 		try {
 
+			Map<String, Object> m = Xml.Dom2Map(resp);
+			Rest rest = new Rest();
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("request-no", m.get("requestNo"));
+			map.put("service", "BIND_BANK_CARD");
+			map.put("code", m.get("code"));
+			map.put("response-xml", resp);
+			if(m.get("code").equals("1")){
+				String s = rest.postRestful("/rest/yeepay/update-success", map);
+				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+				return "chongzhi_ok";
+
+			} else {
+				rest.postRestful("/rest/yeepay/update-error", map);
+
+				return "error";
+			}
 
 
 		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
+			logger.error("error " + resp + e);
 		}
 
 		/* return "payment/binding"; */
 		return "bangding_ok";
 	}
 
-	
-
-
-
 
 	@RequestMapping(value = "/gate/bindingNotify", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String bindingNotify(Model model, String notify, String sign,
 			HttpServletRequest request) throws Exception {
-		model.addAttribute("notify", notify);
-		model.addAttribute("sign", sign);
 
 		try {
 
 
+			Map<String, Object> m = Xml.Dom2Map(notify);
+			Rest rest = new Rest();
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("request-no", m.get("requestNo"));
+			map.put("service", "BIND_BANK_CARD");
+			map.put("code", m.get("code"));
+			map.put("response-xml", notify);
+			if(m.get("code").equals("1")){
+				String s = rest.postRestful("/rest/yeepay/update-success", map);
+				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+				return "chongzhi_ok";
+
+			} else {
+				rest.postRestful("/rest/yeepay/update-error", map);
+
+				return "error";
+			}
 		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+
+			logger.error("error " + notify + e);
 		}
 		return "payment/binding";
 	}
@@ -1035,9 +1037,7 @@ public class GateController {
 
 				return "error";
 			}
-
 		} catch (Exception e) {
-			// TODO: handle exception
 			logger.error("error" + e);
 			return "error";
 		}
@@ -1050,11 +1050,7 @@ public class GateController {
 			HttpServletRequest request) throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
-
-
 		try {
-
-
 			Map<String, Object> m = Xml.Dom2Map(resp);
 			Rest rest = new Rest();
 
@@ -1084,28 +1080,4 @@ public class GateController {
 
 
 
-	private String doSign(String xml, String url, Model model, String service) {
-
-		String pfx = f.getYeepayCfaFile();
-
-		String s = xml;
-		s = s.replaceAll("[\\r\\n]", "");
-
-		model.addAttribute("service", service);
-		model.addAttribute("url", url);
-		model.addAttribute("req", s);
-		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
-
-		return "post";
-
-	}
-
-
-
-	private String doSign(Object obj, String url, Model model) {
-
-		StringWriter w = new StringWriter();
-		JAXB.marshal(obj, w);
-		return doSign(w.toString(), url, model, "");
-	}
 }

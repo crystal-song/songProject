@@ -41,24 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <p><span>可用余额</span><span><strong>${account.availableMoney}</strong>元</span></p>
             <p class="position_money" style="display:none"><span>充值金额</span><span class="money_text"><input type="text" value="100"></input>元</span></p>
           </div>   
-                
-          <div class="fangshi" style="height:auto; display:none ">
-            <p>选择银行</p>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
+
           <div class="yanzheng" style="display:none">
             <p><a>验证码</a><span><input type="submit" class="sub" value="点击获取验证码"></input></span><a></a></p>
             <p><a href=""></a><span><input type="checkbox"> </input>我已阅读并确认下方重要提示信息</span></p>
@@ -80,11 +63,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <label for="requestNo">requestNo</label><input type="text"
               class="form-control" id="requestNo" name="requestNo"
               value="${now}" />
-          </div>
-           <div class="form-group" style="display:none;height:0px;" >
-            <label for="platformUserNo">platformUserNo</label><input
-              type="text" class="form-control" id="platformUserNo"
-              name="platformUserNo"  value="${registerYeePay1.platformUserNo}"  />
           </div>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="feeMode">feeMode</label><input type="text"
