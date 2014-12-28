@@ -46,6 +46,10 @@ public class TProduct implements java.io.Serializable {
 	    
 	    private Float platformFee;	//平台费用
 	    private Float margin;   //保证金
+
+	    private String financeTime; //开始融资时间
+	    
+
 	  
 	   
 	    private boolean loaned; //是否已放款
@@ -277,6 +281,12 @@ public class TProduct implements java.io.Serializable {
 		}
 		public void setMargin(Float margin) {
 			this.margin = margin;
+		}
+		public String getFinanceTime() {
+			return financeTime;
+		}
+		public void setFinanceTime(String financeTime) {
+			this.financeTime = financeTime;
 		}
 		
 

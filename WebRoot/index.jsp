@@ -94,21 +94,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span style="color:#a4a4a4;">目标:</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
                    <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
-                   <a>融资中</a>
+                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'还款中':'已完成' }</a>
                  </div>
                  <div class="loding_bar">
                  <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>1</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
                  </div>
                  <div class="floor_bottom">
+                   <c:if test="${s.projectStatus!=1 }">
                    <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
                    </span>
+                   </c:if>
+                   <c:if test="${s.projectStatus==1 }">
+                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">融资时间</a><a class="baifenbi" style="float:left; text-align:left;">${s.financeTime }</a>
+                   </span>
+                   </c:if>
                    <span style="display:none"  ><a style="color:#a4a4a4; float:left; ">已筹资</a><a class="baifenbi" style="float:left; text-align:left;">¥&nbsp;&nbsp;<c:if test='${empty s.realityMoney}'>0</c:if> ${s.realityMoney}</a>
                    </span>
                    <span style="float:right; margin-right:3%;"><a style="float:right; color:#a4a4a4;" >年化收益率</a><a class="baifenbi" style="float:right; text-align:right;">${s.yearIncome}%</a>
                   </span>
                  </div>
                  <div class="botm_btn">
+                  <c:if test="${s.projectStatus==2 }">
                   <a href="product/getProductByid?id=${s.id}">我要投</a>
+                  </c:if>
                   <a href="product/getProductByid?id=${s.id}" class="btn_org">了解详情</a>
                  </div>
               </div>

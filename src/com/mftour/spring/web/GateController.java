@@ -300,6 +300,7 @@ public class GateController {
 
 
 
+
 	@RequestMapping(value = "/gate/dodrawMoney")
 	public String dodrawMoney(BHAWithdrawRequest request,
 			Model model) throws Exception {
@@ -560,8 +561,6 @@ public class GateController {
 
 	}
 
-
-
 	@RequestMapping(value = "/gate/establishmentRegistration")
 	public String EstablishmentRegistration(Model model,
 			HttpServletRequest request) throws Exception {
@@ -798,6 +797,7 @@ public class GateController {
 							   HttpServletRequest request) throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
+
 		try {
 
 
@@ -863,6 +863,7 @@ public class GateController {
 			logger.error("error" + e);
 			return "error";
 		}
+
 	}
 
 	@RequestMapping(value = "/gate/transferSucceed", method = {

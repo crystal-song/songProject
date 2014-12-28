@@ -131,6 +131,9 @@ public class ptopController {
 			if(product.getMargin()==null){
 				product.setMargin((float) 0);
 			}
+			if(product.getProjectStatus()==null){
+			product.setProjectStatus(1);//预热中
+			}
 			ptopService.addOrUpdate(product);
 
 			model.addAttribute("mes", "操作成功");

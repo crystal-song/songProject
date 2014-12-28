@@ -138,6 +138,7 @@ function onSubmit(host) {
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
 
+
     if(parseInt(a) < 200){
         alert("投资金额必须大于200");
         return false;
@@ -164,6 +165,7 @@ function onSubmit(host) {
                     alert(resp);
                 }
             }});
+
 
 
 }
