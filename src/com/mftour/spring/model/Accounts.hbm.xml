@@ -43,6 +43,7 @@
         <property name="accumulateRechargeCount" type="java.lang.Integer">
             <column name="accumulateRechargeCount" length="11" default="0"/>
         </property>
+
         <property name="accumulatePrincipal" type="java.math.BigDecimal">
             <column name="accumulatePrincipal" length="16" default="0"/>
         </property>

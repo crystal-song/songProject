@@ -10,12 +10,25 @@
             <column name="id" length="11" not-null="true"/>
             <generator class="native" />
         </id>
-        
+
+        <property name="reward" type="java.math.BigDecimal">
+            <column name="reward" length="16" default="0"/>
+        </property>
+        <property name="amount" type="java.math.BigDecimal">
+            <column name="amount" length="16" default="0"/>
+        </property>
         <property name="action" type="java.lang.String">
             <column name="action" length="16" not-null="true" default=""/>
         </property>
         <property name="request_json" type="java.lang.String">
             <column name="request_json" />
+        </property>
+
+        <property name="projectId" type="java.lang.Integer">
+            <column name="projectId" length="10" default="0"/>
+        </property>
+        <property name="projectName" type="java.lang.String">
+            <column name="projectName" />
         </property>
         <property name="requestXml" type="java.lang.String">
             <column name="requestXml" />

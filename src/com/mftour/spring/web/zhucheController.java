@@ -1,5 +1,7 @@
 package com.mftour.spring.web;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,14 +41,26 @@ public class zhucheController {
 	public String helloWorld(Model model) throws Exception {
 		int recommendType = 1;
 		List<TProduct> list = productService.queryProductByType(recommendType);
-
-		model.addAttribute("list", list);
-
+		List productList=new ArrayList();
+		for(TProduct product:list){
+			if(product.getFinanceTime()!=null){
+			long financeTime=new SimpleDateFormat("yyyy-MM-dd").parse(product.getFinanceTime()).getTime();
+			long currTime=System.currentTimeMillis();
+			if(currTime>=financeTime&&product.getProjectStatus()==1){
+				product.setProjectStatus(2);//设置项目状态为融资中
+				ptopService.addOrUpdate(product);
+				
+			}
+			}
+			productList.add(product);
+		}
+		model.addAttribute("list", productList);
+		
 		/*
 		 * List<TNews> list1=ptopService.getNewsbyRecommend();
 		 * model.addAttribute("list1", list1);
 		 */
-
+		
 		List<TNews> list1 = ptopService.getNewsbyTime();
 		model.addAttribute("list1", list1);
 

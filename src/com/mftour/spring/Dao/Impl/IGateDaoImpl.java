@@ -48,9 +48,10 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 	@Override
 	public List<TRegisterYeePay> queryTRegisterYeePayByName(String name)
 			throws Exception {
-		String hq = "from TRegisterYeePay registerYeePay where registerYeePay.platformUserNo = :platformUserNo ";
+		String hq = "from TRegisterYeePay registerYeePay where registerYeePay.platformUserNo = :platformUserNo and registerYeePay.code = :code ";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", name);
+		query.setParameter("code", "1");
 		return query.list();
 	}
 

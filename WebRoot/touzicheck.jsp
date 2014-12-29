@@ -35,30 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank">
    <ul> 
          <input type="hidden" id="host" name="host">
-         <li> <div class="form-group" style="display:none;height:0px;" >
-             <!-- <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
-               <label for="platformNo">platformNo</label><input type="text"
-                class="form-control" id="platformNo" name="platformNo" value="${f.platformNo}" /> 
-             <!--  class="form-control" id="platformNo" name="platformNo" value="10012415118" />  -->
-          </div></li>
-          <li><div class="form-group" style="display:none;height:0px;" >
-            <label for="requestNo">requestNo</label><input type="text"
-              class="form-control" id="requestNo" name="requestNo" value="${now}" />
-          </div></li>
-          <li>
-          <div class="form-group" style="display:none;height:0px;" >
-            <label for="platformUserNo">platformUserNo</label><input
-              type="text" class="form-control" id="platformUserNo"
-              name="platformUserNo"  value="${registerYeePay1.platformUserNo}"  />
-          </div>
-          </li>
-          <li>
-          <div class="form-group" style="display:none;height:0px;" >
-            <label for="orderNo">标的号</label><input type="text"
-              class="form-control" id="orderNo" name="orderNo" value="${now}" />
-          </div>
-          </li>
+
           <li>
           <div class="form-group" style="display:none">
             <label for="transferAmount">标的金额</label><input type="text"
@@ -79,10 +56,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
           <div class="form-group" >
+
             <label for="paymentAmount">投资金额：</label><input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
           </div>
           </li>
+
+       <li>
+
+           <div class="form-group" style="${reward.userId==null?"display:none":""}">
+               <label for="paymentAmount">使用50元礼卷</label><input type="checkbox"
+                                                              class="form-control" id="reward" name="rewardCheck"  />
+           </div>
+       </li>
           <li>
              <div class="form-group">
                 <span class="liquan_check"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
@@ -117,8 +103,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           </li>
           <li>
-          <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default">QA</button>  --> 
-         <!--  <button onclick="onSubmit('https://member.yeepay.com/member')" class="btn btn-default">生产</button> -->
 
 
           <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>
@@ -153,28 +137,41 @@ function onSubmit(host) {
 
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
-	//if(a%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-	//if(a<200){alert("投资金额不能低于200元！");return false;
-	document.getElementById("paymentAmount").value=parseInt(a);
-  document.getElementById("host").value = host;
-  document.getElementById("mysubmit_btn").disabled=true;
-  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-  var form = document.getElementById("form");
-  $("#dialog01").css("display","block");
-  $(".black_bac").css("display","block");
-  
-  
-  form.submit();
-  document.getElementById("que_btn_ok").disabled();
-  
-  
-   
+
+
+    if(parseInt(a) < 200){
+        alert("投资金额必须大于200");
+        return false;
+    }
+    $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+            success: function(resp){
+                if(resp === "success"){
+
+                    document.getElementById("paymentAmount").value=parseInt(a);
+                    document.getElementById("host").value = host;
+                    document.getElementById("mysubmit_btn").disabled=true;
+                    document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+                    var form = document.getElementById("form");
+                    $("#dialog01").css("display","block");
+                    $(".black_bac").css("display","block");
+                    $(".right_cha").click(function(){
+                        $("#dialog01").css("display","none");
+                        $(".black_bac").css("display","none");
+                    });
+                    form.submit();
+                    document.getElementById("que_btn_ok").disabled()
+
+                }else{
+                    alert(resp);
+                }
+            }});
+
+
+
 }
 $(document).ready(function(e) { 
 	   $(".right_cha").click(function(){
 		   window.location.reload(true);
-	   // $("#dialog01").css("display","none");
-	   //$(".black_bac").css("display","none");
 	   });
 
 }); 

@@ -23,11 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<%@ include file="/includes/user_info_left.jsp"%>
 			<!-- user_left end -->
 		</div>
-		<div class="user_right">
-			<div class="zichan_con">
-				<div class="pro_con_title" style="margin-top: 5px;">
-					<strong>绑定银行卡</strong>
-				</div>
+
 
 				<div class="add_postcar" style="display: none; height: 330px;">
 					<p>银行卡信息</p>
@@ -81,11 +77,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						class="btn btn-default mar_btn">绑定银行卡</button>
 				</form>
 				<div></div>
-			</div>
+</div>
 
-		</div>
-	</div>
-	</div>
+
 <!-- absolute_right start -->
 	<%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->	

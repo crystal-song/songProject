@@ -23,8 +23,12 @@
         <property name="projectName" type="java.lang.String">
             <column name="projectName" length="100" />
         </property>
-        <property name="transAmount" type="java.lang.String">
+        <property name="transAmount" type="java.math.BigDecimal">
             <column name="transAmount" length="100" />
+        </property>
+
+        <property name="reward" type="java.math.BigDecimal">
+            <column name="reward" length="100" />
         </property>
         <property name="type" type="java.lang.String">
             <column name="type" length="100" />

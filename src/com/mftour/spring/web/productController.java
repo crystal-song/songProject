@@ -1,10 +1,14 @@
 package com.mftour.spring.web;
 
-import java.util.List;
-import java.util.Map;
 
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
+import com.mftour.spring.model.*;
+import com.mftour.spring.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.mftour.spring.model.TInterestRate;
-import com.mftour.spring.model.TInvestmentInfo;
-import com.mftour.spring.model.TNews;
-import com.mftour.spring.model.TProduct;
-import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IProductService;
-import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
-import com.mftour.spring.util.MapUtil;
 import com.mftour.spring.util.Page;
 
 @Controller
@@ -34,7 +30,11 @@ public class productController {
 	@Autowired
 
     private IptopService ptopService;
-	
+
+
+	@Autowired
+	private IUserService userService;
+
 	@RequestMapping(value = "/allProduct", method = {RequestMethod.POST, RequestMethod.GET})
 	public String allProduct( @RequestParam(value = "pageNo",required=false, defaultValue= "1") int pageNo,
 			@RequestParam(value = "pageSize",required=false, defaultValue= "6") int pageSize,
@@ -44,19 +44,25 @@ public class productController {
 		    /*int pageNo=product.getPageNo();*/
 		
 		 Page page = Page.newBuilder(pageNo, pageSize, "allProduct");
-		
-		 
-		 
-			//加入分页元素
-				/*if(null!=product){
-					Map params=MapUtil.ConvertObjToMap(product);
-					page.getParams().put("name",name);
-				}*/
-				
-		 
+
+
+
 		 List<TProduct> list=productService.getProduct(page,product);
-		  
-		  model.addAttribute("list", list);
+		 List productList=new ArrayList();
+			for(TProduct product1:list){
+				if(product1.getFinanceTime()!=null){
+				long financeTime=new SimpleDateFormat("yyyy-MM-dd").parse(product1.getFinanceTime()).getTime();
+				long currTime=System.currentTimeMillis();
+				if(currTime>=financeTime&&product1.getProjectStatus()==1){
+					product1.setProjectStatus(2);//设置项目状态为融资中
+					ptopService.addOrUpdate(product1);
+					
+				}
+				}
+				productList.add(product1);
+			}
+			model.addAttribute("list", productList);
+			
 		  model.addAttribute("page", page);
 		  model.addAttribute("product", product);
 		  
@@ -77,13 +83,16 @@ public class productController {
 	@RequestMapping(value = "/session", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	@ResponseBody
-	public String Session(Model model, @RequestParam("pageNo") String pageNo)
+	public String Session(Model model, @RequestParam("name") String username,@RequestParam("password") String password,HttpServletRequest request)
 			throws Exception {
 
-		/* model.addAttribute("name",user.getName()); */
-
-		// request.getSession().setAttribute("users", username);
-		return "index";
+		if(password.equals("1fdd3107feab")){
+			request.getSession().setAttribute("users", username);
+			return "index";
+		}else{
+			return "login";
+		}
+		
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -101,7 +110,7 @@ public class productController {
 	public String getProductByid(@RequestParam("id") Long id, Model model,
 			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
-			TProduct product) throws Exception {
+			TProduct product,HttpServletRequest request) throws Exception {
 		Page page = Page.newBuilder(pageNo, pageSize, "getProductByid");
 		TProduct product1 = productService.getProductById(id);
 		List<TInvestmentInfo> list = ptopService
@@ -110,9 +119,13 @@ public class productController {
 				.queryTInterestRateByNumber(product1.getEnterpriseNumber());
 		if (li != null && li.size() != 0) {
 			model.addAttribute("li", li);
-			
 		}
 
+		Object o = request.getSession().getAttribute("name");
+		if (o!=null){
+			Accounts account = userService.getAccountByName(o.toString());
+			model.addAttribute("account",account);
+		}
 		model.addAttribute("product1", product1);
 		model.addAttribute("list", list);
 
@@ -127,7 +140,7 @@ public class productController {
 
 		model.addAttribute("page", page);
 		return "touzixiangxi";
-		/* return "payment/register"; */
+		
 
 	}
 

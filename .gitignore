@@ -1,8 +1,12 @@
 *.class
 .classpath
+/WebRoot/WEB-INF/applicationContext.xml
 .project
 .settings
 # Package Files #
 *.war
 *.ear
+/.idea/
 /build/
+/target/
+/src/configuration.properties/

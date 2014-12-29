@@ -8,6 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+
 </head>
 <body>
 
@@ -21,41 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/banner.jsp" %>
 <!-- banner end  -->
 
-<!-- 
-<div class="top_01"></div>
-<div class="clear"></div>
-<div class="one">
-	<div class="one_fra" style="display:none">
-    	<div class="one_list">已撮合融资<span class="red_weight">1,703,240,000</span>元</div>
-        <div class="one_list">为客户赚取收益<span class="red_weight">171,282,505</span>元</div>
-        <div class="one_list">已按时还款<span class="red_weight">355,700,000</span>元</div>
-        <div class="one_list">已支付收益<span class="red_weight">50,923,085</span>元</div>
-    </div>
-</div>
-<div class="clear"></div>
-<div class="two">
-	<div class="two_cont">
-    	<div class="two_list">
-        	<div class="two_tit">事无巨细</div>
-            <div class="two_nr">细节都关乎生死。对每一个项目我们都进行<span class="hong">360度全方位尽职调查</span>及<span class="hong">超严格风险控制</span>。您只需安心投资。</div>
-        </div>
-        <div class="two_list1">
-        	<div class="two_tit">极致之美</div>
-            <div class="two_nr">对于极致的追求是中租宝一直以来秉承的信念，<span class="hong">极致透明安全、极致体验</span>。在这里我们为您准备好一切。</div>
-        </div>
-        <div class="two_list2">
-        	<div class="two_tit">理财随心</div>
-            <div class="two_nr">在中租宝，我们提供了高质量的不同期限、不同利率、不同用途的借款项目，随心选择。</div>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div class="two_pic"><img src="<%=path%>/images/sy_41.jpg"></div>
-</div>
-<div class="clear"></div>
-<div class="content">
-	<div class="content_fra">
-    	<div class="cont_left">
-   --> 	
+
 <div class="content">
   <div class="title">
        <div class="label"><strong>热门项目</strong></div>
@@ -103,40 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>    
     </div> 
     <div class="clear"></div>
-    <!--
-      <li class="shu_pro">
-      
-        <div class="shu_pic pic01"></div>
-        <div class="shu_wd">
-          <span>以撮合融资总额</span>
-          <p><strong>1,447,540<i>元</i></strong></p>
-        </div>
-        
-      </li>
-      <li class="shu_pro">
-        <div class="shu_pic pic02"></div>
-        <div class="shu_wd">
-          <span>为客户赚取利益</span>
-          <p><strong>1,447,540<i>元</i></strong></p>
-        </div>
-        
-      </li>
-      <li class="shu_pro">
-        <div class="shu_pic pic03"></div>
-        <div class="shu_wd">
-          <span>以按时返款</span>
-          <p><strong>1,447,540<i>元</i></strong></p>
-        </div>
-        
-      </li>
-      <li class="shu_pro">
-        <div class="shu_pic pic04"></div>
-        <div class="shu_wd">
-          <span>以支付利益</span>
-          <p><strong>1,447,540<i>元</i></strong></p>
-        </div>
-      </li>
-       -->
+  
 
      <div class="title">
        <div class="label"><strong>推荐项目</strong></div>
@@ -160,21 +94,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span style="color:#a4a4a4;">目标:</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
                    <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
-                   <a>融资中</a>
+                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'还款中':'已完成' }</a>
                  </div>
                  <div class="loding_bar">
                  <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>1</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
                  </div>
                  <div class="floor_bottom">
+                   <c:if test="${s.projectStatus!=1 }">
                    <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
                    </span>
+                   </c:if>
+                   <c:if test="${s.projectStatus==1 }">
+                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">融资时间</a><a class="baifenbi" style="float:left; text-align:left;">${s.financeTime }</a>
+                   </span>
+                   </c:if>
                    <span style="display:none"  ><a style="color:#a4a4a4; float:left; ">已筹资</a><a class="baifenbi" style="float:left; text-align:left;">¥&nbsp;&nbsp;<c:if test='${empty s.realityMoney}'>0</c:if> ${s.realityMoney}</a>
                    </span>
                    <span style="float:right; margin-right:3%;"><a style="float:right; color:#a4a4a4;" >年化收益率</a><a class="baifenbi" style="float:right; text-align:right;">${s.yearIncome}%</a>
                   </span>
                  </div>
                  <div class="botm_btn">
+                  <c:if test="${s.projectStatus==2 }">
                   <a href="product/getProductByid?id=${s.id}">我要投</a>
+                  </c:if>
                   <a href="product/getProductByid?id=${s.id}" class="btn_org">了解详情</a>
                  </div>
               </div>
@@ -279,22 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- absolute_right end -->
      
  </div>                  
-      <!--    
-		</div> 
-		<div class="cont_right">
-			<!-- news_list start  -->
-		
-			<!-- news_list end  -->
-			<!-- 
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
-<div class="clear_height"></div>
-<!-- links start -->
-<!-- 
-
- -->
+  
 <!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->

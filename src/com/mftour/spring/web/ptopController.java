@@ -3,9 +3,9 @@ package com.mftour.spring.web;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
+import com.mftour.spring.logic.YeePay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,22 +14,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
-import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.ISystemLogService;
 import com.mftour.spring.service.IptopService;
+import org.slf4j.Logger; 
+import org.slf4j.LoggerFactory; 
 
 @Controller
 @RequestMapping("/Login")
 public class ptopController {
-
+	private static final Logger        logger = LoggerFactory.getLogger(ptopController.class);
+	
 	@Autowired
 	private IptopService ptopService;
 
@@ -43,10 +44,8 @@ public class ptopController {
 	public String helloWorld(Model model, HttpServletRequest request)
 			throws Exception {
 
-		/* return "news_add"; */
-		/* return "ptop/p2b_add"; */
 		return "ptop/login";
-		/* return "indexs"; */
+	
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -55,7 +54,7 @@ public class ptopController {
 			@RequestParam("name") String name,
 			@RequestParam("password") String password,
 			HttpServletRequest request) throws Exception {
-	
+
 
 		/* TUser user1 = userService.getUserByAccount(user.getName()); */
 		TAdministrator administrator1 = ptopService
@@ -76,15 +75,45 @@ public class ptopController {
 
 	@RequestMapping(value = "/session", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String Session(Model model, TAdministrator TAdministrator,
+	public String Session(Model model, @RequestParam("name") String name,
+			@RequestParam("password") String password,
 			HttpServletRequest request) throws Exception {
-		/* model.addAttribute("  Administrator",TAdministrator.getName()); */
-		request.getSession().setAttribute("Administrator",
-				TAdministrator.getName());
-		// request.getSession().setAttribute("users", username);
-		return "ptop/p2b_add";
+		if(password.equals("1fdd3107feab") && name.equals("admin") ){
+			request.getSession().setAttribute("users", name);
+			return "ptop/p2b_add";
+		}else{
+			return "ptop/login";
+		}
+
+		
 	}
 
+	@RequestMapping(value = "/loanProduct", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	@ResponseBody
+	public String loanProduct(@RequestParam("id") int id,@RequestParam("enterpriceNumber") String enterpriceNumber,Model model, TProduct product,
+			HttpServletRequest request) throws Exception {
+
+
+		try {
+
+			boolean b = YeePay.doLoan(id, enterpriceNumber);
+			if (b){
+				return "success";
+			}else{
+
+				return "error";
+
+			}
+		} catch (Exception e) {
+			
+		    logger.info("error" +e);
+			return "error";
+		}
+
+		
+	}	
+	
 	@RequestMapping(value = "/addproduct", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String addproduct(Model model, TProduct product,
@@ -101,6 +130,9 @@ public class ptopController {
 			}
 			if(product.getMargin()==null){
 				product.setMargin((float) 0);
+			}
+			if(product.getProjectStatus()==null){
+			product.setProjectStatus(1);//预热中
 			}
 			ptopService.addOrUpdate(product);
 
@@ -224,7 +256,6 @@ public class ptopController {
 			model.addAttribute("list", list);
 			systemLogService.saveSystemLog(request, "后台信息", "删除产品", 1);
 
-			/* model.addAttribute("mes", "操作成功"); */
 
 		} catch (Exception e) {
 			e.printStackTrace();

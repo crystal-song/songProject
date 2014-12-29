@@ -25,113 +25,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <%@ include file="/includes/user_info_left.jsp" %>
          <!-- user_left end -->
     </div>
-      <div class="user_right">  
+    <div class="user_right">
+        <div class="zichan_con">
+            <div class="pro_con_title" style="margin-top: 5px;">
+                <strong>绑定银行卡</strong>
+            </div>
+
+            <div class="add_postcar" style='${yeepay.cardStatus==null?"display:none":""}' height: 130px;">
+                <p>银行卡信息</p>
+                <ul class="postcar_msg">
+                    <li><span>开户行名称：</span>
+                        <div>${yeepay.bank}</div></li>
+                    <li><span>银行卡账号：</span>
+                        <div>${yeepay.cardNo}</div></li>
+                    <li><span>银行卡状态：</span>
+                        <div>${yeepay.cardStatus == "VERIFIED"?"已认证":"认证中"}</div></li>
+                </ul>
+            </div>
+            <form id="form-card" role="form" style='${yeepay.cardStatus==null?"":"display:none"}' action="<%=path%>/gate/dobinding"
+                  method="post" target="_blank">
+                    <input
+                        type="hidden" class="form-control" id="platformUserNo"
+                        name="platformUserNo" value="${name}" />
+                <input type="hidden"
+                                                                   class="form-control" id="notifyUrl" name="notifyUrl"
+                                                                   value="${f.notifyUrl}/gate/bindingNotify" />
+                <input type="hidden" class="form-control" id="callbackUrl" name="callbackUrl" value="${f.callbackUrl}/gate/bindingSucceed" />
+
+                <button onclick='document.getElementById("form-card").submit();'
+                        class="btn btn-default mar_btn">绑定银行卡</button>
+            </form>
+        </div>
+
+    </div>
+      <div class="user_right" style="${yeepay.cardStatus == "VERIFIED" ?"":"display:none"}">
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>提现</strong></div>
-            <div class="add_postcar" style="display:none">
-              <p>添加银行卡</p>
-              <ul>
-                <li><span>开户名：</span><div>....</div></li>
-                <li>
-                  <span>银行选择：</span>
-                  <div>
-                    <select>
-                      <option>请选择</option>
-                      <option>工商银行</option>
-                      <option>建设银行</option>
-                      <option>中国银行</option>
-                    </select>
-                  </div>
-                </li>
-                <li>
-                  <span>开户行名称：</span>
-                  <div>
-                    <input type="text"></input>
-                  </div>
-                </li>
-                <li><span>开户行所在地：</span><div> <input type="text"></input></div></li>
-                <li><span>银行账号：</span><div> <input type="text"></input></div></li>
-                <li><span>确认银行账号：</span><div> <input type="text"></input></div></li>
-              </ul>
-              <div class="postcar_btn">
-                  <a href="#" class="postcar_btn_red">添加</a>
-                  <a href="#">取消</a>
-              </div>
-            </div>
-             
              <div class="form-group" style="margin-top:50px; dislplay:none">
               <label for="plat">可提现金金额</label>
-              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">100</strong>元</div>
+
+              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">${account.availableMoney}</strong>元</div>
              </div>
         <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
-          <input type="hidden" id="host" name="host"/>
-          <div class="form-group" style="display:none">
-           <!-- <label for="platformNo">platformNo</label><input type="text"
-              class="form-control" id="platformNo" name="platformNo" value="10040011137" />  -->
-                <input type="text"class="form-control" id="platformNo" 
-                 name="platformNo" value="${f.platformNo}" />  
-                  <!--  name="platformNo" value="10012415118" />   -->
-          </div>
-          <div class="form-group" style="display:none">
-            <label for="requestNo">requestNo</label><input type="text"
-              class="form-control" id="requestNo" name="requestNo" value="${now}" />
-          </div>
-          <div class="form-group" style="display:none">
-            <label for="platformUserNo">platformUserNo</label><input
-              type="text" class="form-control" id="platformUserNo"
-              name="platformUserNo"  value="${registerYeePay}"  />
-          </div>
-            <div class="form-group" style="display:none">
-            <label for="feeMode">feeMode</label><input
-              type="text" class="form-control" id="feeMode"
+            <input
+              type="hidden" class="form-control" id="feeMode"
               name="feeMode"  value="${feeMode}"  />
-          </div>
+            <input
+                    type="hidden" class="form-control" id="platformUserNo"
+                    name="platformUserNo" value="${name}" />
              <div class="form-group" >
             <label for="amount">提现金额</label><input
               type="text" class="form-control tixian_money" id="amount"
               name="amount"  value="提现金额不能为0"  style="color:#ccc"/>
           </div>
-           
-          <div class="form-group" style="display:none">
-            <label for="notifyUrl">notifyUrl</label><input type="text"
+           <input type="hidden"
               class="form-control" id="notifyUrl" name="notifyUrl" value="${f.notifyUrl}/gate/drawMoneyNotify" />
-          </div>
-          <div class="form-group" style="display:none">
-            <label for="callbackUrl">callbackUrl</label><input
-              type="text" class="form-control" id="callbackUrl"
+
+            <input
+              type="hidden" class="form-control" id="callbackUrl"
               name="callbackUrl" value="${f.callbackUrl}/gate/drawMoneySucceed" />
-          </div>
-      
-         <!--  <button onclick="onSubmit('http://qa.yeepay.com/member')" class="btn btn-default" style="display:none">QA</button> -->
+
+
           <div class="mar_que_top"><a onclick="onSubmit('${f.onSubmit}')" class="btn mar_btn" id="mysubmit_btn" style="color:#fff;" >确认</a></div>
         </form>
-            <%--  <div class="add_postcar" style="display:none">
-              <p>填写现金金额</p>
-              <ul>
-                <li><span>可提现金金额：</span><div><strong>0.00</strong>元（面提现手续费额度：0.00元）</div></li>
-                <li>
-                  <span>提现金额：</span>
-                  <div><input type="text" class="jin_right"></input>元 <i style="display:none">请填写现金金额</i></div>
-                </li>
-                <li>
-                  <span>手续费：</span>
-                  <div>
-                     <strong>0.00</strong>元（面提现手续费额度：0.00元）
-                  </div>
-                </li>
-                <li><span>支付密码：</span><div> <input type="text"></input></div></li>
-                <li><span>验证码：</span><div><input type="text"></input></div></li>
-                <li><span></span><div> <input type="submit" class="sub" value="点击获取验证码"><a class="yzm" href="#">验证码</a></div></li>
-              </ul>
-              <div class="postcar_btn">
-                  <a href="#" class="postcar_btn_red">添加</a>
-                  <a href="#">取消</a>
-              </div>
-              <div class="postcar_btn">
-                  <a href="<%=path%>/gate/binding" class="postcar_btn_org">绑卡</a>
-                  <a href="#">取消</a>
-              </div>
-            </div>     --%>
 
           <div class="tishi ai" style="margin-top:50px;">
             <p><strong>温馨提示</strong></p>
@@ -172,7 +128,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 function onSubmit(host) {
 	if(!checkval()){return false}
-	  document.getElementById("host").value = host;
 	  var form = document.getElementById("form");
 	  document.getElementById("mysubmit_btn").disabled=true;
 
@@ -211,7 +166,7 @@ function checkval(){
     		var tixian_val=$(".tixian_money").val();
     		if(tixian_val=="提现金额不能为0");
     		  $(".tixian_money").val("");
-    		//alert("aa")		
+
     		
     	});
     	

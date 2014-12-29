@@ -1,6 +1,7 @@
 package com.mftour.spring.model;
 
 import java.sql.Timestamp;
+import java.math.BigDecimal;
 
 public class Yeepays {
 	private Integer id;
@@ -17,9 +18,49 @@ public class Yeepays {
 	private String respJson;
 	private String respSign;
 	private Integer respCode;
+
+	public BigDecimal getReward() {
+		return reward;
+	}
+
+	public void setReward(BigDecimal reward) {
+		this.reward = reward;
+	}
+
+	private BigDecimal reward;
+
+	private Integer projectId;
+
+	public Integer getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
+	}
+
 	private String respMsg;
 	private Timestamp respTime;
 	private Boolean done;
+	private BigDecimal amount;
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	private String  projectName;
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
 	public Integer getId() {
 		return id;
 	}

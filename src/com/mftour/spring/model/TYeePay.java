@@ -11,6 +11,7 @@ public class TYeePay implements java.io.Serializable {
 	private String code; // 返回码
 	private String description; // 描述
 
+
 	public Long getId() {
 		return id;
 	}
