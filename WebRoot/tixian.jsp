@@ -189,7 +189,7 @@ function onSubmit(host) {
 	    		  $("#dialog01").css("display","block");
 	    		  $(".black_bac").css("display","block");
 	    		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-	    		  //form.submit();
+	    		  form.submit();
 	    	}		
 }
 

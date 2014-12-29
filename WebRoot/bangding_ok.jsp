@@ -21,7 +21,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="clear"></div>
 <div class="msg_con">
   <div class="queren_con" style="height:675px;">
-   <div class="sucess_title"><strong>您的银行卡已绑定成功!</strong></div>
+   <div class="sucess_title"><strong>绑定银行卡申请提交成功！</strong></div>   
+      <div class="tishi bang">
+           <p><strong>温馨提示</strong></p>
+            <ul>
+              <li>绑定银行卡预计需要1-2个工作日，请您耐心等待。</li>
+              <li>您可以通过“提现”页面随时查询银行卡的绑定状态。</li>              
+            </ul> 
+     </div>   
    <div class="title_sec">您可以进行以下操作</div>
    
    <!-- 
@@ -37,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="sec_product" style="display:none">
 	   <div class="sec_pro_show"></div> 
    </div>
-   
+
   </div>        
 </div>
 

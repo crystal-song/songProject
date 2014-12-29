@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <span class="back_fang"></span>
    <span class="e_con_right">
       <a class="error_title"></a>
-      <a class="title_sec">您访问的页面已经删除或者不存在</a>
+      <a class="title_sec01">您访问的页面已经删除或者不存在</a>
       <a href="<%=path%>/wel">您可以回到<label style="color:#f1a627; text-decoration:underline">首页</label></a>
    </span>
 </div>

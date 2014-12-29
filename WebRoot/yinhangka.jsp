@@ -80,6 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<button onclick="onSubmit('${f.onSubmit}')"
 						class="btn btn-default mar_btn">绑定银行卡</button>
 				</form>
+				<div></div>
 			</div>
 
 		</div>
