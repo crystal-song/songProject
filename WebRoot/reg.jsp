@@ -23,23 +23,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="blank_block_title"><span class="new_reg01">新用户注册</span><div class="blank_right">已有中租宝账户? 请<a href="<%=path%>/login.jsp" style="color:#e72634">直接登录</a></div></div>
     <form action="<%=path %>/welcome/regEmail" id="Form1"  method="post" style="padding:0px;">
         <div class="blank_block_content reg">
+
           <p><span class="reg_left_style">用户名：</span><input name="name" id="name"  type="text" class="input_item" onblur="chk_name()" /><span class="green_right new1"></span></p>
+
           <div id="tip_username"><span class="tip_n">请输入用户名！</span></div>
           <p><span class="reg_left_style">密　码：</span><input name="password" id="password" type="password" class="input_item" onblur="chk_pwd()"/><span class="green_right new2"></span></p>
           <div id="tip_userpwd"><span class="tip_n">请输入密码！</span></div>
           <p><span class="reg_left_style">确认密码：</span><input name="newpassword" id="newpassword" type="password" class="input_item" onblur="chk_repwd()"/><span class="green_right new3"></span></p>
           <div id="tip_userrepwd"><span class="tip_n">请重复密码！</span></div>
           <p><span class="reg_left_style">安全邮箱：</span><input name="email" id="email" type="text" class="input_item" onblur="chk_email()"/><span class="green_right new4"></span></p>
-          <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div> 
+          <div id="tip_useremail"><span class="tip_n">请输入邮箱！</span></div>
+		  <input type="hidden" name="ref" value="${ref}">
+			<p><span class="reg_left_style">理财经理电话：</span><input name="servicePhone" id="servicePhone" type="text" class="input_item"/><span class="green_right new4"></span></p>
           <p style="width:480px"><span class="reg_left_style">　验证码：  </span><input type="text"  id="vcode" value="" class="input_item" onblur="validateCode()"/>
+
 					<img  id="code" type="4" align="absmiddle" src="" style="cursor: pointer;height:24px;margin-bottom:6px;">
 					<a href="#" mce_href="#" onclick="javascript:show();return false; " style="font-size:12px;">看不清,换一张!</a>
 					 <div id="tip_validatecode"><span class="tip_n">请输入验证码！</span></div> 
 		  </p>
-<!--           <p>　推荐人：<input name="referee" id="referee" type="text" class="input_item"/></p>
-          <div id="tip_referee"><span class="tip_n"></span></div>      
- -->
- 
           <p class="xieyi_font"><input  type="checkbox" checked="checked" id="agreement">我已阅读并同意中租宝
            <a target="_blank" href="<%=path%>/zhucexieyi.jsp">《使用协议》</a>及
            <a target="_blank" href="<%=path%>/yinsitiaokuan.jsp">《隐私条款》</a></p>
@@ -201,7 +202,7 @@ function validateCode (){
 }  
 function show(){  
         //显示验证码  
-        document.getElementById("code").src="CodeServlet?code="+createCode();  
+        document.getElementById("code").src="/CodeServlet?code="+createCode();
 }  
 window.onload = function() {
 		//document.onload=show();  

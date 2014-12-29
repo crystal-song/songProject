@@ -20,79 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- top end  -->
 
 <div class="clear"></div>
-<!-- 
-<div class="one"></div>
-<div class="clear_height"></div>
-<div class="frame">
-	<div class="tz_left">
-    
-    	<div class="tz">
-        	<div><img src="<%=path%>/images/touzi_03.jpg"></div>
-            <div class="tz_nr">
-            	<div class="tz_one">
-                	<div class="tz_one_left">融资年利率：</div>
-                    <div class="tz_one_right">
-                    	<ul class="filter">
-                        	<li class="dq" value="1" >全部</li>
-                            <li value="10">10%以下</li>
-                            <li value="15">10%-15%</li>
-                            <li value="20">15%-20%</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="tz_one">
-                	<div class="tz_one_left">存续时间：</div>
-                    <div class="tz_one_right">
-                    	<ul class="filter">
-                        	<li class="dq" value="1"  >全部</li>
-                            <li value="3" >3个月以下</li>
-                            <li value="6" >3-6个月</li>
-                            <li value="12" >6-12个月</li>
-                            <li value="24" >12个月以上</li> 
-                        </ul>
-                    </div>
-                </div>
-                <div class="tz_one">
-                	<div class="tz_one_left">项目规模：</div>
-                    <div class="tz_one_right">
-                    	<ul class="filter">
-                        	<li value="1" >全部</li>
-                            <li value="200" >200万以下</li>
-                            <li value="500" >200-500万</li>
-                            <li class="dq" value="1000" >500-1000万</li>
-                            <li value="2000" >1000万以上</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="tz_one">
-                	<div class="tz_one_left">融资进度：</div>
-                    <div class="tz_one_right">
-                    	<ul class="filter">
-                        	<li class="dq" value="1"  >全部</li>
-                            <li value="50"  >50%以下</li>
-                            <li value="80"  >50%-80%</li>
-                            <li value="100"  >80以上</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="tz_one">
-                	<div class="tz_one_left">项目状态：</div>
-                    <div class="tz_one_right">
-                    	<ul class="filter">
-                        	<li value="1"  >全部</li>
-                            <li value="2"  >未满在投</li>
-                            <li class="dq" value="3"  >企业还款中</li>
-                            <li value="4"  >企业已还款</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-     
- -->
- 
+
  <div id="bodyframe" style="VISIBILITY: hidden">  
  <!-- <IFRAME frameBorder=1 id=heads src="framepage.htm" style="HEIGHT: 200px; LEFT: 220px; POSITION: absolute; TOP: 200px; WIDTH: 500px"> -->   
   
@@ -114,13 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-<!-- <div onclick="document.all.bodyframe.style.visibility='visible'" style="background-color: red; cursor: hand; height: 22; left: 300; position: absolute; top: 137; width: 74; z-index: 1"> 
-<font color="#ffffff">显示iFrame</font></p> 
-</div> 
-<div onclick="document.all.bodyframe.style.visibility='hidden'" style="background-color: red; cursor: hand; height: 22; left: 400; position: absolute; top: 137; width: 74; z-index: 1"> 
-<font color="#ffffff">隐藏iFrame</font> 
-</div> 555555 -->
- 
 
         
         
@@ -251,70 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
   
  </div>      
-        <!-- 
-        <div class="clear_height"></div>
-        <div class="ind_list">
-            <div class="xq_left"><a href="product/getProductByid?id=${s.id}">${s.projectPicture}</a></div>
-            <div class="ind_right">
-                <div class="tuijian">
-                
-                    <div class="tj_left">推荐项目:<span class="hong"><a href="getProductByid?id=${s.id}">${s.projectName}</a></span></div>
-                    <div class="tj_right">
-                        <div class="tj_jd">融资进度：<c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%<c:if test='${s.financingProgress==100}'><img src="<%=path%>/img/touzi_sec.jpg"></c:if></div>
-                        <div class="tj_jd_pic"><div class="progress_80"><div class="progress_bar" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div></div></div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="xq_table">
-                    <div class="xq01">
-                        <div class="xq01_tit">年化收益</div>
-                        <div class="xq01_nr hong">${s.yearIncome}%</div>
-                    </div>
-                    <div class="xq02">
-                        <div class="xq01_tit">融资金额</div>
-                        <div class="xq01_nr">${s.financingMoney}万</div>
-                    </div>
-                    <div class="xq03">
-                        <div class="xq01_tit">还款日期</div>
-                        <div class="xq01_nr">${s.repaymentTime}</div>
-                    </div>
-                    <div class="xq04">
-                        <div class="xq01_tit">企业等级</div>
-                        <div class="xq04_nr"><img src="<%=path%>/images/qualityRate_${s.qualityRating}.jpg" style="margin-bottom:-3px;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    -->   
-            
-    <!--     
-<div class="clear_height"></div>
-	<div>
-        <div class="num">        
-							
-								 
-								 <a href="javascript:jumpPage(1)">首页</a> 
-								 
-								<c:if test=""></c:if>
-								 
-								 <c:if test="${page.pageNo > 1}"><a href="javascript:jumpPage(${page.pageNo-1})">上一页</a>  </c:if> 
-								 <div class="pageNum"></div>
-								 
-								   <c:if test="${page.pageNo < page.totalPage}">  <a href="javascript:jumpPage(${page.pageNo+1})">下一页</a>  </c:if>  
-								
-								<a href="javascript:jumpPage(${page.totalPage})">末页</a> 
-								
-							</div> 
-			
-    
-    </div>
-    </div>
-    <div class="tz_right">
- 
-    </div>
-    <div class="clear"></div>
-</div>
- -->
+
 <!-- absolute_right start -->
 <%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->

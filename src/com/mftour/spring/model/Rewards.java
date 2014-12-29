@@ -4,11 +4,21 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Rewards {
+
 	private String userId;
 	private BigDecimal amount;
 	private Boolean used;
 	private Timestamp expireTime;
 	private Timestamp giveTime;
+	private String remark;
+	
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
 	public String getUserId() {
 		return userId;
 	}

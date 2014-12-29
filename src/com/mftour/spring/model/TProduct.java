@@ -1,5 +1,9 @@
 package com.mftour.spring.model;
 
+
+
+
+
 public class TProduct implements java.io.Serializable {
 
 	private static final long serialVersionUID = -8032736954376546625L;
@@ -39,17 +43,24 @@ public class TProduct implements java.io.Serializable {
 	    private String  targetPlatformUserNo;
 	    private String  enterpriseName;
 	    private Integer buyType;
+	    
 	    private Float platformFee;	//平台费用
 	    private Float margin;   //保证金
+
 	    private String financeTime; //开始融资时间
 	    
-	    
-	    
-	    
-	   
+
 	  
 	   
-	    
+	    private boolean loaned; //是否已放款
+	 
+		
+		public boolean isLoaned() {
+			return loaned;
+		}
+		public void setLoaned(boolean loaned) {
+			this.loaned = loaned;
+		}
 		public Long getId() {
 			return id;
 		}
@@ -278,19 +289,6 @@ public class TProduct implements java.io.Serializable {
 			this.financeTime = financeTime;
 		}
 		
-		
-	
-	
-	
-	
-		
-		
-		
-		
-	    
-	    
-	    
-	   
 
 
 }

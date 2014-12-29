@@ -5,41 +5,28 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.BodyPart;
-import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.Message.RecipientType;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mftour.spring.base.JsonBaseBean;
+import com.mftour.spring.util.Rest;
+import com.alibaba.fastjson.JSON;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TUser;
+import com.mftour.spring.rest.bean.Response;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
 import com.mftour.spring.util.EmailTemplate;
 import com.mftour.spring.util.Env;
-//import com.mftour.spring.util.File;
-import com.mftour.spring.util.MailSenderInfo;
 import com.mftour.spring.util.RandomCode;
 import com.mftour.spring.util.ReadWirtePropertis;
-import com.mftour.spring.util.SimpleMailSender;
 import com.sms.webservice.client.SmsReturnObj;
 import com.sms.webservice.client.SmsWebClient;
-
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,16 +37,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*
  * 不需要实现任何接口，也不需要继承任何的类，也不需要任何 Servlet API
@@ -69,7 +49,8 @@ import org.apache.http.util.EntityUtils;
 // 将Model中属性名为Constants.USER_INFO_SESSION的属性放到Session属性列表中，以便这个属性可以跨请求访问
 @SessionAttributes(Constants.USER_INFO_SESSION)
 public class WelcomeController {
-
+	private static final Logger logger = LoggerFactory
+			.getLogger(WelcomeController.class);
 	@Autowired
 	private IUserService userService;
 
@@ -102,28 +83,50 @@ public class WelcomeController {
 		return "login";
 	}
 
-	
+
+	@RequestMapping(value = "/reg", method = RequestMethod.GET)
+	public String reg(Model model, HttpServletRequest request){
+		String ref = request.getParameter("ref");
+		if(ref ==null){
+			ref = "";
+		}
+		model.addAttribute("ref", ref);
+		return "reg";
+	}
+
+
 
 	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
 	public String regEemail(TUser user, Model model, HttpServletRequest request){
 		try {
-			Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*60* 60 * 1000);
-	
-			String code=RandomCode.getRandomString(5);
-			user.setRegTime(outDate);
-			user.setRandomCode(code);
-			user.setRegState("f");
-			userService.addOrUpdate(user);
-			request.getSession().setAttribute("name", user.getName());
-			com.mftour.spring.util.File f=ReadWirtePropertis.file();
-			String basePath =f.getBasePath();
-			String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
-			String operate="注册中租宝帐号，请点击以下链接完成注册";
-			String title="中租宝—用户注册确认";
-			String email=user.getEmail();
-			EmailTemplate.SendMail(email, resetPassHref, operate, title);
+
+			Rest rest = new Rest();
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("username", user.getName());
+			map.put("password", user.getPassword());
+			map.put("email", user.getEmail());
+			map.put("ref", user.getRef());
+			map.put("service-phone",user.getServicePhone());
+			String s = rest.postRestful("/rest/user/reg", map);
+			JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+			if (r.isSuccess()){
+				request.getSession().setAttribute("name", user.getName());
+
+				TUser userInfo = userService.getUserByAccount(user.getName());
+				request.getSession().setAttribute("userinfo", userInfo);
+				com.mftour.spring.util.File f=ReadWirtePropertis.file();
+				String basePath =f.getBasePath();
+				String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
+				String operate="注册中租宝帐号，请点击以下链接完成注册";
+				String title="中租宝—用户注册确认";
+				String email=user.getEmail();
+				EmailTemplate.SendMail(email, resetPassHref, operate, title);
+			}else{
+				return "error";
+			}
 	        } catch (Exception e) {
-				e.printStackTrace();
+			    logger.error("error " +e);
+				return "error";
 			}
 
 		return "reg_email";
@@ -214,8 +217,7 @@ public class WelcomeController {
 	@ResponseBody
 	public String queryUser(Model model, TUser user) throws Exception {
 
-		TUser user1 = userService.getUserByAccount(user.getName());
-		if (user1 != null) {
+		if (userService.getUserByAccount(user.getName()) != null) {
 			return "success";
 		}
 		//

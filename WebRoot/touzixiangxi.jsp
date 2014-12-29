@@ -301,9 +301,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div>
        </c:if>
-       <c:if test="${ not empty product1.buyType&&product1.projectStatus!=2}"><!-- 线上 -->
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==1}"><!-- 线上 -->
        <div class="pro_right">
-         <span class="pro_right_title"><strong>${product1.projectStatus==1?'项目即将开放':product1.projectStatus==3?'企业正常还款中':'项目已完成'}</strong></span>
+         <span class="pro_right_title"><strong>项目即将开放</strong></span>
+       </div> 
+       </c:if>
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==3}"><!-- 线上 -->
+       <div class="pro_right">
+         <span class="pro_right_title"><strong>企业正常还款中</strong></span>
+       </div> 
+       </c:if>
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==4}"><!-- 线上 -->
+       <div class="pro_right">
+         <span class="pro_right_title"><strong>项目已完成</strong></span>
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
@@ -586,9 +596,17 @@ function mysubmit(){
 		alert("投资金额不能高于可投资金额！");
 		return false;
 	}
-	
-	var form = document.getElementById("form");
-	    form.submit();	
+
+    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
+        success: function(resp){
+            if(resp === "success"){
+
+                var form = document.getElementById("form");
+                form.submit();
+            }else{
+                alert(resp);
+            }
+        }});
 }	
 
 
