@@ -116,10 +116,10 @@ public class WelcomeController {
 				request.getSession().setAttribute("userinfo", userInfo);
 				com.mftour.spring.util.File f=ReadWirtePropertis.file();
 				String basePath =f.getBasePath();
-				String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
+				String resetPassHref =basePath+ "welcome/register?username="+ userInfo.getName()+"&checkcode="+userInfo.getRandomCode();
 				String operate="注册中租宝帐号，请点击以下链接完成注册";
 				String title="中租宝—用户注册确认";
-				String email=user.getEmail();
+				String email=userInfo.getEmail();
 				EmailTemplate.SendMail(email, resetPassHref, operate, title);
 			}else{
 				return "error";
@@ -182,7 +182,8 @@ public class WelcomeController {
 			Model model,HttpServletRequest request) throws Exception {
 		TUser user = userService.getUserByAccount(username);
 		Timestamp outDate =user.getRegTime();
-		if(outDate.getTime()>= System.currentTimeMillis()&&checkcode.equals(user.getRandomCode())){ //表示已经过期
+		Timestamp outDate1 = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
+		if(outDate.getTime()<= outDate1.getTime()&&checkcode.equals(user.getRandomCode())){ //表示没有过期
 			user.setRegState("s");
 			userService.addOrUpdate(user);
 		}else{

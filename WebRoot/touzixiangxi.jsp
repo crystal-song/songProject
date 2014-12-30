@@ -317,7 +317,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
-       <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
+       <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" style="padding:0px;">
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
          <span>可投资金额： ${product1.financingMoney*10000-product1.realityMoney}元
@@ -402,10 +402,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </ul>
       <div class="pro_con_title"><strong>投资记录</strong></div>
        <ul class="table_mag">
+       <c:if test="${ empty product1.buyType}"><!-- 线下 -->
        <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>状态</span></li>
-		<c:if test="${ not empty list}">
-		<c:forEach var="s" items="${list}" varStatus="i">
-		<c:if test="${ empty product1.buyType}"><!-- 线下 -->
+		<c:if test="${ not empty listoffline}">
+		<c:forEach var="s" items="${listoffline}" varStatus="i">
+		
 		<li>
 		<span>${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
 		<span >
@@ -417,22 +418,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<span >${s.investmentAmount}万元</span>
 		<span>成功</span>
 		</li>
+		</c:forEach>
 		</c:if>
-		 <c:if test="${ not empty product1.buyType}"><!-- 线上 -->
+		</c:if>
+       <c:if test="${not empty product1.buyType}"><!-- 线上 -->
+       <li><span>投资人</span><span>投资金额</span><span>状态</span></li>
+		<c:if test="${ not empty listonline}">
+		<c:forEach var="s" items="${listonline}" varStatus="i">
 		<li>
-		<span>${fn:substring(s.investor,0,2)}<c:forEach var="j" begin="1" end="${fn:length(s.investor)-3}" step="1">*</c:forEach>${fn:substring(s.investor,fn:length(s.investor)-1,fn:length(s.investor))}
+		<span>${fn:substring(s.platformUserNo,0,2)}<c:forEach var="j" begin="1" end="${fn:length(s.platformUserNo)-3}" step="1">*</c:forEach>${fn:substring(s.platformUserNo,fn:length(s.platformUserNo)-1,fn:length(s.platformUserNo))}
 		</span>
-		<span >
-			<c:if test="${fn:length(s.identityCard)==18}">${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
-			</c:if>
-			<c:if test="${fn:length(s.identityCard)!=18}">-
-			</c:if>
-		</span>
-		<span >${s.investmentAmount}元</span>
+		<span >${s.paymentAmount}元</span>
 		<span>成功</span>
 		</li>
-		</c:if>
 		</c:forEach>
+		</c:if>
 		</c:if>
 		</ul> 
 		<div class="clear"></div>    
@@ -596,11 +596,10 @@ function mysubmit(){
 		alert("投资金额不能高于可投资金额！");
 		return false;
 	}
-
+	
     $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
         success: function(resp){
             if(resp === "success"){
-
                 var form = document.getElementById("form");
                 form.submit();
             }else{

@@ -113,8 +113,10 @@ public class productController {
 			TProduct product,HttpServletRequest request) throws Exception {
 		Page page = Page.newBuilder(pageNo, pageSize, "getProductByid");
 		TProduct product1 = productService.getProductById(id);
-		List<TInvestmentInfo> list = ptopService
+		List<TInvestmentInfo> listoffline = ptopService
 				.queryInvestmentInfoByNumber(page,product1.getEnterpriseNumber());
+		List<TTransferInfo> listonline = ptopService.queryTransferInfoByNumber(page, product1.getEnterpriseNumber());
+				
 		List<TInterestRate> li = ptopService
 				.queryTInterestRateByNumber(product1.getEnterpriseNumber());
 		if (li != null && li.size() != 0) {
@@ -127,7 +129,8 @@ public class productController {
 			model.addAttribute("account",account);
 		}
 		model.addAttribute("product1", product1);
-		model.addAttribute("list", list);
+		model.addAttribute("listoffline", listoffline);
+		model.addAttribute("listonline", listonline);
 
 		List<TNews> list1 = ptopService.getNewsbyTime();
 		model.addAttribute("list1", list1);

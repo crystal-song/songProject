@@ -202,7 +202,7 @@ function validateCode (){
 }  
 function show(){  
         //显示验证码  
-        document.getElementById("code").src="/CodeServlet?code="+createCode();
+        document.getElementById("code").src="<%=path%>/CodeServlet?code="+createCode();
 }  
 window.onload = function() {
 		//document.onload=show();  
