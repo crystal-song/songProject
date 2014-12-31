@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              </div>
           </div>
           
-      <div class="new_th" style="margin-bottom: 40px;">  
+      <div class="new_th" >  
           <div class="new_th_title"></div>     
           <dl style="margin-top:50px">
            <dt>安全性:</dt>
@@ -71,8 +71,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="ren_top"></div>
           <div class="ren_bottom"></div>
       </div>
-      <div class="diannao"></div>
-      <div class="diannao01"></div>
+     <div class="per_bottom"> 
+	      <div class="diannao"></div>
+	      <div class="diannao01">
+	        <a href="<%=path%>/login.jsp" class="left_wd_yel">注册登录</a>
+	        <a>身份认证</a>
+	        <a>投资充值</a>
+	        <a>坐享收益</a>	      
+	      </div>
+      </div>
 </div>
 
 
@@ -83,7 +90,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 <script type="text/javascript">
-
+      $(function(){
+    	  var num
+    	  var timer=setInterval(down(), 3000)
+    	   function down(){
+    		  $(".ren_top").css("top")
+    	  }
+      })
       
 </script>
 </html>

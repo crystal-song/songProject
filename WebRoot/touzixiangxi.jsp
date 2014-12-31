@@ -663,10 +663,10 @@ function mysubmit(){
 		  
 		    var str= /^[0-9]*$/;
 		    var val=$("#buyAmount").val();
-		    if(!(str.test(val))){  	   
+		    /* if(!(str.test(val))){  	   
 				   $('.neirong').html("您输入的金额不是数字,请重新输入");
 				   return false;
-			    }
+			    } */
 		    $('.neirong').css('display','block');
 	
 		    if(!(str.test(val))){  	   
@@ -674,7 +674,7 @@ function mysubmit(){
 				   return false;
 			    }
 			    if(val<200){
-				   $('.neirong').html("您输入的金额小于200元,请重新输入");
+				   $('.neirong').html("您输入的金额小于200元");
 				   return false;
 			    }
 			    if(val>touzi_money){

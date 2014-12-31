@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- user_left end -->
 		</div>
 
-
 				<div class="add_postcar" style="display: none; height: 330px;">
 					<p>银行卡信息</p>
 					<ul class="postcar_msg">

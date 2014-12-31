@@ -28,11 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="pro_con_title" style="margin-top:5px;"><strong>推荐管理</strong></div>
             
                <ul class="tui_li">
-
                   <li><span>用户名：</span><span>${username}</span></li>
-                  <li><span>我的推荐人：</span><span>${ref}</span></li>
+                  <li style="display:none"><span>我的推荐人：</span><span>${ref}</span></li>
                   <li><span>我的推广链接：</span><span style="margin:0; width:auto">${ref_link}</span></li>
-
                   <li style="width:700px"><span>我的分享：</span>
                       <span style="width:260px">
                           <div class="bdsharebuttonbox" data-tag="share_1">
@@ -53,8 +51,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                </ul>                            
                <div class="tui_pic">
 
-				   <div class="tui_left"><img src="<%=path%>/img/images-2014-11/fenxiang_pic.gif"></div>
-                  <textarea class="tui_right" value="理财生活两手抓，中租宝帮您发发发" name="MSG" id="fe_text" cols=33 rows=4>理财生活两手抓！ 中租宝帮您发发发。${ref_link}</textarea>
+				   <div class="tui_left"><img src="<%=path%>/img/images-2014-11/daijinquan.jpg"></div>
+                  <textarea class="tui_right" value="全新稳健性投资平台，中租宝诚邀体验，注册就送100元。" name="MSG" id="fe_text" cols=33 rows=4>全新稳健性投资平台，中租宝诚邀体验，注册就送100元。${ref_link}</textarea>
                </div>
                <p class="tui_num">我推荐的 </p>
                
@@ -74,11 +72,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 			<c:if test="${empty list}">
 				<li >
-					暂无交易记录
+					暂无推荐记录
 				</li>
 			</c:if>
             <div class="clear"></div>
-			<div class="next_list">
+			<div class="next_list" style="display:none">
 				<a href="<%=path %>/account/tuijian">首页</a>
 				<c:if test="${page.page > 1}"><a href="<%=path %>/account/tujian?page=${page.page-1}">上一页</a>  </c:if>
 				<div class="pageNum"></div>
@@ -112,7 +110,7 @@ var clip = new ZeroClipboard( document.getElementById("d_clip_button"), {
 
 // 复制内容到剪贴板成功后的操作
 clip.on( 'complete', function(client, args) {
-	
+	alert("复制成功");
 } );
 
 </script>
