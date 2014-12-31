@@ -256,16 +256,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </li>
            <li><span style="width:90px;">融资金额</span><span style="width:90px;">年化收益</span><span style="width:90px;">还款日期</span></li>
            <li class="bac_red_wd">
+           <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
+              <span style="width:90px;"><strong><i>￥</i>50万元</strong></span>
+              <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
+              <span style="width:90px;"><strong>${currTime}</strong></span>
+           </c:if>
+           <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
               <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}万元</strong></span>
               <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
               <span style="width:90px;"><strong>${product1.repaymentTime}</strong></span>
+           </c:if>
            </li>
            <li>
              <span>融资进度：</span>
              <div class="load_bar">
+             <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
                <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
              <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
+             </c:if>
+             <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
+               <div style="width:100%"></div>
+             </div>
+             <span>100%</span>
+             </c:if>
            </li>
            <li class="pro_msg_bot" style="display:none">
              <div class="gray_bar1"><span>剩余天数</span><span>28</span></div>
@@ -426,7 +440,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<c:if test="${ not empty listonline}">
 		<c:forEach var="s" items="${listonline}" varStatus="i">
 		<li>
-		<span>${fn:substring(s.platformUserNo,0,2)}<c:forEach var="j" begin="1" end="${fn:length(s.platformUserNo)-3}" step="1">*</c:forEach>${fn:substring(s.platformUserNo,fn:length(s.platformUserNo)-1,fn:length(s.platformUserNo))}
+		<span>${fn:substring(s.platformUserNo,0,1)}<c:forEach var="j" begin="1" end="${fn:length(s.platformUserNo)-2}" step="1">*</c:forEach>${fn:substring(s.platformUserNo,fn:length(s.platformUserNo)-1,fn:length(s.platformUserNo))}
 		</span>
 		<span >${s.paymentAmount}元</span>
 		<span>成功</span>
@@ -438,11 +452,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="clear"></div>    
         	<div class="next_list">
       
-           <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> 
+             <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> 
 				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo-1}&id=${product1.id}">上一页</a>  </c:if> 
 				<div class="pageNum"></div>								 
 				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
-		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>                   
+		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>              
         </div>       
         
 <!--       <ul class="table_mag">
