@@ -28,30 +28,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="user_right">
         <div class="zichan_con">
             <div class="pro_con_title" style="margin-top: 5px;">
-                <strong>绑定银行卡</strong>
+                <strong>我的银行卡</strong>
             </div>
 
-            <div class="add_postcar" style='${yeepay.cardStatus==null?"display:none":""}' height: 130px;">
-                <p>银行卡信息</p>
+            <div class="add_postcar" style='${yeepay.cardStatus==null?"display:none":""}' height: auto;">
+                <p></p>
                 <ul class="postcar_msg">
                     <li><span>开户行名称：</span>
-                        <div>${yeepay.bank}</div></li>
+                        <div class="bank_name">${yeepay.bank}</div></li>
                     <li><span>银行卡账号：</span>
-                        <div>${yeepay.cardNo}</div></li>
-                    <li><span>银行卡状态：</span>
-                        <div>${yeepay.cardStatus == "VERIFIED"?"已认证":"认证中"}</div></li>
+                        <div>${yeepay.cardNo}</div><div class=" ${yeepay.cardStatus == "VERIFIED"?"ren_status":"ren_status01"}" style="margin:0; padding-left:20px;">${yeepay.cardStatus == "VERIFIED"?"已认证":"认证中"}</div></li>
+                   
                 </ul>
             </div>
             <form id="form-card" role="form" style='${yeepay.cardStatus==null?"":"display:none"}' action="<%=path%>/gate/dobinding"
                   method="post" target="_blank">
-                    <input
-                        type="hidden" class="form-control" id="platformUserNo"
-                        name="platformUserNo" value="${name}" />
-                <input type="hidden"
-                                                                   class="form-control" id="notifyUrl" name="notifyUrl"
-                                                                   value="${f.notifyUrl}/gate/bindingNotify" />
+                <input type="hidden" class="form-control" id="platformUserNo" name="platformUserNo" value="${name}" />
+                <input type="hidden" class="form-control" id="notifyUrl" name="notifyUrl" value="${f.notifyUrl}/gate/bindingNotify" />
                 <input type="hidden" class="form-control" id="callbackUrl" name="callbackUrl" value="${f.callbackUrl}/gate/bindingSucceed" />
-
                 <button onclick='document.getElementById("form-card").submit();'
                         class="btn btn-default mar_btn">绑定银行卡</button>
             </form>
@@ -64,7 +58,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <div class="form-group" style="margin-top:50px; dislplay:none">
               <label for="plat">可提现金金额</label>
 
-              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">${account.availableMoney}</strong>元</div>
+             <%--  <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">${account.availableMoney}</strong>元</div> --%>
+              <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">100</strong>元</div>
              </div>
         <form id="form" role="form" action="<%=path%>/gate/dodrawMoney" method="post" target="_blank">
             <input
@@ -129,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function onSubmit(host) {
 	if(!checkval()){return false}
 	  var form = document.getElementById("form");
-	  document.getElementById("mysubmit_btn").disabled=true;
+	  
 
 	    	var tixian_val=parseInt($(".tixian_money").val());
 		    var old_amount=parseInt($(".wd_org").text());
@@ -145,6 +140,7 @@ function onSubmit(host) {
 	    		  $(".black_bac").css("display","block");
 	    		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
 	    		  form.submit();
+	    		  document.getElementById("mysubmit_btn").disabled=true;
 	    	}		
 }
 
@@ -166,6 +162,7 @@ function checkval(){
     		var tixian_val=$(".tixian_money").val();
     		if(tixian_val=="提现金额不能为0");
     		  $(".tixian_money").val("");
+    		  $(this).css("color","#000")
 
     		
     	});
@@ -173,12 +170,153 @@ function checkval(){
     	$(".right_cha").click(function(){		  
     		 window.location.reload(true);  		  
     	});
-    	
-
+    /*各银行名称转换*/
+        var bankname=$(".bank_name").text();
 	    
-	    
-	    
-	    
+	    if(bankname=="BOCO"){
+	    	$(".bank_name").text("交通银行")
+	    }
+	    if(bankname=="CEB"){
+	    	$(".bank_name").text("光大银行")
+	    }
+	    if(bankname=="SPDB"){
+	    	$(".bank_name").text("上海浦东发展银行")
+	    }
+	    if(bankname=="ABC"){
+	    	$(".bank_name").text("农业银行")
+	    }
+	    if(bankname=="ECITIC"){
+	    	$(".bank_name").text("中信银行")
+	    }
+	    if(bankname=="PAB"){
+	    	$(".bank_name").text("平安银行")
+	    }
+	    if(bankname=="CCB"){
+	    	$(".bank_name").text("建设银行")
+	    }
+	    if(bankname=="CMBC"){
+	    	$(".bank_name").text("民生银行")
+	    }
+	    if(bankname=="SDB"){
+	    	$(".bank_name").text("深圳发展银行")
+	    }
+	    if(bankname=="POST"){
+	    	$(".bank_name").text("中国邮政储蓄")
+	    }
+	    if(bankname=="CMBCHIHA"){
+	    	$(".bank_name").text("招商银行")
+	    }
+	    if(bankname=="CIB"){
+	    	$(".bank_name").text("兴业银行")
+	    }
+	    if(bankname=="ICBC"){
+	    	$(".bank_name").text("中国工商银行")
+	    }
+	    if(bankname=="BOC"){
+	    	$(".bank_name").text("中国银行")
+	    }
+	    if(bankname=="BCCB"){
+	    	$(".bank_name").text("北京银行")
+	    }
+	    if(bankname=="GDB"){
+	    	$(".bank_name").text("广发银行")
+	    }
+	    if(bankname=="HXB"){
+	    	$(".bank_name").text("华夏银行")
+	    }
+	    if(bankname=="XACB"){
+	    	$(".bank_name").text("西安市商业银行")
+	    }
+	    if(bankname=="SHB"){
+	    	$(".bank_name").text("上海银行")
+	    }
+	    if(bankname=="TJCB"){
+	    	$(".bank_name").text("天津市商业银行")
+	    }
+	    if(bankname=="TYCB"){
+	    	$(".bank_name").text("太原市商业银行")
+	    }
+	    if(bankname=="GZCB"){
+	    	$(".bank_name").text("广州市商业银行")
+	    }
+	    if(bankname=="SNXS"){
+	    	$(".bank_name").text("深圳农村商业银行")
+	    }
+	    if(bankname=="SHRCB"){
+	    	$(".bank_name").text("上海农商银行")
+	    }
+	    if(bankname=="BJRCB"){
+	    	$(".bank_name").text("北京农商银行")
+	    }
+	    if(bankname=="CDCB"){
+	    	$(".bank_name").text("成都市商业银行")
+	    }
+	    if(bankname=="HZCB"){
+	    	$(".bank_name").text("杭州市商业银行")
+	    }
+	    if(bankname=="NOBC"){
+	    	$(".bank_name").text("南洋商业银行")
+	    }
+	    if(bankname=="KLB"){
+	    	$(".bank_name").text("昆仑银行")
+	    }
+	    if(bankname=="ZZYH"){
+	    	$(".bank_name").text("郑州银行")
+	    }
+	    if(bankname=="WZYH"){
+	    	$(".bank_name").text("温州银行")
+	    }
+	    if(bankname=="HKYH"){
+	    	$(".bank_name").text("汉口银行")
+	    }
+	    if(bankname=="QLYH"){
+	    	$(".bank_name").text("齐鲁银行")
+	    }
+	    if(bankname=="DDYH"){
+	    	$(".bank_name").text("丹东银行")
+	    }
+	    if(bankname=="HBC"){
+	    	$(".bank_name").text("恒生银行")
+	    }
+	    if(bankname=="NJCB"){
+	    	$(".bank_name").text("南京银行")
+	    }
+	    if(bankname=="XMYH"){
+	    	$(".bank_name").text("厦门银行")
+	    }
+	    if(bankname=="NCYH"){
+	    	$(".bank_name").text("南昌银行")
+	    }
+	    if(bankname=="DONGGUANBC"){
+	    	$(".bank_name").text("东莞银行")
+	    }
+	    if(bankname=="JSBCCHINA"){
+	    	$(".bank_name").text("江苏银行")
+	    }
+	    if(bankname=="HKBEA"){
+	    	$(".bank_name").text("东亚银行(中国)")
+	    }
+	    if(bankname=="AYYH"){
+	    	$(".bank_name").text("安阳银行")
+	    }
+	    if(bankname=="CDYH"){
+	    	$(".bank_name").text("成都银行")
+	    }
+	    if(bankname=="NBB"){
+	    	$(".bank_name").text("宁波银行")
+	    }
+	    if(bankname=="BSCB"){
+	    	$(".bank_name").text("长沙银行")
+	    }
+	    if(bankname=="HBYH"){
+	    	$(".bank_name").text("河北银行")
+	    }
+	    if(bankname=="NYFZYH"){
+	    	$(".bank_name").text("农业发展银行")
+	    }
+	    if(bankname=="GZYH"){
+	    	$(".bank_name").text("广州银行")
+	    }
 });
 
 </script>
