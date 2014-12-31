@@ -56,6 +56,7 @@
           <li><a href="<%=path%>/contact.jsp">联系我们</a></li>
          </ul>
        </li>
+       <!-- <li><a href="http://webscan.360.cn/index/checkwebsite/url/www.ptobchina.com"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/f6cd2ca504b99e05ce62877d2742a9e0"/></a></li> -->
        <li><a href="http://webscan.360.cn/index/checkwebsite/url/www.ptobchina.com"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/f6cd2ca504b99e05ce62877d2742a9e0"/></a></li>
        <li><img src="<%=path%>/img/images-2014-11/zhongtou.png" width="300" height="50" /></li>
        <li><a href="http://www.miitbeian.gov.cn"/>京ICP备14013075号-3</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;客服邮箱：cs@ptobchina.com</li>    

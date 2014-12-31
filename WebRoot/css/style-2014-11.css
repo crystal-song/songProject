@@ -447,6 +447,7 @@ ul,li{
 	margin-top:2%;
 	position:relative;
 }
+
 .newpro_right dd a{
 	display:inline-block;
 	width:40px;
@@ -539,7 +540,7 @@ ul,li{
 }
 .newpro_right dt{
 	width:100%;
-	height:30px;
+	height:0;
 	text-align:left;
 	font-size:20px;
 	color:#ec454e;
@@ -555,12 +556,12 @@ ul,li{
 	margin-left:5px;
 }
 .newpro_right dd{
-	width:85%;
+	width:92%;
 	height:40px;
 	text-align:left;
 	line-height:40px;
-	margin-top:10px;
-	margin-left:36px;
+	margin-top:15px;
+	margin-left:26px;
 }
 .newpro_right dd span{
 	width:70%;
@@ -967,6 +968,9 @@ ul,li{
 	line-height:59px;
 	font-weight:bold;
 	}	
+.right_lable_red a{
+	color:#fff;
+}
 .deal_sort{
 	position:absolute;
 	right:0px;
@@ -2379,8 +2383,7 @@ ul,li{
 /*tixian*/
 .add_postcar{
 	width: 810px;
-    height: 460px;
-    border-bottom: 1px solid #eee;
+    min-height: 150px;
 }
 .add_postcar p{
 	text-align: left;
@@ -2400,6 +2403,12 @@ ul,li{
 	float: left;
 	margin-left: 100px;
 	text-align: right;
+}
+.ren_status{
+   background: url(../img/images-2014-11/renzheng01.png) 0 10px  no-repeat;
+}
+.ren_status01{
+   background: url(../img/images-2014-11/renzheng02.png) 0 10px  no-repeat;
 }
 .ti_jine span{
 	float: left;
@@ -4283,7 +4292,7 @@ ul,li{
 	font-size:24px; 
 	color:#000;
 	line-height:50px; 
-	margin-top:55px; 
+	margin-top:10%; 
 	background:url(../img/renok.png) 322px 6px no-repeat;
 }
 .title_sec{
@@ -4478,9 +4487,11 @@ ul,li{
 .tui_left{
 	width:210px;
 	height:142px;
-	/* background:url(../img/images-2014-11/fenxiang_pic.gif) no-repeat; */
+	/* background:url(../img/images-2014-11/tui_left.jpg) no-repeat;  */
 	float:left;
 	margin:0 3px;
+	background:#fff;
+	border: 1px solid #eee;
 }
 
 .tui_right{
@@ -4524,6 +4535,10 @@ ul,li{
 	background:#ec1c04;
 	color:#fff;
 }
+.quan_red a{
+	display:inline-block;
+	color:#fff;
+} 
 .quan_tab{
 	width:810px;
 	margin-top:38px;
@@ -4533,7 +4548,7 @@ ul,li{
 }
 
 .newpro_right .spanhign_right{
-	width:210px;
+	width:230px;
 	height:40px;
 }
 .newpro_right .spanhign_right a{
@@ -4574,13 +4589,13 @@ ul,li{
 	height:80px;
     background:url(../img/images-2014-11/error_title.png) no-repeat;	
 }
-.title_sec{
+/* .title_sec{
 	width:300px;
 	height:40px;
 	font-size:14px;
 	display:inline-block;
 	color:#666;
-}
+} */
 .queren_con .liquan_check{
 	width:200px;
 	height:30px;
@@ -4593,8 +4608,8 @@ ul,li{
 
 .new_person{
 	width:100%;
-	height:4000px;
-	background:url(../img/images-2014-11/new_person.jpg) 50% 0 no-repeat;	
+	height:3000px;
+	background:url(../img/images-2014-11/person_back.png) 50% 0 no-repeat;	
 }
 .new_fir{
 	width:1100px;
@@ -4634,14 +4649,13 @@ ul,li{
 .new_sec{
 	width:1100px;
 	height:260px;
-	background:pink;
 	margin:3% auto;
 	position:relative;
 }
 .sec_left{
 	width:200px;
 	height:240px;
-	background:#ccc;
+	background:url(../img/images-2014-11/renwu.png) 10px 20px no-repeat;
 	position:absolute;
     top:10%;
 	left:10%;
@@ -4650,35 +4664,211 @@ ul,li{
 .sec_con{
 	width:200px;
 	height:240px;
-	background:#ccc;
+	background:url(../img/images-2014-11/renwu.png) -336px 20px no-repeat;
 	position:absolute;
     top:43%;
-	left:40%;
+	left:42%;
 }
 
 .sec_right{
 	width:200px;
 	height:240px;
-	background:#ccc;
+	background:url(../img/images-2014-11/renwu.png) -715px 20px no-repeat;
 	position:absolute;
     top:18%;
-	left:75%;
+	left:79%;
 }
 
 .jiantou_left{
 	width:130px;
 	height:200px;
-	background:gray;
-	position:
+	background:url(../img/images-2014-11/jiantou_left.png) no-repeat;
+	position:absolute;
+	left:29%;
+	top:50%;
 }
 
+.jiantou_right{
+	width:130px;
+	height:200px;
+	background:url(../img/images-2014-11/jiantou_right.png) 0px 60px  no-repeat;
+	position:absolute;
+	left:63%;
+	top:50%;
+}
 
+.sec_left_wd{
+	position:absolute;
+	left:9%;
+	width:200px;
+	height:200px;
+}
 
-
-
-
-
-
+.sec_con_wd{
+	width:240px;
+	height:160px;
+	position:absolute;
+    top:31%;
+	left:41%;
+}
+.sec_right_wd{
+	width:200px;
+	height:200px;
+	position:absolute;
+	left:79%;
+}
+.sec_titile{
+	height:30px;
+	display:inline-block;
+	font-weight:bold;
+	font-size:20px;
+	color:#b06b28;
+	
+}
+.new_sec p{
+	line-height:30px;
+	color:#705444;
+	font-size:14px;
+	text-align:left;
+}
+.new_th{
+	width:1100px;
+	height:auto;
+	margin:170px auto;
+	margin-bottom:0;
+	color:#fff;
+	font-size:16px;
+	position:relative;
+}
+.new_th dt{
+	width:400px;
+	height:30px;
+	text-align:left;
+	line-height:30px;
+}
+.new_th dd{
+	width:400px;
+	height:30px;
+	line-height:30px;
+    text-align:left;
+    font-size:14px;
+}
+.new_th_title{
+	width:400px;
+	height:100px;
+	margin-top:50px;
+	background:url(../img/images-2014-11/new_th_title.png) no-repeat;
+}
+.new_th .ws_hei{
+	width:300px;
+	height:50px;
+	margin-bottom:40px;
+}
+.new_th_title2{
+	width:400px;
+	height:50px;
+	margin-top:70px;
+	background:url(../img/images-2014-11/new_th_title2.png) no-repeat;
+}
+.new_th_pic{
+	width:361px;
+	height:174px;
+	margin-top:6%;
+	background:url(../img/images-2014-11/zhexiantu.png) no-repeat;
+}
+.qiandai{
+	width:340px;
+	height:190px;
+	margin-top:128px;
+	background:url(../img/images-2014-11/qiandai.png) no-repeat;	
+}
+.gunlun{
+	width:100px;
+	height:70px;
+	background:url(../img/images-2014-11/xiaogunlun.png) no-repeat;
+	position:absolute;
+	right:250px;
+	top:-255px;
+	z-index:100;
+}
+.shengzi{
+	width:8px;
+	height:75px;
+	background:#cea972;
+	position:absolute;
+	right:340px;
+	top:-228px;
+	z-index:10;
+	
+}
+.ren_top{
+	width:518px;
+	height:370px;
+	background:url(../img/images-2014-11/ren_top.png) no-repeat;
+	position:absolute;
+	top:-100px;
+	right:150px;
+}
+.sheng_shui{
+	width:8px;
+	height:160px;
+	background:#9fafa2;
+	position:absolute;
+	right:340px;
+	top:-155px;
+}
+.ren_bottom{
+	width:518px;
+	height:370px;
+	background:url(../img/images-2014-11/ren_bottom.png) no-repeat;
+	position:absolute;
+	bottom:50px;
+	right:150px;
+}
+.per_bottom{
+	width:100%;
+	height:600px;
+	background:#9b7e5c;
+}
+.diannao{
+	width:730px;
+	height:577px;
+	background:url(../img/images-2014-11/diannao1.png) no-repeat;
+	margin-left:10%;
+}
+.bang{
+	margin-left:14%;
+	margin-top:5%;
+}
+.bang li{
+	font-size:12px;
+	height:30px;
+	width:100%;
+	margin:10px 0;
+	line-height:30px;
+}
+.diannao01{
+	width:286px;
+	height:500px;	
+    position:absolute;
+    bottom:3%;
+    right:200px;	
+    border-radius:5px;
+    background:#342a20;
+}
+.diannao01 a{
+	width:286px;
+	height:40px;
+	display:inline-block;
+	margin-top:20%;
+	font-size:14px;	
+	color:#fff;
+	text-align:center;
+}
+.diannao01 .left_wd_yel{
+	color:#e3b730;
+	font-weight:bold;
+}
 
 
 
