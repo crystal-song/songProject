@@ -97,17 +97,9 @@ public class IGateServiceImpl  implements  IGateService {
 
 	}
 
-	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception{
-		return gateDao.DrawMonetAllTransRecord(page,platformUserNo);
-	}
 	public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)throws Exception{
 		return gateDao.RechargeAllTransRecord(page,platformUserNo);
 	}
-	public List AllTransRecord(Page page, String platformUserNo)
-			throws Exception{
-		return gateDao.AllTransRecord(page, platformUserNo);
-	}
-
 	@Override
 	public void addOrUpdateTEstablishmentRegistration(
 			TEstablishmentRegistration establishmentRegistration)
@@ -216,11 +208,6 @@ public class IGateServiceImpl  implements  IGateService {
 			throws Exception {
 		return gateDao.queryTInvestmentInfoByName(name);
 		 
-	}
-	
-	public List<TRecharge> queryTRechargeByRequestNo(String requestno)
-			throws Exception{
-		return gateDao.queryTRechargeByRequestNo(requestno);
 	}
 	
 	public List<TDrawMoney> queryTDrawMoneyByRequestNo(String requestno)

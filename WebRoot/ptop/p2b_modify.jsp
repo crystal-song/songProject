@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加PtoB项目</title>
+<title>修改PtoB项目</title>
 
 
  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
@@ -209,32 +209,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <dt>必填项，字数请控制在14个汉字以内。</dt>
                 </li>
                 <li>
-                    <dd>企业编号：</dd>
-                    <input type="text" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />
-                    <dt></dt>
-                </li>
-                 <li>
-                    <dd>融资方名称：</dd>
-                    <input type="text" name="enterpriseName"  id="enterpriseName"  value="${product1.enterpriseName}"   />
-                    <dt></dt>
-                </li>               
-                <li>
-                    <dd>融资方易宝编号：</dd>
-                    <input type="text" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"   />
-                    <dt></dt>
-                </li>
-                <li>
                     <dd>项目图片：</dd>
-                   <!--  <input  type="file" id="file" name="file"  /> -->
-                    
-                    <!--style给定宽度可以影响编辑器的最终宽度-->
-<!--  <script type="text/plain"   id="Editor" style="width:1000px;height:100px;"> -->
-  <!--  <p>这里我可以写一些输入提示</p> -->
-<!-- </script>  -->
-
- 
-                <dt><script type="text/plain"   id="Editor" style="width:100%;height:100px;">${product1.projectPicture}
- </script>  <br />尺寸：250*158</dt>  
+                    <dt><script type="text/plain"   id="Editor" style="width:100%;height:100px;">${product1.projectPicture}</script>  <br />尺寸：250*158</dt>  
                 </li>
                 <li>
                     <dd>信用等级：</dd>
@@ -328,30 +304,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <textarea   name="stateOfOperation"  id="stateOfOperation"   value=""   cols="" rows="">${product1.stateOfOperation}</textarea>
                     <dt></dt>
                 </li>
-               
-                
-               
-               <!--  <li>
-                    <dd>相关证件：</dd>
-                    <textarea name="abstract" cols="" rows=""></textarea>
-                    <dt></dt>
-                </li> -->
-                
-                  <!--  <li>
-                    <dd>相关证件：</dd>
-                    <textarea  name="abstract" cols="" rows=""></textarea>
-                    <dt></dt>
-                </li>  -->
-                
- <li>               
-        <dd>相关证件：</dd>
-<label>
-<!--style给定宽度可以影响编辑器的最终宽度-->
-<script type="text/plain"   id="myEditor" style="width:100%;height:180px;">${product1.enterpriseCertificate}</script>
-</label> 
-		<dt>请将所有相关的图片上传至此区域内！</dt>       
+     			<li>               
+      			  <dd>相关证件：</dd>
+			    <label>
+				<!--style给定宽度可以影响编辑器的最终宽度-->
+				<script type="text/plain"   id="myEditor" style="width:100%;height:180px;">${product1.enterpriseCertificate}</script>
+				</label> 
+				<dt>请将所有相关的图片上传至此区域内！</dt>       
              
-</li>
+				</li>
                  <li>
                     <dd>融资方营业执照号：</dd>
                     <input type="text" name="enterpriseBusinessIicense"  id="enterpriseBusinessIicense"  value="${product1.enterpriseBusinessIicense}" />

@@ -208,16 +208,6 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setMaxResults(page.getPageSize());
 		return query.list();
 	}
-	public List  AllTransRecord(Page page,String platformUserNo)throws Exception{
-		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo  and transferInfo.requestNo in(select t.requestNo from TTransferSucceed t) order by transferInfo.transDate desc";
-		Query query = getSession().createQuery(hq);
-		query.setParameter("platformUserNo", platformUserNo);
-		page.setTotalRecord(query.list().size());
-		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
-		query.setMaxResults(page.getPageSize());
-		return query.list();
-	}
-
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByName(String name)
 			throws Exception {
