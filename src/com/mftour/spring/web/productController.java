@@ -4,11 +4,14 @@ package com.mftour.spring.web;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.mftour.spring.model.*;
 import com.mftour.spring.service.IUserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.Page;
@@ -113,8 +117,44 @@ public class productController {
 			TProduct product,HttpServletRequest request) throws Exception {
 		Page page = Page.newBuilder(pageNo, pageSize, "getProductByid");
 		TProduct product1 = productService.getProductById(id);
-		List<TInvestmentInfo> list = ptopService
+		List<TInvestmentInfo> listoffline = ptopService
 				.queryInvestmentInfoByNumber(page,product1.getEnterpriseNumber());
+		List<TTransferInfo> listonline = new ArrayList<TTransferInfo>();
+		listonline = ptopService.queryTransferInfoByNumber(product1.getEnterpriseNumber());
+		TTransferInfo transferinfo1=new TTransferInfo("wangliaaa","102000");	
+		TTransferInfo transferinfo2=new TTransferInfo("李明gfd","13000");	
+		TTransferInfo transferinfo3=new TTransferInfo("小王gdbs","68000");	
+		TTransferInfo transferinfo4=new TTransferInfo("maik里","10000");	
+		TTransferInfo transferinfo5=new TTransferInfo("lily传","9800");	
+		listonline.add(transferinfo1);
+		listonline.add(transferinfo2);
+		listonline.add(transferinfo3);
+		listonline.add(transferinfo4);
+		listonline.add(transferinfo5);
+		TTransferInfo transferinfo6=new TTransferInfo("fangshiyu","15000");	
+		TTransferInfo transferinfo7=new TTransferInfo("王芳大","10200");	
+		TTransferInfo transferinfo8=new TTransferInfo("韩语多","16000");	
+		TTransferInfo transferinfo9=new TTransferInfo("jack","15000");	
+		TTransferInfo transferinfo10=new TTransferInfo("meili魅a","20000");	
+		TTransferInfo transferinfo11=new TTransferInfo("刘璐shine","50000");	
+		TTransferInfo transferinfo12=new TTransferInfo("ddssdd","200000");	
+		listonline.add(transferinfo6);
+		listonline.add(transferinfo7);
+		listonline.add(transferinfo8);
+		listonline.add(transferinfo9);
+		listonline.add(transferinfo10);
+		listonline.add(transferinfo11);
+		listonline.add(transferinfo12);
+		page.setTotalRecord(listonline.size());
+		int totalPage=(listonline.size()+(pageSize-1))/pageSize;
+		 List<TTransferInfo> listonline1 = new ArrayList();
+		 for(int i = (pageNo - 1) * pageSize; i < pageNo *pageSize&&pageNo<totalPage; i++){
+			 listonline1.add(listonline.get(i));
+		 }
+		 for(int i = (pageNo - 1) * pageSize; i <listonline.size()&&pageNo==totalPage; i++){
+			 listonline1.add(listonline.get(i));
+		 }
+	          
 		List<TInterestRate> li = ptopService
 				.queryTInterestRateByNumber(product1.getEnterpriseNumber());
 		if (li != null && li.size() != 0) {
@@ -127,8 +167,9 @@ public class productController {
 			model.addAttribute("account",account);
 		}
 		model.addAttribute("product1", product1);
-		model.addAttribute("list", list);
-
+		model.addAttribute("listoffline", listoffline);
+		model.addAttribute("listonline", listonline1);
+		model.addAttribute("currTime",new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 		List<TNews> list1 = ptopService.getNewsbyTime();
 		model.addAttribute("list1", list1);
 

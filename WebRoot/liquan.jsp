@@ -27,9 +27,9 @@
         <div class="zichan_con">
             <div class="pro_con_title" style="margin-top:5px;"><strong>我的礼券</strong></div>
             <div class="quan_label">
-                <div class="${catlog eq "0"?"quan_red":""}"><a href="/account/liquan?page=1&catlog=0">可用礼券</a></div>
-                <div class="${catlog eq "1"?"quan_red":""}"><a href="/account/liquan?page=1&catlog=1">已用礼券</a></div>
-                <div class="${catlog eq "2"?"quan_red":""}"><a href="/account/liquan?page=1&catlog=2">过期礼券</a></div>
+                <div class="${catlog eq "0"?"quan_red":""}"><a href="/spring3/account/liquan?page=1&catlog=0">可用礼券</a></div>
+                <div class="${catlog eq "1"?"quan_red":""}"><a href="/spring3/account/liquan?page=1&catlog=1">已用礼券</a></div>
+                <div class="${catlog eq "2"?"quan_red":""}"><a href="/spring3/account/liquan?page=1&catlog=2">过期礼券</a></div>
             </div>
             <table  bgcolor="#eee" border="0" cellpadding="0" cellspacing="1" class="quan_tab">
                 <tr>
@@ -55,7 +55,7 @@
             </table>
             <c:if test="${empty list}">
                 <li >
-                    暂无交易记录
+                    暂无记录
                 </li>
             </c:if>
 

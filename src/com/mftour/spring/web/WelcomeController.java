@@ -1,3 +1,4 @@
+
 package com.mftour.spring.web;
 
 import java.io.IOException;
@@ -408,19 +409,4 @@ public class WelcomeController {
 
 		return "PhoneVerification_success";
 	}
-
-	/*
-	 * @RequestMapping(value = "/regis" , method=RequestMethod.POST) public
-	 * String register(TUser user, Model model) throws Exception {
-	 * if(user.getName()!=null&&user.getName()!=""&&user.getPassword()!=null);
-	 * try {
-	 * 
-	 * userService.addOrUpdate(user); } catch (Exception e) {
-	 * e.printStackTrace();
-	 * 
-	 * throw e; }
-	 * 
-	 * 
-	 * return null; }
-	 */
 }

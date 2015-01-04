@@ -13,6 +13,7 @@ import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.Page;
@@ -55,7 +56,12 @@ public class PtopServiceImpl implements IptopService {
 		return ptopDao.queryInvestmentInfoByNumber(Number);
 		
 	}
-
+	/*public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number){
+		return ptopDao.queryTransferInfoByNumber(page, Number);
+	}*/
+	public List<TTransferInfo> queryTransferInfoByNumber(String Number){
+		return ptopDao.queryTransferInfoByNumber(Number);
+	}
 	@Override
 	public void deleteTInvestmentInfo(Long id) throws Exception {
 		ptopDao.deleteTInvestmentInfo(id);

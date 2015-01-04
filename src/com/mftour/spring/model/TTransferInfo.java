@@ -23,6 +23,10 @@ public class TTransferInfo implements java.io.Serializable {
 
 	private BigDecimal reward;
 
+	public TTransferInfo() {
+		super();
+	}
+
 	public BigDecimal getReward() {
 		return reward;
 	}
@@ -168,6 +172,12 @@ public class TTransferInfo implements java.io.Serializable {
 
 	public void setFinancingPeriod(Integer financingPeriod) {
 		this.financingPeriod = financingPeriod;
+	}
+
+	public TTransferInfo(String platformUserNo, String paymentAmount) {
+		super();
+		this.platformUserNo = platformUserNo;
+		this.paymentAmount = paymentAmount;
 	}
 
     

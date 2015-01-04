@@ -1,3 +1,4 @@
+
 package com.mftour.spring.web;
 
 import java.io.ByteArrayInputStream;
@@ -1075,8 +1076,7 @@ public class GateController {
 			return "error";
 		}
 	}
-
-
-
-
 }
+
+
+
