@@ -452,11 +452,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="clear"></div>    
         	<div class="next_list">
       
-             <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> 
+            <c:if test="${page.totalPage > 1}"> <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> </c:if> 
 				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo-1}&id=${product1.id}">上一页</a>  </c:if> 
 				<div class="pageNum"></div>								 
 				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
-		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>              
+		    <c:if test="${page.totalPage > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>  </c:if>              
         </div>       
         
 <!--       <ul class="table_mag">
