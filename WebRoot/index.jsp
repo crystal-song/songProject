@@ -136,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  <div class="aim">
                    <span style="color:#a4a4a4;">目标:</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
-                   <span style="width:110px;"><em>¥&nbsp;</em>50万元</span>
+                   <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
                    <a>还款中</a>
                  </div>
                  <div class="loding_bar">

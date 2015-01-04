@@ -257,7 +257,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <li><span style="width:90px;">融资金额</span><span style="width:90px;">年化收益</span><span style="width:90px;">还款日期</span></li>
            <li class="bac_red_wd">
            <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
-              <span style="width:90px;"><strong><i>￥</i>50万元</strong></span>
+              <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}万元</strong></span>
               <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
               <span style="width:90px;"><strong>${currTime}</strong></span>
            </c:if>
