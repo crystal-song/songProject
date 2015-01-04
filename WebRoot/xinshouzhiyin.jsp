@@ -142,4 +142,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       })
       
 </script>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> a84984d51ad33a0190d35b85116971a28a3c15c8
