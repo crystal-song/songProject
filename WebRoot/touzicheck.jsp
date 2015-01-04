@@ -65,8 +65,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <li>
 
            <div class="form-group" style="${reward.userId==null?"display:none":""}">
-               <label for="paymentAmount">使用50元礼卷</label><input type="checkbox"
+               <label for="paymentAmount">使用50元礼卷&nbsp;</label><input type="checkbox"
                                                               class="form-control" id="reward" name="rewardCheck"  />
+           </div>
+       </li>
+       <li class="fukuan">
+
+           <div class="form-group" >
+               <label>您实际付款金额为：</label><input type="text" 
+                                                              class="form-control border_none"  value=""/>
            </div>
        </li>
           <li>
@@ -170,6 +177,14 @@ function onSubmit(host) {
 
 }
 $(document).ready(function(e) { 
+	   $("#reward").click(function(){
+		  // alert("aaa")
+		  $(".fukuan").css("display","block");
+		  var real_fukuan=$("#paymentAmount").val()
+		  $(".border_none").val(real_fukuan-50)
+	   });
+	
+	
 	   $(".right_cha").click(function(){
 		   window.location.reload(true);
 	   });
