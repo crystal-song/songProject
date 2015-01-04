@@ -256,7 +256,6 @@ public class ptopController {
 			model.addAttribute("list", list);
 			systemLogService.saveSystemLog(request, "后台信息", "删除产品", 1);
 
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			systemLogService.saveSystemLog(request, "后台信息", "删除产品", 0);

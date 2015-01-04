@@ -120,12 +120,42 @@ public class YeePay {
 
 				Map<String, Object> mm = Xml.Dom2Map(resp);
 				accountInfo.setCode(mm.get("code").toString());
+				accountInfo.setCode(mm.get("code").toString());
 				accountInfo.setBank(mm.get("bank").toString());
 				accountInfo.setCardStatus(mm.get("cardStatus").toString());
 				accountInfo.setCardNo(mm.get("cardNo").toString());
+				accountInfo.setBalance(mm.get("balance").toString());
+				accountInfo.setAvailableAmount(mm.get("availableAmount").toString());
+				accountInfo.setFreezeAmount(mm.get("freezeAmount").toString());
 				return  accountInfo;
 			}catch(Exception e){
 				return new YeepayAccountInfo();
+			}
+		}
+	}
+	public static String getQuery(String requestNo) throws Exception {
+		{
+			try{
+
+
+				YeepayAccountInfo accountInfo = new YeepayAccountInfo();
+
+				String pfx = f.getYeepayCfaFile();
+				String s = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"
+						+"<request platformNo='"+f.getPlatformNo()+"'>"
+						+"<requestNo>"+requestNo+"</requestNo> "
+						+"<mode>PAYMENT_RECORD</mode> "
+						+"</request>";;
+				s = s.replaceAll("[\\r\\n]", "");
+
+
+				HttpClientTest d = new HttpClientTest();
+				String resp = d.postForm("QUERY", f.getOnSubmit()+"/bhaexter/bhaController", s,
+						SignUtil.sign(s, pfx, "liukai123"));
+				System.out.println(resp);
+				return  resp;
+			}catch(Exception e){
+				return "error";
 			}
 		}
 	}

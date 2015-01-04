@@ -63,17 +63,15 @@ public class WelcomeController {
 			@RequestParam("name") String username,
 			@RequestParam("password") String password) throws Exception {
 
-		TUser user1 = userService.getUserByAccount(user.getName());
+		Rest rest = new Rest();
 
-		if (user1 != null) {
-			if (user1.getPassword().equals(user.getPassword())) {
-				model.addAttribute("name", user.getName());
-				return "success";
-			}
+		String s = rest.getRestful("/rest/user/login/"+username+"/"+password);
+		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+		if (r.isSuccess()){
+			return "success";
+		}else{
+			return "fail";
 		}
-		return "fail";
-		/* return "user/chpasswd"; */
-
 	}
 
 	@RequestMapping(value = "/logout", method = { RequestMethod.POST,
@@ -93,7 +91,6 @@ public class WelcomeController {
 		model.addAttribute("ref", ref);
 		return "reg";
 	}
-
 
 
 	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
