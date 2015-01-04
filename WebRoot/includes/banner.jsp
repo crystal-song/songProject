@@ -32,7 +32,7 @@
 		   var num=1;
 		   timer=setInterval(autoplay,3000);
 		   function autoplay(nn){
-			   if(nn!=null)num=nn+num;
+			 if(nn!=null)num=nn+num;
 			 if(num>=3){num=0}
 			 if(num<0){num=2}
 			  $('.banner_fra ul li').eq(num).hide().fadeIn().siblings().hide();   

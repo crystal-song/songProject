@@ -15,15 +15,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
 <!-- content start -->
- <div class="new_person">
+ <div class="new_person"> 
       <div class="new_fir">
 	       <div class="new_top">
 	        <span>关于中租宝</span>
+	        <div class="top_line"></div>
 	       </div>
 	      <div class="msg_zhong">
 	        <p>中租宝，是中投汇融投资管理有限公司旗下的众筹网络平台</p>
 	        <p><strong>中投汇融</strong>是国内首批P2B（微信托） 领域的财富投资管理公司。我们汇集了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台。
             </p>
+            <p class="def"></p>
+            <p class="abc"></p>
 	        <p>中租宝开创了P2B的2.0新时代，首次提出高标准、严要求挑选合作伙伴，只接受优质担保机构（信用评级A+级以上，政府重点扶持项目）企业的银行级理财项目，并有专家风控团队，为投资者提供100%本息保障，最高超过银行活期同期存款30倍的高收益理财项目。通过中租宝，您可以将手中富余资金出借给盈利能力强的中小企业，并获得高收益的利息回报，分享企业高速发展的红利。
            </p>
 	      </div>
@@ -91,11 +94,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 <script type="text/javascript">
       $(function(){
-    	  var num
-    	  var timer=setInterval(down(), 3000)
-    	   function down(){
-    		  $(".ren_top").css("top")
-    	  }
+    	  var num=-100;
+    	  var add=200;
+    	  var top= -850; 
+    	  var s=-1;
+    	  $(window).on('scroll',function(){
+    		 man();
+    	  });     	 
+    	 function man(){
+    		 var scrolltop=$(window).scrollTop();  		 	 
+    		     /* if(top<0){
+    		    	 if(scrolltop>s){   		    		  
+    		    		  top+=8;
+    	    		    }else{
+    	    		     // top--;
+    	    		    }
+    	    			s=scrolltop;
+
+     			
+     			//$(".abc").text(scrolltop/50);
+     			//$(".def").text(scrolltop);
+     		
+     		  }else{
+     			  top=0
+     		  }  */
+     		  		  
+    		// down();	 
+     		  
+     		  //if()
+     		  
+     		  
+    	 } 
+    	   function down(){    		 
+     		  $(".ren_top").css("top",num);
+     		  $(".sheng_shui").css("height",add);     		 
+     		  $(".top_line").css("top",top);
+     		 
+     		 // top+=5;
+     		 //  if(top>=0){
+     		 //  top=0;
+     		 // }
+     		      
+     		     // num++;
+     		     // add++;
+
+     	  }
+    	 
       })
       
 </script>

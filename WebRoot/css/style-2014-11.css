@@ -4621,6 +4621,14 @@ ul,li{
 	height:230px;
     background:url(../img/images-2014-11/dingyun02.png) 0 -80px no-repeat;	
 }
+.top_line{
+	width:60px;
+	height:1130px;
+	position:fixed;
+	top:-860px;
+	right:60px;
+	background:url(../img/images-2014-11/top_line.png) 15px 0 no-repeat;	
+}
 .new_top span{
 	display:inline-block;
 	width:auto;
@@ -4817,6 +4825,7 @@ ul,li{
 	right:340px;
 	top:-155px;
 }
+
 .ren_bottom{
 	width:518px;
 	height:370px;
