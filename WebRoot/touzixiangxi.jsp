@@ -313,6 +313,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="neirong"></div>         
          <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp" style="margin:24px 0 0 30px">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+         
        </div>
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==1}"><!-- 线上 -->
@@ -344,6 +345,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          
          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+        <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a>
        </div>
        </form>
        </c:if>
