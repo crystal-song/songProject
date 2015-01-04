@@ -201,9 +201,9 @@ public class ptopController {
 	
 		investmentInfo.setWriteTime(df.format(new Date()));
 		;
-		Object o = request.getSession().getAttribute("Administrator");
+		Object o = request.getSession().getAttribute("users");
 		investmentInfo.setAdministratorName(o.toString());
-
+		investmentInfo.setCode("1");
 		ptopService.addOrUpdateInvestmentInfo(investmentInfo);
 		List<TProduct> lis = productService.queryProductByNumber(investmentInfo
 				.getEnterpriseNumber());
