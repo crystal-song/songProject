@@ -201,7 +201,7 @@ public class ptopController {
 	
 		investmentInfo.setWriteTime(df.format(new Date()));
 		;
-		Object o = request.getSession().getAttribute("Administrator");
+		Object o = request.getSession().getAttribute("users");
 		investmentInfo.setAdministratorName(o.toString());
 
 		ptopService.addOrUpdateInvestmentInfo(investmentInfo);
