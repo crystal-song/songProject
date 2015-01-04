@@ -203,7 +203,7 @@ public class ptopController {
 		;
 		Object o = request.getSession().getAttribute("users");
 		investmentInfo.setAdministratorName(o.toString());
-
+		investmentInfo.setCode("1");
 		ptopService.addOrUpdateInvestmentInfo(investmentInfo);
 		List<TProduct> lis = productService.queryProductByNumber(investmentInfo
 				.getEnterpriseNumber());
