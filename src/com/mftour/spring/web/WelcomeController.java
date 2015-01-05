@@ -188,6 +188,7 @@ public class WelcomeController {
 			user.setRegState("s");
 			userService.addOrUpdate(user);
 		}else{
+
 			request.setAttribute("msg", "链接已经过期,请重新做认证！");
 		}
 		model.addAttribute("regState", user.getRegState());
