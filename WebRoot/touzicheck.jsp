@@ -164,13 +164,8 @@ function onSubmit(host) {
   	       	$(".liquan_hide").css("display","none");
   	       	return false;
       	}
-     /* if($("#paymentAmount").val()<3000){
-    	 alert("您输入的金额小于3000元");
-    	$("liquan_hide").css("display","none")
-    	return false;
-		  
-	     // $("")
-	  }  */
+      	
+
     $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
             success: function(resp){
                 if(resp === "success"){
@@ -207,20 +202,18 @@ $(document).ready(function(e) {
 		  var real_fukuan=$("#paymentAmount").val()
 		  $(".border_none").val(real_fukuan-50)
 	   });
-	/*   $("#paymentAmount").blur(function(){
-		  
-	  }); */
-	  /* $("#paymentAmount").blur(function(){
-      	if($(this).val()<3000){
-         	    alert("您输入的金额小于3000元");
-  	       	$("liquan_hide div").css("display","none");
-  	       	return false;
-      	}
-  	  }); */
 	
 	   $(".right_cha").click(function(){
 		   window.location.reload(true);
 	   });
+	   
+	   $("#paymentAmount").keyup(function(){
+		   if($(this).val()<3000){			   
+		     	$(".liquan_hide").css("display","none")
+		     	return false;
+		 	  }  
+	   });
+	      
 
 }); 
 </script>
