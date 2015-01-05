@@ -120,17 +120,14 @@ public class productController {
 		List<TInvestmentInfo> listoffline = ptopService
 				.queryInvestmentInfoByNumber(page,product1.getEnterpriseNumber());
 		List<TTransferInfo> listonline = new ArrayList<TTransferInfo>();
+		model.addAttribute("listonline", listonline);
+		if(product1.getId()==56){
 		listonline = ptopService.queryTransferInfoByNumber(product1.getEnterpriseNumber());
 		TTransferInfo transferinfo1=new TTransferInfo("wangliaaa","102000");	
 		TTransferInfo transferinfo2=new TTransferInfo("李明gfd","13000");	
 		TTransferInfo transferinfo3=new TTransferInfo("小王gdbs","68000");	
 		TTransferInfo transferinfo4=new TTransferInfo("maik里","10000");	
 		TTransferInfo transferinfo5=new TTransferInfo("lily传","9800");	
-		listonline.add(transferinfo1);
-		listonline.add(transferinfo2);
-		listonline.add(transferinfo3);
-		listonline.add(transferinfo4);
-		listonline.add(transferinfo5);
 		TTransferInfo transferinfo6=new TTransferInfo("fangshiyu","15000");	
 		TTransferInfo transferinfo7=new TTransferInfo("王芳大","10200");	
 		TTransferInfo transferinfo8=new TTransferInfo("韩语多","16000");	
@@ -138,6 +135,11 @@ public class productController {
 		TTransferInfo transferinfo10=new TTransferInfo("meili魅a","20000");	
 		TTransferInfo transferinfo11=new TTransferInfo("刘璐shine","50000");	
 		TTransferInfo transferinfo12=new TTransferInfo("ddssdd","200000");	
+		listonline.add(transferinfo1);
+		listonline.add(transferinfo2);
+		listonline.add(transferinfo3);
+		listonline.add(transferinfo4);
+		listonline.add(transferinfo5);
 		listonline.add(transferinfo6);
 		listonline.add(transferinfo7);
 		listonline.add(transferinfo8);
@@ -154,7 +156,8 @@ public class productController {
 		 for(int i = (pageNo - 1) * pageSize; i <listonline.size()&&pageNo==totalPage; i++){
 			 listonline1.add(listonline.get(i));
 		 }
-	          
+		 model.addAttribute("listonline", listonline1);
+		}     
 		List<TInterestRate> li = ptopService
 				.queryTInterestRateByNumber(product1.getEnterpriseNumber());
 		if (li != null && li.size() != 0) {
@@ -168,7 +171,8 @@ public class productController {
 		}
 		model.addAttribute("product1", product1);
 		model.addAttribute("listoffline", listoffline);
-		model.addAttribute("listonline", listonline1);
+		
+		
 		model.addAttribute("currTime",new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 		List<TNews> list1 = ptopService.getNewsbyTime();
 		model.addAttribute("list1", list1);

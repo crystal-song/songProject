@@ -114,7 +114,9 @@ public class WelcomeController {
 				request.getSession().setAttribute("userinfo", userInfo);
 				com.mftour.spring.util.File f=ReadWirtePropertis.file();
 				String basePath =f.getBasePath();
-				String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
+
+				String resetPassHref =basePath+ "/welcome/register?username="+ userInfo.getName()+"&checkcode="+userInfo.getRandomCode();
+
 				String operate="注册中租宝帐号，请点击以下链接完成注册";
 				String title="中租宝—用户注册确认";
 				String email=user.getEmail();
@@ -143,7 +145,7 @@ public class WelcomeController {
 		model.addAttribute("user1", user);
 		com.mftour.spring.util.File f=ReadWirtePropertis.file();
 		String basePath =f.getBasePath();
-		String resetPassHref = basePath + "welcome/verregister?username="
+		String resetPassHref = basePath + "/welcome/verregister?username="
 				+ user.getName();
 		String operate="进行邮箱认证，请点击以下链接完成认证";
 		String title="中租宝—邮箱认证";

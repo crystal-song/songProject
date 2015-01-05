@@ -122,7 +122,7 @@ public class userController {
 		model.addAttribute("email", email);
 		com.mftour.spring.util.File f=ReadWirtePropertis.file();
 		String basePath =f.getBasePath();
-		String resetPassHref = basePath + "user/reset?username="
+		String resetPassHref = basePath + "/user/reset?username="
 				+ user.getName();
 		String operate="提交找回密码的请求,请点击此链接重置您的密码";
 		String title="中租宝—找回密码通知";
