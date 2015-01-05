@@ -139,14 +139,14 @@ public class WelcomeController {
 		String username = (String) request.getSession().getAttribute("name");
 		TUser user = userService.getUserByAccount(username);
 		user.setEmail(mail);
+		String emailVTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+		user.setEmailVTime(emailVTime);
 		userService.addOrUpdate(user);
-		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
-		request.getSession().setAttribute("outDate1", outDate);
 		model.addAttribute("user1", user);
 		com.mftour.spring.util.File f=ReadWirtePropertis.file();
 		String basePath =f.getBasePath();
 		String resetPassHref = basePath + "/welcome/verregister?username="
-				+ user.getName();
+				+ user.getName()+"&checkcode="+user.getRandomCode();
 		String operate="进行邮箱认证，请点击以下链接完成认证";
 		String title="中租宝—邮箱认证";
 		String email=user.getEmail();
@@ -161,12 +161,11 @@ public class WelcomeController {
 
 	@RequestMapping(value = "/verregister", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String verregister(@RequestParam("username") String username,
+	public String verregister(@RequestParam("username") String username,@RequestParam("checkcode") String checkcode,
 			Model model,HttpServletRequest request) throws Exception {
-		Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate1");
-
 		TUser user = userService.getUserByAccount(username);
-		if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
+		long t=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(user.getEmailVTime()).getTime(); 
+		if(t>= System.currentTimeMillis()+24*60*60*1000&&checkcode.equals(user.getRandomCode())){ //表示已经过期
             request.setAttribute("msg", "链接已经过期,请重新做认证！");
 		}else{
 			user.setRegState("s");
@@ -182,7 +181,7 @@ public class WelcomeController {
 			Model model,HttpServletRequest request) throws Exception {
 		TUser user = userService.getUserByAccount(username);
 		Timestamp outDate =user.getRegTime();
-		Timestamp outDate1 = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
+		Timestamp outDate1 = new Timestamp(System.currentTimeMillis() + 24*60 * 60 * 1000);
 		if(outDate.getTime()<= outDate1.getTime()&&checkcode.equals(user.getRandomCode())){ //表示没有过期
 			user.setRegState("s");
 			userService.addOrUpdate(user);

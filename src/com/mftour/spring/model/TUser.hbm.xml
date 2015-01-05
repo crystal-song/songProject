@@ -90,5 +90,15 @@
         <property name="ref" type="java.lang.String">
             <column name="ref" length="100" />
         </property>
+        
+        <property name="findPasswordTime" type="java.lang.String">
+            <column name="findPasswordTime" length="100" />
+        </property>
+        <property name="randomCode1" type="java.lang.String">
+            <column name="randomCode1" length="50" />
+        </property>
+		  <property name="emailVTime" type="java.lang.String">
+            <column name="emailVTime" length="100" />
+        </property>
     </class>
 </hibernate-mapping>
