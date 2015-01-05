@@ -140,7 +140,7 @@ $(document).ready(function(e) {
 
 	$(".nav_big a").eq(4).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(4).children("p").addClass("headwd_color");
-    $(".news_ul a").eq(6).addClass("aqbz").siblings().removeClass("aqbz");
+    $(".news_ul a").eq(7).addClass("aqbz").siblings().removeClass("aqbz");
 
 });
 </script>

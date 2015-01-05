@@ -50,8 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   </li>    
                </ul>                            
                <div class="tui_pic">
-
-				   <div class="tui_left"><img src="<%=path%>/img/images-2014-11/daijinquan.jpg"></div>
+				   <div class="tui_left"><img src="<%=path%>/img/images-2014-11/daijinquan01.jpg"></div>
                   <textarea class="tui_right" value="全新稳健性投资平台，中租宝诚邀体验，注册就送100元。" name="MSG" id="fe_text" cols=33 rows=4>全新稳健性投资平台，中租宝诚邀体验，注册就送100元。${ref_link}</textarea>
                </div>
                <p class="tui_num">我推荐的 </p>

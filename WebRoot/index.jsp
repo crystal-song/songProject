@@ -5,7 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ include file="/includes/taglibs.jsp" %> 
 
-<title>中租宝</title>
+<title>中租宝 | 最稳健的P2B理财平台</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 
@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           <a style="font-size:12px; line-height:12px;">平均年化收益率<label style="color:red">12%</label>，最高<label style="color:red">14%</label>，<br/> 高于银行活期<label style="color:red">30倍</label>以上收益率</a>
              </span></dd>
            <dd><a class="newpro_wd04"></a><span class="spanhign_right">
-           <a>专注P2B</a>  
+           <a>专注<label style="color:red">P2B</label></a>  
            <a style="font-size:12px;">精选优质企业，远超P2P安全保障。</a>          
            </span></dd>
        </dl>
