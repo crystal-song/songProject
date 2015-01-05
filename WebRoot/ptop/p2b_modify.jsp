@@ -3,13 +3,11 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加/修改众筹项目</title>
+<title>修改PtoB项目</title>
 
 
  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
@@ -153,10 +151,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		alert($('#mes').val());
         	}
         	
-        	if($("#projectNumber").val()=="")
+        	if($("#enterpriseNumber").val()=="")
         	{
         		tt=new Date();
-        		$("#projectNumber").val("ZTH01"+tt.valueOf());
+        		$("#enterpriseNumber").val("ZTH01"+tt.valueOf());
         		}
         	/* if( r!=null){
         		alert(r);
@@ -191,81 +189,189 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <%@ include file="/includes/manage_nav.jsp" %> 
  <!-- header end -->
     <div class="cl"></div>
-<div class="content">
-  	<h2>添加众筹项目</h2>
-  	<form  action="<%=path%>/collectMoney/addproject" id="form" method="post"   class="box"  style="display:'none'"   >
+  <div class="content">
+  	<h2>添加/修改PtoB项目</h2>
+  	
+  	
+
+  		<form  action="<%=path%>/Login/addproduct" id="form" method="post"   class="box"  style="display:'none'"   >
     	<div class="dataForm">
-    	 <input type="hidden" name="projectIntroduction" id="projectIntroduction" value="" />
+    <input type="hidden" name="mes" id="mes" value="${mes}" />
+    <input type="hidden" name="enterpriseCertificate" id="enterpriseCertificate" value="" />
     <input type="hidden" name="projectPicture" id="projectPicture" value="" />
+    <input type="hidden" name="id" id="id" value="${product1.id}" />
+    <input type="hidden" name="existType" id="existType" value="0" />
+    <input type="hidden" name="financingProgress" id="financingProgress" value="${product1.financingProgress}" />
         	<ul>
                 <li>
                     <dd>项目名称：</dd>
-                    <input type="text"  id="name"  name="name" />
-                    <dt>1111</dt>
+                    <input type="text" name="projectName"  id="projectName"  value="${product1.projectName}"  />
+                    <dt>必填项，字数请控制在14个汉字以内。</dt>
                 </li>
-                <!-- <li>
+                <li>
                     <dd>项目图片：</dd>
-                    <input type="file" />
-                    <dt><img alt="项目图片预览" width="250" height="158" /><br />尺寸：250*158</dt>
-                </li> -->
-                   <dd>项目图片：</dd>
-<label>
-<!--style给定宽度可以影响编辑器的最终宽度-->
-<script type="text/plain"   id="Editor" style="width:100%;height:180px;"></script>
-</label> 
-		<dt>请将所有相关的图片上传至此区域内！</dt>  
+                    <dt><script type="text/plain"   id="Editor" style="width:100%;height:100px;">${product1.projectPicture}</script>  <br />尺寸：250*158</dt>  
+                </li>
                 <li>
-                    <dd>项目编号：</dd>
-                    <input type="text" name="projectNumber"  id="projectNumber"  value=""   />
+                    <dd>信用等级：</dd>
+                    <input type="number"  name="qualityRating"  id="qualityRating" value="${product1.qualityRating==null?1:product1.qualityRating}"      min="1" max="5" value="1" step="1" />
                     <dt></dt>
                 </li>
-                <!-- <li>
-                    <dd>项目发起人：</dd>
-                    <input type="text" value="中投汇融"/>
+                <li>
+                    <dd>年化收益：</dd>
+                    <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome==null?10:product1.yearIncome}"   min="1" max="100" value="10" step="1" />
+                    <dt>用整数表示，如12%则输入12</dt>
+                </li>
+                <li>
+                    <dd>还款日期：</dd>
+                    <input type="date" name="repaymentTime"  id="repaymentTime" value="${product1.repaymentTime}"  />
                     <dt></dt>
-                </li> -->
-               <!--  <li>
-                    <dd>项目描述：</dd>
-                    <textarea name="abstract" cols="" rows="" class="bigArea"></textarea>
+                </li>
+                <li>
+                    <dd>担保机构：</dd>
+                    <input type="text" name="guaranteeInstitution"  id="guaranteeInstitution" value="${product1.guaranteeInstitution}"  />
                     <dt></dt>
-                </li> -->
+                </li>
+                 <li>
+                    <dd>还款方式：</dd>
+                    <input type="text" name="repaymentWay"  id="repaymentWay"  value="${product1.repaymentWay==null?'按月付息、到期还本':product1.repaymentWay}" />
+                    <dt>按月付息、到期还本</dt>
+                </li>
+                <li>
+                    <dd>融资金额：</dd>
+                    <input type="number"  name="financingMoney"  id="financingMoney"  value="${product1.financingMoney}"    min="0" value="0" />
+                    <dt>单位是<b>万元</b>。</dt>
+                </li>
+                <li>
+                    <dd>融资周期：</dd>
+                    <input type="number"  name="financingPeriod"  id="financingPeriod"  value="${product1.financingPeriod==null?12:product1.financingPeriod}"    min="0" value="0" />
+                    <dt>按月计算，如3、6、12、24、36</dt>
+                </li>
                 
-                           <dd>项目描叙：</dd>
-<label>
-<!--style给定宽度可以影响编辑器的最终宽度-->
-<script type="text/plain"   id="myEditor" style="width:100%;height:180px;"></script>
-</label> 
-		<dt>请将所有相关的图片上传至此区域内！</dt>  
-                <li>
-                <dd>筹集金额：</dd>
-                <input type="number" min="0"  name="raiseMoney"  id="raiseMoney"  />
-                <dt></dt>
-                </li>
-                <li>
-                    <dd>筹集时间：</dd>
-                    <input type="number"  name="raiseTime"  id="raiseTime"    />
+               <!--  <li>
+                    <dd>重点信息：</dd>
+                    <textarea name="abstract" cols="" rows=""></textarea>
+                    <dt>显示在项目图片下方的综合摘要信息。</dt>
+                </li> -->
+                 <li>
+                    <dd>公司介绍：</dd>
+                    <textarea    name="companyProfile"  id="companyProfile"  value=""    cols="" rows="">${product1.companyProfile}</textarea>
                     <dt></dt>
                 </li>
                 <li>
+                    <dd>项目介绍：</dd>
+                    <textarea  name="projectIntroduce"  id="projectIntroduce"   value=""   cols="" rows="">${product1.projectIntroduce}</textarea>
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>担保意见：</dd>
+                    <textarea  name="collateralOpinion"  id="collateralOpinion"  value=""   cols="" rows="">${product1.collateralOpinion}</textarea>
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>担保机构介绍：</dd>
+                    <textarea  name="guaranteeInstitutionIntroduce"  id="guaranteeInstitutionIntroduce"  value=""    cols="" rows="">${product1.guaranteeInstitutionIntroduce}</textarea>
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>资金用途：</dd>
+                    <textarea   name="fundUse"  id="fundUse"  value=""     cols="" rows="">${product1.fundUse}</textarea>
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>偿还来源：</dd>
+                    <textarea   name="repaymentSource"  id="repaymentSource"  value=""    cols="" rows="">${product1.repaymentSource}</textarea>
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>抵押物信息：</dd>
+                    <textarea   name="guarantee"  id="guarantee"   value=""   cols="" rows="">${product1.guarantee}</textarea>
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>风险控制：</dd>
+                    <textarea   name="riskControl"  id="riskControl"  value=""   cols="" rows="">${product1.riskControl}</textarea>
+                    <dt></dt>
+                </li>
+                 <li>
+                    <dd>营业范围：</dd>
+                    <textarea   name="businessScope"  id="businessScope"  value=""    cols="" rows="">${product1.businessScope}</textarea>
+                    <dt></dt>
+                </li>
+                 
+                <li>
+                    <dd>经营状况：</dd>
+                    <textarea   name="stateOfOperation"  id="stateOfOperation"   value=""   cols="" rows="">${product1.stateOfOperation}</textarea>
+                    <dt></dt>
+                </li>
+     			<li>               
+      			  <dd>相关证件：</dd>
+			    <label>
+				<!--style给定宽度可以影响编辑器的最终宽度-->
+				<script type="text/plain"   id="myEditor" style="width:100%;height:180px;">${product1.enterpriseCertificate}</script>
+				</label> 
+				<dt>请将所有相关的图片上传至此区域内！</dt>       
+             
+				</li>
+                 <li>
+                    <dd>融资方营业执照号：</dd>
+                    <input type="text" name="enterpriseBusinessIicense"  id="enterpriseBusinessIicense"  value="${product1.enterpriseBusinessIicense}" />
+                    <dt></dt>
+                </li>
+                                 <li>
+                    <dd>担保方营业执照号：</dd>
+                    <input type="text" name="guaranteeNumber"  id="guaranteeNumber"  value="${product1.guaranteeNumber}" />
+                    <dt></dt>
+                </li>
+                <li>
+                
                 <dd>设置项目属性：</dd>
                  <p>
                       <label>
-                        <input type="checkbox" name="payBackMethod" value="复选框" id="payBackMethod_0" />
+                        <input type="checkbox"  name="recommendType" id="recommendType"   value="1" />
                         <span>推荐</span></label>
+                         <input type="hidden" id="recommendType1" value="${product1.recommendType }"></input>
 				</p>
                     <dt></dt>
                 </li>
-                <li>
+               <!--  <li>
                     <dd>发布时间：</dd>
-                    <input type="date" />
+                    <input type="date"   />
+                    <dt></dt>
+                </li> -->
+                 <li>
+                <dd>线上/线下属性：</dd>
+                 <p>
+                      <label>
+                        <input type="checkbox" name="buyType" id="buyType"   value="1"  />
+                        <span>上线项目</span></label>
+                        <input type="hidden" id="buyType1" value="${product1.buyType }"></input>
+				</p>
+                    <dt></dt>
+                </li>              
+                <li>
+                    <dd>平台费用：</dd>
+                    <input type="number" name="platformFee"  id="platformFee" value="${product1.platformFee}"  />
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>保证金金额：</dd>
+                    <input type="number" name="margin"  id="margin" value="${product1.margin}"  />
+                    <dt></dt>
+                </li>
+                <li>
+                    <dd>开始融资时间：</dd>
+                    <input type="date" name="financeTime"  id="financeTime" value="${product1.financeTime}"  />
                     <dt></dt>
                 </li>
                 <li>
                 <dd></dd>
-                 <input type="submit" title="提交"  onclick="getContent()"    value="提交" class="submitBtn"/>
-                 <input type="submit" title="预览" value="预览" class="submitBtn"/>
+                 <input type="button"  title="提交"  onclick="getContent()"   value="提交" class="b"/>
+                <dt>请仔细检查后再提交！！！</dt>
                 </li>
+                
             </ul>
+            <p align="right"><a href="#top">↑返回顶部</a></p>
    	  </div>
    	  </form>
   </div>
@@ -281,7 +387,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <script type="text/javascript">
 
-
+$(document).ready(function(){
+	if($('#recommendType1').val()==1){
+		$('#recommendType').attr('checked',true);
+	}
+	if($('#buyType1').val()==1){
+		$('#buyType').attr('checked',true);
+	}
+	   
+	});
 //实例化编辑器
 var um = UM.getEditor('Editor');
 um.addListener('blur',function(){
@@ -345,13 +459,13 @@ function getAllHtml() {
         arr.push("内容为："); */
         arr.push(UM.getEditor('myEditor').getContent());
       /*   alert(arr.join("\n")); */
-        $("#projectIntroduction").val(arr.join("\n"));
+        $("#enterpriseCertificate").val(arr.join("\n"));
         
         
         arr1.push(UM.getEditor('Editor').getContent());
       /*   alert(arr1.join("\n")); */
         $("#projectPicture").val(arr1.join("\n"));
-       /*  if($("#projectName").val()==""){
+        if($("#projectName").val()==""){
         	alert("注意：项目名称 不得为空!");
         	return FALSE;
         }
@@ -359,7 +473,15 @@ function getAllHtml() {
         if($("#financingMoney").val()==""){
         	alert("注意：融资金额 不得为空!");
         	return FALSE;
-        } */
+        }
+        if($("#repaymentTime").val()==""){
+        	alert("注意：还款日期 不得为空!");
+        	return FALSE;
+        }
+        if($("#financeTime").val()==""){
+        	alert("注意：开始融资时间 不得为空!");
+        	return FALSE;
+        }
          $("#form" ).submit();  
     }
     function getPlainTxt() {

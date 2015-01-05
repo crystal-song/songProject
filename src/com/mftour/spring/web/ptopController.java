@@ -60,8 +60,7 @@ public class ptopController {
 		TAdministrator administrator1 = ptopService
 				.getAdministratorByAccount(administrator.getName());
 		if (administrator1 != null) {
-			if (administrator1.getPassword()
-					.equals(administrator.getPassword())) {
+			if (administrator1.getPassword().equals(administrator.getPassword())) {
 				model.addAttribute("name", administrator.getName());
 				systemLogService.saveSystemLog(request, "后台信息", "登陆", 1);
 				return "success";
@@ -202,9 +201,9 @@ public class ptopController {
 	
 		investmentInfo.setWriteTime(df.format(new Date()));
 		;
-		Object o = request.getSession().getAttribute("Administrator");
+		Object o = request.getSession().getAttribute("users");
 		investmentInfo.setAdministratorName(o.toString());
-
+		investmentInfo.setCode("1");
 		ptopService.addOrUpdateInvestmentInfo(investmentInfo);
 		List<TProduct> lis = productService.queryProductByNumber(investmentInfo
 				.getEnterpriseNumber());
@@ -328,7 +327,7 @@ public class ptopController {
 
 		model.addAttribute("product1", product1);
 		systemLogService.saveSystemLog(request, "后台信息", "更新产品", 1);
-		return "ptop/p2b_add";
+		return "ptop/p2b_modify";
 
 	}
 

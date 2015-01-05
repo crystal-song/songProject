@@ -890,6 +890,21 @@ public class GateController {
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				TTransferInfo transferInfo = gateService.queryTTransferInfoByNumber(m.get("requestNo").toString()).get(0);
 				model.addAttribute("transferInfo", transferInfo);
+				
+				 List<TProduct> lis= productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
+		         TProduct t=lis.get(0);
+				 if(t.getRepaymentTime()!=null){
+			    		long l1 = new SimpleDateFormat("yyyy-MM-dd").parse(t.getRepaymentTime()).getTime();
+			    		long l2 = System.currentTimeMillis();
+			            if(t.getFinancingProgress()==100){
+			            	t.setProjectStatus(3);//设置还款中
+			            	t.setRepaymentTime(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));//如果还款时间没到但已满标设置还款时间为当时时间
+			            }
+			            if(l2>=l1){
+			            	t.setProjectStatus(3);//设置还款中
+			            }
+			            }
+			           ptopService.addOrUpdate(t);
 				return "buy_ok";
 
 			} else {

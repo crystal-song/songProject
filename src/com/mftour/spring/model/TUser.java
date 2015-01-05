@@ -40,6 +40,33 @@ public class TUser implements java.io.Serializable {
 	private String randomCode;
 	private String servicePhone;
 	private String ref;
+	private String findPasswordTime;
+	private String emailVTime;
+	public String getEmailVTime() {
+		return emailVTime;
+	}
+
+	public void setEmailVTime(String emailVTime) {
+		this.emailVTime = emailVTime;
+	}
+
+	public String getFindPasswordTime() {
+		return findPasswordTime;
+	}
+
+	public void setFindPasswordTime(String findPasswordTime) {
+		this.findPasswordTime = findPasswordTime;
+	}
+
+	public String getRandomCode1() {
+		return randomCode1;
+	}
+
+	public void setRandomCode1(String randomCode1) {
+		this.randomCode1 = randomCode1;
+	}
+
+	private String randomCode1;
 
 	public String getServicePhone() {
 		return servicePhone;

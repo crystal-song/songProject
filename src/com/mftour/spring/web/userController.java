@@ -1,6 +1,10 @@
 package com.mftour.spring.web;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.EmailTemplate;
+import com.mftour.spring.util.RandomCode;
 import com.mftour.spring.util.ReadWirtePropertis;
 
 @Controller
@@ -98,34 +103,38 @@ public class userController {
 			@RequestParam("email") String email,
 			HttpServletRequest request, Model model) throws Exception {
 		try{
-		TUser user = userService.getUserByAccount(name);
-		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
-		request.getSession().setAttribute("outDate", outDate);
-		model.addAttribute("email", email);
-		com.mftour.spring.util.File f=ReadWirtePropertis.file();
-		String basePath =f.getBasePath();
-		String resetPassHref = basePath + "user/reset?username="
-				+ user.getName();
-		String operate="提交找回密码的请求,请点击此链接重置您的密码";
-		String title="中租宝—找回密码通知";
-		EmailTemplate.SendMail(email, resetPassHref, operate, title);
-    } catch (Exception e) {
-		e.printStackTrace();
-	}
+			TUser user = userService.getUserByAccount(name);
+			String findPasswordTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());	
+			String code=RandomCode.getRandomString(5);
+			user.setFindPasswordTime(findPasswordTime);
+			user.setRandomCode1(code);
+			userService.addOrUpdate(user);
+			model.addAttribute("email", email);
+			com.mftour.spring.util.File f=ReadWirtePropertis.file();
+			String basePath =f.getBasePath();
+			String resetPassHref = basePath + "/user/reset?username="
+				+ user.getName()+"&checkcode="+user.getRandomCode1();
+			String operate="提交找回密码的请求,请点击此链接重置您的密码";
+			String title="中租宝—找回密码通知";
+			EmailTemplate.SendMail(email, resetPassHref, operate, title);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		return "FindToMail";
-	}
+			return "FindToMail";
+		}	
 
 
 
 	@RequestMapping(value = "/reset", method = { RequestMethod.POST,RequestMethod.GET })
-	public String reset(@RequestParam("username") String username, Model model,HttpServletRequest request){
+	public String reset(@RequestParam("username") String username,@RequestParam("checkcode") String checkcode, Model model,HttpServletRequest request){
 		try {
-			Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate");
-			if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
+			TUser user = (TUser) userService.getUserByAccount(username);
+			String findPasswordTime=user.getFindPasswordTime();
+			long t=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(findPasswordTime).getTime();
+			if(t>= System.currentTimeMillis()+ 24*60 * 60 * 1000&&!checkcode.equals(user.getRandomCode1())){ //表示已经过期
 	            request.setAttribute("msg", "链接已经过期,请重新申请找回密码.");
 			}else{
-			TUser user = (TUser) userService.getUserByAccount(username);
 			model.addAttribute("answer", user.getAnswer());
 			model.addAttribute("name", username);
 			}
