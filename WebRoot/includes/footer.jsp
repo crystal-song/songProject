@@ -36,16 +36,16 @@
        
        </li>
        <li class="foo02"><strong>友情链接</strong>
-           <a href="http://www.ptobchina.com/">中投汇融</a>
-           <a href="http://www.wdlm.cn/">网贷联盟 </a>            
-           <a href="http://www.itouzi.com/">爱投资</a>
-           <a href="http://www.lufax.com/">陆金所</a>
-           <a href="http://fund.creditcities.com/">安信普华</a>
-           <a href="http://www.renrentou.com/">人人投</a>
-           <a href="http://www.renrendai.com/">人人贷</a>
-           <a href="http://www.jinshangdai.cn/">晋商贷</a>         
-           <a href="http://www.p2peye.com/">网贷天眼</a>
-           <a href="http://www.jinshangdai.cn/">晋商贷</a>
+           <a href="http://www.ptobchina.com/" target="_blank">中投汇融</a>
+           <a href="http://www.wdlm.cn/" target="_blank">网贷联盟 </a>            
+           <a href="http://www.itouzi.com/" target="_blank">爱投资</a>
+           <a href="http://www.lufax.com/" target="_blank">陆金所</a>
+           <a href="http://fund.creditcities.com/" target="_blank">安信普华</a>
+           <a href="http://www.renrentou.com/" target="_blank">人人投</a>
+           <a href="http://www.renrendai.com/" target="_blank">人人贷</a>
+           <a href="http://www.jinshangdai.cn/" target="_blank">晋商贷</a>         
+           <a href="http://www.p2peye.com/" target="_blank">网贷天眼</a>
+           <a href="http://www.jinshangdai.cn/" target="_blank">晋商贷</a>
        </li>
        <li>
          <ul class="min_label">
@@ -53,6 +53,7 @@
           <li><a href="<%=path%>/question.jsp">常见问题</a></li>
           <li><a href="<%=path%>/security.jsp">安全策略</a></li>
           <li><a href="<%=path%>/notice.jsp">法律声明</a></li>
+          <li><a href="<%=path%>/jiaruwomen.jsp">加入我们</a></li>
           <li><a href="<%=path%>/contact.jsp">联系我们</a></li>
          </ul>
        </li>

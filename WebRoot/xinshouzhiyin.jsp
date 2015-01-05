@@ -18,9 +18,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div class="new_person"> 
       <div class="new_fir">
 	       <div class="new_top">
-	        <span>关于中租宝</span>
-	        <div class="top_line"></div>
+	        <span>关于中租宝</span>	        
 	       </div>
+	       <div class="top_line"></div>
 	      <div class="msg_zhong">
 	        <p>中租宝，是中投汇融投资管理有限公司旗下的众筹网络平台</p>
 	        <p><strong>中投汇融</strong>是国内首批P2B（微信托） 领域的财富投资管理公司。我们汇集了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台。
@@ -94,6 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 <script type="text/javascript">
       $(function(){
+    	  var timer=null;
     	  var num=-100;
     	  var add=200;
     	  var top= -850; 
@@ -103,47 +104,72 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	  });     	 
     	 function man(){
     		 var scrolltop=$(window).scrollTop();  		 	 
-    		     if(top<0){
-    		    	 if(scrolltop>s){
-    		    		  //top=parseInt(top++);
-    		    		  
-    		    		  top++;
-    		    		  $(".abc").text(top);
+    		     /* if(top<0){
+    		    	 if(scrolltop>s){   		    		  
+    		    		  top+=8;
     	    		    }else{
-    	    		     // top=parseInt(top--);
-    	    		      top--
+    	    		     // top--;
     	    		    }
-    	    			s=scrolltop
-
-     			
-     			//$(".abc").text(scrolltop/50);
-     			//$(".def").text(scrolltop);
+    	    			s=scrolltop; 			
+     			//$(".qiandai").text(scrolltop);
      		
      		  }else{
      			  top=0
+     		  }  */
+     		  		  
+    		// down();	 
+     		  
+     		  if(scrolltop>500){
+     			  
+     			//setInterval(down,3000);  
+     			//timer=setInterval(down,1000);
+	     		/* 	var rentop=$(".ren_top").css("top");
+	     			 if(rentop>=500){
+	     				//clearInterval(timer);
+	     				rentop=500;
+	     			} 
+     			 $(".new_th_title2").text(rentop);
+     			 $(window).off('scroll',function(){
+     	    		 
+     	    	 });
+     			   */
+     			  var rentop=$(".ren_top").css("top");
+     			  $(".ren_top").animate({top:"550px"},8000,function(){
+     				 $(".ren_top").css("display","none");
+     				 $(".ren_bottom").css("display","block")
+     			  });
+     			  $(".sheng_shui").animate({height:"850px"},8000)
+     			  function stop(){
+     				// $(".ren_top").css("display","none")
+     			  }
+     			   //$(".ren_top").css("display","none")
+     			 
+     			  //$(".ren_bottom").css("display","block")
+     			   /* if($(".ren_top").css("top")>=500){
+     				  $(".ren_top").stop();
+     			   } */
+     			 //$("#box").animate({height:"300px"});
+     			   
+     			   
      		  }
-    		 down();	 
+     		  
+     		  
     	 } 
     	   function down(){    		 
-     		  $(".ren_top").css("top",num);
+     		 $(".ren_top").css("top",num);
      		  $(".sheng_shui").css("height",add);     		 
-     		  $(".top_line").css("top",top);
+     		//  $(".top_line").css("top",top);
      		 
      		 // top+=5;
      		 //  if(top>=0){
      		 //  top=0;
-     		 // }
-     		      
-     		     // num++;
-     		     // add++;
+     		 // }     		      
+     		      num++;
+     		      add++;
 
      	  }
     	 
       })
       
 </script>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> a84984d51ad33a0190d35b85116971a28a3c15c8

@@ -313,6 +313,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="neirong"></div>         
          <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp" style="margin:24px 0 0 30px">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+         
        </div>
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==1}"><!-- 线上 -->
@@ -344,6 +345,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          
          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+        <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a>
        </div>
        </form>
        </c:if>
@@ -452,11 +454,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="clear"></div>    
         	<div class="next_list">
       
-            <c:if test="${page.totalPage > 1}"> <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> </c:if> 
+             <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> 
 				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo-1}&id=${product1.id}">上一页</a>  </c:if> 
 				<div class="pageNum"></div>								 
 				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
-		    <c:if test="${page.totalPage > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>  </c:if>              
+		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>              
         </div>       
         
 <!--       <ul class="table_mag">
