@@ -128,7 +128,9 @@
              <property name="financeTime" type="java.lang.String">
             <column name="financeTime" length="30"  />
         </property> 
-       
+        <property name="line" type="boolean">
+            <column name="line" length="1"  />
+        </property> 
        
     </class>
 </hibernate-mapping>
