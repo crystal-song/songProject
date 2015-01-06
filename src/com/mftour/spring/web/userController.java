@@ -5,12 +5,11 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
-<<<<<<< HEAD
+
 import com.alibaba.fastjson.JSON;
 import com.mftour.spring.base.JsonBaseBean;
 import com.mftour.spring.util.Rest;
-=======
->>>>>>> 7c05c9f24f8a7bd9fd1580fe2d99cad588fb846d
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
