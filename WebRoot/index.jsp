@@ -217,6 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      </div>
      </div> 
     </div> 
+    <!-- <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3081096531&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:3081096531:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> -->
     <!-- absolute_right start -->
 	 <%@ include file="/includes/absolute.jsp" %>
 	<!-- absolute_right end -->

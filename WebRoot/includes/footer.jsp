@@ -36,7 +36,7 @@
        
        </li>
        <li class="foo02"><strong>友情链接</strong>
-           <a href="http://www.ptobchina.com/" target="_blank">中投汇融</a>
+           <a href="http://www.zthrtz.com/?f=ptob" target="_blank">中投汇融</a>
            <a href="http://www.wdlm.cn/" target="_blank">网贷联盟 </a>            
            <a href="http://www.itouzi.com/" target="_blank">爱投资</a>
            <a href="http://www.lufax.com/" target="_blank">陆金所</a>
