@@ -18,8 +18,8 @@
   <ul>
     <li>联系我们
         <div class="list01">
-         <a href="<%=path%>/question.jsp">常见问题</a>
-         <a href="<%=path%>/contact.jsp">联系客服</a>
+          <a href="<%=path%>/question.jsp">常见问题</a>
+          <a href="<%=path%>/contact.jsp">联系客服</a>
         </div>
     </li>
     <li>关于我们
@@ -28,13 +28,18 @@
 		    <a href="<%=path%>/security.jsp">安全策略</a>
 		    <a href="<%=path%>/notice.jsp">法律声明</a>
 	    </div>
-  </li>
-    <li class="head_red" style="display:none">我的账户</li>
-    <div class="list03" style="display:none">
-      <a href="<%=path%>/wel/account">账户管理</a>
-      <a href="<%=path%>/wel/account">资产管理</a>
-    </div>
+   </li>
+   <li><a href="<%=path%>/xinshouzhiyin.jsp" class="head_red">新手指引</a>
+
+   </li>
+   <li class="head_red" style="display:none">我的账户
+	    <div class="list03" style="display:none">
+	      <a href="<%=path%>/wel/account">账户管理</a>
+	      <a href="<%=path%>/wel/account">资产管理</a>
+	    </div>
+   </li>
   </ul>
+  <a href="http://jq.qq.com/?_wv=1027&k=ZpAZ0O" class="qun_msg head_red" target=_blank>加入中租宝官方交流群：425296487</a>
   <div class="list04"></div>
   </div>
 </div>
@@ -78,7 +83,8 @@
               </div>
             </c:if> 
           </div>
-  </div>                                                    
+  </div>  
+  <!-- <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2::52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> -->                                                  
 </div>
 
 
