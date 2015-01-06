@@ -5,6 +5,11 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+import com.alibaba.fastjson.JSON;
+import com.mftour.spring.base.JsonBaseBean;
+import com.mftour.spring.util.Rest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,11 +58,25 @@ public class userController {
 			@RequestParam("oldPassword") String oldPassword,
 			@RequestParam("password") String password, Model model,
 			HttpServletRequest request) throws Exception {
-		TUser user = (TUser) request.getSession().getAttribute("userinfo");
-		user.setPassword(password);
-		userService.addOrUpdate(user);
-		model.addAttribute("user1", user);
-		return "success";
+		Object name = request.getSession().getAttribute("name");
+		Rest rest = new Rest();
+		if(name ==null ){
+			return "login";
+		}else{
+			TUser user = userService.getUserByAccount(name.toString());
+
+			String s = rest.getRestful("/rest/user/change-password/"+ name.toString() +"/"+password);
+			JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+			if (r.isSuccess()){
+				model.addAttribute("user1", user);
+				return "success";
+			}else{
+				return "fail";
+			}
+
+		}
+
+
 	}
 
 	@RequestMapping(value = "/cancelUpdate", method = { RequestMethod.POST,
@@ -161,9 +180,15 @@ public class userController {
 	@RequestMapping(value = "/updatePassword", method = { RequestMethod.POST,RequestMethod.GET })
 	public String updatePassword(@RequestParam("name") String name,@RequestParam("password") String password, Model model)throws Exception {
 		TUser user = userService.getUserByAccount(name);
-		user.setPassword(password);
-		userService.addOrUpdate(user);
-		return "login";
+		Rest rest = new Rest();
+		String s = rest.getRestful("/rest/user/change-password/"+name+"/"+password);
+		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+		if (r.isSuccess()){
+			return "login";
+		}else{
+			return "fail";
+		}
+
 
 	}
 

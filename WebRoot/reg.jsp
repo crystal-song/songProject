@@ -1,4 +1,3 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -202,12 +201,16 @@ function validateCode (){
 }  
 function show(){  
         //显示验证码  
-        document.getElementById("code").src="<%=path%>/CodeServlet?code="+createCode();
+        document.getElementById("code").src="/CodeServlet?code="+createCode();
 }  
 window.onload = function() {
 		//document.onload=show();  
         show();//页面加载时加载验证码  
         //这时无论在ie还是在firefox中，js没有加载完，页面的东西是不会被执行的；  
     }  
+</script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb22f51366ffad7f2637952d4acb0eade' type='text/javascript'%3E%3C/script%3E"));
 </script>
 </html>

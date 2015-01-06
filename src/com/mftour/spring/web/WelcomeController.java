@@ -1,3 +1,4 @@
+
 package com.mftour.spring.web;
 
 import java.io.IOException;
@@ -63,17 +64,15 @@ public class WelcomeController {
 			@RequestParam("name") String username,
 			@RequestParam("password") String password) throws Exception {
 
-		TUser user1 = userService.getUserByAccount(user.getName());
+		Rest rest = new Rest();
 
-		if (user1 != null) {
-			if (user1.getPassword().equals(user.getPassword())) {
-				model.addAttribute("name", user.getName());
-				return "success";
-			}
+		String s = rest.getRestful("/rest/user/login/"+username+"/"+password);
+		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+		if (r.isSuccess()){
+			return "success";
+		}else{
+			return "fail";
 		}
-		return "fail";
-		/* return "user/chpasswd"; */
-
 	}
 
 	@RequestMapping(value = "/logout", method = { RequestMethod.POST,
@@ -93,7 +92,6 @@ public class WelcomeController {
 		model.addAttribute("ref", ref);
 		return "reg";
 	}
-
 
 
 	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
@@ -116,10 +114,12 @@ public class WelcomeController {
 				request.getSession().setAttribute("userinfo", userInfo);
 				com.mftour.spring.util.File f=ReadWirtePropertis.file();
 				String basePath =f.getBasePath();
+
 				String resetPassHref =basePath+ "/welcome/register?username="+ userInfo.getName()+"&checkcode="+userInfo.getRandomCode();
+
 				String operate="注册中租宝帐号，请点击以下链接完成注册";
 				String title="中租宝—用户注册确认";
-				String email=userInfo.getEmail();
+				String email=user.getEmail();
 				EmailTemplate.SendMail(email, resetPassHref, operate, title);
 			}else{
 				return "error";
@@ -181,11 +181,14 @@ public class WelcomeController {
 			Model model,HttpServletRequest request) throws Exception {
 		TUser user = userService.getUserByAccount(username);
 		Timestamp outDate =user.getRegTime();
+
 		Timestamp outDate1 = new Timestamp(System.currentTimeMillis() + 24*60 * 60 * 1000);
 		if(outDate.getTime()<= outDate1.getTime()&&checkcode.equals(user.getRandomCode())){ //表示没有过期
+
 			user.setRegState("s");
 			userService.addOrUpdate(user);
 		}else{
+
 			request.setAttribute("msg", "链接已经过期,请重新做认证！");
 		}
 		model.addAttribute("regState", user.getRegState());
@@ -411,19 +414,4 @@ public class WelcomeController {
 
 		return "PhoneVerification_success";
 	}
-
-	/*
-	 * @RequestMapping(value = "/regis" , method=RequestMethod.POST) public
-	 * String register(TUser user, Model model) throws Exception {
-	 * if(user.getName()!=null&&user.getName()!=""&&user.getPassword()!=null);
-	 * try {
-	 * 
-	 * userService.addOrUpdate(user); } catch (Exception e) {
-	 * e.printStackTrace();
-	 * 
-	 * throw e; }
-	 * 
-	 * 
-	 * return null; }
-	 */
 }

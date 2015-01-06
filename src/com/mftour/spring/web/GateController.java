@@ -1,3 +1,4 @@
+
 package com.mftour.spring.web;
 
 import java.io.ByteArrayInputStream;
@@ -842,7 +843,7 @@ public class GateController {
 			throws Exception {
 
 		try {
-
+			Thread.sleep(5000);
 
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			Rest rest = new Rest();
@@ -918,7 +919,7 @@ public class GateController {
 	public String transferNotify(String notify, String sign, Model model)
 			throws Exception {
 		try {
-
+			Thread.sleep(5000);
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			Rest rest = new Rest();
 
@@ -966,8 +967,7 @@ public class GateController {
 			if(m.get("code").equals("1")){
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "chongzhi_ok";
-
+				return "bangding_ok";
 			} else {
 				rest.postRestful("/rest/yeepay/update-error", map);
 
@@ -978,9 +978,8 @@ public class GateController {
 		} catch (Exception e) {
 			logger.error("error " + resp + e);
 		}
-
-		/* return "payment/binding"; */
 		return "bangding_ok";
+
 	}
 
 
@@ -1024,7 +1023,7 @@ public class GateController {
 
 		try {
 
-
+			Thread.sleep(5000);
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			Rest rest = new Rest();
 
@@ -1082,8 +1081,7 @@ public class GateController {
 			return "error";
 		}
 	}
-
-
-
-
 }
+
+
+

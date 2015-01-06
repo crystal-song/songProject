@@ -1,4 +1,4 @@
-	<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -64,9 +64,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
        <li>
 
-           <div class="form-group" style="${reward.userId==null?"display:none":""}">
-               <label for="paymentAmount">使用50元礼卷</label><input type="checkbox"
-                                                              class="form-control" id="reward" name="rewardCheck"  />
+           <div class="form-group liquan_hide" style="${reward.userId==null?"display:none":""}">
+               <label for="paymentAmount">使用50元礼卷&nbsp;</label><input type="checkbox"
+                                                            class="form-control" id="reward" name="rewardCheck"  />
+                <input type="hidden" value="${reward.userId}" class="liquan_check"/>                                            
+                
+           </div>
+       </li>
+       <li class="fukuan">
+
+           <div class="form-group" >
+               <label>您实际付款金额为：</label><input type="text" 
+                                                              class="form-control border_none"  value=""/>
            </div>
        </li>
           <li>
@@ -143,6 +152,20 @@ function onSubmit(host) {
         alert("投资金额必须大于200");
         return false;
     }
+ 
+      	if($("#paymentAmount").val()<3000){
+         	alert("您输入的金额小于3000元");
+  	       	$(".liquan_hide").css("display","none");
+  	       	return false;
+      	}
+  	   
+      	if($(".liquan_check").val()==""){
+         	alert("您还没有礼券");
+  	       	$(".liquan_hide").css("display","none");
+  	       	return false;
+      	}
+      	
+
     $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
             success: function(resp){
                 if(resp === "success"){
@@ -158,7 +181,10 @@ function onSubmit(host) {
                         $("#dialog01").css("display","none");
                         $(".black_bac").css("display","none");
                     });
-                    form.submit();
+                    
+                    
+                    
+                   // form.submit();
                     document.getElementById("que_btn_ok").disabled()
 
                 }else{
@@ -170,9 +196,24 @@ function onSubmit(host) {
 
 }
 $(document).ready(function(e) { 
+	   $("#reward").click(function(){
+		  // alert("aaa")
+		  $(".fukuan").css("display","block");
+		  var real_fukuan=$("#paymentAmount").val()
+		  $(".border_none").val(real_fukuan-50)
+	   });
+	
 	   $(".right_cha").click(function(){
 		   window.location.reload(true);
 	   });
+	   
+	   $("#paymentAmount").keyup(function(){
+		   if($(this).val()<3000){			   
+		     	$(".liquan_hide").css("display","none")
+		     	return false;
+		 	  }  
+	   });
+	      
 
 }); 
 </script>
