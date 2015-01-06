@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <div class="con_list">
                   <ul class="list_label">
                     <li>
-                      <ul class="label_sec new_fir">
+                      <ul class="label_sec new_fir_one">
                         <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=all">全部</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=7&type=all">最近七天</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=30&type=all">一个月</a></li>
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       </ul>
                     </li>
                     <li>
-                      <ul class="label_sec new_sec">
+                      <ul class="label_sec new_sec_one">
                         <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=typeall">全部</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=充值">充值</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=提现">提现</a></li>
@@ -122,79 +122,79 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      /*
 	       if(canshu=="seven_all"){
 	    	   
-	    	   $(".new_fir li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_fir_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }*/
 	      
 	       
 	        if(canshu=="onemonth_all"){
-	    	   $(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_fir_one li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="threemonth_all"){
-	    	   $(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_fir_one li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="all_all"){
-	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
-	    	   $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_sec_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_fir_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
 	    	  
 	    	   $(".label_sec li").click(function(){
-    	       if($(this).parent().hasClass("new_sec")){
-    	    	   $(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+    	       if($(this).parent().hasClass("new_sec_one")){
+    	    	   $(".new_sec_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
     	       }
-    	       else if($(this).parent().hasClass("new_fir")){
-    	    	   $(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+    	       else if($(this).parent().hasClass("new_fir_one")){
+    	    	   $(".new_fir_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	       }    	 
 	         });
 	    	  
 	       }
 	       else if(canshu=="recharge_all"){
-	    	   $(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_sec_one li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="drawmoney_all"){
-	    	   $(".new_sec li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_sec_one li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }
 	       else if(canshu=="transferinfo_all"){
-	    	   $(".new_sec li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+	    	   $(".new_sec_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
 	       }  	
                    
 
     	    	var vale=$("#time").val();
     	    	var type_vale=$("#type").val();   	    	
     	    	if(vale=="timeall"){
-    	    		$(".new_fir li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_fir_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(vale==7){
-    	    		$(".new_fir li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_fir_one li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(vale==30){
-    	    		$(".new_fir li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_fir_one li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(vale==90){
-    	    		$(".new_fir li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_fir_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
   	    	
     	    	if(type_vale=="typeall"){
-    	    		$(".new_sec li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_sec_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="充值"){
-    	    		$(".new_sec li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_sec_one li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="提现"){
-    	    		$(".new_sec li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_sec_one li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="投资"){
-    	    		$(".new_sec li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_sec_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="收到利息"){
-    	    		$(".new_sec li:eq(4)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_sec_one li:eq(4)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="收到本金"){
-    	    		$(".new_sec li:eq(5)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_sec_one li:eq(5)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="还款"){
-    	    		$(".new_sec li:eq(6)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_sec_one li:eq(6)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="融资"){
-    	    		$(".new_sec li:eq(7)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    		$(".new_sec_one li:eq(7)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
 });
 

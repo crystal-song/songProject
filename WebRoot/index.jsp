@@ -9,10 +9,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 
-<title>中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 <body>
 
@@ -41,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">14%</strong></span></li>
             <li><span>项目状况</span><span class="wd_size" style="font-size:12px;">还款中</span></li>
             <li><span>信用等级</span><span class="wd_size new_span"><img  src="<%=path%>/img/images-2014-11/star_5.png"></span></li>
-            <li> <a href="product/getProductByid?id=56" class="touzi_mei">了解详情</a></li>
+            <li><a href="product/getProductByid?id=56" class="touzi_mei">了解详情</a></li>
            </ul>
          </div>
        </div>
@@ -307,3 +303,4 @@ $(document).ready(function(){
 	});
 </script>
 </html>
+
