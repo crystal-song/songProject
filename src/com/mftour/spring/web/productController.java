@@ -59,10 +59,16 @@ public class productController {
 				long currTime=System.currentTimeMillis();
 				if(currTime>=financeTime&&product1.getProjectStatus()==1){
 					product1.setProjectStatus(2);//设置项目状态为融资中
-					ptopService.addOrUpdate(product1);
-					
 				}
 				}
+				if(product1.getFinancingProgress()>=1){
+					product1.setProjectStatus(3);//已满标
+				}
+				if(product1.isLoaned()==true){
+					product1.setProjectStatus(4);//还款中
+				}
+				ptopService.addOrUpdate(product1);
+				
 				productList.add(product1);
 			}
 			model.addAttribute("list", productList);
@@ -120,9 +126,9 @@ public class productController {
 		List<TInvestmentInfo> listoffline = ptopService
 				.queryInvestmentInfoByNumber(page,product1.getEnterpriseNumber());
 		List<TTransferInfo> listonline = new ArrayList<TTransferInfo>();
+		listonline = ptopService.queryTransferInfoByNumber(product1.getEnterpriseNumber());
 		model.addAttribute("listonline", listonline);
 		if(product1.getId()==56){
-		listonline = ptopService.queryTransferInfoByNumber(product1.getEnterpriseNumber());
 		TTransferInfo transferinfo1=new TTransferInfo("wangliaaa","102000");	
 		TTransferInfo transferinfo2=new TTransferInfo("李明gfd","13000");	
 		TTransferInfo transferinfo3=new TTransferInfo("小王gdbs","68000");	

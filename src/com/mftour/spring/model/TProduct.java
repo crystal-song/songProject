@@ -54,7 +54,16 @@ public class TProduct implements java.io.Serializable {
 	   
 	    private boolean loaned; //是否已放款
 	 
+		private boolean line; //是否上线
+	 
 		
+		
+		public boolean isLine() {
+				return line;
+	    }
+		public void setLine(boolean line) {
+			this.line = line;
+		}
 		public boolean isLoaned() {
 			return loaned;
 		}

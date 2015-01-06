@@ -271,9 +271,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <span>融资进度：</span>
              <div class="load_bar">
              <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
-               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
+               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
-             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
+             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
              </c:if>
              <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
                <div style="width:100%"></div>
@@ -294,7 +294,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
              <span>融资进度</span>
              <div class="load_bar">
-               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
+               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
              <span>80%</span>
            </li>
@@ -322,10 +322,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==3}"><!-- 线上 -->
        <div class="pro_right">
-         <span class="pro_right_title"><strong>企业正常还款中</strong></span>
+         <span class="pro_right_title"><strong>项目已满标</strong></span>
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==4}"><!-- 线上 -->
+       <div class="pro_right">
+         <span class="pro_right_title"><strong>企业正常还款中</strong></span>
+       </div> 
+       </c:if>
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==5}"><!-- 线上 -->
        <div class="pro_right">
          <span class="pro_right_title"><strong>项目已完成</strong></span>
        </div> 

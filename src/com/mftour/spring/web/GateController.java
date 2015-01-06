@@ -456,6 +456,9 @@ public class GateController {
 		List<TProduct> lis = productService.queryProductByNumber(TtransferInfo
 				.getEnterpriseNumber());
 		TProduct t = lis.get(0);
+		if(t.isLine()==false){
+			return "redirect:/product/allProduct";
+		}
 		Rest rest = new Rest();
 
 		Object o = request1.getSession().getAttribute("name");
@@ -502,7 +505,6 @@ public class GateController {
 		String s = rest.postRestful("/rest/yeepay/create", map);
 		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 		if (r.isSuccess()){
-
 			return doSign(request, f.getOnSubmit() + "/bha/toTransfer", model);
 		}else{
 			return "error";
@@ -779,6 +781,9 @@ public class GateController {
 			}
 			List<TProduct> lis = productService.queryProductByNumber(id);
 			TProduct t = lis.get(0);
+			if(t.isLine()==false){
+				return "redirect:/product/allProduct";
+			}
 			if(t.getRealityMoney()+amount > t.getFinancingMoney()*10000 ){
 				return "投资金额不能超过可投资金额";
 			}else{
@@ -890,21 +895,6 @@ public class GateController {
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				TTransferInfo transferInfo = gateService.queryTTransferInfoByNumber(m.get("requestNo").toString()).get(0);
 				model.addAttribute("transferInfo", transferInfo);
-				
-				 List<TProduct> lis= productService.queryProductByNumber(transferInfo.getEnterpriseNumber());
-		         TProduct t=lis.get(0);
-				 if(t.getRepaymentTime()!=null){
-			    		long l1 = new SimpleDateFormat("yyyy-MM-dd").parse(t.getRepaymentTime()).getTime();
-			    		long l2 = System.currentTimeMillis();
-			            if(t.getFinancingProgress()==100){
-			            	t.setProjectStatus(3);//设置还款中
-			            	t.setRepaymentTime(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));//如果还款时间没到但已满标设置还款时间为当时时间
-			            }
-			            if(l2>=l1){
-			            	t.setProjectStatus(3);//设置还款中
-			            }
-			            }
-			           ptopService.addOrUpdate(t);
 				return "buy_ok";
 
 			} else {

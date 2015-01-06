@@ -95,14 +95,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span style="color:#a4a4a4;">目标:</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
                    <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
-                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'还款中':'已完成' }</a>
+                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' }</a>
                  </div>
                  <div class="loding_bar">
-                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>1</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
+                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>1</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<1?s.financingProgress==null?0:s.financingProgress*100:100}</c:if>%" title="融资进度：${s.financingProgress*100}%"></div>
                  </div>
                  <div class="floor_bottom">
                    <c:if test="${s.projectStatus!=1 }">
-                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
+                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress*100}%</a>
                    </span>
                    </c:if>
                    <c:if test="${s.projectStatus==1 }">
