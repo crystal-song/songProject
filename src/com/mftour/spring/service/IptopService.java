@@ -8,6 +8,7 @@ import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.util.Page;
 
@@ -61,5 +62,5 @@ public interface IptopService {
 			throws Exception;
 
 	public List<TInterestRate> queryTInterestRateByNumber(String Number);
-
+	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo);
 }

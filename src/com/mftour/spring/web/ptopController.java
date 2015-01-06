@@ -596,5 +596,13 @@ public class ptopController {
 		return "ptop/p2b_income";
 
 	}
+	@RequestMapping(value="/checkRegyee",method={RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String checkRegyee(@RequestParam("targetPlatformUserNo") String targetPlatformUserNo){
+		if(ptopService.queryYeePayByplatUserNo(targetPlatformUserNo)!=null){
+			return "success";
+		}
+		return "fail";
+	}
 
 }

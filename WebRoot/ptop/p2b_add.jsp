@@ -220,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>               
                 <li>
                     <dd>融资方易宝编号：</dd>
-                    <input type="text" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"   />
+                    <input type="text" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"  onblur="checkRegyee()" />
                     <dt></dt>
                 </li>
                 <li>
@@ -515,6 +515,10 @@ function getAllHtml() {
         	alert("注意：开始融资时间 不得为空!");
         	return FALSE;
         }
+        if($("#targetPlatformUserNo").val()==""){
+        	alert("注意：融资方易宝编号不能为空!");
+        	return FALSE;
+        }
          $("#form" ).submit();  
     }
     function getPlainTxt() {
@@ -586,6 +590,21 @@ function getAllHtml() {
         for (var i = 0, btn; btn = btns[i++];) {
             domUtils.removeAttributes(btn, ["disabled"]);
         }
+    }
+    function checkRegyee() {
+    	if ($('#targetPlatformUserNo').val() != '') {
+			$.ajax({
+				type : 'POST',
+				url : '/Login/checkRegyee',
+				data : 'targetPlatformUserNo=' + $('#targetPlatformUserNo').val(),
+				dataType : 'text',
+				success : function(data) {
+					if (data != '"success"') {
+						alert("融资方易宝编号不存在！")
+					}
+				}
+			});
+		}
     }
 </script>
 

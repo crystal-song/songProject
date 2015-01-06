@@ -13,6 +13,7 @@ import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IptopService;
@@ -171,5 +172,7 @@ public class PtopServiceImpl implements IptopService {
 
 		return ptopDao.queryTInterestRateByNumber(Number);
 	}
-
+	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo){
+		return ptopDao.queryYeePayByplatUserNo(targetPlatformUserNo);
+	}
 }
