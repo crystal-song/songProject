@@ -4275,6 +4275,19 @@ ul,li{
 	border:none;
 	background:#f8f8f8;
 }
+.new_table{
+	width:700px;
+	float:left;
+	margin:3% 0 3% 15%;
+	font-size:12px;
+}
+.new_table tr{
+	height:30px;
+}
+.new_table td{
+	height:30px;
+	line-height:30px;
+}
 .fukuan{
 	display:none
 }

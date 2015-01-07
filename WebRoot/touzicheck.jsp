@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- top end  -->
 <div class="clear"></div>
 <div class="msg_con">
-  <div class="queren_con">
+  <div class="queren_con" style="height:auto; overflow:hidden">
    <div class="con_title"><strong>投资信息确认</strong></div>
    <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank">
    <ul> 
@@ -56,26 +56,65 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
           <div class="form-group" >
-
             <label for="paymentAmount">投资金额：</label><input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
           </div>
           </li>
-
-       <li>
-
+          <li>
+          <div class="form-group" >
+            <label for="#">预期收益率：</label><input type="text"
+              class="form-control" id="preview_rate" name="preview_rate" value="" />
+            <span>查看收益利率表</span>
+          </div>
+          
+          </li>
+          <li style="height:auto;">
+            <table width="50%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="2" border="0" class="new_table">
+                 <tr>
+                  <td bgcolor="#fff" align="center"><b>阶段起点金额</b></td>
+                  <td bgcolor="#fff" align="center"><b>起始利率</b></td>
+                  <td bgcolor="#fff" align="center"><b>投资增幅</b></td>
+                  <td bgcolor="#fff" align="center"><b>利率增幅</b></td>
+                  <td bgcolor="#fff" align="center"><b>阶段上限金额</b></td>
+                 </tr>                 
+                 <c:if test="${ not empty li}">
+			        <c:forEach var="s" items="${li}" varStatus="i">
+				        <tr>
+				        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
+				       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
+				        </tr>
+			         </c:forEach>
+			    </c:if> 
+        </table>         
+          </li>
+          <li>
+            <div class="form-group" >
+            <label for="#">投资周期：</label> <input type="text"
+              class="form-control" id="preview_Period" name="preview_Period" value="${product1.financingPeriod*30}" /> 
+                         
+            
+          </div>
+          </li>
+          <li>
+            <div class="form-group" >
+            <label for="#">预期收益：</label><input type="text"
+              class="form-control" id="preview_income" name="preview_income" value="#" />元
+            
+           </div>
+          </li>
+          <li>
            <div class="form-group liquan_hide" style="${reward.userId==null?"display:none":""}">
                <label for="paymentAmount">使用50元礼卷&nbsp;</label><input type="checkbox"
-                                                            class="form-control" id="reward" name="rewardCheck"  />
-                <input type="hidden" value="${reward.userId}" class="liquan_check"/>                                            
-                
+                                             class="form-control" id="reward" name="rewardCheck"  />
+                <input type="hidden" value="${reward.userId}" class="liquan_check"/>                                                            
            </div>
        </li>
        <li class="fukuan">
-
            <div class="form-group" >
-               <label>您实际付款金额为：</label><input type="text" 
-                                                              class="form-control border_none"  value=""/>
+               <label>您实际付款金额为：</label><input type="text"  class="form-control border_none"  value=""/>
            </div>
        </li>
           <li>
@@ -112,7 +151,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           </li>
           <li>
-
 
           <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>
 
@@ -213,8 +251,45 @@ $(document).ready(function(e) {
 		     	return false;
 		 	  }  
 	   });
-	      
-
+	   
+	   /*shouyilv*/
+	   
+	   var rate_lv=$(".lev_start").length;
+		calc();
+		$("#paymentAmount").change(function(e) {
+			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
+				$(this).val(parseInt($(".lev_start").eq(0).html()));
+				}
+			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
+				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
+				}
+	        calc();
+	        
+	    });
+		function calc(){
+			//console.log("-------calc-------");
+			var t=parseInt($("#paymentAmount").val());
+			//alert(t)
+			var r=0;
+			var p=parseInt($("#preview_Period").html());
+			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
+			for(i=0;i<rate_lv;i++){
+				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
+					if(parseInt($(".lev_mi").eq(i).html())>0){
+					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
+					
+					}else{
+						r=parseFloat($(".lev_rate").eq(i).html());
+						}
+					r=r/100;
+					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
+					}
+				}
+			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
+			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
+			//console.log("|-"+t*r);
+			}
+	  
 }); 
 </script>
 </html>
