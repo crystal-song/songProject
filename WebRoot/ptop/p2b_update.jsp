@@ -49,8 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                     <dd>还款日期：</dd>
-                    <input type="date"  value="${product1.repaymentTime}"       disabled="disabled" />
-                    <dt></dt>
+                    <input type=""  value="${product1.repaymentTime}"    class="ui_timepicker"     disabled="disabled" />
+                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
                 </li>
                 <li>
                     <dd>还款方式：</dd>

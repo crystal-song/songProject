@@ -21,7 +21,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.min.js"></script>
     <script type="text/javascript" src="<%=path%>/up/lang/zh-cn/zh-cn.js"></script>
     <script src="<%=path%>/js/uploadPreview.min.js" type="text/javascript"></script>
-    
+     <link type="text/css" href="<%=path%>/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
+     <link type="text/css" href="<%=path%>/css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+    <script type="text/javascript" src="<%=path%>/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="<%=path%>/js/jquery-ui-timepicker-zh-CN.js"></script>
     <style type="text/css">
         h1{
             font-family: "微软雅黑";
@@ -223,6 +228,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="text" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"  onblur="checkRegyee()" />
                     <dt></dt>
                 </li>
+                 <li>
+                    <dd>开始融资时间：</dd>
+                    <input  type="text"  name="financeTime"  id="financeTime"  class="ui_timepicker"  value=""  />
+                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
+                </li>
+                <li>
+                 <li>
+                    <dd>还款日期：</dd>
+                    <input type="" class="ui_timepicker"  name="repaymentTime"  id="repaymentTime" value="${product1.repaymentTime}"  />
+                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
+                </li>
                 <li>
                     <dd>项目图片：</dd>
                    <!--  <input  type="file" id="file" name="file"  /> -->
@@ -246,11 +262,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome==null?10:product1.yearIncome}"   min="1" max="100" value="10" step="1" />
                     <dt>用整数表示，如12%则输入12</dt>
                 </li>
-                <li>
-                    <dd>还款日期：</dd>
-                    <input type="date" name="repaymentTime"  id="repaymentTime" value="${product1.repaymentTime}"  />
-                    <dt></dt>
-                </li>
+               
                 <li>
                     <dd>担保机构：</dd>
                     <input type="text" name="guaranteeInstitution"  id="guaranteeInstitution" value="${product1.guaranteeInstitution}"  />
@@ -401,12 +413,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="number" name="margin"  id="margin" value="${product1.margin}"  />
                     <dt></dt>
                 </li>
-                <li>
-                    <dd>开始融资时间：</dd>
-                    <input type="date" name="financeTime"  id="financeTime" value="${product1.financeTime}"  />
-                    <dt></dt>
-                </li>
-                <li>
+               
                 <dd></dd>
                  <input type="button"  title="提交"  onclick="getContent()"   value="提交" class="b"/>
                 <dt>请仔细检查后再提交！！！</dt>
@@ -428,7 +435,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <h3 id="focush2"></h3> 
 </div>
 <script type="text/javascript">
-
+$(function () {
+    $(".ui_timepicker").datetimepicker({
+        //showOn: "button",
+        //buttonImage: "./css/images/icon_calendar.gif",
+        //buttonImageOnly: true,
+        showSecond: true,
+        timeFormat: 'hh:mm:ss',
+        stepHour: 1,
+        stepMinute: 1,
+        stepSecond: 1
+    })
+})
 //实例化编辑器
 var um = UM.getEditor('Editor');
 um.addListener('blur',function(){
