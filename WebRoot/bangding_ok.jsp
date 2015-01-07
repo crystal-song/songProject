@@ -7,11 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/taglibs.jsp" %> 
 <title>用户中心页面</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript">
-    var navIndex=3;          
 
-</script>
 </head>
 
 <body>
@@ -30,11 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </ul> 
      </div>   
    <div class="title_sec" style="display:none">您可以进行以下操作</div>
-   
-   <!-- 
-   <div>前去<a href="<%=path%>/touzi.jsp" class="con_link">[浏览项目]</a></div>
-   <div>前去<a href="<%=path%>/user-info.jsp" class="con_link">[用户中心]</a></div>
-    -->
    <ol class="sec_list" style="display:none">
    <li>前去项目中心<strong><a href="<%=path%>/product/allProduct" class="con_link">[浏览项目]</a></strong>，查看详细信息，进行投资。</li>
    <li>去个人中心查看<strong><a href="<%=path%>/wel/account" class="con_link">[个人信息]</a></strong>。</li>
@@ -53,4 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+<script type="text/javascript">
+    var navIndex=3;          
+</script>
 </html>

@@ -7,8 +7,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>中租宝 | 最稳健的P2B理财平台</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 <body>
 
@@ -162,47 +160,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
             </li>
       </c:if>
-        
-	 <!-- 
-			<div class="clear_height"></div>
-            <div class="ind_list">
-            
-            	<%-- <div class="xq_left"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}"><img src="<%=path%>/images/sy_63.jpg" /></a></div> --%>
-            	<div class="xq_left"><a href="product/getProductByid?id=${s.id}">${s.projectPicture}</a></div>
-                <div class="ind_right">
-                	<div class="tuijian">
-                    	<div class="tj_left">推荐项目:<span class="hong"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></span></div>
-                        <div class="tj_right">
-                        	<div class="tj_jd">融资进度：<c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</div>
-                             <div class="tj_jd_pic"><div class="progress_80"><div class="progress_bar" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div></div></div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="xq_table">
-                    <a href="product/getProductByid?id=${s.id}" title="${s.projectName}">
-                        <div class="xq01">
-                            <div class="xq01_tit">年化收益</div>
-                            <div class="xq01_nr hong">${s.yearIncome}%</div>
-                        </div>
-                        <div class="xq02">
-                            <div class="xq01_tit">融资金额</div>
-                            <div class="xq01_nr">${s.financingMoney}万</div>
-                        </div>
-                        <div class="xq03">
-                            <div class="xq01_tit">还款日期</div>
-                            <div class="xq01_nr">${s.repaymentTime}</div>
-                        </div>
-                        <div class="xq04">
-                            <div class="xq01_tit">企业等级</div>
-                            <div class="xq04_nr"><img src="<%=path%>/images/qualityRate_${s.qualityRating}.jpg" style="margin-bottom:-3px;"></div>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-            -->
-          
             </c:forEach>
         </c:if>
        
@@ -268,33 +225,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 var navIndex=0;
-
-	// if(var navIndex!=null&&navIndex!=-1)$(".nav_big li").eq(0).addClass("bd_btom");
-	
-/*
-    $(".header li").mouseover(function(){ 
-      var index=$(this).index();
-      $('.top div').eq(index).show();
-
-    $(this).addClass('head_red').siblings().removeClass('head_red');     
-    }).mouseout(function(){
-       var index=$(this).index();
-       $('.top div').eq(index).hide();
-    });
-
-    $(".top div").mouseover(function(){ 
-      var index=$(this).index();
-      $(this).show();
-     
-    }).mouseout(function(){
-       var index=$(this).index();
-       $(this).hide();
-    });
-
-*/
-
 $(document).ready(function(){
 	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(0).children("p").addClass("headwd_color")
@@ -306,9 +239,7 @@ $(document).ready(function(){
 		    });
 		    		            
 	});
-</script>
-
-<script type="text/javascript">
+/*daojishi*/
     function getRTime(){
 		//new Date(parseInt("600000"))
         var EndTime= new Date('2015/05/1 10:00:00'); //截止时间 前端路上 http://www.51xuediannao.com/qd63/
