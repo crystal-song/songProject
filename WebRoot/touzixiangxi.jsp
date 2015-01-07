@@ -237,7 +237,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <span class="bianhao_right">项目编号：${product1.enterpriseNumber}  </span>
     </p>
      <div class="pro_msg">
-       <div class="pro_pic">${product1.projectPicture}</div>
+       <div class="pro_pic">${product1.projectPicture}
+        <div class="last_time">
+                     距离开放购买还有
+            <span id="t_d"></span>
+            <span id="t_h"></span>
+            <span id="t_m"></span>
+            <span id="t_s"></span>
+        </div>
+       </div>
        <div class="pro_con01" style="display:none;">
        
        
@@ -271,9 +279,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <span>融资进度：</span>
              <div class="load_bar">
              <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
-               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
+               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
-             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
+             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
              </c:if>
              <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
                <div style="width:100%"></div>
@@ -294,7 +302,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
              <span>融资进度</span>
              <div class="load_bar">
-               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
+               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
              <span>80%</span>
            </li>
@@ -313,6 +321,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="neirong"></div>         
          <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp" style="margin:24px 0 0 30px">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+         
        </div>
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==1}"><!-- 线上 -->
@@ -322,15 +331,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==3}"><!-- 线上 -->
        <div class="pro_right">
-         <span class="pro_right_title"><strong>项目已满标</strong></span>
-       </div> 
-       </c:if>
-       <c:if test="${ not empty product1.buyType&&product1.projectStatus==4}"><!-- 线上 -->
-       <div class="pro_right">
          <span class="pro_right_title"><strong>企业正常还款中</strong></span>
        </div> 
        </c:if>
-       <c:if test="${ not empty product1.buyType&&product1.projectStatus==5}"><!-- 线上 -->
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==4}"><!-- 线上 -->
        <div class="pro_right">
          <span class="pro_right_title"><strong>项目已完成</strong></span>
        </div> 
@@ -349,6 +353,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          
          <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+        <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a>
        </div>
        </form>
        </c:if>
@@ -457,11 +462,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="clear"></div>    
         	<div class="next_list">
       
-            <c:if test="${page.totalPage > 1}"> <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> </c:if> 
+             <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> 
 				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo-1}&id=${product1.id}">上一页</a>  </c:if> 
 				<div class="pageNum"></div>								 
 				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
-		    <c:if test="${page.totalPage > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>  </c:if>              
+		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>              
         </div>       
         
 <!--       <ul class="table_mag">
@@ -645,15 +650,15 @@ function mysubmit(){
 	    });
 		function calc(){
 			//console.log("-------calc-------");
-			var t=parseInt($("#preview_amount").val());
+			var t=parseInt($("#preview_amount").val());//投资金额
 			var r=0;
-			var p=parseInt($("#preview_Period").html());
+			var p=parseInt($("#preview_Period").html());//投资周期
 			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-			for(i=0;i<rate_lv;i++){
+			for(i=0;i<rate_lv;i++){ //起点金额 //阶段上限金额
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
-					if(parseInt($(".lev_mi").eq(i).html())>0){
+					if(parseInt($(".lev_mi").eq(i).html())>0){// 投资增幅
 					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-					
+					//投资利率  // 投资利率增幅 //起点金额 // 投资增幅
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}
@@ -782,5 +787,25 @@ function mysubmit(){
  });
 	             
     
+</script>
+
+<script type="text/javascript">
+    function getRTime(){
+		//new Date(parseInt("600000"))
+        var EndTime= new Date('2015/05/1 10:00:00'); //截止时间 前端路上 http://www.51xuediannao.com/qd63/
+        var NowTime = new Date();
+        var t =EndTime.getTime() - NowTime.getTime();
+
+        var d=Math.floor(t/1000/60/60/24);
+        var h=Math.floor(t/1000/60/60%24);
+        var m=Math.floor(t/1000/60%60);
+        var s=Math.floor(t/1000%60);
+
+        document.getElementById("t_d").innerHTML = d + "天";
+        document.getElementById("t_h").innerHTML = h + "时";
+        document.getElementById("t_m").innerHTML = m + "分";
+        document.getElementById("t_s").innerHTML = s + "秒";
+    }
+    setInterval(getRTime,1000);
 </script>
 </html>
