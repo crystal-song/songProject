@@ -7,6 +7,7 @@ import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXB;
@@ -19,6 +20,7 @@ import com.mftour.spring.logic.YeePay;
 import com.mftour.spring.model.*;
 import com.mftour.spring.rest.bean.ResponseReward;
 import com.mftour.spring.rest.bean.YeepayAccountInfo;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -550,8 +552,11 @@ public class GateController {
 			 model.addAttribute("buyAmount", buyAmount);
 			 model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
 			 model.addAttribute("product", product);
-
-			 model.addAttribute("product", product);
+			 List<TInterestRate> li = ptopService
+						.queryTInterestRateByNumber(product.getEnterpriseNumber());
+				if (li != null && li.size() != 0) {
+					model.addAttribute("li", li);
+				}
 
 			 return "touzicheck";
 		 }else{
