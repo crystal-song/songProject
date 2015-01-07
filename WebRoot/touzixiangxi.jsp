@@ -41,14 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <span class="bianhao_right">项目编号：${product1.enterpriseNumber}  </span>
     </p>
      <div class="pro_msg">
-       <div class="pro_pic">${product1.projectPicture}
-        <div class="last_time">
-            <span id="t_d"></span>
-            <span id="t_h"></span>
-            <span id="t_m"></span>
-            <span id="t_s"></span>
-        </div>
-       </div>
+       <div class="pro_pic">${product1.projectPicture}</div>
        <div class="pro_con01" style="display:none;">
        
        
@@ -271,7 +264,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
 		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>              
         </div>       
-        
+
    <div class="pro_con_title"><strong>项目描述</strong></div>
       <div class="zijin">
         <p class="zijin_msg">${product1.projectIntroduce}</p>        
@@ -315,9 +308,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <p>风险控制措施</p>
           <p class="zijin_msg">${product1.riskControl}</p> 
      </div>
+
      <div class="pro_con_title"><strong>相关资料</strong></div> 
      <div class="ziliao_pic">
-     ${product1.enterpriseCertificate}      
+     ${product1.enterpriseCertificate}
+    
      </div>
     </div>
 </div> 
@@ -391,7 +386,7 @@ function mysubmit(){
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
 					if(parseInt($(".lev_mi").eq(i).html())>0){// 投资增幅
 					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-					//投资利率  // 投资利率增幅 //起点金额 // 投资增幅
+					//投资利率  // 投资利率增幅 //起点金额 //
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}
@@ -520,25 +515,5 @@ function mysubmit(){
  });
 	             
     
-</script>
-
-<script type="text/javascript">
-    function getRTime(){
-		//new Date(parseInt("600000"))
-        var EndTime= new Date('2015/05/1 10:00:00'); //截止时间 前端路上 http://www.51xuediannao.com/qd63/
-        var NowTime = new Date();
-        var t =EndTime.getTime() - NowTime.getTime();
-
-        var d=Math.floor(t/1000/60/60/24);
-        var h=Math.floor(t/1000/60/60%24);
-        var m=Math.floor(t/1000/60%60);
-        var s=Math.floor(t/1000%60);
-
-        document.getElementById("t_d").innerHTML = d + "天";
-        document.getElementById("t_h").innerHTML = h + "时";
-        document.getElementById("t_m").innerHTML = m + "分";
-        document.getElementById("t_s").innerHTML = s + "秒";
-    }
-    setInterval(getRTime,1000);
 </script>
 </html>
