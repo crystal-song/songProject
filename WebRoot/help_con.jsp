@@ -31,61 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <p>中投汇融倡导现代金融服务的发展理念，目前已与国内数十家知名金融机构建立了长期战略合作关系，
                        赢得了工商银行、民生银行、招商银行、浦发银行、兴业银行、江苏银行、平安银行、中国中投证券、四川信托股份有限公司、中融信托股份有限公司、新时代信托股份有限公司、新华信托股份有限公司等多家合作单位的一致认可，
                         同时积极开展了资金监管、产品开发及产品推广等多方面的合作。</p>
-          <!--               
-           <p><strong>目标</strong></p>            
-          <div class="dingwei">
-        	    打造专业化金融信息交易平台。<br/>
-			    培养优秀金融服务团队。<br/>
-			    实现高净值资产管理规模。<br/>
-			    创造国际化资产管理服务水平。<br/>
-			    成就顶级国际私人银行服务平台。
-        	</div>
-        	 -->
        </div>    
    </div>
-<!-- top end  -->
-<!--  
-<div class="clear"></div>
-<div class="one"></div>
-<div class="clear_height"></div>
-<div class="frame">
-<div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/guarantee/getNewslist?channel=${news.channel}">${news.channel}</a></div>
-	<div class="clear_height"></div>
-	<div class="bz_left">
-    	<div class="bzl_tit"></div>
-        <div class="bzl_list">
-        	<ul>
-        	 <c:if test="${ not empty list}">
-        <c:forEach var="s" items="${list}" varStatus="i">
-            	<li class="aqbz"><a href="getlist?id=${s.id}">${s.name}</a></li>
-            	</c:forEach>
-        </c:if>    
-            </ul>
-        </div>
-    </div>
-    <div class="bz_right">
-    
-    	<div class="bzr_tit">
-        	<h1>${news.title}</h1>
-        </div>
-        <div class="clear"></div>
-        <div class="bzr_nr">
-         <%-- <div >${news.title}</div> --%>
-         
-         <div style="text-align:right; padding:10px;">发布时间：${news.time}</div>
-         <div class="news_content">${news.depicts}</div>      
-        
-        	<%-- <ul>
-        		 <c:if test="${ not empty list1}">
-                 <c:forEach var="s" items="${list1}" varStatus="i">
-            	    <li>${s.title}</li>
-               	</c:forEach>
-                </c:if>
-            </ul> --%>
-        </div>
-    </div>
-</div>
--->
+
 <!-- absolute_right start -->
 	<%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->      

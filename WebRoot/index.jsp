@@ -7,8 +7,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>中租宝 | 最稳健的P2B理财平台</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 <body>
 
@@ -129,9 +127,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
             </li>
       </c:if>
-
-        
-
             </c:forEach>
         </c:if>
        
@@ -197,10 +192,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 var navIndex=0;
-
-
 $(document).ready(function(){
 	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(0).children("p").addClass("headwd_color")
@@ -212,9 +206,7 @@ $(document).ready(function(){
 		    });
 		    		            
 	});
-</script>
-
-<script type="text/javascript">
+/*daojishi*/
     function getRTime(){
 		//new Date(parseInt("600000"))
         var EndTime= new Date('2015/05/1 10:00:00'); //截止时间 前端路上 http://www.51xuediannao.com/qd63/

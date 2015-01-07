@@ -84,49 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	 
        </div>    
    </div>
-<!-- top end  -->
-<!--  
-<div class="clear"></div>
-<div class="one"></div>
-<div class="clear_height"></div>
-<div class="frame">
-<div class="news_location">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/guarantee/getNewslist?channel=${news.channel}">${news.channel}</a></div>
-	<div class="clear_height"></div>
-	<div class="bz_left">
-    	<div class="bzl_tit"></div>
-        <div class="bzl_list">
-        	<ul>
-        	 <c:if test="${ not empty list}">
-        <c:forEach var="s" items="${list}" varStatus="i">
-            	<li class="aqbz"><a href="getlist?id=${s.id}">${s.name}</a></li>
-            	</c:forEach>
-        </c:if>    
-            </ul>
-        </div>
-    </div>
-    <div class="bz_right">
-    
-    	<div class="bzr_tit">
-        	<h1>${news.title}</h1>
-        </div>
-        <div class="clear"></div>
-        <div class="bzr_nr">
-         <%-- <div >${news.title}</div> --%>
-         
-         <div style="text-align:right; padding:10px;">发布时间：${news.time}</div>
-         <div class="news_content">${news.depicts}</div>      
-        
-        	<%-- <ul>
-        		 <c:if test="${ not empty list1}">
-                 <c:forEach var="s" items="${list1}" varStatus="i">
-            	    <li>${s.title}</li>
-               	</c:forEach>
-                </c:if>
-            </ul> --%>
-        </div>
-    </div>
-</div>
--->
+
 <!-- absolute_right start -->
 	<%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->      
