@@ -816,7 +816,9 @@ ul,li{
 	font-size:14px;
 	text-align:left;
     background:url(../img/images-2014-11/square.png) -3px 18px no-repeat;
-	padding-left:15px
+	padding-left:15px;
+	overflow:hidden;
+	
 	}
 .next{
 	width:100%; 

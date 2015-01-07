@@ -1,4 +1,3 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
@@ -27,12 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
-<input type="hidden" id="now" value="${now}">
-<input type="hidden" id="start_time" value="${product1.financeTime}">
-
 <div class="tou_con">
     <div class="con_left">
-
       <!-- con_left -->
       <%@ include file="/includes/news_list_right.jsp" %>
       <!-- con_left end-->
@@ -48,7 +43,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="pro_msg">
        <div class="pro_pic">${product1.projectPicture}
         <div class="last_time">
-                     距离开放购买还有
             <span id="t_d"></span>
             <span id="t_h"></span>
             <span id="t_m"></span>
@@ -65,13 +59,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <li style="padding-left:15px;">投资周期：${product1.financingPeriod*30}天</li>
          <li><span style="margin-right:0">信用等级：</span>
            <span style="margin-left:0"><img src="<%=path%>/img/images-2014-11/star_${product1.qualityRating}.png" style="margin-bottom:-3px;"></span>
-
            <span class="pro_r">
              <a class="pro_bac_logo01" href="http://www.sina.com.cn/"></a>
              <a class="pro_bac_logo02" href="http://www.qq.com"></a>
              <a class="pro_bac_logo03" href="http://t.qq.com"></a>
            </span>
-
            </li>
            <li><span style="width:90px;">融资金额</span><span style="width:90px;">年化收益</span><span style="width:90px;">还款日期</span></li>
            <li class="bac_red_wd">
@@ -172,151 +164,102 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <!--弹出窗口 -->   
  
        <div id="dialog" title="投资金额确认" style="display:none">
-
         <p class="zijin">您成功投资<strong class="touzi_money">2000</strong>元</p>
-    </div>
-    <div id="dialog01" title="收益计算器" style="display:none">
-        <div class="dialog_title"><strong>收益计算器</strong>
-            <div class="right_cha"></div>
-        </div>
-        <div class="touzi_text">
-            <span>投资金额：</span>
-            <span class="touz_right"><input type="text" id="preview_amount" value="200"></input></span>
-        </div>
-        <div class="touzi_text">
-            <span>预期收益率：</span>
-            <span class="touz_right"><input type="text" value="10%" id="preview_rate"></input></span>
-        </div>
-        <div class="touzi_text" >
-            <span>投资周期：</span>
-            <span class="touz_right"><a id="preview_Period">${product1.financingPeriod*30}</a>天</span>
-        </div>
-        <div class="touzi_text">
-            <span>预期总收益：</span>
-            <span class="touz_right" id="preview_income">0元</span>
-        </div>
-        <div class="jisuan_btn">
-            <input type="reset" value="重置" class="jisuan_btn_left"></input>
-            <input type="submit" value="开始计算" class="jisuan_btn_right"></input>
-        </div>
-    </div>
+       </div>
+       <div id="dialog01" title="收益计算器" style="display:none">
+         <div class="dialog_title"><strong>收益计算器</strong>
+          <div class="right_cha"></div>
+         </div>
+         <div class="touzi_text">
+          <span>投资金额：</span>
+          <span class="touz_right"><input type="text" id="preview_amount" value="200"></input></span>
+         </div>
+         <div class="touzi_text">
+          <span>预期收益率：</span>
+          <span class="touz_right"><input type="text" value="10%" id="preview_rate"></input></span>
+         </div>     
+         <div class="touzi_text" >
+          <span>投资周期：</span>
+          <span class="touz_right"><a id="preview_Period">${product1.financingPeriod*30}</a>天</span>
+         </div>
+         <div class="touzi_text">
+          <span>预期总收益：</span>
+          <span class="touz_right" id="preview_income">0元</span>
+         </div>
+         <div class="jisuan_btn">
+          <input type="reset" value="重置" class="jisuan_btn_left"></input>
+          <input type="submit" value="开始计算" class="jisuan_btn_right"></input>
+         </div>
+       </div>
 
 
-    <div class="syl_table" style="clear:both;">
-        <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="2" border="0">
-            <tr>
-                <td bgcolor="#fff" align="center"><b>阶段起点金额</b></td>
-                <td bgcolor="#fff" align="center"><b>起始利率</b></td>
-                <td bgcolor="#fff" align="center"><b>投资增幅</b></td>
-                <td bgcolor="#fff" align="center"><b>利率增幅</b></td>
-                <td bgcolor="#fff" align="center"><b>阶段上限金额</b></td>
-            </tr>
-            <c:if test="${ not empty li}">
-                <c:forEach var="s" items="${li}" varStatus="i">
-                    <tr>
-                        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
-                        <td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
-                        <td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
-                        <td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
-                        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
-                    </tr>
-                </c:forEach>
-            </c:if>
-        </table>
-    </div>
+	<div class="syl_table" style="clear:both;">
+     <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="2" border="0">
+                 <tr>
+                 <td bgcolor="#fff" align="center"><b>阶段起点金额</b></td>
+                 <td bgcolor="#fff" align="center"><b>起始利率</b></td>
+                 <td bgcolor="#fff" align="center"><b>投资增幅</b></td>
+                 <td bgcolor="#fff" align="center"><b>利率增幅</b></td>
+                 <td bgcolor="#fff" align="center"><b>阶段上限金额</b></td>
+                 </tr>
+                 <c:if test="${ not empty li}">
+        <c:forEach var="s" items="${li}" varStatus="i">
+	        <tr>
+	        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
+	        <td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
+	        <td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
+	       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
+	        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
+	        </tr>
+         </c:forEach>
+			</c:if> 
+      </table>
+      </div> 
 
-    <ul class="small_nav">
-        <li class="sm_nav_fir">
-            <a>投资记录</a>
-        </li>
-        <li><a>项目描述</a></li>
-        <li><a>资金运转</a></li>
-        <li><a>企业信息</a></li>
-        <li><a>担保机构及意见</a></li>
-        <li class="shu"><a>风险控制</a></li>
-        <li class="zheng"><a>相关证件</a></li>
-    </ul>
-    <div class="pro_con_title"><strong>投资记录</strong></div>
-    <ul class="table_mag">
-        <c:if test="${ empty product1.buyType}"><!-- 线下 -->
-        <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>状态</span></li>
-        <c:if test="${ not empty listoffline}">
-            <c:forEach var="s" items="${listoffline}" varStatus="i">
-
-                <li>
-                    <span>${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
+      <ul class="small_nav">
+            <li class="sm_nav_fir">
+              <a>投资记录</a>
+            </li> 
+            <li><a>项目描述</a></li>
+            <li><a>资金运转</a></li>
+            <li><a>企业信息</a></li>
+            <li><a>担保机构及意见</a></li>
+            <li class="shu"><a>风险控制</a></li>
+            <li class="zheng"><a>相关证件</a></li>
+      </ul>
+      <div class="pro_con_title"><strong>投资记录</strong></div>
+       <ul class="table_mag">
+       <c:if test="${ empty product1.buyType}"><!-- 线下 -->
+       <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>状态</span></li>
+		<c:if test="${ not empty listoffline}">
+		<c:forEach var="s" items="${listoffline}" varStatus="i">
+		
+		<li>
+		<span>${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
 		<span >
 			<c:if test="${fn:length(s.identityCard)==18}">${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
-            </c:if>
+			</c:if>
 			<c:if test="${fn:length(s.identityCard)!=18}">-
-            </c:if>
+			</c:if>
 		</span>
-                    <span >${s.investmentAmount}万元</span>
-                    <span>成功</span>
-                </li>
-            </c:forEach>
-        </c:if>
-        </c:if>
-        <c:if test="${not empty product1.buyType}"><!-- 线上 -->
-        <li><span>投资人</span><span>投资金额</span><span>状态</span></li>
-        <c:if test="${ not empty listonline}">
-            <c:forEach var="s" items="${listonline}" varStatus="i">
-                <li>
-		<span>${fn:substring(s.platformUserNo,0,1)}<c:forEach var="j" begin="1" end="${fn:length(s.platformUserNo)-2}" step="1">*</c:forEach>${fn:substring(s.platformUserNo,fn:length(s.platformUserNo)-1,fn:length(s.platformUserNo))}
-		</span>
-
-		<span >${s.paymentAmount}元</span>
+		<span >${s.investmentAmount}万元</span>
 		<span>成功</span>
 		</li>
 		</c:forEach>
 		</c:if>
 		</c:if>
-		<c:if test="${product1.id==56&&page.pageNo==page.totalPage }">
+       <c:if test="${not empty product1.buyType}"><!-- 线上 -->
+       <li><span>投资人</span><span>投资金额</span><span>状态</span></li>
+		<c:if test="${ not empty listonline}">
+		<c:forEach var="s" items="${listonline}" varStatus="i">
 		<li>
-		<span>j***k</span>
-		<span >60000元</span>
+		<span>${fn:substring(s.platformUserNo,0,1)}<c:forEach var="j" begin="1" end="${fn:length(s.platformUserNo)-2}" step="1">*</c:forEach>${fn:substring(s.platformUserNo,fn:length(s.platformUserNo)-1,fn:length(s.platformUserNo))}
+		</span>
+		<span >${s.paymentAmount}元</span>
 		<span>成功</span>
 		</li>
-		<li>
-		<span>m***元</span>
-		<span >120000元</span>
-		<span>成功</span>
-		</li>
-		<li>
-		<span>空*****j</span>
-		<span >28000元</span>
-		<span>成功</span>
-		</li>
-		<li>
-		<span>r*****k</span>
-		<span >60000元</span>
-		<span>成功</span>
-		</li>
-		<li>
-		<span>s***e</span>
-		<span >9000元</span>
-		<span>成功</span>
-		</li>
-		<li>
-		<span>p*k</span>
-		<span >300000元</span>
-		<span>成功</span>
-		</li>
-		<li>
-		<span>刘****o</span>
-		<span >90000元</span>
-		<span>成功</span>
-		</li>
-		<li>
-		<span>w***h</span>
-		<span >20000元</span>
-		<span>成功</span>
-		</li>
-		<li>
-		<span>v****f</span>
-		<span >38000元</span>
-		<span>成功</span>
-		</li>
+		</c:forEach>
+		</c:if>
 		</c:if>
 		</ul> 
 		<div class="clear"></div>    
@@ -329,7 +272,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>              
         </div>       
         
-
    <div class="pro_con_title"><strong>项目描述</strong></div>
       <div class="zijin">
         <p class="zijin_msg">${product1.projectIntroduce}</p>        
@@ -340,49 +282,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="zijin">
          <p>资金用途</p>
          <p class="zijin_msg">${product1.fundUse}</p>
-
         <!-- <p>查看详情</p> -->
         <div style="display:none;"></div>
         <p>还款来源</p>
-        <p class="zijin_msg">${product1.repaymentSource}</p>
+        <p class="zijin_msg">${product1.repaymentSource}</p>  
+      </div>
+      <div class="pro_con_title"><strong>企业信息</strong></div>      
+      <div class="zijin">
+          <p>企业背景</p>
+          <p class="zijin_msg">${product1.companyProfile}</p>
+          <!-- <p>查看详情</p> -->
+          <div style="display:none;"></div>
+          <p>业务范围</p>
+          <p class="zijin_msg">${product1.businessScope}</p>
+          <div></div>
+          <p>经营状况</p>
+          <p class="zijin_msg">${product1.stateOfOperation}</p>
+     </div>   
+     <div class="pro_con_title" id="p_c_t02"><strong>担保机构及担保意见</strong></div>      
+      <div class="zijin">         
+          <p>担保机构简介</p>
+          <p class="zijin_msg">${product1.guaranteeInstitutionIntroduce}</p> 
+          <p>担保机构意见</p>
+          <p class="zijin_msg">${product1.collateralOpinion}</p> 
+     </div>
+     <div class="pro_con_title"><strong>风险控制</strong></div>      
+      <div class="zijin">
+          <p>担保机构</p>
+          <p class="zijin_msg">${product1.guaranteeInstitution}</p>
+          <p>抵押物信息</p>
+          <p class="zijin_msg">${product1.guarantee}</p> 
+          <p>风险控制措施</p>
+          <p class="zijin_msg">${product1.riskControl}</p> 
+     </div>
+     <div class="pro_con_title"><strong>相关资料</strong></div> 
+     <div class="ziliao_pic">
+     ${product1.enterpriseCertificate}      
+     </div>
     </div>
-    <div class="pro_con_title"><strong>企业信息</strong></div>
-    <div class="zijin">
-        <p>企业背景</p>
-        <p class="zijin_msg">${product1.companyProfile}</p>
-        <!-- <p>查看详情</p> -->
-        <div style="display:none;"></div>
-        <p>业务范围</p>
-        <p class="zijin_msg">${product1.businessScope}</p>
-        <div></div>
-        <p>经营状况</p>
-        <p class="zijin_msg">${product1.stateOfOperation}</p>
-    </div>
-    <div class="pro_con_title" id="p_c_t02"><strong>担保机构及担保意见</strong></div>
-    <div class="zijin">
-        <p>担保机构简介</p>
-        <p class="zijin_msg">${product1.guaranteeInstitutionIntroduce}</p>
-        <p>担保机构意见</p>
-        <p class="zijin_msg">${product1.collateralOpinion}</p>
-    </div>
-    <div class="pro_con_title"><strong>风险控制</strong></div>
-    <div class="zijin">
-        <p>担保机构</p>
-        <p class="zijin_msg">${product1.guaranteeInstitution}</p>
-        <p>抵押物信息</p>
-        <p class="zijin_msg">${product1.guarantee}</p>
-        <p>风险控制措施</p>
-        <p class="zijin_msg">${product1.riskControl}</p>
-    </div>
-
-    <div class="pro_con_title"><strong>相关资料</strong></div>
-    <div class="ziliao_pic">
-        ${product1.enterpriseCertificate}
-
-
-    </div>
-</div>
-</div>
+</div> 
 <!-- absolute start -->
 <%@ include file="/includes/absolute.jsp" %>
 <!-- absolute end -->
@@ -395,107 +333,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 <script type="text/javascript">
-    var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
+var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
-    /*提交表单*/
+/*提交表单*/
 
-    function mysubmit(){
-        if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
-            alert("投资金额不能为空！");
-            return false;
-        }
-        //if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-
-        if($("#buyAmount").val()<200){
-            alert("投资金额不能低于200元！");
-            return false;
-        }
-
-        if($("#buyAmount").val()>touzi_money){
-            alert("投资金额不能高于可投资金额！");
-            return false;
-        }
-
-        $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
-            success: function(resp){
-                if(resp === "success"){
-                    var form = document.getElementById("form");
-                    form.submit();
-                }else{
-                    alert(resp);
-                }
-            }});
-    }
-
-
-    $(document).ready(function(e) {
-        //---------收益计算器------------
-        //console.log("-------go-------");
-        var rate_lv=$(".lev_start").length;
-        calc();
-        $("#preview_amount").change(function(e) {
-            if($(this).val()<parseInt($(".lev_start").eq(0).html())){
-                $(this).val(parseInt($(".lev_start").eq(0).html()));
+function mysubmit(){
+	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
+		alert("投资金额不能为空！");
+		return false;
+		}
+	//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
+	
+	if($("#buyAmount").val()<200){
+		alert("投资金额不能低于200元！");
+		return false;
+	}
+	
+	if($("#buyAmount").val()>touzi_money){
+		alert("投资金额不能高于可投资金额！");
+		return false;
+	}
+	
+    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
+        success: function(resp){
+            if(resp === "success"){
+                var form = document.getElementById("form");
+                form.submit();
+            }else{
+                alert(resp);
             }
-            if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
-                $(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
-            }
-            calc();
-
-        });
-        function calc(){
-            //console.log("-------calc-------");
-            var t=parseInt($("#preview_amount").val());
-            var r=0;
-            var p=parseInt($("#preview_Period").html());
-            if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-            for(i=0;i<rate_lv;i++){
-                if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
-                    if(parseInt($(".lev_mi").eq(i).html())>0){
-                        r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-
-                    }else{
-                        r=parseFloat($(".lev_rate").eq(i).html());
-                    }
-                    r=r/100;
-                    //console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
-                }
-            }
-            $("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");
-            $("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
-            //console.log("|-"+t*r);
-        }
-        $(".jisuan_btn_left").click(function(){
-            $("#preview_amount").val(200);
-            $("#preview_income").html(0+"元");
-
-
-        });
-
-
-        //---------收益计算器结束-------------
-
-        /*验证输入的投资金额是否正确*/
-
-        $("#buyAmount").keyup(function(){
-
-            var str= /^[0-9]*$/;
-            var val=$("#buyAmount").val();
-            if(!(str.test(val))){
-                $('.neirong').html("您输入的金额不是数字,请重新输入");
-                return false;
-            }
-            $('.neirong').css('display','block');
-
-            if(!(str.test(val))){
-                $('.neirong').html("您输入的金额不是数字,请重新输入");
-                return false;
-            }
-            if(val<200){
-                $('.neirong').html("您输入的金额小于200元,请重新输入");
-                return false;
-            }
-
         }});
 }	
 
@@ -616,45 +482,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         if(num<0){num=22}
         $('.ziliao_pic li').eq(num).hide().fadeIn().siblings().hide();          
         num++; 
-
         }
-
-        $(".ban_right").click(function(){
-            autoplay(0);
-            clearInterval(timer);
-            timer=setInterval(autoplay,3000);
+ 
+      $(".ban_right").click(function(){
+        autoplay(0);
+        clearInterval(timer);
+           timer=setInterval(autoplay,3000);
         });
-        $(".ban_left").click(function(){
+      $(".ban_left").click(function(){
 
-            var index=$('.ziliao_pic li').index();
-            autoplay(-2);
-            clearInterval(timer);
-            timer=setInterval(autoplay,3000);
+        var index=$('.ziliao_pic li').index();
+        autoplay(-2);
+        clearInterval(timer);
+           timer=setInterval(autoplay,3000);
         });
-        $(".syl_table").hover(function(){
-            $(this).css("height","auto");
-        },function(){
-            $(this).css("height","60px");
-        });
-
-        $(".jisuan").click(function(){
-            $("#dialog01").css("display","block");
-
-
-        });
-        $(".right_cha").click(function(){
-            $("#dialog01").css("display","none");
-        });
-
-    });
-
-    /*获取投资额焦点*/
-    $("#buyAmount").focus(function(){
-        var tixian_val=$("#buyAmount").val();
-        $("#buyAmount").val("");
-    });
-
-
+ 	$(".syl_table").hover(function(){
+ 		$(this).css("height","auto");
+ 	},function(){
+ 		$(this).css("height","60px");
+ 	});
+ 	
+ 	 $(".jisuan").click(function(){
+ 		 $("#dialog01").css("display","block");
+ 		 
+ 		 
+ 	 });
+ 	$(".right_cha").click(function(){
+ 		$("#dialog01").css("display","none");
+ 	});
+ 	
+ });  
+ 
+ /*获取投资额焦点*/
+ $("#buyAmount").focus(function(){
+ 	var tixian_val=$("#buyAmount").val();
+ 	$("#buyAmount").val("");	  	
+ });
+	             
+    
 </script>
 
 <script type="text/javascript">
@@ -676,6 +541,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
     setInterval(getRTime,1000);
 </script>
-
 </html>
-
