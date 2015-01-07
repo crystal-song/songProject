@@ -22,8 +22,7 @@ public interface IptopDao {
 
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number);
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number);
-	/*public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number);*/
-	public List<TTransferInfo> queryTransferInfoByNumber(String Number);
+	public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number);
 	public void deleteTInvestmentInfo(Long id) throws Exception;
 
 	public void addOrUpdateTNews(TNews news) throws Exception;

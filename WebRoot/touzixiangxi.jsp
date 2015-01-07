@@ -257,7 +257,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <li><span style="width:90px;">融资金额</span><span style="width:90px;">年化收益</span><span style="width:90px;">还款日期</span></li>
            <li class="bac_red_wd">
            <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
-              <span style="width:90px;"><strong><i>￥</i>50万元</strong></span>
+              <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}万元</strong></span>
               <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
               <span style="width:90px;"><strong>${currTime}</strong></span>
            </c:if>
@@ -271,9 +271,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <span>融资进度：</span>
              <div class="load_bar">
              <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
-               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
+               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
-             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
+             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
              </c:if>
              <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
                <div style="width:100%"></div>
@@ -294,7 +294,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
              <span>融资进度</span>
              <div class="load_bar">
-               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
+               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
              <span>80%</span>
            </li>
@@ -322,10 +322,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==3}"><!-- 线上 -->
        <div class="pro_right">
-         <span class="pro_right_title"><strong>企业正常还款中</strong></span>
+         <span class="pro_right_title"><strong>项目已满标</strong></span>
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==4}"><!-- 线上 -->
+       <div class="pro_right">
+         <span class="pro_right_title"><strong>企业正常还款中</strong></span>
+       </div> 
+       </c:if>
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==5}"><!-- 线上 -->
        <div class="pro_right">
          <span class="pro_right_title"><strong>项目已完成</strong></span>
        </div> 
@@ -448,15 +453,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:forEach>
 		</c:if>
 		</c:if>
+		<c:if test="${product1.id==56&&page.pageNo==page.totalPage }">
+		<li>
+		<span>j***k</span>
+		<span >60000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>m***元</span>
+		<span >120000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>空*****j</span>
+		<span >28000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>r*****k</span>
+		<span >60000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>s***e</span>
+		<span >9000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>p*k</span>
+		<span >300000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>刘****o</span>
+		<span >90000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>w***h</span>
+		<span >20000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>v****f</span>
+		<span >38000元</span>
+		<span>成功</span>
+		</li>
+		</c:if>
 		</ul> 
 		<div class="clear"></div>    
         	<div class="next_list">
       
-             <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> 
+            <c:if test="${page.totalPage > 1}"> <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> </c:if> 
 				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo-1}&id=${product1.id}">上一页</a>  </c:if> 
 				<div class="pageNum"></div>								 
 				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
-		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>              
+		    <c:if test="${page.totalPage > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>  </c:if>              
         </div>       
         
 <!--       <ul class="table_mag">
