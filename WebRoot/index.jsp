@@ -89,7 +89,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  ${s.projectPicture}
                  <div class="hot"></div>
                  <!-- <div class="last_time">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div> -->
-                 <div class="last_time">年化收益率:<strong>&nbsp;&nbsp;${s.yearIncome}%</strong></div>
+                 <div class="last_time">距离开放购买还有：
+                    <span id="t_d_${s.id}"></span>
+                    <span id="t_h_${s.id}"></span>
+                    <span id="t_m_${s.id}"></span>
+                    <span id="t_s_${s.id}"></span>
+                 </div>
                  </a>
                  <h3><a class="shuoming" href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></h3>
                  <div class="aim">
@@ -208,4 +213,25 @@ $(document).ready(function(){
 		    		            
 	});
 </script>
+
+<script type="text/javascript">
+    function getRTime(){
+		//new Date(parseInt("600000"))
+        var EndTime= new Date('2015/05/1 10:00:00'); //截止时间 前端路上 http://www.51xuediannao.com/qd63/
+        var NowTime = new Date();
+        var t =EndTime.getTime() - NowTime.getTime();
+
+        var d=Math.floor(t/1000/60/60/24);
+        var h=Math.floor(t/1000/60/60%24);
+        var m=Math.floor(t/1000/60%60);
+        var s=Math.floor(t/1000%60);
+
+        document.getElementById("t_d").innerHTML = d + "天";
+        document.getElementById("t_h").innerHTML = h + "时";
+        document.getElementById("t_m").innerHTML = m + "分";
+        document.getElementById("t_s").innerHTML = s + "秒";
+    }
+    setInterval(getRTime,1000);
+</script>
+
 </html>

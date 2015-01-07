@@ -13,6 +13,7 @@ import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.util.Page;
 
@@ -236,6 +237,12 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		query.setParameter("enterpriseNumber", Number);
 
 		return query.list();
+	}
+	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo) {
+		String hql = "from TRegisterYeePay registeryeepay where registeryeepay.platformUserNo=:targetPlatformUserNo and registeryeepay.code=1";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("targetPlatformUserNo", targetPlatformUserNo);
+		return (TRegisterYeePay)query.uniqueResult();
 	}
 
 }
