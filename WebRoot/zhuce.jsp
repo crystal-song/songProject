@@ -27,12 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <li><a href="<%=path%>/gate/recharge" class="sec_btn_org">去充值</a></li>
     <li><a href="<%=path%>/gate/drawMoney" class="sec_btn_org">去提现</a></li>
    </ol>
-    <%-- <p class="jin_font">您可以做以下操作</p>
-   <ol class="sec_list">
-      <li>去项目中心<a class="con_link" href="<%=path%>/touzi.jsp"><strong>[浏览项目]</strong></a></li>
-      <li>去用户中心查看<a class="con_link" href="<%=path%>/user-info.jsp"><strong>[个人信息]</strong></a></li>
-      <li><a class="sec_btn_org" href="<%=path%>/gate/recharge">去充值</a></li>    
-   </ol>  --%>
+
    <div class="sec_pro_show" style="display:none"></div>      
 </div>
 </div>   
