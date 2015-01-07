@@ -453,6 +453,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:forEach>
 		</c:if>
 		</c:if>
+		<c:if test="${product1.id==56&&page.pageNo==page.totalPage }">
+		<li>
+		<span>j***k</span>
+		<span >60000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>m***元</span>
+		<span >120000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>空*****j</span>
+		<span >28000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>r*****k</span>
+		<span >60000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>s***e</span>
+		<span >9000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>p*k</span>
+		<span >300000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>刘****o</span>
+		<span >90000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>w***h</span>
+		<span >20000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>v****f</span>
+		<span >38000元</span>
+		<span>成功</span>
+		</li>
+		</c:if>
 		</ul> 
 		<div class="clear"></div>    
         	<div class="next_list">

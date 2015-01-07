@@ -62,7 +62,7 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		query.setMaxResults(page.getPageSize());
 		return query.list();
 	}
-	/*@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number) {
 		String hql = "from TTransferInfo transferInfo where transferInfo.enterpriseNumber = :name  and transferInfo.paymentAmount>=200 and transferInfo.code=1";
 		Query query = getSession().createQuery(hql);
@@ -70,13 +70,6 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		page.setTotalRecord(query.list().size());
 		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
 		query.setMaxResults(page.getPageSize());
-		return query.list();
-	}*/
-	@SuppressWarnings("unchecked")
-	public List<TTransferInfo> queryTransferInfoByNumber(String Number) {
-		String hql = "from TTransferInfo transferInfo where transferInfo.enterpriseNumber = :name  and transferInfo.paymentAmount>=200 and transferInfo.code=1";
-		Query query = getSession().createQuery(hql);
-		query.setParameter("name", Number);
 		return query.list();
 	}
 
