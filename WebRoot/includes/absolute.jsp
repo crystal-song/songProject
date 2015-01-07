@@ -1,11 +1,12 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
 <div class="absolute_right">
-      <div style="display:none">
-        <span class="absolute_bac3"><a href="<%=path%>/contact.jsp" >联系客服</a></span>
-      </div>
-      <div style="width:50px; height:50px;">
+      <div style="width:50px; height:50px; ">
         <span class="absolute_bac1"><a href="#" >返回顶部</a></span>
       </div>
+      <div style="width:50px; height:50px; margin-top:10px;">
+        <span class="absolute_bac3"><a href="http://wpa.qq.com/msgrd?v=3&uin=3081096531&site=qq&menu=yes" >联系客服</a></span>
+      </div>
+      
       <div style="width:50px; height:50px; margin-top:10px;">
         <span class="absolute_bac2"><a href="#" >扫二维码</a></span>
         <div class="erweima_bac">
