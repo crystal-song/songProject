@@ -63,7 +63,7 @@ ul,li{
 	 background:#f9f9f9;	
 	 }
 .header ul{
-	width:400px;
+	width:300px;
 	height:30px;
 	float: right;
 	}		
@@ -88,7 +88,14 @@ ul,li{
 	display:none;
 	
 	}
-.list04{
+.qun_msg{
+	width:200px;
+	height:30px;
+	line-height:30px;
+	float:right;
+	display:inline-block;
+} 
+/* .list04{
 	width:90px;
 	height:100px;
 	border:1px solid #eee;
@@ -99,7 +106,7 @@ ul,li{
 	right:33%;
 	background: #fff;
 	z-index: 100;
-	}
+	} */
 .list03{
 	width:90px;
 	height:100px;
@@ -3244,6 +3251,7 @@ ul,li{
     top:50%;
     left: 15%;
     z-index: 100;
+    cursor:pointer;
 }
 .ban_right{
 	width: 45px;
@@ -3253,6 +3261,7 @@ ul,li{
     top:50%;
     right: 15%;
     z-index: 100;
+    cursor:pointer;
 }
 .touzi_text{
 	width: 280px;
@@ -3300,7 +3309,7 @@ ul,li{
 
 .absolute_right{
 	width: 90px;
-	height: 200px;
+	height: 300px;
 	position: fixed;
 	right: 0;
 	bottom: 0;
@@ -4946,4 +4955,34 @@ ul,li{
 	right:0;
 	top:35%;
 }
+.time_git{
+	width:30px;
+	height:20px;
+	background:pink;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

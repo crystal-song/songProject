@@ -48,10 +48,15 @@ public class zhucheController {
 			long currTime=System.currentTimeMillis();
 			if(currTime>=financeTime&&product.getProjectStatus()==1){
 				product.setProjectStatus(2);//设置项目状态为融资中
-				ptopService.addOrUpdate(product);
-				
 			}
 			}
+			if(product.getFinancingProgress()>=1){
+				product.setProjectStatus(3);//已满标
+			}
+			if(product.isLoaned()==true){
+				product.setProjectStatus(4);//还款中
+			}
+			ptopService.addOrUpdate(product);
 			productList.add(product);
 		}
 		model.addAttribute("list", productList);
@@ -69,7 +74,7 @@ public class zhucheController {
 
 		List<TNews> list3 = ptopService.getRepaymentNoticeByChannel();
 		model.addAttribute("list3", list3);
-
+		model.addAttribute("now", System.currentTimeMillis());
 		return "index";
 	}
 

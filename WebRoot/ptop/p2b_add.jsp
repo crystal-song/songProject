@@ -369,22 +369,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <label>
                         <input type="checkbox"  name="recommendType" id="recommendType"   value="1" />
                         <span>推荐</span></label>
-                         <input type="hidden" id="recommendType1" value="${product1.recommendType }"></input>
 				</p>
                     <dt></dt>
                 </li>
-               <!--  <li>
-                    <dd>发布时间：</dd>
-                    <input type="date"   />
-                    <dt></dt>
-                </li> -->
+               
                  <li>
                 <dd>线上/线下属性：</dd>
                  <p>
                       <label>
                         <input type="checkbox" name="buyType" id="buyType"   value="1"  />
                         <span>上线项目</span></label>
-                        <input type="hidden" id="buyType1" value="${product1.buyType }"></input>
+				</p>
+                    <dt></dt>
+                </li>              
+                 <li>
+                <dd>上线/下线属性：</dd>
+                 <p>
+                      <label>
+                        <input type="checkbox" name="line" id="line"   value="1"  />
+                        <span>上线项目（项目显示）</span></label>
 				</p>
                     <dt></dt>
                 </li>              
@@ -426,15 +429,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <script type="text/javascript">
 
-$(document).ready(function(){
-	if($('#recommendType1').val()==1){
-		$('#recommendType').attr('checked',true);
-	}
-	if($('#buyType1').val()==1){
-		$('#buyType').attr('checked',true);
-	}
-	   
-	});
 //实例化编辑器
 var um = UM.getEditor('Editor');
 um.addListener('blur',function(){

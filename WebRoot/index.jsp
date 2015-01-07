@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
 <!-- top start  -->
-
+<input type="hidden" class="now" id="now" value="${now}">
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
@@ -33,11 +33,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="meier_wd">                
            <h3><a href="product/getProductByid?id=56" style="color:#ff453e">百家社区生鲜便利连锁店01期</a></h3>       	
            <ul class="mei_msg">
-            <li><span>融资金额</span><span class="wd_size"><strong>5,000,000</strong></span></li>
+            <li><span>融资金额</span><span class="wd_size"><strong>5,000,00</strong></span></li>
             <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">14%</strong></span></li>
-            <li><span>项目状况</span><span class="wd_size" style="font-size:12px;">融资中..</span></li>
+            <li><span>项目状况</span><span class="wd_size" style="font-size:12px;">还款中</span></li>
             <li><span>信用等级</span><span class="wd_size new_span"><img  src="<%=path%>/img/images-2014-11/star_5.png"></span></li>
-            <li><a href="product/getProductByid?id=56" class="touzi_mei">我要投</a></li>
+            <li><a href="product/getProductByid?id=56" class="touzi_mei">了解详情</a></li>
            </ul>
          </div>
        </div>
@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <a class="newpro_wd02"></a> 
               <span class="spanhign_right">
                <a>五层保障</a> 
-	           <a style="font-size:12px;"><label style="color:red"></label>充足抵押物，第三方资金托管风险保障金</a>
+               <a style="font-size:12px;"><label style="color:red"></label>充足抵押物，第三方资金托管风险保障金</a>
               </span>
            </dd>
            <dd><a class="newpro_wd03"></a>
@@ -81,7 +81,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
 	   <c:if test="${ not empty list}">
         <c:forEach var="s" items="${list}" varStatus="i">   
+         <c:if test="${s.enterpriseNumber!='ZTH011417486977120'}">
          <li>
+             <input type="hidden" class="open_time" id="start_time_${s.id}" value="${s.financeTime}">
               <div class="floor_num">
                  <a class="floor_img" href="product/getProductByid?id=${s.id}">
                  ${s.projectPicture}
@@ -94,14 +96,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span style="color:#a4a4a4;">目标:</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
                    <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
-                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'还款中':'已完成' }</a>
+                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' }</a>
                  </div>
                  <div class="loding_bar">
-                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>1</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
+                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>1</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<1?s.financingProgress==null?0:s.financingProgress*100:100}</c:if>%" title="融资进度：${s.financingProgress*100}%"></div>
                  </div>
                  <div class="floor_bottom">
                    <c:if test="${s.projectStatus!=1 }">
-                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
+                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress*100}%</a>
                    </span>
                    </c:if>
                    <c:if test="${s.projectStatus==1 }">
@@ -121,48 +123,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  </div>
               </div>
             </li>
-      
+      </c:if>
+
         
-	 <!-- 
-			<div class="clear_height"></div>
-            <div class="ind_list">
-            
-            	<%-- <div class="xq_left"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}"><img src="<%=path%>/images/sy_63.jpg" /></a></div> --%>
-            	<div class="xq_left"><a href="product/getProductByid?id=${s.id}">${s.projectPicture}</a></div>
-                <div class="ind_right">
-                	<div class="tuijian">
-                    	<div class="tj_left">推荐项目:<span class="hong"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></span></div>
-                        <div class="tj_right">
-                        	<div class="tj_jd">融资进度：<c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</div>
-                             <div class="tj_jd_pic"><div class="progress_80"><div class="progress_bar" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div></div></div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="xq_table">
-                    <a href="product/getProductByid?id=${s.id}" title="${s.projectName}">
-                        <div class="xq01">
-                            <div class="xq01_tit">年化收益</div>
-                            <div class="xq01_nr hong">${s.yearIncome}%</div>
-                        </div>
-                        <div class="xq02">
-                            <div class="xq01_tit">融资金额</div>
-                            <div class="xq01_nr">${s.financingMoney}万</div>
-                        </div>
-                        <div class="xq03">
-                            <div class="xq01_tit">还款日期</div>
-                            <div class="xq01_nr">${s.repaymentTime}</div>
-                        </div>
-                        <div class="xq04">
-                            <div class="xq01_tit">企业等级</div>
-                            <div class="xq04_nr"><img src="<%=path%>/images/qualityRate_${s.qualityRating}.jpg" style="margin-bottom:-3px;"></div>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-            -->
-          
+
             </c:forEach>
         </c:if>
        
@@ -231,29 +195,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 var navIndex=0;
 
-	// if(var navIndex!=null&&navIndex!=-1)$(".nav_big li").eq(0).addClass("bd_btom");
-	
-/*
-    $(".header li").mouseover(function(){ 
-      var index=$(this).index();
-      $('.top div').eq(index).show();
-
-    $(this).addClass('head_red').siblings().removeClass('head_red');     
-    }).mouseout(function(){
-       var index=$(this).index();
-       $('.top div').eq(index).hide();
-    });
-
-    $(".top div").mouseover(function(){ 
-      var index=$(this).index();
-      $(this).show();
-     
-    }).mouseout(function(){
-       var index=$(this).index();
-       $(this).hide();
-    });
-
-*/
 
 $(document).ready(function(){
 	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");

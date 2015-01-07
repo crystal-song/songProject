@@ -457,6 +457,9 @@ public class GateController {
 		List<TProduct> lis = productService.queryProductByNumber(TtransferInfo
 				.getEnterpriseNumber());
 		TProduct t = lis.get(0);
+		if(t.isLine()==false){
+			return "redirect:/product/allProduct";
+		}
 		Rest rest = new Rest();
 
 		Object o = request1.getSession().getAttribute("name");
@@ -503,7 +506,6 @@ public class GateController {
 		String s = rest.postRestful("/rest/yeepay/create", map);
 		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 		if (r.isSuccess()){
-
 			return doSign(request, f.getOnSubmit() + "/bha/toTransfer", model);
 		}else{
 			return "error";
@@ -780,6 +782,9 @@ public class GateController {
 			}
 			List<TProduct> lis = productService.queryProductByNumber(id);
 			TProduct t = lis.get(0);
+			if(t.isLine()==false){
+				return "redirect:/product/allProduct";
+			}
 			if(t.getRealityMoney()+amount > t.getFinancingMoney()*10000 ){
 				return "投资金额不能超过可投资金额";
 			}else{

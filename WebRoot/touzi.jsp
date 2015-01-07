@@ -30,8 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input type="hidden"   name="financingMoney" id="financingMoney"  value="${product.financingMoney}" />
 <input type="hidden"   name="financingPeriod" id="financingPeriod" value="${product.financingPeriod}" />
 <input type="hidden"   name="financingProgress" id="financingProgress" value="${product.financingProgress}" /> 
-<input type="hidden"   name="projectStatus" id="projectStatus" value="${product.projectStatus}" /> 
-
+<input type="hidden"   name="projectStatus" id="projectStatus" value="${product.projectStatus}" />
+    <input type="hidden" class="now" id="now" value="${now}">
 <input name="imgbtn"  id="imgbtn"   type="submit"  value="查询" />
 <!--  <button id="update" ></button> --> 
  
@@ -117,39 +117,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <c:if test="${ not empty list}">
             <c:forEach var="s" items="${list}" varStatus="i">
           <li>
-          <c:if test="${s.enterpriseNumber=='ZTH011417486977120'}">
-           <div class="floor_num01">
-                 <a class="floor_img01" href="getProductByid?id=${s.id}">${s.projectPicture}
-                  <div class="hot"></div>
-                  <!--  <div class="last_time01">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div>-->
-                  <div class="last_time01">年化收益率:<strong>&nbsp;&nbsp;${s.yearIncome}%</strong></div>
-                 </a>
-                 <a class="shuoming01" href="getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a>
-                 <div class="aim01">
-                   <span style="color:#a4a4a4;">目标：</span>
-                   <span><%-- ${s.financingPeriod}个月 --%>30天</span>
-                   <span style="width:80px; margin-right:0">￥&nbsp;${s.financingMoney}万元</span>
-                   <a>还款中</a>
-                 </div>
-                 <div class="loding_bar">
-                 <div class="l_b" style="width:100%" title="融资进度：100%"></div>
-                 </div>
-                 <div class="floor_bottom01">
-                   <span style="float:left; margin-left:3%;"><a class="baifenbi01" style="float:left; text-align:left;">100%</a>
-                   <a style="float:left; color:#a4a4a4;">已达</a></span>
-                   <span style="display:none" ><a class="baifenbi01" style="width:80px; float:left; text-align:left;">￥&nbsp;&nbsp;50万元</a><a style="color:#a4a4a4; text-align:left; float:left;">已筹资</a>
-                   </span>
-                   <span style="float:right; margin-right:3%;"><a class="baifenbi01" style="float:right; text-align:right;">${s.yearIncome}%</a>
-                   <a style="float:right; color:#a4a4a4;">年化收益率</a></span>
-                 </div>
-                 <div class="botm_btn01">    
-                  <a href="getProductByid?id=${s.id}" class="btn_org">了解详情</a>
-                 </div>
-            </div> 
-          </c:if>
-           <c:if test="${s.enterpriseNumber!='ZTH011417486977120'}">
+
             <div class="floor_num01">
-                 <a class="floor_img01" href="getProductByid?id=${s.id}">${s.projectPicture}
+
+                <input type="hidden" class="open_time" id="start_time_${s.id}" value="${s.financeTime}">
+
+                <a class="floor_img01" href="getProductByid?id=${s.id}">${s.projectPicture}
                   <div class="hot"></div>
                   <!--  <div class="last_time01">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div>-->
                   <div class="last_time01">年化收益率:<strong>&nbsp;&nbsp;${s.yearIncome}%</strong></div>
@@ -159,14 +132,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span style="color:#a4a4a4;">目标：</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
                    <span style="width:80px; margin-right:0">￥&nbsp;${s.financingMoney}万元</span>
-                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'还款中':'已完成' }</a>
+                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' }</a>
                  </div>
                  <div class="loding_bar">
-                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
+                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress*100<100?s.financingProgress==null?0:s.financingProgress*100:100}</c:if>%" title="融资进度：${s.financingProgress*100}%"></div>
                  </div>
                  <div class="floor_bottom01">
                   <c:if test="${s.projectStatus!=1 }">
-                   <span style="float:left; margin-left:3%;"><a class="baifenbi01" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
+                   <span style="float:left; margin-left:3%;"><a class="baifenbi01" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress*100}%</a>
                    <a style="float:left; color:#a4a4a4;">已达</a></span>
                   </c:if>
                   <c:if test="${s.projectStatus==1 }">
@@ -178,14 +151,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span style="float:right; margin-right:3%;"><a class="baifenbi01" style="float:right; text-align:right;">${s.yearIncome}%</a>
                    <a style="float:right; color:#a4a4a4;">年化收益率</a></span>
                  </div>
-                 <div class="botm_btn01">    
-                   <c:if test="${s.projectStatus==2 }">           
+                 <div class="botm_btn01">
+                   <c:if test="${s.projectStatus==2 }">
                    <a href="getProductByid?id=${s.id}">我要投</a>
                    </c:if>
                   <a href="getProductByid?id=${s.id}" class="btn_org">了解详情</a>
                  </div>
-            </div> 
-            </c:if>
+            </div>
+
             </li>
              </c:forEach>
                </c:if>

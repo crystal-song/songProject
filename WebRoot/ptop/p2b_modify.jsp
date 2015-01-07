@@ -349,6 +349,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</p>
                     <dt></dt>
                 </li>              
+                 <li>
+                <dd>上线/下线属性：</dd>
+                 <p>
+                      <label>
+                        <input type="checkbox" name="line" id="line"   value="1"  />
+                        <span>上线项目（项目显示）</span></label>
+                        <input type="hidden" id="line1" value="${product1.line }"></input>
+				</p>
+                    <dt></dt>
+                </li>              
                 <li>
                     <dd>平台费用：</dd>
                     <input type="number" name="platformFee"  id="platformFee" value="${product1.platformFee}"  />
@@ -393,6 +403,9 @@ $(document).ready(function(){
 	}
 	if($('#buyType1').val()==1){
 		$('#buyType').attr('checked',true);
+	}
+	if($('#line1').val()=='true'){
+		$('#line').attr('checked',true);
 	}
 	   
 	});
