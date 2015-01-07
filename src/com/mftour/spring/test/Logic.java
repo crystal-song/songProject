@@ -36,7 +36,8 @@ public class Logic {
 	public void test() throws Exception{
 //		YeepayAccountInfo accountInfo =  YeePay.getAccountInfo("zhaoxinxiong");
 //		assertEquals(accountInfo.getCode(), "1");
-		YeePay.getQuery("1417681857270");
+		//YeePay.getQuery("1417681857270");
+		YeePay.getAccountInfo("601522539");
 		//boolean s = YeePay.doLoan(19);
 		//JsonBaseBean vo = JSON.parseObject(s, JsonBaseBean.class);
 	    //assertEquals(s, true);

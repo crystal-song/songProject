@@ -12,7 +12,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 var navIndex=6;
 var index=4;
-
 </script>
 </head>
 

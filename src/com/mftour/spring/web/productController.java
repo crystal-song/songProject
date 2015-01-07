@@ -84,7 +84,7 @@ public class productController {
 			
 			List<TNews> list3=ptopService.getRepaymentNoticeByChannel();
 			model.addAttribute("list3", list3);
-		
+		model.addAttribute("now", System.currentTimeMillis());
 
 		return "touzi";
 
@@ -131,7 +131,9 @@ public class productController {
 		List<TTransferInfo> listonline = new ArrayList<TTransferInfo>();
 		listonline = ptopService.queryTransferInfoByNumber(page,product1.getEnterpriseNumber());
 		model.addAttribute("listonline", listonline);
+
 		}
+
 
 		List<TInterestRate> li = ptopService
 				.queryTInterestRateByNumber(product1.getEnterpriseNumber());

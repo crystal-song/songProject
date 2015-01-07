@@ -59,23 +59,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">任何一方违反本合同的约定，使得本合同的全部或部分不能履行，均应承担违约责任，并赔偿对方因此遭受的损失（包括由此产生的诉讼费和律师费）；如多方违约，根据实际情况各自承担相应的责任。违约方应赔偿因其违约而给守约方造成的损失，包括合同履行后可以获得的利益，但不得超过违反合同一方订立合同时可以预见或应当预见的因违反合同可能造成的损失。</div>
 			<div class="title01">第七条 争议的处理</div>
 			<div class="section">在本合同履行过程中，如发生任何争执或纠纷，且协商不成的，双方约定向乙方住所地人民法院提起诉讼。</div>
-			<!-- 
-			<div class="section">2、发生下列情形之一的，本网站有权随时中止或终止向用户提供服务：</div>
-			<div class="sub_section">(1)对于网络设备进行必要的保养及施工时；</div>
-			<div class="sub_section">(2)出现突发性的网络设备故障时；</div>
-			<div class="sub_section">(3)本网站所使用的网络通信设备由于不明原因停止，无法提供服务时；</div>
-			<div class="sub_section">(4)由于不可抗力因素致使本网站无法提供线上服务时；</div>
-			<div class="sub_section">(5)相关政府机构的要求。</div>
-			<div class="section">3、发生下列情形之一的，本网站有权随时中止或终止向用户提供服务而无需通知用户：</div>
-			<div class="sub_section">(1)用户提供的个人资料不准确，不真实，不合法有效；</div>
-			<div class="sub_section">(2)用户使用任何第三方程序进行登录或使用服务；</div>
-			<div class="sub_section">(3)用户滥用所享受的权利；</div>
-			<div class="sub_section">(4)用户有损害其他用户的行为；</div>
-			<div class="sub_section">(5)用户有违背社会风俗和社会道德的行为；</div>
-			<div class="sub_section">(6)用户有违反本协议中相关规定的行为。</div>
-			<div class="section">4、如因系统维护或升级的需要而需暂停网络服务，本网站将尽可能事先进行通告。</div>
-			<div class="section">5、终止用户服务后，用户使用本网站服务的权利立即终止。从终止用户服务即刻起，本网站不再对用户承担任何责任和义务。</div>
-			*/ -->
 			<div class="title01">第八条 其他事项</div>
 			<div class="section">8.1 如果甲方出现出借资金的继承或赠与，必须由主张权利的继承人或受赠人向乙方出示经国家权威机关认证的继承或赠与权利归属证明文件，乙方确认后方予协助进行资产的转移，由此产生的相关税费，由主张权利的继承人或受赠人，向其主管税务机关申报、缴纳，乙方不负责相关事宜处理；</div>
 			<div class="section">8.2 本合同的传真件、复印件、扫描件等有效复本的效力与本合同原件效力一致；</div>

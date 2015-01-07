@@ -83,40 +83,7 @@ div1_screen.style.height=hei +'px';
 div2_screen.style.height=hei +'px';
 div3_screen.style.height=hei +'px';
 div4_screen.style.height=hei +'px'; 
-/*
-div1_screen.style.width=wid  +'px'; 
-div2_screen.style.width=wid  +'px'; 
-div3_screen.style.width=wid  +'px'; 
-div4_screen.style.width=wid  +'px';
-*/
 
-//div1_screen.style.height=hei +'px'; 
-
-    // var hei=window.innerHeight;
-    //var wid=window.innerWidth;
-
-    //var div1=document.getElementById("div1");
-    //  var div2=document.getElementById("div2");
-    // var div3=document.getElementById("div3");
-    // var div4=document.getElementById("div4");  
-/*
-        var hei = document.documentElement.clientHeight||document.body.height;
-        var wid = document.documentElement.clientWidth||document.body.width;
-        var div1_screen = document.getElementById('div1');
-        var div2_screen = document.getElementById('div2');
-        var div3_screen = document.getElementById('div3');
-        var div4_screen = document.getElementById('div4');
-        div1_screen.style.height=hei +'px'; 
-        div2_screen.style.height=hei +'px';
-        div3_screen.style.height=hei +'px';
-        div4_screen.style.height=hei +'px'; 
-        div1_screen.style.width=wid  +'px'; 
-        div2_screen.style.width=wid  +'px'; 
-        div3_screen.style.width=wid  +'px'; 
-        div4_screen.style.width=wid  +'px'; 
-        // alert(div1_screen.style.width)
-        //alert(div2_screen.style.height)
- */       
 
 </script>
 

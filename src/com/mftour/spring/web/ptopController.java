@@ -214,7 +214,7 @@ public class ptopController {
 		if (RealityMoney == null || RealityMoney == 0.0) {
 			t.setRealityMoney(investmentInfo.getInvestmentAmount());
 			t.setFinancingProgress(investmentInfo.getInvestmentAmount()
-					/ t.getFinancingMoney() * 100);
+					/ t.getFinancingMoney() );
 		} else {
 			/*
 			 * Double money=RealityMoney+investmentInfo.getInvestmentAmount();
@@ -225,7 +225,7 @@ public class ptopController {
 			Double d = ptopService.querySum(investmentInfo
 					.getEnterpriseNumber());
 			t.setRealityMoney(d);
-			t.setFinancingProgress(d / t.getFinancingMoney() * 100);
+			t.setFinancingProgress(d / t.getFinancingMoney());
 		}
 
 
@@ -256,15 +256,13 @@ public class ptopController {
 			systemLogService.saveSystemLog(request, "后台信息", "删除产品", 1);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("err"+e);
 			systemLogService.saveSystemLog(request, "后台信息", "删除产品", 0);
 			/* map.put("mes", "操作失败"); */
 			throw e;
 		}
 
-		/* model.addAttribute("name",user.getName()); */
 
-		// request.getSession().setAttribute("users", username);
 		return "ptop/p2b_manage";
 	}
 
@@ -287,7 +285,7 @@ public class ptopController {
 			Double investmentAmount = investmentInfo.getInvestmentAmount();
 			Double r = realityMoney - investmentAmount;
 			Double t = r / product.getFinancingMoney();
-			product.setFinancingProgress(t * 100);
+			product.setFinancingProgress(t);
 			product.setRealityMoney(r);
 			ptopService.addOrUpdate(product);
 
@@ -305,7 +303,8 @@ public class ptopController {
 			/* model.addAttribute("mes", "操作成功"); */
 
 		} catch (Exception e) {
-			e.printStackTrace();
+
+			logger.error("err" + e);
 			systemLogService.saveSystemLog(request, "后台信息", "删除投资信息", 0);
 			/* map.put("mes", "操作失败"); */
 			throw e;
@@ -371,7 +370,8 @@ public class ptopController {
 			systemLogService.saveSystemLog(request, "后台信息", "频道管理", 1);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+
+			logger.error("err" + e);
 			/* map.put("mes", "操作失败"); */
 			throw e;
 		}
@@ -421,7 +421,8 @@ public class ptopController {
 
 			systemLogService.saveSystemLog(request, "后台信息", "添加频道", 1);
 		} catch (Exception e) {
-			e.printStackTrace();
+
+			logger.error("err" + e);
 			systemLogService.saveSystemLog(request, "后台信息", "添加频道", 0);
 			/* map.put("mes", "操作失败"); */
 			throw e;
@@ -456,7 +457,8 @@ public class ptopController {
 			systemLogService.saveSystemLog(request, "后台信息", "查询新闻通过频道", 1);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+
+			logger.error("err" + e);
 			systemLogService.saveSystemLog(request, "后台信息", "查询新闻通过频道", 0);
 			/* map.put("mes", "操作失败"); */
 			throw e;
@@ -505,7 +507,8 @@ public class ptopController {
 			model.addAttribute("list1", list1);
 			systemLogService.saveSystemLog(request, "后台信息", "修改新闻", 1);
 		} catch (Exception e) {
-			e.printStackTrace();
+
+			logger.error("err" + e);
 			/* map.put("mes", "操作失败"); */
 			throw e;
 		}
@@ -529,7 +532,8 @@ public class ptopController {
 			model.addAttribute("list1", list1);
 			systemLogService.saveSystemLog(request, "后台信息", "删除新闻", 1);
 		} catch (Exception e) {
-			e.printStackTrace();
+
+			logger.error("err"+e);
 			/* map.put("mes", "操作失败"); */
 			throw e;
 		}

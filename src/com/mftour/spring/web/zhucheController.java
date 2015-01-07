@@ -74,7 +74,7 @@ public class zhucheController {
 
 		List<TNews> list3 = ptopService.getRepaymentNoticeByChannel();
 		model.addAttribute("list3", list3);
-
+		model.addAttribute("now", System.currentTimeMillis());
 		return "index";
 	}
 

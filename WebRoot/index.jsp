@@ -7,13 +7,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>中租宝 | 最稳健的P2B理财平台</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 <body>
 
 <!-- top start  -->
-
+<input type="hidden" class="now" id="now" value="${now}">
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="clear"></div>
@@ -83,16 +81,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <c:forEach var="s" items="${list}" varStatus="i">   
          <c:if test="${s.enterpriseNumber!='ZTH011417486977120'}">
          <li>
+             <input type="hidden" class="open_time" id="start_time_${s.id}" value="${s.financeTime}">
               <div class="floor_num">
                  <a class="floor_img" href="product/getProductByid?id=${s.id}">
                  ${s.projectPicture}
                  <div class="hot"></div>
                  <!-- <div class="last_time">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div> -->
                  <div class="last_time">距离开放购买还有：
-                    <span id="t_d"></span>
-                    <span id="t_h"></span>
-                    <span id="t_m"></span>
-                    <span id="t_s"></span>
+                    <span id="t_d_${s.id}"></span>
+                    <span id="t_h_${s.id}"></span>
+                    <span id="t_m_${s.id}"></span>
+                    <span id="t_s_${s.id}"></span>
                  </div>
                  </a>
                  <h3><a class="shuoming" href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></h3>
@@ -128,81 +127,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
             </li>
       </c:if>
-         <c:if test="${s.enterpriseNumber=='ZTH011417486977120'}">
-         <li>
-              <div class="floor_num">
-                 <a class="floor_img" href="product/getProductByid?id=${s.id}">
-                 ${s.projectPicture}
-                 <div class="hot"></div>
-                 <!-- <div class="last_time">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div> -->
-                 <div class="last_time">年化收益率:<strong>&nbsp;&nbsp;${s.yearIncome}%</strong></div>
-                 </a>
-                 <h3><a class="shuoming" href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></h3>
-                 <div class="aim">
-                   <span style="color:#a4a4a4;">目标:</span>
-                   <span><%-- ${s.financingPeriod}个月 --%>30天</span>
-                   <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
-                   <a>还款中</a>
-                 </div>
-                 <div class="loding_bar">
-                 <div class="l_b" style="width:100%" title="融资进度：100%"></div>
-                 </div>
-                 <div class="floor_bottom">
-                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">已达</a><a class="baifenbi" style="float:left; text-align:left;">100%</a>
-                   </span>
-                  
-                   <span style="display:none"  ><a style="color:#a4a4a4; float:left; ">已筹资</a><a class="baifenbi" style="float:left; text-align:left;">¥&nbsp;&nbsp;<c:if test='${empty s.realityMoney}'>0</c:if> ${s.realityMoney}</a>
-                   </span>
-                   <span style="float:right; margin-right:3%;"><a style="float:right; color:#a4a4a4;" >年化收益率</a><a class="baifenbi" style="float:right; text-align:right;">${s.yearIncome}%</a>
-                  </span>
-                 </div>
-                 <div class="botm_btn">
-                  <a href="product/getProductByid?id=${s.id}" class="btn_org">了解详情</a>
-                 </div>
-              </div>
-            </li>
-      </c:if>
-        
-	 <!-- 
-			<div class="clear_height"></div>
-            <div class="ind_list">
-            
-            	<%-- <div class="xq_left"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}"><img src="<%=path%>/images/sy_63.jpg" /></a></div> --%>
-            	<div class="xq_left"><a href="product/getProductByid?id=${s.id}">${s.projectPicture}</a></div>
-                <div class="ind_right">
-                	<div class="tuijian">
-                    	<div class="tj_left">推荐项目:<span class="hong"><a href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></span></div>
-                        <div class="tj_right">
-                        	<div class="tj_jd">融资进度：<c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</div>
-                             <div class="tj_jd_pic"><div class="progress_80"><div class="progress_bar" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div></div></div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="xq_table">
-                    <a href="product/getProductByid?id=${s.id}" title="${s.projectName}">
-                        <div class="xq01">
-                            <div class="xq01_tit">年化收益</div>
-                            <div class="xq01_nr hong">${s.yearIncome}%</div>
-                        </div>
-                        <div class="xq02">
-                            <div class="xq01_tit">融资金额</div>
-                            <div class="xq01_nr">${s.financingMoney}万</div>
-                        </div>
-                        <div class="xq03">
-                            <div class="xq01_tit">还款日期</div>
-                            <div class="xq01_nr">${s.repaymentTime}</div>
-                        </div>
-                        <div class="xq04">
-                            <div class="xq01_tit">企业等级</div>
-                            <div class="xq04_nr"><img src="<%=path%>/images/qualityRate_${s.qualityRating}.jpg" style="margin-bottom:-3px;"></div>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-            -->
-          
             </c:forEach>
         </c:if>
        
@@ -268,33 +192,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 var navIndex=0;
-
-	// if(var navIndex!=null&&navIndex!=-1)$(".nav_big li").eq(0).addClass("bd_btom");
-	
-/*
-    $(".header li").mouseover(function(){ 
-      var index=$(this).index();
-      $('.top div').eq(index).show();
-
-    $(this).addClass('head_red').siblings().removeClass('head_red');     
-    }).mouseout(function(){
-       var index=$(this).index();
-       $('.top div').eq(index).hide();
-    });
-
-    $(".top div").mouseover(function(){ 
-      var index=$(this).index();
-      $(this).show();
-     
-    }).mouseout(function(){
-       var index=$(this).index();
-       $(this).hide();
-    });
-
-*/
-
 $(document).ready(function(){
 	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(0).children("p").addClass("headwd_color")
@@ -306,9 +206,7 @@ $(document).ready(function(){
 		    });
 		    		            
 	});
-</script>
-
-<script type="text/javascript">
+/*daojishi*/
     function getRTime(){
 		//new Date(parseInt("600000"))
         var EndTime= new Date('2015/05/1 10:00:00'); //截止时间 前端路上 http://www.51xuediannao.com/qd63/

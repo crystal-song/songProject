@@ -76,23 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </ul>
             </div>
         <div class="next_list">
-           <!--  <a href="#" class="a1">首页</a>
-           <a href="#" class="a2"></a>
-           <a href="#">1</a>
-           <a href="#">2</a>
-           <a href="#">3</a>
-           <a href="#">4</a>
-           <a href="#">5</a>
-           <a href="#">...</a>
-           <a href="#">20</a>
-           <a href="#" class="a3"></a>
-           <a href="#" class="a4">尾页</a>
-           <span>跳到</span>
-           <span><input type="text" /></span>
-           <span>页</span>
-           <span><input type="submit" class="btn_sub" value="确定"/></span>
-           -->
-           
+
                      
            <div class="num">        															 
 		     <a href="javascript:jumpPage(1)">首页</a> 								 
