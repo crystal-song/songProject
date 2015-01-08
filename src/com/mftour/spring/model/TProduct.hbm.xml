@@ -22,7 +22,7 @@
         <property name="yearIncome" type="java.lang.Double">
             <column name="yearIncome" length="50" />
         </property>
-        <property name="repaymentTime" type="java.lang.String">
+        <property name="repaymentTime" type="java.sql.Timestamp">
             <column name="repaymentTime" length="50" />
         </property>
         <property name="repaymentWay" type="java.lang.String">
@@ -125,7 +125,7 @@
              <property name="margin" type="java.lang.Float">
             <column name="margin" length="10"  default="0"/>
         </property> 
-             <property name="financeTime" type="java.lang.String">
+             <property name="financeTime" type="java.sql.Timestamp">
             <column name="financeTime" length="30"  />
         </property> 
         <property name="line" type="boolean">

@@ -213,11 +213,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="text" name="projectName"  id="projectName"  value="${product1.projectName}"  />
                     <dt>必填项，字数请控制在14个汉字以内。</dt>
                 </li>
-                  <li>
-                    <dd>开始融资时间：</dd>
-                    <input type="date" name="financeTime"  id="financeTime" value="${product1.financeTime}"  class="ui_timepicker" />
-                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
-                </li>
                 
                 <li>
                     <dd>项目图片：</dd>
@@ -233,11 +228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome==null?10:product1.yearIncome}"   min="1" max="100" value="10" step="1" />
                     <dt>用整数表示，如12%则输入12</dt>
                 </li>
-                <li>
-                	 <dd>还款日期：</dd>
-                    <input type="" class="ui_timepicker" name="repaymentTime"  id="repaymentTime" value="${product1.repaymentTime}"  />
-                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
-                </li>
+              
                 <li>
                     <dd>担保机构：</dd>
                     <input type="text" name="guaranteeInstitution"  id="guaranteeInstitution" value="${product1.guaranteeInstitution}"  />
@@ -247,6 +238,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <dd>还款方式：</dd>
                     <input type="text" name="repaymentWay"  id="repaymentWay"  value="${product1.repaymentWay==null?'按月付息、到期还本':product1.repaymentWay}" />
                     <dt>按月付息、到期还本</dt>
+                </li>
+                 <li>
+                    <dd>开始融资时间：</dd>
+                    <input type="" name="financeTimes"  id="financeTime" value="${product1.financeTime}"  class="ui_timepicker" />
+                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
+                </li>
+                  <li>
+                	 <dd>还款日期：</dd>
+                    <input type="" class="ui_timepicker" name="repaymentTimes"  id="repaymentTime" value="${product1.repaymentTime}"  />
+                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
                 </li>
                 <li>
                     <dd>融资金额：</dd>

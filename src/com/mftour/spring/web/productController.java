@@ -55,7 +55,7 @@ public class productController {
 		 List productList=new ArrayList();
 			for(TProduct product1:list){
 				if(product1.getFinanceTime()!=null){
-				long financeTime=new SimpleDateFormat("yyyy-MM-dd").parse(product1.getFinanceTime()).getTime();
+				long financeTime=product1.getFinanceTime().getTime();
 				long currTime=System.currentTimeMillis();
 				if(currTime>=financeTime&&product1.getProjectStatus()==1){
 					product1.setProjectStatus(2);//设置项目状态为融资中

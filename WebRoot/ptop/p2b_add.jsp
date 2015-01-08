@@ -230,13 +230,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                  <li>
                     <dd>开始融资时间：</dd>
-                    <input  type="text"  name="financeTime"  id="financeTime"  class="ui_timepicker"  value=""  />
+                    <input  type="text"  name="financeTimes"  id="financeTime"  class="ui_timepicker"  value=""  />
                     <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
                 </li>
                 <li>
                  <li>
                     <dd>还款日期：</dd>
-                    <input type="" class="ui_timepicker"  name="repaymentTime"  id="repaymentTime" value="${product1.repaymentTime}"  />
+                    <input type="" class="ui_timepicker"  name="repaymentTimes"  id="repaymentTime" value="${product1.repaymentTime}"  />
                     <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
                 </li>
                 <li>

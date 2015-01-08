@@ -1,11 +1,14 @@
 package com.mftour.spring.web;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.mftour.spring.logic.YeePay;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
@@ -23,6 +27,7 @@ import com.mftour.spring.model.TProduct;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.ISystemLogService;
 import com.mftour.spring.service.IptopService;
+
 import org.slf4j.Logger; 
 import org.slf4j.LoggerFactory; 
 
@@ -115,14 +120,14 @@ public class ptopController {
 	
 	@RequestMapping(value = "/addproduct", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String addproduct(Model model, TProduct product,
+	public String addproduct(Model model, TProduct product,@RequestParam("financeTimes") String financeTime,@RequestParam("repaymentTimes") String repaymentTime,
 			HttpServletRequest request) throws Exception {
 
 
 		try {
-
+			product.setFinanceTime(Timestamp.valueOf(financeTime));
+			product.setRepaymentTime(Timestamp.valueOf(repaymentTime));
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-			
 			product.setReleaseTime(df.format(new Date()));
 			if(product.getPlatformFee()==null){
 				product.setPlatformFee((float) 0);

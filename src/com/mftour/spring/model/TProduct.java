@@ -1,5 +1,7 @@
 package com.mftour.spring.model;
 
+import java.sql.Timestamp;
+
 
 
 
@@ -15,7 +17,7 @@ public class TProduct implements java.io.Serializable {
 	    private String enterpriseBusinessIicense;  //企业营业执照号码
 	    private Integer qualityRating;   //信用等级
 	    private Double yearIncome;     //年化收益率         1
-	    private String repaymentTime;  //偿还日期
+	    private Timestamp repaymentTime;  //偿还日期
 	    private String repaymentWay;    //还款方式          5
 	    private Integer financingMoney;   //融资金额         3
 	    private Integer financingPeriod; //融资周期         2
@@ -47,7 +49,7 @@ public class TProduct implements java.io.Serializable {
 	    private Float platformFee;	//平台费用
 	    private Float margin;   //保证金
 
-	    private String financeTime; //开始融资时间
+	    private Timestamp financeTime; //开始融资时间
 	    
 
 	  
@@ -121,10 +123,10 @@ public class TProduct implements java.io.Serializable {
 		public void setYearIncome(Double yearIncome) {
 			this.yearIncome = yearIncome;
 		}
-		public String getRepaymentTime() {
+		public Timestamp getRepaymentTime() {
 			return repaymentTime;
 		}
-		public void setRepaymentTime(String repaymentTime) {
+		public void setRepaymentTime(Timestamp repaymentTime) {
 			this.repaymentTime = repaymentTime;
 		}
 		public String getRepaymentWay() {
@@ -291,10 +293,10 @@ public class TProduct implements java.io.Serializable {
 		public void setMargin(Float margin) {
 			this.margin = margin;
 		}
-		public String getFinanceTime() {
+		public Timestamp getFinanceTime() {
 			return financeTime;
 		}
-		public void setFinanceTime(String financeTime) {
+		public void setFinanceTime(Timestamp financeTime) {
 			this.financeTime = financeTime;
 		}
 		

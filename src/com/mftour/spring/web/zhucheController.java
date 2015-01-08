@@ -44,7 +44,7 @@ public class zhucheController {
 		List productList=new ArrayList();
 		for(TProduct product:list){
 			if(product.getFinanceTime()!=null){
-			long financeTime=new SimpleDateFormat("yyyy-MM-dd").parse(product.getFinanceTime()).getTime();
+			long financeTime=product.getFinanceTime().getTime();
 			long currTime=System.currentTimeMillis();
 			if(currTime>=financeTime&&product.getProjectStatus()==1){
 				product.setProjectStatus(2);//设置项目状态为融资中
