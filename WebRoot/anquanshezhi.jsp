@@ -248,8 +248,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
+
 <script type="text/javascript">
     var navIndex=3;  
     var indexs=0;
