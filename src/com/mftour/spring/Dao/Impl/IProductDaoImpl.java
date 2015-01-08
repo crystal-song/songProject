@@ -253,7 +253,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 			}
 				sb.append(" and product.existType = 0 ");
 
-			sb.append(" order by product.releaseTime desc ");
+			sb.append(" order by  (case when product.buyType in (1) then 0 else 1 end),product.financingProgress asc, product.releaseTime desc ");
 
 
 		}
@@ -305,7 +305,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TProduct> queryProductByType(Integer type) {
-		String hql = "from TProduct tproduct where tproduct.recommendType = :recommendType and  tproduct.existType = :existType  and tproduct.line=1 order by tproduct.releaseTime desc";
+		String hql = "from TProduct tproduct where tproduct.recommendType = :recommendType and  tproduct.existType = :existType  and tproduct.line=1 order by (case when tproduct.buyType in (1) then 0 else 1 end),tproduct.financingProgress asc,tproduct.releaseTime desc";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("recommendType", type);
 		query.setParameter("existType", "0");
