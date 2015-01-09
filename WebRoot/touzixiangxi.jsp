@@ -41,10 +41,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <span class="bianhao_right">项目编号：${product1.enterpriseNumber}  </span>
     </p>
      <div class="pro_msg">
-       <div class="pro_pic">${product1.projectPicture}</div>
-       <div class="pro_con01" style="display:none;">
-       
-       
+       <div class="pro_pic">${product1.projectPicture}
+       <div class="last_time">距离开放购买还有：
+                    <span id="t_d_${s.id}"></span> 
+                    <span id="t_h_${s.id}"></span>
+                    <span id="t_m_${s.id}"></span>
+                    <span id="t_s_${s.id}"></span>
+                 </div>
        </div>
        <div class="pro_con">
        <ul>
@@ -68,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
               <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}万元</strong></span>
               <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
-              <span style="width:90px;"><strong>${product1.repaymentTime}</strong></span>
+              <span style="width:90px;"><strong><fmt:formatDate value="${product1.repaymentTime}" pattern="yyyy-MM-dd" /></strong></span>
            </c:if>
            </li>
            <li>
