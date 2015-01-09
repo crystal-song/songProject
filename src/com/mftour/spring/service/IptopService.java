@@ -2,6 +2,7 @@ package com.mftour.spring.service;
 
 import java.util.List;
 
+import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
@@ -15,7 +16,7 @@ import com.mftour.spring.util.Page;
 public interface IptopService {
 
 	public void addOrUpdate(TProduct tproduct) throws Exception;
-
+	void addOrUpdate(Communal communal) throws Exception;
 	public TAdministrator getAdministratorByAccount(String account)
 			throws Exception;
 
@@ -62,4 +63,5 @@ public interface IptopService {
 
 	public List<TInterestRate> queryTInterestRateByNumber(String Number);
 	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo);
+	public List<TProduct> queryHotproject() throws Exception;
 }

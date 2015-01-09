@@ -28,16 +28,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="shuju">
        <div class="new_production">
          <a class="images_pro" href="product/getProductByid?id=56"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/shengxian03.jpg"></a>
+         <c:if test="${t!=null }">
          <div class="meier_wd">                
-           <h3><a href="product/getProductByid?id=56" style="color:#ff453e">百家社区生鲜便利连锁店01期</a></h3>       	
+           <h3><a href="product/getProductByid?id=56" style="color:#ff453e">${t.projectName}</a></h3>       	
            <ul class="mei_msg">
-            <li><span>融资金额</span><span class="wd_size"><strong>5,000,00</strong></span></li>
-            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">14%</strong></span></li>
-            <li><span>项目状况</span><span class="wd_size" style="font-size:12px;">还款中</span></li>
+            <li><span>融资金额</span><span class="wd_size"><strong>${t.financingMoney}万元</strong></span></li>
+            <li><span>年化收益</span><span class="wd_size"><strong class="wd_size_col">${t.yearIncome }%</strong></span></li>
+            <li><span>项目状况</span><span class="wd_size" style="font-size:12px;">${t.projectStatus==1?'预热中':t.projectStatus==2?'融资中':t.projectStatus==3?'已满标':t.projectStatus==4?'还款中':'已完成' }</span></li>
             <li><span>信用等级</span><span class="wd_size new_span"><img  src="<%=path%>/img/images-2014-11/star_5.png"></span></li>
-            <li><a href="product/getProductByid?id=56" class="touzi_mei">了解详情</a></li>
+            <li><a href="product/getProductByid?id=${t.id }" class="touzi_mei">了解详情</a></li>
            </ul>
          </div>
+       </c:if>
        </div>
        <div class="newpro_right">
          <dl>

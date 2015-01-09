@@ -2,6 +2,7 @@ package com.mftour.spring.Dao;
 
 import java.util.List;
 
+import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
@@ -61,4 +62,7 @@ public interface IptopDao {
 
 	public List<TInterestRate> queryTInterestRateByNumber(String Number);
 	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo);
+
+	public void addOrUpdate(Communal communal) throws Exception;
+	public List<TProduct> queryHotproject() throws Exception;
 }
