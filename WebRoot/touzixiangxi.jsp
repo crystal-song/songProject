@@ -45,10 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="pro_msg">
        <div class="pro_pic">${product1.projectPicture}
        <div class="last_time">距离开放购买还有：
-                    <span id="t_d_${s.id}"></span> 
-                    <span id="t_h_${s.id}"></span>
-                    <span id="t_m_${s.id}"></span>
-                    <span id="t_s_${s.id}"></span>
+                    <span id="t_d"></span> 
+                    <span id="t_h"></span>
+                    <span id="t_m"></span>
+                    <span id="t_s"></span>
                  </div>
        </div>
        <div class="pro_con">
@@ -503,14 +503,43 @@ function mysubmit(){
  	});
  	
  	 $(".jisuan").click(function(){
- 		 $("#dialog01").css("display","block");
- 		 
- 		 
+ 		 $("#dialog01").css("display","block");		 
  	 });
  	$(".right_cha").click(function(){
  		$("#dialog01").css("display","none");
  	});
  	
+/*daojishi*/
+ 	 
+     function getRTime(){
+
+         var val01=$("#open_time").val();
+         var a=val01.replace(/\-/g,"/");
+             a=a.substr(0,val01.length-2);
+         var opentime=new Date(a)
+         //var nowtime=$("#now").val();
+         var nowtime=new Date();
+         var t =opentime - nowtime;
+         var d=Math.floor(t/1000/60/60/24);        
+         var h=Math.floor(t/1000/60/60%24);        
+         var m=Math.floor(t/1000/60%60); 
+         var s=Math.floor(t/1000%60);  
+          if(d+h+m+s<0){
+         	$('.last_time').html("已开放购买");
+          	clearInterval(timer);
+          }        
+          $('#t_d').text(d+"天");
+          $('#t_h').text(h+"时");
+          $('#t_m').text(m+"分");
+          $('#t_s').text(s+"秒"); 
+           if(d==0 && h<24){
+          	$('#t_s').show();
+          	$('#t_d').hide();          	
+          }else{
+         	$('#t_s').hide()
+          } 
+     } 	
+        var timer= setInterval(getRTime,1000);
  });  
  
  /*获取投资额焦点*/
