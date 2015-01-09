@@ -202,6 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<form  action="<%=path%>/Login/addproduct" id="form" method="post"   class="box"  style="display:'none'"   >
     	<div class="dataForm">
     <input type="hidden" name="mes" id="mes" value="${mes}" />
+    <input type="hidden" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />
     <input type="hidden" name="enterpriseCertificate" id="enterpriseCertificate" value="" />
     <input type="hidden" name="projectPicture" id="projectPicture" value="" />
     <input type="hidden" name="id" id="id" value="${product1.id}" />
@@ -381,7 +382,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="number" name="margin"  id="margin" value="${product1.margin}"  />
                     <dt></dt>
                 </li>
-              
+              	 <dd>热门项目：</dd>
+                 <p>
+                      <label>
+                        <input type="checkbox" name="hot" id="hot"   value="1"  />
+                        <span>热门</span></label>
+				</p>
+                    <dt></dt>
+                </li>      
                 <li>
                 <dd></dd>
                  <input type="button"  title="提交"  onclick="getContent()"   value="提交" class="b"/>

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
@@ -121,7 +122,7 @@ public class ptopController {
 	@RequestMapping(value = "/addproduct", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String addproduct(Model model, TProduct product,@RequestParam("financeTimes") String financeTime,@RequestParam("repaymentTimes") String repaymentTime,
-			HttpServletRequest request) throws Exception {
+			@RequestParam("hot") String hot,HttpServletRequest request) throws Exception {
 
 
 		try {
@@ -129,6 +130,10 @@ public class ptopController {
 			product.setRepaymentTime(Timestamp.valueOf(repaymentTime));
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 			product.setReleaseTime(df.format(new Date()));
+			if(hot.equals("1")){
+				Communal communal=new Communal("热门项目",product.getEnterpriseNumber());
+				ptopService.addOrUpdate(communal);
+			}
 			if(product.getPlatformFee()==null){
 				product.setPlatformFee((float) 0);
 			}

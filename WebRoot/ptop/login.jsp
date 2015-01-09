@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="zh_right">
         	<div><input name="name"  id="name" type="text" class="zh_wby" /></div>
             <div><input name="password" id="password"  type="text" class="zh_wby" /></div>
-            <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="submit" class="btn_login" onclick="$('#form').submit();" >　<%-- <a href="<%=path%>/reg.jsp"><img src="images/dl01_05.jpg" /></a> --%>
+            <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="submit" class="btn_login"  >　<%-- <a href="<%=path%>/reg.jsp"><img src="images/dl01_05.jpg" /></a> --%>
             </div>
         </div>
          
