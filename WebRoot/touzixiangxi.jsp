@@ -24,6 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
+<input type="hidden" id="now" value="${now}">
+<input type="hidden" id="open_time" value="${product1.financeTime}">
 <!-- top end  -->
 <div class="clear"></div>
 <div class="tou_con">
