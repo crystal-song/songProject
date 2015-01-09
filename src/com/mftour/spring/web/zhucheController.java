@@ -60,12 +60,11 @@ public class zhucheController {
 			productList.add(product);
 		}
 		model.addAttribute("list", productList);
-		
-		/*
-		 * List<TNews> list1=ptopService.getNewsbyRecommend();
-		 * model.addAttribute("list1", list1);
-		 */
-		
+		List<TProduct> hotlist=ptopService.queryHotproject();
+		if(hotlist!=null){
+		TProduct hot=hotlist.get(0);
+		model.addAttribute("t", hot);
+		}
 		List<TNews> list1 = ptopService.getNewsbyTime();
 		model.addAttribute("list1", list1);
 

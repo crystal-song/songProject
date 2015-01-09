@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mftour.spring.Dao.IProductDao;
 import com.mftour.spring.Dao.IptopDao;
+import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
@@ -30,7 +31,12 @@ public class PtopServiceImpl implements IptopService {
 		ptopDao.addOrUpdate(tproduct);
 
 	}
-
+	public void addOrUpdate(Communal communal) throws Exception{
+		ptopDao.addOrUpdate(communal);
+	}
+	public List<TProduct> queryHotproject() throws Exception{
+		return ptopDao.queryHotproject();
+	}
 	@Override
 	public TAdministrator getAdministratorByAccount(String account)
 			throws Exception {

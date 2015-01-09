@@ -413,7 +413,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="number" name="margin"  id="margin" value="${product1.margin}"  />
                     <dt></dt>
                 </li>
-               
+                 <li>
+                <dd>热门项目：</dd>
+                 <p>
+                      <label>
+                        <input type="checkbox" name="hot" id="hot"   value="1"  />
+                        <span>热门</span></label>
+				</p>
+                    <dt></dt>
+                </li>              
+                 <li>
                 <dd></dd>
                  <input type="button"  title="提交"  onclick="getContent()"   value="提交" class="b"/>
                 <dt>请仔细检查后再提交！！！</dt>

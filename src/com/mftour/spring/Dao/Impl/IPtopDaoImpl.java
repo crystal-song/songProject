@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.mftour.spring.Dao.IptopDao;
+import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
@@ -25,7 +26,16 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		getHibernateTemplate().saveOrUpdate(tproduct);
 
 	}
-
+	@Override
+	public void addOrUpdate(Communal communal) throws Exception {
+		getHibernateTemplate().saveOrUpdate(communal);
+		
+	}
+	public List<TProduct> queryHotproject(){
+		String hql="from TProduct product where product.enterpriseNumber in(select communal.valuess from Communal communal where keyss='热门项目')";
+		Query query=getSession().createQuery(hql);
+		return query.list();
+	}
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List getAdministratorByAccount(String account) throws Exception {
