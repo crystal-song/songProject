@@ -56,15 +56,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
           <div class="form-group" >
+          <%-- //${buyAmount} --%>
             <label for="paymentAmount">投资金额：</label><input type="text"
-              class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
+              class="form-control" id="paymentAmount" name="paymentAmount" value="1200" />
           </div>
           </li>
           <li>
           <div class="form-group" >
             <label for="#">预期收益率：</label><input type="text"
-              class="form-control" id="preview_rate" name="preview_rate" value="" />
-            <span>查看收益利率表</span>
+              class="form-control pre_bac" id="preview_rate" name="preview_rate" value="" />
+            <span class="lilv_table">查看收益利率表</span>
           </div>
           
           </li>
@@ -77,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <td bgcolor="#fff" align="center"><b>利率增幅</b></td>
                   <td bgcolor="#fff" align="center"><b>阶段上限金额</b></td>
                  </tr>                 
-                 <c:if test="${ not empty li}">
+                  <%-- <c:if test="${ not empty li}">
 			        <c:forEach var="s" items="${li}" varStatus="i">
 				        <tr>
 				        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
@@ -87,13 +88,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
 				        </tr>
 			         </c:forEach>
-			    </c:if> 
+			    </c:if> --%>
+			     <tr>
+				        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
+				       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
+				        </tr>
+				         <tr>
+				        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
+				       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
+				        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
+				        </tr>
+		
         </table>         
           </li>
           <li>
             <div class="form-group" >
             <label for="#">投资周期：</label> <input type="text"
-              class="form-control" id="preview_Period" name="preview_Period" value="${product1.financingPeriod*30}" /> 
+              class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product1.financingPeriod*30}" /> 
                          
             
           </div>
@@ -101,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
             <div class="form-group" >
             <label for="#">预期收益：</label><input type="text"
-              class="form-control" id="preview_income" name="preview_income" value="#" />元
+              class="form-control pre_bac" id="preview_income" name="preview_income" value="#" />
             
            </div>
           </li>
@@ -289,6 +305,10 @@ $(document).ready(function(e) {
 			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
 			//console.log("|-"+t*r);
 			}
+		$(".lilv_table").click(function(){
+			$(".new_table").slideToggle()
+			
+		});
 	  
 }); 
 </script>
