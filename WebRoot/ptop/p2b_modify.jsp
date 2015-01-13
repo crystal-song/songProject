@@ -202,7 +202,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<form  action="<%=path%>/Login/addproduct" id="form" method="post"   class="box"  style="display:'none'"   >
     	<div class="dataForm">
     <input type="hidden" name="mes" id="mes" value="${mes}" />
-    <input type="hidden" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />
+    <input type="hidden" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />     
+    <input type="hidden" name="enterpriseName"  id="enterpriseName"  value="${product1.enterpriseName}"   />  
+    <input type="hidden" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"   />  
     <input type="hidden" name="enterpriseCertificate" id="enterpriseCertificate" value="" />
     <input type="hidden" name="projectPicture" id="projectPicture" value="" />
     <input type="hidden" name="id" id="id" value="${product1.id}" />

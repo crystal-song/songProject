@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
             <div class="form-group" >
             <label for="#">投资周期：</label> <input type="text"
-              class="form-control" id="preview_Period" name="preview_Period" value="${product1.financingPeriod*30}" /> 
+              class="form-control" id="preview_Period" name="preview_Period" value="${product.financingPeriod*30}" />
                          
             
           </div>

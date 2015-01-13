@@ -122,16 +122,17 @@ public class ptopController {
 	@RequestMapping(value = "/addproduct", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String addproduct(Model model, TProduct product,@RequestParam("financeTimes") String financeTime,@RequestParam("repaymentTimes") String repaymentTime,
-			@RequestParam("hot") String hot,HttpServletRequest request) throws Exception {
+			HttpServletRequest request) throws Exception {
 
 
 		try {
 			product.setFinanceTime(Timestamp.valueOf(financeTime));
 			product.setRepaymentTime(Timestamp.valueOf(repaymentTime));
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
+			String hot=request.getParameter("hot");
 			product.setReleaseTime(df.format(new Date()));
-			if(hot.equals("1")){
-				Communal communal=new Communal("热门项目",product.getEnterpriseNumber());
+			if(hot!=null&&hot.equals("1")){
+				Communal communal=new Communal("hotProject",product.getEnterpriseNumber());
 				ptopService.addOrUpdate(communal);
 			}
 			if(product.getPlatformFee()==null){
