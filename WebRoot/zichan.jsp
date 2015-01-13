@@ -47,6 +47,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </li>
 
           </ul>
+           <p class="zichan_num"><a href="<%=path%>/account/liquan?page=1&catlog=0"  class="num_div_fir" title="点击查看我的礼券"><span>可用礼券：</span><strong><span style="width:40px">10</span></strong> 张</a>
+            <a class="num_div" href="<%=path%>/account/tuijian" title="点击邀请好友">（立即邀请好友，双方均可获得礼券！）</a>  
+          </p>
           <div class="clear"></div>
 
         </div>
