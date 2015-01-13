@@ -32,7 +32,7 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		
 	}
 	public List<TProduct> queryHotproject(){
-		String hql="from TProduct product where product.enterpriseNumber in(select communal.valuess from Communal communal where keyss='热门项目')";
+		String hql="from TProduct product where product.enterpriseNumber in(select communal.valuess from Communal communal where keyss='hotProject')";
 		Query query=getSession().createQuery(hql);
 		return query.list();
 	}

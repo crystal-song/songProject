@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>中租宝 | 最稳健的P2B理财平台</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 </head>
 <body>
 
@@ -83,14 +84,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <c:forEach var="s" items="${list}" varStatus="i">   
          <c:if test="${s.enterpriseNumber!='ZTH011417486977120'}">
          <li>
-             <input type="hidden" class="open_time" id="start_time_${s.id}" value="${s.financeTime}">
+             <%-- //id="start_time_${s.id}" --%>
+
+              <input type="hidden" class="open_time" id="start_time_${s.id}" value="${s.financeTime}">
               <div class="floor_num">
                  <a class="floor_img" href="product/getProductByid?id=${s.id}">
                  ${s.projectPicture}
                  <div class="hot"></div>
                  <!-- <div class="last_time">剩余时间:<strong>&nbsp;&nbsp;28</strong>天</div> -->
                  <div class="last_time">距离开放购买还有：
-                    <span id="t_d_${s.id}"></span>
+                    <span id="t_d_${s.id}"></span> 
                     <span id="t_h_${s.id}"></span>
                     <span id="t_m_${s.id}"></span>
                     <span id="t_s_${s.id}"></span>
@@ -98,10 +101,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  </a>
                  <h3><a class="shuoming" href="product/getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a></h3>
                  <div class="aim">
-                   <span style="color:#a4a4a4;">目标:</span>
+                   <span style="color:#a4a4a4;" class="a1">目标:</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
                    <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
-                   <a>${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' }</a>
+                   <a class="pro_status">${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' }</a>
                  </div>
                  <div class="loding_bar">
                  <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>1</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<1?s.financingProgress==null?0:s.financingProgress*100:100}</c:if>%" title="融资进度：${s.financingProgress*100}%"></div>
@@ -112,10 +115,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    </span>
                    </c:if>
                    <c:if test="${s.projectStatus==1 }">
-                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">融资时间</a><a class="baifenbi" style="float:left; text-align:left;">${s.financeTime }</a>
+                   <%-- <fmt:formatDate value="${s.financeTime}" pattern="yyyy-MM-dd" /> --%>
+                   <span style="float:left; margin-left:3%;"><a style="float:left; color:#a4a4a4;">融资时间</a><a class="baifenbi" style="float:left; text-align:left;"><fmt:formatDate value="${s.financeTime}" pattern="yyyy-MM-dd" /></a>
                    </span>
                    </c:if>
-                   <span style="display:none"  ><a style="color:#a4a4a4; float:left; ">已筹资</a><a class="baifenbi" style="float:left; text-align:left;">¥&nbsp;&nbsp;<c:if test='${empty s.realityMoney}'>0</c:if> ${s.realityMoney}</a>
+                   <span style="display:none"><a style="color:#a4a4a4; float:left; ">已筹资</a><a class="baifenbi" style="float:left; text-align:left;">¥&nbsp;&nbsp;<c:if test='${empty s.realityMoney}'>0</c:if> ${s.realityMoney}</a>
                    </span>
                    <span style="float:right; margin-right:3%;"><a style="float:right; color:#a4a4a4;" >年化收益率</a><a class="baifenbi" style="float:right; text-align:right;">${s.yearIncome}%</a>
                   </span>
@@ -181,23 +185,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		      </ul>  
 	      </div>
      </div> 
-    </div> 
-    <!-- absolute_right start -->
-	 <%@ include file="/includes/absolute.jsp" %>
-	<!-- absolute_right end -->
-     
+    </div>  
  </div>                  
-  
-<!-- links end -->
+<!-- absolute_right start -->
+	 <%@ include file="/includes/absolute.jsp" %>
+<!-- absolute_right end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
+
 </body>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+
 <script type="text/javascript">
-var navIndex=0;
-$(document).ready(function(){
+ 
+$(document).ready(function(e){
+	var navIndex=0;  
 	$(".nav_big a").eq(0).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(0).children("p").addClass("headwd_color")
 		
@@ -205,27 +208,56 @@ $(document).ready(function(){
 		        var index= $(this).index();
 		        $(this).addClass('news_title_bac').siblings().removeClass('news_title_bac');
 		        $(".news_label ul").eq(index).css("display","block").siblings().css("display","none")
-		    });
-		    		            
-	});
+	});	 
+		 $(".open_time").each(function(i, e){		
+			var stars=e.id.split("_");
+			var val01=e.value;
+			val01=val01.substr(0,val01.length-2);
+			var time_id=stars[2];
+			var time_new=val01.replace(/\-/g,"/");	
+			var pro_status=$(this).siblings(".floor_num").children(".aim").children(".pro_status").text();
+			 if(pro_status=="预热中"){
+	           Forinterval(time_new,time_id);  
+			} 
+			 if(pro_status=="已满标" || pro_status=="还款中" || pro_status=="已完成"){
+				 $(this).siblings(".floor_num").children(".floor_img").children(".last_time").css("display","none"); 
+			}
+		}); 	            
+});
+	
+	
 /*daojishi*/
-    function getRTime(){
-		//new Date(parseInt("600000"))
-        var EndTime= new Date('2015/05/1 10:00:00'); //截止时间 前端路上 http://www.51xuediannao.com/qd63/
+ 
+   function getRTime(time_new, time_id){
+        var EndTime = new Date(time_new);
         var NowTime = new Date();
         var t =EndTime.getTime() - NowTime.getTime();
-
-        var d=Math.floor(t/1000/60/60/24);
-        var h=Math.floor(t/1000/60/60%24);
-        var m=Math.floor(t/1000/60%60);
-        var s=Math.floor(t/1000%60);
-
-        document.getElementById("t_d").innerHTML = d + "天";
-        document.getElementById("t_h").innerHTML = h + "时";
-        document.getElementById("t_m").innerHTML = m + "分";
-        document.getElementById("t_s").innerHTML = s + "秒";
+        var d=Math.floor(t/1000/60/60/24);        
+        var h=Math.floor(t/1000/60/60%24);        
+        var m=Math.floor(t/1000/60%60); 
+        var s=Math.floor(t/1000%60);  
+        if(d+h+m+s<0){
+        	$('#t_d_'+time_id).parent().html("已开放购买");
+         	clearInterval(timer);
+         }
+        
+         $('#t_d_'+time_id).text(d+"天");
+         $('#t_h_'+time_id).text(h+"时");
+         $('#t_m_'+time_id).text(m+"分");
+         $('#t_s_'+time_id).text(s+"秒"); 
+         if(d==0 && h<24){
+         	$('#t_s_'+time_id).show();
+         	$('#t_d_'+time_id).hide();
+         	
+         }else{
+        	$('#t_s_'+time_id).hide()
+         }
     }
-    setInterval(getRTime,1000);
+    function Forinterval(time_new,time_id){
+    var timer=	window.setInterval(function(){
+    	  getRTime(time_new, time_id);
+        }, 1000);
+}    
 </script>
 
 </html>

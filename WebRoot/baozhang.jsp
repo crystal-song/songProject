@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>新闻中心 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 
 </head>
 
@@ -56,18 +56,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   </c:if>
            </ul>         
        </div>
-         <!-- absolute_right start -->
-	<%@ include file="/includes/absolute.jsp" %>
-	<!-- absolute_right end -->
-	
-	
    </div>
+<!-- absolute_right start -->
+<%@ include file="/includes/absolute.jsp" %>
+<!-- absolute_right end -->
 <div class="clear"></div>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
+<div class="clear"></div>
 </body>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+
 <script type="text/javascript">
 var navIndex=4;
 $(document).ready(function(e) {

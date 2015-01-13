@@ -551,7 +551,10 @@ public class GateController {
 
 			 model.addAttribute("buyAmount", buyAmount);
 			 model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
-			 model.addAttribute("product", product);
+			 if(list != null && list.size()!=0){
+            	 TProduct Product=list.get(0);
+            	 model.addAttribute("product", Product);
+			 }
 			 List<TInterestRate> li = ptopService
 						.queryTInterestRateByNumber(product.getEnterpriseNumber());
 				if (li != null && li.size() != 0) {

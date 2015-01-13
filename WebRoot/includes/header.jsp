@@ -1,12 +1,4 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
-
-
-
-<script type="text/javascript">
-   $(document).ready(function(e) {
-	});
-</script>
-
 <!--[if lt IE 8]>
 <div class="ie_text">亲爱的用户您使用的浏览器版本过低，我们强烈建议您更新至最新版本的浏览器查看.
 <div class="res"></div>
