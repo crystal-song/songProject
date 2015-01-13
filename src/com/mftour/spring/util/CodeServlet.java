@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
+
+@SuppressWarnings("serial")
 public class CodeServlet extends HttpServlet {
 
 	/**
