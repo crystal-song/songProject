@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="left"></div>
 	<div class="right">
 		<a href="<%=path%>/product/allProduct">投资理财</a>
-		<a href="<%=path%>/wel" class="font_tou">进入首页</a>
+		<a href="<%=path%>/" class="font_tou">进入首页</a>
 	</div>
 </div>	
 <div class="main">

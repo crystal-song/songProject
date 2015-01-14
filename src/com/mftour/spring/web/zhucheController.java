@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
-
 import com.mftour.spring.service.IProductService;
-
 import com.mftour.spring.service.IptopService;
 
 @Controller
@@ -27,7 +25,8 @@ public class ZhucheController {
 	@Autowired
 	private IProductService productService;
 
-	@RequestMapping(method=RequestMethod.GET)
+	  @RequestMapping(method = {
+	            RequestMethod.GET })
 	public String index(Model model) throws Exception {
 		int recommendType = 1;
 		List<TProduct> list = productService.queryProductByType(recommendType);
