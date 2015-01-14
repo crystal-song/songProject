@@ -213,6 +213,7 @@ ul,li{
 .logo{
 	width:188px;
 	height:76px;
+	display:inline-block;
 	float:left;
 	background:url(../img/images-2014-11/logo_new.jpg) no-repeat;
 	}
