@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 
-<body>
+<body onkeydown="keyLogin();">
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
@@ -34,8 +34,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="zh_left"><img src="<%=path%>/images/dl_09.jpg"></div>
     	 
         <div class="zh_right">
-        	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名"/></div>
-            <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码"/></div>
+        	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名" /></div>
+            <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码" /></div> 
             <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="<%=path%>/welcome/reg"><img src="<%=path%>/images/dl01_05.jpg" /></a>
 </div>
      <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
@@ -50,10 +50,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 <script type="text/javascript" >
+function keyLogin(){
+    event=event || window.event;
+	  if (event.keyCode==13)  {
+		 query();
+	 } 
+
+}
+
 
 function query(){
 	/* alert("ccccccccccc"); */
- 
 	
     if($('#name').val() != ''){
     	if($('#password').val() != ''){
@@ -67,6 +74,7 @@ function query(){
                     if(data == '"success"') {
                     	/* alert("登陆成功"); */
                     	$('#form').submit();
+                    
                         /* window.open('<c:url value="/welcome/session"/>', '_self'); */
                     } else {
                     	$('#password').val('');
