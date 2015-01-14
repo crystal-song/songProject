@@ -82,7 +82,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
 	   <c:if test="${ not empty list}">
         <c:forEach var="s" items="${list}" varStatus="i">   
-         <c:if test="${s.enterpriseNumber!='ZTH011417486977120'}">
          <li>
              <%-- //id="start_time_${s.id}" --%>
 
@@ -132,7 +131,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  </div>
               </div>
             </li>
-      </c:if>
             </c:forEach>
         </c:if>
        

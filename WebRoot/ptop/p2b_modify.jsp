@@ -205,11 +205,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <input type="hidden" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />     
     <input type="hidden" name="enterpriseName"  id="enterpriseName"  value="${product1.enterpriseName}"   />  
     <input type="hidden" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"   />  
-    <input type="hidden" name="enterpriseCertificate" id="enterpriseCertificate" value="" />
-    <input type="hidden" name="projectPicture" id="projectPicture" value="" />
     <input type="hidden" name="id" id="id" value="${product1.id}" />
     <input type="hidden" name="existType" id="existType" value="0" />
-    <input type="hidden" name="financingProgress" id="financingProgress" value="${product1.financingProgress}" />
+    <input type="hidden" name="financingProgress" id="financingProgress" value="${product1.financingProgress}" /> 
+    <input type="hidden" name="realityMoney" id="realityMoney" value="${product1.realityMoney}" /> 
+     <input type="hidden" name="projectStatus" id="projectStatus" value="${product1.projectStatus}" /> 
+     <input type="hidden" name="loaned" id="loaned" value="${product1.loaned}" /> 
         	<ul>
                 <li>
                     <dd>项目名称：</dd>
