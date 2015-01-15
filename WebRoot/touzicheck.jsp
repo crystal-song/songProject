@@ -83,9 +83,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
 				        <td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
 				        <td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
-				       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
+				       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td> 
 				        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
 				        </tr>
+				     
 			         </c:forEach>	
         </table>         
           </li>
@@ -272,7 +273,7 @@ $(document).ready(function(e) {
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
 					if(parseInt($(".lev_mi").eq(i).html())>0){
 					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-					
+				    
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}
@@ -281,14 +282,16 @@ $(document).ready(function(e) {
 					}
 				}
 			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			/* $("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元"); */
+			
 			$("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
-			//console.log("|-"+t*r);
+			
 			}
 		$(".lilv_table").click(function(){
 			$(".new_table").slideToggle()
 			
 		});
+		
+		  
 	  
 }); 
 </script>
