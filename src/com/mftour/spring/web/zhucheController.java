@@ -25,7 +25,7 @@ public class ZhucheController {
 	@Autowired
 	private IProductService productService;
 
-	  @RequestMapping(method = {
+	@RequestMapping(method = {
 	            RequestMethod.GET })
 	public String index(Model model) throws Exception {
 		int recommendType = 1;

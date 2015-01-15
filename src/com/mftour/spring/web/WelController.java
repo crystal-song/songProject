@@ -8,6 +8,7 @@ import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,49 +27,48 @@ import java.util.List;
 @RequestMapping("/wel")
 public class WelController {
 
+	@Autowired
+	private IUserService userService;
 
+	@Autowired
+	private IGateService gateService;
 
-    @Autowired
-    private IUserService userService;
+	@RequestMapping(method = { RequestMethod.GET })
+	public void index(Model model, HttpServletResponse reponse)
+			throws Exception {
+		reponse.sendRedirect("/");
+	}
 
-    @Autowired
-    private IGateService gateService;
+	@RequestMapping(value = "/account", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String account(Model model, HttpServletRequest request)
+			throws Exception {
+		Object o = request.getSession().getAttribute("name");
 
+		if (o != null) {
 
+			TUser user1 = userService.getUserByAccount(o.toString());
 
-    @RequestMapping(value = "/account", method = { RequestMethod.POST,
-            RequestMethod.GET })
-    public String account(Model model, HttpServletRequest request)
-            throws Exception {
-        Object o = request.getSession().getAttribute("name");
+			List<TRegisterYeePay> li = gateService
+					.queryTRegisterYeePayByName(user1.getName());
+			if (li != null && li.size() != 0) {
+				TRegisterYeePay registerYeePay1 = li.get(0);
+				model.addAttribute("registerYeePay1", registerYeePay1);
+			}
 
-        if (o != null) {
+			model.addAttribute("user1", user1);
+			return "user-info";
 
-            TUser user1 = userService.getUserByAccount(o.toString());
+		}
 
+		return "login";
+	}
 
-            List<TRegisterYeePay> li = gateService
-                    .queryTRegisterYeePayByName(user1.getName());
-            if (li != null && li.size() != 0) {
-                TRegisterYeePay registerYeePay1 = li.get(0);
-                model.addAttribute("registerYeePay1", registerYeePay1);
-            }
+	@RequestMapping(value = "/help", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String help(Model model) throws Exception {
 
-            model.addAttribute("user1", user1);
-            return "user-info";
-
-        }
-
-        return "login";
-    }
-
-    @RequestMapping(value = "/help", method = { RequestMethod.POST,
-            RequestMethod.GET })
-    public String help(Model model) throws Exception {
-
-        return "help";
-    }
-
-
+		return "help";
+	}
 
 }
