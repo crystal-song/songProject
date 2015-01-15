@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       <div class="new_top">
 	        <span>关于中租宝</span>	        
 	       </div>
-	       <div class="top_line"></div>
+	       <a class="top_line" href="<%=path%>/wel">回到首页</a>
 	      <div class="msg_zhong">
 	        <p>中租宝，是中投汇融投资管理有限公司旗下的众筹网络平台</p>
 	        <p><strong>中投汇融</strong>是国内首批P2B（微信托） 领域的财富投资管理公司。我们汇集了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台。
@@ -76,12 +76,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
      <div class="per_bottom"> 
 	      <div class="diannao"></div>
-	      <div class="diannao01">
-	        <a href="<%=path%>/login.jsp" class="left_wd_yel">注册登录</a>
-	        <a>身份认证</a>
-	        <a>投资充值</a>
-	        <a>坐享收益</a>	      
-	      </div>
+	       <div class="diannao01">
+	        <a href="<%=path%>/login.jsp" class="xin_btn01"><strong>注册登录</strong></a>
+	        <a class="jiantou_down1"></a>
+	        <a href="<%=path%>/login.jsp" class="xin_btn02"><strong>身份认证</strong></a>
+	        <a class="jiantou_down2"></a>
+	        <a href="<%=path%>/login.jsp" class="xin_btn03"><strong>投资充值</strong></a>
+	        <a class="jiantou_down3"></a>
+	        <a href="<%=path%>/login.jsp" class="xin_btn04"><strong>坐享收益</strong></a>	      
+	      </div> 
       </div>
 </div>
 
@@ -168,6 +171,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		      add++;
 
      	  }
+    	   
+    	   
+    	   $(".xin_btn01").mouseover(function(){
+    		   $(this).css('background','url(<%=path%>/img/images-2014-11/xin_btn1_1.png) 0px -10px no-repeat')
+    	   }).mouseout(function(){
+    		   $(this).css('background','url(<%=path%>/img/images-2014-11/xin_btn1.png) 0px -10px no-repeat')
+    		   
+    	   });
+    	   $(".xin_btn02").mouseover(function(){
+    		   $(this).css('background','url(<%=path%>/img/images-2014-11/xin_btn2_2.png) 0px -10px no-repeat')
+    	   }).mouseout(function(){
+    		   $(this).css('background','url(<%=path%>/img/images-2014-11/xin_btn2.png) 0px -10px no-repeat')
+    		   
+    	   });
+    	   $(".xin_btn03").mouseover(function(){
+    		   $(this).css('background','url(<%=path%>/img/images-2014-11/xin_btn3_3.png) 0px -10px no-repeat')
+    	   }).mouseout(function(){
+    		   $(this).css('background','url(<%=path%>/img/images-2014-11/xin_btn3.png) 0px -10px no-repeat')
+    		   
+    	   });
+    	   $(".xin_btn04").mouseover(function(){
+    		   $(this).css('background','url(<%=path%>/img/images-2014-11/xin_btn4_4.png) 0px -10px no-repeat')
+    	   }).mouseout(function(){
+    		   $(this).css('background','url(<%=path%>/img/images-2014-11/xin_btn4.png) 0px -10px no-repeat')
+    		   
+    	   });
     	 
       })
       

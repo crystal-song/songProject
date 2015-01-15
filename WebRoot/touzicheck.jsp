@@ -83,9 +83,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				        <td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
 				        <td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
 				        <td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
-				       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
+				       	<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td> 
 				        <td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
 				        </tr>
+				     
 			         </c:forEach>	
         </table>         
           </li>
@@ -190,18 +191,7 @@ function onSubmit(host) {
         alert("投资金额必须大于200");
         return false;
     }
- 
-      	if($("#paymentAmount").val()<3000){
-         	alert("您输入的金额小于3000元");
-  	       	$(".liquan_hide").css("display","none");
-  	       	return false;
-      	}
-  	   
-      	if($(".liquan_check").val()==""){
-         	alert("您还没有礼券");
-  	       	$(".liquan_hide").css("display","none");
-  	       	return false;
-      	}
+	
       	
 
     $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
@@ -222,7 +212,7 @@ function onSubmit(host) {
                     
                     
                     
-                   // form.submit();
+                    form.submit();
                     document.getElementById("que_btn_ok").disabled()
 
                 }else{
@@ -235,7 +225,6 @@ function onSubmit(host) {
 }
 $(document).ready(function(e) { 
 	   $("#reward").click(function(){
-		  // alert("aaa")
 		  $(".fukuan").css("display","block");
 		  var real_fukuan=$("#paymentAmount").val()
 		  $(".border_none").val(real_fukuan-50)
@@ -246,11 +235,19 @@ $(document).ready(function(e) {
 	   });
 	   
 	   $("#paymentAmount").keyup(function(){
+		   
 		   if($(this).val()<3000){			   
 		     	$(".liquan_hide").css("display","none")
-		     	return false;
-		 	  }  
+		     	
+		 	  }  else{
+		 		 $(".liquan_hide").css("display","block")
+		 	  }
 	   });
+	   
+	   if($("#paymentAmount").val()<3000 || $(".liquan_check").val()==""){
+ 	       	$(".liquan_hide").css("display","none"); 	       
+     	}
+
 	   
 	   /*shouyilv*/
 	   
@@ -276,7 +273,7 @@ $(document).ready(function(e) {
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
 					if(parseInt($(".lev_mi").eq(i).html())>0){
 					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-					
+				    
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}
@@ -285,14 +282,16 @@ $(document).ready(function(e) {
 					}
 				}
 			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			/* $("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元"); */
+			
 			$("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
-			//console.log("|-"+t*r);
+			
 			}
 		$(".lilv_table").click(function(){
 			$(".new_table").slideToggle()
 			
 		});
+		
+		  
 	  
 }); 
 </script>

@@ -4698,16 +4698,23 @@ ul,li{
 	width:1160px;
 	height:230px;
     background:url(../img/images-2014-11/dingyun02.png) 0 -80px no-repeat;
-    z-index:100	
+    position:relative;
 }
 .top_line{
-	width:60px;
-	height:1130px;
-	position:fixed;
-	top:-860px;
-	right:142px;
-	z-index:1;
-	background:url(../img/images-2014-11/top_line.png) 15px 0 no-repeat;	
+	width:160px;
+	height:60px;
+	line-height:60px;
+    position:absolute;
+    margin-right:10%;
+	right:0;
+	top:40px;
+	color: #b06b28;
+	font-size:16px;
+	display:inline-blcok;
+}
+.new_fir .top_line:hover{
+    font-weight:bold;
+    color: #b06b28;
 }
 .new_top span{
 	display:inline-block;
@@ -4941,20 +4948,44 @@ ul,li{
 	width:286px;
 	height:500px;	
     position:absolute;
-    bottom:3%;
+    bottom:4%;
     right:200px;	
     border-radius:5px;
-    background:#342a20;
 }
 .diannao01 a{
-	width:286px;
-	height:40px;
+	width:240px;
+	height:80px;
+	line-height:75px;
 	display:inline-block;
-	margin-top:20%;
-	font-size:14px;	
+	font-size:16px;	
 	color:#fff;
 	text-align:center;
 }
+.xin_btn01{
+	background:url(../img/images-2014-11/xin_btn1.png) 0px -10px no-repeat;
+}
+.xin_btn02{
+	background:url(../img/images-2014-11/xin_btn2.png) 0px -10px no-repeat;
+}
+.xin_btn03{
+	background:url(../img/images-2014-11/xin_btn3.png) 0px -10px no-repeat;
+}
+.xin_btn04{
+	background:url(../img/images-2014-11/xin_btn4.png) 0px -10px no-repeat;
+}
+.diannao01 .jiantou_down1{
+	height:50px;
+	background:url(../img/images-2014-11/jiantou_down.png) 50% -10px no-repeat;
+}
+.diannao01 .jiantou_down2{
+	height:50px;
+	background:url(../img/images-2014-11/jiantou_down.png) 50% -10px no-repeat;
+}
+.diannao01 .jiantou_down3{
+	height:50px;
+	background:url(../img/images-2014-11/jiantou_down.png) 50% -10px no-repeat;
+}
+
 .diannao01 .left_wd_yel{
 	color:#e3b730;
 	font-weight:bold;
@@ -5013,11 +5044,31 @@ ul,li{
 	height:20px;
 	background:pink;
 }
-
-
-
-
-
+.content01{
+	width:1100px;
+	height:500px;
+	margin:5% auto;
+	
+}
+.z_list_title{
+	width:1100px;
+	height:40px;
+	background:pink;
+	border-bottom:2px solid #e81c05;
+}
+.z_list_title a{
+	width:80px;
+	height:30px;
+	float:left;
+	display:inline-block;
+	font-size:14px;
+}
+.z_title_bac{
+	color:#fff;
+}
+.touzi_text .zhou{
+	font-size:12px;
+}
 
 
 
