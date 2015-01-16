@@ -114,7 +114,7 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TNews> getNews() throws Exception {
-		String hql = "from TNews news";
+		String hql = "from TNews news order by time desc";
 		Query query = getSession().createQuery(hql);
 		return query.list();
 	}

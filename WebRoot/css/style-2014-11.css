@@ -5044,6 +5044,10 @@ ul,li{
 	height:20px;
 	background:pink;
 }
+
+
+
+/*zhongcou*/
 .content01{
 	width:1100px;
 	height:500px;
@@ -5052,36 +5056,205 @@ ul,li{
 }
 .z_list_title{
 	width:1100px;
-	height:40px;
-	background:pink;
+	height:30px;
+	line-height:30px;
 	border-bottom:2px solid #e81c05;
+	margin-bottom:40px;
 }
 .z_list_title a{
 	width:80px;
 	height:30px;
 	float:left;
 	display:inline-block;
-	font-size:14px;
+    margin-right:20px;
 }
 .z_title_bac{
+	font-size:14px;
 	color:#fff;
-}
-.touzi_text .zhou{
-	font-size:12px;
+	background:#e81c05;
 }
 
+.crowd_con{
+	width:1200px;
+	height:auto;
 
+}
+.crowd_list{
+    width:250px;
+    height:320px;
+    float:left;
+    margin:0 15px 15px 0;	
+    border:1px solid #e1e1e1;
+    padding:7px;
+    box-shadow:3px 6px 3px #eee;
+    border-radius:5px;
+}
+.crowd_pic{
+	width:250px;
+	height:180px;
+    background:url(../img/images-2014-11/pro_pic01.jpg)  no-repeat;
+}
+.crowdpro_name{
+	width:250px;
+	height:40px;
+	margin-top:10px;
+	text-align:left;
+	font-size:14px;
+	line-height:40px;
+}
+.crowd_bar{
+	width:250px;
+	height:5px;
+	margin:10px 0;
+	background:#dcdcdc;
+	border-radius:5px
+}
+.crowd_bar div{
+	width:50%;
+	height:100%;
+	background:red;
+	border-radius:5px
+}
+.crowd_wd{
+	width:100%;
+	height:50px;
+	margin-top:18px;
+}
+.crow_left{
+	width:120px;
+	height:60px;
+	float:left;
+}
+.crow_right{
+	width:120px;
+	height:60px;
+	float:right;
 
+}
+.crowd_wd span{
+	width:120px;
+	height:30px;
+	display:inline-block;
 
+	font-size:14px;
+}
+.crowd_wd .crow_left span{
+	text-align:left;
+}
+.crowd_wd .crow_right span{
+	text-align:right;
+}
 
+/*juanzeng1*/
+.juancon{
+	width:1100px;
+	height:auto;
+	margin:0 auto;
+}
+.juantitle{
+	width:1100px;
+	height:40px;
+	line-height:40px;
+	font-size:24px;
+	text-align:left;
+	margin:20px 0;
+}
+.juan_con_left{
+	width:680px;
+	height:auto;
+	background:#fff;
+	border-radius:5px;
+	box-shadow:1px 5px 10px 3px #ccc;
+	border:1px solid #eee;
+	padding:30px;
+	
+}
+.jcon_fir{
+	width:680px;
+	height:140px;
+	background:url(../img/images-2014-11/juan_line.png) 0px 130px  no-repeat;
+}
 
+.fir_title{
+	width:100%;
+	height:40px;
+	font-size:18px;
+	text-align:left;
+	font-weight:bold;
+	margin-top:10px;
+}
 
-
-
-
-
-
-
-
-
-
+.j_input{
+	width:326px;
+	height:50px;
+	background:url(../img/images-2014-11/input_img.png)  no-repeat;
+	float:left;
+}
+.j_new{
+	width:260px;
+	height:40px;
+	float:left;
+	margin-top:3%
+}
+.j_wen{
+	display:inline-block;
+	width:100px;
+	height:40px;
+	line-height:40px;
+	float:left;
+	color:#e81c05;
+}
+.j_input_hide{
+	width:245px;
+	height:35px;
+	border:none;
+	margin-top:7px;
+	background:none;
+}
+.j_radio01{
+	margin-top:15px ;
+	margin-left:10px ;
+	float:left;
+}
+.j_wen01{
+	font-size:14px;
+	float:left;
+	height:40px;
+	line-height:40px;
+	margin:3% 0 0 5%;
+	
+}
+.jcon_sec{
+	width:680px;
+	height:290px;
+	background:url(../img/images-2014-11/juan_line.png) 0px 90%  no-repeat;
+}
+.juan_con_left .j_bac_new{
+	height:400px;
+	background-position:0 90%;
+}
+.j_radio02{
+	float:left;
+	margin-top:4%;
+	margin-left:10px ;
+}
+.jcon_sec span{
+	margin-left:15%;
+}
+.jcon_sec .j_msg{
+	height:auto;
+	
+}
+.j_msg dl{
+	margin:0;
+	text-align:left;
+}
+.j_msg dd{
+	width:382px;
+	height:40px;
+	line-height:30px;
+	margin-left:0;
+}
+.j_msg dd strong{
+	color:#e81c05;
+}
