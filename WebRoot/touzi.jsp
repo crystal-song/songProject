@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  <a class="shuoming01" href="getProductByid?id=${s.id}" title="${s.projectName}">${s.projectName}</a>
                  <div class="aim01">
                    <span style="color:#a4a4a4;">目标：</span>
-                   <span><%-- ${s.financingPeriod}个月 --%>30天</span>
+                   <span><%-- ${s.financingPeriod}个月 --%>30天</span> <%-- //${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' } --%>
                    <span style="width:80px; margin-right:0">￥&nbsp;${s.financingMoney}万元</span>
                    <a class="pro_status">${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' }</a>
                  </div>
@@ -199,10 +199,14 @@ $(document).ready(function(e){
 		var pro_status=$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").text();
 		 if(pro_status=="预热中"){
            Forinterval(time_new,time_id);  
+          
 		} 
-		 if(pro_status=="已满标" || pro_status=="还款中" || pro_status=="已完成"){
-			 $(this).siblings(".floor_num01").children(".floor_img01").children(".last_time01").css("display","none"); 
+		 if(pro_status=="已满标" || pro_status=="还款中" || pro_status=="已完成"){			 
+			$(this).siblings(".floor_num01").children(".floor_img01").children(".last_time01").css("display","none");
 		}
+		 if( pro_status=="融资中"){
+			 $(this).siblings(".floor_num01").children(".floor_img01").children(".last_time01").html("已开放购买")
+		 }
 	}); 
     
     function getRTime(time_new, time_id){

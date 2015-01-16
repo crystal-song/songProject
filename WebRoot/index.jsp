@@ -220,6 +220,9 @@ $(document).ready(function(e){
 			 if(pro_status=="已满标" || pro_status=="还款中" || pro_status=="已完成"){
 				 $(this).siblings(".floor_num").children(".floor_img").children(".last_time").css("display","none"); 
 			}
+			 if( pro_status=="融资中"){
+				 $(this).siblings(".floor_num").children(".floor_img").children(".last_time").html("已开放购买")
+			 }
 		}); 	            
 });
 	
