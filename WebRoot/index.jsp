@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <a class="newpro_wd02"></a> 
               <span class="spanhign_right">
                <a>五层保障</a> 
-               <a style="font-size:12px;"><label style="color:red"></label>充足抵押物，第三方资金托管风险保障金</a>
+               <a style="font-size:12px;"><label style="color:red"></label>充足抵押物，第三方平台资金托管</a>
               </span>
            </dd>
            <dd><a class="newpro_wd03"></a>
@@ -71,15 +71,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>    
     </div> 
     <div class="clear"></div>
-  
-
      <div class="title">
        <div class="label"><strong>推荐项目</strong></div>
        <a class="more" href="<%=path%>/product/allProduct">更多&nbsp;&nbsp;>></a>
      </div> 
      <div class="main">
-       <ul>
-        
+       <ul>        
 	   <c:if test="${ not empty list}">
         <c:forEach var="s" items="${list}" varStatus="i">   
          <li>
@@ -132,15 +129,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
             </li>
             </c:forEach>
-        </c:if>
-       
+        </c:if>    
      </ul>
    </div>
    <div class="title">
        <div class="label"><strong>最新动态</strong></div>
      </div>
-   <div class="news">
-    
+   <div class="news">   
    <div class="w_gonggao">
 	      <ul class="news_title">
 	        <li class="news_title_bac"><a id="new_bac" class="new_title01">网站公告</a><a class="new_logo1" href="<%=path%>/guarantee/getchannel">更多 >></a></li>       
@@ -192,9 +187,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
-
 </body>
-
 <script type="text/javascript">
  
 $(document).ready(function(e){

@@ -10,7 +10,7 @@
           -->
           <li class="ban01 a1"><a href="http://ptobchina.com/guarantee/getTNewsById?id=42"></a></li>
           <li style="display:none" class="ban02"><a href="<%=path%>/security.jsp"></a></li>
-          <li style="display:none" class="ban03"><a href="<%=path%>/zhuanti/201411guwen/first.jsp"></a></li>
+          <li style="display:none" class="ban03"><a href="<%=path%>/zhuanti/201411guwen/first.jsp" target="_blank"></a></li>
      </ul>
      <ol>
        <li class="current"></li>
