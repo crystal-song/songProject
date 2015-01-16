@@ -38,12 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <dl>
            <dt>支持100元</dt>
            <dd style="height:100px">1)  我们会登记您的姓名在功德簿和祈福名单里，这两样宝贝将会长久的安放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。
-
            </dd>
            <dd style="height:60px">2)  您还会得到我们学校全体师生长久的诵经回向和永久祝福。</dd>
            <dd> 预计回报发送时间：<strong>2015年5月</strong></dd>
-           </dl>
-           
+           </dl>           
          </span>
       </div>  
        <div class="jcon_sec j_bac_new" style="height:400px">
@@ -61,6 +59,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </dl>
          </span>
       </div>  
+            <div class="fir_title">收货地址</div>
+      <div class="dizhi">       
+        <div class="dizhi_fir" style="margin-left:10px">
+          <p>北京（***收）</p>
+          <p></p>        
+        </div>
+        <div class="dizhi_sec"></div>
+        <div class="dizhi_thi"></div>
+      </div>   
    </div>
 </div>                
 

@@ -44,12 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </p>
      <div class="pro_msg">
        <div class="pro_pic">${product1.projectPicture}
-       <div class="last_time">距离开放购买还有：
-                    <span id="t_d"></span> 
-                    <span id="t_h"></span>
-                    <span id="t_m"></span>
-                    <span id="t_s"></span>
-                 </div>
+    
        </div>
        <div class="pro_con">
        <ul>
@@ -127,22 +122,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==1}"><!-- 线上 -->
        <div class="pro_right">
-         <span class="pro_right_title"><strong>项目即将开放</strong></span>
+         <span class="pro_right_title">
+            <strong>项目预热中</strong>
+         </span>
+         <div class="wd_pro_right"><strong>项目开启倒计时</strong></div>
+         <div class="pro_time">
+            <span id="t_d"></span> 
+            <span id="t_h"></span>
+            <span id="t_m"></span>
+            <span id="t_s"></span>
+         </div>
+         <span class="tou_btn_red"><a class="red_touzi"  style="background:#acacac;">立即投资</a><i class="jisuan"></i></span>
+         <div class="btn_blue"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+         <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div> 
        </c:if>
          <c:if test="${ not empty product1.buyType&&product1.projectStatus==3}"><!-- 线上 -->
        <div class="pro_right">
-         <span class="pro_right_title"><strong>项目已满标</strong></span>
+         <span class="pro_right_title">
+            <strong>项目已满标</strong> 
+         </span>
+         <div class="manbiao">项目已投满</div>
+         <div class="guan_bac">谢谢亲的关注</div>
+         <a class="totouzi" href="<%=path%>/product/allProduct">更多项目</a>
+         <div class="btn_blue" style="margin-top:25px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+         <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==4}"><!-- 线上 -->
        <div class="pro_right">
-         <span class="pro_right_title"><strong>企业正常还款中</strong></span>
+         <span class="pro_right_title">
+            <strong>企业还款中</strong>                 
+         </span>
+         <div class="manbiao">项目融资已完成</div>
+	         <div class="guan_bac">谢谢亲的关注</div>
+	         <a class="totouzi" href="<%=path%>/product/allProduct">更多项目</a>
+	         <div class="btn_blue" style="margin-top:25px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+	         <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==5}"><!-- 线上 -->
        <div class="pro_right">
-         <span class="pro_right_title"><strong>项目已完成</strong></span>
+         <span class="pro_right_title">
+           <strong>项目已完成</strong> 
+         </span>
+         <div class="manbiao">项目已完成还款</div>
+         <div class="guan_bac">谢谢亲的关注</div>
+         <a class="totouzi" href="<%=path%>/product/allProduct">更多项目</a>
+         <div class="btn_blue" style="margin-top:25px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
@@ -157,9 +185,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
          
-         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
+         <span style="margin-top:10px;"><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
-        <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a>
+         <%-- <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a> --%>
+         <div class="btn_blue" style="margin-top:16px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
        </div>
        </form>
        </c:if>
@@ -577,20 +606,21 @@ function mysubmit(){
          var h=Math.floor(t/1000/60/60%24);        
          var m=Math.floor(t/1000/60%60); 
          var s=Math.floor(t/1000%60);  
-          if(d+h+m+s<0){
-         	$('.last_time').html("已开放购买");
-          	clearInterval(timer);
+          if(d+h+m+s==0){        	  
+          	clearInterval(timer); 	
+            document.location.reload();
           }        
           $('#t_d').text(d+"天");
           $('#t_h').text(h+"时");
           $('#t_m').text(m+"分");
           $('#t_s').text(s+"秒"); 
-           if(d==0 && h<24){
+            if(d==0 && h<24){
           	$('#t_s').show();
-          	$('#t_d').hide();          	
+          	$('#t_d').hide();
+          	
           }else{
          	$('#t_s').hide()
-          } 
+          }  
      } 	
         var timer= setInterval(getRTime,1000);
  });  

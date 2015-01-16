@@ -21,7 +21,7 @@
 		    <a href="<%=path%>/notice.jsp">法律声明</a>
 	    </div>
    </li>
-   <li><a href="<%=path%>/xinshouzhiyin.jsp" class="head_red">新手指引</a>
+   <li><a href="<%=path%>/xinshouzhiyin.jsp" class="head_red" target="_blank">新手指引</a>
 
    </li>
    <li class="head_red" style="display:none">我的账户
