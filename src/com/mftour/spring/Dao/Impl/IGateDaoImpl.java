@@ -1,5 +1,6 @@
 	package com.mftour.spring.Dao.Impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -253,7 +254,13 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		getHibernateTemplate().saveOrUpdate(drawMoneyNotify);
 		
 	}
-	
+	public List queryAvaliableRewards(String username,Date currtime) throws Exception{
+		String hql="  from Rewards rewards where rewards.userId=:username and rewards.expireTime>=:currtime ";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("username",  username);
+		query.setParameter("currtime", currtime);
+		return query.list();
+	}
 	
 	
 	
