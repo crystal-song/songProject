@@ -36,6 +36,11 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		Query query=getSession().createQuery(hql);
 		return query.list();
 	}
+	public List<Communal> queryHotprojectFromCommunal() throws Exception{
+		String hql="from Communal communal where keyss='hotProject')";
+		Query query=getSession().createQuery(hql);
+		return query.list();
+	}
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List getAdministratorByAccount(String account) throws Exception {
@@ -247,5 +252,4 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		query.setParameter("targetPlatformUserNo", targetPlatformUserNo);
 		return (TRegisterYeePay)query.uniqueResult();
 	}
-
 }

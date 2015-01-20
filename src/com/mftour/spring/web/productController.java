@@ -123,6 +123,23 @@ public class productController {
 			TProduct product,HttpServletRequest request) throws Exception {
 		Page page = Page.newBuilder(pageNo, pageSize, "getProductByid");
 		TProduct product1 = productService.getProductById(id);
+		if(product1!=null&&product1.isLine()==false){
+			return "404";
+		}
+		if(product1.getFinanceTime()!=null){
+			long financeTime=product1.getFinanceTime().getTime();
+			long currTime=System.currentTimeMillis();
+			if(currTime>=financeTime&&product1.getProjectStatus()==1){
+				product1.setProjectStatus(2);//设置项目状态为融资中
+			}
+			}
+			if(product1.getFinancingProgress()>=1){
+				product1.setProjectStatus(3);//已满标
+			}
+			if(product1.isLoaned()==true){
+				product1.setProjectStatus(4);//还款中
+			}
+			ptopService.addOrUpdate(product1);
 		if(product1.getBuyType()==null){
 		List<TInvestmentInfo> listoffline = ptopService.queryInvestmentInfoByNumber(page,product1.getEnterpriseNumber());
 		model.addAttribute("listoffline", listoffline);
