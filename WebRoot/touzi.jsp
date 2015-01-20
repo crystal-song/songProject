@@ -198,17 +198,25 @@ $(document).ready(function(e){
 		var time_new=val01.replace(/\-/g,"/");	
 		var pro_status=$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").text();
 		 if(pro_status=="预热中"){
-           Forinterval(time_new,time_id);  
-          
+           Forinterval(time_new,time_id);           
 		} 
-		 if(pro_status=="已满标" || pro_status=="还款中" || pro_status=="已完成"){			 
+		 if(pro_status=="已满标" || pro_status=="还款中" || pro_status=="已完成" || pro_status=="融资中"){			 
 			$(this).siblings(".floor_num01").children(".floor_img01").children(".last_time01").css("display","none");
 		}
-		 if( pro_status=="融资中"){
-			 $(this).siblings(".floor_num01").children(".floor_img01").children(".last_time01").html("已开放购买")
-		 }
+		   
+		    if(pro_status=="还款中"){
+		    	$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").css("background","#9fa1a1")
+		    }
+		    else if(pro_status=="已满标"){
+		    	$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").css("background","#ff9900")
+	        }	       
+	        else if(pro_status=="已完成"){
+	        	$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").css("background","#ccc")
+	        }
+	        else if(pro_status=="融资中"){
+	        	$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").css("background","#f9b72c")
+		    }	
 	}); 
-    
     function getRTime(time_new, time_id){
         var EndTime = new Date(time_new);
         var NowTime = new Date();
@@ -217,8 +225,8 @@ $(document).ready(function(e){
         var h=Math.floor(t/1000/60/60%24);        
         var m=Math.floor(t/1000/60%60); 
         var s=Math.floor(t/1000%60);  
-        if(d+h+m+s<0){
-        	$('#t_d_'+time_id).parent().html("已开放购买");
+        if(d+h+m+s==0){
+        	document.location.reload();
          	clearInterval(timer);
          }
         
