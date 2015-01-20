@@ -45,7 +45,6 @@
            <a href="http://www.renrendai.com/" target="_blank">人人贷</a>
            <a href="http://www.jinshangdai.cn/" target="_blank">晋商贷</a>         
            <a href="http://www.p2peye.com/" target="_blank">网贷天眼</a>
-           <a href="http://www.jinshangdai.cn/" target="_blank">晋商贷</a>
        </li>
        <li>
          <ul class="min_label">
