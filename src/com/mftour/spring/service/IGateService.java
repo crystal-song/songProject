@@ -1,6 +1,7 @@
 
 package com.mftour.spring.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.mftour.spring.model.TBinding;
@@ -86,4 +87,5 @@ public interface IGateService {
 	 
 	 public List queryAllTransRecord(Page page,String sql,Object[] para)
 				throws Exception;
+	 public List queryAvaliableRewards(String username,Date currtime) throws Exception;
 }

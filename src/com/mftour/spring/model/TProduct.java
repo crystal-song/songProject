@@ -57,9 +57,15 @@ public class TProduct implements java.io.Serializable {
 	    private boolean loaned; //是否已放款
 	 
 		private boolean line; //是否上线
-	 
+	    private String hotPicture;//热门项目图片
 		
 		
+		public String getHotPicture() {
+			return hotPicture;
+		}
+		public void setHotPicture(String hotPicture) {
+			this.hotPicture = hotPicture;
+		}
 		public boolean isLine() {
 				return line;
 	    }

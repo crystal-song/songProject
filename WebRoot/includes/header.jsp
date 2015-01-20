@@ -38,10 +38,10 @@
 
 <div class="nav_bac">
   <div class="nav">
-          <a class="logo" href="<%=path%>/wel" title="中租宝首页"></a>
+          <a class="logo" href="<%=path%>/" title="中租宝首页"></a>
           <ul class="nav_big">
             <li>
-              <a href="<%=path%>/wel">
+              <a href="<%=path%>/">
                 <span><strong>首页</strong></span>
                 <p>Home</p>
               </a>

@@ -26,6 +26,7 @@
 	<!-- 
 	①：对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 
 	-->
+	
 	<context:component-scan base-package="com.mftour.spring.web" />
 	<!-- <context:component-scan base-package="com.mftour.spring.web2" /> -->
 
@@ -61,6 +62,7 @@
 	③：对模型视图名称的解析，即在模型视图名称添加前后缀
 	InternalResourceViewResolver默认的就是JstlView所以这里就不用配置viewClass了 
 	-->
+
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	   <!--  <property name="prefix" value="/WEB-INF/view/"></property>
 		<property name="suffix" value=".jsp"></property>  -->

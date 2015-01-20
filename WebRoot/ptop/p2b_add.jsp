@@ -23,10 +23,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="<%=path%>/js/uploadPreview.min.js" type="text/javascript"></script>
      <link type="text/css" href="<%=path%>/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
      <link type="text/css" href="<%=path%>/css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
-    <script type="text/javascript" src="<%=path%>/js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/js/jquery-ui-1.8.17.custom.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/js/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript" src="<%=path%>/js/jquery-ui-timepicker-zh-CN.js"></script>
+
     <style type="text/css">
         h1{
             font-family: "微软雅黑";
@@ -203,6 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="dataForm">
     <input type="hidden" name="mes" id="mes" value="${mes}" />
     <input type="hidden" name="enterpriseCertificate" id="enterpriseCertificate" value="" />
+     <input type="hidden" name="hotPicture" id="hotPicture" value="" />
     <input type="hidden" name="projectPicture" id="projectPicture" value="" />
     <input type="hidden" name="id" id="id" value="${product1.id}" />
     <input type="hidden" name="existType" id="existType" value="0" />
@@ -228,17 +229,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="text" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"  onblur="checkRegyee()" />
                     <dt></dt>
                 </li>
-                 <li>
-                    <dd>开始融资时间：</dd>
-                    <input  type="text"  name="financeTimes"  id="financeTime"  class="ui_timepicker"  value=""  />
-                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
-                </li>
-                <li>
-                 <li>
-                    <dd>还款日期：</dd>
-                    <input type="" class="ui_timepicker"  name="repaymentTimes"  id="repaymentTime" value="${product1.repaymentTime}"  />
-                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
-                </li>
+                
                 <li>
                     <dd>项目图片：</dd>
                    <!--  <input  type="file" id="file" name="file"  /> -->
@@ -262,7 +253,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <input type="number"  name="yearIncome"  id="yearIncome"   value="${product1.yearIncome==null?10:product1.yearIncome}"   min="1" max="100" value="10" step="1" />
                     <dt>用整数表示，如12%则输入12</dt>
                 </li>
-               
+                <li>
+                    <dd>开始融资时间：</dd>
+                    <input  type="text"  name="financeTimes"  id="financeTime"  class="ui_timepicker"  value=""  />
+                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
+                </li>
+                <li>
+                 <li>
+                    <dd>还款日期：</dd>
+                    <input type="" class="ui_timepicker"  name="repaymentTimes"  id="repaymentTime" value="${product1.repaymentTime}"  />
+                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
+                </li>
                 <li>
                     <dd>担保机构：</dd>
                     <input type="text" name="guaranteeInstitution"  id="guaranteeInstitution" value="${product1.guaranteeInstitution}"  />
@@ -421,7 +422,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <span>热门</span></label>
 				</p>
                     <dt></dt>
-                </li>              
+                </li> 
+                  <li> <dd>热门项目图片：</dd>
+					<label>
+						<script type="text/plain"   id="hotEditor" style="width:100%;height:180px;"></script>
+					</label> 
+					<dt>请将所有相关的图片上传至此区域内！</dt>       
+             
+				</li>        
                  <li>
                 <dd></dd>
                  <input type="button"  title="提交"  onclick="getContent()"   value="提交" class="b"/>
@@ -464,6 +472,14 @@ um.addListener('blur',function(){
 um.addListener('focus',function(){
     $('#focush2').html('')
 });
+//实例化编辑器
+var um = UM.getEditor('hotEditor');
+um.addListener('blur',function(){
+    $('#focush2').html('编辑器失去焦点了')
+});
+um.addListener('focus',function(){
+    $('#focush2').html('')
+});
 //按钮的操作
 function insertHtml() {
     var value = prompt('插入html代码', '');
@@ -481,6 +497,13 @@ function createEditor() {
 }
 function getAllHtml() {
     alert(UM.getEditor('Editor').getAllHtml())
+}
+function createEditor() {
+    enableBtn();
+    um = UM.getEditor('hotEditor');
+}
+function getAllHtml() {
+    alert(UM.getEditor('hotEditor').getAllHtml())
 }
 
 
@@ -515,6 +538,7 @@ function getAllHtml() {
     function getContent() {
         var arr = [];
         var arr1 = [];
+        var arr2 = [];
      /*    arr.push("使用editor.getContent()方法可以获得编辑器的内容");
         arr.push("内容为："); */
         arr.push(UM.getEditor('myEditor').getContent());
@@ -523,8 +547,10 @@ function getAllHtml() {
         
         
         arr1.push(UM.getEditor('Editor').getContent());
+        arr2.push(UM.getEditor('hotEditor').getContent());
       /*   alert(arr1.join("\n")); */
         $("#projectPicture").val(arr1.join("\n"));
+        $("#hotPicture").val(arr2.join("\n"));
         if($("#projectName").val()==""){
         	alert("注意：项目名称 不得为空!");
         	return FALSE;

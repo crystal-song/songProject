@@ -1,6 +1,7 @@
 
 package com.mftour.spring.service.Impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -255,7 +256,9 @@ public class IGateServiceImpl  implements  IGateService {
 		gateDao.addOrUpdateTDrawMoneyNotify(drawMoneyNotify);
 		
 	}
-	
+	public List queryAvaliableRewards(String username,Date currtime) throws Exception{
+		return gateDao.queryAvaliableRewards(username, currtime);
+	}
 	
 	
 	

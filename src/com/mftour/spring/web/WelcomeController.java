@@ -197,22 +197,13 @@ public class WelcomeController {
 
 	@RequestMapping(value = "/session", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String Session(Model model, TUser user, HttpServletRequest request)
+	public void Session(Model model, TUser user, HttpServletResponse response,HttpServletRequest request)
 			throws Exception {
 		request.getSession().setAttribute("name", user.getName());
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
-		model.addAttribute("user1", user1);
-		List<TRegisterYeePay> li = gateService
-				.queryTRegisterYeePayByName(user1.getName());
-		if (li != null && li.size() != 0) {
-			TRegisterYeePay registerYeePay1 = li.get(0);
-			model.addAttribute("registerYeePay1", registerYeePay1);
-		}
-		// TRegisterYeePay registerYeePay1=
-		// gateService.queryTRegisterYeePayByName(user1.getName()).get(0);
-		// model.addAttribute("registerYeePay1", registerYeePay1);
-		return "user-info";
+
+		response.sendRedirect("/gate/service");
 	}
 
 	@RequestMapping(value = "/queryUser", method = { RequestMethod.POST,

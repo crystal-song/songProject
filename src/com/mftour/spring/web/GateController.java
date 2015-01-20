@@ -146,7 +146,13 @@ public class GateController {
 			if (li != null && li.size() > 0) {
 				AccountResponse account = Account.getAccount(o.toString());
 				if (account.isSuccess()){
-
+					Date currDate=new Date();
+					List avaliableRewards=gateService.queryAvaliableRewards(o.toString(), currDate);
+					if(avaliableRewards!=null){
+						model.addAttribute("count", avaliableRewards.size());
+					}else{
+						model.addAttribute("count", 0);
+					}
 					model.addAttribute("account", account.getAccount());
 					return "zichan";
 				}else{

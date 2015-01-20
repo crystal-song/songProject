@@ -132,7 +132,8 @@ public class ptopController {
 			String hot=request.getParameter("hot");
 			product.setReleaseTime(df.format(new Date()));
 			if(hot!=null&&hot.equals("1")){
-				Communal communal=new Communal("hotProject",product.getEnterpriseNumber());
+				Communal communal=ptopService.queryHotprojectFromCommunal().get(0);
+				communal.setValuess(product.getEnterpriseNumber());
 				ptopService.addOrUpdate(communal);
 			}
 			if(product.getPlatformFee()==null){
@@ -333,7 +334,6 @@ public class ptopController {
 			TProduct product, HttpServletRequest request) throws Exception {
 
 		TProduct product1 = productService.getProductById(id);
-
 		model.addAttribute("product1", product1);
 		systemLogService.saveSystemLog(request, "后台信息", "更新产品", 1);
 		return "ptop/p2b_modify";
