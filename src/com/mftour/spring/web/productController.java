@@ -123,6 +123,9 @@ public class productController {
 			TProduct product,HttpServletRequest request) throws Exception {
 		Page page = Page.newBuilder(pageNo, pageSize, "getProductByid");
 		TProduct product1 = productService.getProductById(id);
+		if(product1!=null&&product1.isLine()==false){
+			return "404";
+		}
 		if(product1.getFinanceTime()!=null){
 			long financeTime=product1.getFinanceTime().getTime();
 			long currTime=System.currentTimeMillis();

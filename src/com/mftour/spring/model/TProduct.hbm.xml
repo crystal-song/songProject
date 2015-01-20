@@ -131,7 +131,9 @@
         <property name="line" type="boolean">
             <column name="line" length="1"  />
         </property> 
-       
+         <property name="hotPicture" type="java.lang.String">
+            <column name="hotPicture" length="500"  />
+        </property> 
     </class>
 </hibernate-mapping>
 

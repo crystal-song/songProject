@@ -15,15 +15,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link href="<%=path%>/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
     <link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
-    <%-- <script type="text/javascript" src="<%=path%>/up/third-party/jquery.min.js"></script> --%>
-    <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>   
+   <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>   
     <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.min.js"></script>
     <script type="text/javascript" src="<%=path%>/up/lang/zh-cn/zh-cn.js"></script>
     <script src="<%=path%>/js/uploadPreview.min.js" type="text/javascript"></script>
      <link type="text/css" href="<%=path%>/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
      <link type="text/css" href="<%=path%>/css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
-    <script type="text/javascript" src="<%=path%>/js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/js/jquery-ui-1.8.17.custom.min.js"></script>
 	<script type="text/javascript" src="<%=path%>/js/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript" src="<%=path%>/js/jquery-ui-timepicker-zh-CN.js"></script>
@@ -202,8 +200,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<form  action="<%=path%>/Login/addproduct" id="form" method="post"   class="box"  style="display:'none'"   >
     	<div class="dataForm">
     <input type="hidden" name="mes" id="mes" value="${mes}" />
+    <input type="hidden" name="hotPicture" id="hotPicture" value="" />
+     <input type="hidden" name="projectPicture"  id="projectPicture"  value=""   />    
+      <input type="hidden" name="enterpriseCertificate"  id="enterpriseCertificate"  value=""   />   
     <input type="hidden" name="enterpriseNumber"  id="enterpriseNumber"  value="${product1.enterpriseNumber}"   />     
-    <input type="hidden" name="enterpriseName"  id="enterpriseName"  value="${product1.enterpriseName}"   />  
+    <input type="hidden" name="enterpriseName"  id="enterpriseName"  value="${product1.enterpriseName}"   />   
     <input type="hidden" name="targetPlatformUserNo"  id="targetPlatformUserNo"  value="${product1.targetPlatformUserNo}"   />  
     <input type="hidden" name="id" id="id" value="${product1.id}" />
     <input type="hidden" name="existType" id="existType" value="0" />
@@ -392,7 +393,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <span>热门</span></label>
 				</p>
                     <dt></dt>
-                </li>      
+                </li>   
+                  </li> 
+                  <li> <dd>热门项目图片：</dd>
+					<label>
+						<script type="text/plain"   id="hotEditor" style="width:100%;height:180px;">${product1.hotPicture}</script>
+					</label> 
+					<dt>请将所有相关的图片上传至此区域内！</dt>       
+             
+				</li>         
                 <li>
                 <dd></dd>
                  <input type="button"  title="提交"  onclick="getContent()"   value="提交" class="b"/>
@@ -415,18 +424,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <h3 id="focush2"></h3> 
 </div>
 <script type="text/javascript">
-$(function () {
-    $(".ui_timepicker").datetimepicker({
-        //showOn: "button",
-        //buttonImage: "./css/images/icon_calendar.gif",
-        //buttonImageOnly: true,
-        showSecond: true,
-        timeFormat: 'hh:mm:ss',
-        stepHour: 1,
-        stepMinute: 1,
-        stepSecond: 1
-    })
-})
 $(document).ready(function(){
 	if($('#recommendType1').val()==1){
 		$('#recommendType').attr('checked',true);
@@ -439,8 +436,28 @@ $(document).ready(function(){
 	}
 	   
 	});
+$(function () {
+    $(".ui_timepicker").datetimepicker({
+        //showOn: "button",
+        //buttonImage: "./css/images/icon_calendar.gif",
+        //buttonImageOnly: true,
+        showSecond: true,
+        timeFormat: 'hh:mm:ss',
+        stepHour: 1,
+        stepMinute: 1,
+        stepSecond: 1
+    })
+})
+
 //实例化编辑器
 var um = UM.getEditor('Editor');
+um.addListener('blur',function(){
+    $('#focush2').html('编辑器失去焦点了')
+});
+um.addListener('focus',function(){
+    $('#focush2').html('')
+});
+var um = UM.getEditor('hotEditor');
 um.addListener('blur',function(){
     $('#focush2').html('编辑器失去焦点了')
 });
@@ -465,7 +482,13 @@ function createEditor() {
 function getAllHtml() {
     alert(UM.getEditor('Editor').getAllHtml())
 }
-
+function createEditor() {
+    enableBtn();
+    um = UM.getEditor('hotEditor');
+}
+function getAllHtml() {
+    alert(UM.getEditor('hotEditor').getAllHtml())
+}
 
 
 
@@ -498,16 +521,20 @@ function getAllHtml() {
     function getContent() {
         var arr = [];
         var arr1 = [];
+        var arr2=[];
      /*    arr.push("使用editor.getContent()方法可以获得编辑器的内容");
         arr.push("内容为："); */
         arr.push(UM.getEditor('myEditor').getContent());
+        arr1.push(UM.getEditor('Editor').getContent());
+        arr2.push(UM.getEditor('hotEditor').getContent());
       /*   alert(arr.join("\n")); */
         $("#enterpriseCertificate").val(arr.join("\n"));
         
         
-        arr1.push(UM.getEditor('Editor').getContent());
+       
       /*   alert(arr1.join("\n")); */
         $("#projectPicture").val(arr1.join("\n"));
+        $("#hotPicture").val(arr2.join("\n"));
         if($("#projectName").val()==""){
         	alert("注意：项目名称 不得为空!");
         	return FALSE;

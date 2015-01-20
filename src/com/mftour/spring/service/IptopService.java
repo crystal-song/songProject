@@ -27,7 +27,7 @@ public interface IptopService {
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number);
 	public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number);
 	public void deleteTInvestmentInfo(Long id) throws Exception;
-
+	public List<Communal> queryHotprojectFromCommunal() throws Exception;
 	public void addOrUpdateTNews(TNews news) throws Exception;
 
 	public void addOrUpdateTChannel(TChannel channel) throws Exception;
