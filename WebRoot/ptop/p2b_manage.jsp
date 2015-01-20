@@ -11,12 +11,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>管理PtoB项目</title>
 <link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>   
     <script>
         function loan(id,enterpriceNumber){
             $.ajax({url:"/Login/loanProduct?id="+id+"&enterpriceNumber="+enterpriceNumber,
                 type:"GET",
                 success: function(data){
-                    if(data === "success"){
+                    if(data == "success"){
                         alert("放款成功");
                         location.reload();
                     }else{

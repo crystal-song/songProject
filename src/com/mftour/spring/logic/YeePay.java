@@ -84,7 +84,7 @@ public class YeePay {
 					}else{
 
 						String updateRes = rest.postRestful("/rest/yeepay/update-error", mapResp);
-						JsonBaseBean updateReturn = JSON.parseObject(s, JsonBaseBean.class);
+						JsonBaseBean updateReturn = JSON.parseObject(updateRes, JsonBaseBean.class);
 						return false;
 					}
 
