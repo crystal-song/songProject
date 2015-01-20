@@ -51,6 +51,9 @@
                 <li>
                   <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
+                <li style="display:;">
+                  <a href="<%=path%>/loan/loanProduct">我的借款</a>
+                </li>
                 <li>
                   <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
