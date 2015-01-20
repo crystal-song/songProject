@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.mftour.spring.logic.YeePay;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mftour.spring.logic.YeePay;
 import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
@@ -29,6 +28,9 @@ import com.mftour.spring.model.TProduct;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.ISystemLogService;
 import com.mftour.spring.service.IptopService;
+
+import org.slf4j.Logger; 
+import org.slf4j.LoggerFactory; 
 
 @Controller
 @RequestMapping("/Login")
@@ -130,7 +132,8 @@ public class ptopController {
 			String hot=request.getParameter("hot");
 			product.setReleaseTime(df.format(new Date()));
 			if(hot!=null&&hot.equals("1")){
-				Communal communal=new Communal("hotProject",product.getEnterpriseNumber());
+				Communal communal=ptopService.queryHotprojectFromCommunal().get(0);
+				communal.setValuess(product.getEnterpriseNumber());
 				ptopService.addOrUpdate(communal);
 			}
 			if(product.getPlatformFee()==null){
@@ -331,7 +334,6 @@ public class ptopController {
 			TProduct product, HttpServletRequest request) throws Exception {
 
 		TProduct product1 = productService.getProductById(id);
-
 		model.addAttribute("product1", product1);
 		systemLogService.saveSystemLog(request, "后台信息", "更新产品", 1);
 		return "ptop/p2b_modify";
