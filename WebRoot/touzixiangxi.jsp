@@ -606,9 +606,10 @@ function mysubmit(){
          var h=Math.floor(t/1000/60/60%24);        
          var m=Math.floor(t/1000/60%60); 
          var s=Math.floor(t/1000%60);  
-          if(d+h+m+s==0){        	  
-          	clearInterval(timer); 	
+          if(d+h+m+s==0){ 
             document.location.reload();
+          	clearInterval(timer); 	
+            
           }        
           $('#t_d').text(d+"天");
           $('#t_h').text(h+"时");
@@ -624,6 +625,10 @@ function mysubmit(){
      } 	
         var timer= setInterval(getRTime,1000);
  });  
+
+   
+    
+ 
  
  /*获取投资额焦点*/
  $("#buyAmount").focus(function(){

@@ -2204,6 +2204,7 @@ ul,li{
     width: 200px;
     height: 18px;
     border: 1px solid #996c33;
+    overflow: hidden;
 }
 .li_loadbar div{
 	width: 50%;
@@ -4388,7 +4389,7 @@ ul,li{
 }
 .neirong{
 	position:absolute; 
-	top:36%; 
+	top:25%; 
 	left:4%; 
 	width:186px; 
 	height:30px; 
