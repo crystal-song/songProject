@@ -619,5 +619,13 @@ public class ptopController {
 		}
 		return "fail";
 	}
-
+	@RequestMapping(value="/checkRate",method={RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public String checkRate(@RequestParam("enterpriseNumber") String enterpriseNumber){
+		List list=ptopService.queryTInterestRateByNumber(enterpriseNumber);
+		if(list!=null&&list.size()!=0){
+			return "success";
+		}
+		return "fail";
+	}
 }
