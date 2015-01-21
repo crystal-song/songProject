@@ -27,14 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="label"><strong>热门项目</strong></div>
   </div>
     <div class="shuju">
-      <c:if test="${t!=null}">
        <div class="new_production">
-       <c:if test="${t.hotPicture=='' }">
          <a class="images_pro" href="product/getProductByid?id=56"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/shengxian03.jpg"></a>
-       </c:if>  
-        <c:if test="${t.hotPicture!='' }">
-         <a class="images_pro" href="product/getProductByid?id=${t.id }">${t.hotPicture}</a>
-       </c:if> 
+         <c:if test="${t!=null }">
          <div class="meier_wd">                
            <h3><a href="product/getProductByid?id=56" style="color:#ff453e">${t.projectName}</a></h3>       	
            <ul class="mei_msg">

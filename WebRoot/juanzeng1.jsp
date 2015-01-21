@@ -61,12 +61,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>  
             <div class="fir_title">收货地址</div>
       <div class="dizhi">       
-        <div class="dizhi_fir" style="margin-left:10px">
-          <p>北京（***收）</p>
-          <p></p>        
+        <div>
+          <p style="margin-top:26px;">北京（王大海收）</p>
+          <p>北京市朝阳区工体北路十三号院1号楼1501-1502室</p> 
+          <p>13523238888</p>       
         </div>
-        <div class="dizhi_sec"></div>
-        <div class="dizhi_thi"></div>
+        <div>
+          <p style="margin-top:26px;">北京（王大海收）</p>
+          <p>北京市朝阳区工体北路十三号院1号楼1501-1502室</p> 
+          <p>13523238888</p>    
+        
+        </div>
+        <div>
+          <p style="margin-top:26px;">北京（王大海收）</p>
+          <p>北京市朝阳区工体北路十三号院1号楼1501-1502室</p> 
+          <p>13523238888</p>           
+        </div>
       </div>   
    </div>
 </div>                
@@ -83,7 +93,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 <script type="text/javascript">
- 
+$(document).ready(function(e){
+	$(".dizhi div").click(function(){
+		$(this).css("background","url(<%=path%>/img/images-2014-11/kuang.png)  no-repeat");
+		$(this).siblings().css("background","url(<%=path%>/img/images-2014-11/kuang1.png)  no-repeat");
+	})
+	
+	
+});
  
 </script>
 
