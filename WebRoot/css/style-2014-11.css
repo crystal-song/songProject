@@ -4702,6 +4702,12 @@ ul,li{
     background:url(../img/images-2014-11/dingyun02.png) 0 -80px no-repeat;
     position:relative;
 }
+.new_top .newpoint{
+	font-size:20px;
+	line-height:50px;
+	margin-left:20px;
+
+}
 .top_line{
 	width:160px;
 	height:60px;
@@ -4728,6 +4734,9 @@ ul,li{
 	font-weight:bold;
 	color:#b06b28;
 	margin:4% 7%; 
+}
+.new_top span div{
+	float:left;
 }
 .msg_zhong{
 	width:1060px;
@@ -5264,26 +5273,29 @@ ul,li{
 	width:680px;
 	height:400px;
 }
-.dizhi_fir{
-	width:186px;
-	height:133px;
-	background:#ccc;
-	float:left;
-	margin-right:50px;
+
+.dizhi div{
+	padding:10px;
+	width:190px;
+	height:140px;
+    background:url(../img/images-2014-11/kuang1.png)  no-repeat;
+    float:left;
+	margin-right:15px;
+	cursor:pointer;
 }
-.dizhi_sec{
-	width:186px;
-	height:133px;
-	background:#ccc;
-	float:left;
-	margin-right:50px;
+.dizhi div:hover{
+	background:url(../img/images-2014-11/kuang2.png)  no-repeat;
 }
+.dizhi p{
+	text-align:left;
+	display:inline-block;
+	width:150px;  
+	margin:0;
+	margin-top:10px;	
+}
+
 .dizhi_thi{
-	width:186px;
-	height:133px;
-	background:#ccc;
-	float:left;
-	
+	margin-right:0;
 }
 .wd_pro_right{
 	width:100%;

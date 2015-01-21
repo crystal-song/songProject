@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
  <%@ include file="/includes/taglibs.jsp" %>
 
-<title>我的账户 - 中租宝</title>
+<title>新手指引 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 
@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div class="new_person"> 
       <div class="new_fir">
 	       <div class="new_top">
-	        <span>关于中租宝</span>	        
+	        <span><div >中租宝</div><div class="newpoint">新手指引</div></span>	        
 	       </div>
 	       <a class="top_line" href="<%=path%>/wel">回到首页</a>
 	      <div class="msg_zhong">
@@ -91,9 +91,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!-- content end -->
 <!-- absolute_right start -->
-	<%-- <%@ include file="/includes/absolute.jsp" %> --%>
+	  <%-- <%@ include file="/includes/absolute.jsp" %> --%>
 <!-- absolute_right end -->
-
+<div class="absolute_right" style="height:180px;">
+      <div style="width:50px; height:50px; bottom:10%">
+        <span class="absolute_bac1"><a href="#" >返回顶部</a></span>
+      </div>
+      
+      
+   
+      <div style="display:none">
+        <span class="absolute_bac4"><a href="#" >意见反馈</a></span>
+      </div>      
+    </div>
 </body>
 <script type="text/javascript">
       $(function(){
@@ -201,4 +211,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       })
       
 </script>
+ <script type="text/javascript">
+       
+    $(document).ready(function(){
+    $(".absolute_bac1").hide();
+    $(".absolute_right a").hide();
+    $(".absolute_right span").mouseover(function(){
+       $(this).children().show();
+
+   }).mouseout(function(){
+       $(this).children().css("display","none");
+   });
+       $(".absolute_bac2").mouseover(function(){
+         $(this).siblings(".erweima_bac").show();
+       }).mouseout(function(){
+         $(this).siblings(".erweima_bac").hide();
+       });
+	$(window).on('scroll', function(){
+       if($(window).scrollTop()<500){
+           $(".absolute_bac1").hide();
+       }
+       if($(window).scrollTop()>=500){
+           $(".absolute_bac1").show(); 
+       }
+     });
+           $(".absolute_bac1").click(function(){
+              $("html,body").animate({scrollTop:0},500);  		            
+           });	 
+    }); 
+    </script>
 </html>
