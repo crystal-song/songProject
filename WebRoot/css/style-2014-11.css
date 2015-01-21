@@ -5028,7 +5028,7 @@ ul,li{
 	width:100%;
 	height:1060px;
     position:relative;
-    background:url(../img/images-2014-11/contact_last.jpg) 10% 46% no-repeat;
+    
 }
 .local_bac{
 	width:350px;
@@ -5296,6 +5296,18 @@ ul,li{
 
 .dizhi_thi{
 	margin-right:0;
+}
+.tianjia {
+	font-size:14px;
+	float:right;
+	color:#ff975f;
+	margin-right:10%;
+	font-weight:lighter;
+	width:80px;
+	line-height:20px;
+	height:30px;
+	text-align:right;
+	background:url(../img/images-2014-11/jiahao.png)  no-repeat;
 }
 .wd_pro_right{
 	width:100%;
