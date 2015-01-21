@@ -367,11 +367,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <dt></dt>
                 </li>              
                  <li>
-                <dd>上线/下线属性：</dd>
+                <dd>显示状态：</dd>
                  <p>
                       <label>
-                        <input type="checkbox" name="line" id="line"   value="1"  />
-                        <span>上线项目（项目显示）</span></label>
+                        <input type="checkbox" name="line" id="line"   value="1"  onclick="checkRate();"/>
+                        <span>项目可见</span></label>
                         <input type="hidden" id="line1" value="${product1.line }"></input>
 				</p>
                     <dt></dt>
@@ -436,6 +436,21 @@ $(document).ready(function(){
 	}
 	   
 	});
+	function checkRate(){
+		if ($('#line').val() ==1) {
+			$.ajax({
+				type : 'POST',
+				url : '/Login/checkRate',
+				data : 'enterpriseNumber=' + $('#enterpriseNumber').val(),
+				dataType : 'text',
+				success : function(data) {
+					if (data != '"success"') {
+						alert("请添加阶梯利率以后在修改项目状态！")
+					}
+				}
+			});
+		}
+	}
 $(function () {
     $(".ui_timepicker").datetimepicker({
         //showOn: "button",
