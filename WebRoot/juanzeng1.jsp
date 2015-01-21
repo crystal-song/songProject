@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </dl>
          </span>
       </div>  
-            <div class="fir_title">收货地址</div>
+      <div class="fir_title">收货地址 <div class="tianjia">添加地址</div></div>
       <div class="dizhi">       
         <div>
           <p style="margin-top:26px;">北京（王大海收）</p>
@@ -78,6 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <p>13523238888</p>           
         </div>
       </div>   
+      <a class=""></a>
    </div>
 </div>                
 
