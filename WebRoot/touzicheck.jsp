@@ -209,9 +209,7 @@ function onSubmit(host) {
                         $("#dialog01").css("display","none");
                         $(".black_bac").css("display","none");
                     });
-                    
-                    
-                    
+           
                     form.submit();
                     document.getElementById("que_btn_ok").disabled()
 
