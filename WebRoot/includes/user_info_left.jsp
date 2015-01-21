@@ -51,7 +51,7 @@
                 <li>
                   <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
-                <li style="display:;">
+                <li style="display:none;">
                   <a href="<%=path%>/loan/loanProduct">我的借款</a>
                 </li>
                 <li>
