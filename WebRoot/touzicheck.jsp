@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
           <div class="form-group" >
             <label for="#">预期收益率：</label><input type="text"
-              class="form-control pre_bac" id="preview_rate" name="preview_rate" value="" />
+              class="form-control pre_bac" id="preview_rate" name="preview_rate" value="" disabled="disabled"/>
             <span class="lilv_table">查看收益利率表</span>
           </div>
           
@@ -91,33 +91,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </table>         
           </li>
           <li>
-            <div class="form-group" >
+            <div class="form-group" ><%-- ${product.financingPeriod} --%>
             <%-- //${product.financingPeriod*30} --%>
-            <label for="#">投资周期：</label> <input type="text"
-              class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product.financingPeriod*30}" /> 
+            <label for="#">投资周期：</label> <input type="text" disabled="disabled"
+              class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product.financingPeriod}" /> 
                          
 
           </div>
           </li>
           <li>
             <div class="form-group" >
-            <label for="#">预期收益：</label><input type="text"
+            <label for="#">预期收益：</label><input type="text" disabled="disabled"
               class="form-control pre_bac" id="preview_income" name="preview_income" value="" />
             
            </div>
           </li>
+          <li class="fukuan">
+           <div class="form-group" >
+               <label>您实际付款金额为：</label><input type="text"  class="form-control border_none"  value="" disabled="disabled"/>
+           </div>
+         </li>
           <li>
            <div class="form-group liquan_hide" style="${reward.userId==null?"display:none":""}">
-               <label for="paymentAmount">使用50元礼卷&nbsp;</label><input type="checkbox"
-                                             class="form-control" id="reward" name="rewardCheck"  />
+              <label for="#"> <input type="checkbox" class="form-control" id="reward" name="rewardCheck"  /></label>
+               <label for="paymentAmount" style="margin-left:0px; width:118px">使用50元礼卷&nbsp;</label>
                 <input type="hidden" value="${reward.userId}" class="liquan_check"/>                                                            
            </div>
        </li>
-       <li class="fukuan">
-           <div class="form-group" >
-               <label>您实际付款金额为：</label><input type="text"  class="form-control border_none"  value=""/>
-           </div>
-       </li>
+
           <li>
              <div class="form-group">
                 <span class="liquan_check"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
@@ -190,9 +191,7 @@ function onSubmit(host) {
     if(parseInt(a) < 200){
         alert("投资金额必须大于200");
         return false;
-    }
-	
-      	
+    }    	
 
     $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
             success: function(resp){
@@ -225,7 +224,7 @@ $(document).ready(function(e) {
 	   $("#reward").click(function(){
 		  $(".fukuan").css("display","block");
 		  var real_fukuan=$("#paymentAmount").val()
-		  $(".border_none").val(real_fukuan-50)
+		  $(".border_none").val(real_fukuan-50+"元")
 	   });
 	
 	   $(".right_cha").click(function(){
@@ -263,30 +262,44 @@ $(document).ready(function(e) {
 	    });
 		function calc(){
 			//console.log("-------calc-------");
-			var t=parseInt($("#paymentAmount").val());
-			var r=0;
-			var p=parseInt($("#preview_Period").val());
+			var t=parseInt($("#paymentAmount").val());  
+			var r=0;                       				
+			var p=parseInt($("#preview_Period").val()); 
 			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
 			for(i=0;i<rate_lv;i++){
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
 					if(parseInt($(".lev_mi").eq(i).html())>0){
-					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-				    
+						r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
+						
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}
-					r=r/100;
+					
+					r=r/100/365*p;   
+				
 					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
 					}
+				 
 				}
-			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			
-			$("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
-			
+			   var b=parseFloat(parseInt(r*10000)/100);		        
+			       b=b.toFixed(2)
+			       $("#preview_rate").val(b+"%");	 
+			         
+			/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元"); */  			
+			     var a=parseFloat(parseInt(t*r*100+0.5)/100)				     
+				     a= a.toFixed(2)
+			     $("#preview_income").val(a+"元");
 			}
 		$(".lilv_table").click(function(){
-			$(".new_table").slideToggle()
-			
+
+			 if($(".new_table").css("display")=="none"){
+				
+				$(".new_table").css({"display":"block"});
+				$(this).css("background","url(<%=path%>/img/images-2014-11/jiantou_er.png) 100px  16px  no-repeat")
+			}else{
+				$(".new_table").css({"display":"none"});
+				$(this).css("background","url(<%=path%>/img/images-2014-11/jiantou_xi.png)  100px  16px no-repeat")
+			} 
 		});
 		
 		  

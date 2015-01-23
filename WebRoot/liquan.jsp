@@ -5,7 +5,7 @@
 %>
 <%@ include file="/includes/taglibs.jsp" %>
 
-<title>交易记录 - 我的账户 - 中租宝</title>
+<title>我的礼券 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>

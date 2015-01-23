@@ -303,7 +303,7 @@ ul,li{
 	display:inline-block;
 	height:20px;
 	min-width:60px;
-	background:pink;
+	
 	text-align:left;
 	padding-right:20px;
 	background:url(../img/images-2014-11/sanjiao.png) 100% 0 no-repeat;
@@ -4313,9 +4313,9 @@ ul,li{
 	background:#f8f8f8;
 }
 .new_table{
-	width:700px;
+	width:586px;
 	float:left;
-	margin:3% 0 3% 15%;
+	margin:3% 0 3% 23%;
 	font-size:12px;
 	display:none;
 }
@@ -5006,6 +5006,7 @@ ul,li{
 	width:10px;
 	height:10px;
 	margin-top:10px;
+	margin-left:106px;
 }
 .chong_link{
 	width:auto;
@@ -5178,7 +5179,7 @@ ul,li{
 	box-shadow:1px 5px 10px 3px #ccc;
 	border:1px solid #eee;
 	padding:30px;
-	
+	float:left;
 }
 .jcon_fir{
 	width:680px;
@@ -5202,12 +5203,12 @@ ul,li{
 	float:left;
 }
 .j_new{
-	width:260px;
+	width:168px;
 	height:40px;
 	float:left;
 	margin-top:3%
 }
-.j_wen{
+.jcon_fir .j_wen{
 	display:inline-block;
 	width:100px;
 	height:40px;
@@ -5227,7 +5228,7 @@ ul,li{
 	margin-left:10px ;
 	float:left;
 }
-.j_wen01{
+ .j_wen01{
 	font-size:14px;
 	float:left;
 	height:40px;
@@ -5237,16 +5238,16 @@ ul,li{
 }
 .jcon_sec{
 	width:680px;
-	height:290px;
-	background:url(../img/images-2014-11/juan_line.png) 0px 90%  no-repeat;
+	height:360px;
+	background:url(../img/images-2014-11/juan_line.png) 0px 100%  no-repeat;
 }
 .juan_con_left .j_bac_new{
 	height:400px;
-	background-position:0 90%;
+	background-position:0 100%;
 }
 .j_radio02{
 	float:left;
-	margin-top:4%;
+	margin-top:5%;
 	margin-left:10px ;
 }
 .jcon_sec span{
@@ -5271,7 +5272,7 @@ ul,li{
 }
 .dizhi{
 	width:680px;
-	height:400px;
+	height:180px;
 }
 
 .dizhi div{
@@ -5308,6 +5309,7 @@ ul,li{
 	height:30px;
 	text-align:right;
 	background:url(../img/images-2014-11/jiahao.png)  no-repeat;
+	cursor:pointer;
 }
 .wd_pro_right{
 	width:100%;
@@ -5365,15 +5367,388 @@ ul,li{
 	color:#fff;
 	margin-top:10%;
 }
-.totouzi:hover{
+
+.totouzi:hover {
 	color:#fff;
 	background:#ec454e;
 }
-.guan_bac{
+.guan_bac {
 	margin-top:18px; 
 	color:#e81c05;
 	background:url(../img/images-2014-11/xin_red.png) 72% 0  no-repeat;
 }
+
+.zhifu {
+	width:110px;
+	height:30px;
+	background:#ff6660;
+	color:#fff;
+	border-radius:2px;
+	display:inline-block;
+	float:right;
+	margin:5% 10% 0 0 ;
+	font-size:14px;
+	line-height:30px;
+	cursor:pointer;
+}
+
+.rechose{
+	width:110px;
+	height:30px;
+	background:#ff6660;
+	color:#fff;
+	border-radius:2px;
+	display:inline-block;
+	float:right;
+	margin:5% 10% 0 0 ;
+	font-size:14px;
+	line-height:30px;
+	cursor:pointer;
+    display:none;
+}
+.rechose:hover{
+	color:#fff;
+}
+.zhifu:hover{
+	color:#fff;
+}
+.xinzeng{
+	width:100%;
+	height:500px;
+	border-bottom:1px solid #ccc;
+	display:none;
+}
+.son_dizhi{
+	color:#fe653c;
+	text-align:left;
+	padding-left:5%;
+}
+.dizhi_fir{
+	width:100%;
+	height:30px;
+	margin-top:3%;
+}
+.dizhi_fir span{
+	width:100px;
+	float:left;
+	height:20px;
+	line-height:20px;
+	display:inline-block;
+}
+
+.dizhi_fir input{
+	width:150px;
+	float:left;
+	display:inline-block;
+
+}
+
+.dizhi_fir textarea{
+	width:404px;
+	height:100px;
+	float:left;
+}
+.dizhi_fir strong{
+	color:#ff6660;
+}
+.dizhi_fir label{
+	float:left;
+}
+.dizhi_fir .min_input{
+	width:50px;
+}
+.juan_con_right{
+	width:300px;
+	height:auto;
+	float:right;
+
+}
+.juan_pic{
+	width:280px;
+	height:200px;
+	background:pink
+}
+.juan_con_right p{
+	width:280px;
+	height:auto;
+	line-height:30px;
+	text-align:left;
+}
+/* 111  */
+.zhong_msgcon{
+	width:1100px;
+	height:500px;
+	margin:0 auto;
+}
+.campaign_title{
+	color: #4b4b4b;
+    font-family: "Helvetica Neue","Helvetica","Arial";
+    font-size: 45px;
+    font-weight: 200;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    margin-top:5%;
+}
+
+#campaign #funding_area .campaign_title a {
+    color: #4b4b4b;
+    text-decoration: none;
+}
+
+
+#campaign #funding_area #image {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.39);
+    float: left;
+    height: 385px;
+    width: 512px;
+    margin-left:5%;
+    background:url(../img/images-2014-11/) 0 0  no-repeat;
+}
+
+.reserve_back{
+    border-bottom: 1px solid #cbcbcb;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 366px;
+}
+
+#campaign #funding_area #backing {
+    float: left;
+    margin: 20px 0 0 34px;
+    width: 392px;
+}
+
+#campaign #funding_area #backing #backers {
+    border-left: medium none;
+    padding-left: 0;
+}
+#campaign #funding_area #backing .stats {
+    border-right: 1px solid #cbcbcb;
+    color: #3f3f3f;
+    display: inline-block;
+    font-family: "Helvetica Neue","Helvetica","Arial";
+    font-size: 24px;
+    margin: 0 auto;
+    padding-left: 23px;
+    padding-right: 23px;
+    text-align: left;
+}
+
+
+#campaign #funding_area #backing .stats span {
+    color: #868686;
+    display: block;
+    font-family: "Helvetica Neue","Helvetica","Arial";
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+
+#campaign #funding_area #progress_bg {
+    background: none repeat scroll 0 0 #dbdbdb;
+    border-radius: 30px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.41);
+    float: left;
+    height: 40px;
+    margin-top: 20px;
+    overflow: hidden;
+    width: 383px;
+}
+#campaign #funding_area .small {
+    height: 20px !important;
+}
+
+#campaign #funding_area #progress_bg #progress {
+    background-image: linear-gradient(180deg, #e22404 0%, #c31808 100%);
+    border-radius: 30px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.59);
+    display: inline-block;
+    height: 20px;
+    max-width: 100%;
+    min-width: 2%;
+    width: 100%;
+    float:left;
+}
+
+.blue_button {
+    background-image: linear-gradient(90deg, #ff665f 0%, #ff665f 100%);
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-family: "Helvetica Neue","Helvetica","Arial";
+    font-size: 32px;
+    line-height: 32px;
+    margin: 20px auto 8px;
+    padding: 15px;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.37);
+    width: 274px;
+    cursor:pointer;
+}
+.blue_button:hover{
+	color:#fff;
+	background:#e0362f;
+}
+#campaign #funding_area .share {
+    margin-left: 100px;
+    margin-top: 24px;
+}
+.call_to_action_button{
+	height:auto;
+	width:auto;
+}
+#reserve_container{
+	width:auto;
+	height:auto;
+	margin-top:6%
+}
+#campaign{
+	width:100%;
+	height:auto;
+	border-bottom:1px solid #ccc;
+}
+.zhong_con{
+	width:1100px;
+	height:auto;
+	margin:50px auto;
+	
+}
+.hei_con{
+	width:670px;
+	height:auto;
+	margin-right:30px;
+    float:left;
+    text-align:left;
+}
+.hei_right{
+	width:400px;
+	height:1400px;
+	float:left;
+}
+.con_person{
+	width:670px;
+	height:374px;
+	background:url(../img/images-2014-11/people.png)  no-repeat;
+}
+.hei_con p{
+	width:100%;
+	height:auto;
+	font-size:14px;
+	line-height:30px;
+}
+
+/*222*/
+
+ .rewards_sidebar {
+    background: none repeat scroll 0 0 #f6f6f6;
+    border-radius: 5px;
+    float: right;
+    width: 400px;
+    border:1px solid #ccc;
+    height:1400px
+}
+.rewards_sidebar h3 {
+    margin: 20px 0 0 20px;
+}
+
+.rewards_sidebar ul li {
+    border-bottom: 1px solid #ccc;
+    text-align:left;
+}
+ .rewards_sidebar ul li a {
+    display: inline-block;
+    padding: 20px;
+    width:360px
+}
+ .rewards_sidebar ul li a p.price_zhong {
+    font-size: 24px;
+    font-weight: bold;
+}
+ .rewards_sidebar ul li a p {
+    color: #4b4b4b;
+    font-size: 14px;
+    margin: 0;
+    text-shadow: none;
+    line-height:30px;
+}
+
+ .rewards_sidebar ul li a p.title_zhong {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    height:30px;
+    width:120px;
+    border-radius:3px;
+    background:#ff665f;
+    color:#fff;
+    text-align:center;
+    line-height:30px;
+    float-right:right;
+    margin-top:20px;
+    cursor:pointer;
+}
+.rewards_sidebar ul li a p.description_zhong {
+    margin-bottom: 12px;
+}
+.rewards_click p{
+	text-align:left;
+	display:inline-block;
+}
+.rev_mon {
+	width:100%;
+	height:auto;
+}
+.rewards_sidebar h3{
+	color: #4b4b4b;
+    font-family: "Helvetica Neue","Helvetica","Arial";
+    font-size: 30px;
+    font-weight: 200;
+    height:50px;
+    line-height:50px;
+    background:#eee;
+    margin:0;
+    border-radius:3px 3px 0 0;
+
+}
+.rev_mon:hover{
+	background:#ccc;	
+}
+.rewards_sidebar .rew_font{
+	font-size:16px;
+}
+.claimed_zhong{
+	text-align:right;
+}
+
+.rew_btn{
+	width:1100px;
+	height:100px;
+	background:#eee
+}
+.rew_btn a{
+	width:260px;
+	height:60px;
+	border-radius:5px;
+	background:#ff665f;
+	color:#fff;
+	display:inline-block;
+	font-size:24px;
+	line-height:60px;
+	margin-top:2%
+}
+
+.juan_pic img{
+	width:280px;
+	height:200px;
+}
+
+
+
+
+
+
+
+
 
 
 
