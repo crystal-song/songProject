@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="pro_con">
        <ul>
          <li class="pro_title">还款方式：${product1.repaymentWay=='1'?'按月付息、到期还本':product1.repaymentWay=='2'?'按季付息、到期还本':product1.repaymentWay=='3'?'半年付息、到期还本':product1.repaymentWay=='4'?'按年付息、到期还本':'到期付息、到期还本' }</li>
-         <li style="padding-left:15px;">投资周期：${product1.financingPeriod*30}天</li>
+         <li style="padding-left:15px;">投资周期：${product1.financingPeriod}天</li>
          <li><span style="margin-right:0">信用等级：</span>
            <span style="margin-left:0"><img src="<%=path%>/img/images-2014-11/star_${product1.qualityRating}.png" style="margin-bottom:-3px;"></span>
            <span class="pro_r">
@@ -212,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>     
          <div class="touzi_text" >
           <span>投资周期：</span>
-          <span class="touz_right"><a id="preview_Period">${product1.financingPeriod*30}</a>天</span>
+          <span class="touz_right"><a id="preview_Period">${product1.financingPeriod}</a>天</span>
          </div>
          <div class="touzi_text">
           <span>预期总收益：</span>
