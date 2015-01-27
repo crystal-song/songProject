@@ -93,9 +93,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
             <div class="form-group" ><%-- ${product.financingPeriod} --%>
             <%-- //${product.financingPeriod*30} --%>
-            <label for="#">投资周期：</label> <input type="text" disabled="disabled"
-              class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product.financingPeriod}天" /> 
-                         
+            <label for="#">投资周期（天）：</label> <input type="text"
+              class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product.financingPeriod}" /> 
 
           </div>
           </li>
