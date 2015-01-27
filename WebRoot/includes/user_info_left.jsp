@@ -1,5 +1,5 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
-
+<%@ include file="/includes/taglibs.jsp" %>
     
         <ul>
            <li class="fir_li">账户主页</li>
@@ -51,9 +51,11 @@
                 <li>
                   <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
-                <li class="myLoan" >
-                  <a href="<%=path%>/loan/loanProduct?username=${name}">我的借款</a>
+                <c:if test="${userinfo.isborrow==true }">
+                <li>
+                  <a href="<%=path%>/loan/loanProduct">我的借款</a>
                 </li>
+                </c:if>
                 <li>
                   <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
@@ -82,18 +84,6 @@
     	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
     	  $(this).parent().siblings().children(".u_left_sec").slideUp();
     	  $(this).siblings().slideToggle("slow");
-    	 
-    	  $.ajax({
-				type : 'POST',
-				url : '/loan/checkIsBorrow',
-				data : 'username=' + $('#username').val(),
-				dataType : 'text',
-				success : function(data) {
-					if (data != '"success"') {
-							$('.myLoan').attr('style', 'display:none');
-					}
-				}
-			});
       });
     	if(indexs!=null){
     		$(".u_left_mian").eq(indexs).addClass("u_left_red").parent().siblings().children(".u_left_mian").removeClass("u_left_red");

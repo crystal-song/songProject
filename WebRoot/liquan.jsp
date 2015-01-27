@@ -80,7 +80,7 @@
     var indexs=1;
     $(function(){
         $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-        $(".u_left_sec:eq(1) li:eq(4)").children("a").css("color","#fc652e");
+        $(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
         $(".zichan_con .tui_li li span:odd").css("text-align","left");
         $(".nav_big a").eq(2).children("p").addClass("headwd_color");
     })
