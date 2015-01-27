@@ -241,9 +241,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                  <li>
                     <dd>还款方式：</dd>
+                    <select  name="repaymentWay"  id="repaymentWay" >
+                     <option value="1">按月付息、到期还本</option>
+                     <option  value="2">按季付息、到期还本</option>
+                     <option  value="3">半年付息、到期还本</option>
+                     <option  value="4">按年付息、到期还本</option>
+                     <option  value="5">到期付息、到期还本</option>
+                    </select>
+                </li>
+                <%--  <li>
+                    <dd>还款方式：</dd>
                     <input type="text" name="repaymentWay"  id="repaymentWay"  value="${product1.repaymentWay==null?'按月付息、到期还本':product1.repaymentWay}" />
                     <dt>按月付息、到期还本</dt>
-                </li>
+                </li> --%>
                  <li>
                     <dd>开始融资时间：</dd>
                     <input type="" name="financeTimes"  id="financeTime" value="${product1.financeTime}"  class="ui_timepicker" />

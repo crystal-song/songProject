@@ -141,7 +141,9 @@ public class PtopServiceImpl implements IptopService {
 		ptopDao.deleteTChannel(id);
 
 	}
-
+	public void deleteInterestRate(Long id) throws Exception{
+		ptopDao.deleteInterestRate(id);
+	}
 	@Override
 	public List<TNews> getNewsbyRecommend() throws Exception {
 

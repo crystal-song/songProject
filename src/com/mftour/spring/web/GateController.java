@@ -18,6 +18,7 @@ import com.alibaba.fastjson.JSON;
 import com.mftour.spring.base.JsonBaseBean;
 import com.mftour.spring.logic.YeePay;
 import com.mftour.spring.model.*;
+import com.mftour.spring.rest.bean.Response;
 import com.mftour.spring.rest.bean.ResponseReward;
 import com.mftour.spring.rest.bean.YeepayAccountInfo;
 
@@ -454,7 +455,40 @@ public class GateController {
 		}
 		return request.getHeader("x-forwarded-for");
 	}
+@RequestMapping(value="/gate/doRepayment")
+public String doRepayment(int id,Model model,@RequestParam("total") double total,HttpServletRequest request) throws Exception{
+	String username=(String)request.getSession().getAttribute("name");
+      Accounts account=	userService.getAccountByName(username);
+    if(account.getAvailableMoney().doubleValue()>=total){
+	String requestNo = UUID.randomUUID().toString();
+	Map<String, Object> map = new HashMap<String, Object>();
+	map.put("id", id);
+	map.put("notifyurl", "/gate/repaymentNotify");
+	map.put("callbackurl", "/gate/repaymentSucceed");
+	map.put("requestno", requestNo);
+	String s = rest.postRestful("/rest/yeepay/xml/generate-do-repayment-xml", map);
+	Response r = JSON.parseObject(s, Response.class);
+	if (r.isSuccess()){
 
+			s = r.getResponse().replaceAll("[\\r\\n]", "");
+			Rest rest = new Rest();
+
+			Map<String, Object> m = new HashMap<String, Object>();
+			m.put("request-no", requestNo);
+			m.put("service", "REPAYMENT");
+			m.put("request-xml", s);
+			m.put("project-id",id);
+			String res = rest.postRestful("/rest/yeepay/create", m);
+			JsonBaseBean rr = JSON.parseObject(res, JsonBaseBean.class);
+	if (r.isSuccess()){
+		return doSign(s, f.getOnSubmit() + "/bha/toRepayment", model,"");
+	}else{
+		return "error";
+	}
+	}	
+      }
+	return "error";
+}
 	@RequestMapping(value = "/gate/doTransfer")
 	public String doTransfer(BHATransferRequest request,String rewardCheck,
 							 Model model, TTransferInfo TtransferInfo,
@@ -469,9 +503,7 @@ public class GateController {
 			return "redirect:/product/allProduct";
 		}
 		Rest rest = new Rest();
-
 		Object o = request1.getSession().getAttribute("name");
-
 		if(o==null){
 			return "login";
 		}
@@ -885,18 +917,44 @@ public class GateController {
 		}
 
 	}
+@RequestMapping(value="/gate/repaymentSucceed" ,method={RequestMethod.POST, RequestMethod.GET})
+public String repaymentSSucceed(Model model,String resp,String sign,HttpServletRequest request) throws Exception{
+	model.addAttribute("resp", resp);
+	model.addAttribute("sign", sign);
+	try {
+		Map<String, Object> m = Xml.Dom2Map(resp);
+		Rest rest = new Rest();
 
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("request-no", m.get("requestNo"));
+		map.put("service", "toRepayment");
+		map.put("code", m.get("code"));
+		map.put("response-xml", resp);
+		if(m.get("code").equals("1")){
+			String s = rest.postRestful("/rest/yeepay/update-success", map);
+			JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+			Yeepays yeepays=gateService.queryYeepaysByNumber(m.get("requestNo").toString()).get(0);
+			return "redirect:/loan/loanManage?enterpriseNumber="+yeepays.getProjectId();
+
+		} else {
+			rest.postRestful("/rest/yeepay/update-error", map);
+
+			return "error";
+		}
+
+	} catch (Exception e) {
+		// TODO: handle exception
+		logger.error("error" + e);
+		return "error";
+	}
+}
 	@RequestMapping(value = "/gate/transferSucceed", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String transferSucceed(Model model, String resp, String sign,
 			HttpServletRequest request) throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
-
-
 		try {
-
-
 			Map<String, Object> m = Xml.Dom2Map(resp);
 			Rest rest = new Rest();
 
@@ -926,7 +984,37 @@ public class GateController {
 	}
 
 
+	@RequestMapping(value = "/gate/repaymentNotify", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String repaymentNotify(String notify, String sign, Model model)
+			throws Exception {
+		try {
+			Thread.sleep(5000);
+			Map<String, Object> m = Xml.Dom2Map(notify);
+			Rest rest = new Rest();
 
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("request-no", m.get("requestNo"));
+			map.put("service", "toRepayment");
+			map.put("code", m.get("code"));
+			map.put("response-xml", notify);
+			if(m.get("code").equals("1")){
+				String s = rest.postRestful("/rest/yeepay/update-success", map);
+				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+				return "repayment_ok";
+
+			} else {
+				rest.postRestful("/rest/yeepay/update-error", map);
+
+				return "error";
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error" + e);
+			return "error";
+		}
+	}
 
 	@RequestMapping(value = "/gate/transferNotify", method = {
 			RequestMethod.POST, RequestMethod.GET })

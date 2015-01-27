@@ -28,6 +28,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.model.Yeepays;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.util.Page;
 
@@ -91,6 +92,9 @@ public class IGateServiceImpl  implements  IGateService {
 		return gateDao.queryTTransferInfoByNumber(Number);
 
 
+	}
+	public List<Yeepays> queryYeepaysByNumber(String Number) throws Exception{
+		return gateDao.queryYeepaysByNumber(Number);
 	}
 	public List queryAllTransRecord(Page page,String sql,Object[] para)
 			throws Exception {
@@ -192,7 +196,11 @@ public class IGateServiceImpl  implements  IGateService {
 		return gateDao.queryTTransferInfoByEnterpriseNumber(transferInfo);
 		 
 	}
-
+	public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(
+			String enterpriseNumber) throws Exception {
+		return gateDao.queryTTransferInfoByEnterpriseNumber(enterpriseNumber);
+		 
+	}
 
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByName(String name)

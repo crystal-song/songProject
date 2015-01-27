@@ -1,6 +1,6 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
 
-      
+    
         <ul>
            <li class="fir_li">账户主页</li>
            <li>
@@ -51,8 +51,8 @@
                 <li>
                   <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
-                <li style="display:none;">
-                  <a href="<%=path%>/loan/loanProduct">我的借款</a>
+                <li class="myLoan" >
+                  <a href="<%=path%>/loan/loanProduct?username=${name}">我的借款</a>
                 </li>
                 <li>
                   <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
@@ -72,7 +72,7 @@
               </ul>
            </li>
          </ul>
-        
+        <input type="hidden" id="username" value="${name }"  />
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -82,6 +82,18 @@
     	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
     	  $(this).parent().siblings().children(".u_left_sec").slideUp();
     	  $(this).siblings().slideToggle("slow");
+    	 
+    	  $.ajax({
+				type : 'POST',
+				url : '/loan/checkIsBorrow',
+				data : 'username=' + $('#username').val(),
+				dataType : 'text',
+				success : function(data) {
+					if (data != '"success"') {
+							$('.myLoan').attr('style', 'display:none');
+					}
+				}
+			});
       });
     	if(indexs!=null){
     		$(".u_left_mian").eq(indexs).addClass("u_left_red").parent().siblings().children(".u_left_mian").removeClass("u_left_red");
@@ -91,7 +103,10 @@
     	$(".u_left_mian").click(function(){
          	
     	});
-    });
+			
+		}
+    	
+    );
 </script>
         
         

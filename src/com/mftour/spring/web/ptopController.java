@@ -575,7 +575,34 @@ public class ptopController {
 		return "ptop/channel_manage";
 
 	}
+	@RequestMapping(value = "/deleteInterestRate", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String deleteInterestRate(Model model,@RequestParam("id") long id,@RequestParam("enterpriseNumber")String enterpriseNumber,
+			HttpServletRequest request) throws Exception {
 
+		try {
+
+			ptopService.deleteInterestRate(id);
+			systemLogService.saveSystemLog(request, "后台信息", "删除阶梯利率", 1);
+			List<TInterestRate> li = ptopService
+					.queryTInterestRateByNumber(enterpriseNumber);
+			model.addAttribute("li", li);
+		
+			TProduct product1 = productService.queryProductByNumber(enterpriseNumber).get(0);
+			model.addAttribute("product1", product1);
+
+			
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			/* map.put("mes", "操作失败"); */
+			throw e;
+		}
+
+		return "ptop/p2b_income";
+
+	}
 	@RequestMapping(value = "/addyield", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String addyield(@RequestParam("id") Long id, Model model,
