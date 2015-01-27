@@ -19,6 +19,7 @@ public class TTransferInfo implements java.io.Serializable {
 	private String enterpriseNumber;			//企业编号
 	private String projectName;					//项目名称
 	private Double interestRate;
+	private Double interest;
 
 
 	private BigDecimal reward;
@@ -179,7 +180,13 @@ public class TTransferInfo implements java.io.Serializable {
 		this.platformUserNo = platformUserNo;
 		this.paymentAmount = paymentAmount;
 	}
+	public Double getInterest() {
+		return interest;
+	}
 
+	public void setInterest(Double interest) {
+		this.interestRate = interest;
+	}
     
 	
 	

@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                     <dd>还款日期：</dd>
-                    <input type="date"  value="${product1.repaymentTime}"       disabled="disabled" />
+                    <input type=""  value="${product1.repaymentTime}"       disabled="disabled" />
                     <dt></dt>
                 </li>
                 <li>
@@ -106,7 +106,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <caption>投资记录</caption>
         <thead>
         	<tr>
-        	<th align="center">阶数</th>
             <th align="center">初始金额</th>
             <th align="center">初始利率</th>
             <th align="center">金额步长值</th>
@@ -116,16 +115,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </tr>
         </thead>
         <tbody>
-        <c:if test="${ not empty list}">
-        <c:forEach var="s" items="${list}" varStatus="i">
+        <c:if test="${ not empty li}">
+        <c:forEach var="s" items="${li}" varStatus="i">
         	<tr>
-            	<td align="center">${s.id}</td>
-                <td align="center">${s.investor}</td>
-                <td align="center">${s.identityCard}</td>
-              <td align="center">${s.investmentAmount}</td>
-              <td align="center">${s.administratorName}</td>
-              <td align="center">${s.writeTime}</td>
-              <td align="center"><a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteTInvestmentInfo?id=${s.id}&enterpriseNumber=${s.enterpriseNumber}'">删除</a></td>
+                <td align="center">${s.startMoney}</td>
+                <td align="center">${s.startInterestRate}</td>
+              <td align="center">${s.moneyIncrease}</td>
+              <td align="center">${s.interestRateIncrease}</td>
+              <td align="center">${s.highestMoney}</td>
+              <td align="center"><a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteInterestRate?id=${s.id}&enterpriseNumber=${product1.enterpriseNumber}'">删除</a></td>
           </tr>
           </c:forEach>
      
