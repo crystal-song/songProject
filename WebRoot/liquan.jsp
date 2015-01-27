@@ -5,7 +5,7 @@
 %>
 <%@ include file="/includes/taglibs.jsp" %>
 
-<title>交易记录 - 我的账户 - 中租宝</title>
+<title>我的礼券 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
@@ -80,7 +80,7 @@
     var indexs=1;
     $(function(){
         $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-        $(".u_left_sec:eq(1) li:eq(4)").children("a").css("color","#fc652e");
+        $(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
         $(".zichan_con .tui_li li span:odd").css("text-align","left");
         $(".nav_big a").eq(2).children("p").addClass("headwd_color");
     })
