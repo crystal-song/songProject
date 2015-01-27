@@ -5742,8 +5742,12 @@ ul,li{
 	height:200px;
 }
 
-
-
+.fix_bottom{
+	position:fixed;
+}
+.absolute_bottom{
+	position:relative;
+}
 
 
 

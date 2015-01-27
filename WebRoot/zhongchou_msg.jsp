@@ -81,7 +81,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </div>
            <p>我叫王帅（藏名才让多吉）, 汉族、十多年前和一位上师在汉地，因为一场缘定三生的会面，
                          而和藏区，和藏族同胞结下了深厚的缘分.                        
-           </p>           
+           </p>  
+          <div class="con_person">   
+           </div>
+           <p>我叫王帅（藏名才让多吉）, 汉族、十多年前和一位上师在汉地，因为一场缘定三生的会面，
+                         而和藏区，和藏族同胞结下了深厚的缘分.                        
+           </p>
+           <div class="con_person">   
+           </div>
+           <p>我叫王帅（藏名才让多吉）, 汉族、十多年前和一位上师在汉地，因为一场缘定三生的会面，
+                         而和藏区，和藏族同胞结下了深厚的缘分.                        
+           </p>
          </div>
          <div class="hei_right">
            <div class="rewards_sidebar">
@@ -122,9 +132,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>	
     </div>
     <div class="clear"></div>
-    <div class="rew_btn"><a href="#">我要支持</a></div>
+    
 </div>
-
+<div class="rew_btn"><a href="#">我要支持</a></div>
 <!-- absolute_right start -->
 	 <%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->
@@ -141,26 +151,166 @@ $(document).ready(function(e){
 		$(this).css("background","url(<%=path%>/img/images-2014-11/kuang.png)  no-repeat");
 		$(this).siblings().css("background","url(<%=path%>/img/images-2014-11/kuang1.png)  no-repeat");
 	})
+	var offsettop_fir=parseInt($(".hei_right").offset().top);
 	var heiright_height=$(".hei_right").height();
+	//alert(heiright_height)
 	$(window).on("scroll",function(){
 		rightBar();		
 	});
 	
 	function rightBar(){
-		var scroll_height=$(this).scrollTop();
-		$(".rew_font strong").html(scroll_height)
-		var win_height=$(window).height();
-		var h=heiright_height-scroll_height
-		if(h>win_height){
-			$(".claimed_zhong label").html(h)
+		var scroll_height=parseInt($(this).scrollTop());		
+		var win_height=$(window).height();//window height
+		var offset_height=parseInt($(".hei_right").offset().top);
+		var offset_left=parseInt($(".hei_right").offset().left);	
+		var con_offset=parseInt($(".hei_con").offset().top);
+		var con_height=$(".hei_con").height();
+		var h=parseInt(heiright_height+offset_height-win_height+50);
+		var ch=parseInt(con_offset+con_height-win_height);
+		var Ztop=win_height-heiright_height-50;
+		/* var Ctop=con_height-heiright_height */
+		/* var Ctop=win_height-offset_height-(scroll_height-win_height-offset_height+win_height);  */
+		/* var Ctop=con_height-offset_height-con_offset  */
+		/* var Ctop=win_height-con_height-con_offset-offset_height  */
+		/* var Ctop=con_offset+con_height-(win_height+scroll_height) */
+		 $(".rew_font strong").html(scroll_height+"scrolltop");
+		/* var h=parseInt(heiright_height+offset_height-scroll_height+50) */ 
+		 $(".delivery_zhong").html(offsettop_fir+"hhhh") 
+		/* $(".title_zhong").html(win_height+"winhei") */
+		 $(".price_zhong").html(con_height+"divhei") 
+		/* $(".claimed_zhong label").html(parseInt(offset_height)+"offsettop") */
+		
+		if(h<scroll_height){
 			
+		     $(".hei_right").addClass("fix_bottom"); 
+		     $(".hei_right").css({"left":offset_left,"top":Ztop});	    
+		     var Top1=win_height-(offset_height+heiright_height()) 
+		     
+		    
 		}
 		
+		if(ch<scroll_height){
+			/* $(".hei_right").addClass("absolute_bottom");  */				
+		    var Ctop=(con_height-heiright_height)+offsettop_fir
+		        $(".hei_right").css({"left":offset_left,"top":Ctop});	   
+       	        $(".title_zhong").html(offset_left+"Ctop")      	      
+
+         } 
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 });
  
 </script>
+
+
+
+<script type="text/javascript">
+	iE6=window.ActiveXObject&&!window.XMLHttpRequest;
+	if(!iE6){
+	    var isScroll=false;
+	    var docHeight = document.documentElement.clientHeight;
+	    var sideTop=document.getElementById('sidebar').offsetTop;
+	 
+	    window.onscroll=function() {
+	        //document.getElementById("float").className="div2";	 
+	        var s=document.body.scrollTop||document.documentElement.scrollTop;
+	        var isIE=(navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0);
+	        if(isIE)
+	        {
+	 
+	            if(s>(document.getElementById('sidebar').offsetHeight + document.getElementById('header').offsetHeight - docHeight))
+	            {
+	                if(!isScroll)
+	                {
+	                    var leftW=document.getElementById('sidebar').offsetLeft;
+	                    var topH=document.getElementById('sidebar').offsetHeight;
+	                    document.getElementById('sidebar').style.position='fixed';
+	                    document.getElementById('sidebar').style.left=leftW+document.body.offsetLeft + 14 + 'px';
+	                    document.getElementById('sidebar').style.top=(docHeight - topH) + 'px';
+	                    isScroll=true;
+	                }
+	                else	                {
+	                    if(s>(document.getElementById('content').offsetHeight+document.getElementById('header').offsetHeight - docHeight))
+                    {
+                        var topH=document.getElementById('sidebar').offsetHeight;
+	 
+	                        document.getElementById('sidebar').style.top=(docHeight - topH - (s-document.getElementById('content').offsetHeight-document.getElementById('header').offsetHeight+docHeight))+'px';
+	 
+	                    }
+	                    else
+	                    {
+	                        var topH=document.getElementById('sidebar').offsetHeight;
+	                        document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
+	                    }
+	                }
+	            }
+	            else
+	            {
+	                if(isScroll)
+	                {
+	                    document.getElementById('sidebar').style.position='static';
+	                    isScroll=false;
+	                }
+	            }
+	 
+	        }
+	        else
+	        {
+	            if(s>(document.getElementById('sidebar').offsetHeight+sideTop-docHeight))
+	            {
+                if(!isScroll)
+	                {
+	                    var leftW=document.getElementById('sidebar').offsetLeft;
+	                    var topH=document.getElementById('sidebar').offsetHeight;
+	                    document.getElementById('sidebar').style.position='fixed';
+	                    document.getElementById('sidebar').style.left=leftW+'px';
+	                    document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
+	                    isScroll=true;
+	                }
+	                else
+	                {
+	                    if(s>document.getElementById('content').offsetHeight + document.getElementById('content').offsetTop - docHeight)
+	                    {
+	                        var topH=document.getElementById('sidebar').offsetHeight;
+	 
+	                        document.getElementById('sidebar').style.top=(docHeight-topH-(s-document.getElementById('content').offsetHeight-document.getElementById('content').offsetTop+docHeight))+'px';
+	 
+	                    }
+	                    else
+	                    {
+	                        var topH=document.getElementById('sidebar').offsetHeight;
+	                        document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
+	                    }
+	                }
+	 
+	            }
+	            else
+	            {
+	                if(isScroll)
+	                {
+	                    document.getElementById('sidebar').style.position='static';
+	                    isScroll=false;
+	                }
+	            }
+	 
+	        }
+	 
+	    }
+	}
+	</script>
 
 </html>
