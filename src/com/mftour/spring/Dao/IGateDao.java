@@ -22,6 +22,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.model.Yeepays;
 import com.mftour.spring.util.Page;
 
 public interface IGateDao {
@@ -87,7 +88,10 @@ public interface IGateDao {
 	 public List queryAllTransRecord(Page page,String sql,Object[] para)
 				throws Exception;
 	 public List queryAvaliableRewards(String username,Date currtime) throws Exception;
-	
+
+
+	List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(String enterpriseNumber) throws Exception;
+	public List<Yeepays> queryYeepaysByNumber(String Number) throws Exception;
 }
 	 
 	

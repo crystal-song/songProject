@@ -64,4 +64,5 @@ public interface IptopService {
 	public List<TInterestRate> queryTInterestRateByNumber(String Number);
 	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo);
 	public List<TProduct> queryHotproject() throws Exception;
+	public void deleteInterestRate(Long id) throws Exception;
 }

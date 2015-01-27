@@ -24,8 +24,8 @@
             <column name="request_json" />
         </property>
 
-        <property name="projectId" type="java.lang.Integer">
-            <column name="projectId" length="10" default="0"/>
+        <property name="projectId" type="java.lang.String">
+            <column name="projectId" length="100" />
         </property>
         <property name="projectName" type="java.lang.String">
             <column name="projectName" />
@@ -50,6 +50,9 @@
         </property>
         <property name="respMethod" type="java.lang.String">
             <column name="respMethod" length="10" />
+        </property>
+           <property name="requestNo" type="java.lang.String">
+            <column name="requestNo" length="50" />
         </property>
           <property name="respXml" type="java.lang.String">
             <column name="respXml" />

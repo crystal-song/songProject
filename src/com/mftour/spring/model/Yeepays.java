@@ -18,6 +18,15 @@ public class Yeepays {
 	private String respJson;
 	private String respSign;
 	private Integer respCode;
+	private String requestNo;
+	
+	public String getRequestNo() {
+		return requestNo;
+	}
+
+	public void setRequestNo(String requestNo) {
+		this.requestNo = requestNo;
+	}
 
 	public BigDecimal getReward() {
 		return reward;
@@ -29,13 +38,13 @@ public class Yeepays {
 
 	private BigDecimal reward;
 
-	private Integer projectId;
+	private String projectId;
 
-	public Integer getProjectId() {
+	public String getProjectId() {
 		return projectId;
 	}
 
-	public void setProjectId(Integer projectId) {
+	public void setProjectId(String projectId) {
 		this.projectId = projectId;
 	}
 

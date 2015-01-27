@@ -65,4 +65,6 @@ public interface IptopDao {
 
 	public void addOrUpdate(Communal communal) throws Exception;
 	public List<TProduct> queryHotproject() throws Exception;
+
+	void deleteInterestRate(Long id) throws Exception;
 }

@@ -158,7 +158,12 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		getHibernateTemplate().delete(news);
 
 	}
+	@Override
+	public void deleteInterestRate(Long id) throws Exception {
+		TInterestRate interestRate = getHibernateTemplate().get(TInterestRate.class, id);
+		getHibernateTemplate().delete(interestRate);
 
+	}
 	@Override
 	public void deleteTChannel(Long id) throws Exception {
 		TChannel channel = getHibernateTemplate().get(TChannel.class, id);
