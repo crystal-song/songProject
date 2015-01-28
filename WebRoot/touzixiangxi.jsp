@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/header.jsp" %>
 <input type="hidden" id="now" value="${now}">
 <input type="hidden" id="open_time" value="${product1.financeTime}">
+
 <!-- top end  -->
 <div class="clear"></div>
 <div class="tou_con">
@@ -75,9 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <span>融资进度：</span>
              <div class="load_bar">
              <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
-               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
+               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
-             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
+             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
              </c:if>
              <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
                <div style="width:100%"></div>
@@ -395,7 +396,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <p>风险控制措施</p>
           <p class="zijin_msg">${product1.riskControl}</p> 
      </div>
-
+<input type="hidden" id="username" value="${name}">
+<input type="hidden" id="targetPlatformUserNo" value="${product1.targetPlatformUserNo}">
      <div class="pro_con_title"><strong>相关资料</strong></div> 
      <div class="ziliao_pic">
      ${product1.enterpriseCertificate}
@@ -420,6 +422,10 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 /*提交表单*/
 
 function mysubmit(){
+	if($("#username").val()==$("#targetPlatformUserNo").val()){
+		alert("用户不能投资自己的项目！");
+		return false;
+	}
 	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
 		alert("投资金额不能为空！");
 		return false;

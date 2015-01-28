@@ -51,8 +51,7 @@
                 <li>
                   <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
-
-                <c:if test="${userinfo.isborrow==true }" >
+                <c:if test="${userinfo.isborrow==true }">
                 <li>
                   <a href="<%=path%>/loan/loanProduct">我的借款</a>
 
