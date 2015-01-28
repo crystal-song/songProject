@@ -5900,21 +5900,32 @@ ul,li{
 	float:left;
 	height:150px;
 	width:150px;
-	background:pink;
+	background:url(../img/images-2014-11/duihao.png) 5px 0px  no-repeat;
 }
 .zhi_right{
-	margin-top:5%;
+	margin-top:6%;
 	float:left;
 	height:150px;
 	width:400px;
-	background:#ccc;
+	text-align:left;
 }
 
+.zhi_title{
+	font-size:28px;
+	color:#169616;
+	width:100%;
+	height:30px;
+	line-height:30px;
+}
 
+.zhi_right p{
+    font-size:14px;
+}
 
-
-
-
+.zhi_right a{
+	color:#f58604;
+	display:inline-block;
+}
 
 
 

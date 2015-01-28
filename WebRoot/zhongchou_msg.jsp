@@ -80,18 +80,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <div class="con_person">   
            </div>
            <p>我叫王帅（藏名才让多吉）, 汉族、十多年前和一位上师在汉地，因为一场缘定三生的会面，
-                         而和藏区，和藏族同胞结下了深厚的缘分.                        
-           </p>  
-          <div class="con_person">   
+                         而和藏区，和藏族同胞结下了深厚的缘分。而今在四川甘孜州色达县一所偏僻的乡村，泥朵乡普吾寺所办的民办学校，
+                         上课教书，后勤管理和对外联络，我来藏地已经是第八个年头了，这里海拔有4200米高，虽然比较劳累，虽然生活条件很艰苦，
+                         虽然身体一年不如一年，但我的心是快乐的，天天和孩子们在一起，我感觉自己也变成了孩子。我想我还要在藏地继续呆下去，
+                         希望我能带给我的孩子们更多的关怀和温暖，但是这需要您对我们的大力支持和帮助！本来实在不想抛头露面，
+                         但是为了我的这些孩子们，我豁出去了。
+           </p>
+           <div class="con_person">   
            </div>
            <p>我叫王帅（藏名才让多吉）, 汉族、十多年前和一位上师在汉地，因为一场缘定三生的会面，
-                         而和藏区，和藏族同胞结下了深厚的缘分.                        
+                         而和藏区，和藏族同胞结下了深厚的缘分。而今在四川甘孜州色达县一所偏僻的乡村，泥朵乡普吾寺所办的民办学校，
+                         上课教书，后勤管理和对外联络，我来藏地已经是第八个年头了，这里海拔有4200米高，虽然比较劳累，虽然生活条件很艰苦，
+                         虽然身体一年不如一年，但我的心是快乐的，天天和孩子们在一起，我感觉自己也变成了孩子。我想我还要在藏地继续呆下去，
+                         希望我能带给我的孩子们更多的关怀和温暖，但是这需要您对我们的大力支持和帮助！本来实在不想抛头露面，
+                         但是为了我的这些孩子们，我豁出去了。
            </p>
            <div class="con_person">   
            </div>
            <p>我叫王帅（藏名才让多吉）, 汉族、十多年前和一位上师在汉地，因为一场缘定三生的会面，
                          而和藏区，和藏族同胞结下了深厚的缘分.                        
-           </p>
+           </p>           
          </div>
          <div class="hei_right">
            <div class="rewards_sidebar">
@@ -132,9 +140,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>	
     </div>
     <div class="clear"></div>
-    
+    <div class="rew_btn"><a href="#">我要支持</a></div>
 </div>
-<div class="rew_btn"><a href="#">我要支持</a></div>
+
 <!-- absolute_right start -->
 	 <%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->
@@ -215,102 +223,5 @@ $(document).ready(function(e){
 });
  
 </script>
-
-
-
-<script type="text/javascript">
-	iE6=window.ActiveXObject&&!window.XMLHttpRequest;
-	if(!iE6){
-	    var isScroll=false;
-	    var docHeight = document.documentElement.clientHeight;
-	    var sideTop=document.getElementById('sidebar').offsetTop;
-	 
-	    window.onscroll=function() {
-	        //document.getElementById("float").className="div2";	 
-	        var s=document.body.scrollTop||document.documentElement.scrollTop;
-	        var isIE=(navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0);
-	        if(isIE)
-	        {
-	 
-	            if(s>(document.getElementById('sidebar').offsetHeight + document.getElementById('header').offsetHeight - docHeight))
-	            {
-	                if(!isScroll)
-	                {
-	                    var leftW=document.getElementById('sidebar').offsetLeft;
-	                    var topH=document.getElementById('sidebar').offsetHeight;
-	                    document.getElementById('sidebar').style.position='fixed';
-	                    document.getElementById('sidebar').style.left=leftW+document.body.offsetLeft + 14 + 'px';
-	                    document.getElementById('sidebar').style.top=(docHeight - topH) + 'px';
-	                    isScroll=true;
-	                }
-	                else	                {
-	                    if(s>(document.getElementById('content').offsetHeight+document.getElementById('header').offsetHeight - docHeight))
-                    {
-                        var topH=document.getElementById('sidebar').offsetHeight;
-	 
-	                        document.getElementById('sidebar').style.top=(docHeight - topH - (s-document.getElementById('content').offsetHeight-document.getElementById('header').offsetHeight+docHeight))+'px';
-	 
-	                    }
-	                    else
-	                    {
-	                        var topH=document.getElementById('sidebar').offsetHeight;
-	                        document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
-	                    }
-	                }
-	            }
-	            else
-	            {
-	                if(isScroll)
-	                {
-	                    document.getElementById('sidebar').style.position='static';
-	                    isScroll=false;
-	                }
-	            }
-	 
-	        }
-	        else
-	        {
-	            if(s>(document.getElementById('sidebar').offsetHeight+sideTop-docHeight))
-	            {
-                if(!isScroll)
-	                {
-	                    var leftW=document.getElementById('sidebar').offsetLeft;
-	                    var topH=document.getElementById('sidebar').offsetHeight;
-	                    document.getElementById('sidebar').style.position='fixed';
-	                    document.getElementById('sidebar').style.left=leftW+'px';
-	                    document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
-	                    isScroll=true;
-	                }
-	                else
-	                {
-	                    if(s>document.getElementById('content').offsetHeight + document.getElementById('content').offsetTop - docHeight)
-	                    {
-	                        var topH=document.getElementById('sidebar').offsetHeight;
-	 
-	                        document.getElementById('sidebar').style.top=(docHeight-topH-(s-document.getElementById('content').offsetHeight-document.getElementById('content').offsetTop+docHeight))+'px';
-	 
-	                    }
-	                    else
-	                    {
-	                        var topH=document.getElementById('sidebar').offsetHeight;
-	                        document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
-	                    }
-	                }
-	 
-	            }
-	            else
-	            {
-	                if(isScroll)
-	                {
-	                    document.getElementById('sidebar').style.position='static';
-	                    isScroll=false;
-	                }
-	            }
-	 
-	        }
-	 
-	    }
-	}
-	</script>
 
 </html>

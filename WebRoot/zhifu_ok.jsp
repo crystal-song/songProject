@@ -18,7 +18,11 @@
 <!-- top end  -->
     <div class="zhi_con">
       <div class="zhi_left"></div>
-      <div class="zhi_right"></div>
+      <div class="zhi_right">
+        <div class="zhi_title">您已成功付款6220元</div>
+        <p>如果页面没有跳转，请点击此跳转回<a href="#">众筹首页</a>。</p>
+        <p>如果您有未付款的交易，可<a href="#">查看并继续付款</a>。</p>
+      </div>
     
     </div>
 <div class="clear"></div>
