@@ -89,9 +89,12 @@ var navIndex=3;
 var indexs=2;
 var ap=0;
 var fp=0;
-    $(document).ready(function(){
 
-});
+$(function(){
+    $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
+    $(".u_left_sec:eq(2) li:eq(5)").children("a").css("color","#fc652e");    
+    $(".nav_big a").eq(2).children("p").addClass("headwd_color");
+})
         
 </script>
 </html>

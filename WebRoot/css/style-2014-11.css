@@ -4628,6 +4628,9 @@ ul,li{
 .quan_tab td{
 	width:150px;
 }
+.quan_tab td a:hover{
+	color:#f58604;
+}
 .newpro_right .spanhign_right{
 	width:230px;
 	height:40px;
@@ -5074,6 +5077,7 @@ ul,li{
 	line-height:30px;
 	border-bottom:2px solid #e81c05;
 	margin-bottom:40px;
+	cursor:pointer;
 }
 .z_list_title a{
 	width:80px;
@@ -5081,6 +5085,9 @@ ul,li{
 	float:left;
 	display:inline-block;
     margin-right:20px;
+}
+.z_title_bac:hover{
+	color:#fff;
 }
 .z_title_bac{
 	font-size:14px;
@@ -5106,7 +5113,11 @@ ul,li{
 .crowd_pic{
 	width:250px;
 	height:180px;
-    background:url(../img/images-2014-11/pro_pic01.jpg)  no-repeat;
+   /*  background:url(../img/images-2014-11/pro_pic01.jpg)  no-repeat; */
+}
+.crowd_pic img{
+	width:250px;
+	height:180px;
 }
 .crowdpro_name{
 	width:250px;
@@ -5506,7 +5517,10 @@ ul,li{
     margin-left:5%;
     background:url(../img/images-2014-11/) 0 0  no-repeat;
 }
-
+#image img{
+    height: 385px;
+    width: 512px;
+}
 .reserve_back{
     border-bottom: 1px solid #cbcbcb;
     height: 20px;
@@ -5553,7 +5567,7 @@ ul,li{
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.41);
     float: left;
     height: 40px;
-    margin-top: 20px;
+    margin-top: 60px;
     overflow: hidden;
     width: 383px;
 }
@@ -5602,7 +5616,7 @@ ul,li{
 #reserve_container{
 	width:auto;
 	height:auto;
-	margin-top:6%
+	margin-top:15%
 }
 #campaign{
 	width:100%;
@@ -5645,9 +5659,9 @@ ul,li{
     background: none repeat scroll 0 0 #f6f6f6;
     border-radius: 5px;
     float: right;
-    width: 400px;
+    width: 350px;
     border:1px solid #ccc;
-    height:1400px
+    height:auto;
 }
 .rewards_sidebar h3 {
     margin: 20px 0 0 20px;
@@ -5660,7 +5674,7 @@ ul,li{
  .rewards_sidebar ul li a {
     display: inline-block;
     padding: 20px;
-    width:360px
+    width:310px
 }
  .rewards_sidebar ul li a p.price_zhong {
     font-size: 24px;
@@ -5738,7 +5752,9 @@ ul,li{
 	line-height:60px;
 	margin-top:2%
 }
-
+.rew_btn a:hover{
+	background:#d11d06;
+}
 .juan_pic img{
 	width:280px;
 	height:200px;

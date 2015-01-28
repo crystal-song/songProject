@@ -20,8 +20,8 @@
       <div class="zhi_left"></div>
       <div class="zhi_right">
         <div class="zhi_title">您已成功付款6220元</div>
-        <p>如果页面没有跳转，请点击此跳转回<a href="#">众筹首页</a>。</p>
-        <p>如果您有未付款的交易，可<a href="#">查看并继续付款</a>。</p>
+        <p>如果页面没有跳转，请点击此跳转回<a href="<%=path%>/zhongcou.jsp">众筹首页</a>。</p>
+        <p>如果您有未付款的交易，可<a href="<%=path%>/juanzeng1.jsp">查看并继续付款</a>。</p>
       </div>
     
     </div>
@@ -31,13 +31,12 @@
 <!-- footer end -->
 </body>
 <script>
-    var navIndex=3;
-    var indexs=1;
+    var navIndex=2;
+    var indexs=0;
     $(function(){
-        $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-        $(".u_left_sec:eq(1) li:eq(4)").children("a").css("color","#fc652e");
-        $(".zichan_con .tui_li li span:odd").css("text-align","left");
-        $(".nav_big a").eq(2).children("p").addClass("headwd_color");
+    	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
+    	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
+    	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
     })
 
 

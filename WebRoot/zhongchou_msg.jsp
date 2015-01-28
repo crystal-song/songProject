@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    </div>
             <div class="clearfix">
 	        <div id="image">
-	          <img src="#" />
+	          <img src="<%=path%>/img/images-2014-11/people.png" />
 	        </div>
 		     <div id="backing">
 		        <ul>
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		          <div class="reserve_back"></div>            
 		        <div id="reserve_container">         
 		          <div class="call_to_action_button">
-		              <a class="blue_button" id="main_cta">
+		              <a class="blue_button" id="main_cta"  href="<%=path%>/juanzeng1.jsp">
 		                          支持
 		              </a>
 		          </div>          
@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<h3>支持</h3>
 				<ul>
 					<li id="rewards_click">
-						<a class="rev_mon" href="http://ptobchina.com/">
+						<a class="rev_mon" href="<%=path%>/juanzeng1.jsp">
 						<p class="price_zhong">￥100</p>
 						<p class="title_zhong" href="http://ptobchina.com/">支持100元</p>
 						<p class="description_zhong">1）我们会登记您的姓名在功德簿和祈福名单里，这两样宝贝将会长久的安放在莲师大殿里，
@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					   </a>
 					</li>
 					<li id="rewards_click">
-						<a class="rev_mon" href="http://ptobchina.com/">
+						<a class="rev_mon" href="<%=path%>/juanzeng1.jsp">
 						<p class="price_zhong">￥3,000</p>
 						<p class="title_zhong" href="http://ptobchina.com/">支持3000元</p>
 						<p class="description_zhong">1）我们会登记您提供的8个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。 2）您将会收到我们寄出的色达风景明信片一套（10-12张） 3）我们将为您专门刻三块玛尼石，放在学校的玛尼墙里，得到亘古恒久的功德加持。 4）您将成为汇知学校的尊贵功德主和善心人士，邀请您在合适的时间访问汇知学校。</p>
@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</a>
 					</li>
 					<li id="rewards_click" style="border-bottom:none">
-						<a class="rev_mon" href="http://ptobchina.com/" >
+						<a class="rev_mon" href="<%=path%>/juanzeng1.jsp" >
 						<p class="price_zhong">￥3,000</p>
 						<p class="title_zhong" href="http://ptobchina.com/">支持3000元</p>
 						<p class="description_zhong">1）我们会登记您提供的8个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。 2）您将会收到我们寄出的色达风景明信片一套（10-12张） 3）我们将为您专门刻三块玛尼石，放在学校的玛尼墙里，得到亘古恒久的功德加持。 4）您将成为汇知学校的尊贵功德主和善心人士，邀请您在合适的时间访问汇知学校。</p>
@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>	
     </div>
     <div class="clear"></div>
-    <div class="rew_btn"><a href="#">我要支持</a></div>
+    <div class="rew_btn"><a href="<%=path%>/juanzeng1.jsp">我要支持</a></div>
 </div>
 
 <!-- absolute_right start -->
@@ -154,7 +154,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 <script type="text/javascript">
+var navIndex=2;  
+var indexs=0;
+
 $(document).ready(function(e){
+	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
+	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
+	
+	
 	$(".dizhi div").click(function(){
 		$(this).css("background","url(<%=path%>/img/images-2014-11/kuang.png)  no-repeat");
 		$(this).siblings().css("background","url(<%=path%>/img/images-2014-11/kuang1.png)  no-repeat");
@@ -163,7 +171,7 @@ $(document).ready(function(e){
 	var heiright_height=$(".hei_right").height();
 	//alert(heiright_height)
 	$(window).on("scroll",function(){
-		rightBar();		
+		//rightBar();		
 	});
 	
 	function rightBar(){
