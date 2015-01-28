@@ -96,8 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 $(document).ready(function(e) {
 
-	$(".nav_big a").eq(4).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(4).children("p").addClass("headwd_color");
+	$(".nav_big a").eq(5).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(5).children("p").addClass("headwd_color");
     $(".news_ul a").eq(7).addClass("aqbz").siblings().removeClass("aqbz");
 
 });

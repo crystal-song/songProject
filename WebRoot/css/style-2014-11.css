@@ -290,7 +290,7 @@ ul,li{
 	}
 .username{
 	display: inline-block;
-	width: 200px;
+	min-width: 100px;
 	height: 24px;
     color:#000;
 	position: absolute;
@@ -302,10 +302,9 @@ ul,li{
 .username strong{
 	display:inline-block;
 	height:20px;
-	min-width:60px;
-	
+	min-width:60px;	
 	text-align:left;
-	padding-right:20px;
+	padding-right:10px;
 	background:url(../img/images-2014-11/sanjiao.png) 100% 0 no-repeat;
 }
 .tuichu{
@@ -315,7 +314,7 @@ ul,li{
 	position: absolute;
 	top:60%;
 	cursor: pointer;
-	right: 50px;
+	right: 10px;
     display:none;
 	z-index:100;
 	border:1px solid #ccc;

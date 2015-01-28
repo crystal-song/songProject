@@ -59,7 +59,7 @@
             <li><a href="<%=path%>/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Application</p></a></li>
             
           </ul>
-          <div class="login">
+          <div class="login" >
                <c:if test="${empty name}">
 
                 <a class="a_fir" href="<%=path%>/welcome/reg" style="line-height:40px; font-size:16px; margin-left:50px;" ><strong>注册</strong></a>
