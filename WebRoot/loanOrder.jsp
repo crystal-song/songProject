@@ -6,7 +6,7 @@
 <%@ include file="/includes/taglibs.jsp" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<title>交易记录 - 我的账户 - 中租宝</title>
+<title>还款概况 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>

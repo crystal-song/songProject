@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <!--  <td><img width="50" /></td> -->
     <td><a href="<%=path%>/product/getProductByid?id=${s.id}"  target="_blank" title="点击进入项目前台页面">${s.projectName}</a></td>
     <td>${s.financingMoney}万</td>
-    <td>${s.financingProgress}%</td>
+    <td>${s.financingProgress*100}%</td>
     <td>${s.yearIncome}</td>
     <td>${ s.loaned?"已放款":"未放款"}
      </td>

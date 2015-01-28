@@ -53,6 +53,9 @@ public class LoanController {
 			Model model,HttpServletRequest request) {
 		try {
 			String username=(String)request.getSession().getAttribute("name");
+			if(username==null){
+				return "login";
+			}
 			Page page = Page.newBuilder(pageNo, pageSize, "loanProduct");
 			List<TProduct> list = productService
 					.queryProductByTargetPlatformUserNo(page, username);
@@ -65,30 +68,17 @@ public class LoanController {
 		}
 
 	}
-
-	@RequestMapping(value = "/checkIsBorrow", method = { RequestMethod.GET,
-			RequestMethod.POST })
-	@ResponseBody
-	public String checkIsBorrow(@RequestParam("username") String username) {
-		try {
-			TUser user = userService.getUserByAccount(username);
-			if (user.getIsborrow() == true) {
-				return "success";
-			}
-			return "fail";
-		} catch (Exception e) {
-			logger.error("error" + e);
-			return "error";
-		}
-		
-	}
-
+	
 	@RequestMapping(value = "/loanManage", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String loanManage(
 			@RequestParam("enterpriseNumber") String enterpriseNumber,
-			Model model) {
+			Model model,HttpServletRequest request) {
 		try {
+			String username=(String)request.getSession().getAttribute("name");
+			if(username==null){
+				return "login";
+			}
 			List<TProduct> list = productService
 					.queryProductByNumber(enterpriseNumber);
 			if (list != null && list.size() > 0) {
@@ -112,6 +102,10 @@ public class LoanController {
 			@RequestParam("id") int id, @RequestParam("period") int period,
 			Model model, HttpServletRequest request) {
 		try {
+			String username=(String)request.getSession().getAttribute("name");
+			if(username==null){
+				return "login";
+			}
 			List<TProduct> list = productService
 					.queryProductByNumber(enterpriseNumber);
 			if (list != null && list.size() > 0) {
@@ -122,8 +116,6 @@ public class LoanController {
 			model.addAttribute("productrepay", productrepay);
 
 			// 查询账户余额
-			String username = (String) request.getSession()
-					.getAttribute("name");
 			Accounts account = userService.getAccountByName(username);
 			model.addAttribute("avaliableMoney", account.getAvailableMoney());
 			List<UserRepays> userrepaysList = productService
