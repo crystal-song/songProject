@@ -193,27 +193,29 @@ function onSubmit(host) {
         return false;
     }    	
 
-    $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+    $.ajax({
+    	
+    	    url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,    	    		
             success: function(resp){
                 if(resp === "success"){
-
+                	 
                     document.getElementById("paymentAmount").value=parseInt(a);
                     document.getElementById("host").value = host;
-                    document.getElementById("mysubmit_btn").disabled=true;
-                    document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+                    //document.getElementById("mysubmit_btn").disabled=true;
+                    //document.getElementById("mysubmit_btn").innerHTML="正在提交...";
                     var form = document.getElementById("form");
-                    $("#dialog01").css("display","block");
-                    $(".black_bac").css("display","block");
+                    // $("#dialog01").css("display","block");
+                    // $(".black_bac").css("display","block");
                     $(".right_cha").click(function(){
                         $("#dialog01").css("display","none");
                         $(".black_bac").css("display","none");
                     });
            
                     form.submit();
-                    document.getElementById("que_btn_ok").disabled()
+                   // document.getElementById("que_btn_ok").disabled()
 
                 }else{
-                    alert(resp);
+                    alert(resp);                  
                 }
             }});
 

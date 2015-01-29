@@ -171,7 +171,7 @@ $(document).ready(function(e){
 	var heiright_height=$(".hei_right").height();
 	//alert(heiright_height)
 	$(window).on("scroll",function(){
-		//rightBar();		
+		rightBar();		
 	});
 	
 	function rightBar(){
@@ -207,8 +207,10 @@ $(document).ready(function(e){
 		
 		if(ch<scroll_height){
 			/* $(".hei_right").addClass("absolute_bottom");  */				
-		    var Ctop=(con_height-heiright_height)+offsettop_fir
-		        $(".hei_right").css({"left":offset_left,"top":Ctop});	   
+		    //var Ctop=(con_height-heiright_height)+offsettop_fir
+		   var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-50; 
+		       //Ctop=Ctop-500
+			    $(".hei_right").css({"left":offset_left,"top":Ctop});	   
        	        $(".title_zhong").html(offset_left+"Ctop")      	      
 
          } 
