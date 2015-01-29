@@ -243,7 +243,10 @@ $(document).ready(function(e) {
 	   if($("#paymentAmount").val()<3000 || $(".liquan_check").val()==""){
  	       	$(".liquan_hide").css("display","none"); 	       
      	}
-
+       /*在没有礼券条件下*/	   
+       if($(".liquan_check").val()==""){
+    	   $(".liquan_hide").css("display","none")
+       }
 	   
 	   /*shouyilv*/
 	   
