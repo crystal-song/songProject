@@ -5542,7 +5542,6 @@ ul,li{
     padding-left: 0;
 }
 #campaign #funding_area #backing .stats {
-    border-right: 1px solid #cbcbcb;
     color: #3f3f3f;
     display: inline-block;
     font-family: "Helvetica Neue","Helvetica","Arial";
@@ -5553,7 +5552,10 @@ ul,li{
     text-align: left;
 }
 
-
+.wid{
+	width:1200px;
+	height:auto;
+}
 #campaign #funding_area #backing .stats span {
     color: #868686;
     display: block;
