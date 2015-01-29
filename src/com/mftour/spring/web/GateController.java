@@ -1,4 +1,3 @@
-
 package com.mftour.spring.web;
 
 import java.io.ByteArrayInputStream;
@@ -84,9 +83,10 @@ public class GateController {
 	@Autowired
 	private ITransRecordService transRecordService;
 
-	boolean isYeepay(String userName) throws  Exception{
+	boolean isYeepay(String userName) throws Exception {
 		boolean b = false;
-		List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(userName);
+		List<TRegisterYeePay> li = gateService
+				.queryTRegisterYeePayByName(userName);
 		List<TRegisterNotify> list = gateService
 				.queryTRegisterNotifyByName(userName);
 
@@ -94,7 +94,7 @@ public class GateController {
 			String code = li.get(0).getCode();
 			if (code != null && code.equals("1")) {
 
-				b=true;
+				b = true;
 			}
 		}
 		if (list != null && list.size() != 0) {
@@ -102,7 +102,7 @@ public class GateController {
 			if (code != null && code.equals("1")) {
 
 				if (li != null && li.size() != 0) {
-					b= true;
+					b = true;
 				}
 			}
 		}
@@ -125,38 +125,38 @@ public class GateController {
 
 	}
 
-
-
 	private String doSign(Object obj, String url, Model model) {
 
 		StringWriter w = new StringWriter();
 		JAXB.marshal(obj, w);
 		return doSign(w.toString(), url, model, "");
 	}
+
 	@RequestMapping(value = "/gate/service")
 	public String service(Model model, HttpServletRequest request)
 			throws Exception {
 
 		Object o = request.getSession().getAttribute("name");
-	
+
 		if (o != null) {
-			model.addAttribute("f",f);
+			model.addAttribute("f", f);
 			List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(o
 					.toString());
 
 			if (li != null && li.size() > 0) {
 				AccountResponse account = Account.getAccount(o.toString());
-				if (account.isSuccess()){
-					Date currDate=new Date();
-					List avaliableRewards=gateService.queryAvaliableRewards(o.toString(), currDate);
-					if(avaliableRewards!=null){
+				if (account.isSuccess()) {
+					Date currDate = new Date();
+					List avaliableRewards = gateService.queryAvaliableRewards(
+							o.toString(), currDate);
+					if (avaliableRewards != null) {
 						model.addAttribute("count", avaliableRewards.size());
-					}else{
+					} else {
 						model.addAttribute("count", 0);
 					}
 					model.addAttribute("account", account.getAccount());
 					return "zichan";
-				}else{
+				} else {
 					return "error";
 				}
 			} else {
@@ -165,13 +165,10 @@ public class GateController {
 				model.addAttribute("user", user);
 				return "register";
 			}
-			
-		
-		}else{
+
+		} else {
 			return "login";
 		}
-
-
 
 	}
 
@@ -189,9 +186,10 @@ public class GateController {
 		map.put("request-xml", w.toString());
 		String s = rest.postRestful("/rest/yeepay/create", map);
 		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-		if (r.isSuccess()){
-			return doSign(request, f.getOnSubmit() + "/bha/toBindBankCard", model);
-		}else{
+		if (r.isSuccess()) {
+			return doSign(request, f.getOnSubmit() + "/bha/toBindBankCard",
+					model);
+		} else {
 			return "error";
 		}
 	}
@@ -207,10 +205,9 @@ public class GateController {
 					.toString());
 			model.addAttribute("li", li);
 			return "wodexiangmu";
-		}else{
+		} else {
 			return "login";
 		}
-
 
 	}
 
@@ -253,13 +250,6 @@ public class GateController {
 		return "touzixieyi";
 	}
 
-	@RequestMapping(value = "/gate/doAuthorization")
-	public String doAuthorization(String host, BHAAuthorization request,
-			Model model) throws Exception {
-
-		return doSign(request, host + "/bha/toAuthorizeAutoRepayment", model);
-	}
-
 	@RequestMapping(value = "/gate/drawMoney")
 	public String drawMoney(Model model, HttpServletRequest request)
 			throws Exception {
@@ -277,26 +267,26 @@ public class GateController {
 			if (list != null && list.size() != 0) {
 				model.addAttribute("feeMode", BHAFeeModeEnum.PLATFORM);
 			}
-		}else{
+		} else {
 			return "login";
 		}
-		if(!isYeepay(o.toString())){
+		if (!isYeepay(o.toString())) {
 			return "register";
 		}
 		YeepayAccountInfo yeepayAccount;
 		Accounts accounts = userService.getAccountByName(o.toString());
-		if(accounts.getYeepayBindcardIsok()){
+		if (accounts.getYeepayBindcardIsok()) {
 			yeepayAccount = new YeepayAccountInfo();
 			yeepayAccount.setCardStatus("VERIFIED");
 			yeepayAccount.setCardNo(accounts.getYeepayBindcardCardno());
 			yeepayAccount.setBank(accounts.getYeepayBindcardBank());
-		}else {
+		} else {
 
 			yeepayAccount = YeePay.getAccountInfo(o.toString());
 		}
 		model.addAttribute("yeepay", yeepayAccount);
 		model.addAttribute("name", o.toString());
-		if(yeepayAccount.getCardStatus()!=null){
+		if (yeepayAccount.getCardStatus() != null) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("bank", yeepayAccount.getBank());
 			map.put("cardStatus", yeepayAccount.getCardStatus());
@@ -304,16 +294,13 @@ public class GateController {
 			map.put("username", o.toString());
 			rest.postRestful("/rest/account/update", map);
 		}
-		model.addAttribute("account",accounts);
+		model.addAttribute("account", accounts);
 		return "tixian";
 	}
 
-
-
-
 	@RequestMapping(value = "/gate/dodrawMoney")
-	public String dodrawMoney(BHAWithdrawRequest request,
-			Model model) throws Exception {
+	public String dodrawMoney(BHAWithdrawRequest request, Model model)
+			throws Exception {
 
 		StringWriter w = new StringWriter();
 		JAXB.marshal(request, w);
@@ -329,14 +316,13 @@ public class GateController {
 		map.put("request-xml", w.toString());
 		String s = rest.postRestful("/rest/yeepay/create", map);
 		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-		if (r.isSuccess()){
+		if (r.isSuccess()) {
 
 			return doSign(request, f.getOnSubmit() + "/bha/toWithdraw", model);
-		}else{
+		} else {
 			return "error";
 		}
 	}
-
 
 	@RequestMapping(value = "/gate/register")
 	public String register(Model model, HttpServletRequest request)
@@ -354,8 +340,8 @@ public class GateController {
 	}
 
 	@RequestMapping(value = "/gate/doRegister")
-	public String doRegister(BHARegisterRequest request,
-							 Model model, TRegisterYeePay registerYeePay) throws Exception {
+	public String doRegister(BHARegisterRequest request, Model model,
+			TRegisterYeePay registerYeePay) throws Exception {
 
 		List<TRegisterYeePay> li = gateService
 				.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo());
@@ -409,13 +395,13 @@ public class GateController {
 		}
 
 		Accounts accounts = userService.getAccountByName(o.toString());
-		model.addAttribute("account",accounts);
+		model.addAttribute("account", accounts);
 		TUser user = userService.getUserByAccount(o.toString());
 		model.addAttribute("user", user);
-		if(b){
+		if (b) {
 
 			return "chongzhi";
-		}else{
+		} else {
 
 			return "register";
 		}
@@ -423,11 +409,12 @@ public class GateController {
 
 	@RequestMapping(value = "/gate/doRecharge")
 	public String doRecharge(String host, BHARechargeRequest request,
-			Model model, TRecharge recharge,HttpServletRequest request1) throws Exception {
+			Model model, TRecharge recharge, HttpServletRequest request1)
+			throws Exception {
 		Object o = request1.getSession().getAttribute("name");
 		if (o == null) {
 			return "login";
-		}else{
+		} else {
 			request.setPlatformUserNo(o.toString());
 		}
 		request.setRequestNo(UUID.randomUUID().toString());
@@ -437,81 +424,86 @@ public class GateController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("request-no", request.getRequestNo());
 		map.put("service", "toRecharge");
-		map.put("username",o.toString());
+		map.put("username", o.toString());
 		map.put("amount", request.getAmount());
 		map.put("request-xml", w.toString());
 		String s = rest.postRestful("/rest/yeepay/create", map);
 		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-		if (r.isSuccess()){
+		if (r.isSuccess()) {
 			return doSign(request, host + "/bha/toRecharge", model);
 
-		}else{
+		} else {
 			return "error";
 		}
 	}
+
 	public String getRemortIP(HttpServletRequest request) {
 		if (request.getHeader("x-forwarded-for") == null) {
 			return request.getRemoteAddr();
 		}
 		return request.getHeader("x-forwarded-for");
 	}
-@RequestMapping(value="/gate/doRepayment")
-public String doRepayment(int id,Model model,@RequestParam("total") double total,HttpServletRequest request) throws Exception{
-	String username=(String)request.getSession().getAttribute("name");
-      Accounts account=	userService.getAccountByName(username);
-    if(account.getAvailableMoney().doubleValue()>=total){
-	String requestNo = UUID.randomUUID().toString();
-	Map<String, Object> map = new HashMap<String, Object>();
-	map.put("id", id);
-	map.put("notifyurl", "/gate/repaymentNotify");
-	map.put("callbackurl", "/gate/repaymentSucceed");
-	map.put("requestno", requestNo);
-	String s = rest.postRestful("/rest/yeepay/xml/generate-do-repayment-xml", map);
-	Response r = JSON.parseObject(s, Response.class);
-	if (r.isSuccess()){
 
+	@RequestMapping(value = "/gate/doRepayment")
+	public String doRepayment(String id, Model model, int period,
+			HttpServletRequest request) throws Exception {
+
+		String requestNo = UUID.randomUUID().toString();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("notifyurl", "/gate/repaymentNotify");
+		map.put("callbackurl", "/gate/repaymentSucceed");
+		map.put("period", period);
+		map.put("requestno", requestNo);
+		String s = rest.postRestful(
+				"/rest/yeepay/xml/generate-do-repayment-xml", map);
+		Response r = JSON.parseObject(s, Response.class);
+		if (r.isSuccess()) {
 			s = r.getResponse().replaceAll("[\\r\\n]", "");
 			Rest rest = new Rest();
-
 			Map<String, Object> m = new HashMap<String, Object>();
 			m.put("request-no", requestNo);
-			m.put("service", "REPAYMENT");
+			m.put("period", period);
+			m.put("service", "toRepayment");
 			m.put("request-xml", s);
-			m.put("project-id",id);
+			m.put("project-id", id);
 			String res = rest.postRestful("/rest/yeepay/create", m);
 			JsonBaseBean rr = JSON.parseObject(res, JsonBaseBean.class);
-	if (r.isSuccess()){
-		return doSign(s, f.getOnSubmit() + "/bha/toRepayment", model,"");
-	}else{
+			if (rr.isSuccess()) {
+				return doSign(s, f.getOnSubmit() + "/bha/toRepayment", model,
+						"");
+			} else {
+				return "error";
+			}
+		}
+
 		return "error";
 	}
-	}	
-      }
-	return "error";
-}
+
 	@RequestMapping(value = "/gate/doTransfer")
-	public String doTransfer(BHATransferRequest request,String rewardCheck,
-							 Model model, TTransferInfo TtransferInfo,
-							 HttpServletRequest request1) throws Exception {
+	public String doTransfer(BHATransferRequest request, String rewardCheck,
+			Model model, TTransferInfo TtransferInfo,
+			HttpServletRequest request1) throws Exception {
 
 		int paymentAmount = Integer.parseInt(TtransferInfo.getPaymentAmount());
 
 		List<TProduct> lis = productService.queryProductByNumber(TtransferInfo
 				.getEnterpriseNumber());
 		TProduct t = lis.get(0);
-		if(t.isLine()==false){
+		if (t.isLine() == false) {
 			return "redirect:/product/allProduct";
 		}
 		Rest rest = new Rest();
 		Object o = request1.getSession().getAttribute("name");
-		if(o==null){
+		if (o == null) {
 			return "login";
 		}
-		if (paymentAmount < 200 && !getRemortIP(request1).equals("106.2.184.190")){
+		if (paymentAmount < 200
+				&& !getRemortIP(request1).equals("106.2.184.190")) {
 			model.addAttribute("error", "非法操作");
 			return "/gate/transfer";
 		}
-		if(t.getRealityMoney()+paymentAmount > t.getFinancingMoney()*10000 ){
+		if (t.getRealityMoney() + paymentAmount > t.getFinancingMoney() * 10000) {
 
 			model.addAttribute("error", "非法操作");
 			return "/gate/transfer";
@@ -523,12 +515,13 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 		request.setPlatformNo(f.getPlatformNo());
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(rewardCheck!=null && rewardCheck.equals("on") && paymentAmount >= 3000){
-			request.setPaymentAmount(String.valueOf(paymentAmount -50));
+		if (rewardCheck != null && rewardCheck.equals("on")
+				&& paymentAmount >= 3000) {
+			request.setPaymentAmount(String.valueOf(paymentAmount - 50));
 			map.put("amount", paymentAmount - 50);
-			map.put("reward","50");
-		}else{
-			map.put("reward","0");
+			map.put("reward", "50");
+		} else {
+			map.put("reward", "0");
 			map.put("amount", paymentAmount);
 		}
 
@@ -545,9 +538,9 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 		map.put("request-xml", w.toString());
 		String s = rest.postRestful("/rest/yeepay/create", map);
 		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-		if (r.isSuccess()){
+		if (r.isSuccess()) {
 			return doSign(request, f.getOnSubmit() + "/bha/toTransfer", model);
-		}else{
+		} else {
 			return "error";
 		}
 	}
@@ -562,137 +555,54 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 			return "login";
 		}
 
-		if(Integer.parseInt(buyAmount)>= 3000){
+		if (Integer.parseInt(buyAmount) >= 3000) {
 
 			Rest rest = new Rest();
 
-			String s = rest.getRestful("/rest/reward/get-valid-by-user-id/"+o.toString()+"/"+buyAmount);
+			String s = rest.getRestful("/rest/reward/get-valid-by-user-id/"
+					+ o.toString() + "/" + buyAmount);
 			ResponseReward r = JSON.parseObject(s, ResponseReward.class);
-			if(!r.isSuccess()){
+			if (!r.isSuccess()) {
 				logger.error("error get reward ");
 				return "error";
 			}
 
 			Rewards reward = r.getReward();
-			model.addAttribute("reward",reward);
-		}else{
-			model.addAttribute("reward",new Rewards());
+			model.addAttribute("reward", reward);
+		} else {
+			model.addAttribute("reward", new Rewards());
 		}
-		List<TProduct> list=productService.queryProductByNumber(product.getEnterpriseNumber());
-		             if(list != null && list.size()!=0){
-		            	 TProduct Product=list.get(0);
-		            	   if(Product.getBuyType()==null)   
-		            	   return "xianxia";
-		             }
+		List<TProduct> list = productService.queryProductByNumber(product
+				.getEnterpriseNumber());
+		if (list != null && list.size() != 0) {
+			TProduct Product = list.get(0);
+			if (Product.getBuyType() == null)
+				return "xianxia";
+		}
 
-		 if(isYeepay(o.toString())){
+		if (isYeepay(o.toString())) {
 
-			 model.addAttribute("buyAmount", buyAmount);
-			 model.addAttribute("targetPlatformUserNo", list.get(0).getTargetPlatformUserNo());
-			 if(list != null && list.size()!=0){
-            	 TProduct Product=list.get(0);
-            	 model.addAttribute("product", Product);
-			 }
-			 List<TInterestRate> li = ptopService
-						.queryTInterestRateByNumber(product.getEnterpriseNumber());
-				if (li != null && li.size() != 0) {
-					model.addAttribute("li", li);
-				}
+			model.addAttribute("buyAmount", buyAmount);
+			model.addAttribute("targetPlatformUserNo", list.get(0)
+					.getTargetPlatformUserNo());
+			if (list != null && list.size() != 0) {
+				TProduct Product = list.get(0);
+				model.addAttribute("product", Product);
+			}
+			List<TInterestRate> li = ptopService
+					.queryTInterestRateByNumber(product.getEnterpriseNumber());
+			if (li != null && li.size() != 0) {
+				model.addAttribute("li", li);
+			}
 
-			 return "touzicheck";
-		 }else{
-			 TUser user = userService.getUserByAccount(o.toString());
-			 model.addAttribute("user", user);
+			return "touzicheck";
+		} else {
+			TUser user = userService.getUserByAccount(o.toString());
+			model.addAttribute("user", user);
 
-			 model.addAttribute("now", UUID.randomUUID().toString());
-			 return "register";
-		 }
-
-	}
-
-	@RequestMapping(value = "/gate/establishmentRegistration")
-	public String EstablishmentRegistration(Model model,
-			HttpServletRequest request) throws Exception {
-
-		model.addAttribute("now", UUID.randomUUID().toString());
-		return "payment/establishmentRegistration";
-		/* return "payment/transfer"; */
-	}
-
-	@RequestMapping(value = "/gate/doEstablishmentRegistration")
-	public String doEstablishmentRegistration(String host, Model model,
-			BHAEstablishmentRegistration request,
-			TEstablishmentRegistration establishmentRegistration)
-			throws Exception {
-
-		gateService
-				.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
-
-		return doSign(request, host + "/bha/toEnterpriseRegister", model);
-	}
-
-	@RequestMapping(value = "/gate/examEstablishmentRegistration", method = {
-			RequestMethod.POST, RequestMethod.GET })
-	public String examEstablishmentRegistration(Model model, String resp,
-			String sign, HttpServletRequest request) throws Exception {
-
-		model.addAttribute("resp", resp);
-		model.addAttribute("sign", sign);
-
-		
-		 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
-		  
-		  try {
-		            
-		      DocumentBuilder db=dbf.newDocumentBuilder();
-		      
-		     
-		      InputStream iStream=new ByteArrayInputStream(resp.getBytes());
-		     Document dm=db.parse(iStream);
-		      
-		      NodeList persons=dm.getElementsByTagName("response");
-		     
-		      TEstablishmentNotify establishmentNotify=new TEstablishmentNotify();
-		      
-		      for(int i=0;i<persons.getLength();i++){
-		          
-		    	  Element personElement = (Element)persons.item(i);
-		    	  
-		    	  NodeList p=personElement.getChildNodes();
-		    	  for(int j=0;j<p.getLength();j++){
-		    		  p.item(j);
-		    		 
-		    	  }
-		    	  
-		    	 
-		    	  
-		    	  if(p.item(1).getNodeName()!=null&&p.item(1).getTextContent()!=null){
-		    		  establishmentNotify.setService(p.item(1).getTextContent());
-		    		  
-		    	  }
-		    	  if(p.item(3).getNodeName()!=null&&p.item(3).getTextContent()!=null){
-		    		  establishmentNotify.setRequestNo(p.item(3).getTextContent());
-		    		  
-		    	  }
-		    	  if(p.item(5).getNodeName()!=null&&p.item(5).getTextContent()!=null){
-		    		  establishmentNotify.setCode(p.item(5).getTextContent());
-		    		  
-		    	  }
-		    	  if(p.item(7).getNodeName()!=null&&p.item(7).getTextContent()!=null){
-		    		  establishmentNotify.setDescription(p.item(7).getTextContent());
-		    		  
-		    	  }
-		    	  
-		      }  
-		      gateService.addOrUpdateTEstablishmentNotify(establishmentNotify);
-		      TEstablishmentRegistration establishmentRegistration= gateService.queryTEstablishmentRegistrationByNumber(establishmentNotify.getRequestNo()).get(0);
-		      establishmentRegistration.setCode( establishmentNotify.getCode());
-		      gateService.addOrUpdateTEstablishmentRegistration(establishmentRegistration);
-		  } catch (Exception e) {
-	            logger.error("error "+ resp+ e );
-	        }
-		    	  
-		return "payment/establishmentRegistration";
+			model.addAttribute("now", UUID.randomUUID().toString());
+			return "register";
+		}
 
 	}
 
@@ -708,36 +618,34 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 		try {
 
 			Map<String, Object> m = Xml.Dom2Map(resp);
-			if(m.get("code").equals("1")){
-
+			if (m.get("code").equals("1")) {
 
 				TRegisterYeePay registerYeePay = gateService
-						.queryTRegisterYeePayByNumber((String)m.get("requestNo")).get(0);
+						.queryTRegisterYeePayByNumber(
+								(String) m.get("requestNo")).get(0);
 				registerYeePay.setCode("1");
 				gateService.addOrUpdateRegisterYeePay(registerYeePay);
 
-			}else{
+			} else {
 
 				TRegisterYeePay registerYeePay = gateService
-						.queryTRegisterYeePayByNumber((String)m.get("requestNo")).get(0);
+						.queryTRegisterYeePayByNumber(
+								(String) m.get("requestNo")).get(0);
 				registerYeePay.setCode("0");
-				logger.error("error loan "+ m.get("description"));
+				logger.error("error loan " + m.get("description"));
 
 				return "error";
 			}
-
 
 			return "zhuce";
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			logger.error("error " + e);
+			return "error";
 		}
 
-		return "register";
 	}
-
-
 
 	@RequestMapping(value = "/gate/registerNotify", method = {
 			RequestMethod.POST, RequestMethod.GET })
@@ -745,40 +653,40 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 			throws Exception {
 		try {
 
-
 			Map<String, Object> m = Xml.Dom2Map(notify);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 
 				TRegisterYeePay registerYeePay = gateService
-						.queryTRegisterYeePayByNumber((String)m.get("requestNo")).get(0);
+						.queryTRegisterYeePayByNumber(
+								(String) m.get("requestNo")).get(0);
 				registerYeePay.setCode("1");
 				gateService.addOrUpdateRegisterYeePay(registerYeePay);
-				return  "success";
-			}else{
+				return "success";
+			} else {
 
 				TRegisterYeePay registerYeePay = gateService
-						.queryTRegisterYeePayByNumber((String)m.get("requestNo")).get(0);
+						.queryTRegisterYeePayByNumber(
+								(String) m.get("requestNo")).get(0);
 				registerYeePay.setCode("0");
-				logger.error("error loan "+ m.get("description"));
+				logger.error("error loan " + m.get("description"));
 
 				return "error";
 			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			logger.error("error "+ e + notify);
+			logger.error("error " + e + notify);
 			return "error";
 		}
 	}
-	@RequestMapping(value = "/gate/loanNotify", method = {
-			RequestMethod.POST, RequestMethod.GET })
+
+	@RequestMapping(value = "/gate/loanNotify", method = { RequestMethod.POST,
+			RequestMethod.GET })
 	@ResponseBody
 	public String loanNotify(String notify, String sign, Model model)
 			throws Exception {
 
-
 		try {
-
 
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			Rest rest = new Rest();
@@ -788,11 +696,11 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 			map.put("service", "LOAN");
 			map.put("code", m.get("code"));
 			map.put("response-xml", notify);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				if(!r.isSuccess()){
-					logger.error("error loan "+m.get("requestNo"));
+				if (!r.isSuccess()) {
+					logger.error("error loan " + m.get("requestNo"));
 				}
 				return "success";
 
@@ -806,52 +714,53 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 			// TODO: handle exception
 			logger.error("error" + e);
 			return "error";
-		}}
+		}
+	}
 
-	@RequestMapping(value = "/gate/checkPay", method = {
-			RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/gate/checkPay", method = { RequestMethod.POST,
+			RequestMethod.GET })
 	@ResponseBody
-	public String checkPay(@RequestParam("amount") int amount, @RequestParam("id") String id, HttpServletRequest request)
+	public String checkPay(@RequestParam("amount") int amount,
+			@RequestParam("id") String id, HttpServletRequest request)
 			throws Exception {
 
 		try {
 
 			Object o = request.getSession().getAttribute("name");
-			if(o==null){
+			if (o == null) {
 				return "请登录";
 			}
-			BigDecimal bamount= new BigDecimal(amount);
+			BigDecimal bamount = new BigDecimal(amount);
 			Accounts accounts = userService.getAccountByName(o.toString());
 			int bool = accounts.getAvailableMoney().compareTo(bamount);
-			if(bool < 0){
+			if (bool < 0) {
 				return "您的可用余额不足";
 			}
 			List<TProduct> lis = productService.queryProductByNumber(id);
 			TProduct t = lis.get(0);
-			if(t.isLine()==false){
+			if (t.isLine() == false) {
 				return "redirect:/product/allProduct";
 			}
-			if(t.getRealityMoney()+amount > t.getFinancingMoney()*10000 ){
+			if (t.getRealityMoney() + amount > t.getFinancingMoney() * 10000) {
 				return "投资金额不能超过可投资金额";
-			}else{
+			} else {
 				return "success";
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			logger.error("error" + e);
 			return "服务器错误";
-		}}
-
+		}
+	}
 
 	@RequestMapping(value = "/gate/examRecharge", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String examRecharge(Model model, String resp, String sign,
-							   HttpServletRequest request) throws Exception {
+			HttpServletRequest request) throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
 
 		try {
-
 
 			Map<String, Object> m = Xml.Dom2Map(resp);
 			Rest rest = new Rest();
@@ -862,7 +771,7 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 			map.put("code", m.get("code"));
 
 			map.put("response-xml", resp);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				return "chongzhi_ok";
@@ -873,15 +782,13 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 				return "error";
 			}
 
-	} catch (Exception e) {
-		// TODO: handle exception
-		logger.error("error " +e);
-		return "error";
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error " + e);
+			return "error";
+		}
+
 	}
-
-}
-
-
 
 	@RequestMapping(value = "/gate/rechargeNotify", method = {
 			RequestMethod.POST, RequestMethod.GET })
@@ -899,7 +806,7 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 			map.put("service", "toRecharge");
 			map.put("code", m.get("code"));
 			map.put("response-xml", notify);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				return "chongzhi_ok";
@@ -917,37 +824,43 @@ public String doRepayment(int id,Model model,@RequestParam("total") double total
 		}
 
 	}
-@RequestMapping(value="/gate/repaymentSucceed" ,method={RequestMethod.POST, RequestMethod.GET})
-public String repaymentSSucceed(Model model,String resp,String sign,HttpServletRequest request) throws Exception{
-	model.addAttribute("resp", resp);
-	model.addAttribute("sign", sign);
-	try {
-		Map<String, Object> m = Xml.Dom2Map(resp);
-		Rest rest = new Rest();
 
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("request-no", m.get("requestNo"));
-		map.put("service", "toRepayment");
-		map.put("code", m.get("code"));
-		map.put("response-xml", resp);
-		if(m.get("code").equals("1")){
-			String s = rest.postRestful("/rest/yeepay/update-success", map);
-			JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-			Yeepays yeepays=gateService.queryYeepaysByNumber(m.get("requestNo").toString()).get(0);
-			return "redirect:/loan/loanManage?enterpriseNumber="+yeepays.getProjectId();
+	@RequestMapping(value = "/gate/repaymentSucceed", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String repaymentSSucceed(Model model, String resp, String sign,
+			HttpServletRequest request) throws Exception {
+		model.addAttribute("resp", resp);
+		model.addAttribute("sign", sign);
+		try {
+			Map<String, Object> m = Xml.Dom2Map(resp);
+			Rest rest = new Rest();
 
-		} else {
-			rest.postRestful("/rest/yeepay/update-error", map);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("request-no", m.get("requestNo"));
+			map.put("service", "toRepayment");
+			map.put("code", m.get("code"));
+			map.put("response-xml", resp);
+			if (m.get("code").equals("1")) {
+				String s = rest.postRestful("/rest/yeepay/update-success", map);
+				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+				Yeepays yeepays = gateService.queryYeepaysByNumber(
+						m.get("requestNo").toString()).get(0);
+				return "redirect:/loan/loanManage?enterpriseNumber="
+						+ yeepays.getProjectId();
 
+			} else {
+				rest.postRestful("/rest/yeepay/update-error", map);
+
+				return "error";
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error" + e);
 			return "error";
 		}
-
-	} catch (Exception e) {
-		// TODO: handle exception
-		logger.error("error" + e);
-		return "error";
 	}
-}
+
 	@RequestMapping(value = "/gate/transferSucceed", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String transferSucceed(Model model, String resp, String sign,
@@ -963,10 +876,12 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			map.put("service", "toTransfer");
 			map.put("code", m.get("code"));
 			map.put("response-xml", resp);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				TTransferInfo transferInfo = gateService.queryTTransferInfoByNumber(m.get("requestNo").toString()).get(0);
+				TTransferInfo transferInfo = gateService
+						.queryTTransferInfoByNumber(
+								m.get("requestNo").toString()).get(0);
 				model.addAttribute("transferInfo", transferInfo);
 				return "buy_ok";
 
@@ -983,7 +898,6 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 		}
 	}
 
-
 	@RequestMapping(value = "/gate/repaymentNotify", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String repaymentNotify(String notify, String sign, Model model)
@@ -998,7 +912,7 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			map.put("service", "toRepayment");
 			map.put("code", m.get("code"));
 			map.put("response-xml", notify);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				return "repayment_ok";
@@ -1030,7 +944,7 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			map.put("service", "toTransfer");
 			map.put("code", m.get("code"));
 			map.put("response-xml", notify);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				return "chongzhi_ok";
@@ -1047,7 +961,6 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			return "error";
 		}
 	}
-
 
 	@RequestMapping(value = "/gate/bindingSucceed", method = {
 			RequestMethod.POST, RequestMethod.GET })
@@ -1066,7 +979,7 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			map.put("service", "BIND_BANK_CARD");
 			map.put("code", m.get("code"));
 			map.put("response-xml", resp);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				return "bangding_ok";
@@ -1076,7 +989,6 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 				return "error";
 			}
 
-
 		} catch (Exception e) {
 			logger.error("error " + resp + e);
 		}
@@ -1084,14 +996,12 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 
 	}
 
-
 	@RequestMapping(value = "/gate/bindingNotify", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String bindingNotify(Model model, String notify, String sign,
 			HttpServletRequest request) throws Exception {
 
 		try {
-
 
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			Rest rest = new Rest();
@@ -1101,7 +1011,7 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			map.put("service", "BIND_BANK_CARD");
 			map.put("code", m.get("code"));
 			map.put("response-xml", notify);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				return "chongzhi_ok";
@@ -1134,7 +1044,7 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			map.put("service", "toWithdraw");
 			map.put("code", m.get("code"));
 			map.put("response-xml", notify);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				return "success";
@@ -1149,7 +1059,6 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			return "error";
 		}
 	}
-
 
 	@RequestMapping(value = "/gate/drawMoneySucceed", method = {
 			RequestMethod.POST, RequestMethod.GET })
@@ -1166,7 +1075,7 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 			map.put("service", "toWithdraw");
 			map.put("code", m.get("code"));
 			map.put("response-xml", resp);
-			if(m.get("code").equals("1")){
+			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				return "tixian_ok";
@@ -1184,6 +1093,3 @@ public String repaymentSSucceed(Model model,String resp,String sign,HttpServletR
 		}
 	}
 }
-
-
-

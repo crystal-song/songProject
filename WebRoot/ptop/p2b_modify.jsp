@@ -456,6 +456,7 @@ $(document).ready(function(){
 				success : function(data) {
 					if (data != '"success"') {
 						alert("请添加阶梯利率以后在修改项目状态！")
+						$('#line').attr('checked',false);
 					}
 				}
 			});

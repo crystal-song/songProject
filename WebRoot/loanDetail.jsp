@@ -6,7 +6,7 @@
 <%@ include file="/includes/taglibs.jsp" %>
 <%@taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<title>交易记录 - 我的账户 - 中租宝</title>
+<title>还款明细 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
@@ -54,11 +54,13 @@
                     <td bgcolor="#FFFFFF"></td>
                     <td bgcolor="#FFFFFF"></td>
                      <!-- 根据还款状态显示 -->
+
                      <c:if test="${avaliableMoney>=total}">
-                    <td bgcolor="#FFFFFF"><a href="<%=path%>/gate/doRepayment?id=${productrepay.id }&total=${total}">立即还款</a></td>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/gate/doRepayment?id=${productrepay.enterpriseNumber}&period=${productrepay.period}" onclick="checkAvaliMoney();">立即还款</a></td>
                     </c:if>
                      <c:if test="${avaliableMoney<total}">
                     <td bgcolor="#FFFFFF">账户余额不足，请<a href="<%=path%>/gate/recharge">充值</a></td>
+
                     </c:if>
                     <td bgcolor="#FFFFFF"></td>
                 </tr>
@@ -103,4 +105,16 @@
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript">
+    var navIndex=3;    
+    var indexs=2;
+    $(document).ready(function(){    
+    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
+    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+
+    
+    	$(".u_left_sec:eq(2) li:eq(3)").children("a").css("color","#fc652e");
+});
+ 
+</script>
 </html>

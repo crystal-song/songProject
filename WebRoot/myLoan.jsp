@@ -6,7 +6,7 @@
 <%@ include file="/includes/taglibs.jsp" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<title>交易记录 - 我的账户 - 中租宝</title>
+<title>还款管理 - 我的账户 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
@@ -43,10 +43,10 @@
                         <tr>
                          <td bgcolor="#FFFFFF">${t.projectName}</td>
                         <td bgcolor="#FFFFFF">${t.realityMoney}</td>
-                        <td bgcolor="#FFFFFF">${t.projectStatus==1?'预热中':t.projectStatus==2?'融资中':t.projectStatus==3?'已满标':t.projectStatus==4?'还款中':'已完成' }</td>
+                        <td bgcolor="#FFFFFF">${t.projectStatus==1?'预热中':t.projectStatus==2?'融资中':t.projectStatus==3?'已满标':t.projectStatus==4?'还款中':'已结束' }</td>
                         <td bgcolor="#FFFFFF">${t.financingPeriod}</td>
                         <td bgcolor="#FFFFFF">${t.repaymentWay=='1'?'按月付息、到期还本':t.repaymentWay=='2'?'按季付息、到期还本':t.repaymentWay=='3'?'半年付息、到期还本':t.repaymentWay=='4'?'按年付息、到期还本':'到期付息、到期还本' }</td>
-                        <td bgcolor="#FFFFFF"><fmt:formatDate value="${t.repaymentTime}" pattern="yyyy-MM-dd"/></td>
+                        <td bgcolor="#FFFFFF">${t.nextRepaymentDate}</td>
                         <td bgcolor="#FFFFFF"><c:if test="${t.loaned==true}"><a href="<%=path%>/loan/loanManage?enterpriseNumber=${t.enterpriseNumber}">还款管理</a></c:if><c:if test="${t.loaned!=true}"><font color="grey">还款管理</font></c:if></td>
                         </tr>
                     </c:forEach>
@@ -60,6 +60,7 @@
             </c:if>
 
             <div class="clear"></div>
+            <c:if test="${page.totalPage>1 }">
             <div class="next_list">
                 <a href="<%=path %>/loan/loanProduct?pageNo=1&username=${name}">首页</a>
                 <c:if test="${page.pageNo > 1}"><a href="<%=path %>/loan/loanProduct?pageNo=${page.pageNo-1}&username=${name}">上一页</a>  </c:if>
@@ -67,6 +68,7 @@
                 <c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/loan/loanProduct?pageNo=${page.pageNo+1}&username=${name}">下一页</a>  </c:if>
                 <a href="<%=path %>/loan/loanProduct?pageNo=${page.totalPage}&username=${name}">末页</a>
             </div>
+            </c:if>
         </div>
     </div>
 </div>

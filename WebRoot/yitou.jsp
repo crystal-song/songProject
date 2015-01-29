@@ -54,10 +54,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                   <a>融资中</a>
 	                 </div>
 	                 <div class="loding_bar">
-	                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress<100?s.financingProgress==null?0:s.financingProgress:100}</c:if>%" title="融资进度：${s.financingProgress}%"></div>
+	                 <div class="l_b" style="width:<c:if test='${empty s.financingProgress}'>0</c:if><c:if test='${not empty s.financingProgress}'>${s.financingProgress*100<100?s.financingProgress==null?0:s.financingProgress*100:100}</c:if>%" title="融资进度：${s.financingProgress*100}%"></div>
 	                 </div>
 	                 <div class="floor_bottom01">
-	                   <span><a class="baifenbi01" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress}%</a>
+	                   <span><a class="baifenbi01" style="float:left; text-align:left;"><c:if test='${empty s.financingProgress}'>0</c:if>${s.financingProgress*100}%</a>
 	                   <a style="float:left; color:#a4a4a4;">已达</a></span>
 	                   <span><a class="baifenbi01"><em>¥&nbsp;&nbsp;</em>30000</a><a style="color:#a4a4a4;">已筹资</a>
 	                   </span>
