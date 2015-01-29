@@ -9,6 +9,7 @@ body {
 	 position: relative;
 	 line-height:120%;
 	 }
+body{overflow: -moz-scrollbars-vertical;}	 
 html,body {
 	 margin:0;
 	 padding:0;
@@ -4400,6 +4401,7 @@ ul,li{
 	*+font-size:8px;
 	border:1px solid #ae705e;
 }
+
 .table_style{
    width:650px;
    height:300px;
