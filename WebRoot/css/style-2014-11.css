@@ -4322,6 +4322,7 @@ ul,li{
 	height:30px;
 }
 .new_table td{
+	width:120px;
 	height:30px;
 	line-height:30px;
 }
@@ -4389,7 +4390,7 @@ ul,li{
 .neirong{
 	position:absolute; 
 	top:25%; 
-	left:4%; 
+	left:3%; 
 	width:186px; 
 	height:30px; 
 	background:#fdd9c8; 
@@ -4939,6 +4940,7 @@ ul,li{
 }
 .per_bottom{
 	width:100%;
+	margin:0 auto;
 	height:600px;
 	background:#9b7e5c;
 }
@@ -4947,6 +4949,7 @@ ul,li{
 	height:577px;
 	background:url(../img/images-2014-11/diannao1.png) no-repeat;
 	margin-left:10%;
+	float:left;
 }
 .bang{
 	margin-left:14%;
@@ -4961,10 +4964,8 @@ ul,li{
 }
 .diannao01{
 	width:286px;
-	height:500px;	
-    position:absolute;
-    bottom:4%;
-    right:200px;	
+	height:580px;	
+    float:left;
     border-radius:5px;
 }
 .diannao01 a{
@@ -5942,8 +5943,28 @@ ul,li{
 	display:inline-block;
 }
 
+.p_font{
+	font-size:14px;
+	
+}
+.diabtn{
+	width:90px;
+	height:30px;
+	background:#ff665f;
+	display:inline-block;
+	float:right;
+	margin-right:40px;
+	margin-top:14%;
+	border-radius:3px;
+	color:#fff;
+	line-height:30px;
+	font-size:14px;
+	cursor:pointer;
+}
 
-
-
-
+.diabtn:hover{
+	color:#fff;
+	background:#d11d06;
+	cursor:hover;
+}
 

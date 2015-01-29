@@ -108,7 +108,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <div class="touzi_text">
 	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您提现失败：<a href="<%=path%>/gate/drawMoney">重新提现</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
 	         </div>	       
-            </div>                      
+            </div>     
+            <div id="dialog01"  style="display:none; height:210px;" class="newye">
+	          <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	          </div>	         
+	          <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">充值金额不能为0,请重新充值!</p>          
+	          </div>
+	          <div class="touzi_text" style="display:block">
+	           <p><a href="<%=path%>/gate/recharge">去充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/gate/service">查看我的资产</a></p>   
+	          </div>	
+	         <a class="diabtn">确定</a>                
+            </div>                 
           </div> 
         </div>
       </div>
@@ -132,10 +145,16 @@ function onSubmit(host) {
 		    var old_amount=parseInt($(".wd_org").text());
 
 	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
-	    		alert("您输入的金额为空,请重新输入");	    	    		
+	    		//alert("您输入的金额为空,请重新输入");	 
+	    		$(".newye").css("display","block")
+	    	    $(".black_bac").css("display","block");
+	    		$(".p_font").text("提现金额不能为空，请重新输入！")
 	    	}    	
 	    	 if(tixian_val>old_amount){
-	    		alert("您提现的金额不能超出可提现金额");
+	    		//alert("您提现的金额不能超出可提现金额");
+	    		$(".newye").css("display","block")
+	    	    $(".black_bac").css("display","block");
+	    		$(".p_font").text("您提现的金额不能超出可提现金额！")
 	    		return false;	    		
 	    	}else{
 	    		  $("#dialog01").css("display","block");
@@ -148,7 +167,11 @@ function onSubmit(host) {
 
 function checkval(){
 	if($(".tixian_money").val()==0||$(".tixian_money").val()=="提现金额不能为0"||$(".tixian_money").val()==""){
-		alert("提现金额不能为空!!");
+		//alert("提现金额不能为空!!");
+		$(".newye").css("display","block")
+	    $(".black_bac").css("display","block");
+		$(".p_font").text("提现金额不能为空，请重新输入！")
+		
 		return false;
 		}
 	return true;
@@ -168,7 +191,14 @@ function checkval(){
 
     		
     	});
-    	
+   	 $(".right_cha").click(function(){
+		 $(".newye").css("display","none")
+		 window.location.reload(true);		
+	 }) 
+	 $(".diabtn").click(function(){
+		 $(".newye").css("display","none")
+		 window.location.reload(true);
+	 }) 
     	$(".right_cha").click(function(){		  
     		 window.location.reload(true);  		  
     	});

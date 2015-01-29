@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
-
+<div class="black_bac"></div>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <input type="hidden" id="now" value="${now}">
@@ -402,6 +402,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
      </div>
     </div>
+          <div id="dialog01"  style="display:none; height:250px;" class="newye">
+	          <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	          </div>	         
+	          <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">投资金额不能为0,请重新输入!</p>          
+	          </div>
+	          <div class="touzi_text" style="display:block">
+	           <p><a href="<%=path%>/gate/recharge">充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/gate/service">查看我的资产</a></p>   
+	          </div>
+	          <div class="touzi_text" style="display:block">
+	           <p><a href="<%=path%>/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/welcome/reg">还没有账号？</a></p>   
+	          </div>	
+	         <a class="diabtn">确定</a>                
+          </div>
 </div> 
 <!-- absolute start -->
 <%@ include file="/includes/absolute.jsp" %>
@@ -421,18 +437,22 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
 function mysubmit(){
 	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
-		alert("投资金额不能为空！");
+		//alert("投资金额不能为空！");
+		$(".newye").css("display","block")
+	    $(".black_bac").css("display","block");		
 		return false;
 		}
 	//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
 	
 	if($("#buyAmount").val()<200){
-		alert("投资金额不能低于200元！");
+		//alert("投资金额不能低于200元！");
+		
 		return false;
 	}
 	
 	if($("#buyAmount").val()>touzi_money){
-		alert("投资金额不能高于可投资金额！");
+		//alert("投资金额不能高于可投资金额！");
+		
 		return false;
 	}
 	
@@ -442,7 +462,10 @@ function mysubmit(){
                 var form = document.getElementById("form");
                 form.submit();
             }else{
-                alert(resp);
+               // alert(resp);
+            	$(".newye").css("display","block")
+        	    $(".black_bac").css("display","block");
+            	$(".p_font").text("请您登录！")
             }
         }});
 }	
@@ -501,6 +524,8 @@ function mysubmit(){
 		  
 		    var str= /^[0-9]*$/;
 		    var val=$("#buyAmount").val();
+		    
+		    
 		    if(!(str.test(val))){  	   
 				   $('.neirong').html("您输入的金额不是数字,请重新输入");
 				   return false;
@@ -590,6 +615,16 @@ function mysubmit(){
  	$(".right_cha").click(function(){
  		$("#dialog01").css("display","none");
  	});
+ 	
+ 	$(".right_cha").click(function(){
+		 $(".newye").css("display","none")
+		 window.location.reload(true);		
+	 }) 
+	 $(".diabtn").click(function(){
+		 $(".newye").css("display","none")
+		 window.location.reload(true);
+	 }) 
+
  	
 /*daojishi*/
  	 
