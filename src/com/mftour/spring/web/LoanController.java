@@ -49,7 +49,7 @@ public class LoanController {
 			RequestMethod.POST }) 
 	public String loanProduct(
 			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
-			@RequestParam(value = "pageSize", required = false, defaultValue = "3") int pageSize,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			Model model,HttpServletRequest request) {
 		try {
 			String username=(String)request.getSession().getAttribute("name");

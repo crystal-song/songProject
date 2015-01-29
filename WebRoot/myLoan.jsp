@@ -60,6 +60,7 @@
             </c:if>
 
             <div class="clear"></div>
+            <c:if test="${page.totalPage>1 }">
             <div class="next_list">
                 <a href="<%=path %>/loan/loanProduct?pageNo=1&username=${name}">首页</a>
                 <c:if test="${page.pageNo > 1}"><a href="<%=path %>/loan/loanProduct?pageNo=${page.pageNo-1}&username=${name}">上一页</a>  </c:if>
@@ -67,6 +68,7 @@
                 <c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/loan/loanProduct?pageNo=${page.pageNo+1}&username=${name}">下一页</a>  </c:if>
                 <a href="<%=path %>/loan/loanProduct?pageNo=${page.totalPage}&username=${name}">末页</a>
             </div>
+            </c:if>
         </div>
     </div>
 </div>
