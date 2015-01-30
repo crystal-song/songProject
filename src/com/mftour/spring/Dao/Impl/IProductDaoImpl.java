@@ -319,7 +319,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 	@Override
 	public List<TProduct> queryProduct(TProduct product) throws Exception {
 		if (product.getProjectName() == null || product.getProjectName() == "") {
-			String hql = "from TProduct product where product.existType = :existType";
+			String hql = "from TProduct product where product.existType = :existType order by product.releaseTime desc";
 			Query query = getSession().createQuery(hql);
 			query.setParameter("existType", "0");
 			return query.list();

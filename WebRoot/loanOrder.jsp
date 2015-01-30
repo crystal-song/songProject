@@ -65,7 +65,12 @@
                         <td bgcolor="#FFFFFF">${t.amount}</td>
                         <td bgcolor="#FFFFFF"> <c:if test="${t.repayed==true }">${t.interest+t.amount}</c:if></td>
                         <td bgcolor="#FFFFFF"><fmt:formatDate value="${t.repayTime}" pattern="yyyy-MM-dd"/></td>
-                        <td bgcolor="#FFFFFF"> <c:if test="${t.repayed==false }"><a href="<%=path%>/loan/loanDetail?enterpriseNumber=${product.enterpriseNumber}&id=${t.id}&period=${t.period}">还款</a>  </c:if></td>
+                        <c:if test="${t.repayed==false&&t.period==perioding  }">
+                        <td bgcolor="#FFFFFF"> <a href="<%=path%>/loan/loanDetail?enterpriseNumber=${product.enterpriseNumber}&id=${t.id}&period=${t.period}&perioding=${perioding}">还款</a> </td>
+                        </c:if>
+                        <c:if test="${t.period!=perioding }">
+                        <td bgcolor="#FFFFFF"> <a href="<%=path%>/loan/loanDetail?enterpriseNumber=${product.enterpriseNumber}&id=${t.id}&period=${t.period}&perioding=${perioding}">查看详情</a> </td>
+                        </c:if>
                         </tr>
                     </c:forEach>
                 </c:if>
