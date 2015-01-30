@@ -4305,6 +4305,18 @@ ul,li{
 	text-align:center; 
 	margin-left:346px;
 }
+#mysubmit_btn{
+	width:120px; 
+	height:40px; 
+	background:#ff6862; 
+	color:#fff; 
+	display:inline-block; 
+	line-height:40px; 
+	float:left; 
+	border:none;
+	text-align:center; 
+	margin-left:348px;
+}
 .que_btn_new{
 	width:120px; 
 	height:38px; 
