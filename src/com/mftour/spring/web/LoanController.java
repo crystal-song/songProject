@@ -87,7 +87,15 @@ public class LoanController {
 			List<ProductRepays> productrepaysList = productService
 					.queryProductRepaysByNumber(enterpriseNumber);
 			model.addAttribute("productrepaysList", productrepaysList);
+			for(ProductRepays  productrepays:productrepaysList){
+				if(productrepays.getRepayed()==false){
+					model.addAttribute("perioding", productrepays.getPeriod());
+					return "loanOrder";
+				}
+			}
 			return "loanOrder";
+			
+			
 		} catch (Exception e) {
 			logger.error("error" + e);
 			return "error";
@@ -100,8 +108,10 @@ public class LoanController {
 	public String loanDetail(
 			@RequestParam("enterpriseNumber") String enterpriseNumber,
 			@RequestParam("id") int id, @RequestParam("period") int period,
-			Model model, HttpServletRequest request) {
+			@RequestParam("perioding") String perioding, Model model, HttpServletRequest request) {
 		try {
+			model.addAttribute("perioding", perioding);
+			model.addAttribute("period", period);
 			String username=(String)request.getSession().getAttribute("name");
 			if(username==null){
 				return "login";

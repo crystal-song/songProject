@@ -55,10 +55,10 @@
                     <td bgcolor="#FFFFFF"></td>
                      <!-- 根据还款状态显示 -->
 
-                     <c:if test="${avaliableMoney>=total}">
+                     <c:if test="${avaliableMoney>=total&&period==perioding}">
                     <td bgcolor="#FFFFFF"><a href="<%=path%>/gate/doRepayment?id=${productrepay.enterpriseNumber}&period=${productrepay.period}" onclick="checkAvaliMoney();">立即还款</a></td>
                     </c:if>
-                     <c:if test="${avaliableMoney<total}">
+                     <c:if test="${avaliableMoney<total&&period==perioding}">
                     <td bgcolor="#FFFFFF">账户余额不足，请<a href="<%=path%>/gate/recharge">充值</a></td>
 
                     </c:if>
@@ -83,8 +83,7 @@
                         <td bgcolor="#FFFFFF">${t.userId}</td>
                         <td bgcolor="#FFFFFF">${t.interest}</td>
                         <td bgcolor="#FFFFFF">${t.amount}</td>
-                        <!-- 根据还款状态显示 -->
-                        <td bgcolor="#FFFFFF">${t.interest+t.amount}</td>
+                        <td bgcolor="#FFFFFF"><c:if test="${productrepay.repayed==true}">${t.interest+t.amount}</c:if></td>
                         <td bgcolor="#FFFFFF" ></td>
                         </tr>
                     </c:forEach>

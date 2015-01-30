@@ -51,17 +51,19 @@
 								<c:forEach var="s" items="${li}" varStatus="i">
 									<tr>
 
+
 										<td align="center" height="30">${s.projectName}</td>
 										<td align="center"><fmt:formatNumber type="number"
 												value="${s.paymentAmount + s.reward}" maxFractionDigits="2" />元</td>
 										<td align="center">${fn:substring(s.transDate,0,10)}</td>
 										<td align="center">${s.financingPeriod}天</td>
 										<td align="center"><fmt:formatNumber type="number"
-												value="${s.interest}"
+											value="${s.interest}"
 												maxFractionDigits="2" />元</td>
 										<td align="center"><a
 											href="<%=path%>/gate/authorization?platformUserNo=${s.platformUserNo}&enterpriseNumber=${s.enterpriseNumber}&transDate=${s.transDate}"
 											title="查看投资协议" style="text-decoration: underline;">点击查看</a></td>
+
 
 									</tr>
 								</c:forEach>
