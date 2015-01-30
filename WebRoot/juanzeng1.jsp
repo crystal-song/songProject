@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>       
         
       </div>   
-      <a class="zhifu">支付</a>
+      <a class="zhifu" href="<%=path%>/zhifu_ok.jsp">支付</a>
       </form>
    </div>
    <div class="juan_con_right">
@@ -119,7 +119,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 <script type="text/javascript">
+var navIndex=2;  
+var indexs=0;
 $(document).ready(function(e){
+	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
+	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
+	
+	
 	$(".dizhi div").click(function(){
 		$(this).css("background","url(<%=path%>/img/images-2014-11/kuang.png)  no-repeat");
 		$(this).siblings().css("background","url(<%=path%>/img/images-2014-11/kuang1.png)  no-repeat");

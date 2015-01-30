@@ -60,6 +60,9 @@
                 <li>
                   <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
+                <li>
+                  <a href="<%=path%>/prolist.jsp">我的众筹</a>
+                </li>
                 <li style="display:none;">
                   <a href="<%=path%>/zhaiquan.jsp">债权转让</a>
                 </li>

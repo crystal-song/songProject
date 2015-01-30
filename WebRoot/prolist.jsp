@@ -25,39 +25,45 @@
     </div>
     <div class="user_right">
         <div class="zichan_con">
-            <div class="pro_con_title" style="margin-top:5px;"><strong>我的礼券</strong></div>
-            <div class="quan_label">
-                <div class="${catlog eq "0"?"quan_red":""}"><a href="/account/liquan?page=1&catlog=0">可用礼券</a></div>
-                <div class="${catlog eq "1"?"quan_red":""}"><a href="/account/liquan?page=1&catlog=1">已用礼券</a></div>
-                <div class="${catlog eq "2"?"quan_red":""}"><a href="/account/liquan?page=1&catlog=2">过期礼券</a></div>
-            </div>
-            <table  bgcolor="#eee" border="0" cellpadding="0" cellspacing="1" class="quan_tab">
-                <tr>
-                    <td bgcolor="#FFFFFF">礼券名称</td>
-                    <td bgcolor="#FFFFFF">礼券状态</td>
-                    <td bgcolor="#FFFFFF">礼券类型</td>
-                    <td bgcolor="#FFFFFF">获得时间</td>
-                    <td bgcolor="#FFFFFF">过期时间</td>
+            <div class="pro_con_title" style="margin-top:5px;"><strong>我的众筹</strong></div>
+
+            <table  bgcolor="#ccc" border="0" cellpadding="0" cellspacing="1" class="quan_tab">
+                <tr>                                                                                                                                                              
+                    <td bgcolor="#ededed">项目名称</td>
+                    <td bgcolor="#ededed">购买数量</td>
+                    <td bgcolor="#ededed">购买日期</td>
+                    <td bgcolor="#ededed">交易金额 ( 元)</td>
+                    <td bgcolor="#ededed">操作</td>
                 </tr>
-
-                <c:if test="${ not empty list}">
-                    <c:forEach var="t" items="${list}">
-                        <tr>
-                            <td bgcolor="#FFFFFF">${t.remark}</td>
-                        <td bgcolor="#FFFFFF">${t.use?"已使用":"未使用"}</td>
-                        <td bgcolor="#FFFFFF">${t.amount}元</td>
-                        <td bgcolor="#FFFFFF">${t.giveTime}</td>
-                        <td bgcolor="#FFFFFF">${t.expireTime}</td>
-                        </tr>
-                    </c:forEach>
-                </c:if>
-
+                <tr>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/zhongchou_msg.jsp">为藏区孩子建一座篮球场</a></td>
+                    <td bgcolor="#FFFFFF">20</td>
+                    <td bgcolor="#FFFFFF">2015.1.1</td>
+                    <td bgcolor="#FFFFFF">2000</td>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/dingdan.jsp">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/zhongchou_msg.jsp">为藏区孩子建一座篮球场</a></td>
+                    <td bgcolor="#FFFFFF">20</td>
+                    <td bgcolor="#FFFFFF">2015.1.1</td>
+                    <td bgcolor="#FFFFFF">2000</td>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/dingdan.jsp">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/zhongchou_msg.jsp">为藏区孩子建一座篮球场</a></td>
+                    <td bgcolor="#FFFFFF">20</td>
+                    <td bgcolor="#FFFFFF">2015.1.1</td>
+                    <td bgcolor="#FFFFFF">2000</td>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/dingdan.jsp">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/zhongchou_msg.jsp">为藏区孩子建一座篮球场</a></td>
+                    <td bgcolor="#FFFFFF">20</td>
+                    <td bgcolor="#FFFFFF">2015.1.1</td>
+                    <td bgcolor="#FFFFFF">2000</td>
+                    <td bgcolor="#FFFFFF"><a href="<%=path%>/dingdan.jsp">查看详情</a></td>
+                </tr>
             </table>
-            <c:if test="${empty list}">
-                <li >
-                    暂无记录
-                </li>
-            </c:if>
 
             <div class="clear"></div>
             <div class="next_list">
@@ -77,31 +83,24 @@
 </body>
 <script>
     var navIndex=3;
-    var indexs=1;
+    var indexs=2;
     $(function(){
         $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-        $(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
-        $(".zichan_con .tui_li li span:odd").css("text-align","left");
+        $(".u_left_sec:eq(2) li:eq(5)").children("a").css("color","#fc652e");
+        
         $(".nav_big a").eq(2).children("p").addClass("headwd_color");
     })
 
 
 </script>
-<script type="text/javascript">
 
-</script>
+
 <script>
     function jumpPage(pag){
-       
+        /* alert("ccccccccccc"+pag); */
         $('#pageNo').val(pag);
-
-
         $("#form" ).submit();
-
     }
-
-
-
 
     function pagerInit(a,b){//${page.pagecount},${page.page}
         var totalPages=a;
