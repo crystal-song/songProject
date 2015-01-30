@@ -27,8 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
    <div class="crowd_con">
      <div class="crowd_list">
-        <div class="crowd_pic"></div>
-        <div class="crowdpro_name">名称：山西润通集团</div>
+        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
+        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
@@ -42,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
      </div>
           <div class="crowd_list">
-        <div class="crowd_pic"></div>
-        <div class="crowdpro_name">名称：山西润通集团</div>
+        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
+        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
@@ -57,8 +57,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
      </div>
           <div class="crowd_list">
-        <div class="crowd_pic"></div>
-        <div class="crowdpro_name">名称：山西润通集团</div>
+        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
+        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
@@ -72,8 +72,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
      </div>
           <div class="crowd_list">
-        <div class="crowd_pic"></div>
-        <div class="crowdpro_name">名称：山西润通集团</div>
+        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
+        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
@@ -87,8 +87,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
      </div>
           <div class="crowd_list">
-        <div class="crowd_pic"></div>
-        <div class="crowdpro_name">名称：山西润通集团</div>
+        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
+        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
@@ -102,8 +102,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
      </div>
           <div class="crowd_list">
-        <div class="crowd_pic"></div>
-        <div class="crowdpro_name">名称：山西润通集团</div>
+        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
+        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
@@ -117,8 +117,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
      </div>
           <div class="crowd_list">
-        <div class="crowd_pic"></div>
-        <div class="crowdpro_name">名称：山西润通集团</div>
+        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
+        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
@@ -132,8 +132,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
      </div>
           <div class="crowd_list">
-        <div class="crowd_pic"></div>
-        <div class="crowdpro_name">名称：山西润通集团</div>
+        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
+        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
@@ -161,7 +161,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 <script type="text/javascript">
- 
+var navIndex=2;  
+var indexs=0;
+    $(document).ready(function(){
+    	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
+    	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
+    	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
+    	
+    
+              
+          
+});
  
 </script>
 
