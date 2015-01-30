@@ -495,7 +495,13 @@ ul,li{
 	*+width:747px;
 	*+height:200px;;
 }
-
+.images_pro p{
+	margin:0
+}
+.images_pro p img{
+	width:748px;
+	height:180px;
+}
 .meier_wd{
 	height:30%;
 	width:95%;
@@ -607,6 +613,10 @@ ul,li{
 	}
 .floor_img p{
 	margin:0;
+}
+.floor_img p img{
+	width:330px; 
+	height:200px; 
 }	
 .floor_num h3{
 	display:inline-block; 

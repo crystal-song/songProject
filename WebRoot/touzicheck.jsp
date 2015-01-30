@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="msg_con">
   <div class="queren_con" style="height:auto; overflow:hidden">
    <div class="con_title"><strong>投资信息确认</strong></div>
-   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank">
+   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank" >
    <ul> 
          <input type="hidden" id="host" name="host">
 
@@ -153,8 +153,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
 
-          <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>
-
+           <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> 
+               <!-- <div class="que_btn"><input type="button" name="submit" id="mysubmit_btn"></input></div> -->
+               <%-- <input type="hidden" value="${f.onSubmit}" class="host"/> --%>
           </li>
           </ul>
           
@@ -180,8 +181,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 <script type="text/javascript">
-function onSubmit(host) {
 
+/* $(function(){
+$("#mysubmit_btn").click(function(){
+	  var host=$(".host").val();
+	  alert(host)
+	  
+});
+	   */
+
+ function onSubmit(host) {
 
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
@@ -209,7 +218,7 @@ function onSubmit(host) {
                     });
            
                     form.submit();
-                    document.getElementById("que_btn_ok").disabled()
+                    //document.getElementById("que_btn_ok").disabled()
 
                 }else{
                     alert(resp);
@@ -218,7 +227,8 @@ function onSubmit(host) {
 
 
 
-}
+ }
+
 $(document).ready(function(e) { 
 	   $("#reward").click(function(){
 		  $(".fukuan").css("display","block");
