@@ -22,6 +22,7 @@ public interface IptopDao {
 	public void addOrUpdateInvestmentInfo(TInvestmentInfo investmentInfo)
 			throws Exception;
 	public List<Communal> queryHotprojectFromCommunal() throws Exception;
+	public List<Communal> queryCommunalByEnterpriseNumber(String enterpriseNumber) throws Exception;
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number);
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number);
 	public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number);

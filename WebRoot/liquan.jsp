@@ -44,7 +44,7 @@
                     <c:forEach var="t" items="${list}">
                         <tr>
                             <td bgcolor="#FFFFFF">${t.remark}</td>
-                        <td bgcolor="#FFFFFF">${t.use?"已使用":"未使用"}</td>
+                        <td bgcolor="#FFFFFF">${t.used?"已使用":"未使用"}</td>
                         <td bgcolor="#FFFFFF">${t.amount}元</td>
                         <td bgcolor="#FFFFFF">${t.giveTime}</td>
                         <td bgcolor="#FFFFFF">${t.expireTime}</td>

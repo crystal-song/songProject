@@ -41,6 +41,12 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		Query query=getSession().createQuery(hql);
 		return query.list();
 	}
+	public List<Communal> queryCommunalByEnterpriseNumber(String enterpriseNumber) throws Exception{
+		String hql="from Communal communal where communal.valuess=:enterpriseNumber";
+		Query query=getSession().createQuery(hql);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List getAdministratorByAccount(String account) throws Exception {
