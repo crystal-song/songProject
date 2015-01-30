@@ -65,7 +65,7 @@ public class transactionRecordController {
 				paramlist.add(type);
 				}
 			if("typeall".equals(type)&&"timeall".equals(time)){
-				sql+=" ORDER BY a.transDate DESC ";
+				sql+="  and a.type not like '放款'  ORDER BY a.transDate DESC ";
 			}
 			List<TTransRecord> transRecordList=gateService.queryAllTransRecord(page,sql,paramlist.toArray());
 			model.addAttribute("transRecordList", transRecordList);
