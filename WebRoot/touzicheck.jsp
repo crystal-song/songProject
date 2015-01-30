@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="msg_con">
   <div class="queren_con" style="height:auto; overflow:hidden">
    <div class="con_title"><strong>投资信息确认</strong></div>
-   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank" >
+   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank"  onsubmit="onSubmit(${f.onSubmit});">
    <ul> 
          <input type="hidden" id="host" name="host">
 
@@ -93,8 +93,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
             <div class="form-group" ><%-- ${product.financingPeriod} --%>
             <%-- //${product.financingPeriod*30} --%>
-            <label for="#">投资周期（天）：</label> <input type="text"
-              class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product.financingPeriod}" /> 
+
+            <label for="#">投资周期：</label> <input type="text" disabled="disabled"
+              class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product.financingPeriod}天" /> 
+
 
           </div>
           </li>
@@ -153,9 +155,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
 
-           <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> 
-               <!-- <div class="que_btn"><input type="button" name="submit" id="mysubmit_btn"></input></div> -->
-               <%-- <input type="hidden" value="${f.onSubmit}" class="host"/> --%>
+           <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>  --%>
+                <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%> 
+                <%-- <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  --%>
+                <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" value="确定" ></input></div>
           </li>
           </ul>
           
@@ -179,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
-</body>
+
 <script type="text/javascript">
 
 /* $(function(){
@@ -217,18 +220,19 @@ $("#mysubmit_btn").click(function(){
                         $(".black_bac").css("display","none");
                     });
            
-                    form.submit();
-                    //document.getElementById("que_btn_ok").disabled()
+                   // form.submit();
+                    document.getElementById("que_btn_ok").disabled()
 
                 }else{
                     alert(resp);
                 }
             }});
+  }
 
 
+</script>
 
- }
-
+<script type="text/javascript">
 $(document).ready(function(e) { 
 	   $("#reward").click(function(){
 		  $(".fukuan").css("display","block");
@@ -317,5 +321,10 @@ $(document).ready(function(e) {
 		  
 	  
 }); 
-</script>
+</script> 
+</body>
+
+
+
+
 </html>
