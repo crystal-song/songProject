@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="pro_con_title" style="margin-top: 5px; background:url(../img/images-2014-11/red_line_big.png) 104px 12px no-repeat;">
                 <strong>收货地址管理</strong>
          </div>
-         <a class="tianjia"></a>
+         <a class="tianjiadizhi"></a>
          <div class="dizhi_msg">
            <p class="little_head">添加收货地址:</p>
          </div>
