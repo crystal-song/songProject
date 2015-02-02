@@ -78,8 +78,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">营业执照号码：${product. guaranteeNumber}</div>
 			<div class="title01">借款内容:</div>
 			<div class="section">借款用途：${product.fundUse}</div>
-			<div class="section">借款金额：${transferInfo1.paymentAmount}</div>
-			<div class="section">借款利率(365天/年)： ${transferInfo1.interestRate}%</div>
+			<div class="section">借款金额：${transferInfo1.paymentAmount+transferInfo1.reward}</div>
+			<div class="section">借款利率：${transferInfo1.interestRate} %</div>
 			<div class="section">借款期限从 计息日 到 计息日+${transferInfo1.financingPeriod}天</div>
 			<div class="section">还款方式：${product.repaymentWay=='1'?'按月付息、到期还本':product.repaymentWay=='2'?'按季付息、到期还本':product.repaymentWay=='3'?'半年付息、到期还本':product.repaymentWay=='4'?'按年付息、到期还本':'到期付息、到期还本' }</div>
 			<div class="title01">特别提示：</div>

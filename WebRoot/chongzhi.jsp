@@ -111,7 +111,7 @@
 								<!--  value="http://www.ptobchina.com/spring3/gate/examRecharge" /> -->
 							</div> 
 							<div class="mar_que_top">
-							<input type="submit" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input>
+							<input type="submit" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" ></input>
 							</div>
 						</li>
 					</ul>
