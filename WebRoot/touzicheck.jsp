@@ -221,10 +221,7 @@ $("#mysubmit_btn").click(function(){
                     
                      $("#dialog01").css("display","block");
                     $(".black_bac").css("display","block");
-                    $(".right_cha").click(function(){
-                        $("#dialog01").css("display","none");
-                        $(".black_bac").css("display","none");
-                    }); 
+                     
                     
                     $("#form")[0].submit();
                     document.getElementById("que_btn_ok").disabled()                    
@@ -248,7 +245,10 @@ $(document).ready(function(e) {
 	   $(".right_cha").click(function(){
 		   window.location.reload(true);
 	   });
-	   
+	   $(".right_cha").click(function(){
+           $("#dialog01").css("display","none");
+           $(".black_bac").css("display","none");
+       });
 	   $("#paymentAmount").keyup(function(){
 		   
 		   if($(this).val()<3000){			   
