@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
+<!-- <base target="_blank" />  -->
 <div class="black_bac"></div>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
@@ -32,7 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="msg_con">
   <div class="queren_con" style="height:auto; overflow:hidden">
    <div class="con_title"><strong>投资信息确认</strong></div>
-   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank"  onsubmit="onSubmit(${f.onSubmit});">
+   <%-- <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank"  onsubmit="onSubmit(${f.onSubmit})"> --%>
+   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post"  onsubmit="return false" target="_blank" >
    <ul> 
          <input type="hidden" id="host" name="host">
 
@@ -155,10 +157,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
 
-           <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>  --%>
+                <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>   --%>
                 <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%> 
-                <%-- <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  --%>
-                <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" value="确定" ></input></div>
+                <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  
+                 <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> 
+                <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> --%>
           </li>
           </ul>
           
@@ -193,8 +196,9 @@ $("#mysubmit_btn").click(function(){
 });
 	   */
 
- function onSubmit(host) {
 
+ function onSubmit(host) {
+   
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
 
@@ -203,33 +207,32 @@ $("#mysubmit_btn").click(function(){
         alert("投资金额必须大于200");
         return false;
     }    	
-
-    $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+    
+     $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
             success: function(resp){
                 if(resp === "success"){
-
+               
                     document.getElementById("paymentAmount").value=parseInt(a);
                     document.getElementById("host").value = host;
-                    document.getElementById("mysubmit_btn").disabled=true;
+                    //document.getElementById("mysubmit_btn").disabled=true;
                     document.getElementById("mysubmit_btn").innerHTML="正在提交...";
                     var form = document.getElementById("form");
-                    $("#dialog01").css("display","block");
+                    
+                     $("#dialog01").css("display","block");
                     $(".black_bac").css("display","block");
                     $(".right_cha").click(function(){
                         $("#dialog01").css("display","none");
                         $(".black_bac").css("display","none");
-                    });
-           
-                   // form.submit();
-                    document.getElementById("que_btn_ok").disabled()
-
+                    }); 
+                    
+                    $("#form")[0].submit();
+                    document.getElementById("que_btn_ok").disabled()                    
                 }else{
                     alert(resp);
                 }
-            }});
+            }}); 
   }
-
-
+ 
 </script>
 
 <script type="text/javascript">
@@ -268,10 +271,10 @@ $(document).ready(function(e) {
 		calc();
 		$("#paymentAmount").change(function(e) {
 			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
-				$(this).val(parseInt($(".lev_start").eq(0).html()));
+				//$(this).val(parseInt($(".lev_start").eq(0).html()));
 				}
 			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
-				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
+				//$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
 				}
 	        calc();
 	        
@@ -321,7 +324,7 @@ $(document).ready(function(e) {
 		  
 	  
 }); 
-</script> 
+</script>  
 </body>
 
 
