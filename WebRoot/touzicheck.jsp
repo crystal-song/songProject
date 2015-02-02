@@ -227,12 +227,19 @@ $(document).ready(function(e) {
        });
 	   $("#paymentAmount").keyup(function(){
 		   
-		   if($(this).val()<3000){			   
+		   if($(this).val()<3000){		
+			  
 		     	$(".liquan_hide").css("display","none")
 		     	
 		 	  }  else{
-		 		 $(".liquan_hide").css("display","block")
+		 		 $(".liquan_hide").css("display","block");
+		 		if($(".liquan_check").val()==""){
+			    	   $(".liquan_hide").css("display","none")
+			       }
 		 	  }
+		
+			   
+		  
 	   });
 	   
 	   if($("#paymentAmount").val()<3000 || $(".liquan_check").val()==""){
@@ -283,8 +290,9 @@ $(document).ready(function(e) {
 			       $("#preview_rate").val(b+"%");	 
 			         
 			/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元"); */  			
-			     var a=parseFloat(parseInt(t*r*100+0.5)/100)				     
+			     var a=parseFloat(parseInt(t*r*100)/100)				     
 				     a= a.toFixed(2)
+				        alert(a)
 			     $("#preview_income").val(a+"元");
 			}
 		$(".lilv_table").click(function(){

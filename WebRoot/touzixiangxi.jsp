@@ -472,9 +472,9 @@ function mysubmit(){
                 form.submit();
             }else{
                // alert(resp);
-            	$(".newye").css("display","block")
+            	 $(".newye").css("display","block")
         	    $(".black_bac").css("display","block");
-            	$(".p_font").text("请您登录！")
+            	$(".p_font").text(resp) 
             }
         }});
 }	
@@ -509,12 +509,23 @@ function mysubmit(){
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}
-					r=r/100;
+					r=r/100/365*p; 
 					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
 					}
 				}
-			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
+			/* $("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
+			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100)/100)+"元"); */
+			   var b=parseFloat(parseInt(r*10000)/100);		        
+		       b=b.toFixed(2)
+		     
+		       $("#preview_rate").val(b+"%");	 
+		         
+		/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100)/100)+"元");	 */
+		      var a=parseFloat(parseInt(t*r*100)/100)				     
+			      a= a.toFixed(2)
+			       
+		     $("#preview_income").html(a+"元"); 
+			
 			//console.log("|-"+t*r);
 			}
 		$(".jisuan_btn_left").click(function(){
