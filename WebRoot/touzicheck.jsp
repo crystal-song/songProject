@@ -142,20 +142,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           </li>
           <li>
-
-           <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>  --%>
-                <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%> 
-<<<<<<< HEAD
-                <%-- <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  --%>
-                <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" onclick="onSubmit(1)" value="确定" ></input></div>
-=======
-                <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  
-                <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input></div> 
-                <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> --%>
->>>>>>> zhongchou
+                 <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> --%>
+                 <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%>
+                 <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>
+				 <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input></div>				
           </li>
-          </ul>
-          
+          </ul>          
         </form>
         <div id="dialog01"  style="display:none; height:210px;">
 	         <div class="dialog_title">
@@ -186,22 +178,14 @@ $(".right_cha").click(function(){
 
 
  function onSubmit(host) {
-
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
-
-
     if(parseInt(a) < 200){
         alert("投资金额必须大于200");
         return false;
-    }    	
-
-<<<<<<< HEAD
-    $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
-=======
-    
+    }    	    
      $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
->>>>>>> zhongchou
+
             success: function(resp){
                 if(resp === "success"){
 
@@ -210,21 +194,16 @@ $(".right_cha").click(function(){
                     document.getElementById("mysubmit_btn").disabled=true;
                     document.getElementById("mysubmit_btn").innerHTML="正在提交...";
                     var form = document.getElementById("form");
-<<<<<<< HEAD
+
                     $("#dialog01").css("display","block");
                     $(".black_bac").css("display","block");
-              
+                    /* $("#form")[0].submit(); */
                     form.submit();
-                    document.getElementById("que_btn_ok").disabled()
-=======
+                    document.getElementById("que_btn_ok").disabled() 
+                                       
                     
-                     $("#dialog01").css("display","block");
-                     $(".black_bac").css("display","block");
-                     
-                    
-                    $("#form")[0].submit();
-                    document.getElementById("que_btn_ok").disabled()                    
->>>>>>> zhongchou
+                                   
+
 
                 }else{
                     alert(resp);                  
@@ -246,10 +225,7 @@ $(document).ready(function(e) {
 	
 	   $(".right_cha").click(function(){
 		   window.location.reload(true);
-	   });
-	   $(".right_cha").click(function(){
-           $("#dialog01").css("display","none");
-           $(".black_bac").css("display","none");
+
        });
 	   $("#paymentAmount").keyup(function(){
 		   
