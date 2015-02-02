@@ -32,14 +32,15 @@ import com.mftour.spring.service.ISystemLogService;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.Page;
 
-import org.slf4j.Logger; 
-import org.slf4j.LoggerFactory; 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/Login")
 public class ptopController {
-	private static final Logger        logger = LoggerFactory.getLogger(ptopController.class);
-	
+	private static final Logger logger = LoggerFactory
+			.getLogger(ptopController.class);
+
 	@Autowired
 	private IptopService ptopService;
 
@@ -54,7 +55,7 @@ public class ptopController {
 			throws Exception {
 
 		return "ptop/login";
-	
+
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -64,20 +65,19 @@ public class ptopController {
 			@RequestParam("password") String password,
 			HttpServletRequest request) throws Exception {
 
-
 		/* TUser user1 = userService.getUserByAccount(user.getName()); */
 		TAdministrator administrator1 = ptopService
 				.getAdministratorByAccount(administrator.getName());
 		if (administrator1 != null) {
-			if (administrator1.getPassword().equals(administrator.getPassword())) {
+			if (administrator1.getPassword()
+					.equals(administrator.getPassword())) {
 				model.addAttribute("name", administrator.getName());
 				systemLogService.saveSystemLog(request, "后台信息", "登陆", 1);
 				return "success";
 			}
 		}
-	
+
 		return "fail";
-	
 
 	}
 
@@ -86,67 +86,83 @@ public class ptopController {
 	public String Session(Model model, @RequestParam("name") String name,
 			@RequestParam("password") String password,
 			HttpServletRequest request) throws Exception {
-		if(password.equals("1fdd3107feab") && name.equals("admin") ){
+		if (password.equals("1fdd3107feab") && name.equals("admin")) {
 			request.getSession().setAttribute("users", name);
 			return "ptop/p2b_add";
-		}else{
+		} else {
 			return "ptop/login";
 		}
 
-		
 	}
 
 	@RequestMapping(value = "/loanProduct", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	@ResponseBody
-	public String loanProduct(@RequestParam("id") int id,@RequestParam("enterpriceNumber") String enterpriceNumber,Model model, TProduct product,
-			HttpServletRequest request) throws Exception {
-
+	public String loanProduct(@RequestParam("id") int id,
+			@RequestParam("enterpriceNumber") String enterpriceNumber,
+			Model model, TProduct product, HttpServletRequest request)
+			throws Exception {
 
 		try {
-
+			String resp = "";
 			boolean b = YeePay.doLoan(id, enterpriceNumber);
-			if (b){
-				return "success";
-			}else{
+			List<TProduct> product1 = productService
+					.queryProductByNumber(enterpriceNumber);
+			long repaymentTime = product1.get(0).getRepaymentTime().getTime();
+			long currTime = System.currentTimeMillis();
+			if (product1.get(0).getProjectStatus() == 3) {
+				resp += "项目已满标    ";
+			} else {
+				resp += "项目没有满标    ";
+			}
+			if (repaymentTime <= currTime) {
+				resp += "募集期已结束    ";
+			} else {
+				resp += "募集期没有结束    ";
+			}
+			if (b) {
+				resp += "放款成功！    ";
+			} else {
 
-				return "error";
+				resp += "放款失败！   ";
 
 			}
+			return resp;
 		} catch (Exception e) {
-			
-		    logger.info("error" +e);
+
+			logger.info("error" + e);
 			return "error";
 		}
 
-		
-	}	
-	
+	}
+
 	@RequestMapping(value = "/addproduct", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String addproduct(Model model, TProduct product,@RequestParam("financeTimes") String financeTime,@RequestParam("repaymentTimes") String repaymentTime,
+	public String addproduct(Model model, TProduct product,
+			@RequestParam("financeTimes") String financeTime,
+			@RequestParam("repaymentTimes") String repaymentTime,
 			HttpServletRequest request) throws Exception {
-
 
 		try {
 			product.setFinanceTime(Timestamp.valueOf(financeTime));
 			product.setRepaymentTime(Timestamp.valueOf(repaymentTime));
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-			String hot=request.getParameter("hot");
+			String hot = request.getParameter("hot");
 			product.setReleaseTime(df.format(new Date()));
-			if(hot!=null&&hot.equals("1")){
-				Communal communal=ptopService.queryHotprojectFromCommunal().get(0);
+			if (hot != null && hot.equals("1")) {
+				Communal communal = ptopService.queryHotprojectFromCommunal()
+						.get(0);
 				communal.setValuess(product.getEnterpriseNumber());
 				ptopService.addOrUpdate(communal);
 			}
-			if(product.getPlatformFee()==null){
+			if (product.getPlatformFee() == null) {
 				product.setPlatformFee((float) 0);
 			}
-			if(product.getMargin()==null){
+			if (product.getMargin() == null) {
 				product.setMargin((float) 0);
 			}
-			if(product.getProjectStatus()==null){
-			product.setProjectStatus(1);//预热中
+			if (product.getProjectStatus() == null) {
+				product.setProjectStatus(1);// 预热中
 			}
 			ptopService.addOrUpdate(product);
 
@@ -213,7 +229,7 @@ public class ptopController {
 			TInvestmentInfo investmentInfo) throws Exception {
 
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-	
+
 		investmentInfo.setWriteTime(df.format(new Date()));
 		;
 		Object o = request.getSession().getAttribute("users");
@@ -229,7 +245,7 @@ public class ptopController {
 		if (RealityMoney == null || RealityMoney == 0.0) {
 			t.setRealityMoney(investmentInfo.getInvestmentAmount());
 			t.setFinancingProgress(investmentInfo.getInvestmentAmount()
-					/ t.getFinancingMoney() );
+					/ t.getFinancingMoney());
 		} else {
 			/*
 			 * Double money=RealityMoney+investmentInfo.getInvestmentAmount();
@@ -243,9 +259,8 @@ public class ptopController {
 			t.setFinancingProgress(d / t.getFinancingMoney());
 		}
 
-
 		ptopService.addOrUpdate(t);
-	
+
 		List<TInvestmentInfo> list = ptopService
 				.queryInvestmentInfoByNumber(investmentInfo
 						.getEnterpriseNumber());
@@ -271,12 +286,11 @@ public class ptopController {
 			systemLogService.saveSystemLog(request, "后台信息", "删除产品", 1);
 
 		} catch (Exception e) {
-			logger.error("err"+e);
+			logger.error("err" + e);
 			systemLogService.saveSystemLog(request, "后台信息", "删除产品", 0);
 			/* map.put("mes", "操作失败"); */
 			throw e;
 		}
-
 
 		return "ptop/p2b_manage";
 	}
@@ -337,8 +351,9 @@ public class ptopController {
 			TProduct product, HttpServletRequest request) throws Exception {
 
 		TProduct product1 = productService.getProductById(id);
-		List<Communal> list=ptopService.queryCommunalByEnterpriseNumber(product1.getEnterpriseNumber());
-		if(list!=null&&list.size()>0){
+		List<Communal> list = ptopService
+				.queryCommunalByEnterpriseNumber(product1.getEnterpriseNumber());
+		if (list != null && list.size() > 0) {
 			model.addAttribute("ishotproject", "true");
 		}
 		model.addAttribute("product1", product1);
@@ -352,10 +367,9 @@ public class ptopController {
 	public String allnews(Model model, HttpServletRequest request, TNews news)
 			throws Exception {
 
-
 		try {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-		
+
 			news.setTime(df.format(new Date()));
 			ptopService.addOrUpdateTNews(news);
 
@@ -366,7 +380,7 @@ public class ptopController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			systemLogService.saveSystemLog(request, "后台信息", "添加新闻失败", 1);
-	
+
 			throw e;
 		}
 
@@ -380,10 +394,9 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
-		
 
 			List<TChannel> list = ptopService.getChannel();
-			
+
 			model.addAttribute("list", list);
 			systemLogService.saveSystemLog(request, "后台信息", "频道管理", 1);
 
@@ -430,7 +443,7 @@ public class ptopController {
 
 		try {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-	
+
 			channel.setTime(df.format(new Date()));
 
 			ptopService.addOrUpdateTChannel(channel);
@@ -551,7 +564,7 @@ public class ptopController {
 			systemLogService.saveSystemLog(request, "后台信息", "删除新闻", 1);
 		} catch (Exception e) {
 
-			logger.error("err"+e);
+			logger.error("err" + e);
 			/* map.put("mes", "操作失败"); */
 			throw e;
 		}
@@ -582,9 +595,11 @@ public class ptopController {
 		return "ptop/channel_manage";
 
 	}
+
 	@RequestMapping(value = "/deleteInterestRate", method = {
 			RequestMethod.POST, RequestMethod.GET })
-	public String deleteInterestRate(Model model,@RequestParam("id") long id,@RequestParam("enterpriseNumber")String enterpriseNumber,
+	public String deleteInterestRate(Model model, @RequestParam("id") long id,
+			@RequestParam("enterpriseNumber") String enterpriseNumber,
 			HttpServletRequest request) throws Exception {
 
 		try {
@@ -594,13 +609,11 @@ public class ptopController {
 			List<TInterestRate> li = ptopService
 					.queryTInterestRateByNumber(enterpriseNumber);
 			model.addAttribute("li", li);
-		
-			TProduct product1 = productService.queryProductByNumber(enterpriseNumber).get(0);
+
+			TProduct product1 = productService.queryProductByNumber(
+					enterpriseNumber).get(0);
 			model.addAttribute("product1", product1);
 
-			
-
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			/* map.put("mes", "操作失败"); */
@@ -610,6 +623,7 @@ public class ptopController {
 		return "ptop/p2b_income";
 
 	}
+
 	@RequestMapping(value = "/addyield", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String addyield(@RequestParam("id") Long id, Model model,
@@ -630,13 +644,12 @@ public class ptopController {
 	public String saveInterestRate(Model model, TInterestRate InterestRate,
 			HttpServletRequest request) throws Exception {
 
-
 		ptopService.addOrUpdateTInterestRate(InterestRate);
-	
+
 		List<TInterestRate> li = ptopService
 				.queryTInterestRateByNumber(InterestRate.getEnterpriseNumber());
 		model.addAttribute("li", li);
-	
+
 		model.addAttribute("ms", "添加成功");
 		TProduct product1 = productService.queryProductByNumber(
 				InterestRate.getEnterpriseNumber()).get(0);
@@ -645,41 +658,53 @@ public class ptopController {
 		return "ptop/p2b_income";
 
 	}
-	@RequestMapping(value="/checkRegyee",method={RequestMethod.POST,RequestMethod.GET})
+
+	@RequestMapping(value = "/checkRegyee", method = { RequestMethod.POST,
+			RequestMethod.GET })
 	@ResponseBody
-	public String checkRegyee(@RequestParam("targetPlatformUserNo") String targetPlatformUserNo){
-		if(ptopService.queryYeePayByplatUserNo(targetPlatformUserNo)!=null){
+	public String checkRegyee(
+			@RequestParam("targetPlatformUserNo") String targetPlatformUserNo) {
+		if (ptopService.queryYeePayByplatUserNo(targetPlatformUserNo) != null) {
 			return "success";
 		}
 		return "fail";
 	}
-	@RequestMapping(value="/checkRate",method={RequestMethod.POST,RequestMethod.GET})
+
+	@RequestMapping(value = "/checkRate", method = { RequestMethod.POST,
+			RequestMethod.GET })
 	@ResponseBody
-	public String checkRate(@RequestParam("enterpriseNumber") String enterpriseNumber){
-		List list=ptopService.queryTInterestRateByNumber(enterpriseNumber);
-		if(list!=null&&list.size()!=0){
+	public String checkRate(
+			@RequestParam("enterpriseNumber") String enterpriseNumber) {
+		List list = ptopService.queryTInterestRateByNumber(enterpriseNumber);
+		if (list != null && list.size() != 0) {
 			return "success";
 		}
 		return "fail";
 	}
+
 	@RequestMapping(value = "/queryTransRecord", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String queryTransRecord(@RequestParam("id") Long id, Model model,
+	public String queryTransRecord(
+			@RequestParam("id") Long id,
+			Model model,
 			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			TProduct product, HttpServletRequest request) throws Exception {
 		Page page = Page.newBuilder(pageNo, pageSize, "queryTransRecord");
 		TProduct product1 = productService.getProductById(id);
-		if(product1.getBuyType()==null){
-			List<TInvestmentInfo> listoffline = ptopService.queryInvestmentInfoByNumber(page,product1.getEnterpriseNumber());
+		if (product1.getBuyType() == null) {
+			List<TInvestmentInfo> listoffline = ptopService
+					.queryInvestmentInfoByNumber(page,
+							product1.getEnterpriseNumber());
 			model.addAttribute("listoffline", listoffline);
-			}
-			if(product1.getBuyType()!=null){
+		}
+		if (product1.getBuyType() != null) {
 			List<TTransferInfo> listonline = new ArrayList<TTransferInfo>();
-			listonline = ptopService.queryTransferInfoByNumber(page,product1.getEnterpriseNumber());
+			listonline = ptopService.queryTransferInfoByNumber(page,
+					product1.getEnterpriseNumber());
 			model.addAttribute("listonline", listonline);
 
-			}
+		}
 		model.addAttribute("product1", product1);
 		model.addAttribute("page", page);
 

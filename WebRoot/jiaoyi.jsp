@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="/includes/taglibs.jsp" %>
+<%@taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
 <title>交易记录 - 我的账户 - 中租宝</title>
 </head>
@@ -41,12 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=充值">充值</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=提现">提现</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=投资">投资</a></li>
-                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到利息</a></li>
-                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到本金</a></li>
-                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">还款</a></li>
-                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">融资</a></li>
-                        <li style="display:none">收益</li>
-                        <li style="display:none">回收本金</li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=返还利息">返还利息</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=返还本金">返还本金</a></li>
                       </ul>
                     </li>
                     <li><ul class="label_third">
@@ -70,7 +67,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${t.id}</li>
                             <li>${t.transDate }</li>
                             <li>${t.type}</li>
+                            <c:if test="${t.type!='返还利息'&&t.type!='返还本金' }">
                             <li>${t.projectName}</li>
+                            </c:if>
+                            <c:if test="${t.type=='返还利息'||t.type=='返还本金' }">
+                            <li>${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
+                            </c:if>
                             <li>${t.transAmount + t.reward}</li>
                             
                       </ul>  

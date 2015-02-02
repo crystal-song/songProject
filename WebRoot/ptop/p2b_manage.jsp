@@ -14,16 +14,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>   
     <script>
         function loan(id,enterpriceNumber){
+        	 //confirm('确定要放款吗？');
+        	 if(confirm('确定要放款吗？')==true){
             $.ajax({url:"/Login/loanProduct?id="+id+"&enterpriceNumber="+enterpriceNumber,
                 type:"GET",
-                success: function(data){
-                    if(data == "success"){
-                        alert("放款成功");
+                success: function(resp){
+                        alert(resp);
                         location.reload();
-                    }else{
-                        alert("放款失败");
-                    }
                 }});
+        	 }
         }
     </script>
 
@@ -72,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <p>
     <a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a>
     <c:if test="${s.loaned==false }">
-     <a href="javascript:void(0)" onclick="loan(${s.id},'${s.enterpriseNumber}')">放款</a>
+     <a href="javascript:void(0)" onclick="loan(${s.id},'${s.enterpriseNumber}')" >放款</a>
      </c:if>
      
     <a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a>
