@@ -200,11 +200,13 @@ public class WelcomeController {
 			RequestMethod.GET })
 	public void Session(Model model, TUser user, HttpServletResponse response,HttpServletRequest request)
 			throws Exception {
+
 		request.getSession().setAttribute("name", user.getName());
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
 		String url=	request.getHeader("referer");
 		if(url==null || url.equals(f.getBasePath() + "login.jsp") || url.equals(f.getBasePath()+"welcome/logout")){
+
 			url="/gate/service";
 		}
 		response.sendRedirect(url);
