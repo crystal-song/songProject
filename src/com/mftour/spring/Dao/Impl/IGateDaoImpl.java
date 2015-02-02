@@ -267,7 +267,7 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		
 	}
 	public List queryAvaliableRewards(String username,Date currtime) throws Exception{
-		String hql="  from Rewards rewards where rewards.userId=:username and rewards.expireTime>=:currtime ";
+		String hql="  from Rewards rewards where rewards.userId=:username and rewards.expireTime>=:currtime and rewards.used=0 ";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("username",  username);
 		query.setParameter("currtime", currtime);
