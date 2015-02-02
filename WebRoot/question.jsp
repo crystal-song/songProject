@@ -59,8 +59,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 var navIndex=5;
 var index=1;
 $(document).ready(function(e) {
-$(".nav_big a").eq(5).addClass("bd_btom").siblings().removeClass("bd_btom");
-$(".nav_big a").eq(5).children("p").addClass("headwd_color");
+$(".nav_big a").eq(4).addClass("bd_btom").siblings().removeClass("bd_btom");
+$(".nav_big a").eq(4).children("p").addClass("headwd_color");
 $(".news_ul a").eq(1).addClass("aqbz").siblings().removeClass("aqbz");
 });
 </script>
