@@ -202,8 +202,11 @@ public class WelcomeController {
 		request.getSession().setAttribute("name", user.getName());
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
-
-		response.sendRedirect("/gate/service");
+		String url=	(String)request.getSession().getAttribute("url");
+		if(url==null){
+			url="/gate/service";
+		}
+		response.sendRedirect(url);
 	}
 
 	@RequestMapping(value = "/queryUser", method = { RequestMethod.POST,

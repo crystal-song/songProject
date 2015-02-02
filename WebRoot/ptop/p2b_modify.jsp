@@ -212,6 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <input type="hidden" name="realityMoney" id="realityMoney" value="${product1.realityMoney}" /> 
      <input type="hidden" name="projectStatus" id="projectStatus" value="${product1.projectStatus}" /> 
      <input type="hidden" name="loaned" id="loaned" value="${product1.loaned}" /> 
+     <input type="hidden" id="ishot" value="${ishotproject }"/>
         	<ul>
                 <li>
                     <dd>项目名称：</dd>
@@ -444,7 +445,9 @@ $(document).ready(function(){
 	if($('#line1').val()=='true'){
 		$('#line').attr('checked',true);
 	}
-	   
+	if($('#ishot').val()=='true'){
+		$('#hot').attr('checked',true);
+	}  
 	});
 	function checkRate(){
 		if ($('#line').val() ==1) {

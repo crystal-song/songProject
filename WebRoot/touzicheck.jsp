@@ -185,13 +185,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 
-/* $(function(){
-$("#mysubmit_btn").click(function(){
-	  var host=$(".host").val();
-	  alert(host)
-	  
+$(".right_cha").click(function(){
+    $("#dialog01").css("display","none");
+    $(".black_bac").css("display","none");
 });
-	   */
+
 
  function onSubmit(host) {
 
@@ -215,11 +213,7 @@ $("#mysubmit_btn").click(function(){
                     var form = document.getElementById("form");
                     $("#dialog01").css("display","block");
                     $(".black_bac").css("display","block");
-                    $(".right_cha").click(function(){
-                        $("#dialog01").css("display","none");
-                        $(".black_bac").css("display","none");
-                    });
-           
+              
                     form.submit();
                     document.getElementById("que_btn_ok").disabled()
 

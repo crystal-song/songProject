@@ -34,6 +34,9 @@ public class PtopServiceImpl implements IptopService {
 	public List<Communal> queryHotprojectFromCommunal() throws Exception{
 	   return 	ptopDao.queryHotprojectFromCommunal();
 	}
+	public List<Communal> queryCommunalByEnterpriseNumber(String enterpriseNumber) throws Exception{
+		return ptopDao.queryCommunalByEnterpriseNumber(enterpriseNumber);
+	}
 	public void addOrUpdate(Communal communal) throws Exception{
 		ptopDao.addOrUpdate(communal);
 	}

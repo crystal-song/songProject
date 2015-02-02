@@ -10,20 +10,15 @@ public class MyHandlerInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		// 就简单判断了一下，如果要详细控制可以用spring security
-	
-		/* if(url.endsWith("welcome")) */
+		/*String url = request.getScheme() + "://";
+		url += request.getHeader("host");*/
+	       String	   url = request.getRequestURI();
+		if (request.getQueryString() != null)
+			url += "?" + request.getQueryString();
+		if(!url.equals("/welcome/login")&&!url.equals("/welcome/logout")&&!url.equals("/welcome/session"))
+		request.getSession().setAttribute("url", url);
+		System.out.println(url);
 		return true;
-		/*
-		 * if(url.contains("/apk/")) return true; if(request.getSession() !=
-		 * null &&
-		 * request.getSession().getAttribute(Constants.USER_INFO_SESSION) !=
-		 * null) return true;
-		 * 
-		 * response.sendRedirect(request.getContextPath() + "/index.jsp");
-		 * return false;
-		 */
-
 	}
 
 }
