@@ -28,6 +28,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.model.Yeepays;
 import com.mftour.spring.util.Page;
 
 @Repository("gateDao")
@@ -90,7 +91,13 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("transDate", transferInfo.getTransDate());
 		return query.list();
 	}
-
+	@Override
+	public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(String enterpriseNumber) throws Exception {
+		String hq = "from TTransferInfo transferInfo where transferInfo.enterpriseNumber = :enterpriseNumber and transferInfo.transDate= :transDate";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByNumber(String Number)
 			throws Exception {
@@ -99,7 +106,12 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("requestNo", Number);
 		return query.list();
 	}
-
+	public List<Yeepays> queryYeepaysByNumber(String Number) throws Exception {
+		String hq = "from Yeepays yeepays where yeepays.requestNo = :requestNo";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("requestNo", Number);
+		return query.list();
+	}
 	@Override
 	public void addOrUpdateTEstablishmentRegistration(
 			TEstablishmentRegistration establishmentRegistration)

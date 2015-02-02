@@ -495,7 +495,13 @@ ul,li{
 	*+width:747px;
 	*+height:200px;;
 }
-
+.images_pro p{
+	margin:0
+}
+.images_pro p img{
+	width:748px;
+	height:180px;
+}
 .meier_wd{
 	height:30%;
 	width:95%;
@@ -607,6 +613,10 @@ ul,li{
 	}
 .floor_img p{
 	margin:0;
+}
+.floor_img p img{
+	width:330px; 
+	height:200px; 
 }	
 .floor_num h3{
 	display:inline-block; 
@@ -3387,7 +3397,7 @@ ul,li{
 .erweima_big{
 	width: 130px;
 	height: 130px;
-	background: url(../img/images-2014-11/zhongzubao.jpg) 4px 4px no-repeat;
+	background: url(../img/images-2014-11/new_erweima.jpg) 4px 4px no-repeat;
 	border: 1px solid #c2c2c2;
 	z-index: 50;
 } 
@@ -4294,6 +4304,18 @@ ul,li{
 	float:left; 
 	text-align:center; 
 	margin-left:346px;
+}
+#mysubmit_btn{
+	width:120px; 
+	height:40px; 
+	background:#ff6862; 
+	color:#fff; 
+	display:inline-block; 
+	line-height:40px; 
+	float:left; 
+	border:none;
+	text-align:center; 
+	margin-left:348px;
 }
 .que_btn_new{
 	width:120px; 

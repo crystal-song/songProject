@@ -212,6 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <input type="hidden" name="realityMoney" id="realityMoney" value="${product1.realityMoney}" /> 
      <input type="hidden" name="projectStatus" id="projectStatus" value="${product1.projectStatus}" /> 
      <input type="hidden" name="loaned" id="loaned" value="${product1.loaned}" /> 
+     <input type="hidden" id="ishot" value="${ishotproject }"/>
         	<ul>
                 <li>
                     <dd>项目名称：</dd>
@@ -241,9 +242,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                  <li>
                     <dd>还款方式：</dd>
+                    <select  name="repaymentWay"  id="repaymentWay" >
+                     <option value="1">按月付息、到期还本</option>
+                     <option  value="2">按季付息、到期还本</option>
+                     <option  value="3">半年付息、到期还本</option>
+                     <option  value="4">按年付息、到期还本</option>
+                     <option  value="5">到期付息、到期还本</option>
+                    </select>
+                </li>
+                <%--  <li>
+                    <dd>还款方式：</dd>
                     <input type="text" name="repaymentWay"  id="repaymentWay"  value="${product1.repaymentWay==null?'按月付息、到期还本':product1.repaymentWay}" />
                     <dt>按月付息、到期还本</dt>
-                </li>
+                </li> --%>
                  <li>
                     <dd>开始融资时间：</dd>
                     <input type="" name="financeTimes"  id="financeTime" value="${product1.financeTime}"  class="ui_timepicker" />
@@ -261,8 +272,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                     <dd>融资周期：</dd>
-                    <input type="number"  name="financingPeriod"  id="financingPeriod"  value="${product1.financingPeriod==null?12:product1.financingPeriod}"    min="0" value="0" />
-                    <dt>按月计算，如3、6、12、24、36</dt>
+                    <input type=""  name="financingPeriod"  id="financingPeriod"  value="${product1.financingPeriod}"    min="0" value="0" />
+                    <dt>单位是<b>天</b>,请输入整数。</dt>
                 </li>
                 
                <!--  <li>
@@ -434,7 +445,9 @@ $(document).ready(function(){
 	if($('#line1').val()=='true'){
 		$('#line').attr('checked',true);
 	}
-	   
+	if($('#ishot').val()=='true'){
+		$('#hot').attr('checked',true);
+	}  
 	});
 	function checkRate(){
 		if ($('#line').val() ==1) {
@@ -446,6 +459,7 @@ $(document).ready(function(){
 				success : function(data) {
 					if (data != '"success"') {
 						alert("请添加阶梯利率以后在修改项目状态！")
+						$('#line').attr('checked',false);
 					}
 				}
 			});

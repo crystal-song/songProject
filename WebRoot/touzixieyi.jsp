@@ -80,8 +80,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">借款用途：${product.fundUse}</div>
 			<div class="section">借款金额：${transferInfo1.paymentAmount}</div>
 			<div class="section">借款利率(365天/年)： ${transferInfo1.interestRate}%</div>
-			<div class="section">借款期限从 计息日 到 计息日+${transferInfo1.financingPeriod * 30}天</div>
-			<div class="section">还款方式：${product.repaymentWay}</div>
+			<div class="section">借款期限从 计息日 到 计息日+${transferInfo1.financingPeriod}天</div>
+			<div class="section">还款方式：${product.repaymentWay=='1'?'按月付息、到期还本':product.repaymentWay=='2'?'按季付息、到期还本':product.repaymentWay=='3'?'半年付息、到期还本':product.repaymentWay=='4'?'按年付息、到期还本':'到期付息、到期还本' }</div>
 			<div class="title01">特别提示：</div>
 			<div class="section">甲方、乙方、丙方请认真阅读本合同项下的全部条款。签订本合同，即认为各方均已理解并同意本合同的所有内容。</div>
 			<div class="section">根据《中华人民共和国合同法》及相关法律法规的规定，各方遵循平等、自愿、互利和诚实信用原则，经友好协商，就各方在域名为www.ptobchina.com的“中租宝”互联网平台（以下简称平台）上进行投资、融资、保证、投资咨询、风险管理及项目管理服务等事项的相关意思表示达成一致，以兹共同遵守。</div>

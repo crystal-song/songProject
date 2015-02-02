@@ -114,6 +114,9 @@
              <property name="guaranteeNumber" type="java.lang.String">
             <column name="guaranteeNumber" length="50" />
         </property> 
+                 <property name="nextRepaymentDate" type="java.sql.Date">
+            <column name="nextRepaymentDate"  />
+        </property> 
 
         <property name="loaned" type="boolean">
             <column name="loaned" length="1"  />

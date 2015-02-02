@@ -10,8 +10,10 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.mftour.spring.Dao.IProductDao;
+import com.mftour.spring.model.ProductRepays;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.UserRepays;
 import com.mftour.spring.util.Page;
 
 import org.apache.commons.lang.StringUtils;
@@ -317,7 +319,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 	@Override
 	public List<TProduct> queryProduct(TProduct product) throws Exception {
 		if (product.getProjectName() == null || product.getProjectName() == "") {
-			String hql = "from TProduct product where product.existType = :existType";
+			String hql = "from TProduct product where product.existType = :existType order by product.releaseTime desc";
 			Query query = getSession().createQuery(hql);
 			query.setParameter("existType", "0");
 			return query.list();
@@ -341,13 +343,38 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 		query.setParameter("enterpriseNumber", enterpriseNumber);
 		return query.list();
 	}
-
+	public List<ProductRepays> queryProductRepaysByNumber(String enterpriseNumber) throws Exception {
+		String hq = "from ProductRepays productrepays where productrepays.enterpriseNumber = :enterpriseNumber order by productrepays.period asc";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
+	public List< UserRepays> queryUserRepaysByPeriod(int period,String enterpriseNumber) throws Exception {
+		String hq = "from UserRepays userrepays where userrepays.period = :period and userrepays.enterpriseNumber=:enterpriseNumber";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("period", period);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
+	public ProductRepays queryProductRepaysByid(int id) throws Exception {
+		return getHibernateTemplate().get(ProductRepays.class, id);
+	}
 	@Override
 	public void deleteProduct(Long id) throws Exception {
 		TProduct Product = getHibernateTemplate().get(TProduct.class, id);
 		Product.setExistType("1");
 		getHibernateTemplate().saveOrUpdate(Product);
 
+	}
+	public List<TProduct> queryProductByTargetPlatformUserNo(Page page,String targetPlatformUserNo) throws Exception {
+		String hq = "from TProduct product where product.targetPlatformUserNo = :targetPlatformUserNo";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("targetPlatformUserNo", targetPlatformUserNo);
+		page.setTotalPage(query.list().size()/page.getPageSize()+1);
+		page.setTotalRecord(query.list().size());
+		query.setMaxResults(page.getPageSize());
+		query.setFirstResult((page.getPageNo()-1)*page.getPageSize());
+		return query.list();
 	}
 
 }

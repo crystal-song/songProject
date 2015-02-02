@@ -41,6 +41,12 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		Query query=getSession().createQuery(hql);
 		return query.list();
 	}
+	public List<Communal> queryCommunalByEnterpriseNumber(String enterpriseNumber) throws Exception{
+		String hql="from Communal communal where communal.valuess=:enterpriseNumber";
+		Query query=getSession().createQuery(hql);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List getAdministratorByAccount(String account) throws Exception {
@@ -158,7 +164,12 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		getHibernateTemplate().delete(news);
 
 	}
+	@Override
+	public void deleteInterestRate(Long id) throws Exception {
+		TInterestRate interestRate = getHibernateTemplate().get(TInterestRate.class, id);
+		getHibernateTemplate().delete(interestRate);
 
+	}
 	@Override
 	public void deleteTChannel(Long id) throws Exception {
 		TChannel channel = getHibernateTemplate().get(TChannel.class, id);

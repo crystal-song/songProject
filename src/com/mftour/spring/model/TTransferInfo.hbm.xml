@@ -30,7 +30,9 @@
         <property name="transferAmount" type="java.lang.String">
             <column name="transferAmount" length="50" />
         </property>
-        
+          <property name="interest" type="java.math.BigDecimal">
+            <column name="interest" length="16" default="0"/>
+        </property>
         <property name="targetPlatformUserNo" type="java.lang.String">
             <column name="targetPlatformUserNo" length="50" />
         </property>

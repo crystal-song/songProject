@@ -271,8 +271,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                  <li>
                     <dd>还款方式：</dd>
-                    <input type="text" name="repaymentWay"  id="repaymentWay"  value="${product1.repaymentWay==null?'按月付息、到期还本':product1.repaymentWay}" />
-                    <dt>按月付息、到期还本</dt>
+                    <select  name="repaymentWay"  id="repaymentWay" >
+                     <option value="1">按月付息、到期还本</option>
+                     <option  value="2">按季付息、到期还本</option>
+                     <option  value="3">半年付息、到期还本</option>
+                     <option  value="4">按年付息、到期还本</option>
+                     <option  value="5">到期付息、到期还本</option>
+                    </select>
                 </li>
                 <li>
                     <dd>融资金额：</dd>
@@ -281,8 +286,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                     <dd>融资周期：</dd>
-                    <input type="number"  name="financingPeriod"  id="financingPeriod"  value="${product1.financingPeriod==null?12:product1.financingPeriod}"    min="0" value="0" />
-                    <dt>按月计算，如3、6、12、24、36</dt>
+                    <input type=""  name="financingPeriod"  id="financingPeriod"  value=""    min="0" value="0" />
+                    <dt>单位是<b>天</b>,请输入整数。</dt>
                 </li>
                 
                <!--  <li>
@@ -396,14 +401,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <dt></dt>
                 </li>              
                  <li>
-              <!--   <dd>显示状态：</dd>
+                <dd>显示状态：</dd>
                  <p>
                       <label>
                         <input type="checkbox" name="line" id="line"   value="1"  onclick="checkRate()"/>
                         <span>项目可见</span></label>
 				</p>
                     <dt></dt>
-                </li>         -->      
+                </li>              
                 <li>
                     <dd>平台费用：</dd>
                     <input type="number" name="platformFee"  id="platformFee" value="${product1.platformFee}"  />
@@ -644,7 +649,7 @@ function getAllHtml() {
             domUtils.removeAttributes(btn, ["disabled"]);
         }
     }
-  /*   function checkRate(){
+     function checkRate(){
     	
 		if ($('#line').val() ==1) {
 			$.ajax({
@@ -655,11 +660,12 @@ function getAllHtml() {
 				success : function(data) {
 					if (data != '"success"') {
 						alert("请添加阶梯利率以后在修改项目状态！")
+						$('#line').attr('checked',false);
 					}
 				}
 			});
 		}
-	} */
+	} 
     function checkRegyee() {
     	if ($('#targetPlatformUserNo').val() != '') {
 			$.ajax({

@@ -44,7 +44,7 @@
                     <c:forEach var="t" items="${list}">
                         <tr>
                             <td bgcolor="#FFFFFF">${t.remark}</td>
-                        <td bgcolor="#FFFFFF">${t.use?"已使用":"未使用"}</td>
+                        <td bgcolor="#FFFFFF">${t.used?"已使用":"未使用"}</td>
                         <td bgcolor="#FFFFFF">${t.amount}元</td>
                         <td bgcolor="#FFFFFF">${t.giveTime}</td>
                         <td bgcolor="#FFFFFF">${t.expireTime}</td>
@@ -80,7 +80,7 @@
     var indexs=1;
     $(function(){
         $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-        $(".u_left_sec:eq(1) li:eq(4)").children("a").css("color","#fc652e");
+        $(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
         $(".zichan_con .tui_li li span:odd").css("text-align","left");
         $(".nav_big a").eq(2).children("p").addClass("headwd_color");
     })
@@ -92,8 +92,7 @@
 </script>
 <script>
     function jumpPage(pag){
-        /* alert("ccccccccccc"+pag); */
-
+       
         $('#pageNo').val(pag);
 
 

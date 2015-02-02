@@ -1,6 +1,6 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
-
-      
+<%@ include file="/includes/taglibs.jsp" %>
+    
         <ul>
            <li class="fir_li">账户主页</li>
            <li>
@@ -51,15 +51,18 @@
                 <li>
                   <a href="<%=path%>/gate/userProject">我的项目</a>
                 </li>
-                <li style="display:none;">
+                <c:if test="${userinfo.isborrow==true }">
+                <li>
                   <a href="<%=path%>/loan/loanProduct">我的借款</a>
+
                 </li>
+                </c:if>
                 <li>
                   <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
-                <li>
+         <%--        <li>
                   <a href="<%=path%>/prolist.jsp">我的众筹</a>
-                </li>
+                </li> --%>
                 <li style="display:none;">
                   <a href="<%=path%>/zhaiquan.jsp">债权转让</a>
                 </li>
@@ -75,7 +78,7 @@
               </ul>
            </li>
          </ul>
-        
+        <input type="hidden" id="username" value="${name }"  />
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -94,7 +97,10 @@
     	$(".u_left_mian").click(function(){
          	
     	});
-    });
+			
+		}
+    	
+    );
 </script>
         
         

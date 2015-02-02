@@ -1,7 +1,7 @@
 package com.mftour.spring.model;
 
 import java.sql.Timestamp;
-
+import java.sql.Date;
 
 
 
@@ -12,6 +12,7 @@ public class TProduct implements java.io.Serializable {
 
 	
 	    private Long id;
+	    private Date  nextRepaymentDate;
 	    private String projectName;  //产品名称
 	    private String enterpriseNumber;  //企业编号
 	    private String enterpriseBusinessIicense;  //企业营业执照号码
@@ -19,7 +20,15 @@ public class TProduct implements java.io.Serializable {
 	    private Double yearIncome;     //年化收益率         1
 	    private Timestamp repaymentTime;  //偿还日期
 	    private String repaymentWay;    //还款方式          5
-	    private Integer financingMoney;   //融资金额         3
+	   
+		
+		public Date getNextRepaymentDate() {
+			return nextRepaymentDate;
+		}
+		public void setNextRepaymentDate(Date nextRepaymentDate) {
+			this.nextRepaymentDate = nextRepaymentDate;
+		}
+		private Integer financingMoney;   //融资金额         3
 	    private Integer financingPeriod; //融资周期         2
 	    private Double financingProgress; //融资进度        4
 	    private String projectIntroduce;  //项目介绍

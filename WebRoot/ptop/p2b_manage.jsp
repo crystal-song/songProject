@@ -49,6 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
    <!--  <td>项目图片</td> -->
     <td>项目名称</td>
+    <td>借款人</td>
     <td>融资金额</td>
     <td>融资进度</td>
     <td>年化收益率</td>
@@ -60,8 +61,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
    <!--  <td><img width="50" /></td> -->
     <td><a href="<%=path%>/product/getProductByid?id=${s.id}"  target="_blank" title="点击进入项目前台页面">${s.projectName}</a></td>
+    <td>${s.targetPlatformUserNo}</td>
     <td>${s.financingMoney}万</td>
-    <td>${s.financingProgress}%</td>
+    <td>${s.financingProgress*100}%</td>
     <td>${s.yearIncome}</td>
     <td>${ s.loaned?"已放款":"未放款"}
      </td>
@@ -69,10 +71,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td>
     <p>
     <a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a>
+    <c:if test="${s.loaned==false }">
      <a href="javascript:void(0)" onclick="loan(${s.id},'${s.enterpriseNumber}')">放款</a>
+     </c:if>
+     
     <a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a>
     <a href="javascript:if(confirm('确实要删除该内容吗?'))location='<%=path%>/Login/deleteproduct?id=${s.id}'">删除</a>
     <a href="<%=path%>/Login/addyield?id=${s.id}">收益率</a>
+    <a href="<%=path%>/Login/queryTransRecord?id=${s.id}">查看投资记录</a>
     </p>
     </td>
   </tr>

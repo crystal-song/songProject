@@ -100,5 +100,8 @@
 		  <property name="emailVTime" type="java.lang.String">
             <column name="emailVTime" length="100" />
         </property>
+         <property name="isborrow" type="boolean">
+            <column name="isborrow" length="1" />
+        </property>
     </class>
 </hibernate-mapping>

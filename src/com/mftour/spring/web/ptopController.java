@@ -2,6 +2,7 @@ package com.mftour.spring.web;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,9 +26,11 @@ import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.ISystemLogService;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.Page;
 
 import org.slf4j.Logger; 
 import org.slf4j.LoggerFactory; 
@@ -334,6 +337,10 @@ public class ptopController {
 			TProduct product, HttpServletRequest request) throws Exception {
 
 		TProduct product1 = productService.getProductById(id);
+		List<Communal> list=ptopService.queryCommunalByEnterpriseNumber(product1.getEnterpriseNumber());
+		if(list!=null&&list.size()>0){
+			model.addAttribute("ishotproject", "true");
+		}
 		model.addAttribute("product1", product1);
 		systemLogService.saveSystemLog(request, "后台信息", "更新产品", 1);
 		return "ptop/p2b_modify";
@@ -575,7 +582,34 @@ public class ptopController {
 		return "ptop/channel_manage";
 
 	}
+	@RequestMapping(value = "/deleteInterestRate", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String deleteInterestRate(Model model,@RequestParam("id") long id,@RequestParam("enterpriseNumber")String enterpriseNumber,
+			HttpServletRequest request) throws Exception {
 
+		try {
+
+			ptopService.deleteInterestRate(id);
+			systemLogService.saveSystemLog(request, "后台信息", "删除阶梯利率", 1);
+			List<TInterestRate> li = ptopService
+					.queryTInterestRateByNumber(enterpriseNumber);
+			model.addAttribute("li", li);
+		
+			TProduct product1 = productService.queryProductByNumber(enterpriseNumber).get(0);
+			model.addAttribute("product1", product1);
+
+			
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			/* map.put("mes", "操作失败"); */
+			throw e;
+		}
+
+		return "ptop/p2b_income";
+
+	}
 	@RequestMapping(value = "/addyield", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String addyield(@RequestParam("id") Long id, Model model,
@@ -627,5 +661,29 @@ public class ptopController {
 			return "success";
 		}
 		return "fail";
+	}
+	@RequestMapping(value = "/queryTransRecord", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String queryTransRecord(@RequestParam("id") Long id, Model model,
+			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
+			TProduct product, HttpServletRequest request) throws Exception {
+		Page page = Page.newBuilder(pageNo, pageSize, "queryTransRecord");
+		TProduct product1 = productService.getProductById(id);
+		if(product1.getBuyType()==null){
+			List<TInvestmentInfo> listoffline = ptopService.queryInvestmentInfoByNumber(page,product1.getEnterpriseNumber());
+			model.addAttribute("listoffline", listoffline);
+			}
+			if(product1.getBuyType()!=null){
+			List<TTransferInfo> listonline = new ArrayList<TTransferInfo>();
+			listonline = ptopService.queryTransferInfoByNumber(page,product1.getEnterpriseNumber());
+			model.addAttribute("listonline", listonline);
+
+			}
+		model.addAttribute("product1", product1);
+		model.addAttribute("page", page);
+
+		return "ptop/p2b_transRecord";
+
 	}
 }
