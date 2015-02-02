@@ -103,7 +103,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <input type="hidden" value="${reward.userId}" class="liquan_check"/>                                                            
            </div>
        </li>
-
+          <li>
+             <div class="form-group">
+                <span class="liquan_check"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
+             </div>            
+          </li>
           <li>
              <div class="form-group">
                 <span class="liquan_check"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
