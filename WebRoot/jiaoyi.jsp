@@ -7,10 +7,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
 <title>交易记录 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 
 <body>
@@ -67,6 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   
                       <c:if test="${ not empty transRecordList}">
                       <c:forEach var="t" items="${transRecordList }">
+                      <li>
                       <ul class="jiaoyi_msg">
                             <li>${t.id}</li>
                             <li>${t.transDate }</li>
@@ -79,7 +76,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </c:if>
                             <li>${t.transAmount + t.reward}</li>
                             
-                      </ul>  
+                      </ul> 
+                      </li> 
                       </c:forEach>    
                       </c:if>  
                       </c:if>          
@@ -108,6 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+</html>
 <script type="text/javascript">
     var navIndex=3;    
     var indexs=2;
@@ -202,4 +201,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </script>
 
-</html>
+

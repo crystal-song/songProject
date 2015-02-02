@@ -6,8 +6,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/taglibs.jsp" %> 
 
 <title>用户注册 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 </head>
 
 <body style="background:#f7f7f7">
@@ -52,6 +50,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript" >
 
 var c_name=false;
@@ -213,4 +213,3 @@ window.onload = function() {
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb22f51366ffad7f2637952d4acb0eade' type='text/javascript'%3E%3C/script%3E"));
 </script>
-</html>

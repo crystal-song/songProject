@@ -2616,10 +2616,12 @@ ul,li{
 	clear:both
 }
 .jiaoyi_msg li{
-	width: 158px;
-	height: 40px;
+	width: 154px;
+	height: 36px;
 	float: left;
 	margin:0;
+	padding:2px;
+	overflow:hidden;
 }
 #bord_right{
 	border-right:0; 

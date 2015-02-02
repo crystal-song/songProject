@@ -4,10 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="/includes/taglibs.jsp" %> 
-
 <title>中租宝 | 最稳健的P2B理财平台</title>
-<link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 </head>
 <body>
 
@@ -104,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  <div class="aim">
                    <span style="color:#a4a4a4;" class="a1">目标:</span>
                    <span><%-- ${s.financingPeriod}个月 --%>30天</span>
-                   <span style="width:110px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
+                   <span style="width:90px;"><em>¥&nbsp;</em>${s.financingMoney}万元</span>
                    <a class="pro_status">${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' }</a>
                  </div>
                  <div class="loding_bar">
@@ -193,6 +190,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
  
 $(document).ready(function(e){
@@ -269,4 +268,4 @@ $(document).ready(function(e){
 }    
 </script>
 
-</html>
+

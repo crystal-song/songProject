@@ -5,9 +5,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
  <%@ include file="/includes/taglibs.jsp" %> 
-
 <title>用户中心页面</title>
-<link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 <!-- top start  -->

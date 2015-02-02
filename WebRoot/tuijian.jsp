@@ -6,10 +6,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/taglibs.jsp" %>
   
 <title>推荐管理 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 
 <body>
@@ -97,9 +93,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
-
+</html>
 
 <!--复制功能js代码  -->
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript" src="<%=path%>/js/ZeroClipboard.js"></script>
 <script type="text/javascript">
 // 定义一个新的复制对象
@@ -112,9 +109,6 @@ clip.on( 'complete', function(client, args) {
 	alert("复制成功");
 } );
 
-</script>
-
-<script>
 var navIndex=3; 
 var indexs=0;
 $(function(){
@@ -159,4 +153,3 @@ $(function(){
 					with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 				</script>
 			
-</html>

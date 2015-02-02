@@ -9,14 +9,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <Link href="/favicon.ico" rel="Shortcut Icon">
 <title>项目：${product1.projectName} - 我要投资 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
+
 
 <link href="<%=path%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
- <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+ 
 
 </head>
 
@@ -288,7 +285,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<li>
 		<span>${fn:substring(s.platformUserNo,0,1)}<c:forEach var="j" begin="1" end="${fn:length(s.platformUserNo)-2}" step="1">*</c:forEach>${fn:substring(s.platformUserNo,fn:length(s.platformUserNo)-1,fn:length(s.platformUserNo))}
 		</span>
-		<span >${s.paymentAmount}元</span>
+		<span >${s.paymentAmount+s.reward}元</span>
 		<span>成功</span>
 		</li>
 		</c:forEach>
@@ -432,7 +429,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </body>
-<script type="text/javascript">
+
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+ <script type="text/javascript">
 var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
 /*提交表单*/
@@ -469,9 +472,9 @@ function mysubmit(){
                 form.submit();
             }else{
                // alert(resp);
-            	$(".newye").css("display","block")
+            	 $(".newye").css("display","block")
         	    $(".black_bac").css("display","block");
-            	$(".p_font").text("请您登录！")
+            	$(".p_font").text(resp) 
             }
         }});
 }	
@@ -506,12 +509,23 @@ function mysubmit(){
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}
-					r=r/100;
+					r=r/100/365*p; 
 					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
 					}
 				}
-			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
+			/* $("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
+			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100)/100)+"元"); */
+			   var b=parseFloat(parseInt(r*10000)/100);		        
+		       b=b.toFixed(2)
+		     
+		       $("#preview_rate").val(b+"%");	 
+		         
+		/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100)/100)+"元");	 */
+		      var a=parseFloat(parseInt(t*r*100)/100)				     
+			      a= a.toFixed(2)
+			       
+		     $("#preview_income").html(a+"元"); 
+			
 			//console.log("|-"+t*r);
 			}
 		$(".jisuan_btn_left").click(function(){
@@ -667,9 +681,6 @@ function mysubmit(){
         var timer= setInterval(getRTime,1000);
  });  
 
-   
-    
- 
  
  /*获取投资额焦点*/
  $("#buyAmount").focus(function(){
@@ -679,4 +690,3 @@ function mysubmit(){
 	             
     
 </script>
-</html>
