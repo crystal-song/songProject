@@ -21,7 +21,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <%@ include file="/includes/user_info_left.jsp" %>
       <!-- user_left end -->
     </div>
-    <div class="address"></div>
+    <div class="address">
+    
+    
+    </div>
     <!-- absolute_right start -->
 	     <%@ include file="/includes/absolute.jsp" %>
 	<!-- absolute_right end -->

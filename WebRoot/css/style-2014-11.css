@@ -4314,8 +4314,7 @@ ul,li{
 	line-height:40px; 
 	float:left; 
 	border:none;
-	text-align:center; 
-	margin-left:348px;
+	text-align:center; 	
 	cursor:pointer;
 }
 .que_btn_new{
@@ -5996,13 +5995,14 @@ ul,li{
 }
 .address{
 	width:810px;
-    background: none repeat scroll 0 0 #fcfcfc;
+    background: #fcfcfc;
     border: 1px solid #eee;
     border-radius: 5px;
     height: auto;
     margin-bottom: 40px;
     padding: 20px;
-	
+	float:left;
+    margin-left:20px;
 }
 
 

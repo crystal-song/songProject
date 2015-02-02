@@ -88,8 +88,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <label for="#">投资周期：</label> <input type="text" disabled="disabled"
               class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product.financingPeriod}天" /> 
-
-
           </div>
           </li>
           <li>
@@ -150,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>   --%>
                 <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%> 
                 <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  
-                 <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> 
+                <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input></div> 
                 <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> --%>
           </li>
           </ul>
@@ -210,7 +208,7 @@ $("#mysubmit_btn").click(function(){
                     var form = document.getElementById("form");
                     
                      $("#dialog01").css("display","block");
-                    $(".black_bac").css("display","block");
+                     $(".black_bac").css("display","block");
                      
                     
                     $("#form")[0].submit();
