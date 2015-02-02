@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="user_left">
       <!-- user_left start -->
            <%@ include file="/includes/user_info_left.jsp" %>
-         <!-- user_left end -->
+      <!-- user_left end -->
     </div>
     <div class="user_right">
         <div class="zichan_con">

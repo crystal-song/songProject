@@ -21,8 +21,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <%@ include file="/includes/user_info_left.jsp" %>
       <!-- user_left end -->
     </div>
-    <div class="address">
-    
+    <div class="user_right">
+      <div class="zichan_con">
+         <div class="pro_con_title" style="margin-top: 5px; background:url(../img/images-2014-11/red_line_big.png) 104px 12px no-repeat;">
+                <strong>收货地址管理</strong>
+         </div>
+         <a class="tianjia"></a>
+         <div class="dizhi_msg">
+           <p class="little_head">添加收货地址:</p>
+         </div>
+      </div>
     
     </div>
     <!-- absolute_right start -->

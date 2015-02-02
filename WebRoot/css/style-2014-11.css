@@ -5993,7 +5993,7 @@ ul,li{
 	background:#d11d06;
 	cursor:hover;
 }
-.address{
+/* .address{
 	width:810px;
     background: #fcfcfc;
     border: 1px solid #eee;
@@ -6003,10 +6003,14 @@ ul,li{
     padding: 20px;
 	float:left;
     margin-left:20px;
+} */
+
+
+.little_head{
+	font-size:14px;
+	color:#fc652e;
+	text-align:left;
 }
-
-
-
 
 
 
