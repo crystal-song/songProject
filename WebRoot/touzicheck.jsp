@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="msg_con">
   <div class="queren_con" style="height:auto; overflow:hidden">
    <div class="con_title"><strong>投资信息确认</strong></div>
-   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank"  onsubmit="onSubmit(${f.onSubmit});">
+   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank"  >
    <ul> 
          <input type="hidden" id="host" name="host">
 
@@ -158,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>  --%>
                 <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%> 
                 <%-- <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  --%>
-                <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" value="确定" ></input></div>
+                <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" onclick="onSubmit(1)" value="确定" ></input></div>
           </li>
           </ul>
           
@@ -209,7 +209,7 @@ $("#mysubmit_btn").click(function(){
                 if(resp === "success"){
 
                     document.getElementById("paymentAmount").value=parseInt(a);
-                    document.getElementById("host").value = host;
+         
                     document.getElementById("mysubmit_btn").disabled=true;
                     document.getElementById("mysubmit_btn").innerHTML="正在提交...";
                     var form = document.getElementById("form");
@@ -220,7 +220,7 @@ $("#mysubmit_btn").click(function(){
                         $(".black_bac").css("display","none");
                     });
            
-                   // form.submit();
+                    form.submit();
                     document.getElementById("que_btn_ok").disabled()
 
                 }else{
