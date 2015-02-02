@@ -199,10 +199,10 @@ public class WelcomeController {
 			RequestMethod.GET })
 	public void Session(Model model, TUser user, HttpServletResponse response,HttpServletRequest request)
 			throws Exception {
+		String url=	(String)request.getSession().getAttribute("url");
 		request.getSession().setAttribute("name", user.getName());
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
-		String url=	(String)request.getSession().getAttribute("url");
 		if(url==null){
 			url="/gate/service";
 		}

@@ -28,11 +28,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            <ul class="news_ul">                               
               <c:if test="${ not empty list}">
                 <c:forEach var="s" items="${list}" varStatus="i">
-            	  <li><span><a href="<%=path%>/guarantee/getlist?id=${s.id}">${s.name}</a></span></li>
+            	  <li><span><a href="<%=path%>/guarantee/getlist?id=${s.id}">${s.name}</a></span></li>${s.id}
             	</c:forEach>
              </c:if> 
            </ul>   
        </div>   
+       
        <div class="news_right position_top">
            <ul class="webside">
               <c:if test="${ not empty list1}">
