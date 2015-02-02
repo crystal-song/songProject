@@ -175,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
-       <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" style="padding:0px;">
+       <form id="form" role="form" action="<%=path%>/gate/transfer" method="get" style="padding:0px;">
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
          <span>可投资金额： ${product1.financingMoney*10000-product1.realityMoney}元

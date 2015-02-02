@@ -155,10 +155,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </li>
           <li>
 
-           <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>  --%>
-                <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%> 
-                <%-- <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  --%>
-                <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" onclick="onSubmit(1)" value="确定" ></input></div>
+           
+               
+                <button type="submit" name="submibtn" id="mysubmit_btn" onclick="onSubmit(1)" >确定</button>
           </li>
           </ul>
           
@@ -215,7 +214,6 @@ $(".right_cha").click(function(){
                     $(".black_bac").css("display","block");
               
                     form.submit();
-                    document.getElementById("que_btn_ok").disabled()
 
                 }else{
                     alert(resp);
