@@ -29,11 +29,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="shuju">
     <c:if test="${t!=null }">
        <div class="new_production">
-         <c:if test="${t.projectPicture==null }">
+         <c:if test="${t.hotPicture==null }">
          <a class="images_pro" href="product/getProductByid?id=56"><img width="100%" height="100%" src="<%=path%>/img/images-2014-11/shengxian03.jpg"></a>
          </c:if>
-          <c:if test="${t.projectPicture!=null }">
-         <a class="images_pro" href="product/getProductByid?id=${t.id }">${t.projectPicture }</a>
+          <c:if test="${t.hotPicture!=null }">
+         <a class="images_pro" href="product/getProductByid?id=${t.id }">${t.hotPicture }</a>
          </c:if>
          <div class="meier_wd">                
            <h3><a href="product/getProductByid?id=56" style="color:#ff453e">${t.projectName}</a></h3>       	
