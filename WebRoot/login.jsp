@@ -17,6 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <body onkeydown="keyLogin();">
+<div class="black_bac"></div>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
@@ -37,10 +38,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名" /></div>
             <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码" /></div> 
             <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="<%=path%>/welcome/reg"><img src="<%=path%>/images/dl01_05.jpg" /></a>
-</div>
-     <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
+            </div>
+            <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
         </div>
-         
+        <div id="dialog01"  style="display:none; height:170px;">
+	         <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	         </div>
+	         
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">用户名或密码错误或用户没有激活！</p>          
+	         </div>	
+	         <a class="diabtn">确定</a>                
+        </div>
     </div>
 </div>
 </form>
@@ -78,15 +89,25 @@ function query(){
                         /* window.open('<c:url value="/welcome/session"/>', '_self'); */
                     } else {
                     	$('#password').val('');
-                       alert('用户名或密码错误或用户没有激活！');
+                     //  alert('用户名或密码错误或用户没有激活！');
+                        $("#dialog01").css("display","block");
+                        $(".black_bac").css("display","block");	
                     }
                 }
             });
         }else{
-             alert('请输入密码！ ');
+             //alert('请输入密码！ ');
+             $("#dialog01").css("display","block")
+             $(".p_font").text("请输入密码")
+             $(".black_bac").css("display","block");	
         }
      }else{
-     	alert('请输入用户名！');
+       //alert('请输入用户名！');
+       $("#dialog01").css("display","block")
+             $(".p_font").text("请输入用户名")
+             $(".black_bac").css("display","block");	
+             
+             
      }   
 }
 
@@ -126,7 +147,18 @@ window.onload=function(){
 	 
 		}
 }  
-                
+              $(function(){
+            	  
+            	 $(".right_cha").click(function(){
+            		 $("#dialog01").css("display","none")
+            		 window.location.reload(true);
+            	 }) 
+            	 $(".diabtn").click(function(){
+            		 $("#dialog01").css("display","none")
+            		 window.location.reload(true);
+            	 }) 
+            	  
+              })  
            
 
 </script>

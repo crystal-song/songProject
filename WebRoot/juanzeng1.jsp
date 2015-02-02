@@ -5,12 +5,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ include file="/includes/taglibs.jsp" %> 
 
-<title>中租宝 | 最稳健的P2B理财平台</title>
+<title>支付 - 我的众筹 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 </head>
 <body style="background:#f6f6f6">
-
+<div class="black_bac"></div>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
@@ -72,7 +72,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       <div class="dizhi_fir"><span>收货人姓名<strong>*</strong></span><input type="text"/></div>
 	       <div class="dizhi_fir"><span>手机号码<strong>*</strong></span><input type="text"/></div>
 	       <div class="dizhi_fir"><span>电话号码<strong>*</strong></span><input type="text" class="min_input"/><label>-</label><input type="text"/></div>
-	       <a class="zhifu">确认添加</a>
+	       <a class="zhifu" >确认添加</a>
 	      </div>
       
       <p class="son_dizhi">我的收货地址：</p> 
@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>       
         
       </div>   
-      <a class="zhifu" href="<%=path%>/zhifu_ok.jsp">支付</a>
+      <a class="zhifu checkok" href="<%=path%>/zhifu_ok.jsp" target="_blank">支付</a>
       </form>
    </div>
    <div class="juan_con_right">
@@ -105,6 +105,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="juan_pic"><img src="<%=path%>/img/images-2014-11/test_pic.png"/></div>
      <p>我们会登记您提供的6个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。</p>
    </div>
+   <div id="dialog01"  style="display:none; height:210px;">
+	         <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	         </div>
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">如果您支付成功：<a href="<%=path%>/prolist.jsp">查看我的众筹项目</a></p>          
+	         </div>
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您支付失败：<a href="<%=path%>/juanzeng1.jsp">重新支付</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
+	         </div>	       
+  </div>
 </div>                
 
  
@@ -143,6 +155,11 @@ $(document).ready(function(e){
 	$(".tianjia").click(function(){
 		$(".xinzeng").slideToggle()
 	})
+	
+	$(".checkok").click(function(){
+		 $("#dialog01").css("display","block");	
+		 $(".black_bac").css("display","block");
+	});
 });
  
 </script>

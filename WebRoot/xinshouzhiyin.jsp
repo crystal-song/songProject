@@ -75,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="ren_bottom"></div>
       </div>
      <div class="per_bottom"> 
+       <div class="wid">
 	      <div class="diannao"></div>
 	       <div class="diannao01">
 	        <a href="<%=path%>/login.jsp" class="xin_btn01"><strong>注册登录</strong></a>
@@ -85,7 +86,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <a class="jiantou_down3"></a>
 	        <a href="<%=path%>/login.jsp" class="xin_btn04"><strong>坐享收益</strong></a>	      
 	      </div> 
-      </div>
+	    </div>
+    </div>
 </div>
 
 

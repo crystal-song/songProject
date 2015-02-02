@@ -9,6 +9,7 @@ body {
 	 position: relative;
 	 line-height:120%;
 	 }
+body{overflow: -moz-scrollbars-vertical;}	 
 html,body {
 	 margin:0;
 	 padding:0;
@@ -4313,8 +4314,8 @@ ul,li{
 	line-height:40px; 
 	float:left; 
 	border:none;
-	text-align:center; 
-	margin-left:348px;
+	text-align:center; 	
+	cursor:pointer;
 }
 .que_btn_new{
 	width:120px; 
@@ -4344,6 +4345,7 @@ ul,li{
 	height:30px;
 }
 .new_table td{
+	width:120px;
 	height:30px;
 	line-height:30px;
 }
@@ -4411,7 +4413,7 @@ ul,li{
 .neirong{
 	position:absolute; 
 	top:25%; 
-	left:4%; 
+	left:3%; 
 	width:186px; 
 	height:30px; 
 	background:#fdd9c8; 
@@ -4421,6 +4423,7 @@ ul,li{
 	*+font-size:8px;
 	border:1px solid #ae705e;
 }
+
 .table_style{
    width:650px;
    height:300px;
@@ -4961,6 +4964,7 @@ ul,li{
 }
 .per_bottom{
 	width:100%;
+	margin:0 auto;
 	height:600px;
 	background:#9b7e5c;
 }
@@ -4969,6 +4973,7 @@ ul,li{
 	height:577px;
 	background:url(../img/images-2014-11/diannao1.png) no-repeat;
 	margin-left:10%;
+	float:left;
 }
 .bang{
 	margin-left:14%;
@@ -4983,10 +4988,8 @@ ul,li{
 }
 .diannao01{
 	width:286px;
-	height:500px;	
-    position:absolute;
-    bottom:4%;
-    right:200px;	
+	height:580px;	
+    float:left;
     border-radius:5px;
 }
 .diannao01 a{
@@ -5561,7 +5564,6 @@ ul,li{
     padding-left: 0;
 }
 #campaign #funding_area #backing .stats {
-    border-right: 1px solid #cbcbcb;
     color: #3f3f3f;
     display: inline-block;
     font-family: "Helvetica Neue","Helvetica","Arial";
@@ -5572,7 +5574,10 @@ ul,li{
     text-align: left;
 }
 
-
+.wid{
+	width:1200px;
+	height:auto;
+}
 #campaign #funding_area #backing .stats span {
     color: #868686;
     display: block;
@@ -5963,6 +5968,61 @@ ul,li{
 	color:#f58604;
 	display:inline-block;
 }
+
+.p_font{
+	font-size:14px;
+	
+}
+.diabtn{
+	width:90px;
+	height:30px;
+	background:#ff665f;
+	display:inline-block;
+	float:right;
+	margin-right:40px;
+	margin-top:14%;
+	border-radius:3px;
+	color:#fff;
+	line-height:30px;
+	font-size:14px;
+	cursor:pointer;
+}
+
+.diabtn:hover{
+	color:#fff;
+	background:#d11d06;
+	cursor:hover;
+}
+/* .address{
+	width:810px;
+    background: #fcfcfc;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    height: auto;
+    margin-bottom: 40px;
+    padding: 20px;
+	float:left;
+    margin-left:20px;
+} */
+
+
+.little_head{
+	font-size:14px;
+	color:#fc652e;
+	text-align:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
