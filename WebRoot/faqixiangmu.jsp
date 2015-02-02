@@ -235,10 +235,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 <script type="text/javascript">
 $(document).ready(function(e) {
-	var navIndex=5;
 
-	$(".nav_big a").eq(6).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(6).children("p").addClass("headwd_color");
+
+	$(".nav_big a").eq(5).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(5).children("p").addClass("headwd_color");
 	$(".news_ul li").click(function(e){
         var index=$(this).index();
         $(this).children("div").addClass("news_wd_color");

@@ -71,10 +71,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 <script type="text/javascript">
-var navIndex=4;
+
 $(document).ready(function(e) {
-	$(".nav_big a").eq(4).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(4).children("p").addClass("headwd_color");
+	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
+	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
    $(".news_ul li").click(function(e){
       var index=$(this).index();
       $(this).children("div").addClass("news_wd_color");
