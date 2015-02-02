@@ -7,11 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ include file="/includes/taglibs.jsp" %>
-
 <title>新闻中心 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-
 </head>
 
 <body>
@@ -69,9 +65,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 <div class="clear"></div>
 </body>
-
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
-
 $(document).ready(function(e) {
 	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
@@ -88,7 +84,6 @@ $(document).ready(function(e) {
     	$(".user_con_news").css("height",news_height+100);
     }
    var newsid=$(".newsId").val();
-
 });
 </script>
-</html>
+

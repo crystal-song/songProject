@@ -9,10 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>帮助中心 - 中租宝</title>
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript">
-var navIndex=6;
-var index=4;
-</script>
+
 </head>
 
 <body>

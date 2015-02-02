@@ -6,10 +6,6 @@
 <%@ include file="/includes/taglibs.jsp" %>
 
 <title>我的礼券 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
-
 </head>
 
 <body>
@@ -75,6 +71,7 @@
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script>
     var navIndex=3;
     var indexs=1;
@@ -87,15 +84,11 @@
 
 
 </script>
-<script type="text/javascript">
 
-</script>
 <script>
     function jumpPage(pag){
        
         $('#pageNo').val(pag);
-
-
         $("#form" ).submit();
 
     }
@@ -130,4 +123,4 @@
     }
 
 </script>
-</html>
+

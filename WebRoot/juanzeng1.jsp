@@ -6,8 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/taglibs.jsp" %> 
 
 <title>支付 - 我的众筹 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+
 </head>
 <body style="background:#f6f6f6">
 <div class="black_bac"></div>
@@ -129,7 +128,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 
 </body>
-
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 var navIndex=2;  
 var indexs=0;
@@ -164,4 +164,3 @@ $(document).ready(function(e){
  
 </script>
 
-</html>

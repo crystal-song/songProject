@@ -7,10 +7,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/taglibs.jsp" %> 
 
 <title>注册易宝账户 - 用户中心 - 中租宝/></title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<%-- <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-
 </head>
 
 <body>
@@ -18,8 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/header.jsp" %>
 <!-- top end  -->
 <div class="msg_con">
-       
-
+      
    <div class="msg_right">
        <div class="msg_main" id="msg_new">
            <div class="msg_title">
@@ -100,7 +95,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
-
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 	function allcheck(){
 		var chkNickName=document.getElementById("nickName").value;
@@ -131,9 +127,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  form.submit();
 	}
 </script>
- 
-<script type="text/javascript">
-    var navIndex=3;          
 
-</script>
-</html>

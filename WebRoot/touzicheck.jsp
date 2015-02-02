@@ -8,10 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>投资确认 - 中租宝</title>
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 <body>
 <div class="black_bac"></div>
@@ -168,7 +164,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
-
+</body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 
 $(".right_cha").click(function(){
@@ -305,9 +303,3 @@ $(document).ready(function(e) {
 	  
 }); 
 </script> 
-</body>
-
-
-
-
-</html>

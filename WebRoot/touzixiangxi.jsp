@@ -9,14 +9,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <Link href="/favicon.ico" rel="Shortcut Icon">
 <title>项目：${product1.projectName} - 我要投资 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
+
 
 <link href="<%=path%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
- <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+ 
 
 </head>
 
@@ -432,7 +429,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </body>
-<script type="text/javascript">
+
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+ <script type="text/javascript">
 var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
 /*提交表单*/
@@ -667,9 +670,6 @@ function mysubmit(){
         var timer= setInterval(getRTime,1000);
  });  
 
-   
-    
- 
  
  /*获取投资额焦点*/
  $("#buyAmount").focus(function(){
@@ -679,4 +679,3 @@ function mysubmit(){
 	             
     
 </script>
-</html>
