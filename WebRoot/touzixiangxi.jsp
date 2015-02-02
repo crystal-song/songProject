@@ -212,7 +212,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>     
          <div class="touzi_text" >
           <span>投资周期：</span>
-          <span class="touz_right"><a id="preview_Period">${product1.financingPeriod*30}</a>天</span>
+          <%-- //${product1.financingPeriod*30} --%>
+          <span class="touz_right"><a id="preview_Period">365</a>天</span>
          </div>
          <div class="touzi_text">
           <span>预期总收益：</span>
