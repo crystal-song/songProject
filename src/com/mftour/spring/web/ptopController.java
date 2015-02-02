@@ -104,30 +104,16 @@ public class ptopController {
 			throws Exception {
 
 		try {
-			String resp = "";
 			boolean b = YeePay.doLoan(id, enterpriceNumber);
 			List<TProduct> product1 = productService
 					.queryProductByNumber(enterpriceNumber);
-			long repaymentTime = product1.get(0).getRepaymentTime().getTime();
-			long currTime = System.currentTimeMillis();
-			if (product1.get(0).getProjectStatus() == 3) {
-				resp += "项目已满标    ";
-			} else {
-				resp += "项目没有满标    ";
-			}
-			if (repaymentTime <= currTime) {
-				resp += "募集期已结束    ";
-			} else {
-				resp += "募集期没有结束    ";
-			}
 			if (b) {
-				resp += "放款成功！    ";
+				return "success";
 			} else {
 
-				resp += "放款失败！   ";
+				return "error";
 
 			}
-			return resp;
 		} catch (Exception e) {
 
 			logger.info("error" + e);
