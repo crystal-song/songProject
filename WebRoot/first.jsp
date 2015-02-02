@@ -4,10 +4,10 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
- <%-- <%@ include file="/includes/taglibs.jsp" %>  --%>
+<%--  <%@ include file="/includes/taglibs.jsp" %> --%>  
 <title>中租宝</title>
 <link href="<%=path%>/css/style-huodong.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
+
 </head>
 <body>
 
@@ -86,9 +86,9 @@ div4_screen.style.height=hei +'px';
 
 
 </script>
-
-
 </body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 $(document).ready(function(){
 	// if(var navIndex!=null&&navIndex!=-1)$(".nav_big li").eq(0).addClass("bd_btom");
@@ -100,4 +100,4 @@ $(document).ready(function(){
 });	
 	
 </script>
-</html>
+

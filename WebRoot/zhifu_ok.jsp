@@ -6,9 +6,6 @@
 <%@ include file="/includes/taglibs.jsp" %>
 
 <title>支付成功 - 我的众筹 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 
 </head>
 
@@ -30,6 +27,8 @@
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script>
     var navIndex=2;
     var indexs=0;
@@ -43,4 +42,4 @@
 </script>
 
 
-</html>
+

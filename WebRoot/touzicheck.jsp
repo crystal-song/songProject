@@ -8,10 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>投资确认 - 中租宝</title>
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 <body>
 <div class="black_bac"></div>
@@ -168,7 +164,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
-
+</body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 
 $(".right_cha").click(function(){
@@ -229,12 +227,19 @@ $(document).ready(function(e) {
        });
 	   $("#paymentAmount").keyup(function(){
 		   
-		   if($(this).val()<3000){			   
+		   if($(this).val()<3000){		
+			  
 		     	$(".liquan_hide").css("display","none")
 		     	
 		 	  }  else{
-		 		 $(".liquan_hide").css("display","block")
+		 		 $(".liquan_hide").css("display","block");
+		 		if($(".liquan_check").val()==""){
+			    	   $(".liquan_hide").css("display","none")
+			       }
 		 	  }
+		
+			   
+		  
 	   });
 	   
 	   if($("#paymentAmount").val()<3000 || $(".liquan_check").val()==""){
@@ -285,8 +290,9 @@ $(document).ready(function(e) {
 			       $("#preview_rate").val(b+"%");	 
 			         
 			/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元"); */  			
-			     var a=parseFloat(parseInt(t*r*100+0.5)/100)				     
+			     var a=parseFloat(parseInt(t*r*100)/100)				     
 				     a= a.toFixed(2)
+				        alert(a)
 			     $("#preview_income").val(a+"元");
 			}
 		$(".lilv_table").click(function(){
@@ -305,9 +311,3 @@ $(document).ready(function(e) {
 	  
 }); 
 </script> 
-</body>
-
-
-
-
-</html>
