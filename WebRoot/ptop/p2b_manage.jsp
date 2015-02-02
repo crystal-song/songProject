@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <p>
     <a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a>
     <c:if test="${s.loaned==false }">
-     <a href="javascript:0" onclick="loan(${s.id},'${s.enterpriseNumber}')" >放款</a>
+     <a href="javascript:void(0)" onclick="loan(${s.id},'${s.enterpriseNumber}')" >放款</a>
      </c:if>
      
     <a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a>
