@@ -292,7 +292,7 @@ $(document).ready(function(e) {
 			/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元"); */  			
 			     var a=parseFloat(parseInt(t*r*100)/100)				     
 				     a= a.toFixed(2)
-				        alert(a)
+				       
 			     $("#preview_income").val(a+"元");
 			}
 		$(".lilv_table").click(function(){
