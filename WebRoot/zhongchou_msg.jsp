@@ -173,7 +173,7 @@ $(document).ready(function(e){
 	var heiright_height=$(".hei_right").height();
 	//alert(heiright_height)
 	$(window).on("scroll",function(){
-		rightBar();		
+		//rightBar();		
 	});
 	
 	function rightBar(){
