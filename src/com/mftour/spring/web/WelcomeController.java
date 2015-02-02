@@ -204,7 +204,6 @@ public class WelcomeController {
 		request.getSession().setAttribute("name", user.getName());
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
-
 		String url=	request.getHeader("referer");
 		if(url==null || url.equals(f.getBasePath() + "login.jsp") || url.equals(f.getBasePath()+"welcome/logout")){
 
