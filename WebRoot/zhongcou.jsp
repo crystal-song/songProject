@@ -5,7 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ include file="/includes/taglibs.jsp" %> 
 
-<title>中租宝 | 最稳健的P2B理财平台</title>
+<title>我的众筹 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 </head>
@@ -146,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
         </div>
      </div>
-   </div>
+   </div>  
 </div>                
 
  
@@ -164,14 +164,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 var navIndex=2;  
 var indexs=0;
     $(document).ready(function(){
-    	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
+    	$(".u_left_sec:eq(0) li:eq(5)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
-    	
+    	$(".nav_big a").eq(3).children("p").addClass("headwd_color");      
+
+    	$(".right_cha").click(function(){
+   		 $(".newye").css("display","none")
+   		 window.location.reload(true);		
+   	 }) 
+   	 $(".diabtn").click(function(){
+   		 alert("aa")
+   		 $(".newye").css("display","none")
+   		 window.location.reload(true);
+   	 }) 
     
-              
-          
-});
+    });
  
 </script>
 

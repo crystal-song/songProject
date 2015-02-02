@@ -50,7 +50,7 @@ public class guaranteeController {
 
 		List<TChannel> li = ptopService.getChannelById(channel.getId());
 		List<TNews> list1 = ptopService.getNewsByName(li.get(0).getName());
-
+        model.addAttribute("id",channel.getId());
 		model.addAttribute("list1", list1);
 
 		return "baozhang";

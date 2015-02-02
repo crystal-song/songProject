@@ -4,25 +4,15 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
+<%@ include file="/includes/taglibs.jsp" %> 
+
 <title>投资确认 - 中租宝</title>
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
- <%@ include file="/includes/taglibs.jsp" %> 
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript">
-    var navIndex=3;          
 
-</script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
 
 </head>
-
 <body>
 <div class="black_bac"></div>
 <!-- top start  -->
@@ -96,8 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             <label for="#">投资周期：</label> <input type="text" disabled="disabled"
               class="form-control pre_bac" id="preview_Period" name="preview_Period" value="${product.financingPeriod}天" /> 
-
-
           </div>
           </li>
           <li>
@@ -157,8 +145,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
            <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>  --%>
                 <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%> 
+<<<<<<< HEAD
                 <%-- <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  --%>
                 <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" onclick="onSubmit(1)" value="确定" ></input></div>
+=======
+                <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  
+                <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input></div> 
+                <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> --%>
+>>>>>>> zhongchou
           </li>
           </ul>
           
@@ -202,7 +196,12 @@ $(".right_cha").click(function(){
         return false;
     }    	
 
+<<<<<<< HEAD
     $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+=======
+    
+     $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+>>>>>>> zhongchou
             success: function(resp){
                 if(resp === "success"){
 
@@ -211,14 +210,24 @@ $(".right_cha").click(function(){
                     document.getElementById("mysubmit_btn").disabled=true;
                     document.getElementById("mysubmit_btn").innerHTML="正在提交...";
                     var form = document.getElementById("form");
+<<<<<<< HEAD
                     $("#dialog01").css("display","block");
                     $(".black_bac").css("display","block");
               
                     form.submit();
                     document.getElementById("que_btn_ok").disabled()
+=======
+                    
+                     $("#dialog01").css("display","block");
+                     $(".black_bac").css("display","block");
+                     
+                    
+                    $("#form")[0].submit();
+                    document.getElementById("que_btn_ok").disabled()                    
+>>>>>>> zhongchou
 
                 }else{
-                    alert(resp);
+                    alert(resp);                  
                 }
             }});
   }
@@ -227,6 +236,7 @@ $(".right_cha").click(function(){
 </script>
 
 <script type="text/javascript">
+var navIndex=3;     
 $(document).ready(function(e) { 
 	   $("#reward").click(function(){
 		  $(".fukuan").css("display","block");
@@ -237,7 +247,10 @@ $(document).ready(function(e) {
 	   $(".right_cha").click(function(){
 		   window.location.reload(true);
 	   });
-	   
+	   $(".right_cha").click(function(){
+           $("#dialog01").css("display","none");
+           $(".black_bac").css("display","none");
+       });
 	   $("#paymentAmount").keyup(function(){
 		   
 		   if($(this).val()<3000){			   

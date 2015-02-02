@@ -5,7 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ include file="/includes/taglibs.jsp" %> 
 
-<title>中租宝 | 最稳健的P2B理财平台</title>
+<title>项目详情 - 我的众筹 - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css?v=1" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 </head>
@@ -158,6 +158,8 @@ var navIndex=2;
 var indexs=0;
 
 $(document).ready(function(e){
+	var down=0;
+	var up=0;
 	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
 	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
@@ -184,36 +186,39 @@ $(document).ready(function(e){
 		var h=parseInt(heiright_height+offset_height-win_height+50);
 		var ch=parseInt(con_offset+con_height-win_height);
 		var Ztop=win_height-heiright_height-50;
-		/* var Ctop=con_height-heiright_height */
-		/* var Ctop=win_height-offset_height-(scroll_height-win_height-offset_height+win_height);  */
-		/* var Ctop=con_height-offset_height-con_offset  */
-		/* var Ctop=win_height-con_height-con_offset-offset_height  */
-		/* var Ctop=con_offset+con_height-(win_height+scroll_height) */
 		 $(".rew_font strong").html(scroll_height+"scrolltop");
-		/* var h=parseInt(heiright_height+offset_height-scroll_height+50) */ 
 		 $(".delivery_zhong").html(offsettop_fir+"hhhh") 
 		/* $(".title_zhong").html(win_height+"winhei") */
 		 $(".price_zhong").html(con_height+"divhei") 
 		/* $(".claimed_zhong label").html(parseInt(offset_height)+"offsettop") */
 		
-		if(h<scroll_height){
-			
+	if(scroll_height>up){
+		if(h<scroll_height){			
 		     $(".hei_right").addClass("fix_bottom"); 
-		     $(".hei_right").css({"left":offset_left,"top":Ztop});	    
-		     var Top1=win_height-(offset_height+heiright_height()) 
-		     
-		    
+		     $(".hei_right").css({"left":offset_left,"top":Ztop});	    		     		    
+		}else{
+			
 		}
 		
 		if(ch<scroll_height){
-			/* $(".hei_right").addClass("absolute_bottom");  */				
-		    var Ctop=(con_height-heiright_height)+offsettop_fir
-		        $(".hei_right").css({"left":offset_left,"top":Ctop});	   
-       	        $(".title_zhong").html(offset_left+"Ctop")      	      
-
-         } 
+		   var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-50; 		       
+			    $(".hei_right").css({"left":offset_left,"top":Ctop});	   
+       	             	      
+         } else{
+        	 
+         }
+         up=scroll_height;
+         
+	}else{
+		if(ch>scroll_height){
+			   var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-50; 		       
+				    $(".hei_right").css({"left":offset_left,"top":Ctop});	   
+	       	             	      
+	         }
 		
 	}
+		
+}
 	
 	
 	

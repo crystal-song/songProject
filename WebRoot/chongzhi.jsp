@@ -122,7 +122,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <div class="touzi_text">
 	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您充值失败：<a href="<%=path%>/gate/recharge">重新支付</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
 	         </div>	       
-            </div>                                  
+            </div> 
+             <div id="dialog01"  style="display:none; height:170px;" class="newye">
+	          <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	          </div>	         
+	          <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">充值金额不能为0,请重新充值!</p>          
+	          </div>	
+	         <a class="diabtn">确定</a>                
+            </div>
+                                             
           </div> 
         </div>
       </div>
@@ -139,7 +150,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 	function onSubmit(host) {
 		if($("#amount").val()==0||$("#amount").val()==""){
-			alert("充值金额不能为0!");
+			/* //alert("充值金额不能为0!"); */
+			 $(".newye").css("display","block")
+			 $(".black_bac").css("display","block");
+			
 			return false;}
 		document.getElementById("host").value = host;
 		var form = document.getElementById("form");
@@ -166,6 +180,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        	  $(this).parent().siblings().children(".u_left_sec").slideUp();
        	  $(this).siblings().slideToggle("slow");
          }); */
+    	 $(".right_cha").click(function(){
+    		 $(".newye").css("display","none")
+    		 window.location.reload(true);		
+    	 }) 
+    	 $(".diabtn").click(function(){
+    		 alert("aa")
+    		 $(".newye").css("display","none")
+    		 window.location.reload(true);
+    	 }) 
      
 });
          
