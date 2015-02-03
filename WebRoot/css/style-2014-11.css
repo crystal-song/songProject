@@ -2616,11 +2616,9 @@ ul,li{
 	clear:both
 }
 .jiaoyi_msg li{
-
-	width: 158px;
+	width: 154px;
 	height: 40px;
 	line-height:1;
-
 	float: left;
 	margin:0;
 	padding:2px;
