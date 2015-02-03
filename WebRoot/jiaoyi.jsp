@@ -68,19 +68,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${t.id}</li>
                             <li>${t.transDate }</li>
                             <li>${t.type}</li>
-                            <li>${t.transAmount}</li>
+                            <li >${t.transAmount}</li>
                             <c:if test="${t.type!='返还利息'&&t.type!='返还本金' }">
-
-                            <li id="bord_right">${t.projectName}</li>
-                            </c:if>
-                            <c:if test="${t.type=='返还利息'||t.type=='返还本金' }">
-                            <li id="bord_right">${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
-                            </c:if>                           
-
-                            <li>${t.projectName}<c:if test="${t.type=='投资' }">（礼券抵减${t.reward }元） </c:if></li>
+                            <li id="bord_right">${t.projectName}<c:if test="${t.type=='投资' }">（礼券抵减${t.reward }元） </c:if></li>
                              </c:if>
                             <c:if test="${t.type=='返还利息'||t.type=='返还本金' }">
-                            <li>${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
+                            <li id="bord_right">${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
                             </c:if>
 
                             
@@ -193,10 +186,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	    	if(type_vale=="投资"){
     	    		$(".new_sec_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(type_vale=="收到利息"){
+    	    	if(type_vale=="返还利息"){
     	    		$(".new_sec_one li:eq(4)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(type_vale=="收到本金"){
+    	    	if(type_vale=="返还本金"){
     	    		$(".new_sec_one li:eq(5)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="还款"){
