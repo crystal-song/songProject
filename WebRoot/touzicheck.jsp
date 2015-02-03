@@ -43,8 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
           <div class="form-group" >
           <%-- //${buyAmount} --%>
-            <label for="paymentAmount">投资金额：</label><input type="text"
+            <label for="paymentAmount">投资金额：</label>
+              <input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
+              <span class="liquan_y"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
           </div>
           </li>
           <li>
@@ -102,13 +104,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <label for="paymentAmount" style="margin-left:0px; width:118px">使用50元礼卷&nbsp;</label>
                 <input type="hidden" value="${reward.userId}" class="liquan_check"/>                                                            
            </div>
-       </li>
-
-          <li>
-             <div class="form-group">
-                <span class="liquan_check"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
-             </div>            
           </li>
+                    
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="expired">投标过期时间</label><input type="text"
@@ -142,6 +139,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                  <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%>
                  <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>
 				 <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input></div>				
+          </li>
+          <li>
+             <div class="form-group font_s">
+               <strong style="color:#ff6862">*</strong>完成投资后，您可以在“我的项目”页面查看您的《投资协议》，此处的预期收益率和预期收益仅供参考。
+             </div>            
           </li>
           </ul>          
         </form>
