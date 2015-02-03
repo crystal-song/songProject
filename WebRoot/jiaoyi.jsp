@@ -185,10 +185,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	    	if(type_vale=="投资"){
     	    		$(".new_sec_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(type_vale=="收到利息"){
+    	    	if(type_vale=="返还利息"){
     	    		$(".new_sec_one li:eq(4)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(type_vale=="收到本金"){
+    	    	if(type_vale=="返还本金"){
     	    		$(".new_sec_one li:eq(5)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="还款"){
