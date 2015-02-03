@@ -3926,7 +3926,8 @@ ul,li{
 	margin-left: 75px;
 	color:#fff;
 	font-size:20px;
-	font-weight:bold
+	font-weight:bold;
+	cursor:pointer;
 }
 .btn_reg_new:hover{
     background:#e62e2e;
@@ -5987,7 +5988,7 @@ ul,li{
 	display:inline-block;
 	float:right;
 	margin-right:40px;
-	margin-top:14%;
+	margin-top:10%;
 	border-radius:3px;
 	color:#fff;
 	line-height:30px;
@@ -6055,7 +6056,9 @@ ul,li{
 .hide{
 	display:none;
 }
-
+.abs_tips{
+	margin-top:30px;
+}
 
 
 
