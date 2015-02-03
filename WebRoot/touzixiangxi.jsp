@@ -196,7 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div id="dialog" title="投资金额确认" style="display:none">
         <p class="zijin">您成功投资<strong class="touzi_money">2000</strong>元</p>
        </div>
-       <div id="dialog01" title="收益计算器" style="display:none">
+       <div id="dialog01" title="收益计算器" style="display:none; height:380px;" >
          <div class="dialog_title"><strong>收益计算器</strong>
           <div class="right_cha"></div>
          </div>
@@ -220,6 +220,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <input type="reset" value="重置" class="jisuan_btn_left"></input>
           <input type="submit" value="开始计算" class="jisuan_btn_right"></input>
          </div>
+         <div class="touzi_text">         
+          <div class="font_li" id="preview_income">* 完成投资后，您可以在“我的项目”页面查看您的《投资协议》，此处的预期收益率和预期收益仅供参考。</div>
+         </div>
+         
        </div>
 
 
