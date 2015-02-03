@@ -530,7 +530,7 @@ public class ptopController {
 			throw e;
 		}
 
-		return "ptop/news_add";
+		return "ptop/news_modify";
 
 	}
 
