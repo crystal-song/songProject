@@ -59,8 +59,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<strong>温馨提示</strong>
 					</p>
 					<ol>
-					    <li class="tishi_red">在提现工作之前请您先绑定银行卡。</li>
-						<li class="tishi_red">绑定银行卡预计需要1-2个工作日，请您耐心等候。</li>						
+					    <li>在您首次“提现”之前，请先绑定银行卡;</li>
+						<li>银行卡审核需要1-2个工作日，请您耐心等待。您可以在本页查看到银行卡的审核状态；</li>
+						<li>当您的银行卡状态变为“已审核”时，方可进行提现操作。</li>						
 					</ol>
 				</div>
 				
@@ -112,10 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ol>
 						<li class="tishi_red">您充值的资金在24小时内不允许提现。</li>
 						<li class="tishi_red">您充值的资金若未投资就提现，第三方支付公司会收取您提现金额的0.5%作为转账费用。</li>
-						<li>您的账户资金将由第三方平台托管。</li>
-						<li>在您首次“提现”之前，请先绑定银行卡;</li>
-						<li>银行卡审核需要1-2个工作日，请您耐心等待。您可以在本页查看到银行卡的审核状态；</li>
-						<li>当您的银行卡状态变为“已审核”时，方可进行提现操作。</li>
+						<li>您的账户资金将由第三方平台托管。</li>						
 						<li>中租宝严禁信用卡充值、套现等行为，一经发现将予以处罚，包括但不限于：限制收款、冻结账户、永久停止服务，
 							并会影响银行征信记录。</li>
 						<li>提现过程遇到问题，请联系客服，010-84243099/3199</li>
@@ -127,8 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="right_cha"></div>
 					</div>
 					<div class="touzi_text">
-						<p
-							style="background: url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">
+						<p style="background: url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">
 							如果您成功提现：<a href="<%=path%>/gate/service">查看我的资产</a>
 						</p>
 					</div>

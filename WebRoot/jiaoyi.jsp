@@ -49,9 +49,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <li><ul class="label_third">
                         <li>订单编号</li>
                         <li>时间</li>
-                        <li>交易类型</li>
-                        <li>交易详情</li>
-                        <li id="bord_right">金额</li>
+                        <li>交易类型</li>                       
+                        <li>金额</li>
+                        <li id="bord_right">交易详情</li>
                       </ul>
                       </li>
                       <c:if test="${userinfo.name!=null}">
@@ -68,13 +68,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${t.id}</li>
                             <li>${t.transDate }</li>
                             <li>${t.type}</li>
+                            <li>${t.transAmount + t.reward}</li>
                             <c:if test="${t.type!='返还利息'&&t.type!='返还本金' }">
-                            <li>${t.projectName}</li>
+                            <li class="new">${t.projectName}</li>
                             </c:if>
                             <c:if test="${t.type=='返还利息'||t.type=='返还本金' }">
                             <li>${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
                             </c:if>
-                            <li>${t.transAmount + t.reward}</li>
+                            
                             
                       </ul> 
                      </li>
