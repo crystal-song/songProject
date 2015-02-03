@@ -479,7 +479,7 @@ function mysubmit(){
                // alert(resp);
             	$(".newye").css("display","block")
         	    $(".black_bac").css("display","block");
-            	$(".p_font").text(resp) 
+            	$(".p_font").text(resp) ;
             	if(resp=="请登录"){
             		$(".abs_tips p:eq(1)").css("display","block");
             	}
