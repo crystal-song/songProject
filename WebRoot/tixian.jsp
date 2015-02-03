@@ -36,13 +36,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="bank_name">${yeepay.bank}</div></li>
 						<li><span>银行卡账号：</span>
 							<div>${yeepay.cardNo}</div>
-							<div class=" ${yeepay.cardStatus == "
-								VERIFIED"?"ren_status":"ren_status01"}" style="margin: 0; padding-left: 20px;">${yeepay.cardStatus == "VERIFIED"?"已认证":"认证中"}</div></li>
+							<div class=" ${yeepay.cardStatus == "VERIFIED"?"ren_status":"ren_status01"}" style="margin: 0; padding-left: 20px;">${yeepay.cardStatus == "VERIFIED"?"已认证":"认证中"}</div></li>
 
 					</ul>
 				</div>
 				<div class="tips_tixian">				
-				<div class="tishi ai" style="margin-top: 50px;">
+				<div class="tishi ai  ${yeepay.cardStatus == "VERIFIED"?"hide":""}" style="margin-top: 50px;">
 					<p>
 						<strong>温馨提示</strong>
 					</p>

@@ -6052,7 +6052,9 @@ ul,li{
 	padding-left:20%
 }
 
-
+.hide{
+	display:none;
+}
 
 
 
