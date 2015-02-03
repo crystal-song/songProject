@@ -196,7 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div id="dialog" title="投资金额确认" style="display:none">
         <p class="zijin">您成功投资<strong class="touzi_money">2000</strong>元</p>
        </div>
-       <div id="dialog01" title="收益计算器" style="display:none; height:380px;" >
+       <div id="dialog01" title="收益计算器" style="display:none; height:320px;" >
          <div class="dialog_title"><strong>收益计算器</strong>
           <div class="right_cha"></div>
          </div>
@@ -221,7 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <input type="submit" value="开始计算" class="jisuan_btn_right"></input>
          </div>
          <div class="touzi_text">         
-          <div class="font_li" id="preview_income">* 完成投资后，您可以在“我的项目”页面查看您的《投资协议》，此处的预期收益率和预期收益仅供参考。</div>
+          <div class="font_li" id="preview_income">* 预期收益率和预期收益仅供参考。</div>
          </div>
          
        </div>
@@ -405,7 +405,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
      </div>
     </div>
-          <div id="dialog01"  style="display:none; height:250px;" class="newye">
+          <div id="dialog01"  style="display:none; height:210px;" class="newye">
 	          <div class="dialog_title">
                <strong>温馨提示</strong>
 	           <div class="right_cha"></div>
@@ -413,11 +413,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="touzi_text">
 	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">投资金额不能为0,请重新输入!</p>          
 	          </div>
-	          <div class="touzi_text" style="display:block">
-	           <p><a href="<%=path%>/gate/recharge">充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/gate/service">查看我的资产</a></p>   
+	          <div class="touzi_text abs_tips" style="display:block">
+	           <p style="display:none"><a href="<%=path%>/gate/recharge">充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/gate/service">查看我的资产</a></p>   
+	           <p style="display:none"><a href="<%=path%>/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/welcome/reg">还没有账号？</a></p> 
 	          </div>
-	          <div class="touzi_text" style="display:block">
-	           <p><a href="<%=path%>/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/welcome/reg">还没有账号？</a></p>   
+	          <div class="touzi_text" style="display:none">
+	             
 	          </div>	
 	         <a class="diabtn">确定</a>                
           </div>
@@ -476,9 +477,17 @@ function mysubmit(){
                 form.submit();
             }else{
                // alert(resp);
-            	 $(".newye").css("display","block")
+            	$(".newye").css("display","block")
         	    $(".black_bac").css("display","block");
-            	$(".p_font").text(resp) 
+            	$(".p_font").text(resp) ;
+            	if(resp=="请登录"){
+            		$(".abs_tips p:eq(1)").css("display","block");
+            	}
+            	if(resp=="您的可用余额不足"){
+            		$(".abs_tips p:eq(0)").css("display","block");            		
+            	}
+            	
+            	
             }
         }});
 }	

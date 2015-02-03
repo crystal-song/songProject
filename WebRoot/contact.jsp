@@ -4,6 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="/includes/taglibs.jsp" %>
+<title>联系我们 - 帮助中心 - 中租宝</title>
 </head>
 <body>
 <!-- top start -->

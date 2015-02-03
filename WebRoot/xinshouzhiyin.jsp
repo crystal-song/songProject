@@ -79,11 +79,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       <div class="diannao01">
 	        <a href="<%=path%>/login.jsp" class="xin_btn01"><strong>注册登录</strong></a>
 	        <a class="jiantou_down1"></a>
-	        <a href="<%=path%>/login.jsp" class="xin_btn02"><strong>身份认证</strong></a>
+	        <a href="<%=path%>/anquanshezhi.jsp" class="xin_btn02"><strong>身份认证</strong></a>
 	        <a class="jiantou_down2"></a>
-	        <a href="<%=path%>/login.jsp" class="xin_btn03"><strong>投资充值</strong></a>
+	        <a href="<%=path%>/gate/recharge" class="xin_btn03"><strong>投资充值</strong></a>
 	        <a class="jiantou_down3"></a>
-	        <a href="<%=path%>/login.jsp" class="xin_btn04"><strong>坐享收益</strong></a>	      
+	        <a href="<%=path%>/gate/service" class="xin_btn04"><strong>坐享收益</strong></a>	      
 	      </div> 
 	    </div>
     </div>
