@@ -241,13 +241,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <dt></dt>
                 </li>
                  <li>
+                 <input type="hidden"   id="repaymentWay1" value="${product1.repaymentWay}"  />
                     <dd>还款方式：</dd>
                     <select  name="repaymentWay"  id="repaymentWay" >
-                     <option value="1">按月付息、到期还本</option>
-                     <option  value="2">按季付息、到期还本</option>
-                     <option  value="3">半年付息、到期还本</option>
-                     <option  value="4">按年付息、到期还本</option>
-                     <option  value="5">到期付息、到期还本</option>
+                     <option id="option1" value="1" >按月付息、到期还本</option>
+                     <option id="option2"  value="2" >按季付息、到期还本</option>
+                     <option id="option3" value="3" >半年付息、到期还本</option>
+                     <option id="option4" value="4" >按年付息、到期还本</option>
+                     <option id="option5" value="5" >到期付息、到期还本</option>
                     </select>
                 </li>
                 <%--  <li>
@@ -447,6 +448,21 @@ $(document).ready(function(){
 	}
 	if($('#ishot').val()=='true'){
 		$('#hot').attr('checked',true);
+	}  
+	if($('#repaymentWay1').val()=='1'){
+		$('#option1').attr('selected',true);
+	}  
+	if($('#repaymentWay1').val()=='2'){
+		$('#option2').attr('selected',true);
+	}  
+	if($('#repaymentWay1').val()=='3'){
+		$('#option3').attr('selected',true);
+	}  
+	if($('#repaymentWay4').val()=='4'){
+		$('#option2').attr('selected',true);
+	}  
+	if($('#repaymentWay5').val()=='5'){
+		$('#option2').attr('selected',true);
 	}  
 	});
 	function checkRate(){
