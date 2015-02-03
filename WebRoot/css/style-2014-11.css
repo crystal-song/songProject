@@ -2598,7 +2598,7 @@ ul,li{
 	color:#fff;
 }
 .label_third li{
-	width: 158px;
+	width: 130px;
 	height: 40px;
 	line-height: 40px;
     background: #eee;
@@ -2614,7 +2614,7 @@ ul,li{
 	clear:both
 }
 .jiaoyi_msg li{
-	width: 154px;
+	width: 126px;
 	height: 40px;
 	line-height:1;
 	float: left;
@@ -2624,8 +2624,13 @@ ul,li{
 }
 #bord_right{
 	border-right:0; 
+	width:260px;
+	text-align:left;
+	padding-left:10px;
 }
-
+.label_third #bord_right{
+	text-align:center;
+}
 .charge{
 	width: 100%;
 	height: 300px;

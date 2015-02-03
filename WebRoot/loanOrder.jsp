@@ -35,6 +35,16 @@
                     <td bgcolor="#FFFFFF">${product.repaymentWay=='1'?'按月付息、到期还本':product.repaymentWay=='2'?'按季付息、到期还本':product.repaymentWay=='3'?'半年付息、到期还本':product.repaymentWay=='4'?'按年付息、到期还本':'到期付息、到期还本' }</td>
                     <td bgcolor="#FFFFFF">计息日:</td>
                     <td bgcolor="#FFFFFF"><fmt:formatDate value="${product.repaymentTime}" pattern="yyyy-MM-dd"/></td>
+                     <td bgcolor="#FFFFFF">实际募集金额（元）:</td>
+                    <td bgcolor="#FFFFFF">${product.realityMoney}</td>
+                </tr>
+                 <tr>
+                    <td bgcolor="#FFFFFF">扣减平台费（元）:</td>
+                    <td bgcolor="#FFFFFF">${product.platformFee}</td>
+                    <td bgcolor="#FFFFFF">扣减保障金（元）:</td>
+                    <td bgcolor="#FFFFFF">${product.margin}</td>
+                    <td bgcolor="#FFFFFF">实际到账金额（元）:</td>
+                    <td bgcolor="#FFFFFF">${product.realityMoney-product.platformFee-product.margin }</td>
                 </tr>
             </table>
         <div class="zichan_con">

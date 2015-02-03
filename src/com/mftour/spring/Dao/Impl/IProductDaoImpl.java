@@ -367,7 +367,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 
 	}
 	public List<TProduct> queryProductByTargetPlatformUserNo(Page page,String targetPlatformUserNo) throws Exception {
-		String hq = "from TProduct product where product.targetPlatformUserNo = :targetPlatformUserNo";
+		String hq = "from TProduct product where product.targetPlatformUserNo = :targetPlatformUserNo order by product.projectStatus asc,product.repaymentTime desc";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("targetPlatformUserNo", targetPlatformUserNo);
 		page.setTotalPage(query.list().size()/page.getPageSize()+1);
