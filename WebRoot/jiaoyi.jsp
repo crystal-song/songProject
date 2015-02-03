@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=typeall">全部</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=充值">充值</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=提现">提现</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=投资">投资</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=投资">支付</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=返还利息">返还利息</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=返还本金">返还本金</a></li>
                       </ul>
@@ -69,12 +69,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${t.transDate }</li>
                             <li>${t.type}</li>
                             <c:if test="${t.type!='返还利息'&&t.type!='返还本金' }">
-                            <li>${t.projectName}</li>
-                            </c:if>
+                            <li>${t.projectName}<c:if test="${t.type=='投资' }">（礼券抵减${t.reward }元） </c:if></li>
+                             </c:if>
                             <c:if test="${t.type=='返还利息'||t.type=='返还本金' }">
                             <li>${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
                             </c:if>
-                            <li>${t.transAmount + t.reward}</li>
+                            <li>${t.transAmount}</li>
                             
                       </ul> 
                       </li> 

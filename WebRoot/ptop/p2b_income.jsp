@@ -87,15 +87,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <dt></dt>
                 </li>
                 <li>
-                    <dd>还款方式：</dd>
-                    <p>
-                      <label>
-                      <span>${product1.repaymentWay}</span></label>
-                      <label>                    <span>按月付息</span></label>
-                    </p>
-<dt></dt>
-                </li>
-                <li>
                     <dd>发布时间：</dd>
                     <input type="date"  disabled="disabled" />
                     <dt></dt>
