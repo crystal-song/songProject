@@ -41,6 +41,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					</ul>
 				</div>
+				<div class="tips_tixian">				
+				<div class="tishi ai" style="margin-top: 50px;">
+					<p>
+						<strong>温馨提示</strong>
+					</p>
+					<ol>
+						<li class="tishi_red">绑定银行卡预计需要1-2个工作日，请您耐心等候。在此期间，您无法进行提现操作。</li>						
+					</ol>
+				</div>
+				
+				</div>
 				<form id="form-card" role="form"
 					style='${yeepay.cardStatus==null?"":"display:none"}'
 					action="<%=path%>/gate/dobinding" method="post" target="_blank">

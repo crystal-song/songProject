@@ -28,9 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
    <ol class="sec_list " style="display:block" id="wol">
    <li>您可以做如下操作：</li>
-   <li>去个人中心查看<strong><a href="<%=path%>/product/allProduct" class="con_link">[我的项目]</a></strong>，浏览详细信息进行投资。</li>
+   <li>去个人中心查看<strong><a href="<%=path%>/gate/userProject" class="con_link">[我的项目]</a></strong>，浏览详细信息进行投资。</li>
    <li><a href="<%=path%>/gate/recharge" class="sec_btn_org">去充值</a></li>
-   <li><a href="<%=path%>gate/drawMoney" class="sec_btn_org">去提现</a></li>
+   <li><a href="<%=path%>/gate/service" class="sec_btn_org">查看资产</a></li>
    </ol>
    
    <div class="sec_product" style="display:none;">
