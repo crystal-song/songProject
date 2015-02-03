@@ -4919,6 +4919,7 @@ ul,li{
 .qiandai{
 	width:340px;
 	height:190px;
+	*+height:140px;
 	margin-top:128px;
 	background:url(../img/images-2014-11/qiandai.png) no-repeat;	
 }
@@ -4970,14 +4971,13 @@ ul,li{
 .per_bottom{
 	width:100%;
 	margin:0 auto;
-	height:600px;
+	height:700px;
 	background:#9b7e5c;
 }
 .diannao{
 	width:730px;
 	height:577px;
 	background:url(../img/images-2014-11/diannao1.png) no-repeat;
-	margin-left:10%;
 	float:left;
 }
 .bang{
@@ -4996,6 +4996,7 @@ ul,li{
 	height:580px;	
     float:left;
     border-radius:5px;
+    margin-left:10%;
 }
 .diannao01 a{
 	width:240px;
@@ -5582,6 +5583,7 @@ ul,li{
 .wid{
 	width:1200px;
 	height:auto;
+	margin:0 auto;
 }
 #campaign #funding_area #backing .stats span {
     color: #868686;
@@ -6046,7 +6048,9 @@ ul,li{
 	padding:12px;
 }
 
-
+#jin_pad{
+	padding-left:20%
+}
 
 
 
