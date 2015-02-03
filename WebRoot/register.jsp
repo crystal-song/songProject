@@ -194,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- footer start -->
 	<%@ include file="/includes/footer.jsp"%>
 	<!-- footer end -->
->>>>>>> 3750a8d0d50143fc1d377365ed39e7108819c9f6
+
 </body>
 </html>
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
@@ -228,4 +228,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  form.submit();
 	}
 
-
+   </script> 

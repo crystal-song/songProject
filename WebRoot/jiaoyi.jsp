@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   
                       <c:if test="${ not empty transRecordList}">
                       <c:forEach var="t" items="${transRecordList }">
-                      <li>
+ 						<li>                 
                       <ul class="jiaoyi_msg">
                             <li>${t.id}</li>
                             <li>${t.transDate }</li>
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${t.transAmount + t.reward}</li>
                             
                       </ul> 
-                      </li> 
+                     </li>
                       </c:forEach>    
                       </c:if>  
                       </c:if>          
