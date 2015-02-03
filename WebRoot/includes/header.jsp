@@ -89,10 +89,6 @@ $(document).ready(function(){
 		$('.ie_text').css('display','none');
 	  });
 	
-	$(".nav_big li").click(function(){
-		$(this).addClass("bd_btom").siblings().removeClass("bd_btom");
-	//	$(this).children("a").children("span").children("p").addClass("headwd_color").siblings().removeClass("headwd_color");
-	});
 	
 
     $(".header li").mouseover(function(){ 

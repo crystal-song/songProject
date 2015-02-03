@@ -40,17 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					</ul>
 				</div>
-				<div class="tips_tixian">				
-				<div class="tishi ai  ${yeepay.cardStatus == "VERIFIED"?"hide":""}" style="margin-top: 50px;">
-					<p>
-						<strong>温馨提示</strong>
-					</p>
-					<ol>
-						<li class="tishi_red">绑定银行卡预计需要1-2个工作日，请您耐心等候。在此期间，您无法进行提现操作。</li>						
-					</ol>
-				</div>
 				
-				</div>
 				<form id="form-card" role="form"
 					style='${yeepay.cardStatus==null?"":"display:none"}'
 					action="<%=path%>/gate/dobinding" method="post" target="_blank">
@@ -63,6 +53,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<button type="submit"
 						class="btn btn-default mar_btn">绑定银行卡</button>
 				</form>
+				<div class="tips_tixian">				
+				<div class="tishi ai  ${yeepay.cardStatus == "VERIFIED"?"hide":""}" style="margin-top: 50px;">
+					<p>
+						<strong>温馨提示</strong>
+					</p>
+					<ol>
+					    <li class="tishi_red">在提现工作之前请您先绑定银行卡。</li>
+						<li class="tishi_red">绑定银行卡预计需要1-2个工作日，请您耐心等候。</li>						
+					</ol>
+				</div>
+				
+				</div>
 			</div>
 
 		</div>
