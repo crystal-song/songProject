@@ -70,12 +70,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${t.type}</li>
                             <li>${t.transAmount + t.reward}</li>
                             <c:if test="${t.type!='返还利息'&&t.type!='返还本金' }">
-                            <li class="new">${t.projectName}</li>
+                            <li id="bord_right">${t.projectName}</li>
                             </c:if>
                             <c:if test="${t.type=='返还利息'||t.type=='返还本金' }">
-                            <li>${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
-                            </c:if>
-                            
+                            <li id="bord_right">${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
+                            </c:if>                           
                             
                       </ul> 
                       </li> 
