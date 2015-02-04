@@ -73,6 +73,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	$(".u_left_sec:first li:eq(1)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
     	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
-
-
+    });
+   
 </script>
