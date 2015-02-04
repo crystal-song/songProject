@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<c:if test="${s.projectStatus!=1 }">
 												<span style="float: left; margin-left: 3%;"><a
 													class="baifenbi01" style="float: left; text-align: left;"><c:if
-															test='${empty s.financingProgress}'>0</c:if>${s.financingProgress*100}%</a>
+															test='${empty s.financingProgress}'>0</c:if><fmt:formatNumber value="${s.financingProgress*100}" pattern="#.##"/> %</a>
 													<a style="float: left; color: #a4a4a4;">已达</a></span>
 											</c:if>
 											<c:if test="${s.projectStatus==1 }">

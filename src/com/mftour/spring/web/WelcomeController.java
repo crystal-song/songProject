@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
+import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -205,7 +205,8 @@ public class WelcomeController {
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
 		String url=	request.getHeader("referer");
-		if(url==null || url.equals(f.getBasePath() + "login.jsp") || url.equals(f.getBasePath()+"welcome/logout")){
+		String path = new URL(url).getPath();
+		if(url==null || path.equals("/login.jsp") || path.equals("/welcome/logout")){
 
 			url="/gate/service";
 		}
