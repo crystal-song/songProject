@@ -11,8 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加新闻公告</title>
-<link href="<%=path%>/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
-<link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
+<link href="/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<link href="/css/style1.css" rel="stylesheet" type="text/css" />
     <%-- <script type="text/javascript" src="<%=path%>/up/third-party/jquery.min.js"></script> --%>
       <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>    
     <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.config.js"></script>
