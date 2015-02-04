@@ -26,7 +26,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          </div>
          <a class="tianjiadizhi"></a>
          <div class="dizhi_msg">
-           <p class="little_head">添加收货地址:</p>
+           <a class="add_dizhi"></a>
+           <p class="little_head" style="display:none">添加收货地址:</p>                
+         </div>
+         <div class="clear"></div>
+         <div class="dizhi_input">
+                <ul>
+                  <li><span>省/直辖市<strong>*</strong></span><input type="text"/><span>城市/区<strong>*</strong></span><input type="text"/></li>
+                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea></textarea></li>
+                  <li><span>邮编<strong>*</strong></span><input type="text"/></li>
+                  <li><span>收货人姓名<strong>*</strong></span><input type="text"/></li>
+                  <li><span>手机号码<strong>*</strong></span><input type="text"/></li>
+                </ul>      
+                    
+           </div> 
+         <div class="clear"></div>
+         <div class="dizhi_table">
+           <ul>
+             <li>
+               <span>收件人</span>
+               <span>所在地区</span>
+               <span>详细地址</span>
+             </li>
+           </ul>
+         
          </div>
       </div>
     

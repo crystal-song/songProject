@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         </div>
 	         
 	         <div class="touzi_text">
-	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">用户名或密码错误或用户没有激活！</p>          
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">用户名或密码错误!</p>          
 	         </div>	
 	         <a class="diabtn">确定</a>                
         </div>

@@ -5991,7 +5991,7 @@ ul,li{
 	display:inline-block;
 	float:right;
 	margin-right:40px;
-	margin-top:10%;
+	margin-top:13%;
 	border-radius:3px;
 	color:#fff;
 	line-height:30px;
@@ -6062,6 +6062,75 @@ ul,li{
 .abs_tips{
 	margin-top:30px;
 }
+
+.add_dizhi{
+	width:140px;
+	height:40px;
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+	background:url(../img/images-2014-11/add_dizhi.png) 5px 0px  no-repeat;
+}
+.add_dizhi:hover{
+	background:url(../img/images-2014-11/add_dizhi1.png) 5px 0px  no-repeat;
+}
+
+.dizhi_table{
+	width:810px;
+	height:300px;
+	margin-top:5%;
+}
+
+.dizhi_table li{
+	width:100%;
+	height:30px;
+	border-bottom:1px solid #ccc;
+}
+.dizhi_input{
+	width:600px;
+	margin:0 auto;
+	margin-top:5%;
+}
+.dizhi_input li{
+	width:100%;
+	height:40px;
+	
+	
+}
+.dizhi_input span{
+	width:100px;
+	float:left;
+	text-align:right;
+	margin-right:10px;
+}
+.dizhi_input strong{
+	color:#ee0000;
+	margin-left:3px;
+}
+.dizhi_input input{
+	width:170px;
+	float:left;
+}
+.dizhi_input .di_hei{
+	height:140px;
+}
+.di_hei textarea{
+	float:left;
+	width:455px;
+	height:113px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

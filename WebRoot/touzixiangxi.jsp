@@ -455,18 +455,17 @@ function mysubmit(){
 		$(".newye").css("display","block")
 	    $(".black_bac").css("display","block");		
 		return false;
-		}
-	//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-	
-	if($("#buyAmount").val()<200){
-		//alert("投资金额不能低于200元！");
-		
+	}
+	if($("#buyAmount").val()%100!=0){
+		/* alert("投资金额必须为100的整数倍！"); */
 		return false;
 	}
-	
+	if($("#buyAmount").val()<200){
+		//alert("投资金额不能低于200元！");		
+		return false;
+	}	
 	if($("#buyAmount").val()>touzi_money){
-		//alert("投资金额不能高于可投资金额！");
-		
+		//alert("投资金额不能高于可投资金额！");		
 		return false;
 	}
 	
@@ -557,16 +556,18 @@ function mysubmit(){
 		  
 		    var str= /^[0-9]*$/;
 		    var val=$("#buyAmount").val();
-		    
-		    
-		    if(!(str.test(val))){  	   
-				   $('.neirong').html("您输入的金额不是数字,请重新输入");
-				   return false;
-			    }
 		    $('.neirong').css('display','block');
-	
-		    if(!(str.test(val))){  	   
-				   $('.neirong').html("您输入的金额不是数字,请重新输入");
+		    alert(val);
+		       if(val==""){			    
+		    	 $('.neirong').html("您输入的金额不能为空");
+				   return false;			    	
+		        }
+		        if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是整数,请重新输入");
+				   return false;
+			    }		       	
+		        if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是整数,请重新输入");
 				   return false;
 			    }
 			    if(val<200){
@@ -581,7 +582,10 @@ function mysubmit(){
 				  $('.neirong').html("输入的资金必须是100的整数倍");
 				  return false;
 				   }
-			      $('.neirong').html('您要投入的实际金额为:'+val);	   
+			      
+			      $('.neirong').html('您要投入的实际金额为:'+val);	 
+			      
+			   
 	 
 	 });	
  
@@ -589,7 +593,6 @@ function mysubmit(){
 	 $(".nav_big a").eq(1).children("p").addClass("headwd_color");
        $(window).on('scroll', function(){
                checkText();
-              // alert($(this).scrollTop())
        });
 
        var nav_height=parseInt($('.small_nav').offset().top);
