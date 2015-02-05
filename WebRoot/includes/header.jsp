@@ -10,24 +10,24 @@
   <ul>
     <li>联系我们
         <div class="list01">
-          <a href="<%=path%>/question.jsp">常见问题</a>
-          <a href="<%=path%>/contact.jsp">联系客服</a>
+          <a href="/question.jsp">常见问题</a>
+          <a href="/contact.jsp">联系客服</a>
         </div>
     </li>
     <li>关于我们
 	    <div class="list02">
-		    <a href="<%=path%>/help_con.jsp">企业介绍</a>
-		    <a href="<%=path%>/security.jsp">安全策略</a>
-		    <a href="<%=path%>/notice.jsp">法律声明</a>
+		    <a href="/help_con.jsp">企业介绍</a>
+		    <a href="/security.jsp">安全策略</a>
+		    <a href="/notice.jsp">法律声明</a>
 	    </div>
    </li>
-   <li><a href="<%=path%>/xinshouzhiyin.jsp" class="head_red" target="_blank">新手指引</a>
+   <li><a href="/xinshouzhiyin.jsp" class="head_red" target="_blank">新手指引</a>
 
    </li>
    <li class="head_red" style="display:none">我的账户
 	    <div class="list03" style="display:none">
-	      <a href="<%=path%>/wel/account">账户管理</a>
-	      <a href="<%=path%>/wel/account">资产管理</a>
+	      <a href="/wel/account">账户管理</a>
+	      <a href="/wel/account">资产管理</a>
 	    </div>
    </li>
   </ul>
@@ -38,32 +38,32 @@
 
 <div class="nav_bac">
   <div class="nav">
-          <a class="logo" href="<%=path%>/" title="中租宝首页"></a>
+          <a class="logo" href="/" title="中租宝首页"></a>
           <ul class="nav_big">
             <li>
-              <a href="<%=path%>/">
+              <a href="/">
                 <span><strong>首页</strong></span>
                 <p>Home</p>
               </a>
             </li>
             <li>
-               <a href="<%=path%>/product/allProduct">
+               <a href="/product/allProduct">
                  <span><strong>我要投资</strong></span>
                  <p>Investment</p>
                </a>
             </li>
-            <li><a href="<%=path%>/gate/service"><span><strong>我的账户</strong></span><p>Account</p></a></li>
-            <%-- <li><a href="<%=path%>/zhongcou.jsp"><span><strong>我要众筹</strong></span><p>Crowdfunding</p></a></li>  --%>
-            <li><a href="<%=path%>/guarantee/getchannel"><span><strong>新闻公告</strong></span><p>News</p></a></li>
-            <li><a href="<%=path%>/help_con.jsp"><span><strong>帮助中心</strong></span><p>Help</p></a></li>
-            <li><a href="<%=path%>/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Application</p></a></li>
+            <li><a href="/gate/service"><span><strong>我的账户</strong></span><p>Account</p></a></li>
+         <li><a href="/zhongcou.jsp"><span><strong>我要众筹</strong></span><p>Crowdfunding</p></a></li>  
+            <li><a href="/guarantee/getchannel"><span><strong>新闻公告</strong></span><p>News</p></a></li>
+            <li><a href="/help_con.jsp"><span><strong>帮助中心</strong></span><p>Help</p></a></li>
+            <li><a href="/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Application</p></a></li>
             
           </ul>
           <div class="login" >
                <c:if test="${empty name}">
 
-                <a class="a_fir" href="<%=path%>/welcome/reg" style="line-height:40px; font-size:16px; margin-left:50px;" ><strong>注册</strong></a>
-                <a class="wd_red a_sec" href="<%=path%>/login.jsp" style="line-height:40px; font-size:16px;"><strong>登录</strong></a>
+                <a class="a_fir" href="/welcome/reg" style="line-height:40px; font-size:16px; margin-left:50px;" ><strong>注册</strong></a>
+                <a class="wd_red a_sec" href="/login.jsp" style="line-height:40px; font-size:16px;"><strong>登录</strong></a>
 
               </c:if>
              
@@ -71,8 +71,8 @@
               <span class="username">您好，<strong>${name}</strong></span>         
               <div class="tuichu">
                   <ul>
-                    <li class="zhang"><a href="<%=path%>/wel/account" class="acount">我的账户</a></li>
-                    <li  class="zhang" style="background:#fff"><a href="<%=path%>/welcome/logout" class="out">退出</a></li>
+                    <li class="zhang"><a href="/wel/account" class="acount">我的账户</a></li>
+                    <li  class="zhang" style="background:#fff"><a href="/welcome/logout" class="out">退出</a></li>
                   </ul>
               </div>
             </c:if> 
