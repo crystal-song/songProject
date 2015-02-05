@@ -173,7 +173,7 @@ $(document).ready(function(e){
 	var heiright_height=$(".hei_right").height();
 	//alert(heiright_height)
 	$(window).on("scroll",function(){
-		//rightBar();		
+		rightBar();		
 	});
 	
 	function rightBar(){
@@ -188,33 +188,34 @@ $(document).ready(function(e){
 		var Ztop=win_height-heiright_height-50;
 		 $(".rew_font strong").html(scroll_height+"scrolltop");
 		 $(".delivery_zhong").html(offsettop_fir+"hhhh") 
-		/* $(".title_zhong").html(win_height+"winhei") */
+		 /* $(".title_zhong").html(win_height+"winhei") */
 		 $(".price_zhong").html(con_height+"divhei") 
 		/* $(".claimed_zhong label").html(parseInt(offset_height)+"offsettop") */
 		
+	//超过侧边栏	
 	if(scroll_height>up){
 		if(h<scroll_height){			
 		     $(".hei_right").addClass("fix_bottom"); 
-		     $(".hei_right").css({"left":offset_left,"top":Ztop});	    		     		    
-		}else{
-			
-		}
-		
+		     $(".hei_right").css({"left":offset_left,"top":Ztop});	  		    
+		}		
+	//超过内容栏	
 		if(ch<scroll_height){
 		   var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-50; 		       
-			    $(".hei_right").css({"left":offset_left,"top":Ctop});	   
-       	             	      
-         } else{
-        	 
+			    $(".hei_right").css({"left":offset_left,"top":Ctop});	          	             	      
          }
          up=scroll_height;
          
 	}else{
-		if(ch>scroll_height){
-			   var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-50; 		       
-				    $(".hei_right").css({"left":offset_left,"top":Ctop});	   
-	       	             	      
-	         }
+		//回滚
+		//超过内容栏
+		if(ch<scroll_height){
+		  		       
+	         	             	      
+        }else{
+        	
+        	
+        }
+		
 		
 	}
 		
