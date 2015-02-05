@@ -175,8 +175,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
     	
     	$(".add_dizhi").click(function(){
-    		$(".dizhi_input").slideToggle();
-    		
+    		$(".dizhi_input").css("display","block")
+    		$(this).hide();
+    		$(".little_head").css("display","block");
     	})
     });
    

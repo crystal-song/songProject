@@ -6098,6 +6098,7 @@ ul,li{
 	width:650px;
 	margin:0 auto;
 	margin-top:5%;
+	display:none;
 }
 .dizhi_input li{
 	width:100%;
