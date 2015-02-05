@@ -4,12 +4,9 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="/includes/taglibs.jsp" %>
+<%@taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
 <title>交易记录 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 
 <body>
@@ -44,21 +41,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li class="label_bak"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=typeall">全部</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=充值">充值</a></li>
                         <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=提现">提现</a></li>
-                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=投资">投资</a></li>
-                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到利息</a></li>
-                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">收到本金</a></li>
-                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">还款</a></li>
-                        <li style="display:none"><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=transferinfo">融资</a></li>
-                        <li style="display:none">收益</li>
-                        <li style="display:none">回收本金</li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=投资">支付</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=返还利息">返还利息</a></li>
+                        <li><a href="<%=path%>/transRecord/queryTransRecord?time=all&type=返还本金">返还本金</a></li>
                       </ul>
                     </li>
                     <li><ul class="label_third">
                         <li>订单编号</li>
                         <li>时间</li>
-                        <li>交易类型</li>
-                        <li>交易详情</li>
-                        <li id="bord_right">金额</li>
+                        <li>交易类型</li>                       
+                        <li>金额</li>
+                        <li id="bord_right">交易详情</li>
                       </ul>
                       </li>
                       <c:if test="${userinfo.name!=null}">
@@ -70,14 +63,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   
                       <c:if test="${ not empty transRecordList}">
                       <c:forEach var="t" items="${transRecordList }">
+ 						<li>                 
                       <ul class="jiaoyi_msg">
                             <li>${t.id}</li>
                             <li>${t.transDate }</li>
                             <li>${t.type}</li>
-                            <li>${t.projectName}</li>
-                            <li>${t.transAmount + t.reward}</li>
+                            <li >${t.transAmount}</li>
+                            <c:if test="${t.type!='返还利息'&&t.type!='返还本金' }">
+                            <li id="bord_right">${t.projectName}<c:if test="${t.type=='投资' }">（礼券抵减${t.reward }元） </c:if></li>
+                             </c:if>
+                            <c:if test="${t.type=='返还利息'||t.type=='返还本金' }">
+                            <li id="bord_right">${t.projectName}项目：${t.transDate }期 ，${t.type }</li>
+                            </c:if>
+
                             
-                      </ul>  
+                      </ul> 
+                     </li>
                       </c:forEach>    
                       </c:if>  
                       </c:if>          
@@ -106,6 +107,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+</html>
 <script type="text/javascript">
     var navIndex=3;    
     var indexs=2;
@@ -184,10 +186,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	    	if(type_vale=="投资"){
     	    		$(".new_sec_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(type_vale=="收到利息"){
+    	    	if(type_vale=="返还利息"){
     	    		$(".new_sec_one li:eq(4)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
-    	    	if(type_vale=="收到本金"){
+    	    	if(type_vale=="返还本金"){
     	    		$(".new_sec_one li:eq(5)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
     	    	if(type_vale=="还款"){
@@ -200,4 +202,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </script>
 
-</html>
+

@@ -13,17 +13,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>   
     <script>
-        function loan(id,enterpriceNumber){
+        function loan(id,enterpriceNumber,projectStatus,repaymentTime){
+        	var currTime=new Date();
+        	var repTime=new Date(repaymentTime);
+        	if(repTime>currTime){
+        		alert("募集期没有结束！")
+        	}
+        	 if(projectStatus!=3){
+        		 alert("项目没有满标！")
+        	 }
+        	 if(confirm('确定要放款吗？')==true){
             $.ajax({url:"/Login/loanProduct?id="+id+"&enterpriceNumber="+enterpriceNumber,
                 type:"GET",
                 success: function(data){
-                    if(data == "success"){
-                        alert("放款成功");
+                        alert("放款成功！");
                         location.reload();
-                    }else{
-                        alert("放款失败");
-                    }
                 }});
+        	 }
         }
     </script>
 
@@ -35,6 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <%@ include file="/includes/manage_nav.jsp" %> 
  <!-- header end -->
     <div class="cl"></div>
+    <input type="hidden" value="${warning }" id="warning"/>
   <div class="content">
   	<h2>管理PtoB项目</h2>
     <div class="dataSearch">
@@ -72,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <p>
     <a href="<%=path%>/Login/updateProduct?id=${s.id}">修改</a>
     <c:if test="${s.loaned==false }">
-     <a href="javascript:void(0)" onclick="loan(${s.id},'${s.enterpriseNumber}')">放款</a>
+     <a href="javascript:void(0)" onclick="loan(${s.id},'${s.enterpriseNumber}',${s.projectStatus },'${s.repaymentTime }')" >放款</a>
      </c:if>
      
     <a href="<%=path%>/Login/getProductByid?id=${s.id}">添加记录</a>

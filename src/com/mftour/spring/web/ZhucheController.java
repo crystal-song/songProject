@@ -50,7 +50,7 @@ public class ZhucheController {
 		}
 		model.addAttribute("list", productList);
 		List<TProduct> hotlist=ptopService.queryHotproject();
-		if(hotlist!=null){
+		if(hotlist!=null && hotlist.size()>0){
 		TProduct hot=hotlist.get(0);
 		model.addAttribute("t", hot);
 		}

@@ -38,7 +38,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-
+import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +50,7 @@ import org.slf4j.LoggerFactory;
 // 将Model中属性名为Constants.USER_INFO_SESSION的属性放到Session属性列表中，以便这个属性可以跨请求访问
 @SessionAttributes(Constants.USER_INFO_SESSION)
 public class WelcomeController {
+	private static final com.mftour.spring.util.File f = ReadWirtePropertis.file();
 	private static final Logger logger = LoggerFactory
 			.getLogger(WelcomeController.class);
 	@Autowired
@@ -199,11 +200,14 @@ public class WelcomeController {
 			RequestMethod.GET })
 	public void Session(Model model, TUser user, HttpServletResponse response,HttpServletRequest request)
 			throws Exception {
+
 		request.getSession().setAttribute("name", user.getName());
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
-		String url=	(String)request.getSession().getAttribute("url");
-		if(url==null){
+		String url=	request.getHeader("referer");
+		String path = new URL(url).getPath();
+		if(url==null || path.equals("/login.jsp") || path.equals("/welcome/logout")){
+
 			url="/gate/service";
 		}
 		response.sendRedirect(url);

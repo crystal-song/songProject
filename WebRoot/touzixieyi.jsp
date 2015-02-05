@@ -4,14 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
  <%@ include file="/includes/taglibs.jsp" %> 
-
-
 <title>服务协议 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript">
-    var navIndex=3;    
-</script>
 </head>
 <body>
 <!-- top start  -->
@@ -78,8 +71,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">营业执照号码：${product. guaranteeNumber}</div>
 			<div class="title01">借款内容:</div>
 			<div class="section">借款用途：${product.fundUse}</div>
-			<div class="section">借款金额：${transferInfo1.paymentAmount}</div>
-			<div class="section">借款利率(365天/年)： ${transferInfo1.interestRate}%</div>
+			<div class="section">借款金额：${transferInfo1.paymentAmount+transferInfo1.reward}</div>
+			<div class="section">借款利率：${transferInfo1.interestRate} %</div>
 			<div class="section">借款期限从 计息日 到 计息日+${transferInfo1.financingPeriod}天</div>
 			<div class="section">还款方式：${product.repaymentWay=='1'?'按月付息、到期还本':product.repaymentWay=='2'?'按季付息、到期还本':product.repaymentWay=='3'?'半年付息、到期还本':product.repaymentWay=='4'?'按年付息、到期还本':'到期付息、到期还本' }</div>
 			<div class="title01">特别提示：</div>

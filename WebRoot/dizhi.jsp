@@ -7,8 +7,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ include file="/includes/taglibs.jsp" %> 
 <title>安全设置 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
 <body>
 <!-- top start  -->
@@ -26,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="pro_con_title" style="margin-top: 5px; background:url(../img/images-2014-11/red_line_big.png) 104px 12px no-repeat;">
                 <strong>收货地址管理</strong>
          </div>
-         <a class="tianjia"></a>
+         <a class="tianjiadizhi"></a>
          <div class="dizhi_msg">
            <p class="little_head">添加收货地址:</p>
          </div>
@@ -42,8 +40,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
-
-
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
     var navIndex=3;  
     var indexs=0;
@@ -55,4 +53,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </script>
-</html>

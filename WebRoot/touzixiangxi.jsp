@@ -9,14 +9,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <Link href="/favicon.ico" rel="Shortcut Icon">
 <title>项目：${product1.projectName} - 我要投资 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
+
 
 <link href="<%=path%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
- <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+ 
 
 </head>
 
@@ -175,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div> 
        </c:if>
        <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
-       <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" style="padding:0px;">
+       <form id="form" role="form" action="<%=path%>/gate/transfer" method="get" style="padding:0px;">
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
          <span>可投资金额： ${product1.financingMoney*10000-product1.realityMoney}元
@@ -199,7 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div id="dialog" title="投资金额确认" style="display:none">
         <p class="zijin">您成功投资<strong class="touzi_money">2000</strong>元</p>
        </div>
-       <div id="dialog01" title="收益计算器" style="display:none">
+       <div id="dialog01" title="收益计算器" style="display:none; height:320px;" >
          <div class="dialog_title"><strong>收益计算器</strong>
           <div class="right_cha"></div>
          </div>
@@ -223,6 +220,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <input type="reset" value="重置" class="jisuan_btn_left"></input>
           <input type="submit" value="开始计算" class="jisuan_btn_right"></input>
          </div>
+         <div class="touzi_text">         
+          <div class="font_li" id="preview_income">* 预期收益率和预期收益仅供参考。</div>
+         </div>
+         
        </div>
 
 
@@ -288,7 +289,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<li>
 		<span>${fn:substring(s.platformUserNo,0,1)}<c:forEach var="j" begin="1" end="${fn:length(s.platformUserNo)-2}" step="1">*</c:forEach>${fn:substring(s.platformUserNo,fn:length(s.platformUserNo)-1,fn:length(s.platformUserNo))}
 		</span>
-		<span >${s.paymentAmount}元</span>
+		<span >${s.paymentAmount+s.reward}元</span>
 		<span>成功</span>
 		</li>
 		</c:forEach>
@@ -404,7 +405,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
      </div>
     </div>
-          <div id="dialog01"  style="display:none; height:250px;" class="newye">
+          <div id="dialog01"  style="display:none; height:210px;" class="newye">
 	          <div class="dialog_title">
                <strong>温馨提示</strong>
 	           <div class="right_cha"></div>
@@ -412,11 +413,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="touzi_text">
 	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">投资金额不能为0,请重新输入!</p>          
 	          </div>
-	          <div class="touzi_text" style="display:block">
-	           <p><a href="<%=path%>/gate/recharge">充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/gate/service">查看我的资产</a></p>   
+	          <div class="touzi_text abs_tips" style="display:block">
+	           <p style="display:none"><a href="<%=path%>/gate/recharge">充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/gate/service">查看我的资产</a></p>   
+	           <p style="display:none"><a href="<%=path%>/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/welcome/reg">还没有账号？</a></p> 
 	          </div>
-	          <div class="touzi_text" style="display:block">
-	           <p><a href="<%=path%>/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/welcome/reg">还没有账号？</a></p>   
+	          <div class="touzi_text" style="display:none">
+	             
 	          </div>	
 	         <a class="diabtn">确定</a>                
           </div>
@@ -432,7 +434,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </body>
-<script type="text/javascript">
+
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+ <script type="text/javascript">
 var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
 /*提交表单*/
@@ -471,7 +479,15 @@ function mysubmit(){
                // alert(resp);
             	$(".newye").css("display","block")
         	    $(".black_bac").css("display","block");
-            	$(".p_font").text("请您登录！")
+            	$(".p_font").text(resp) ;
+            	if(resp=="请登录"){
+            		$(".abs_tips p:eq(1)").css("display","block");
+            	}
+            	if(resp=="您的可用余额不足"){
+            		$(".abs_tips p:eq(0)").css("display","block");            		
+            	}
+            	
+            	
             }
         }});
 }	
@@ -506,12 +522,23 @@ function mysubmit(){
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}
-					r=r/100;
+					r=r/100/365*p; 
 					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
 					}
 				}
-			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
+			/* $("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
+			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100)/100)+"元"); */
+			   var b=parseFloat(parseInt(r*10000)/100);		        
+		       b=b.toFixed(2)
+		     
+		       $("#preview_rate").val(b+"%");	 
+		         
+		/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100)/100)+"元");	 */
+		      var a=parseFloat(parseInt(t*r*100)/100)				     
+			      a= a.toFixed(2)
+			       
+		     $("#preview_income").html(a+"元"); 
+			
 			//console.log("|-"+t*r);
 			}
 		$(".jisuan_btn_left").click(function(){
@@ -667,9 +694,6 @@ function mysubmit(){
         var timer= setInterval(getRTime,1000);
  });  
 
-   
-    
- 
  
  /*获取投资额焦点*/
  $("#buyAmount").focus(function(){
@@ -679,4 +703,3 @@ function mysubmit(){
 	             
     
 </script>
-</html>

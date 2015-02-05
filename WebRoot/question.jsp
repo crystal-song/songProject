@@ -3,15 +3,10 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+
 <%@ include file="/includes/taglibs.jsp" %>
 
 <title>常见问题 - 帮助中心 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
-
 </head>
 
 <body>
@@ -55,13 +50,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 var navIndex=5;
 var index=1;
 $(document).ready(function(e) {
-$(".nav_big a").eq(5).addClass("bd_btom").siblings().removeClass("bd_btom");
-$(".nav_big a").eq(5).children("p").addClass("headwd_color");
+$(".nav_big a").eq(4).addClass("bd_btom").siblings().removeClass("bd_btom");
+$(".nav_big a").eq(4).children("p").addClass("headwd_color");
 $(".news_ul a").eq(1).addClass("aqbz").siblings().removeClass("aqbz");
 });
 </script>
-</html>
+

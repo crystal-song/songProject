@@ -1,22 +1,29 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE HTML>
-<html>
-<head>
 
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <title>UMEDITOR 完整demo</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%=path%>/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
-    <script type="text/javascript" src="<%=path%>/up/third-party/jquery.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改新闻公告</title>
+<link href="<%=path%>/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
+    <%-- <script type="text/javascript" src="<%=path%>/up/third-party/jquery.min.js"></script> --%>
+      <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>    
     <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.min.js"></script>
     <script type="text/javascript" src="<%=path%>/up/lang/zh-cn/zh-cn.js"></script>
-    <style type="text/css">
+   
+    
+    
+    
+    
+        <style type="text/css">
         h1{
             font-family: "微软雅黑";
             font-weight: normal;
@@ -115,70 +122,117 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             box-shadow: none;
         }
     </style>
+    
+     
+    
+    
+    
+
 </head>
+
 <body>
-<h1>UMEDITOR 完整demo</h1>
-
-<!--style给定宽度可以影响编辑器的最终宽度-->
-<script type="text/plain" id="myEditor" style="width:1000px;height:240px;">
-    <p>这里我可以写一些输入提示</p>
-</script>
-
-
-<div class="clear"></div>
-<div id="btns">
-    <table>
-        <tr>
-            <td>
-                <button class="btn" unselected="on" onclick="getAllHtml()">获得整个html的内容</button>&nbsp;
-                <button class="btn" onclick="getContent()">获得内容</button>&nbsp;
-                <button class="btn" onclick="setContent()">写入内容</button>&nbsp;
-                <button class="btn" onclick="setContent(true)">追加内容</button>&nbsp;
-                <button class="btn" onclick="getContentTxt()">获得纯文本</button>&nbsp;
-                <button class="btn" onclick="getPlainTxt()">获得带格式的纯文本</button>&nbsp;
-                <button class="btn" onclick="hasContent()">判断是否有内容</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="btn" onclick="setFocus()">编辑器获得焦点</button>&nbsp;
-                <button class="btn" onmousedown="isFocus();return false;">编辑器是否获得焦点</button>&nbsp;
-                <button class="btn" onclick="doBlur()">编辑器取消焦点</button>&nbsp;
-                <button class="btn" onclick="insertHtml()">插入给定的内容</button>&nbsp;
-                <button class="btn" onclick="getContentTxt()">获得纯文本</button>&nbsp;
-                <button class="btn" id="enable" onclick="setEnabled()">可以编辑</button>&nbsp;
-                <button class="btn" onclick="setDisabled()">不可编辑</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="btn" onclick="UM.getEditor('myEditor').setHide()">隐藏编辑器</button>&nbsp;
-                <button class="btn" onclick="UM.getEditor('myEditor').setShow()">显示编辑器</button>&nbsp;
-                <button class="btn" onclick="UM.getEditor('myEditor').setHeight(300)">设置编辑器的高度为300</button>&nbsp;
-                <button class="btn" onclick="UM.getEditor('myEditor').setWidth(1200)">设置编辑器的宽度为1200</button>
-            </td>
-        </tr>
-
-    </table>
+<div id="wrap">
+<!-- header -->
+ <%@ include file="/includes/manage_nav.jsp" %> 
+ <!-- header end -->
+    <div class="cl"></div>
+  <div class="content">
+  	<h2>修改新闻公告</h2>
+  	
+  	
+    	<div class="dataForm">
+    	<form  action="<%=path%>/Login/addnews" id="form" method="post"    >
+        	<input type="hidden"  name="depicts"  id="depicts" />
+        	<input type="hidden"  name="channel"  id="channel" value="${news1.channel }"/>
+        	<input type="hidden" name="id" id="id" value="${news1.id}" />
+      <ul>  	
+        <li>
+        <dd>请选择频道：</dd>
+        <select name="chanel" id="chanel" >
+         
+          <option id="select1" value="新闻报道" >新闻报道&nbsp;&nbsp;</option> 
+          <option id="select2" value="还款公告" >还款公告&nbsp;&nbsp;</option> 
+          <option id="select3" value="网站公告" >网站公告&nbsp;&nbsp;</option> 
+          <option id="select4" value="帮助中心" >帮助中心&nbsp;&nbsp;</option> 
+        
+        </select> 
+        </li>	
+        	
+                 <li>
+                    <dd>文章标题：</dd>
+                    <input type="text"  name="title"  id="title"  value="${news1.title}"  />
+                    <dt></dt>
+                </li>
+               
+                <li>
+                    <dd>文章内容：</dd> 
+                      <dt><script type="text/plain"   id="myEditor" style="width:100%;height:200px;">${news1.depicts}</script>
+           </dt>
+                </li>
+                <li> 
+                
+            
+                <dd>设置文章属性：</dd>
+                 <p>
+                 <input type="hidden" id="state1" value="${news1.state }"/>
+                <select name="state" id="state" >
+	            	<option value="0" id="option1">不推荐</option>
+	            	<option value="1" id="option2">推荐</option>  
+       			</select>
+                 
+                 
+                    <!--   <label>
+                        <input type="checkbox" name="state" id="state" value="1"  />
+                        <span>置顶</span></label> -->
+				</p>
+                    <dt></dt>
+                </li>
+               
+                <li>
+                <dd></dd>
+                 <input type="button" value="提交" onclick="getContent()"class="submitBtn"/>
+                 <!-- <input type="submit" title="预览" value="预览" class="submitBtn"/> -->
+                </li>
+            </ul>
+             </form>
+   	  </div>
+  </div>
+  
+  
+  
+  <div class="cl"></div>
 </div>
-<table>
-    <tr>
-        <td>
-            <button class="btn" onclick="createEditor()"/>创建编辑器</button>
-            <button class="btn" onclick="deleteEditor()"/>删除编辑器</button>
-        </td>
-    </tr>
-</table>
+
 
 <div>
-    <h3 id="focush2"></h3>
+     <h3 id="focush2"></h3> 
 </div>
 <script type="text/javascript">
-     
+$(document).ready(function(){
+	/* var optionid=$("#chanvalue").val();
+	if($("#optionid").val()==$("#channel").val()){
+		$("#optionid").val().attr('selected',true);
+	} */
+	if($('#channel').val()=="新闻报道"){
+		$('#select1').attr('selected',true);
+	}  
+	if($('#channel').val()=="还款公告"){
+		$('#select2').attr('selected',true);
+	}  
+	if($('#channel').val()=="网站公告"){
+		$('#select3').attr('selected',true);
+	}  
+	if($('#channel').val()=="帮助中心"){
+		$('#select4').attr('selected',true);
+	}  
+	if($('#state1').val()=='1'){
+		$('#option2').attr('selected',true);
+	}  
+	});
     //实例化编辑器
     var um = UM.getEditor('myEditor');
     um.addListener('blur',function(){
-        $('#focush2').html('编辑器失去焦点了')
+        //$('#focush2').html('编辑器失去焦点了')
     });
     um.addListener('focus',function(){
         $('#focush2').html('')
@@ -202,11 +256,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         alert(UM.getEditor('myEditor').getAllHtml())
     }
     function getContent() {
+    	if($("#title").val=''){
+    		alert("文章标题不能为空！");
+    		return false;
+    	}
+    	if($("#myEditor").val=''){
+    		alert("文章内容不能为空！");
+    		return false;
+    	}
         var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
         arr.push(UM.getEditor('myEditor').getContent());
-        alert(arr.join("\n"));
+        $("#depicts").val(arr.join("\n"));
+        $("#channel").val( $("#chanel").val());
+        
+        alert("添加成功")
+        
+          $("#form" ).submit();   
     }
     function getPlainTxt() {
         var arr = [];
@@ -282,3 +347,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 </html>
+
+

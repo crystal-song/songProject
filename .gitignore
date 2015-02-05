@@ -1,6 +1,7 @@
 *.class
 .classpath
 /WebRoot/WEB-INF/applicationContext.xml
+/WebRoot/up/jsp/upload/
 .project
 .settings
 # Package Files #

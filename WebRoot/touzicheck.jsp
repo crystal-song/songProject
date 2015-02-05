@@ -8,13 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>投资确认 - 中租宝</title>
 <%--  <jsp:include page="/payment/head.jsp"></jsp:include>   --%>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-
 </head>
 <body>
-<!-- <base target="_blank" />  -->
 <div class="black_bac"></div>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
@@ -23,8 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="msg_con">
   <div class="queren_con" style="height:auto; overflow:hidden">
    <div class="con_title"><strong>投资信息确认</strong></div>
-   <%-- <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank"  onsubmit="onSubmit(${f.onSubmit})"> --%>
-   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post"  onsubmit="return false" target="_blank" >
+   <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" target="_blank"  >
    <ul> 
          <input type="hidden" id="host" name="host">
 
@@ -49,8 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
           <div class="form-group" >
           <%-- //${buyAmount} --%>
-            <label for="paymentAmount">投资金额：</label><input type="text"
+            <label for="paymentAmount">投资金额：</label>
+              <input type="text"
               class="form-control" id="paymentAmount" name="paymentAmount" value="${buyAmount}" />
+              <span class="liquan_y"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
           </div>
           </li>
           <li>
@@ -108,13 +104,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <label for="paymentAmount" style="margin-left:0px; width:118px">使用50元礼卷&nbsp;</label>
                 <input type="hidden" value="${reward.userId}" class="liquan_check"/>                                                            
            </div>
-       </li>
-
-          <li>
-             <div class="form-group">
-                <span class="liquan_check"><strong style="color:#ff6862">*</strong> 投资满3000元可使用礼券</span>
-             </div>            
           </li>
+                    
           <li>
           <div class="form-group" style="display:none;height:0px;" >
             <label for="expired">投标过期时间</label><input type="text"
@@ -144,15 +135,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </div>
           </li>
           <li>
-
-                <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div>   --%>
-                <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%> 
-                <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>  
-                <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input></div> 
-                <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> --%>
+                 <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> --%>
+                 <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%>
+                 <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>
+				 <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input></div>				
           </li>
-          </ul>
-          
+          <li>
+             <div class="form-group font_s">
+               <strong style="color:#ff6862">*</strong>完成投资后，您可以在“我的项目”页面查看您的《投资协议》，此处的预期收益率和预期收益仅供参考。
+             </div>            
+          </li>
+          </ul>          
         </form>
         <div id="dialog01"  style="display:none; height:210px;">
 	         <div class="dialog_title">
@@ -173,53 +166,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
-
+</body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 
-/* $(function(){
-$("#mysubmit_btn").click(function(){
-	  var host=$(".host").val();
-	  alert(host)
-	  
+$(".right_cha").click(function(){
+    $("#dialog01").css("display","none");
+    $(".black_bac").css("display","none");
 });
-	   */
 
 
  function onSubmit(host) {
-   
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
-
-
     if(parseInt(a) < 200){
         alert("投资金额必须大于200");
         return false;
-    }    	
-
-    
+    }    	    
      $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+
             success: function(resp){
                 if(resp === "success"){
-               
+
                     document.getElementById("paymentAmount").value=parseInt(a);
-                    document.getElementById("host").value = host;
-                    //document.getElementById("mysubmit_btn").disabled=true;
+         
+                    document.getElementById("mysubmit_btn").disabled=true;
                     document.getElementById("mysubmit_btn").innerHTML="正在提交...";
                     var form = document.getElementById("form");
+
+                    $("#dialog01").css("display","block");
+                    $(".black_bac").css("display","block");
+                    /* $("#form")[0].submit(); */
+                    form.submit();
+                    document.getElementById("que_btn_ok").disabled() 
+                                       
                     
-                     $("#dialog01").css("display","block");
-                     $(".black_bac").css("display","block");
-                     
-                    
-                    $("#form")[0].submit();
-                    document.getElementById("que_btn_ok").disabled()                    
+                                   
+
 
                 }else{
                     alert(resp);                  
                 }
-            }}); 
+            }});
   }
- 
+
+
 </script>
 
 <script type="text/javascript">
@@ -233,19 +225,23 @@ $(document).ready(function(e) {
 	
 	   $(".right_cha").click(function(){
 		   window.location.reload(true);
-	   });
-	   $(".right_cha").click(function(){
-           $("#dialog01").css("display","none");
-           $(".black_bac").css("display","none");
+
        });
 	   $("#paymentAmount").keyup(function(){
 		   
-		   if($(this).val()<3000){			   
+		   if($(this).val()<3000){		
+			  
 		     	$(".liquan_hide").css("display","none")
 		     	
 		 	  }  else{
-		 		 $(".liquan_hide").css("display","block")
+		 		 $(".liquan_hide").css("display","block");
+		 		if($(".liquan_check").val()==""){
+			    	   $(".liquan_hide").css("display","none")
+			       }
 		 	  }
+		
+			   
+		  
 	   });
 	   
 	   if($("#paymentAmount").val()<3000 || $(".liquan_check").val()==""){
@@ -262,10 +258,10 @@ $(document).ready(function(e) {
 		calc();
 		$("#paymentAmount").change(function(e) {
 			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
-				//$(this).val(parseInt($(".lev_start").eq(0).html()));
+				$(this).val(parseInt($(".lev_start").eq(0).html()));
 				}
 			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
-				//$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
+				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
 				}
 	        calc();
 	        
@@ -296,8 +292,9 @@ $(document).ready(function(e) {
 			       $("#preview_rate").val(b+"%");	 
 			         
 			/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元"); */  			
-			     var a=parseFloat(parseInt(t*r*100+0.5)/100)				     
+			     var a=parseFloat(parseInt(t*r*100)/100)				     
 				     a= a.toFixed(2)
+				       
 			     $("#preview_income").val(a+"元");
 			}
 		$(".lilv_table").click(function(){
@@ -315,10 +312,4 @@ $(document).ready(function(e) {
 		  
 	  
 }); 
-</script>  
-</body>
-
-
-
-
-</html>
+</script> 
