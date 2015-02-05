@@ -160,7 +160,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    
 
     	    	var vale=$("#time").val();
-    	    	var type_vale=$("#type").val();   	    	
+    	    	var type_vale=$("#type").val();
+    	    	var num=0;
+    	    	
+    	    	//var type_fir={"timeall"};    	    	
+    	    	function bacIndex(){
+    	    		
+    	    		
+    	    	}
+    	    	$(".new_fir_one li:eq(num)").addClass('label_bak').siblings().removeClass('label_bak');
+    	    	
     	    	if(vale=="timeall"){
     	    		$(".new_fir_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	}
