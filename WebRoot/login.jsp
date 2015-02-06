@@ -32,7 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	 
         <div class="zh_right">
         	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名" /></div>
-            <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码" /></div> 
+            <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码" /></div>
+            <div id="tips"></div> 
             <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="<%=path%>/welcome/reg"><img src="<%=path%>/images/dl01_05.jpg" /></a>
             </div>
             <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
@@ -73,6 +74,7 @@ function query(){
 	
     if($('#name').val() != ''){
     	if($('#password').val() != ''){
+
             $.ajax({
                 type: 'POST',
                 url: '<c:url value="/welcome/login"/>',
@@ -87,24 +89,18 @@ function query(){
                         /* window.open('<c:url value="/welcome/session"/>', '_self'); */
                     } else {
                     	$('#password').val('');
-                     //  alert('用户名或密码错误或用户没有激活！');
-                        $("#dialog01").css("display","block");
-                        $(".black_bac").css("display","block");	
+                        //alert('用户名或密码错误或用户没有激活！');
+                        $("#tips").text('*用户名或密码错误！ ');
                     }
                 }
             });
         }else{
-             //alert('请输入密码！ ');
-             $("#dialog01").css("display","block")
-             $(".p_font").text("请输入密码")
-             $(".black_bac").css("display","block");	
+            // alert('请输入密码！ ');	
+             $("#tips").text('*请输入密码！ ');
         }
      }else{
-       //alert('请输入用户名！');
-       $("#dialog01").css("display","block")
-             $(".p_font").text("请输入用户名")
-             $(".black_bac").css("display","block");	
-             
+            //alert('请输入用户名！');  
+            $("#tips").text("*请输入用户名");
              
      }   
 }
@@ -149,11 +145,13 @@ window.onload=function(){
             	  
             	 $(".right_cha").click(function(){
             		 $("#dialog01").css("display","none")
-            		 window.location.reload(true);
+            		  $(".black_bac").css("display","none");	
+            		// window.location.reload(true);
             	 }) 
             	 $(".diabtn").click(function(){
             		 $("#dialog01").css("display","none")
-            		 window.location.reload(true);
+            		  $(".black_bac").css("display","none");	
+            		// window.location.reload(true);
             	 }) 
             	  
               })  

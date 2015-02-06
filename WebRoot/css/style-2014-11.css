@@ -3759,9 +3759,10 @@ ul,li{
 }
 .zh_bot{ 
 	width:239px; 
-	height:50px; 
-	padding-top:14px; 
+	height:40px; 
+	/* padding-top:14px;  */
 	text-align:left;
+	margin-top:3px;
 }
 .zh_wby{ 
 	width:220px; 
@@ -6196,7 +6197,14 @@ ul,li{
 	float:left;
 	height:20px;
 }
-
+#tips{
+	width:240px;
+	height:20px;
+	line-height:20px;  
+	text-align:right;
+	color:#e81c05;
+	text-align:left;
+}
 
 
 
