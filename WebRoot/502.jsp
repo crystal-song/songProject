@@ -5,7 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <%@ include file="/includes/taglibs.jsp"%>
- <%-- <meta http-equiv="refresh" content="3;URL=<%=path%>/?502" />  --%>
+  <meta http-equiv="refresh" content="15;URL=<%=path%>/?502" />  
 <title>网站维护 - 中租宝</title>
 
 </head>
