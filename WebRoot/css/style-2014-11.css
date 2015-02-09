@@ -6066,9 +6066,12 @@ ul,li{
 	margin-top:30px;
 }
 
-
-
-
+.back_pic{
+	width:700px;
+	height:500px;
+	margin:100px auto;
+	background:url(../img/images-2014-11/502.png) 5px 0px  no-repeat;
+}
 
 
 
