@@ -113,7 +113,7 @@ var index=4;
 <div class="clear_height"></div>
 
 <!-- links start -->
-<%@ include file="/includes/links.jsp" %>
+
 <!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->

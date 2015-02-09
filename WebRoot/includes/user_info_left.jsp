@@ -7,16 +7,16 @@
               <div class="u_left_mian u_left_red"><i class="mian_pic03"></i><span>账户管理</span></div>
                <ul class="u_left_sec">
                 <li>
-                  <a href="<%=path%>/wel/account">个人信息</a>
+                  <a href="/wel/account">个人信息</a>
                 </li>
 				<li style="display:block;">
-                  <a href="<%=path%>/anquanshezhi.jsp">安全设置</a>
+                  <a href="/anquanshezhi.jsp">安全设置</a>
                 </li>
                 <li style="border-bottom:0; display:none">
-                  <a href="<%=path%>/tongzhishezhi.jsp" >通知设置</a>
+                  <a href="/tongzhishezhi.jsp" >通知设置</a>
                 </li>
                 <li style="border-bottom:0;">
-                  <a href="<%=path%>/account/tuijian" >推荐管理</a>
+                  <a href="/account/tuijian" >推荐管理</a>
                 </li>
               </ul>
            </li>
@@ -24,17 +24,17 @@
               <div class="u_left_mian"><i class="mian_pic01"></i><span>资产管理</span></div>
               <ul class="u_left_sec">
                 <li>
-                 <a href="<%=path%>/gate/service" >资
+                 <a href="/gate/service" >资
                  产统计</a>
                 </li>
                 <li>
-                 <a href="<%=path%>/gate/recharge">充值</a>
+                 <a href="/gate/recharge">充值</a>
                 </li>
                 <li>
-                 <a href="<%=path%>/gate/drawMoney">提现</a>
+                 <a href="/gate/drawMoney">提现</a>
                 </li>
                 <li>
-                 <a href="<%=path%>/account/liquan?page=1&catlog=0">我的礼券</a>
+                 <a href="/account/liquan?page=1&catlog=0">我的礼券</a>
                 </li>
 
               </ul>
@@ -44,28 +44,28 @@
               <div class="u_left_mian"><i class="mian_pic02"></i><span>投资管理</span></div>
               <ul class="u_left_sec">
                 <li style="display:none;">
-                  <a href="<%=path%>/yitou.jsp">已投项目</a>
+                  <a href="/yitou.jsp">已投项目</a>
                 </li>
                 <li style="display:none;">
-                  <a href="<%=path%>/shoucang.jsp">收藏项目</a>
+                  <a href="/shoucang.jsp">收藏项目</a>
                 </li>
                 <li>
-                  <a href="<%=path%>/gate/userProject">我的项目</a>
+                  <a href="/gate/userProject">我的项目</a>
                 </li>
                 <c:if test="${userinfo.isborrow==true }">
                 <li>
-                  <a href="<%=path%>/loan/loanProduct">我的借款</a>
+                  <a href="/loan/loanProduct">我的借款</a>
 
                 </li>
                 </c:if>
                 <li>
-                  <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
+                  <a href="/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
-         <%--        <li>
-                  <a href="<%=path%>/prolist.jsp">我的众筹</a>
-                </li> --%>
+         <li>
+                  <a href="/prolist.jsp">我的众筹</a>
+                </li> 
                 <li style="display:none;">
-                  <a href="<%=path%>/zhaiquan.jsp">债权转让</a>
+                  <a href="/zhaiquan.jsp">债权转让</a>
                 </li>
               </ul>
            </li>
@@ -74,7 +74,7 @@
              <div class="u_left_mian"><i class="mian_pic04"></i><span>消息管理</span></div>
               <ul class="u_left_sec">
                 <li style="border-bottom:0">
-                  <a href="<%=path%>/xitongxiaoxi.jsp">系统消息</a>
+                  <a href="/xitongxiaoxi.jsp">系统消息</a>
                 </li>
               </ul>
            </li>

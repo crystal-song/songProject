@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="clear_height"></div>
 
 <!-- links start -->
-<%@ include file="/includes/links.jsp" %>
+
 <!-- links end -->
 <div class="clear"></div>
 <!-- footer start -->
