@@ -6,7 +6,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="/includes/taglibs.jsp" %> 
-<title>安全设置 - 我的账户 - 中租宝</title>
+<title>我的地址 - 我的账户 - 中租宝</title>
 <script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
 <body>
 <!-- top start  -->
