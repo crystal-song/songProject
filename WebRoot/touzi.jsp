@@ -188,181 +188,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(e){
-	$(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(1).children("p").addClass("headwd_color");
-    $(".right_lable li").click(function(){
-      var index = $(this).index();
-      $(this).addClass('right_lable_red').siblings().removeClass('right_lable_red');
-      $(".touzi_cont div.con_list").eq(index).css("display","block").siblings().css("display","none");
-    });
- /*daojishi*/   
-    $(".open_time").each(function(i, e){		
-		var stars=e.id.split("_");
-		var val01=e.value;
-		val01=val01.substr(0,val01.length-2);
-		var time_id=stars[2];
-		var time_new=val01.replace(/\-/g,"/");	
-		var pro_status=$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").text();
-		 if(pro_status=="预热中"){
-           Forinterval(time_new,time_id);           
-		} 
-		 if(pro_status=="已满标" || pro_status=="还款中" || pro_status=="已完成" || pro_status=="融资中"){			 
-			$(this).siblings(".floor_num01").children(".floor_img01").children(".last_time01").css("display","none");
-		}
-		   
-		    if(pro_status=="还款中"){
-		    	$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").css("background","#9fa1a1")
-		    }
-		    else if(pro_status=="已满标"){
-		    	$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").css("background","#ff9900")
-	        }	       
-	        else if(pro_status=="已完成"){
-	        	$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").css("background","#ccc")
-	        }
-	        else if(pro_status=="融资中"){
-	        	$(this).siblings(".floor_num01").children(".aim01").children(".pro_status").css("background","#f9b72c")
-		    }	
-	}); 
-    function getRTime(time_new, time_id){
-        var EndTime = new Date(time_new);
-        var NowTime = new Date();
-        var t =EndTime.getTime() - NowTime.getTime();
-        var d=Math.floor(t/1000/60/60/24);        
-        var h=Math.floor(t/1000/60/60%24);        
-        var m=Math.floor(t/1000/60%60); 
-        var s=Math.floor(t/1000%60);  
-        if(d+h+m+s==0){
-        	document.location.reload();
-         	clearInterval(timer);
-         }
-        
-         $('#t_d_'+time_id).text(d+"天");
-         $('#t_h_'+time_id).text(h+"时");
-         $('#t_m_'+time_id).text(m+"分");
-         $('#t_s_'+time_id).text(s+"秒"); 
-         if(d==0 && h<24){
-         	$('#t_s_'+time_id).show();
-         	$('#t_d_'+time_id).hide();
-         	
-         }else{
-        	$('#t_s_'+time_id).hide()
-         }
-    }
-    function Forinterval(time_new,time_id){
-    var timer=	window.setInterval(function(){
-    	  getRTime(time_new, time_id);
-        }, 1000);
-}    
-    
-    
-});
-
-
+ var head_index=1; 
+</script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?v=1"></script>
+<script type="text/javascript">
  var myFilter=new Array();
-
-function filterChange(){
-	var filterIndex= new Array();
-	switch (myFilter[0]){
-	case 10:
-		filterIndex[0]=1;
-		break;
-	case 15:
-		filterIndex[0]=2;
-		break;
-	case 20:
-		filterIndex[0]=3;
-		break;
-		break;
-	default:
-		filterIndex[0]=0;
-	}
-	switch (myFilter[1]){
-	case 3:
-		filterIndex[1]=1;
-		break;
-	case 6:
-		filterIndex[1]=2;
-		break;
-	case 12:
-		filterIndex[1]=3;
-		break;
-	case 24:
-		filterIndex[1]=4;
-		break;	
-	default:
-		filterIndex[1]=0;
-	}
-	switch (myFilter[2]){
-	case 200:
-		filterIndex[2]=1;
-		break;
-	case 500:
-		filterIndex[2]=2;
-		break;
-	case 1000:
-		filterIndex[2]=3;
-		break;
-	case 2000:
-		filterIndex[2]=4;
-		break;
-	default:
-		filterIndex[2]=0;
-	}
-	switch (myFilter[3]){
-	case 50:
-		filterIndex[3]=1;
-		break;
-	case 80:
-		filterIndex[3]=2;
-		break;
-	case 100:
-		filterIndex[3]=3;
-		break;
-	default:
-		filterIndex[3]=0;
-	}
-
-	switch (myFilter[4]){
-	case 2:
-		filterIndex[4]=1;
-		break;
-	case 3:
-		filterIndex[4]=2;
-		break;
-	case 4:
-		filterIndex[4]=3;
-		break;
-	default:
-		filterIndex[4]=0;
-	}
-	$(".filter li").removeClass("dq");
-	for(i=0;i<5;i++){
-		$(".filter").eq(i).children("li").eq(filterIndex[i]).addClass("dq");
-	}
-} 
-
- function pa(clicked){
-	myFilter[clicked.parent().index(".filter")]=clicked.attr("value");
- 	for(i=0;i<5;i++){
-		$("#form input").eq(i).val(myFilter[i]);
-		console.log(i+">>"+$("#form input").eq(i).val());
-	} 
-	 $("#yearIncome").val(myFilter[0]);
-	$("#financingPeriod").val(myFilter[1]);
-	$("#financingMoney").val(myFilter[2]);
-	$("#financingProgress").val(myFilter[3]);
-	$("#projectStatus").val(myFilter[4]);
-	$("#pageNo").val(1);
-	//console.log(myFilter);
-	//alert("avd");	
-	$("#form" ).submit();
-} 
- 
- function jumpPage(pag){
-	/* alert("ccccccccccc"+pag); */	   
+  function jumpPage(pag){
+  
 	$('#pageNo').val(pag); 	    	    
 	$("#yearIncome").val(myFilter[0]);
 	$("#financingPeriod").val(myFilter[1]);
@@ -370,21 +204,12 @@ function filterChange(){
 	$("#financingProgress").val(myFilter[3]);
 	$("#projectStatus").val(myFilter[4]);    
 	 $("#form" ).submit(); 
- } 
+ }  
 	
 
 window.onload=function(e) {
 	//pagerInit(11,3);//${page.totalPage},${page.pageNo}
 	pagerInit(${page.totalPage},${page.pageNo});
-	/* myFilter=[${product.yearIncome},${product.financingPeriod},${product.financingMoney},${product.financingProgress},${product.projectStatus}]
-	if(myFilter[0]==null){
-		myFilter=[1,1,1,1,1];
-	}
-	//console.log(myFilter);
-	filterChange();
-	$(".filter li").bind("click",function(e){
-		pa($(this));
-	}); */
 }
    
 function pagerInit(a,b){//${page.totalPage},${page.pageNo}

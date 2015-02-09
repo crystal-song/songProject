@@ -68,8 +68,8 @@
               </c:if>
              
              <c:if test="${!empty name}">
-              <span class="username">您好，<strong>${name}</strong></span>         
-              <div class="tuichu">
+              <span class="username_fir">您好，<strong>${name}</strong></span>         
+              <div class="tuichu_fir">
                   <ul>
                     <li class="zhang"><a href="<%=path%>/wel/account" class="acount">我的账户</a></li>
                     <li  class="zhang" style="background:#fff"><a href="<%=path%>/welcome/logout" class="out">退出</a></li>
@@ -81,49 +81,3 @@
   <!-- <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2::52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> -->                                                  
 </div>
 
-
-<script type="text/javascript">
-$(document).ready(function(){
-	var index_reg="";
-	$('.res').click(function(){
-		$('.ie_text').css('display','none');
-	  });
-	
-	
-
-    $(".header li").mouseover(function(){ 
-      var index=$(this).index();      
-      $('.top div').eq(index).show();
-    $(this).addClass('head_red').siblings().removeClass('head_red');
-     
-
-    }).mouseout(function(){
-       var index=$(this).index();
-       $('.top div').eq(index).hide();
-    });
-
-    $(".top div").mouseover(function(){ 
-      var index=$(this).index();
-      $(this).show();
-     
-    }).mouseout(function(){
-       var index=$(this).index();
-       $(this).hide();
-    });
-    $(".username").mouseover(function(){
-    	
-       $(".tuichu").show();
-       $(".tuichu").mouseover(function(){
-      	  $(this).show();
-        });
-      }).mouseout(function(){
-       $(".tuichu").hide();
-      });
-      $(".tuichu").mouseover(function(){
-      $(this).show();
-      }).mouseout(function(){
-      $(this).hide();
-      });
-
-});
-</script>
