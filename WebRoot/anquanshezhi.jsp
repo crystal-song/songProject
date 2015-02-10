@@ -313,7 +313,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          		 }else if(val.length!=11){
          			$(this).parent().siblings(".tishitext").text("您的手机号填写不正确，请重新填写。"); 
          		 }else{
-         			$(this).parent().siblings(".tishitext").text("您的手机号填写正确。"); 
+         			$(this).parent().siblings(".tishitext").text("您的手机号填写正确。").css("color","#169616"); 
          		 } 
          	 }          	       	 
         	 
@@ -324,7 +324,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          		 }else if(Expression.test(val)){
          			 $(this).parent().siblings(".tishitext").text("您的姓名不正确！请重新填写。"); 
          		 }else{         			
-         			  $(this).parent().siblings(".tishitext").text("您的姓名填写正确。");     		 
+         			  $(this).parent().siblings(".tishitext").text("您的姓名填写正确。").css("color","#169616");     		 
          		      }  
         		 
          	     function checkusername(val){            	    	          	     
@@ -349,7 +349,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       $(this).parent().siblings(".tishitext").text("您的身份证填写不正确。");
 					   return false;      
         		 }else{
-                      $(this).parent().siblings(".tishitext").text("您的身份证填写正确。");
+                      $(this).parent().siblings(".tishitext").text("您的身份证填写正确。").css("color","#169616");
 					   return true;      
         		 }   				  				  
 				  			  				  				 
@@ -364,7 +364,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       			    	$(this).parent().siblings(".tishitext").text("您的邮箱格式不正确！请重新填写。");     
       			    	return false;        				      			         				
       			  }else{       			           				  
-      				   $(this).parent().siblings(".tishitext").text("您的邮箱填写正确。");     
+      				   $(this).parent().siblings(".tishitext").text("您的邮箱填写正确。").css("color","#169616");
+      				      
       				    return true;        			
       			  }				  
 			}      	 
@@ -398,7 +399,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			          $(this).parent().siblings(".tishitext").text("兩次輸入的密碼不一致。");
 						 return false;
 					}else{						
-					  $(this).parent().siblings(".tishitext").text("您的密码输入正确");
+					  $(this).parent().siblings(".tishitext").text("您的密码输入正确").css("color","#169616");
 						  return true;
                        }
 			 }

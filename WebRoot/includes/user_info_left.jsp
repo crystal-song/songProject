@@ -24,8 +24,9 @@
               <div class="u_left_mian"><i class="mian_pic01"></i><span>资产管理</span></div>
               <ul class="u_left_sec">
                 <li>
-                 <a href="/gate/service" >资
-                 产统计</a>
+
+                 <a href="/gate/service" >资产统计</a>
+                 <a href="<%=path%>/gate/service" >资产统计</a>
                 </li>
                 <li>
                  <a href="/gate/recharge">充值</a>
