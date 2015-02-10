@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
 <%@ include file="/includes/taglibs.jsp" %> 
 
 <title>支付 - 我的众筹 - 中租宝</title>
@@ -93,15 +90,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>       
         
       </div>   
-      <a class="zhifu checkok" href="<%=path%>/zhifu_ok.jsp" target="_blank">支付</a>
+      <a class="zhifu checkok" href="/zhifu_ok.jsp" target="_blank">支付</a>
       </form>
    </div>
    <div class="juan_con_right">
-     <div class="juan_pic"><img src="<%=path%>/img/images-2014-11/test_pic.png"/></div>
+     <div class="juan_pic"><img src="/img/images-2014-11/test_pic.png"/></div>
      <p>我们会登记您提供的6个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。</p>
-     <div class="juan_pic"><img src="<%=path%>/img/images-2014-11/test_pic.png"/></div>
+     <div class="juan_pic"><img src="/img/images-2014-11/test_pic.png"/></div>
      <p>我们会登记您提供的6个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。</p>
-     <div class="juan_pic"><img src="<%=path%>/img/images-2014-11/test_pic.png"/></div>
+     <div class="juan_pic"><img src="/img/images-2014-11/test_pic.png"/></div>
      <p>我们会登记您提供的6个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。</p>
    </div>
    <div id="dialog01"  style="display:none; height:210px;">
@@ -110,10 +107,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	           <div class="right_cha"></div>
 	         </div>
 	         <div class="touzi_text">
-	           <p style="background:url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">如果您支付成功：<a href="<%=path%>/prolist.jsp">查看我的众筹项目</a></p>          
+	           <p style="background:url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">如果您支付成功：<a href="/prolist.jsp">查看我的众筹项目</a></p>          
 	         </div>
 	         <div class="touzi_text">
-	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您支付失败：<a href="<%=path%>/juanzeng1.jsp">重新支付</a> | <a  href="<%=path%>/contact.jsp">联系客服</a></p>          
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">如果您支付失败：<a href="/juanzeng1.jsp">重新支付</a> | <a  href="/contact.jsp">联系客服</a></p>          
 	         </div>	       
   </div>
 </div>                
@@ -129,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 var navIndex=2;  
 var indexs=0;
@@ -140,8 +137,8 @@ $(document).ready(function(e){
 	
 	
 	$(".dizhi div").click(function(){
-		$(this).css("background","url(<%=path%>/img/images-2014-11/kuang.png)  no-repeat");
-		$(this).siblings().css("background","url(<%=path%>/img/images-2014-11/kuang1.png)  no-repeat");
+		$(this).css("background","url(/img/images-2014-11/kuang.png)  no-repeat");
+		$(this).siblings().css("background","url(/img/images-2014-11/kuang1.png)  no-repeat");
 	})
 	$(".j_radio02").click(function(){
 		$(this).parent().siblings(".jcon_sec").css("display","none");

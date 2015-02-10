@@ -83,6 +83,8 @@
 
 
 <script type="text/javascript">
+
+
 $(document).ready(function(){
 	var index_reg="";
 	$('.res').click(function(){
