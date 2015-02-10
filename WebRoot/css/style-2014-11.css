@@ -6084,7 +6084,7 @@ ul,li{
 
 .dizhi_table li{
 	width:100%;
-	height:40px;
+	min-height:40px;
 	border-bottom:1px solid #ccc;
 }
 .dizhi_table li span{
@@ -6097,15 +6097,27 @@ ul,li{
 }
 .dizhi_input{
 	width:650px;
-	margin:0 auto;
-	margin-top:5%;
+	margin:5% auto 3%;
 	display:none;
+	overflow:hidden;
 }
 .dizhi_input li{
 	width:100%;
 	height:40px;	
 }
+.m_dizhi{
+	display:none;
+}
+#form_bott li{
+	border-bottom:none;
 
+}
+#form_bott  li span{
+    line-height:15px;
+}
+.checkheight{
+	overflow:hidden;
+}
 .dizhi_input span{
     display:inline-block;
 	float:left;
@@ -6205,9 +6217,21 @@ ul,li{
 	color:#e81c05;
 	text-align:left;
 }
+.touzi_text .t_green{
+	color:#85ba39;
+	font-size:14px;
+	width:160px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	background:url(../img/images-2014-11/tishi_backred1.png)   no-repeat;
+}
 
+.touzi_text .t_green:hover{
+	color:#85ba39;
+}
 
-
-
-
+.style_dialog{
+	 display:none;
+}
 
