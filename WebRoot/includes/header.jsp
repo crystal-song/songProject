@@ -53,7 +53,7 @@
                </a>
             </li>
             <li><a href="/gate/service"><span><strong>我的账户</strong></span><p>Account</p></a></li>
-         <li><a href="/zhongcou.jsp"><span><strong>我要众筹</strong></span><p>Crowdfunding</p></a></li>  
+         <li><a href="/hero/all"><span><strong>我要众筹</strong></span><p>Crowdfunding</p></a></li>  
             <li><a href="/guarantee/getchannel"><span><strong>新闻公告</strong></span><p>News</p></a></li>
             <li><a href="/help_con.jsp"><span><strong>帮助中心</strong></span><p>Help</p></a></li>
             <li><a href="/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Application</p></a></li>
@@ -80,4 +80,6 @@
   </div>  
   <!-- <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2::52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> -->                                                  
 </div>
+
+
 
