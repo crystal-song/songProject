@@ -3762,9 +3762,10 @@ ul,li{
 }
 .zh_bot{ 
 	width:239px; 
-	height:50px; 
-	padding-top:14px; 
+	height:40px; 
+	/* padding-top:14px;  */
 	text-align:left;
+	margin-top:3px;
 }
 .zh_wby{ 
 	width:220px; 
@@ -5994,7 +5995,7 @@ ul,li{
 	display:inline-block;
 	float:right;
 	margin-right:40px;
-	margin-top:10%;
+	margin-top:13%;
 	border-radius:3px;
 	color:#fff;
 	line-height:30px;
@@ -6066,13 +6067,182 @@ ul,li{
 	margin-top:30px;
 }
 
+
 .back_pic{
 	width:700px;
 	height:500px;
 	margin:100px auto;
 	background:url(../img/images-2014-11/502.png) 5px 0px  no-repeat;
+
+.add_dizhi{
+	width:140px;
+	height:40px;
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+	background:url(../img/images-2014-11/add_dizhi.png) 5px 0px  no-repeat;
+}
+.add_dizhi:hover{
+	background:url(../img/images-2014-11/add_dizhi1.png) 5px 0px  no-repeat;
 }
 
+.dizhi_table{
+	width:810px;
+	height:430px;
+	margin-top:5%;
+}
 
+.dizhi_table li{
+	width:100%;
+	min-height:40px;
+	border-bottom:1px solid #ccc;
+}
+.dizhi_table li span{
+	width:100px;
+	height:40px;
+	line-height:40px;
+	float:left;
+	display:inline-block;
+	
+}
+.dizhi_input{
+	width:650px;
+	margin:5% auto 3%;
+	display:none;
+	overflow:hidden;
+}
+.dizhi_input li{
+	width:100%;
+	height:40px;	
+}
+.m_dizhi{
+	display:none;
+}
+#form_bott li{
+	border-bottom:none;
 
+}
+#form_bott  li span{
+    line-height:15px;
+}
+.checkheight{
+	overflow:hidden;
+}
+.dizhi_input span{
+    display:inline-block;
+	float:left;
+	text-align:right;
+	margin-right:10px;
+	height:40px;
+	width:80px;
+}
+.dizhi_input strong{
+	color:#ee0000;
+	margin-left:3px;
+}
+.dizhi_input input{
+	width:170px;
+	float:left;
+}
+.dizhi_input .di_hei{
+	height:140px;
+}
+.di_hei textarea{
+	float:left;
+	width:455px;
+	height:113px;
+}
+.chose{
+	width:600px;
+	margin:10px auto;
+}
+.chose input{
+	width:105px;
+	height:36px;
+    float:left;
+}
+.subbtn{
+	margin:0 50px 0 30%;
+	border:none;
+	border-radius:3px;
+	background:#ff665f;
+	color:#fff;
+	cursor:pointer;
+}
+.subbtn:hover{
+	background:#c60900;
+}
+.subbtn1{
+	border:none;
+	border-radius:3px;
+	background:#ccc;
+	color:#fff;
+	cursor:pointer;
+}
+.subbtn1:hover{
+	background:#999;
+>>>>>>> zhao
+}
+
+#table_wid{
+	width:190px;
+}
+
+.m_green{
+	color:#85ba39;
+	display:inline-block;
+	width:40px;
+	cursor:pointer;
+}
+.m_green:hover{
+	color:#169616;
+	
+}
+.chbox{
+	margin-top:13px;
+}
+.fi_li{
+	margin-top:70px;
+	border-top:1px solid #ccc;
+}
+#s_province{
+	width:100px;
+	height:20px;
+	float:left;
+}
+#s_city{
+	width:100px;
+	height:20px;
+	float:left;
+}
+#s_county{
+	width:auto;
+	float:left;
+	height:20px;
+}
+#tips{
+	width:240px;
+	height:20px;
+	line-height:20px;  
+	text-align:right;
+	color:#e81c05;
+	text-align:left;
+}
+.touzi_text .t_green{
+	color:#85ba39;
+	font-size:14px;
+	width:160px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	background:url(../img/images-2014-11/tishi_backred1.png)   no-repeat;
+}
+
+.touzi_text .t_green:hover{
+	color:#85ba39;
+}
+
+.style_dialog{
+	 display:none;
+}
 

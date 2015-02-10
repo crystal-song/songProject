@@ -137,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <li>
                  <%-- <div class="que_btn"><a src="javascript:;" onclick="onSubmit('${f.onSubmit}')" id="mysubmit_btn">确定</a></div> --%>
                  <%-- <div class="que_btn"><input type="button" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')"></input></div> --%>
-                 <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/>
+                 <%-- <input type="hidden" value="${f.onSubmit}" class="host" value="确定"/> --%>
 				 <div class="que_btn"><input type="submit" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" style="margin-left:348px"></input></div>				
           </li>
           <li>
@@ -174,6 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?v=1"></script>
 <script type="text/javascript">
+
  function onSubmit(host) {
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
@@ -185,17 +186,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             success: function(resp){
                 if(resp === "success"){
-
-                    document.getElementById("paymentAmount").value=parseInt(a);       
+                    document.getElementById("paymentAmount").value=parseInt(a);        
                     document.getElementById("mysubmit_btn").disabled=true;
                     document.getElementById("mysubmit_btn").innerHTML="正在提交...";
                     var form = document.getElementById("form");
-
                     $("#dialog01").css("display","block");
                     $(".black_bac").css("display","block");
-                    /* $("#form")[0].submit(); */
-                    form.submit();
-                    document.getElementById("que_btn_ok").disabled() 
+                    form.submit();            
                 }else{
                     alert(resp);                  
                 }
@@ -206,12 +203,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 
 <script type="text/javascript">
+
  
 $(document).ready(function(e) { 
 	 	
  
 	   /*投资收益率*/
-	   
 	   var rate_lv=$(".lev_start").length;
 		calc1();
 		$("#paymentAmount").change(function(e) {
@@ -224,12 +221,15 @@ $(document).ready(function(e) {
 	        calc1();
 	        
 	    });
+
 		function calc1(){
-			//console.log("-------calc-------");
 			var t=parseInt($("#paymentAmount").val());  
 			var r=0;                       				
 			var p=parseInt($("#preview_Period").val()); 
-			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
+			if(t%100!=0){
+			   return false;			 
+				
+			}
 			for(i=0;i<rate_lv;i++){
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
 					if(parseInt($(".lev_mi").eq(i).html())>0){
@@ -237,23 +237,23 @@ $(document).ready(function(e) {
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
 						}					
-					r=r/100/365*p;   				
-					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
-					}				 
+
+					r=r/100/365*p;   
+					}
+
 				}
 			   var b=parseFloat(parseInt(r*10000)/100);		        
 			       b=b.toFixed(2)
-			       $("#preview_rate").val(b+"%");	 
-			         
-			/* $("#preview_income").val(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元"); */  			
+			       $("#preview_rate").val(b+"%");	 			
 			     var a=parseFloat(parseInt(t*r*100)/100)				     
 				     a= a.toFixed(2)
 				       
 			     $("#preview_income").val(a+"元");
 			}
+
         //table
-		 $(".lilv_table").click(function(){
-            
+		$(".lilv_table").click(function(){
+
 			 if($(".new_table").css("display")=="none"){				
 				$(".new_table").css({"display":"block"});
 				$(this).css("background","url(<%=path%>/img/images-2014-11/jiantou_er.png) 100px  16px  no-repeat")
@@ -261,8 +261,8 @@ $(document).ready(function(e) {
 				$(".new_table").css({"display":"none"});
 				$(this).css("background","url(<%=path%>/img/images-2014-11/jiantou_xi.png)  100px  16px no-repeat")
 			} 
+
 		}); 
-		  
-	  
+
 }); 
 </script> 

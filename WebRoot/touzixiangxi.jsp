@@ -448,51 +448,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
 /*提交表单*/
- function mysubmit(){
-		    		if($("#username").val()==$("#targetPlatformUserNo").val()){
-		    			alert("用户不能投资自己的项目！");
-		    			return false;
-		    		}
-		    		if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
-		    			//alert("投资金额不能为空！");
-		    			$(".newye").css("display","block")
-		    		    $(".black_bac").css("display","block");		
-		    			return false;
-		    			}
-		    		//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-		    		
-		    		if($("#buyAmount").val()<200){
-		    			//alert("投资金额不能低于200元！");
-		    			
-		    			return false;
-		    		}
-		    		
-		    		if($("#buyAmount").val()>touzi_money){
-		    			//alert("投资金额不能高于可投资金额！");
-		    			
-		    			return false;
-		    		}
-		    		
-		    	    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
-		    	        success: function(resp){
-		    	            if(resp === "success"){
-		    	                var form = document.getElementById("form");
-		    	                form.submit();
-		    	            }else{
-		    	               // alert(resp);
-		    	            	$(".newye").css("display","block")
-		    	        	    $(".black_bac").css("display","block");
-		    	            	$(".p_font").text(resp) ;
-		    	            	if(resp=="请登录"){
-		    	            		$(".abs_tips p:eq(1)").css("display","block");
-		    	            	}
-		    	            	if(resp=="您的可用余额不足"){
-		    	            		$(".abs_tips p:eq(0)").css("display","block");            		
-		    	            	}		    	            	
-		    	            	
-		    	            }
-		    	        }});
-		    	}			
+function mysubmit(){
+	if($("#username").val()==$("#targetPlatformUserNo").val()){
+		alert("用户不能投资自己的项目！");
+		return false;
+	}
+	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
+		//alert("投资金额不能为空！");
+		$(".newye").css("display","block")
+	    $(".black_bac").css("display","block");		
+		return false;
+	}
+	if($("#buyAmount").val()%100!=0){
+		/* alert("投资金额必须为100的整数倍！"); */
+		return false;
+	}
+	if($("#buyAmount").val()<200){
+		//alert("投资金额不能低于200元！");		
+		return false;
+	}	
+	if($("#buyAmount").val()>touzi_money){
+		//alert("投资金额不能高于可投资金额！");		
+		return false;
+	}
+	
+    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
+        success: function(resp){
+            if(resp === "success"){
+                var form = document.getElementById("form");
+                form.submit();
+            }else{
+               // alert(resp);
+            	$(".newye").css("display","block")
+        	    $(".black_bac").css("display","block");
+            	$(".p_font").text(resp) ;
+            	if(resp=="请登录"){
+            		$(".abs_tips p:eq(1)").css("display","block");
+            	}
+            	if(resp=="您的可用余额不足"){
+            		$(".abs_tips p:eq(0)").css("display","block");            		
+            	}
+            	
+            	
+            }
+        }});
+}	
 
 
 
@@ -542,7 +542,42 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 		//---------收益计算器结束-------------
 		
 
- 
+
+	/*  $("#buyAmount").keyup(function(){
+		  
+		    var str= /^[0-9]*$/;
+		    var val=$("#buyAmount").val();
+		    $('.neirong').css('display','block');
+		    alert(val);
+		       if(val==""){			    
+		    	 $('.neirong').html("您输入的金额不能为空");
+				   return false;			    	
+		        }
+		        if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是整数,请重新输入");
+				   return false;
+			    }		       	
+		        if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是整数,请重新输入");
+				   return false;
+			    }
+			    if(val<200){
+				   $('.neirong').html("您输入的金额小于200元,请重新输入");
+				   return false;
+			    }
+			    if(val>touzi_money){
+					   $('.neirong').html("您的投资金额大于可投资投资金额");
+					   return false;
+				    }
+			    if(parseInt(val)%100!=0){	
+				  $('.neirong').html("输入的资金必须是100的整数倍");
+				  return false;
+				   }
+			      
+			      $('.neirong').html('您要投入的实际金额为:'+val);	 
+			       */
+			   
+
 	 
       //---------导航浮动-----------
        $(window).on('scroll', function(){

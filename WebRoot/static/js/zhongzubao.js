@@ -248,6 +248,25 @@
 			      });
 				   
 				   $("#paymentAmount").keyup(function(){
+					   var payment=$(this).val();
+					   var payment=$(this).val();		   
+					   document.getElementById("mysubmit_btn").disabled=true;   
+
+						if(payment!=parseInt(payment)){
+							$(".liquan_y").text("投资金额必须为整数！");
+							return false;
+					    } 				
+						else if(parseInt(payment) < 200){
+					        $(".liquan_y").text("投资金额必须大于200！");
+					        return false;
+					    }		   
+						else if(parseInt(payment)%100!=0){
+							$(".liquan_y").text("投资金额必须为100的整数倍！");
+							return false;			
+						}else{
+							document.getElementById("mysubmit_btn").disabled=false;
+							$(".liquan_y").text("投资满3000元可使用礼券！");
+						} 
 					   
 					   if($(this).val()<3000){									  
 					     	$(".liquan_hide").css("display","none")						     	
