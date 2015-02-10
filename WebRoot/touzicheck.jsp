@@ -168,15 +168,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
-
-$(".right_cha").click(function(){
-    $("#dialog01").css("display","none");
-    $(".black_bac").css("display","none");
-});
-
-
+ var head_index=1; 
+</script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?v=1"></script>
+<script type="text/javascript">
  function onSubmit(host) {
 	var a=document.getElementById("paymentAmount").value;
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
@@ -189,8 +186,7 @@ $(".right_cha").click(function(){
             success: function(resp){
                 if(resp === "success"){
 
-                    document.getElementById("paymentAmount").value=parseInt(a);
-         
+                    document.getElementById("paymentAmount").value=parseInt(a);       
                     document.getElementById("mysubmit_btn").disabled=true;
                     document.getElementById("mysubmit_btn").innerHTML="正在提交...";
                     var form = document.getElementById("form");
@@ -200,11 +196,6 @@ $(".right_cha").click(function(){
                     /* $("#form")[0].submit(); */
                     form.submit();
                     document.getElementById("que_btn_ok").disabled() 
-                                       
-                    
-                                   
-
-
                 }else{
                     alert(resp);                  
                 }
@@ -215,47 +206,14 @@ $(".right_cha").click(function(){
 </script>
 
 <script type="text/javascript">
-var navIndex=3;     
+ 
 $(document).ready(function(e) { 
-	   $("#reward").click(function(){
-		  $(".fukuan").css("display","block");
-		  var real_fukuan=$("#paymentAmount").val()
-		  $(".border_none").val(real_fukuan-50+"元")
-	   });
-	
-	   $(".right_cha").click(function(){
-		   window.location.reload(true);
-
-       });
-	   $("#paymentAmount").keyup(function(){
-		   
-		   if($(this).val()<3000){		
-			  
-		     	$(".liquan_hide").css("display","none")
-		     	
-		 	  }  else{
-		 		 $(".liquan_hide").css("display","block");
-		 		if($(".liquan_check").val()==""){
-			    	   $(".liquan_hide").css("display","none")
-			       }
-		 	  }
-		
-			   
-		  
-	   });
-	   
-	   if($("#paymentAmount").val()<3000 || $(".liquan_check").val()==""){
- 	       	$(".liquan_hide").css("display","none"); 	       
-     	}
-       /*在没有礼券条件下*/	   
-       if($(".liquan_check").val()==""){
-    	   $(".liquan_hide").css("display","none")
-       }
-	   
-	   /*shouyilv*/
+	 	
+ 
+	   /*投资收益率*/
 	   
 	   var rate_lv=$(".lev_start").length;
-		calc();
+		calc1();
 		$("#paymentAmount").change(function(e) {
 			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
 				$(this).val(parseInt($(".lev_start").eq(0).html()));
@@ -263,10 +221,10 @@ $(document).ready(function(e) {
 			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
 				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
 				}
-	        calc();
+	        calc1();
 	        
 	    });
-		function calc(){
+		function calc1(){
 			//console.log("-------calc-------");
 			var t=parseInt($("#paymentAmount").val());  
 			var r=0;                       				
@@ -275,17 +233,13 @@ $(document).ready(function(e) {
 			for(i=0;i<rate_lv;i++){
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
 					if(parseInt($(".lev_mi").eq(i).html())>0){
-						r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-						
+						r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));						
 					}else{
 						r=parseFloat($(".lev_rate").eq(i).html());
-						}
-					
-					r=r/100/365*p;   
-				
+						}					
+					r=r/100/365*p;   				
 					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
-					}
-				 
+					}				 
 				}
 			   var b=parseFloat(parseInt(r*10000)/100);		        
 			       b=b.toFixed(2)
@@ -297,18 +251,17 @@ $(document).ready(function(e) {
 				       
 			     $("#preview_income").val(a+"元");
 			}
-		$(".lilv_table").click(function(){
-
-			 if($(".new_table").css("display")=="none"){
-				
+        //table
+		 $(".lilv_table").click(function(){
+            
+			 if($(".new_table").css("display")=="none"){				
 				$(".new_table").css({"display":"block"});
 				$(this).css("background","url(<%=path%>/img/images-2014-11/jiantou_er.png) 100px  16px  no-repeat")
 			}else{
 				$(".new_table").css({"display":"none"});
 				$(this).css("background","url(<%=path%>/img/images-2014-11/jiantou_xi.png)  100px  16px no-repeat")
 			} 
-		});
-		
+		}); 
 		  
 	  
 }); 

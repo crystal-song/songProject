@@ -53,7 +53,7 @@
                </a>
             </li>
             <li><a href="/gate/service"><span><strong>我的账户</strong></span><p>Account</p></a></li>
-         <li><a href="/zhongcou.jsp"><span><strong>我要众筹</strong></span><p>Crowdfunding</p></a></li>  
+         <li><a href="/hero/all"><span><strong>我要众筹</strong></span><p>Crowdfunding</p></a></li>  
             <li><a href="/guarantee/getchannel"><span><strong>新闻公告</strong></span><p>News</p></a></li>
             <li><a href="/help_con.jsp"><span><strong>帮助中心</strong></span><p>Help</p></a></li>
             <li><a href="/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Application</p></a></li>
@@ -68,8 +68,8 @@
               </c:if>
              
              <c:if test="${!empty name}">
-              <span class="username">您好，<strong>${name}</strong></span>         
-              <div class="tuichu">
+              <span class="username_fir">您好，<strong>${name}</strong></span>         
+              <div class="tuichu_fir">
                   <ul>
                     <li class="zhang"><a href="/wel/account" class="acount">我的账户</a></li>
                     <li  class="zhang" style="background:#fff"><a href="/welcome/logout" class="out">退出</a></li>
@@ -82,50 +82,4 @@
 </div>
 
 
-<script type="text/javascript">
 
-
-$(document).ready(function(){
-	var index_reg="";
-	$('.res').click(function(){
-		$('.ie_text').css('display','none');
-	  });
-	
-	
-
-    $(".header li").mouseover(function(){ 
-      var index=$(this).index();      
-      $('.top div').eq(index).show();
-    $(this).addClass('head_red').siblings().removeClass('head_red');
-     
-
-    }).mouseout(function(){
-       var index=$(this).index();
-       $('.top div').eq(index).hide();
-    });
-
-    $(".top div").mouseover(function(){ 
-      var index=$(this).index();
-      $(this).show();
-     
-    }).mouseout(function(){
-       var index=$(this).index();
-       $(this).hide();
-    });
-    $(".username").mouseover(function(){
-    	
-       $(".tuichu").show();
-       $(".tuichu").mouseover(function(){
-      	  $(this).show();
-        });
-      }).mouseout(function(){
-       $(".tuichu").hide();
-      });
-      $(".tuichu").mouseover(function(){
-      $(this).show();
-      }).mouseout(function(){
-      $(this).hide();
-      });
-
-});
-</script>

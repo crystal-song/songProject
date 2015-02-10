@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
 <%@ include file="/includes/taglibs.jsp" %> 
 
 <title>我的众筹 - 中租宝</title>
@@ -25,126 +22,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a>即将开启</a>
    </div>
    <div class="crowd_con">
+   	<c:forEach var="s" items="${heros.list}" varStatus="i">
      <div class="crowd_list">
-        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
-        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
+        <div class="crowd_pic"><a href="/hero/get-by-id?id=${s.id}"><img src="${s.main_image_file_name}" /></a></div>
+        <div class="crowdpro_name">名称：<a href="/zhongchou_msg.jsp">${s.name}</a></div>
         <div class="crowd_bar"><div></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
-            <span>0</span>
+            <span>${s.stats_number_of_contributions} </span>
             <span>支持者</span>
           </div>
           <div class="crow_right">
-             <span>23</span>
-             <span>天后结束</span>
+             <span>${s.datenum}</span>
+             <span>${s.datetype}后结束</span>
           </div>
         </div>
      </div>
-          <div class="crowd_list">
-        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
-        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
-        <div class="crowd_bar"><div></div></div>
-        <div class="crowd_wd">
-          <div class="crow_left">
-            <span>0</span>
-            <span>支持者</span>
-          </div>
-          <div class="crow_right">
-             <span>23</span>
-             <span>天后结束</span>
-          </div>
-        </div>
-     </div>
-          <div class="crowd_list">
-        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
-        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
-        <div class="crowd_bar"><div></div></div>
-        <div class="crowd_wd">
-          <div class="crow_left">
-            <span>0</span>
-            <span>支持者</span>
-          </div>
-          <div class="crow_right">
-             <span>23</span>
-             <span>天后结束</span>
-          </div>
-        </div>
-     </div>
-          <div class="crowd_list">
-        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
-        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
-        <div class="crowd_bar"><div></div></div>
-        <div class="crowd_wd">
-          <div class="crow_left">
-            <span>0</span>
-            <span>支持者</span>
-          </div>
-          <div class="crow_right">
-             <span>23</span>
-             <span>天后结束</span>
-          </div>
-        </div>
-     </div>
-          <div class="crowd_list">
-        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
-        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
-        <div class="crowd_bar"><div></div></div>
-        <div class="crowd_wd">
-          <div class="crow_left">
-            <span>0</span>
-            <span>支持者</span>
-          </div>
-          <div class="crow_right">
-             <span>23</span>
-             <span>天后结束</span>
-          </div>
-        </div>
-     </div>
-          <div class="crowd_list">
-        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
-        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
-        <div class="crowd_bar"><div></div></div>
-        <div class="crowd_wd">
-          <div class="crow_left">
-            <span>0</span>
-            <span>支持者</span>
-          </div>
-          <div class="crow_right">
-             <span>23</span>
-             <span>天后结束</span>
-          </div>
-        </div>
-     </div>
-          <div class="crowd_list">
-        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
-        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
-        <div class="crowd_bar"><div></div></div>
-        <div class="crowd_wd">
-          <div class="crow_left">
-            <span>0</span>
-            <span>支持者</span>
-          </div>
-          <div class="crow_right">
-             <span>23</span>
-             <span>天后结束</span>
-          </div>
-        </div>
-     </div>
-          <div class="crowd_list">
-        <div class="crowd_pic"><a href="<%=path%>/zhongchou_msg.jsp"><img src="<%=path%>/img/images-2014-11/pro_pic01.jpg" /></a></div>
-        <div class="crowdpro_name">名称：<a href="<%=path%>/zhongchou_msg.jsp">山西润通集团</a></div>
-        <div class="crowd_bar"><div></div></div>
-        <div class="crowd_wd">
-          <div class="crow_left">
-            <span>0</span>
-            <span>支持者</span>
-          </div>
-          <div class="crow_right">
-             <span>23</span>
-             <span>天后结束</span>
-          </div>
-        </div>
-     </div>
+</c:forEach>
    </div>  
 </div>                
 
@@ -159,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 var navIndex=2;  
 var indexs=0;
