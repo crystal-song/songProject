@@ -5747,6 +5747,12 @@ ul,li{
 .rewards_sidebar ul li a p.description_zhong {
     margin-bottom: 12px;
 }
+.rewards_sidebar ul li a p.image_reward {
+    max-width:310px;
+}
+.rewards_sidebar ul li a p.image_reward img{
+	max-width:310px;
+}
 .rewards_click p{
 	text-align:left;
 	display:inline-block;
@@ -6245,4 +6251,15 @@ ul,li{
 .style_dialog{
 	 display:none;
 }
+
+.rewards_sidebar #image_reward{
+	width:310px;
+	height:200px;
+	background:pink;
+	
+}
+
+
+
+
 

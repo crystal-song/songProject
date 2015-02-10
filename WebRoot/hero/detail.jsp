@@ -63,6 +63,7 @@
 						<a class="rev_mon" href="/juanzeng1.jsp">
 						<p class="price_zhong">￥100</p>
 						<p class="title_zhong" href="http://ptobchina.com/">支持100元</p>
+						<p class="image_reward"><img src="#" /></p>
 						<p class="description_zhong">1）我们会登记您的姓名在功德簿和祈福名单里，这两样宝贝将会长久的安放在莲师大殿里，
 						      必将会受到莲花生大士的恒久加持和保佑。 2）您还会得到我们学校全体师生长久的诵经回向和永久祝福。
 						</p>
@@ -74,6 +75,7 @@
 					<li id="rewards_click">
 						<a class="rev_mon" href="/juanzeng1.jsp">
 						<p class="price_zhong">￥3,000</p>
+						<p class="image_reward"><img src="#" /></p>
 						<p class="title_zhong" href="http://ptobchina.com/">支持3000元</p>
 						<p class="description_zhong">1）我们会登记您提供的8个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。 2）您将会收到我们寄出的色达风景明信片一套（10-12张） 3）我们将为您专门刻三块玛尼石，放在学校的玛尼墙里，得到亘古恒久的功德加持。 4）您将成为汇知学校的尊贵功德主和善心人士，邀请您在合适的时间访问汇知学校。</p>
 						<p class="rew_font">配送费用：<strong>免运费</strong></p>
@@ -84,6 +86,7 @@
 					<li id="rewards_click" style="border-bottom:none">
 						<a class="rev_mon" href="/juanzeng1.jsp" >
 						<p class="price_zhong">￥3,000</p>
+						<p class="image_reward"><img src="#" /></p>
 						<p class="title_zhong" href="http://ptobchina.com/">支持3000元</p>
 						<p class="description_zhong">1）我们会登记您提供的8个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。 2）您将会收到我们寄出的色达风景明信片一套（10-12张） 3）我们将为您专门刻三块玛尼石，放在学校的玛尼墙里，得到亘古恒久的功德加持。 4）您将成为汇知学校的尊贵功德主和善心人士，邀请您在合适的时间访问汇知学校。</p>
 						<p class="rew_font">配送费用：<strong>免运费</strong></p>
@@ -128,7 +131,7 @@ $(document).ready(function(e){
 	var heiright_height=$(".hei_right").height();
 	//alert(heiright_height)
 	$(window).on("scroll",function(){
-		rightBar();		
+		//rightBar();		
 	});
 	
 	function rightBar(){
@@ -148,7 +151,7 @@ $(document).ready(function(e){
 		/* $(".claimed_zhong label").html(parseInt(offset_height)+"offsettop") */
 		
 	//超过侧边栏	
-	if(scroll_height>up){
+/* 	if(scroll_height>up){
 		if(h<scroll_height){			
 		     $(".hei_right").addClass("fix_bottom"); 
 		     $(".hei_right").css({"left":offset_left,"top":Ztop});	  		    
@@ -161,20 +164,38 @@ $(document).ready(function(e){
          up=scroll_height;
          
 	}else{
+		$(".hei_right").css({"position":"absolute","top":offsettop_fir}); 
 		//回滚
 		//超过内容栏
-		if(ch<scroll_height){
-		  		       
-	         	             	      
-        }else{
-        	
-        	
-        }
 		
 		
-	}
 		
-}
+	} */
+	
+	
+		/*  if(scroll_height>up){
+				if(h<scroll_height){			
+				     $(".hei_right").addClass("fix_bottom"); 
+				     $(".hei_right").css({"left":offset_left,"top":Ztop});	        
+				}				
+				if(ch<scroll_height){
+					   var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-50; 		       
+					    $(".hei_right").css({"left":offset_left,"top":Ctop});	          	             	      
+		        }			
+		         up=scroll_height;
+		         
+			}else{
+				//$(".hei_right").css({"position":"absolute","top":offsettop_fir}); 
+				if(ch>scroll_height){
+					if(h<scroll_height){
+						
+					}
+					$(".hei_right").css({"position":"absolute","top":offsettop_fir}); 					
+				}		
+				
+			} */ 
+		
+  }
 	
 });
  
