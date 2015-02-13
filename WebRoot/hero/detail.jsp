@@ -52,10 +52,10 @@
                      
 </div>
 <div class="zhong_con">
-         <div class="hei_con">
+         <div class="hei_con" id="content">
 				${hero.main_content}         
          </div>
-         <div class="hei_right">
+         <div class="hei_right" id="sidebar">
            <div class="rewards_sidebar">
 				<h3>支持</h3>
 				<ul>
@@ -97,7 +97,8 @@
 		</div>	
     </div>
     <div class="clear"></div>
-    <div class="rew_btn"><a href="/juanzeng1.jsp">我要支持</a></div>
+     <div class="rew_btn" style="margin-top:20px;"><a href="/juanzeng1.jsp">我要支持</a></div> 
+    
 </div>
 
 <!-- absolute_right start -->
@@ -112,12 +113,11 @@
 </html>
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
-var navIndex=2;  
 var indexs=0;
 
 $(document).ready(function(e){
-	var down=0;
-	var up=0;
+    var isScroll=false;
+
 	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
 	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
@@ -127,78 +127,158 @@ $(document).ready(function(e){
 		$(this).css("background","url(/img/images-2014-11/kuang.png)  no-repeat");
 		$(this).siblings().css("background","url(/img/images-2014-11/kuang1.png)  no-repeat");
 	})
-	var offsettop_fir=parseInt($(".hei_right").offset().top);
-	var heiright_height=$(".hei_right").height();
-	//alert(heiright_height)
-	$(window).on("scroll",function(){
-		//rightBar();		
-	});
-	
-	function rightBar(){
-		var scroll_height=parseInt($(this).scrollTop());		
-		var win_height=$(window).height();//window height
-		var offset_height=parseInt($(".hei_right").offset().top);
-		var offset_left=parseInt($(".hei_right").offset().left);	
-		var con_offset=parseInt($(".hei_con").offset().top);
-		var con_height=$(".hei_con").height();
-		var h=parseInt(heiright_height+offset_height-win_height+50);
-		var ch=parseInt(con_offset+con_height-win_height);
-		var Ztop=win_height-heiright_height-50;
-		 $(".rew_font strong").html(scroll_height+"scrolltop");
-		 $(".delivery_zhong").html(offsettop_fir+"hhhh") 
-		 /* $(".title_zhong").html(win_height+"winhei") */
-		 $(".price_zhong").html(con_height+"divhei") 
-		/* $(".claimed_zhong label").html(parseInt(offset_height)+"offsettop") */
-		
-	//超过侧边栏	
-/* 	if(scroll_height>up){
-		if(h<scroll_height){			
-		     $(".hei_right").addClass("fix_bottom"); 
-		     $(".hei_right").css({"left":offset_left,"top":Ztop});	  		    
-		}		
-	//超过内容栏	
-		if(ch<scroll_height){
-		   var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-50; 		       
-			    $(".hei_right").css({"left":offset_left,"top":Ctop});	          	             	      
-         }
-         up=scroll_height;
-         
-	}else{
-		$(".hei_right").css({"position":"absolute","top":offsettop_fir}); 
-		//回滚
-		//超过内容栏
-		
-		
-		
-	} */
-	
-	
-		/*  if(scroll_height>up){
-				if(h<scroll_height){			
-				     $(".hei_right").addClass("fix_bottom"); 
-				     $(".hei_right").css({"left":offset_left,"top":Ztop});	        
-				}				
-				if(ch<scroll_height){
-					   var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-50; 		       
-					    $(".hei_right").css({"left":offset_left,"top":Ctop});	          	             	      
-		        }			
-		         up=scroll_height;
-		         
-			}else{
-				//$(".hei_right").css({"position":"absolute","top":offsettop_fir}); 
-				if(ch>scroll_height){
-					if(h<scroll_height){
-						
-					}
-					$(".hei_right").css({"position":"absolute","top":offsettop_fir}); 					
-				}		
-				
-			} */ 
-		
-  }
 	
 });
  
 </script>
 
+<script language="javascript">
 
+$(function(){
+	var side=parseInt($("#sidebar").offset().top);
+	var sideleft=parseInt($("#sidebar").offset().left)
+	
+
+	
+	    var scroll_height=parseInt($(this).scrollTop());		
+		var win_height=$(window).height();//window height
+		var offset_height=parseInt($(".hei_right").offset().top);
+		var offset_left=parseInt($(".hei_right").offset().left);	
+		var con_offset=parseInt($(".hei_con").offset().top);
+		var con_height=$(".hei_con").height();	
+		var heiright_height=$(".hei_right").height(); 
+iE6=window.ActiveXObject&&!window.XMLHttpRequest;
+
+if(!iE6){
+    var isScroll=false;
+    var docHeight = document.documentElement.clientHeight;    
+    var sideTop=document.getElementById('sidebar').offsetTop;
+    var campaignTop=document.getElementById('campaign').offsetTop
+
+    window.onscroll=function()
+    {
+
+        //document.getElementById("float").className="div2";
+        var s=document.body.scrollTop||document.documentElement.scrollTop;
+        var isIE=(navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0);
+        if(isIE)
+        {
+            if(s>(document.getElementById('sidebar').offsetHeight +campaignTop - docHeight))
+            {
+                if(!isScroll)
+                {
+
+                    var leftW=document.getElementById('sidebar').offsetLeft+'px';
+
+                    var topH=document.getElementById('sidebar').offsetHeight;
+
+                    document.getElementById('sidebar').style.position='fixed';
+
+                    document.getElementById('sidebar').style.left=sideleft;
+
+                    document.getElementById('sidebar').style.top=(docHeight - topH) + 'px';
+                   
+                    isScroll=true;
+
+                }
+
+                else
+
+                {
+
+                    if(s>(document.getElementById('content').offsetHeight+campaignTop - docHeight))
+
+                    {
+
+                        var topH=document.getElementById('sidebar').offsetHeight;
+                        // var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height);
+                        //document.getElementById('sidebar').style.top=(docHeight - topH - (s-document.getElementById('content').offsetHeight-campaignTop+docHeight))+'px';
+                        document.getElementById('sidebar').style.top=(docHeight-heiright_height-(s-con_height-con_offset-heiright_height+docHeight))+'px';
+                    }
+            
+                    else
+
+                    {
+
+                        var topH=document.getElementById('sidebar').offsetHeight;
+                        document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
+
+                    }
+
+                }
+
+            }
+
+            else
+
+            {
+
+                if(isScroll)
+
+                {
+                    document.getElementById('sidebar').style.position='static';
+
+                    isScroll=false;
+                }
+            }
+
+        }
+        else
+        {
+            if(s>(document.getElementById('sidebar').offsetHeight+713-docHeight))
+            {
+
+                if(!isScroll)
+
+                {
+                    var leftW=parseInt(document.getElementById('sidebar').offsetLeft);
+                    var topH=document.getElementById('sidebar').offsetHeight;
+                    document.getElementById('sidebar').style.position='fixed';
+                    document.getElementById('sidebar').style.left=sideleft+'px';
+                    document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
+                    isScroll=true;
+
+                }
+
+                else
+
+                {
+                    if(s>document.getElementById('content').offsetHeight + con_offset - docHeight)
+                    {
+                        var topH=document.getElementById('sidebar').offsetHeight;
+                        var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-100;
+                        //document.getElementById('sidebar').style.top=(docHeight-topH-(s-document.getElementById('content').offsetHeight-con_offset+docHeight))+'px';
+                        document.getElementById('sidebar').style.top=(docHeight-heiright_height-(s-con_height-con_offset+docHeight))+'px';
+                    }
+                    else
+
+                    {
+                        var topH=document.getElementById('sidebar').offsetHeight;
+                        document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
+                    }
+
+                }
+
+            }
+
+            else
+
+            {
+
+                if(isScroll)
+
+                {
+                    document.getElementById('sidebar').style.position='static';
+                    isScroll=false;
+
+                }
+
+            }
+ 
+      }
+
+    }
+
+ }
+})
+</script>

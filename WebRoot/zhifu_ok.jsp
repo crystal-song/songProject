@@ -4,7 +4,7 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="/includes/taglibs.jsp" %>
-
+ <meta http-equiv="refresh" content="3;URL=/prolist.jsp" />
 <title>支付成功 - 我的众筹 - 中租宝</title>
 
 </head>
@@ -17,8 +17,9 @@
       <div class="zhi_left"></div>
       <div class="zhi_right">
         <div class="zhi_title">您已成功付款6220元</div>
-        <p>如果页面没有跳转，请点击此跳转回<a href="<%=path%>/zhongcou.jsp">众筹首页</a>。</p>
-        <p>如果您有未付款的交易，可<a href="<%=path%>/juanzeng1.jsp">查看并继续付款</a>。</p>
+        <p>如果页面没有跳转，请点击此跳转回<a href="/prolist.jsp">众筹首页</a></p>
+        <p>如果您对其他项目感兴趣，请点击查看<a href="/hero/all"">所有众筹项目</a></p>
+       <%--  <p>如果您有未付款的交易，可<a href="<%=path%>/juanzeng1.jsp">查看并继续付款</a>。</p> --%>
       </div>
     
     </div>

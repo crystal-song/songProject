@@ -26,7 +26,7 @@
                 <li>
 
                  <a href="/gate/service" >资产统计</a>
-                 <a href="<%=path%>/gate/service" >资产统计</a>
+                 <%-- <a href="<%=path%>/gate/service" >资产统计</a> --%>
                 </li>
                 <li>
                  <a href="/gate/recharge">充值</a>
