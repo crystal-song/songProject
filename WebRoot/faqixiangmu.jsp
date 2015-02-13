@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <title>发起项目  - 中租宝</title>
 <link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+
 
 </head>
 
@@ -234,11 +234,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 <script type="text/javascript">
+ var head_index=6; 
+</script>
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
 $(document).ready(function(e) {
 
-
-	$(".nav_big a").eq(5).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(5).children("p").addClass("headwd_color");
 	$(".news_ul li").click(function(e){
         var index=$(this).index();
         $(this).children("div").addClass("news_wd_color");

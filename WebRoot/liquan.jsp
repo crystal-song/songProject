@@ -71,15 +71,17 @@
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
+<script type="text/javascript">
+ var head_index=2; 
+</script>
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
 <script>
     var navIndex=3;
     var indexs=1;
     $(function(){
-        $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
         $(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
         $(".zichan_con .tui_li li span:odd").css("text-align","left");
-        $(".nav_big a").eq(2).children("p").addClass("headwd_color");
     })
 
 

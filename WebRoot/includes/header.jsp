@@ -71,7 +71,8 @@
               <span class="username_fir">您好，<strong>${name}</strong></span>         
               <div class="tuichu_fir">
                   <ul>
-                    <li class="zhang"><a href="/wel/account" class="acount">我的账户</a></li>
+                    <li class="zhang"><a href="/gate/service" class="acount">我的账户</a></li>
+                    <li class="zhang"><a href="/wel/account" class="acount">个人信息</a></li>
                     <li  class="zhang" style="background:#fff"><a href="/welcome/logout" class="out">退出</a></li>
                   </ul>
               </div>

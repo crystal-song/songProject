@@ -109,7 +109,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript">
+ var head_index=5; 
+</script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>  
 <script type="text/javascript">
 	function allcheck(){
 		var chkNickName=document.getElementById("nickName").value;

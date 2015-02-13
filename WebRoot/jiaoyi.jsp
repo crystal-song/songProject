@@ -109,12 +109,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 </html>
 <script type="text/javascript">
-    var navIndex=3;    
+ var head_index=2; 
+</script>
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+<script type="text/javascript">  
     var indexs=2;
     $(document).ready(function(){
-    	$(".u_left_sec:eq(2) li:eq(4)").children("a").css("color","#fc652e");
-    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+    	$(".u_left_sec:eq(2) li:eq(3)").children("a").css("color","#fc652e");
+    	//$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
+    	//$(".nav_big a").eq(2).children("p").addClass("headwd_color");
     	 var url=location.search;
 	       //alert(url);
 	       var str=url.substr(1);

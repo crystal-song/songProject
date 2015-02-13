@@ -62,7 +62,7 @@
                 <li>
                   <a href="/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
-         <li>
+                <li>
                   <a href="/prolist.jsp">我的众筹</a>
                 </li> 
                 <li style="display:none;">

@@ -9,17 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/taglibs.jsp" %>
 
 <title>用户中心</title>
+
 <link href="<%=path%>/css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript">
-var navIndex=2;
-$(document).ready(function(){
-	$('.bzl_list ul li').click(function(){
-	    $(this).addClass('aqbz').siblings().removeClass('aqbz');
-	});
-	
-})
-</script>
 </head>
 
 <body>
@@ -60,3 +51,17 @@ $(document).ready(function(){
 <!-- footer end -->
 </body>
 </html>
+<script type="text/javascript">
+  var head_index=2;  
+</script>
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.bzl_list ul li').click(function(){
+		/* $(".u_left_sec:eq(2) li:eq(3)").children("a").css("color","#fc652e"); */
+	    $(this).addClass('aqbz').siblings().removeClass('aqbz');
+	});
+	
+})
+</script>

@@ -310,7 +310,7 @@ ul,li{
 }
 .tuichu_fir{
 	width: 100px;
-	height: 60px;
+	height: auto;
 	background: #fff;
 	position: absolute;
 	top:60%;

@@ -78,15 +78,15 @@
 <!-- footer end -->
 </body>
 </html>
+<script type="text/javascript">
+  var head_index=2;  
+</script>
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script>
-    var navIndex=3;
     var indexs=2;
     $(function(){
-        $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-        $(".u_left_sec:eq(2) li:eq(5)").children("a").css("color","#fc652e");
-        
-        $(".nav_big a").eq(2).children("p").addClass("headwd_color");
+        $(".u_left_sec:eq(2) li:eq(4)").children("a").css("color","#fc652e");
     })
 
 
