@@ -12,11 +12,36 @@ public class Campasigns extends JsonBaseBean {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public String getCheckout_sidebar_content() {
+		return checkout_sidebar_content;
+	}
+
+	public void setCheckout_sidebar_content(String checkout_sidebar_content) {
+		this.checkout_sidebar_content = checkout_sidebar_content;
+	}
 	private float goal_dollars;
 	private float fixed_payment_amount;
 	private String name;
+	private String owner_id;
+	public String getOwner_id() {
+		return owner_id;
+	}
+
+	public float getProgress() {
+		return progress;
+	}
+
+	public void setProgress(float progress) {
+		this.progress = progress;
+	}
+
+	public void setOwner_id(String owner_id) {
+		this.owner_id = owner_id;
+	}
+	private float progress;
 	private String datetype;
 	private String main_content;
+	private String checkout_sidebar_content;
 	public String getMain_content() {
 		return main_content;
 	}

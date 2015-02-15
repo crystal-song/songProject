@@ -5296,6 +5296,11 @@ ul,li{
 	height:400px;
 	background-position:0 100%;
 }
+.j_radio01{
+	float:left;
+	margin-top:5%;
+	margin-left:10px ;
+}
 .j_radio02{
 	float:left;
 	margin-top:5%;

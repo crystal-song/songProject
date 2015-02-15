@@ -26,7 +26,7 @@
      <div class="crowd_list">
         <div class="crowd_pic"><a href="/hero/get-by-id?id=${s.id}"><img src="${s.main_image_file_name}" /></a></div>
         <div class="crowdpro_name">名称：<a href="/zhongchou_msg.jsp">${s.name}</a></div>
-        <div class="crowd_bar"><div></div></div>
+        <div class="crowd_bar" ><div style="width:${s.progress}%"></div></div>
         <div class="crowd_wd">
           <div class="crow_left">
             <span>${s.stats_number_of_contributions} </span>

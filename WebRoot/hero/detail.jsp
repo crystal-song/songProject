@@ -30,14 +30,14 @@
 		          </li>
 		        </ul>
 		          <div id='progress_bg' class='small'>
-		            <div id='progress'  style='width: 50%;'>
+		            <div id='progress'  style="width:${hero.progress}%">
 		            </div>           
 		          </div> 
 		          <div class="clear"></div>    
 		          <div class="reserve_back"></div>            
 		        <div id="reserve_container">         
 		          <div class="call_to_action_button">
-		              <a class="blue_button" id="main_cta"  href="/juanzeng1.jsp">
+		              <a class="blue_button" id="main_cta"  href="/hero/buy?id=${hero.id}">
 		                          支持
 		              </a>
 		          </div>          
@@ -59,42 +59,24 @@
            <div class="rewards_sidebar">
 				<h3>支持</h3>
 				<ul>
+				   	<c:forEach var="s" items="${rewards}" varStatus="i">
 					<li id="rewards_click">
-						<a class="rev_mon" href="/juanzeng1.jsp">
+						<a class="rev_mon" href="/hero/buy?id=${hero.id}&reward=${s.id}">
 						<p class="price_zhong">￥100</p>
-						<p class="title_zhong" href="http://ptobchina.com/">支持100元</p>
-						<p class="description_zhong">1）我们会登记您的姓名在功德簿和祈福名单里，这两样宝贝将会长久的安放在莲师大殿里，
-						      必将会受到莲花生大士的恒久加持和保佑。 2）您还会得到我们学校全体师生长久的诵经回向和永久祝福。
+						<p class="title_zhong" href="http://ptobchina.com/">支持${s.price }元</p>
+						<p class="description_zhong">${s.description }
 						</p>
-						<p class="rew_font">配送费用：<strong>免运费</strong></p>
-						<p class="delivery_zhong">预计回报发送时间: 2015年5月</p>
-						<p class="claimed_zhong"> 已有<label style="color:#ff665f">200</label>人支持 </p>
+						<p class="rew_font"><strong>${s.delivery_price>0? "配送费用："+s.delivery_price:"免运费" }</strong></p>
+						<p class="delivery_zhong">预计回报发送时间: ${s.delivery_date }</p>
+						<p class="claimed_zhong"> 已有<label style="color:#ff665f">${s.number }</label>人支持 </p>
 					   </a>
 					</li>
-					<li id="rewards_click">
-						<a class="rev_mon" href="/juanzeng1.jsp">
-						<p class="price_zhong">￥3,000</p>
-						<p class="title_zhong" href="http://ptobchina.com/">支持3000元</p>
-						<p class="description_zhong">1）我们会登记您提供的8个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。 2）您将会收到我们寄出的色达风景明信片一套（10-12张） 3）我们将为您专门刻三块玛尼石，放在学校的玛尼墙里，得到亘古恒久的功德加持。 4）您将成为汇知学校的尊贵功德主和善心人士，邀请您在合适的时间访问汇知学校。</p>
-						<p class="rew_font">配送费用：<strong>免运费</strong></p>
-						<p class="delivery_zhong">预计回报发送时间: 2015年10月</p>
-						<p class="claimed_zhong"> 已有<label style="color:#ff665f">200</label>人支持</p>
-						</a>
-					</li>
-					<li id="rewards_click" style="border-bottom:none">
-						<a class="rev_mon" href="/juanzeng1.jsp" >
-						<p class="price_zhong">￥3,000</p>
-						<p class="title_zhong" href="http://ptobchina.com/">支持3000元</p>
-						<p class="description_zhong">1）我们会登记您提供的8个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。 2）您将会收到我们寄出的色达风景明信片一套（10-12张） 3）我们将为您专门刻三块玛尼石，放在学校的玛尼墙里，得到亘古恒久的功德加持。 4）您将成为汇知学校的尊贵功德主和善心人士，邀请您在合适的时间访问汇知学校。</p>
-						<p class="rew_font">配送费用：<strong>免运费</strong></p>
-						<p class="delivery_zhong">预计回报发送时间: 2015年10月</p>
-						<p class="claimed_zhong"> 已有<label style="color:#ff665f">200</label>人支持</p>
-						</a>
-					</li>
+					</c:forEach>
+					</ul>
 		</div>	
     </div>
     <div class="clear"></div>
-    <div class="rew_btn"><a href="/juanzeng1.jsp">我要支持</a></div>
+    <div class="rew_btn"><a href="/hero/buy?id=${hero.id}">我要支持</a></div>
 </div>
 
 <!-- absolute_right start -->

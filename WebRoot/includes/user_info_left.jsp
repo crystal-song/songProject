@@ -26,7 +26,7 @@
                 <li>
 
                  <a href="/gate/service" >资产统计</a>
-                 <a href="<%=path%>/gate/service" >资产统计</a>
+         
                 </li>
                 <li>
                  <a href="/gate/recharge">充值</a>
@@ -63,7 +63,7 @@
                   <a href="/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
          <li>
-                  <a href="/prolist.jsp">我的众筹</a>
+                  <a href="/hero/my">我的众筹</a>
                 </li> 
                 <li style="display:none;">
                   <a href="/zhaiquan.jsp">债权转让</a>

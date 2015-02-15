@@ -1,26 +1,23 @@
 package com.mftour.spring.web;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+
 import java.io.StringWriter;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXB;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import com.alibaba.fastjson.JSON;
 import com.mftour.spring.base.JsonBaseBean;
 import com.mftour.spring.logic.YeePay;
 import com.mftour.spring.model.*;
+import com.mftour.spring.rest.bean.Campasigns;
 import com.mftour.spring.rest.bean.Response;
 import com.mftour.spring.rest.bean.ResponseReward;
+import com.mftour.spring.rest.bean.Reward;
+import com.mftour.spring.rest.bean.Yeepay;
 import com.mftour.spring.rest.bean.YeepayAccountInfo;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 import com.mftour.spring.logic.Account;
 import com.mftour.spring.rest.bean.AccountResponse;
@@ -43,13 +37,9 @@ import com.mftour.spring.service.ITransRecordService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.File;
-import com.mftour.spring.util.HttpClientTest;
 import com.mftour.spring.util.ReadWirtePropertis;
 import com.mftour.spring.util.Rest;
 import com.mftour.spring.util.Xml;
-import com.mftour.spring.logic.Account;
-import com.yeepay.bha.example.bean.BHAAuthorization;
-import com.yeepay.bha.example.bean.BHAEstablishmentRegistration;
 import com.yeepay.bha.example.bean.BHAFeeModeEnum;
 import com.yeepay.bha.example.bean.BHARechargeRequest;
 import com.yeepay.bha.example.bean.BHARegisterRequest;
@@ -545,6 +535,74 @@ public class GateController {
 		}
 	}
 
+	@RequestMapping(value = "/gate/dobuy",method = {
+			RequestMethod.POST})
+	public String doBuy(BHATransferRequest request,String heroid,Float delivery_price,
+			Float amount,Float rewardamount,String name,String rewardid,String addressid,
+			Model model,
+			HttpServletRequest req){
+		try{
+			Object o = req.getSession().getAttribute("name");
+			if (o == null) {
+				return "login";
+			}
+			if (amount ==null ||  rewardamount !=null ){
+				amount = 0.0f;
+			}
+			if (rewardamount ==null ){
+				rewardamount = 0.0f;
+			}
+			if (delivery_price ==null ){
+				delivery_price = 0.0f;
+			}
+			float paymentAmount = amount+delivery_price+rewardamount;
+			String herors = rest.getRestful("/rest/get-hero-by-id/"+heroid);
+			@SuppressWarnings("unchecked")
+			Campasigns hero = JSON.parseObject(herors, Campasigns.class);
+						
+			String orderNo = "zhongzubaozhongchou-" + heroid;
+			request.setRequestNo(UUID.randomUUID().toString());
+			request.setPlatformUserNo(o.toString());
+			request.setOrderNo(orderNo);
+			request.setPlatformNo(f.getPlatformNo());
+			request.setService("toTransfer");
+			
+			request.setTransferAmount(String.valueOf(paymentAmount));
+			request.setTargetPlatformUserNo(hero.getOwner_id());
+			request.setCallbackUrl(f.getCallbackUrl()+"/gate/buysuccess");
+			request.setNotifyUrl(f.getCallbackUrl()+"/gate/buynotify");
+			request.setPaymentAmount(String.valueOf(paymentAmount) );
+			
+
+			StringWriter w = new StringWriter();
+			JAXB.marshal(request, w);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("request-no", request.getRequestNo());
+			map.put("service", "buy");
+			map.put("username", o.toString());
+			map.put("reward", rewardamount);
+			map.put("amount", paymentAmount);
+			map.put("project-name", name);
+			map.put("project-id", heroid);
+			map.put("address-id", addressid);
+			map.put("rewardid", rewardid);
+
+			map.put("request-xml", w.toString());
+			String s = rest.postRestful("/rest/yeepay/create", map);
+			JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+			if (r.isSuccess()) {
+				return doSign(request, f.getOnSubmit() + "/bha/toTransfer", model);
+			} else {
+				return "error";
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error " + e);
+			return "error";
+		}
+		
+	}
+	
 	@RequestMapping(value = "/gate/transfer")
 	public String Transfer(Model model, HttpServletRequest request,
 			String buyAmount, TProduct product) throws Exception {
@@ -612,8 +670,6 @@ public class GateController {
 			HttpServletRequest request) throws Exception {
 		model.addAttribute("resp", resp);
 		model.addAttribute("sign", sign);
-
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
 		try {
 
@@ -897,7 +953,42 @@ public class GateController {
 			return "error";
 		}
 	}
+	
+	@RequestMapping(value = "/gate/buysuccess", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String buysuccess(Model model, String resp, String sign,
+			HttpServletRequest request) throws Exception {
 
+		try {
+			Map<String, Object> m = Xml.Dom2Map(resp);
+			Rest rest = new Rest();
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("request-no", m.get("requestNo"));
+			map.put("service", "toTransfer");
+			map.put("code", m.get("code"));
+			map.put("response-xml", resp);
+			if (m.get("code").equals("1")) {
+				String s = rest.postRestful("/rest/yeepay/update-success", map);
+				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+				String yeepayRes = rest.getRestful("/rest/get-yeepay-by-request-no/"+m.get("requestNo"));
+				Yeepay yeepay = JSON.parseObject(yeepayRes, Yeepay.class);
+				model.addAttribute("amount",yeepay.getAmount()+yeepay.getReward());
+				return "/hero/zhifu_ok";
+
+			} else {
+				rest.postRestful("/rest/yeepay/update-error", map);
+
+				return "error";
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error" + e);
+			return "error";
+		}
+	}
+	
 	@RequestMapping(value = "/gate/repaymentNotify", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String repaymentNotify(String notify, String sign, Model model)
