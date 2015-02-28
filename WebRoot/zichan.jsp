@@ -64,17 +64,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
-    var navIndex=3;    
+ var head_index=2; 
+</script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+<script type="text/javascript">  
     var indexs=1;
     var ap=0;
     var fp=0;
 
     $(document).ready(function(){
     	$(".u_left_sec:eq(1) li:eq(0)").children("a").css("color","#fc652e");
-    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
     	var ta=parseInt($("#balance_info").html());
     	var aa=parseInt($("#availableAmount_info").html());
     	var fa=parseInt($("#freezeAmount_info").html());

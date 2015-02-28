@@ -50,6 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 <script type="text/javascript">
     var navIndex=3;    
+    var head_index=0; 
     $(document).ready(function(){
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
         $(".anquan_right").click(function(){

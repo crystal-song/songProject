@@ -7,6 +7,13 @@ public class Reward extends JsonBaseBean {
  private String description;
  private String delivery_date;
  private int number;
+ public int getBack_number() {
+	return back_number;
+}
+public void setBack_number(int back_number) {
+	this.back_number = back_number;
+}
+private int back_number;
  private float price;
  private float delivery_price;
  public float getDelivery_price() {

@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	   <p>1、中租宝平台投资理财的收益情况如何？</p>
         	   <dd>中租宝平台上出借人的回报是基于P2P模式下的点对点回报，也就是出借人的收益会受借款人个体差异的影响，不是一个固定的数据，中租宝的每月预期收益率1%以上。
                </dd>
-               <dd>公司主要以P2B即person-to-business,个人对（非金融机构）企业为主要运营模式。专注服务于中小企业融资项目与投资人对接的金融服务平台。
+               <dd>公司主要以企业债即person-to-business,个人对（非金融机构）企业为主要运营模式。专注服务于中小企业融资项目与投资人对接的金融服务平台。
                                  完全打破传统P2P平台的纯信用软风控运作模式，转变为以不动产为抵押物的硬风控运作模式，从而将投资人的风险大幅下降，致力于为客户提供安全稳健的优质理财产品。
                </dd>
                <p>2、中租宝作为理财服务平台，受法律保护吗？</p>
@@ -51,13 +51,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
-var navIndex=5;
+ var head_index=5; 
+</script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script> 
+<script type="text/javascript">
 var index=1;
 $(document).ready(function(e) {
-$(".nav_big a").eq(4).addClass("bd_btom").siblings().removeClass("bd_btom");
-$(".nav_big a").eq(4).children("p").addClass("headwd_color");
 $(".news_ul a").eq(1).addClass("aqbz").siblings().removeClass("aqbz");
 });
 </script>

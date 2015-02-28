@@ -6,3 +6,4 @@ url=/Users/jfreebird/src/spring3/WebRoot/up/jsp
 basePath=http://localhost:8080/spring3/
 yeepayCfaFile=/Users/jfreebird/src/spring3/WebRoot/WEB-INF/zhengshu.pfx
 restHost=http://localhost:3000
+restOutHost=http://localhost:3000

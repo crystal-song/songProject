@@ -4,7 +4,7 @@ import com.mftour.spring.base.JsonBaseBean;
 
 public class Campasigns extends JsonBaseBean {
 	private int id;
-
+	private String status;
 	public int getId() {
 		return id;
 	}
@@ -25,6 +25,14 @@ public class Campasigns extends JsonBaseBean {
 	private String owner_id;
 	public String getOwner_id() {
 		return owner_id;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public float getProgress() {

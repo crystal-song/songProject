@@ -53,6 +53,7 @@ public class GateController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(GateController.class);
 	private static final File f = ReadWirtePropertis.file();
+	private Rest rest = new Rest();
 	private ServletContext servletContext = null;
 
 	@Autowired
@@ -64,7 +65,7 @@ public class GateController {
 	@Autowired
 	private IptopService ptopService;
 
-	private Rest rest = new Rest();
+
 	@Autowired
 	private IProductService productService;
 
@@ -73,6 +74,8 @@ public class GateController {
 	@Autowired
 	private ITransRecordService transRecordService;
 
+	private String notifyUrl= f.getNotifyUrl() + "/gate/notify";
+	
 	boolean isYeepay(String userName) throws Exception {
 		boolean b = false;
 		List<TRegisterYeePay> li = gateService
@@ -169,6 +172,7 @@ public class GateController {
 		JAXB.marshal(request, w);
 		request.setRequestNo(UUID.randomUUID().toString());
 		request.setPlatformNo(f.getPlatformNo());
+		request.setNotifyUrl(notifyUrl);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("request-no", request.getRequestNo());
 		map.put("service", "toBindBankCard");
@@ -296,6 +300,7 @@ public class GateController {
 		JAXB.marshal(request, w);
 		request.setRequestNo(UUID.randomUUID().toString());
 		request.setPlatformNo(f.getPlatformNo());
+		request.setNotifyUrl(notifyUrl);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("request-no", request.getRequestNo());
 		map.put("service", "toWithdraw");
@@ -337,6 +342,7 @@ public class GateController {
 				.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo());
 		String uuid = UUID.randomUUID().toString();
 		request.setRequestNo(uuid);
+		request.setNotifyUrl(notifyUrl);
 		if (li != null && li.size() != 0) {
 
 			TRegisterYeePay registerYeePay1 = li.get(0);
@@ -408,6 +414,7 @@ public class GateController {
 			request.setPlatformUserNo(o.toString());
 		}
 		request.setRequestNo(UUID.randomUUID().toString());
+		request.setNotifyUrl(notifyUrl);
 		Rest rest = new Rest();
 		StringWriter w = new StringWriter();
 		JAXB.marshal(request, w);
@@ -441,7 +448,7 @@ public class GateController {
 		String requestNo = UUID.randomUUID().toString();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
-		map.put("notifyurl", "/gate/repaymentNotify");
+		map.put("notifyurl", notifyUrl);
 		map.put("callbackurl", "/gate/repaymentSucceed");
 		map.put("period", period);
 		map.put("requestno", requestNo);
@@ -503,7 +510,7 @@ public class GateController {
 		request.setOrderNo(t.getEnterpriseNumber());
 		request.setPlatformUserNo(o.toString());
 		request.setPlatformNo(f.getPlatformNo());
-
+		request.setNotifyUrl(rewardCheck);
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (rewardCheck != null && rewardCheck.equals("on")
 				&& paymentAmount >= 3000) {
@@ -566,14 +573,14 @@ public class GateController {
 			request.setOrderNo(orderNo);
 			request.setPlatformNo(f.getPlatformNo());
 			request.setService("toTransfer");
+	
 			
-			request.setTransferAmount(String.valueOf(paymentAmount));
+			request.setTransferAmount(String.valueOf(hero.getGoal_dollars()));
 			request.setTargetPlatformUserNo(hero.getOwner_id());
 			request.setCallbackUrl(f.getCallbackUrl()+"/gate/buysuccess");
-			request.setNotifyUrl(f.getCallbackUrl()+"/gate/buynotify");
+			request.setNotifyUrl(notifyUrl);
 			request.setPaymentAmount(String.valueOf(paymentAmount) );
-			
-
+		
 			StringWriter w = new StringWriter();
 			JAXB.marshal(request, w);
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -703,75 +710,9 @@ public class GateController {
 
 	}
 
-	@RequestMapping(value = "/gate/registerNotify", method = {
-			RequestMethod.POST, RequestMethod.GET })
-	public String registerNotify(String notify, String sign, Model model)
-			throws Exception {
-		try {
 
-			Map<String, Object> m = Xml.Dom2Map(notify);
-			if (m.get("code").equals("1")) {
 
-				TRegisterYeePay registerYeePay = gateService
-						.queryTRegisterYeePayByNumber(
-								(String) m.get("requestNo")).get(0);
-				registerYeePay.setCode("1");
-				gateService.addOrUpdateRegisterYeePay(registerYeePay);
-				return "success";
-			} else {
 
-				TRegisterYeePay registerYeePay = gateService
-						.queryTRegisterYeePayByNumber(
-								(String) m.get("requestNo")).get(0);
-				registerYeePay.setCode("0");
-				logger.error("error loan " + m.get("description"));
-
-				return "error";
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			logger.error("error " + e + notify);
-			return "error";
-		}
-	}
-
-	@RequestMapping(value = "/gate/loanNotify", method = { RequestMethod.POST,
-			RequestMethod.GET })
-	@ResponseBody
-	public String loanNotify(String notify, String sign, Model model)
-			throws Exception {
-
-		try {
-
-			Map<String, Object> m = Xml.Dom2Map(notify);
-			Rest rest = new Rest();
-
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("request-no", m.get("requestNo"));
-			map.put("service", "LOAN");
-			map.put("code", m.get("code"));
-			map.put("response-xml", notify);
-			if (m.get("code").equals("1")) {
-				String s = rest.postRestful("/rest/yeepay/update-success", map);
-				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				if (!r.isSuccess()) {
-					logger.error("error loan " + m.get("requestNo"));
-				}
-				return "success";
-
-			} else {
-				rest.postRestful("/rest/yeepay/update-error", map);
-
-				return "error";
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			logger.error("error" + e);
-			return "error";
-		}
-	}
 
 	@RequestMapping(value = "/gate/checkPay", method = { RequestMethod.POST,
 			RequestMethod.GET })
@@ -846,40 +787,7 @@ public class GateController {
 
 	}
 
-	@RequestMapping(value = "/gate/rechargeNotify", method = {
-			RequestMethod.POST, RequestMethod.GET })
-	public String rechargeNotify(String notify, String sign, Model model)
-			throws Exception {
 
-		try {
-			Thread.sleep(5000);
-
-			Map<String, Object> m = Xml.Dom2Map(notify);
-			Rest rest = new Rest();
-
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("request-no", m.get("requestNo"));
-			map.put("service", "toRecharge");
-			map.put("code", m.get("code"));
-			map.put("response-xml", notify);
-			if (m.get("code").equals("1")) {
-				String s = rest.postRestful("/rest/yeepay/update-success", map);
-				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "chongzhi_ok";
-
-			} else {
-				rest.postRestful("/rest/yeepay/update-error", map);
-
-				return "error";
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			logger.error("error" + e);
-			return "error";
-		}
-
-	}
 
 	@RequestMapping(value = "/gate/repaymentSucceed", method = {
 			RequestMethod.POST, RequestMethod.GET })
@@ -973,7 +881,7 @@ public class GateController {
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 				String yeepayRes = rest.getRestful("/rest/get-yeepay-by-request-no/"+m.get("requestNo"));
 				Yeepay yeepay = JSON.parseObject(yeepayRes, Yeepay.class);
-				model.addAttribute("amount",yeepay.getAmount()+yeepay.getReward());
+				model.addAttribute("amount",yeepay.getAmount());
 				return "/hero/zhifu_ok";
 
 			} else {
@@ -988,51 +896,20 @@ public class GateController {
 			return "error";
 		}
 	}
-	
-	@RequestMapping(value = "/gate/repaymentNotify", method = {
-			RequestMethod.POST, RequestMethod.GET })
-	public String repaymentNotify(String notify, String sign, Model model)
-			throws Exception {
-		try {
-			Thread.sleep(5000);
-			Map<String, Object> m = Xml.Dom2Map(notify);
-			Rest rest = new Rest();
 
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("request-no", m.get("requestNo"));
-			map.put("service", "toRepayment");
-			map.put("code", m.get("code"));
-			map.put("response-xml", notify);
-			if (m.get("code").equals("1")) {
-				String s = rest.postRestful("/rest/yeepay/update-success", map);
-				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "repayment_ok";
 
-			} else {
-				rest.postRestful("/rest/yeepay/update-error", map);
-
-				return "error";
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			logger.error("error" + e);
-			return "error";
-		}
-	}
-
-	@RequestMapping(value = "/gate/transferNotify", method = {
+	@RequestMapping(value = "/gate/notify", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String transferNotify(String notify, String sign, Model model)
 			throws Exception {
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(15000);
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			Rest rest = new Rest();
 
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("request-no", m.get("requestNo"));
-			map.put("service", "toTransfer");
+			
 			map.put("code", m.get("code"));
 			map.put("response-xml", notify);
 			if (m.get("code").equals("1")) {
@@ -1087,69 +964,9 @@ public class GateController {
 
 	}
 
-	@RequestMapping(value = "/gate/bindingNotify", method = {
-			RequestMethod.POST, RequestMethod.GET })
-	public String bindingNotify(Model model, String notify, String sign,
-			HttpServletRequest request) throws Exception {
 
-		try {
 
-			Map<String, Object> m = Xml.Dom2Map(notify);
-			Rest rest = new Rest();
 
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("request-no", m.get("requestNo"));
-			map.put("service", "BIND_BANK_CARD");
-			map.put("code", m.get("code"));
-			map.put("response-xml", notify);
-			if (m.get("code").equals("1")) {
-				String s = rest.postRestful("/rest/yeepay/update-success", map);
-				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "chongzhi_ok";
-
-			} else {
-				rest.postRestful("/rest/yeepay/update-error", map);
-
-				return "error";
-			}
-		} catch (Exception e) {
-
-			logger.error("error " + notify + e);
-		}
-		return "payment/binding";
-	}
-
-	@RequestMapping(value = "/gate/drawMoneyNotify", method = {
-			RequestMethod.POST, RequestMethod.GET })
-	public String drawMoneyNotify(Model model, String notify, String sign,
-			HttpServletRequest request) throws Exception {
-
-		try {
-
-			Thread.sleep(5000);
-			Map<String, Object> m = Xml.Dom2Map(notify);
-			Rest rest = new Rest();
-
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("request-no", m.get("requestNo"));
-			map.put("service", "toWithdraw");
-			map.put("code", m.get("code"));
-			map.put("response-xml", notify);
-			if (m.get("code").equals("1")) {
-				String s = rest.postRestful("/rest/yeepay/update-success", map);
-				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "success";
-
-			} else {
-				rest.postRestful("/rest/yeepay/update-error", map);
-
-				return "error";
-			}
-		} catch (Exception e) {
-			logger.error("error" + e);
-			return "error";
-		}
-	}
 
 	@RequestMapping(value = "/gate/drawMoneySucceed", method = {
 			RequestMethod.POST, RequestMethod.GET })

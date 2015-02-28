@@ -116,13 +116,13 @@
 				<div class="touzi_text">
 					<p
 						style="background: url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">
-						如果您支付成功：<a href="/prolist.jsp">查看我的众筹项目</a>
+						如果您支付成功：<a href="/hero/my">查看我的众筹项目</a>
 					</p>
 				</div>
 				<div class="touzi_text">
 					<p
 						style="background: url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">
-						如果您支付失败：<a href="/juanzeng1.jsp">重新支付</a> | <a href="/contact.jsp">联系客服</a>
+						如果您支付失败：<a href="javascript:location.reload();">重新支付</a> | <a href="/contact.jsp">联系客服</a>
 					</p>
 				</div>
 			</div>
@@ -140,14 +140,17 @@
 </body>
 </html>
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script>	head_index = 3;</script>
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
 <script type="text/javascript">
+
 	function onSubmit(host) {
 		if($("#addressid").val()===""){
 			alert("请选择一个地址");
 			return;
 		}
-		if($("#rewardid").val()==="" && $("#amount") ==""){
-			alert("请选择一个支持或者");
+		if($("#rewardid").val()==="" && $("#amount").val() ==""){
+			alert("请选择一个支持或者捐赠");
 			return ;
 		}	
 			
@@ -177,11 +180,11 @@
 											$("#addressid").val($(this).attr("v"));
 											$(this)
 													.css("background",
-															"url(/img/images-2014-11/kuang.png)  no-repeat");
+															"url(/img/images-2014-11/kuang.jpg)  no-repeat");
 											$(this)
 													.siblings()
 													.css("background",
-															"url(/img/images-2014-11/kuang1.png)  no-repeat");
+															"url(/img/images-2014-11/kuang1.jpg)  no-repeat");
 											
 										})
 						$(".j_radio02").click (

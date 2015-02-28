@@ -13,8 +13,11 @@
     <div class="zhi_con">
       <div class="zhi_left"></div>
       <div class="zhi_right">
+
         <div class="zhi_title">您已成功付款${amount }元</div>
-        <p>如果页面没有跳转，请点击此跳转回<a href="/hero/my">众筹首页</a>。</p>
+        <p>如果页面没有跳转，请点击此跳转回<a href="/hero/my">众筹首页</a></p>
+        <p>如果您对其他项目感兴趣，请点击查看<a href="/hero/all"">所有众筹项目</a></p>
+
       </div>
     
     </div>
@@ -24,7 +27,9 @@
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script>	head_index = 3;</script>
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script> 
 <script>
     var navIndex=2;
     var indexs=0;

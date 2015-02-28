@@ -208,7 +208,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 
 window.onload=function(e) {
-	//pagerInit(11,3);//${page.totalPage},${page.pageNo}
+	//pagerInit(20,3);//${page.totalPage},${page.pageNo}
 	pagerInit(${page.totalPage},${page.pageNo});
 }
    

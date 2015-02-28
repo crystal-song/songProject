@@ -33,6 +33,7 @@ public class ReadWirtePropertis {
 			f.setBasePath(pro.getProperty("basePath"));
 			f.setRestHost(pro.getProperty("restHost"));
 			f.setYeepayCfaFile(pro.getProperty("yeepayCfaFile"));
+			f.setRestOutHost(pro.getProperty("restOutHost"));
 			return f;
 		} catch (IOException e) {
 		

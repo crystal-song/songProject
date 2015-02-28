@@ -4,7 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="/includes/taglibs.jsp"%>
-<title>中租宝 | 最稳健的P2B理财平台</title>
+<title>中租宝 | 最稳健的企业债理财平台</title>
 </head>
 <body>
 
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</dd>
 					<dd>
 						<a class="newpro_wd04"></a><span class="spanhign_right"> <a>专注<label
-								style="color: red">P2B</label></a> <a style="font-size: 12px;">精选优质企业，远超P2P安全保障。</a>
+								style="color: red">企业债</label></a> <a style="font-size: 12px;">精选优质企业，远超P2P安全保障。</a>
 						</span>
 					</dd>
 				</dl>

@@ -9,12 +9,18 @@ public class File {
     private String basePath;
     private String yeepayCfaFile;
     private String restHost;
-    
+    private String restOutHost;
 	public String getRestHost() {
 		return restHost;
 	}
 	public void setRestHost(String restHost) {
 		this.restHost = restHost;
+	}
+	public String getRestOutHost() {
+		return restOutHost;
+	}
+	public void setRestOutHost(String restOutHost) {
+		this.restOutHost = restOutHost;
 	}
 	public String getBasePath() {
 		return basePath;

@@ -1,6 +1,9 @@
 
 (function(){
 
+	
+	
+
 //index.jsp
 	/*定时器*/
 	$(".nav_big a").eq(head_index).addClass("bd_btom").siblings().removeClass("bd_btom");

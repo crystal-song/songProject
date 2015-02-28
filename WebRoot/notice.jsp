@@ -60,13 +60,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
-var navIndex=5;
+ var head_index=5; 
+</script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script> 
+<script type="text/javascript">
 var index=3;
 $(document).ready(function(e) {
-	$(".nav_big a").eq(4).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(4).children("p").addClass("headwd_color");
 	$(".news_ul a").eq(3).addClass("aqbz").siblings().removeClass("aqbz");
 	});
 </script>

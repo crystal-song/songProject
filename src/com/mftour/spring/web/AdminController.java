@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSON;
 import com.mftour.spring.logic.YeePay;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,20 +28,27 @@ import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.model.TTransferInfo;
+import com.mftour.spring.rest.bean.Response;
+import com.mftour.spring.rest.bean.ResponseReward;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.ISystemLogService;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.File;
 import com.mftour.spring.util.Page;
+import com.mftour.spring.util.ReadWirtePropertis;
+import com.mftour.spring.util.Rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/Login")
-public class ptopController {
+public class AdminController {
 	private static final Logger logger = LoggerFactory
-			.getLogger(ptopController.class);
+			.getLogger(AdminController.class);
 
+	private static final File f = ReadWirtePropertis.file();
+	private Rest rest = new Rest();
 	@Autowired
 	private IptopService ptopService;
 
@@ -58,40 +66,21 @@ public class ptopController {
 
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	@ResponseBody
-	public String helloWorld(TAdministrator administrator, Model model,
-			@RequestParam("name") String name,
-			@RequestParam("password") String password,
-			HttpServletRequest request) throws Exception {
-
-		/* TUser user1 = userService.getUserByAccount(user.getName()); */
-		TAdministrator administrator1 = ptopService
-				.getAdministratorByAccount(administrator.getName());
-		if (administrator1 != null) {
-			if (administrator1.getPassword()
-					.equals(administrator.getPassword())) {
-				model.addAttribute("name", administrator.getName());
-				systemLogService.saveSystemLog(request, "后台信息", "登陆", 1);
-				return "success";
-			}
-		}
-
-		return "fail";
-
-	}
+	
 
 	@RequestMapping(value = "/session", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String Session(Model model, @RequestParam("name") String name,
-			@RequestParam("password") String password,
+	public String Session(Model model, @RequestParam("token") String token,@RequestParam("name") String name,
 			HttpServletRequest request) throws Exception {
-		if (password.equals("1fdd3107feab") && name.equals("admin")) {
-			request.getSession().setAttribute("users", name);
+		String res = rest.getRestful("/rest/valid-login-token/"+token+"/"+name);
+		Response resBean =  JSON.parseObject(res, Response.class);
+		if (resBean.isSuccess()) {
+			request.getSession().setAttribute("restouthost", f.getRestOutHost());
+			request.getSession().setAttribute("admin", name);
 			return "ptop/p2b_add";
-		} else {
-			return "ptop/login";
-		}
+		}else{
+			return "redirect:"+f.getRestOutHost()+"/admin";
+		} 
 
 	}
 
@@ -104,6 +93,10 @@ public class ptopController {
 			throws Exception {
 
 		try {
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			boolean b = YeePay.doLoan(id, enterpriceNumber);
 			List<TProduct> product1 = productService
 					.queryProductByNumber(enterpriceNumber);
@@ -130,6 +123,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			product.setFinanceTime(Timestamp.valueOf(financeTime));
 			product.setRepaymentTime(Timestamp.valueOf(repaymentTime));
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
@@ -174,6 +171,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			List<TProduct> list = productService.queryProduct(product);
 			model.addAttribute("list", list);
 
@@ -197,7 +198,10 @@ public class ptopController {
 			RequestMethod.GET })
 	public String getProductByid(@RequestParam("id") Long id, Model model,
 			TProduct product, HttpServletRequest request) throws Exception {
-
+		Object o = request.getSession().getAttribute("admin");
+		if (o==null){
+			return "error";
+		}
 		TProduct product1 = productService.getProductById(id);
 
 		List<TInvestmentInfo> list = ptopService
@@ -218,7 +222,11 @@ public class ptopController {
 
 		investmentInfo.setWriteTime(df.format(new Date()));
 		;
-		Object o = request.getSession().getAttribute("users");
+		
+		Object o = request.getSession().getAttribute("admin");
+		if (o==null){
+			return "error";
+		}
 		investmentInfo.setAdministratorName(o.toString());
 		investmentInfo.setCode("1");
 		ptopService.addOrUpdateInvestmentInfo(investmentInfo);
@@ -266,6 +274,10 @@ public class ptopController {
 			throws Exception {
 
 		try {
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			productService.deleteProduct(id);
 			List<TProduct> list = productService.queryProduct(product);
 			model.addAttribute("list", list);
@@ -290,6 +302,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			TInvestmentInfo investmentInfo = ptopService
 					.queryTInvestmentInfo(id);
 			List<TProduct> list1 = productService
@@ -335,7 +351,10 @@ public class ptopController {
 			RequestMethod.GET })
 	public String updateProduct(@RequestParam("id") Long id, Model model,
 			TProduct product, HttpServletRequest request) throws Exception {
-
+		Object o = request.getSession().getAttribute("admin");
+		if (o==null){
+			return "error";
+		}
 		TProduct product1 = productService.getProductById(id);
 		List<Communal> list = ptopService
 				.queryCommunalByEnterpriseNumber(product1.getEnterpriseNumber());
@@ -354,6 +373,10 @@ public class ptopController {
 			throws Exception {
 
 		try {
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 
 			news.setTime(df.format(new Date()));
@@ -380,7 +403,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
-
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			List<TChannel> list = ptopService.getChannel();
 
 			model.addAttribute("list", list);
@@ -403,7 +429,10 @@ public class ptopController {
 			throws Exception {
 
 		try {
-
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			List<TNews> list = ptopService.getNews();
 			List<TChannel> list1 = ptopService.getChannel();
 
@@ -428,6 +457,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
 
 			channel.setTime(df.format(new Date()));
@@ -457,6 +490,10 @@ public class ptopController {
 		List<TNews> list;
 
 		try {
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			if (channel.getId() == 0) {
 				list = ptopService.getNews();
 
@@ -491,7 +528,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
-
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			List<TChannel> list1 = ptopService.getChannel();
 
 			model.addAttribute("list1", list1);
@@ -565,7 +605,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
-
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			ptopService.deleteTChannel(channel.getId());
 
 			List<TChannel> list = ptopService.getChannel();
@@ -589,7 +632,10 @@ public class ptopController {
 			HttpServletRequest request) throws Exception {
 
 		try {
-
+			Object o = request.getSession().getAttribute("admin");
+			if (o==null){
+				return "error";
+			}
 			ptopService.deleteInterestRate(id);
 			systemLogService.saveSystemLog(request, "后台信息", "删除阶梯利率", 1);
 			List<TInterestRate> li = ptopService
@@ -629,7 +675,10 @@ public class ptopController {
 			RequestMethod.GET })
 	public String saveInterestRate(Model model, TInterestRate InterestRate,
 			HttpServletRequest request) throws Exception {
-
+		Object o = request.getSession().getAttribute("admin");
+		if (o==null){
+			return "error";
+		}
 		ptopService.addOrUpdateTInterestRate(InterestRate);
 
 		List<TInterestRate> li = ptopService
@@ -676,6 +725,10 @@ public class ptopController {
 			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			TProduct product, HttpServletRequest request) throws Exception {
+		Object o = request.getSession().getAttribute("admin");
+		if (o==null){
+			return "error";
+		}
 		Page page = Page.newBuilder(pageNo, pageSize, "queryTransRecord");
 		TProduct product1 = productService.getProductById(id);
 		if (product1.getBuyType() == null) {

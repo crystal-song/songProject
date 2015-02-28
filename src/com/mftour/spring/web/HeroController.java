@@ -46,7 +46,7 @@ public class HeroController {
 			Model model) throws Exception {
 
 		String s = rest.getRestful("/rest/get-zhongchou-by-page/"+pageNo+"/"+pageSize+"/"+status);
-		
+		model.addAttribute("status", status);
 		@SuppressWarnings("unchecked")
 		Page<Campasigns> heros = JSON.parseObject(s, Page.class);
 	    if (heros.isSuccess()){
@@ -112,6 +112,25 @@ public class HeroController {
 
 
 	}
+	
+	@RequestMapping(value = "/del/address", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	@ResponseBody
+	public String addAddress(int id,
+			Model model, HttpServletRequest req) throws Exception {
+		Object o = req.getSession().getAttribute("name");
+		if (o == null) {
+			return "login";
+		}
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+	
+		String s = rest.postRestful("/rest/address/del", map);
+		return s;
+
+
+	}
 	@RequestMapping(value = "/get-by-id", method = {
 			RequestMethod.POST, RequestMethod.GET })
 	public String getProductByid(@RequestParam("id") Long id, Model model) throws Exception {
@@ -153,6 +172,25 @@ public class HeroController {
 			return "hero/dingdan";
 	
 	}
+	
+	@RequestMapping(value = "/addr", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String addr( Model model, HttpServletRequest req) throws Exception {
+		Object o = req.getSession().getAttribute("name");
+		if (o == null) {
+			return "login";
+		}
+
+		String addressRs = rest.getRestful("/rest/address/get-list-by-userid/"+o.toString());
+		@SuppressWarnings("unchecked")
+		List<Address> address =  JSON.parseObject(addressRs, ArrayList.class);
+				
+			model.addAttribute("address", address);	
+			return "hero/dizhi";
+	
+	}
+	
+
 	
 	@RequestMapping(value = "/buy", method = {
 			RequestMethod.POST, RequestMethod.GET })

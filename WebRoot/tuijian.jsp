@@ -94,9 +94,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-
+<script type="text/javascript">
+ var head_index=2; 
+</script>
 <!--复制功能js代码  -->
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
 <script type="text/javascript" src="<%=path%>/js/ZeroClipboard.js"></script>
 <script type="text/javascript">
 // 定义一个新的复制对象
@@ -109,13 +112,11 @@ clip.on( 'complete', function(client, args) {
 	alert("复制成功");
 } );
 
-var navIndex=3; 
 var indexs=0;
 $(function(){
-	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".u_left_sec:first li:eq(3)").children("a").css("color","#fc652e");
 	$(".zichan_con .tui_li li span:odd").css("text-align","left");
-	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+	
 })
   
 

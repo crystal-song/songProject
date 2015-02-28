@@ -39,14 +39,25 @@
            	</c:forEach>
             </table>
 
-            <div class="clear"></div>
-            <div class="next_list">
-                <a href="/account/liquan?page=1&catlog=0">首页</a>
-                <c:if test="${page.page > 1}"><a href="/account/liquan?page=${page.page-1}&catlog=${catlog}">上一页</a>  </c:if>
-                <div class="pageNum"></div>
-                <c:if test="${page.page < page.pagecount}">  <a href="/account/liquan?page=${page.page+1}&catlog=${catlog}">下一页</a>  </c:if>
-                <a href="/account/liquan?page=${page.pagecount}&catlog=${catlog}">末页</a>
-            </div>
+            		<div class="clear"></div>
+			<div class='next_list ${payments.pagecount >1?"":"hide" }'>
+				<a href="/hero/my">首页</a>
+				<c:if test=""></c:if>
+				<c:if test="${payments.page > 1}">
+					<a href="/hero/my?pageNo=${payments.page-1}">上一页</a>
+				</c:if>
+				<div class="pageNum">
+					<c:forEach var="i" begin="1" end="${payments.pagecount }">
+						<a href="/hero/my?status=${status}&pageNo=${i }"
+							class='pager ${i== payments.page?"pageNumCur":""}'>${i }</a>
+					</c:forEach>
+
+				</div>
+				<c:if test="${heros.page < heros.pagecount}">
+					<a href="/hero/all?pageNo=${payments.page+1}">下一页</a>
+				</c:if>
+				<a href="/hero/my?pageNo=${payments.pagecount}">末页</a>
+			</div>
         </div>
     </div>
 </div>
@@ -56,53 +67,22 @@
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
+
+
+
+<script type="text/javascript" src=/js/jquery-1.7.2.min.js"></script> 
+<script>	head_index = 2;</script>
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
+
 <script>
-    var navIndex=3;
     var indexs=2;
     $(function(){
-        $(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-        $(".u_left_sec:eq(2) li:eq(5)").children("a").css("color","#fc652e");
-        
-        $(".nav_big a").eq(2).children("p").addClass("headwd_color");
+        $(".u_left_sec:eq(2) li:eq(4)").children("a").css("color","#fc652e");
     })
 
 
 </script>
 
 
-<script>
-    function jumpPage(pag){
-        /* alert("ccccccccccc"+pag); */
-        $('#pageNo').val(pag);
-        $("#form" ).submit();
-    }
 
-    function pagerInit(a,b){//${page.pagecount},${page.page}
-        var totalPages=a;
-        var curPage=b;
-        if(curPage>totalPages)return false;
-        var endPage=curPage+5>totalPages-1?totalPages-1:curPage+5;
-        var startPage=endPage-7>2?endPage-7:2;
-        endPage=startPage+7>totalPages?totalPages:startPage+7;
-        console.log(startPage+"/"+endPage+"/"+curPage);
-        var str='';
-
-
-        var spl='<span>...</span>';
-        $(".pageNum").html('<a href="javascript:jumpPage(1)" class="pager">1</a>');
-        if(startPage>2){$(".pageNum").html($(".pageNum").html()+spl);}
-        for(i=startPage;i<endPage;i++){
-            str='<a href="javascript:jumpPage('+i+')" class="pager">'+i+'</a>';
-            $(".pageNum").html($(".pageNum").html()+str);
-        }
-        if(endPage<totalPages-1){$(".pageNum").html($(".pageNum").html()+spl);}
-        if(totalPages>1)$(".pageNum").html($(".pageNum").html()+'<a href="javascript:jumpPage('+totalPages+')" class="pager">'+totalPages+'</a>');
-        $(".pager").eq(curPage-startPage+1).addClass("pageNumCur");
-        $(".pageNumCur").attr("href","javascript:;");
-
-
-    }
-
-</script>
 
