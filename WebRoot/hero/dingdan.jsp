@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
  <%@ include file="/includes/taglibs.jsp" %>
 <title>订单详情 - 我的账户 - 中租宝</title>
 </head>
@@ -25,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <div class="ding_msg">
               <div class="nei_ding">
                 <span>订单名称:</span>
-                <span><strong>为藏区建一个篮球场</strong></span>
+                <span><strong>${payment.title }</strong></span>
               </div>
               <div class="nei_ding">
                 <span>订单状态:</span>
@@ -33,38 +30,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
               <div class="nei_ding">
                 <span>订单号:</span>
-                <span><strong>153465687</strong></span>
+                <span><strong>${payment.id }</strong></span>
               </div>             
               <div class="nei_ding">
                 <span>交易日期:</span>
-                <span><strong>2015.01.25</strong></span>
+                <span><strong>${payment.created_at }</strong></span>
               </div>              
          </div>
          <div class="shou_msg">
             <div class="shou_con">
             <div class="shou_fir">
               <h2>收货人信息</h2>
-              <div><span>收货人:</span><span>刘晓莉</span></div>
-              <div><span>地&nbsp;&nbsp;址:</span><span style="width:200px">朝阳北路世茂工三1111号</span></div>
-              <div><span>联系电话:</span><span style="width:200px">123456789</span></div>
+              <div><span>收货人:</span><span>${payment.name }</span></div>
+              <div><span>地&nbsp;&nbsp;址:</span><span style="width:200px">${payment.detail }</span></div>
+              <div><span>联系电话:</span><span style="width:200px">${payment.phone }</span></div>
              </div>
              <div class="shou_sec">
                <div class="shoucon_left">
                   <div class="shou_title">商品名称</div>
-                  <div class="shou_table">支持100元</div>
-                  <div class="ta_font">1）我们会登记您的姓名在功德簿和祈福名单里，这两样宝贝将会长久的安放在莲师大殿里，必
-    将会受到莲花生大士的恒久加持和保佑。</div>
-                  <div class="ta_font">2）您还会得到我们学校全体师生长久的诵经回向和永久祝福。
-预计回报发送时间：<strong>2015年5月</strong>  </div>
+                  <div class="shou_table">${reward.title }</div>
+                  <div class="ta_font">${reward.description }</div>
                  
                </div>
-               <div class="shoucon_right">
-                  <div class="shou_title">商品名称</div>
-                  <div class="shou_line">20</div>
-               </div>
+              
              </div>
              <div class="zongjine">
-              <div class="z_monney">￥5000</div>
+              <div class="z_monney">￥${payment.amount + payment.user_fee_amount  }</div>
               <span>商品总金额:&nbsp;&nbsp;</span>
              </div>
             </div>
@@ -82,7 +73,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script>	head_index = 2;</script>
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script> 
 <script type="text/javascript">
  
 var navIndex=3;    

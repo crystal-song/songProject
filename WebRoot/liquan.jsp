@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
 <%@ include file="/includes/taglibs.jsp" %>
 
 <title>我的礼券 - 我的账户 - 中租宝</title>
@@ -57,11 +54,11 @@
 
             <div class="clear"></div>
             <div class="next_list">
-                <a href="<%=path %>/account/liquan?page=1&catlog=0">首页</a>
-                <c:if test="${page.page > 1}"><a href="<%=path %>/account/liquan?page=${page.page-1}&catlog=${catlog}">上一页</a>  </c:if>
+                <a href="/account/liquan?page=1&catlog=0">首页</a>
+                <c:if test="${page.page > 1}"><a href="/account/liquan?page=${page.page-1}&catlog=${catlog}">上一页</a>  </c:if>
                 <div class="pageNum"></div>
-                <c:if test="${page.page < page.pagecount}">  <a href="<%=path %>/account/liquan?page=${page.page+1}&catlog=${catlog}">下一页</a>  </c:if>
-                <a href="<%=path %>/account/liquan?page=${page.pagecount}&catlog=${catlog}">末页</a>
+                <c:if test="${page.page < page.pagecount}">  <a href="/account/liquan?page=${page.page+1}&catlog=${catlog}">下一页</a>  </c:if>
+                <a href="/account/liquan?page=${page.pagecount}&catlog=${catlog}">末页</a>
             </div>
         </div>
     </div>
@@ -74,8 +71,8 @@
 <script type="text/javascript">
  var head_index=2; 
 </script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
 <script>
     var navIndex=3;
     var indexs=1;

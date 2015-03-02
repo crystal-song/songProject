@@ -18,6 +18,9 @@
                 <li style="border-bottom:0;">
                   <a href="/account/tuijian" >推荐管理</a>
                 </li>
+                <li style="border-bottom:0;">
+                  <a href="/hero/addr" >我的地址</a>
+                </li>
               </ul>
            </li>
            <li>
@@ -26,7 +29,7 @@
                 <li>
 
                  <a href="/gate/service" >资产统计</a>
-                 <%-- <a href="<%=path%>/gate/service" >资产统计</a> --%>
+
                 </li>
                 <li>
                  <a href="/gate/recharge">充值</a>
@@ -62,8 +65,10 @@
                 <li>
                   <a href="/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
-                <li>
-                  <a href="/prolist.jsp">我的众筹</a>
+
+         <li>
+                  <a href="/hero/my">我的众筹</a>
+
                 </li> 
                 <li style="display:none;">
                   <a href="/zhaiquan.jsp">债权转让</a>
@@ -82,9 +87,9 @@
          </ul>
         <input type="hidden" id="username" value="${name }"  />
 <script type="text/javascript">
-
+head_index = 2
     $(document).ready(function(){
-      
+
      // $(".u_left_sec:first li:eq(0)").children("a").css("color","#fc652e");
       $(".u_left_mian").click(function(){    	
     	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");

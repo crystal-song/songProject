@@ -1,117 +1,119 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/includes/taglibs.jsp" %> 
+<%@ include file="/includes/taglibs.jsp"%>
 
 <title>项目详情 - 我的众筹 - 中租宝</title>
 </head>
-<body style="background:#f6f6f6">
+<body style="background: #f6f6f6">
 
-<!-- top start  -->
-<%@ include file="/includes/header.jsp" %>
-<!-- top end  -->
-<div class="clear"></div>
-<div id="campaign">
-   <div class="zhong_msgcon">     
-          <div id="funding_area"> 
-		    <div class="center">
-		      <h2 class="campaign_title"><a>${hero.name}</a></h2>
-		    </div>
-            <div class="clearfix">
-	        <div id="image">
-	          <img src="${hero.main_image_file_name}" />
-	        </div>
-		     <div id="backing">
-		        <ul>
-		            <li class="stats" id="backers">${hero.stats_number_of_contributions} <span>支持</span>
-		            </li>
-		            <li class="stats">${hero.fixed_payment_amount }<span>已支持 ${hero.goal_dollars }</span>
-		            </li>
-		          <li class="stats" id="days" >${hero.datenum}${hero.datetype }
-		           <span style="width:100px"> 后结束</span>
-		          </li>
-		        </ul>
-		          <div id='progress_bg' class='small'>
-		            <div id='progress'  style='width: 50%;'>
-		            </div>           
-		          </div> 
-		          <div class="clear"></div>    
-		          <div class="reserve_back"></div>            
-		        <div id="reserve_container">         
-		          <div class="call_to_action_button">
-		              <a class="blue_button" id="main_cta"  href="/juanzeng1.jsp">
-		                          支持
-		              </a>
-		          </div>          
-		          <div class="call_to_action_description">           
-		          </div>
-		        </div>
-		     </div>
-           </div>
-           <div class="share"></div>
-          </div>
-      </div>
-                     
-</div>
-<div class="zhong_con">
-         <div class="hei_con" id="content">
-				${hero.main_content}         
-         </div>
-         <div class="hei_right" id="sidebar">
-           <div class="rewards_sidebar">
+	<!-- top start  -->
+	<%@ include file="/includes/header.jsp"%>
+	<!-- top end  -->
+	<div class="clear"></div>
+	<div id="campaign">
+		<div class="zhong_msgcon">
+			<div id="funding_area">
+				<div class="center">
+					<h2 class="campaign_title">
+						<a>${hero.name}</a>
+					</h2>
+				</div>
+				<div class="clearfix">
+					<div id="image">
+						<img src="${hero.main_image_file_name}" />
+					</div>
+					<div id="backing" >
+						<ul>
+							<li class="stats " id="backers">${hero.stats_number_of_contributions}
+								<span>支持</span>
+							</li>
+							<li class="stats">${hero.fixed_payment_amount }<span>已支持
+									${hero.goal_dollars }</span>
+							</li>
+							<li class="stats" id="days">${hero.datenum}${hero.datetype }
+								<span style="width: 100px"> 后结束</span>
+							</li>
+						</ul>
+						<div id='progress_bg' class='small'>
+							<div id='progress' style="width:${hero.progress}%"></div>
+						</div>
+						<div class="clear"></div>
+						<div class="reserve_back"></div>
+						<div id="reserve_container">
+							<div class="call_to_action_button">
+									<a  class="blue_button" id="main_cta"
+				href='${hero.status eq "1"?"/hero/buy?id=":"javascript:void(0)"}${hero.id}'>
+				${hero.status=='1'?'我要支持':''}
+				${hero.status=='2'?'已结束':''}
+				${hero.status=='3'?'即将开启':''}</a>
+								
+							</div>
+							<div class="call_to_action_description"></div>
+						</div>
+					</div>
+				</div>
+				<div class="share"></div>
+			</div>
+		</div>
+
+	</div>
+	<div class="zhong_con">
+		<div class="hei_con" id="content">${hero.main_content}</div>
+		<div class="hei_right" id="sidebar">
+			<div class="rewards_sidebar ${empty rewards ?"hide":"" }">
 				<h3>支持</h3>
 				<ul>
-					<li id="rewards_click">
-						<a class="rev_mon" href="/juanzeng1.jsp">
-						<p class="price_zhong">￥100</p>
-						<p class="title_zhong" href="http://ptobchina.com/">支持100元</p>
-						<p class="image_reward"><img src="#" /></p>
-						<p class="description_zhong">1）我们会登记您的姓名在功德簿和祈福名单里，这两样宝贝将会长久的安放在莲师大殿里，
-						      必将会受到莲花生大士的恒久加持和保佑。 2）您还会得到我们学校全体师生长久的诵经回向和永久祝福。
-						</p>
-						<p class="rew_font">配送费用：<strong>免运费</strong></p>
-						<p class="delivery_zhong">预计回报发送时间: 2015年5月</p>
-						<p class="claimed_zhong"> 已有<label style="color:#ff665f">200</label>人支持 </p>
-					   </a>
-					</li>
-					<li id="rewards_click">
-						<a class="rev_mon" href="/juanzeng1.jsp">
-						<p class="price_zhong">￥3,000</p>
-						<p class="image_reward"><img src="#" /></p>
-						<p class="title_zhong" href="http://ptobchina.com/">支持3000元</p>
-						<p class="description_zhong">1）我们会登记您提供的8个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。 2）您将会收到我们寄出的色达风景明信片一套（10-12张） 3）我们将为您专门刻三块玛尼石，放在学校的玛尼墙里，得到亘古恒久的功德加持。 4）您将成为汇知学校的尊贵功德主和善心人士，邀请您在合适的时间访问汇知学校。</p>
-						<p class="rew_font">配送费用：<strong>免运费</strong></p>
-						<p class="delivery_zhong">预计回报发送时间: 2015年10月</p>
-						<p class="claimed_zhong"> 已有<label style="color:#ff665f">200</label>人支持</p>
-						</a>
-					</li>
-					<li id="rewards_click" style="border-bottom:none">
-						<a class="rev_mon" href="/juanzeng1.jsp" >
-						<p class="price_zhong">￥3,000</p>
-						<p class="image_reward"><img src="#" /></p>
-						<p class="title_zhong" href="http://ptobchina.com/">支持3000元</p>
-						<p class="description_zhong">1）我们会登记您提供的8个姓名在功德簿和祈福名单里，这两样宝贝将会长久的放在莲师大殿里，必将会受到莲花生大士的恒久加持和保佑。而且您也会得到我们学校全体师生长久的诵经回向和永久祝福。 2）您将会收到我们寄出的色达风景明信片一套（10-12张） 3）我们将为您专门刻三块玛尼石，放在学校的玛尼墙里，得到亘古恒久的功德加持。 4）您将成为汇知学校的尊贵功德主和善心人士，邀请您在合适的时间访问汇知学校。</p>
-						<p class="rew_font">配送费用：<strong>免运费</strong></p>
-						<p class="delivery_zhong">预计回报发送时间: 2015年10月</p>
-						<p class="claimed_zhong"> 已有<label style="color:#ff665f">200</label>人支持</p>
-						</a>
-					</li>
-		</div>	
-    </div>
-    <div class="clear"></div>
-     <div class="rew_btn" style="margin-top:20px;"><a href="/juanzeng1.jsp">我要支持</a></div> 
-    
-</div>
+					<c:forEach var="s" items="${rewards}" varStatus="i">
+						<li id="rewards_click">
+						
+						<a class="rev_mon"
+							href='${hero.status eq "1"?"/hero/buy?":"javascript:void(0)"}reward=${s.id }&id=${hero.id}'>
+			
+								<p class="price_zhong">￥${s.price }</p>
 
-<!-- absolute_right start -->
-	 <%@ include file="/includes/absolute.jsp" %>
-<!-- absolute_right end -->
-<div class="clear"></div>
-<!-- footer start -->
-<%@ include file="/includes/footer.jsp" %>
-<!-- footer end -->
+								<p class="title_zhong" >支持￥${s.price }元</p>
+								<p class="image_reward">
+									<img src="${s.image_url }" />
+								</p>
+								<p class="description_zhong">${s.description }</p>
+								<p class="rew_font">
+									<strong>${s.delivery_price>0? "配送费用："+s.delivery_price:"免运费" }</strong>
+								</p>
+								<p class="delivery_zhong">预计回报发送时间: ${s.delivery_date }</p>
+								<p class="claimed_zhong">
+									已有<label style="color: #ff665f">${s.back_number }</label>人支持
+								</p>
+						</a></li>
+
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="rew_btn" style="margin-top: 20px;">
+			<a
+				href='${hero.status eq "1"?"/hero/buy?id=":"javascript:void(0)"}${hero.id}'>
+				${hero.status=='1'?'我要支持':''}
+				${hero.status=='2'?'已结束':''}
+				${hero.status=='3'?'即将开启':''}</a>
+				
+				
+		</div>
+
+	</div>
+
+	<!-- absolute_right start -->
+	<%@ include file="/includes/absolute.jsp"%>
+	<!-- absolute_right end -->
+	<div class="clear"></div>
+	<!-- footer start -->
+	<%@ include file="/includes/footer.jsp"%>
+	<!-- footer end -->
 
 </body>
 </html>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script>	head_index = 3;</script>
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
 <script type="text/javascript">
 var indexs=0;
 
@@ -132,153 +134,3 @@ $(document).ready(function(e){
  
 </script>
 
-<script language="javascript">
-
-$(function(){
-	var side=parseInt($("#sidebar").offset().top);
-	var sideleft=parseInt($("#sidebar").offset().left)
-	
-
-	
-	    var scroll_height=parseInt($(this).scrollTop());		
-		var win_height=$(window).height();//window height
-		var offset_height=parseInt($(".hei_right").offset().top);
-		var offset_left=parseInt($(".hei_right").offset().left);	
-		var con_offset=parseInt($(".hei_con").offset().top);
-		var con_height=$(".hei_con").height();	
-		var heiright_height=$(".hei_right").height(); 
-iE6=window.ActiveXObject&&!window.XMLHttpRequest;
-
-if(!iE6){
-    var isScroll=false;
-    var docHeight = document.documentElement.clientHeight;    
-    var sideTop=document.getElementById('sidebar').offsetTop;
-    var campaignTop=document.getElementById('campaign').offsetTop
-
-    window.onscroll=function()
-    {
-
-        //document.getElementById("float").className="div2";
-        var s=document.body.scrollTop||document.documentElement.scrollTop;
-        var isIE=(navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0);
-        if(isIE)
-        {
-            if(s>(document.getElementById('sidebar').offsetHeight +campaignTop - docHeight))
-            {
-                if(!isScroll)
-                {
-
-                    var leftW=document.getElementById('sidebar').offsetLeft+'px';
-
-                    var topH=document.getElementById('sidebar').offsetHeight;
-
-                    document.getElementById('sidebar').style.position='fixed';
-
-                    document.getElementById('sidebar').style.left=sideleft;
-
-                    document.getElementById('sidebar').style.top=(docHeight - topH) + 'px';
-                   
-                    isScroll=true;
-
-                }
-
-                else
-
-                {
-
-                    if(s>(document.getElementById('content').offsetHeight+campaignTop - docHeight))
-
-                    {
-
-                        var topH=document.getElementById('sidebar').offsetHeight;
-                        // var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height);
-                        //document.getElementById('sidebar').style.top=(docHeight - topH - (s-document.getElementById('content').offsetHeight-campaignTop+docHeight))+'px';
-                        document.getElementById('sidebar').style.top=(docHeight-heiright_height-(s-con_height-con_offset-heiright_height+docHeight))+'px';
-                    }
-            
-                    else
-
-                    {
-
-                        var topH=document.getElementById('sidebar').offsetHeight;
-                        document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
-
-                    }
-
-                }
-
-            }
-
-            else
-
-            {
-
-                if(isScroll)
-
-                {
-                    document.getElementById('sidebar').style.position='static';
-
-                    isScroll=false;
-                }
-            }
-
-        }
-        else
-        {
-            if(s>(document.getElementById('sidebar').offsetHeight+713-docHeight))
-            {
-
-                if(!isScroll)
-
-                {
-                    var leftW=parseInt(document.getElementById('sidebar').offsetLeft);
-                    var topH=document.getElementById('sidebar').offsetHeight;
-                    document.getElementById('sidebar').style.position='fixed';
-                    document.getElementById('sidebar').style.left=sideleft+'px';
-                    document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
-                    isScroll=true;
-
-                }
-
-                else
-
-                {
-                    if(s>document.getElementById('content').offsetHeight + con_offset - docHeight)
-                    {
-                        var topH=document.getElementById('sidebar').offsetHeight;
-                        var Ctop=win_height-heiright_height-(scroll_height-con_height-con_offset+win_height)-100;
-                        //document.getElementById('sidebar').style.top=(docHeight-topH-(s-document.getElementById('content').offsetHeight-con_offset+docHeight))+'px';
-                        document.getElementById('sidebar').style.top=(docHeight-heiright_height-(s-con_height-con_offset+docHeight))+'px';
-                    }
-                    else
-
-                    {
-                        var topH=document.getElementById('sidebar').offsetHeight;
-                        document.getElementById('sidebar').style.top=(docHeight-topH)+'px';
-                    }
-
-                }
-
-            }
-
-            else
-
-            {
-
-                if(isScroll)
-
-                {
-                    document.getElementById('sidebar').style.position='static';
-                    isScroll=false;
-
-                }
-
-            }
- 
-      }
-
-    }
-
- }
-})
-</script>

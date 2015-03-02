@@ -1,8 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -13,11 +9,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>添加新闻公告</title>
 <link href="/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
 <link href="/css/style1.css" rel="stylesheet" type="text/css" />
-    <%-- <script type="text/javascript" src="<%=path%>/up/third-party/jquery.min.js"></script> --%>
-      <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>    
-    <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.min.js"></script>
-    <script type="text/javascript" src="<%=path%>/up/lang/zh-cn/zh-cn.js"></script>
+    <%-- <script type="text/javascript" src="/up/third-party/jquery.min.js"></script> --%>
+      <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>    
+    <script type="text/javascript" charset="utf-8" src="/up/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/up/umeditor.min.js"></script>
+    <script type="text/javascript" src="/up/lang/zh-cn/zh-cn.js"></script>
    
     
     
@@ -141,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	
     	<div class="dataForm">
-    	<form  action="<%=path%>/Login/addnews" id="form" method="post"    >
+    	<form  action="/Login/addnews" id="form" method="post"    >
         	<input type="hidden"  name="depicts"  id="depicts" />
         	<input type="hidden"  name="channel"  id="channel" />
         	<input type="hidden" name="id" id="id" value="${news1.id}" />
