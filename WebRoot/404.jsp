@@ -3,7 +3,7 @@
 
  <%@ include file="/includes/taglibs.jsp" %> 
  <meta http-equiv="refresh" content="3;URL=/?404" />
-<title>线下项目 - 中租宝</title>
+<title>出错啦！ - 中租宝</title>
 <link href="/css/style-2014-11.css?v=${sessionScope.version}" rel="stylesheet" type="text/css" />
 </head>
 <body>

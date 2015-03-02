@@ -6104,6 +6104,7 @@ ul,li{
 	min-height:40px;
 	border-bottom:1px solid #ccc;
 }
+
 .dizhi_table li span{
 	width:100px;
 	height:40px;
@@ -6116,7 +6117,7 @@ ul,li{
 	width:650px;
 	margin:5% auto 3%;
 	display:none;
-	overflow:hidden;
+    background:pink;
 }
 .dizhi_input li{
 	width:100%;

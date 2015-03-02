@@ -5,7 +5,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ include file="/includes/taglibs.jsp" %> 
+<%@ include file="/includes/taglibs.jsp" %>
 <title>我的地址 - 我的账户 - 中租宝</title>
 <script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
 <body>
@@ -20,16 +20,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <!-- user_left end -->
     </div>
     <div class="user_right">
-      <div class="zichan_con checkheight">
+ 
+      <div class="zichan_con checkheight">     
          <div class="pro_con_title" style="margin-top: 5px; background:url(../img/images-2014-11/red_line_big.png) 104px 12px no-repeat;">
                 <strong>收货地址管理</strong>
          </div>
          <a class="tianjiadizhi"></a>
-         <div class="dizhi_msg">,
+         <div class="dizhi_msg">
            <a class="add_dizhi"></a>
            <p class="little_head" style="display:none">添加收货地址:</p>                
          </div>
-         <div class="clear"></div>
+         
          <div class="dizhi_input">
             <form action="#" name="d_form" >
                 <ul>
@@ -60,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <span>收件人</span>
                <span>所在地区</span>
                <span id="table_wid">详细地址</span>
-                <span>邮编</span>
+               <span>邮编</span>
                <span>手机/电话</span>
                <span>操作</span>
                <span>默认地址</span>
@@ -72,32 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <span>10028</span>
                <span>18800001111</span>
                <span><a class="m_green modify_form">修改</a>|<a class="m_green">删除</a></span>
-               <span><input type="checkbox" name="chbox" class="chbox"></input></span>
-               <div class="clear"></div>
-               <div class="m_dizhi">
-                 <div class="dizhi_input" style="display:block">
-		            <form action="#" name="d_form" >
-		                <ul id="form_bott">
-		                  <li>
-		                    <span>省/直辖市<strong>*</strong></span>
-		                    <select id="s_province" name="s_province"></select>
-		                    <span>城市<strong>*</strong></span>
-		                    <select id="s_city" name="s_city" ></select> 
-		                    <span>地区<strong>*</strong></span>
-		                    <select id="s_county" name="s_city" ></select>
-		                  </li>
-		                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea></textarea></li>
-		                  <li><span>邮编<strong>*</strong></span><input type="text"/></li>
-		                  <li><span>收货人姓名<strong>*</strong></span><input type="text"/></li>
-		                  <li><span>手机号码<strong>*</strong></span><input type="text"/></li>
-		                </ul> 
-		                <div class="chose">     
-		                 <input type="submit" name="dizhibtn" class="subbtn" value="修改"/>
-		                 <input type="reset"  name="res" class="subbtn1" value="返回"/>
-		                </div>
-		             </form>   
-                 </div>
-               </div>                
+               <span><input type="checkbox" name="chbox" class="chbox"></input></span>                              
              </li>
              <li>
                <span>XXX</span>
@@ -106,32 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <span>10028</span>
                <span>18800001111</span>
                <span><a class="m_green modify_form">修改</a>|<a class="m_green">删除</a></span>
-               <span><input type="checkbox" name="chbox" class="chbox"></input></span>
-               <div class="clear"></div>
-               <div class="m_dizhi">
-                 <div class="dizhi_input" style="display:block">
-		            <form action="#" name="d_form" >
-		                <ul id="form_bott">
-		                  <li>
-		                    <span>省/直辖市<strong>*</strong></span>
-		                    <select id="s_province" name="s_province"></select>
-		                    <span>城市<strong>*</strong></span>
-		                    <select id="s_city" name="s_city" ></select> 
-		                    <span>地区<strong>*</strong></span>
-		                    <select id="s_county" name="s_city" ></select>
-		                  </li>
-		                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea></textarea></li>
-		                  <li><span>邮编<strong>*</strong></span><input type="text"/></li>
-		                  <li><span>收货人姓名<strong>*</strong></span><input type="text"/></li>
-		                  <li><span>手机号码<strong>*</strong></span><input type="text"/></li>
-		                </ul> 
-		                <div class="chose">     
-		                 <input type="submit" name="dizhibtn" class="subbtn" value="修改"/>
-		                 <input type="reset"  name="res" class="subbtn1" value="返回"/>
-		                </div>
-		             </form>   
-                 </div>
-               </div>  
+               <span><input type="checkbox" name="chbox" class="chbox"></input></span>            
              </li>
              <li>
                <span>XXX</span>
@@ -140,32 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <span>10028</span>
                <span>18800001111</span>
                <span><a class="m_green modify_form">修改</a>|<a class="m_green">删除</a></span>
-               <span><input type="checkbox" name="chbox" class="chbox"></input></span>
-               <div class="clear"></div>
-               <div class="m_dizhi">
-                 <div class="dizhi_input" style="display:block">
-		            <form action="#" name="d_form" >
-		                <ul id="form_bott">
-		                  <li>
-		                    <span>省/直辖市<strong>*</strong></span>
-		                    <select id="s_province" name="s_province"></select>
-		                    <span>城市<strong>*</strong></span>
-		                    <select id="s_city" name="s_city" ></select> 
-		                    <span>地区<strong>*</strong></span>
-		                    <select id="s_county" name="s_city" ></select>
-		                  </li>
-		                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea></textarea></li>
-		                  <li><span>邮编<strong>*</strong></span><input type="text"/></li>
-		                  <li><span>收货人姓名<strong>*</strong></span><input type="text"/></li>
-		                  <li><span>手机号码<strong>*</strong></span><input type="text"/></li>
-		                </ul> 
-		                <div class="chose">     
-		                 <input type="submit" name="dizhibtn" class="subbtn" value="修改"/>
-		                 <input type="reset"  name="res" class="subbtn1" value="返回"/>
-		                </div>
-		             </form>   
-                 </div>
-               </div>  
+               <span><input type="checkbox" name="chbox" class="chbox"></input></span>                              
              </li>
              <li>
                <span>XXX</span>
@@ -225,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          
          </div>
       </div>
-      <div id="dialog01" class="style_dialog" style="height:170px">
+      <div id="dialog01" class="style_dialog" style="height:170px; display:none">
 	          <div class="dialog_title">
                <strong>温馨提示</strong>
 	           <div class="right_cha"></div>
