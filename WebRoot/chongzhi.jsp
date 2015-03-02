@@ -171,7 +171,7 @@
 </body>
 </html>
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript" src="static/js/zhongzubao.js?va=4"></script>
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
 <script type="text/javascript">
 	function onSubmit(host) {
 		if ($("#amount").val() == 0 || $("#amount").val() == "") {
