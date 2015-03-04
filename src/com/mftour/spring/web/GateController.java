@@ -332,7 +332,7 @@ public class GateController {
 				.queryTRegisterYeePayByName(registerYeePay.getPlatformUserNo());
 		String uuid = UUID.randomUUID().toString();
 		request.setRequestNo(uuid);
-		request.setNotifyUrl(notifyUrl);
+		request.setNotifyUrl(f.getNotifyUrl()+"/gate/registerNotify");
 		if (li != null && li.size() != 0) {
 
 			TRegisterYeePay registerYeePay1 = li.get(0);
@@ -364,6 +364,38 @@ public class GateController {
 		return doSign(request, f.getOnSubmit() + "/bha/toRegister", model);
 	}
 
+	@RequestMapping(value = "/gate/registerNotify", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String registerNotify(String notify, String sign, Model model)
+			throws Exception {
+		try {
+
+			Map<String, Object> m = Xml.Dom2Map(notify);
+			if (m.get("code").equals("1")) {
+
+				TRegisterYeePay registerYeePay = gateService
+						.queryTRegisterYeePayByNumber(
+								(String) m.get("requestNo")).get(0);
+				registerYeePay.setCode("1");
+				gateService.addOrUpdateRegisterYeePay(registerYeePay);
+				return "success";
+			} else {
+
+				TRegisterYeePay registerYeePay = gateService
+						.queryTRegisterYeePayByNumber(
+								(String) m.get("requestNo")).get(0);
+				registerYeePay.setCode("0");
+				logger.error("error loan " + m.get("description"));
+
+				return "error";
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error " + e + notify);
+			return "error";
+		}
+	}
 	@RequestMapping(value = "/gate/recharge", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String recharge(Model model, HttpServletRequest request)
@@ -500,7 +532,7 @@ public class GateController {
 		request.setOrderNo(t.getEnterpriseNumber());
 		request.setPlatformUserNo(o.toString());
 		request.setPlatformNo(f.getPlatformNo());
-		request.setNotifyUrl(rewardCheck);
+		request.setNotifyUrl(notifyUrl);
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (rewardCheck != null && rewardCheck.equals("on")
 				&& paymentAmount >= 3000) {
@@ -610,12 +642,11 @@ public class GateController {
 			return "login";
 		}
 
-		if (Integer.parseInt(buyAmount) >= 3000) {
-
+		
 			Rest rest = new Rest();
 
 			String s = rest.getRestful("/rest/reward/get-valid-by-user-id/"
-					+ o.toString() + "/" + buyAmount);
+					+ o.toString() + "/" +3000);
 			ResponseReward r = JSON.parseObject(s, ResponseReward.class);
 			if (!r.isSuccess()) {
 				logger.error("error get reward ");
@@ -624,9 +655,7 @@ public class GateController {
 
 			Rewards reward = r.getReward();
 			model.addAttribute("reward", reward);
-		} else {
-			model.addAttribute("reward", new Rewards());
-		}
+		
 		List<TProduct> list = productService.queryProductByNumber(product
 				.getEnterpriseNumber());
 		if (list != null && list.size() != 0) {
@@ -893,7 +922,7 @@ public class GateController {
 	public String transferNotify(String notify, String sign, Model model)
 			throws Exception {
 		try {
-			Thread.sleep(15000);
+			Thread.sleep(10000);
 			Map<String, Object> m = Xml.Dom2Map(notify);
 			Rest rest = new Rest();
 

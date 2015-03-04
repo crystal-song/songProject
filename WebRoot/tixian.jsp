@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
 
  <%@ include file="/includes/taglibs.jsp" %> 
 
@@ -43,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<form id="form-card" role="form"
 					style='${yeepay.cardStatus==null?"":"display:none"}'
-					action="<%=path%>/gate/dobinding" method="post" target="_blank">
+					action="/gate/dobinding" method="post" target="_blank">
 					<input type="hidden" class="form-control" id="platformUserNo"
 						name="platformUserNo" value="${name}" /> <input type="hidden"
 						class="form-control" id="notifyUrl" name="notifyUrl"
@@ -75,15 +72,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<strong>提现</strong>
 				</div>
 				<div class="form-group" style="margin-top: 50px; dislplay: none">
-					<label for="plat">最低可提现金金额</label>
+					<label for="plat">可提现金金额</label>
 
 					<%--  <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">${account.availableMoney}</strong>元</div> --%>
 					<div class="form-control ame"
 						style="width: 300px; text-align: left;">
-						<strong class="wd_org">${accounts.availableMoney }</strong>元
+						<strong class="wd_org">${account.availableMoney }</strong>元
 					</div>
 				</div>
-				<form id="form" role="form" action="<%=path%>/gate/dodrawMoney"
+				<form id="form" role="form" action="/gate/dodrawMoney"
 					method="post" target="_blank">
 					<input type="hidden" class="form-control" id="feeMode"
 						name="feeMode" value="${feeMode}" /> <input type="hidden"
@@ -93,6 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<label for="amount">提现金额</label><input type="text"
 							class="form-control tixian_money" id="amount" name="amount"
 							value="提现金额不能为0" style="color: #ccc" />
+							<span class="liquan_y"></span>
 					</div>
 					<input type="hidden" class="form-control" id="notifyUrl"
 						name="notifyUrl" value="${f.notifyUrl}/gate/drawMoneyNotify" /> <input
@@ -101,8 +99,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 					<div class="mar_que_top">
-						<button type="submit" onclick="onSubmit('${f.onSubmit}')" class="btn mar_btn"
-							id="mysubmit_btn" style="color: #fff;">确认</button>
+						<input type="submit" class="btn mar_btn"
+							id="mysubmit_btn" style="color: #fff;" >确认</button>
 					</div>
 				</form>
 
@@ -128,14 +126,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="touzi_text">
 						<p style="background: url('../img/images-2014-11/renzheng01.png') 26px 7px no-repeat">
-							如果您成功提现：<a href="<%=path%>/gate/service">查看我的资产</a>
+							如果您成功提现：<a href="/gate/service">查看我的资产</a>
 						</p>
 					</div>
 					<div class="touzi_text">
 						<p
 							style="background: url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat">
-							如果您提现失败：<a href="<%=path%>/gate/drawMoney">重新提现</a> | <a
-								href="<%=path%>/contact.jsp">联系客服</a>
+							如果您提现失败：<a href="/gate/drawMoney">重新提现</a> | <a
+								href="/contact.jsp">联系客服</a>
 						</p>
 					</div>
 				</div>
@@ -152,8 +150,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="touzi_text" style="display: block">
 						<p>
-							<a href="<%=path%>/gate/recharge">去充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-								href="<%=path%>/gate/service">查看我的资产</a>
+							<a href="/gate/recharge">去充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+								href="/gate/service">查看我的资产</a>
 						</p>
 					</div>
 					<a class="diabtn">确定</a>
@@ -174,50 +172,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
  var head_index=5; 
 </script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
 <script type="text/javascript">
+$("#mysubmit_btn").click(function(){
+	 $("#mysubmit_btn").attr("disabled");
+	
+		  var form = document.getElementById("form");
+		  
 
-function onSubmit(host) {
-	if(!checkval()){return false}
-	  var form = document.getElementById("form");
-	  
+		    	var tixian_val=parseInt($(".tixian_money").val());
+			    var old_amount=parseInt($(".wd_org").text());
 
-	    	var tixian_val=parseInt($(".tixian_money").val());
-		    var old_amount=parseInt($(".wd_org").text());
+		    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
+		    		//alert("您输入的金额为空,请重新输入");	 
+		    		$(".newye").css("display","block")
+		    	    $(".black_bac").css("display","block");
+		    		$(".p_font").text("提现金额不能为空，请重新输入！")
+		    		
+		    		 
+		    	}    	
+		    	 if(tixian_val>old_amount){
+		    		//alert("您提现的金额不能超出可提现金额");
+		    		$(".newye").css("display","block")
+		    	    $(".black_bac").css("display","block");
+		    		$(".p_font").text("您提现的金额不能超出可提现金额！")
+		    		return false;	    		
+		    	}
+		    	 if(tixian_val<100){
+			    		//alert("您提现的金额不能超出可提现金额");
+			    		$(".newye").css("display","block")
+			    	    $(".black_bac").css("display","block");
+			    		$(".p_font").text("提现金额不能小于100元！")
+			    		return false;	    		
+			    	}
+		    
+		    		  $("#dialog01").css("display","block");
+		    		  $(".black_bac").css("display","block");
+		    		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+		    		  $("#mysubmit_btn").removeAttr("disabled");
+		    		  form.submit();
+});
 
-	    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
-	    		//alert("您输入的金额为空,请重新输入");	 
-	    		$(".newye").css("display","block")
-	    	    $(".black_bac").css("display","block");
-	    		$(".p_font").text("提现金额不能为空，请重新输入！")
-	    	}    	
-	    	 if(tixian_val>old_amount){
-	    		//alert("您提现的金额不能超出可提现金额");
-	    		$(".newye").css("display","block")
-	    	    $(".black_bac").css("display","block");
-	    		$(".p_font").text("您提现的金额不能超出可提现金额！")
-	    		return false;	    		
-	    	}else{
-	    		  $("#dialog01").css("display","block");
-	    		  $(".black_bac").css("display","block");
-	    		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
-	    		  form.submit();
-	    		  document.getElementById("mysubmit_btn").disabled=true;
-	    	}		
-}
 
-function checkval(){
-	if($(".tixian_money").val()==0||$(".tixian_money").val()=="提现金额不能为0"||$(".tixian_money").val()==""){
-		//alert("提现金额不能为空!!");
-		$(".newye").css("display","block")
-	    $(".black_bac").css("display","block");
-		$(".p_font").text("提现金额不能为空，请重新输入！")
-		
-		return false;
-		}
-	return true;
-}
+
     var navIndex=3; 
     var indexs=1;
     $(document).ready(function(){

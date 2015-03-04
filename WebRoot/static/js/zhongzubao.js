@@ -277,7 +277,7 @@
 					 		$(".liquan_hide").css("display","block");
 					 		if($(".liquan_check").val()==""){
 						    	   $(".liquan_hide").css("display","none")
-						       }
+						      }
 					 	  }						  
 				   });	
 				   

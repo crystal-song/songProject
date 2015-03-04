@@ -112,7 +112,7 @@
 						</div>
 					</li>
 					<li>
-						<div class="form-group liquan_hide" style="${reward.userId==null?"display:none":""}">
+						<div class="form-group liquan_hide" style="${reward.userId==null && buyAmount >= 3000?"display:none":""}">
 							<label for="#"> <input type="checkbox"
 								class="form-control" id="reward" name="rewardCheck" /></label> <label
 								for="paymentAmount" style="margin-left: 0px; width: 118px">使用50元礼卷&nbsp;</label>
@@ -239,7 +239,7 @@ $(document).ready(function(e) {
 		$("#paymentAmount").change(function(e) {
 			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
 				$(this).val(parseInt($(".lev_start").eq(0).html()));
-				}
+			}
 			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
 				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
 				}
