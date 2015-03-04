@@ -75,12 +75,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<strong>提现</strong>
 				</div>
 				<div class="form-group" style="margin-top: 50px; dislplay: none">
-					<label for="plat">可提现金金额</label>
+					<label for="plat">最低可提现金金额</label>
 
 					<%--  <div class="form-control ame" style="width:300px; text-align:left;"><strong class="wd_org">${account.availableMoney}</strong>元</div> --%>
 					<div class="form-control ame"
 						style="width: 300px; text-align: left;">
-						<strong class="wd_org">100</strong>元
+						<strong class="wd_org">${accounts.availableMoney }</strong>元
 					</div>
 				</div>
 				<form id="form" role="form" action="<%=path%>/gate/dodrawMoney"
@@ -111,6 +111,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<strong>温馨提示</strong>
 					</p>
 					<ol>
+					
+						<li class="tishi_red">最低可提现金金额为100元。</li>
 						<li class="tishi_red">您充值的资金在24小时内不允许提现。</li>
 						<li class="tishi_red">您充值的资金若未投资就提现，第三方支付公司会收取您提现金额的0.5%作为转账费用。</li>
 						<li>您的账户资金将由第三方平台托管。</li>						

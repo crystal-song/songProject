@@ -250,23 +250,13 @@ public class GateController {
 		File f = ReadWirtePropertis.file();
 		model.addAttribute("f", f);
 		Object o = request.getSession().getAttribute("name");
-		if (o != null) {
-			List<TRegisterYeePay> li = gateService.queryTRegisterYeePayByName(o
-					.toString());
-			if (li != null && li.size() != 0) {
-				model.addAttribute("feeMode", BHAFeeModeEnum.USER);
-			}
-			List<TEstablishmentRegistration> list = gateService
-					.queryTEstablishmentRegistrationByNumber(o.toString());
-			if (list != null && list.size() != 0) {
-				model.addAttribute("feeMode", BHAFeeModeEnum.PLATFORM);
-			}
-		} else {
+		if (o == null) {
 			return "login";
 		}
 		if (!isYeepay(o.toString())) {
 			return "register";
 		}
+		model.addAttribute("feeMode", BHAFeeModeEnum.PLATFORM);
 		YeepayAccountInfo yeepayAccount;
 		Accounts accounts = userService.getAccountByName(o.toString());
 		if (accounts.getYeepayBindcardIsok()) {
