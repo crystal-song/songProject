@@ -143,15 +143,13 @@
 						</p>
 					</div>
 				</div>
-				<div id="dialog01" style="display: none; height: 170px;"
-					class="newye">
+				<div id="dialog01" style="display: none; height: 170px;" class="newye">
 					<div class="dialog_title">
 						<strong>温馨提示</strong>
 						<div class="right_cha"></div>
 					</div>
 					<div class="touzi_text">
-						<p
-							style="background: url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat"
+						<p style="background: url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat"
 							class="p_font">充值金额不能为0,请重新充值!</p>
 					</div>
 					<a class="diabtn">确定</a>

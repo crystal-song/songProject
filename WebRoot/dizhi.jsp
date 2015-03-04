@@ -5,8 +5,15 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@ include file="/includes/taglibs.jsp" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="ctx" value="/erp"/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
 <title>我的地址 - 我的账户 - 中租宝</title>
+<link href="/css/style-2014-11.css?v=${sessionScope.version}" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
 <body>
 <!-- top start  -->
@@ -40,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span>城市<strong>*</strong></span>
                     <select id="s_city" name="s_city" ></select> 
                     <span>地区<strong>*</strong></span>
-                    <select id="s_county" name="s_city" ></select>
+                    <select id="s_county" name="s_county" ></select>
                   </li>
                   <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea></textarea></li>
                   <li><span>邮编<strong>*</strong></span><input type="text"/></li>
@@ -172,7 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script class="resources library" src="js/area.js" type="text/javascript"></script>   
+<script class="resources library" src="/js/area.js" type="text/javascript"></script>   
 <script type="text/javascript">_init_area();</script>
 <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
