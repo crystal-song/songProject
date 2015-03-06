@@ -6022,7 +6022,20 @@ ul,li{
 	font-size:14px;
 	cursor:pointer;
 }
-
+.diabtn1{
+	width:90px;
+	height:30px;
+	background:#ccc;
+	display:inline-block;
+	float:right;
+	margin-right:40px;
+	margin-top:13%;
+	border-radius:3px;
+	color:#fff;
+	line-height:30px;
+	font-size:14px;
+	cursor:pointer;
+}
 .diabtn:hover{
 	color:#fff;
 	background:#d11d06;
@@ -6194,7 +6207,7 @@ ul,li{
     float:left;
 }
 .subbtn{
-	margin:0 50px 0 30%;
+	margin-right:80px;
 	border:none;
 	border-radius:3px;
 	background:#ff665f;
@@ -6207,6 +6220,7 @@ ul,li{
 }
 .subbtn:hover{
 	background:#c60900;
+	color:#fff;
 }
 .subbtn1{
 	display:inline-block;
@@ -6221,7 +6235,7 @@ ul,li{
 }
 .subbtn1:hover{
 	background:#999;
-
+    color:#fff;
 }
 
 #table_wid{
@@ -6315,9 +6329,13 @@ ul,li{
 .dizhi_table li li{
 	border:none
 }
+.dizhi_table li li span{
+    line-height:20px;	
+}
 
-
-
+.dialog_add{
+	display:none;
+}
 
 
 

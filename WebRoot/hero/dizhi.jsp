@@ -37,7 +37,7 @@
 			  </div> 
 			  
 			  <span class="dizhispan"></span>
-		           <div class="dizhi_input">
+		           <div class="dizhi_input dizhi_add">
 				      <form action="#" name="d_form" >
 				      
 		                <ul>
@@ -95,19 +95,21 @@
 			             <c:forEach var="a" items="${address}" varStatus="i">
 			             <input type="hidden" value="" name="addressid" id="addressid">
 			              <li style="height:auto" v="${a.id }">
+			              
 			              <div class="msglist">
 			               <span>${a.name }</span>
 			               <span>${a.province }</span>
 			               <%-- <span>${a.city }</span> --%>
 			               <!-- <span id="table_wid">XX小区XX号楼XX单元XX室XX小区XX号楼XX单元XX室</span>   -->
 			                <span id="table_wid">${a.detail }</span> 
+			             
 			               <span>${a.code }</span>
 			               <span>${a.phone }</span>
-			               <span><a class="m_green modify_form">修改</a>|<a id="del" href="javascript:void(0)" class="m_green delete">删除</a></span>
-			               <span><input type="checkbox" name="chbox" class="chbox"></input></span> 
+			               <span><a class="m_green modify_form">修改</a>|<a id="del"  class="m_green delete" v="${a.id }">删除</a></span>
+			               <span><input type="radio" name="chbox" class="chbox"></input></span> 
 			               </div>
-			               <div class="clear"></div>
-			               <div class="dizhi_input" style="display:block">
+			             
+			               <div class="dizhi_input" style="display:none">
 						      <form action="#" name="d_form" >						      
 				                <ul>
 				                 <li>
@@ -125,9 +127,14 @@
 				                <a class="subbtn" >确认添加</a> 
 				                <a class="subbtn1" >返回</a>  
 				                </div> 
+				                
+				                
 		                     </form>		             		             
 		                </div>                             
-			              </li>
+			              
+			              
+	                     </li>
+	                     
 			             </c:forEach>
 			           </ul>
              </div>
@@ -141,17 +148,30 @@
 							
 			
 						</c:forEach> --%>
-
-		<div id="dialog01"  class="dialognew" style="height:170px;">
-					<div class="dialog_title">
-						<strong>提示</strong>
-						<div class="right_cha"></div>
-					</div>
-					<div class="touzi_text">
-						<p class="p_font textpiont"><i class="piont_pic"></i>添加成功!</p>
-					</div>
-					<a class="diabtn">确定</a>
-				</div>			
+                        
+                        <div id="dialog01"  class="dialognew" style="height:170px;">
+							<div class="dialog_title">
+								<strong>提示</strong>
+								<div class="right_cha"></div>
+							</div>
+							<div class="touzi_text">
+								<p class="p_font textpiont"><i class="piont_pic"></i>确定删除吗？</p>
+							</div>
+							<a class="diabtn silbtn" v="">确定</a>
+							<a class="diabtn1" >取消</a>
+	                     </div>
+                        
+                       <div id="dialog01"  class="dialog_add" style="height:170px;">
+							<div class="dialog_title">
+								<strong>提示</strong>
+								<div class="right_cha"></div>
+							</div>
+							<div class="touzi_text">
+								<p class="p_font textpiont"><i class="piont_pic"></i>添加成功!</p>
+							</div>
+							<a class="diabtn">确定</a>
+						
+	                   </div> 
     </div>
     <!-- absolute_right start -->
 	     <%@ include file="/includes/absolute.jsp" %>
@@ -178,6 +198,68 @@
 <script type="text/javascript">
 $(document).ready(
 		function(e) {
+			
+		  $(".delete").click(function(){
+			  $(".dialognew").css("display","block")
+			  
+		  })
+		  
+          $(".delete").click(function(){
+				// $(this).parent().parent().siblings(".dialognew").css("display","block");
+				$(".dialognew").css("display","block");
+				var delid=$(this).attr('v')
+				$(".silbtn").attr("v",delid);
+				
+			}) 			
+		 /* $(".diabtn").click(function(){			      
+			 $.ajax("/hero/del/address",							
+					     {"data":{id: $(this).attr("v")}, 		                	    
+					     "type": "POST"	,						     					    
+					     "success":function(ddd){
+					    	 window.location.reload(); 
+					     }
+					     
+					     
+					    });
+			  
+		 })  */ 
+		 
+          /* $(".diabtn").click(function(){			      
+			 $.ajax("/hero/del/address",							
+					     {"data":{id: $(this).attr("v")}, 		                	    
+					     "type": "POST"	,						     					    
+					     
+					    }).done(function(data){
+					    	if (data==="login"){
+					    		alert("请登录");
+					    		return false;
+					    	}
+					    
+					    	location.reload();    
+					    	});
+			  
+		 })    */
+		 $(".diabtn").click(function(){		
+			 $.ajax({
+				   type: "POST",
+				   url: "/hero/del/address",
+				   data: {"id": $(this).attr("v")},
+				   success: function(msg){
+				     alert( "ok");
+				    /*  location.reload();  */
+				   },
+				  /*  error:function(data){
+					   alert(data)
+				   } */
+				   error: function (XMLHttpRequest, textStatus, errorThrown) {
+						alert(XMLHttpRequest + textStatus + errorThrown);
+					}
+
+				});
+			 
+		 });
+
+		 
 			$(".u_left_sec:eq(0) li:eq(4)").children("a").css(
 					"color", "#fc652e");
 			$(".nav_big a").eq(2).addClass("bd_btom").siblings()
@@ -186,13 +268,10 @@ $(document).ready(
 					"headwd_color");
 			
 			$(".add_dizhi").click(function(){				
-	    		$(".dizhi_input").css("display","block")
+	    		$(".dizhi_add").css("display","block")
 	    		$(this).hide();
 	    		$(".little_head").css("display","block");
 	    	})
-	    	/* $(".delete").click(function(){
-	    		alert("delete")
-	    	}) */
 	    	
 			$(".dizhi div")
 					.click(
@@ -260,39 +339,31 @@ $(document).ready(
 							    phone: $("#phone").val()},
 					    "type": "POST",
 					    "success":function(data){
-					    	$(".dialognew").css("display","block");
-					    	$(".black_bac").css("display","block");
+					    	
 					    } 
 					    }).done(function(data){
 					    	if (data==="login"){
 					    		alert("请登录");
 					    		return false;
 					    	}
-					    	
-					    	//location.reload();
+					    	$(".dialog_add").css("display","block");
+					    	$(".black_bac").css("display","block");
+					    	/* location.reload();  */
 					    	});
 			});
+		
 			
-			$(".delete").click(function(){
-				//$("#addressid").val($(this).attr("v"));
-				$.ajax("/hero/del/address",
-						{"data":{id: $("#addressid").val()},
-					     "type": "POST",
-					     "success":function(data){
-					    	 alert("delete ok")
-					     }
-					    }).done(function(data){
-					    	if (data==="login"){
-					    		alert("请登录");
-					    		return false;
-					    	}
-					    	/* location.reload(); */
-					    	});
-			});
-			/* $(".checkok").click(function() {
-				$("#dialog01").css("display", "block");
-				$(".black_bac").css("display", "block");
-			}); */
+			$(".modify_form").click(function(){
+				$(this).parent().parent().css("display","none").siblings(".dizhi_input").css("display","block")
+				
+				
+			})
+			$(".subbtn1").click(function(){
+				var dizhi_input=$(this).parent().parent().parent(".dizhi_input")
+				dizhi_input.css("display","none").
+				dizhi_input.siblings(".msglist").css("display","block")
+				
+			})
 		});
 </script>
  
