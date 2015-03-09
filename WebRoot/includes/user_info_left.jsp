@@ -66,10 +66,10 @@
                   <a href="/transRecord/queryTransRecord?time=timeall&type=typeall">交易记录</a>
                 </li>
 
-    <!--      <li>
+      <li style="display:none">
                   <a href="/hero/my">我的众筹</a>
 
-                </li>  -->
+                </li>  
                 <li style="display:none;">
                   <a href="/zhaiquan.jsp">债权转让</a>
                 </li>

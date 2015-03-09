@@ -121,15 +121,23 @@
         var currentPath = document.getElementsByTagName('script');
 
         currentPath = currentPath[ currentPath.length -1 ].src;
+        var url_img_ptob = new PathStack().push( currentPath ) + "";
+     
+        	  return url_img_ptob;
 
-        return new PathStack().push( currentPath ) + "";
-
+      
 
     })();
 
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
+    if ((/^http:\/\/www.ptobchina.com/).test(URL)){
+        var static_file_url = URL;
+
+  }else{
+	  var static_file_url = "http://i.ptobchina.com/";
+  }
     window.UMEDITOR_CONFIG = {
 
         //为编辑器实例添加一个路径，这个不能被注释
