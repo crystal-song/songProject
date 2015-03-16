@@ -119,6 +119,19 @@
 		   
             //------header------//
 				   
+				    $(".top li:eq(0)").mouseover(function(){
+				          $(".list01").css("display","block")		    	
+				    }).mouseout(function(){
+				    	  $(".list01").css("display","none")
+				    	
+				    });
+				    $(".top li:eq(1)").mouseover(function(){
+				          $(".list02").css("display","block")		    	
+				    }).mouseout(function(){
+				    	  $(".list02").css("display","none")
+				    	
+				    });
+				   
 					$(".username_fir").mouseover(function(){
 					       $(".tuichu_fir").show();
 					       $(".tuichu_fir").mouseover(function(){

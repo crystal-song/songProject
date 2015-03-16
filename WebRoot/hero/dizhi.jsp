@@ -101,8 +101,7 @@
 			               <span>${a.province }</span>
 			               <%-- <span>${a.city }</span> --%>
 			               <!-- <span id="table_wid">XX小区XX号楼XX单元XX室XX小区XX号楼XX单元XX室</span>   -->
-			                <span id="table_wid">${a.detail }</span> 
-			             
+			               <span id="table_wid">${a.detail }</span> 			             
 			               <span>${a.code }</span>
 			               <span>${a.phone }</span>
 			               <span><a class="m_green modify_form">修改</a>|<a id="del"  class="m_green delete" v="${a.id }">删除</a></span>
@@ -111,31 +110,26 @@
 			             
 			               <div class="dizhi_input" style="display:none">
 						      <form action="#" name="d_form" >						      
-				                <ul>
-				                 <li>
+				                <ul class="rechange">
+				                  <li>
 				                    <span>省/直辖市<strong>*</strong></span>
-				                    <select id="s_province" name="s_province"></select> 
+				                    <select id="province" name="province"></select> 
 				                    <span>城市<strong>*</strong></span>		                  
-				                    <select id="s_city" name="s_city" ></select> 		            
-				                  </li>		                   
-				                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea id="detail">${a.detail }</textarea></li>
-				                  <li><span>邮编<strong>*</strong></span><input type="text" id="code" value="${a.code }"/></li>
-				                  <li><span>收货人姓名<strong>*</strong></span><input type="text" id="name" value="${a.name }"/></li>
-				                  <li><span>手机号码<strong>*</strong></span><input type="text" id="phone" value="${a.phone }"/></li>
+				                    <select id="city" name="city" ></select> 		            
+				                  </li> 		                   
+				                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea id="detail1">${a.detail }</textarea></li>
+				                  <li><span>邮编<strong>*</strong></span><input type="text" id="code1" value="${a.code }"/></li>
+				                  <li><span>收货人姓名<strong>*</strong></span><input type="text" id="name1" value="${a.name }"/></li>
+				                  <li><span>手机号码<strong>*</strong></span><input type="text" id="phone1" value="${a.phone }"/></li>
 				                </ul> 		                		                
 				                <div class="chose">   
-				                <a class="subbtn" >确认添加</a> 
-				                <a class="subbtn1" >返回</a>  
-				                </div> 
-				                
-				                
+				                <a class="subbtn_add" >确认修改</a> 
+				                <a class="subbtn1 reback" >返回</a>  
+				                </div>          				                
 		                     </form>		             		             
-		                </div>                             
-			              
-			              
-	                     </li>
-	                     
-			             </c:forEach>
+		                   </div>                             			              			              
+	                      </li>	                     
+			            </c:forEach>
 			           </ul>
              </div>
 						<%-- <c:forEach var="a" items="${address}" varStatus="i">
@@ -157,7 +151,7 @@
 							<div class="touzi_text">
 								<p class="p_font textpiont"><i class="piont_pic"></i>确定删除吗？</p>
 							</div>
-							<a class="diabtn silbtn" v="">确定</a>
+							<a class="silbtn" v="">确定</a>
 							<a class="diabtn1" >取消</a>
 	                     </div>
                         
@@ -169,8 +163,7 @@
 							<div class="touzi_text">
 								<p class="p_font textpiont"><i class="piont_pic"></i>添加成功!</p>
 							</div>
-							<a class="diabtn">确定</a>
-						
+							<a class="diabtn">确定</a>						
 	                   </div> 
     </div>
     <!-- absolute_right start -->
@@ -188,6 +181,7 @@
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
 <script class="resources library" src="/js/area.js" type="text/javascript"></script>
 <script type="text/javascript">_init_area();</script>
+<script type="text/javascript">area();</script>
 <script>	
          var head_index = 2;
          var indexs=0;
@@ -207,54 +201,50 @@ $(document).ready(
           $(".delete").click(function(){
 				// $(this).parent().parent().siblings(".dialognew").css("display","block");
 				$(".dialognew").css("display","block");
-				var delid=$(this).attr('v')
+				var delid=$(this).attr('v');
 				$(".silbtn").attr("v",delid);
 				
-			}) 			
-		 /* $(".diabtn").click(function(){			      
-			 $.ajax("/hero/del/address",							
-					     {"data":{id: $(this).attr("v")}, 		                	    
-					     "type": "POST"	,						     					    
-					     "success":function(ddd){
-					    	 window.location.reload(); 
-					     }
-					     
-					     
-					    });
+			}) 
+			
+		  $(".subbtn_add").click(function(){
+			    var newId=$(this).parent().siblings(".rechange").children()
+				var pro=newId.children("#province").val();
+				var cit=newId.children("#city").val();
+				var detai=newId.children("#detail1").val();
+				var cod=newId.children("#code1").val();
+				var nam=newId.children("#name1").val();
+				var pho=newId.children("#phone1").val();
+
+				$.ajax({
+				  type: "POST",
+				  url:"/hero/del/address",
+				  data:{
+						province: pro,
+						city: cit,
+						name: nam,
+						detail: detai,
+						code: cod,
+						phone: pho},
+					  
+				 success: function(msg){
+					 $(".dialog_add").css("display","block");
+				     $(".black_bac").css("display","block");
+					 location.reload();
+				 }
+					
+				})
 			  
-		 })  */ 
+		  })	
 		 
-          /* $(".diabtn").click(function(){			      
-			 $.ajax("/hero/del/address",							
-					     {"data":{id: $(this).attr("v")}, 		                	    
-					     "type": "POST"	,						     					    
-					     
-					    }).done(function(data){
-					    	if (data==="login"){
-					    		alert("请登录");
-					    		return false;
-					    	}
-					    
-					    	location.reload();    
-					    	});
-			  
-		 })    */
-		 $(".diabtn").click(function(){		
+		 $(".silbtn").click(function(){		
 			 $.ajax({
 				   type: "POST",
 				   url: "/hero/del/address",
 				   data: {"id": $(this).attr("v")},
-				   success: function(msg){
-				     alert( "ok");
-				    /*  location.reload();  */
-				   },
-				  /*  error:function(data){
-					   alert(data)
-				   } */
-				   error: function (XMLHttpRequest, textStatus, errorThrown) {
-						alert(XMLHttpRequest + textStatus + errorThrown);
-					}
-
+				   success: function(msg){				     
+				     location.reload();  
+				   }
+		
 				});
 			 
 		 });
@@ -354,14 +344,22 @@ $(document).ready(
 		
 			
 			$(".modify_form").click(function(){
-				$(this).parent().parent().css("display","none").siblings(".dizhi_input").css("display","block")
-				
+				$(this).parent().parent().css("display","none").siblings(".dizhi_input").css("display","block")		
+			})
+			
+			$(".subbtn1").click(function(){
+				$(".dizhi_add").css("display","none");
+				$(".little_head").css("display","none");
+				$(".add_dizhi").css("display","block")				 
+			})
+			
+			$(".reback").click(function(){
+				var dizhi_p=$(this).parent().parent().parent(".dizhi_input");
+				dizhi_p.css("display","none")
+				dizhi_p.siblings(".msglist").css("display","block");
 				
 			})
-			$(".subbtn1").click(function(){
-				var dizhi_input=$(this).parent().parent().parent(".dizhi_input")
-				dizhi_input.css("display","none").
-				dizhi_input.siblings(".msglist").css("display","block")
+			$(".diabtn1").click(function(){
 				
 			})
 		});

@@ -6036,6 +6036,10 @@ ul,li{
 	font-size:14px;
 	cursor:pointer;
 }
+.diabtn1:hover{
+	color:#fff;
+	background:#999;
+}
 .diabtn:hover{
 	color:#fff;
 	background:#d11d06;
@@ -6237,7 +6241,40 @@ ul,li{
 	background:#999;
     color:#fff;
 }
-
+.silbtn{
+	width:90px;
+	height:30px;
+	background:#ff665f;
+	display:inline-block;
+	float:right;
+	margin-right:40px;
+	margin-top:13%;
+	border-radius:3px;
+	color:#fff;
+	line-height:30px;
+	font-size:14px;
+	cursor:pointer;
+}
+.silbtn:hover{
+	background:#c60900;
+	color:#fff;
+}
+.subbtn_add{
+	width:105px;
+	height:36px;
+	background:#ff665f;
+	display:inline-block;
+	margin-right:40px;
+	border-radius:3px;
+	color:#fff;
+	line-height:36px;
+	font-size:14px;
+	cursor:pointer;	
+}
+.subbtn_add:hover{
+    background:#c60900;
+	color:#fff;
+}
 #table_wid{
 	width:190px;
 }
@@ -6336,7 +6373,10 @@ ul,li{
 .dialog_add{
 	display:none;
 }
-
+.rechange select{
+	float:left;
+	width:100px;
+}
 
 
 
