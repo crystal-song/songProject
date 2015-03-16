@@ -18,7 +18,7 @@
                 <li style="border-bottom:0;">
                   <a href="/account/tuijian" >推荐管理</a>
                 </li>
-                <li style="border-bottom:0;">
+                <li style="border-bottom:0;display:none;">
                   <a href="/hero/addr" >我的地址</a>
                 </li>
               </ul>

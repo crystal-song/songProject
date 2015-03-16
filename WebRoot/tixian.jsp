@@ -209,7 +209,7 @@ $("#mysubmit_btn").click(function(){
 		    
 		    		  $("#dialog01").css("display","block");
 		    		  $(".black_bac").css("display","block");
-		    		  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+		    		  document.getElementById("mysubmit_btn").value="正在提交...";
 		    		  $("#mysubmit_btn").removeAttr("disabled");
 		    		  form.submit();
 });

@@ -213,7 +213,7 @@
                 if(resp === "success"){
                     document.getElementById("paymentAmount").value=parseInt(a);        
                     document.getElementById("mysubmit_btn").disabled=true;
-                    document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+                    document.getElementById("mysubmit_btn").value="正在提交...";
                     var form = document.getElementById("form");
                     $("#dialog01").css("display","block");
                     $(".black_bac").css("display","block");

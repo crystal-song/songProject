@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  if(!allcheck()){return false};
 	  var form = document.getElementById("form");
 	  document.getElementById("mysubmit_btn").disabled=true;
-	  document.getElementById("mysubmit_btn").innerHTML="正在提交...";
+	  document.getElementById("mysubmit_btn").value="正在提交...";
 	  form.submit();
 	}
 
