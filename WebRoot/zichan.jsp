@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
  <%@ include file="/includes/taglibs.jsp" %>
 <title>资产统计 - 我的账户 - 中租宝</title>
 
@@ -23,9 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="zichan_con">        
           <div class="pro_con_title" style="margin-top:5px;"><strong>资产统计</strong></div>
           <p class="zichan_num"><span>资产总值:</span><strong><span id="balance_info">${account.balanceTotal}</span><i>元</i></strong>
-          <a href="<%=path%>/gate/recharge" class="char red">充值</a>
-          <a href="<%=path%>/gate/drawMoney" class="char">提现</a>
-          <a href="<%=path%>/transRecord/queryTransRecord?time=timeall&type=typeall" class="char">交易记录</a>          
+          <a href="/gate/recharge" class="char red">充值</a>
+          <a href="/gate/drawMoney" class="char">提现</a>
+          <a href="/transRecord/queryTransRecord?time=timeall&type=typeall" class="char">交易记录</a>          
           </p>
           <ul class="zichan_bar">
             <li>
@@ -46,8 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </li>
 
           </ul>
-           <p class="zichan_num"><a href="<%=path%>/account/liquan?page=1&catlog=0"  class="num_div_fir" title="点击查看我的礼券"><span>可用礼券：</span><strong><span style="width:40px">${count}</span></strong> 张</a>
-            <a class="num_div" href="<%=path%>/account/tuijian" title="点击邀请好友">（立即邀请好友，双方均可获得礼券！）</a>  
+           <p class="zichan_num"><a href="/account/liquan?page=1&catlog=0"  class="num_div_fir" title="点击查看我的礼券"><span>可用礼券：</span><strong><span style="width:40px">${count}</span></strong> 张</a>
+            <a class="num_div" href="/account/tuijian" title="点击邀请好友">（立即邀请好友，双方均可获得礼券！）</a>  
           </p>
           <div class="clear"></div>
 
@@ -67,8 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
  var head_index=2; 
 </script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
 <script type="text/javascript">  
     var indexs=1;
     var ap=0;

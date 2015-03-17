@@ -17,7 +17,7 @@ import com.mftour.spring.service.IptopService;
 
 @Controller
 @RequestMapping("/")
-public class ZhucheController {
+public class RegController {
 
 	@Autowired
 	private IptopService ptopService;
