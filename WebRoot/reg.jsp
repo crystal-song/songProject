@@ -104,7 +104,7 @@
 	var c_pwd = false;
 	var c_repwd = false;
 	var c_email = false;
-	var validate=false;
+	var validate = false;
 	function chk_name() {
 
 		var name = $("#name").val();
@@ -206,7 +206,7 @@
 		chk_pwd();
 		chk_repwd();
 		chk_email();
-		if (c_name && c_pwd && c_repwd && c_email&&validate) {
+		if (c_name && c_pwd && c_repwd && c_email && validate) {
 
 			/* alert("all check pass!"); */
 			/*  Form.action="welcome/register"; 
