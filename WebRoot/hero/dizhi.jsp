@@ -23,7 +23,7 @@
                 <strong>收货地址管理</strong>
               </div>
               <a class="tianjiadizhi"></a>
-             <div class="dizhi_msg">
+              <div class="dizhi_msg">
               <a class="add_dizhi"></a>
               <p class="little_head" style="display:none">添加收货地址:</p>                
              </div>

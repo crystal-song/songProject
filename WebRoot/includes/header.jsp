@@ -5,6 +5,7 @@
 </div>
 
 <![endif]-->
+<header>
 <div class="header">
  <div class="top">
   <ul>
@@ -73,7 +74,7 @@
                   <ul>
                     <li class="zhang"><a href="/gate/service" class="acount">我的账户</a></li>
                     <li class="zhang"><a href="/wel/account" class="acount">个人信息</a></li>
-                    <li  class="zhang" style="background:#fff"><a href="/welcome/logout" class="out">退出</a></li>
+                    <li class="zhang" style="background:#fff"><a href="/welcome/logout" class="out">退出</a></li>
                   </ul>
               </div>
             </c:if> 
@@ -81,6 +82,6 @@
   </div>  
   <!-- <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2::52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> -->                                                  
 </div>
-
+</header>
 
 
