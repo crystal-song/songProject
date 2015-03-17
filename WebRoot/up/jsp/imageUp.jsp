@@ -13,8 +13,7 @@
     up.setAllowFiles(fileType);
     up.setMaxSize(10000); //单位KB
     up.upload();
-     System.out.println("ddddddddddddddddddddddddd");
-     System.out.println("eeeeeeeeeeee"+up.getUrl());
+
      
      
     String callback = request.getParameter("callback");
@@ -22,9 +21,7 @@
     String result = "{\"name\":\""+ up.getFileName() +"\", \"originalName\": \""+ up.getOriginalName() +"\", \"size\": "+ up.getSize() +", \"state\": \""+ up.getState() +"\", \"type\": \""+ up.getType() +"\", \"url\": \""+ up.getUrl() +"\"}";
 
     result = result.replaceAll( "\\\\", "\\\\" );
-    
-    System.out.println("cccccccccc"+result);
-    System.out.println("cccccccccc"+callback);
+ 
 
     if( callback == null ){
         response.getWriter().print( result );

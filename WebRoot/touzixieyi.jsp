@@ -3,22 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
-<title>服务协议 - 我的账户 - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
  <%@ include file="/includes/taglibs.jsp" %> 
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript">
-    var navIndex=3;    
-</script>
+<title>服务协议 - 我的账户 - 中租宝</title>
 </head>
 <body>
 <!-- top start  -->
@@ -66,23 +52,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">任何一方违反本合同的约定，使得本合同的全部或部分不能履行，均应承担违约责任，并赔偿对方因此遭受的损失（包括由此产生的诉讼费和律师费）；如多方违约，根据实际情况各自承担相应的责任。违约方应赔偿因其违约而给守约方造成的损失，包括合同履行后可以获得的利益，但不得超过违反合同一方订立合同时可以预见或应当预见的因违反合同可能造成的损失。</div>
 			<div class="title01">第七条 争议的处理</div>
 			<div class="section">在本合同履行过程中，如发生任何争执或纠纷，且协商不成的，双方约定向乙方住所地人民法院提起诉讼。</div>
-			<!-- 
-			<div class="section">2、发生下列情形之一的，本网站有权随时中止或终止向用户提供服务：</div>
-			<div class="sub_section">(1)对于网络设备进行必要的保养及施工时；</div>
-			<div class="sub_section">(2)出现突发性的网络设备故障时；</div>
-			<div class="sub_section">(3)本网站所使用的网络通信设备由于不明原因停止，无法提供服务时；</div>
-			<div class="sub_section">(4)由于不可抗力因素致使本网站无法提供线上服务时；</div>
-			<div class="sub_section">(5)相关政府机构的要求。</div>
-			<div class="section">3、发生下列情形之一的，本网站有权随时中止或终止向用户提供服务而无需通知用户：</div>
-			<div class="sub_section">(1)用户提供的个人资料不准确，不真实，不合法有效；</div>
-			<div class="sub_section">(2)用户使用任何第三方程序进行登录或使用服务；</div>
-			<div class="sub_section">(3)用户滥用所享受的权利；</div>
-			<div class="sub_section">(4)用户有损害其他用户的行为；</div>
-			<div class="sub_section">(5)用户有违背社会风俗和社会道德的行为；</div>
-			<div class="sub_section">(6)用户有违反本协议中相关规定的行为。</div>
-			<div class="section">4、如因系统维护或升级的需要而需暂停网络服务，本网站将尽可能事先进行通告。</div>
-			<div class="section">5、终止用户服务后，用户使用本网站服务的权利立即终止。从终止用户服务即刻起，本网站不再对用户承担任何责任和义务。</div>
-			*/ -->
 			<div class="title01">第八条 其他事项</div>
 			<div class="section">8.1 如果甲方出现出借资金的继承或赠与，必须由主张权利的继承人或受赠人向乙方出示经国家权威机关认证的继承或赠与权利归属证明文件，乙方确认后方予协助进行资产的转移，由此产生的相关税费，由主张权利的继承人或受赠人，向其主管税务机关申报、缴纳，乙方不负责相关事宜处理；</div>
 			<div class="section">8.2 本合同的传真件、复印件、扫描件等有效复本的效力与本合同原件效力一致；</div>
@@ -102,10 +71,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="section">营业执照号码：${product. guaranteeNumber}</div>
 			<div class="title01">借款内容:</div>
 			<div class="section">借款用途：${product.fundUse}</div>
-			<div class="section">借款金额：${transferInfo1.paymentAmount}</div>
-			<div class="section">借款利率(365天/年)： ${transferInfo1.interestRate}%</div>
-			<div class="section">借款期限从 计息日 到 计息日+${transferInfo1.financingPeriod * 30}天</div>
-			<div class="section">还款方式：${product.repaymentWay}</div>
+			<div class="section">借款金额：${transferInfo1.paymentAmount+transferInfo1.reward}</div>
+			<div class="section">借款利率：${transferInfo1.interestRate} %</div>
+			<div class="section">借款期限从 计息日 到 计息日+${transferInfo1.financingPeriod}天</div>
+			<div class="section">还款方式：${product.repaymentWay=='1'?'按月付息、到期还本':product.repaymentWay=='2'?'按季付息、到期还本':product.repaymentWay=='3'?'半年付息、到期还本':product.repaymentWay=='4'?'按年付息、到期还本':'到期付息、到期还本' }</div>
 			<div class="title01">特别提示：</div>
 			<div class="section">甲方、乙方、丙方请认真阅读本合同项下的全部条款。签订本合同，即认为各方均已理解并同意本合同的所有内容。</div>
 			<div class="section">根据《中华人民共和国合同法》及相关法律法规的规定，各方遵循平等、自愿、互利和诚实信用原则，经友好协商，就各方在域名为www.ptobchina.com的“中租宝”互联网平台（以下简称平台）上进行投资、融资、保证、投资咨询、风险管理及项目管理服务等事项的相关意思表示达成一致，以兹共同遵守。</div>

@@ -1,3 +1,4 @@
+
 package com.mftour.spring.web;
 
 import java.io.IOException;
@@ -5,41 +6,28 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.BodyPart;
-import javax.mail.Multipart;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.Message.RecipientType;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mftour.spring.base.JsonBaseBean;
+import com.mftour.spring.util.Rest;
+import com.alibaba.fastjson.JSON;
 import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TUser;
+import com.mftour.spring.rest.bean.Response;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.util.Constants;
 import com.mftour.spring.util.EmailTemplate;
 import com.mftour.spring.util.Env;
-//import com.mftour.spring.util.File;
-import com.mftour.spring.util.MailSenderInfo;
 import com.mftour.spring.util.RandomCode;
 import com.mftour.spring.util.ReadWirtePropertis;
-import com.mftour.spring.util.SimpleMailSender;
 import com.sms.webservice.client.SmsReturnObj;
 import com.sms.webservice.client.SmsWebClient;
-
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,16 +38,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+import java.net.URL;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*
  * 不需要实现任何接口，也不需要继承任何的类，也不需要任何 Servlet API
@@ -69,7 +50,9 @@ import org.apache.http.util.EntityUtils;
 // 将Model中属性名为Constants.USER_INFO_SESSION的属性放到Session属性列表中，以便这个属性可以跨请求访问
 @SessionAttributes(Constants.USER_INFO_SESSION)
 public class WelcomeController {
-
+	private static final com.mftour.spring.util.File f = ReadWirtePropertis.file();
+	private static final Logger logger = LoggerFactory
+			.getLogger(WelcomeController.class);
 	@Autowired
 	private IUserService userService;
 
@@ -82,17 +65,15 @@ public class WelcomeController {
 			@RequestParam("name") String username,
 			@RequestParam("password") String password) throws Exception {
 
-		TUser user1 = userService.getUserByAccount(user.getName());
+		Rest rest = new Rest();
 
-		if (user1 != null) {
-			if (user1.getPassword().equals(user.getPassword())) {
-				model.addAttribute("name", user.getName());
-				return "success";
-			}
+		String s = rest.getRestful("/rest/user/login/"+username+"/"+password);
+		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+		if (r.isSuccess()){
+			return "success";
+		}else{
+			return "fail";
 		}
-		return "fail";
-		/* return "user/chpasswd"; */
-
 	}
 
 	@RequestMapping(value = "/logout", method = { RequestMethod.POST,
@@ -102,28 +83,51 @@ public class WelcomeController {
 		return "login";
 	}
 
-	
+
+	@RequestMapping(value = "/reg", method = RequestMethod.GET)
+	public String reg(Model model, HttpServletRequest request){
+		String ref = request.getParameter("ref");
+		if(ref ==null){
+			ref = "";
+		}
+		model.addAttribute("ref", ref);
+		return "reg";
+	}
+
 
 	@RequestMapping(value = "/regEmail", method = RequestMethod.POST)
 	public String regEemail(TUser user, Model model, HttpServletRequest request){
 		try {
-			Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*60* 60 * 1000);
-	
-			String code=RandomCode.getRandomString(5);
-			user.setRegTime(outDate);
-			user.setRandomCode(code);
-			user.setRegState("f");
-			userService.addOrUpdate(user);
-			request.getSession().setAttribute("name", user.getName());
-			com.mftour.spring.util.File f=ReadWirtePropertis.file();
-			String basePath =f.getBasePath();
-			String resetPassHref =basePath+ "welcome/register?username="+ user.getName()+"&checkcode="+user.getRandomCode();
-			String operate="注册中租宝帐号，请点击以下链接完成注册";
-			String title="中租宝—用户注册确认";
-			String email=user.getEmail();
-			EmailTemplate.SendMail(email, resetPassHref, operate, title);
+
+			Rest rest = new Rest();
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("username", user.getName());
+			map.put("password", user.getPassword());
+			map.put("email", user.getEmail());
+			map.put("ref", user.getRef());
+			map.put("service-phone",user.getServicePhone());
+			String s = rest.postRestful("/rest/user/reg", map);
+			JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+			if (r.isSuccess()){
+				request.getSession().setAttribute("name", user.getName());
+
+				TUser userInfo = userService.getUserByAccount(user.getName());
+				request.getSession().setAttribute("userinfo", userInfo);
+				com.mftour.spring.util.File f=ReadWirtePropertis.file();
+				String basePath =f.getBasePath();
+
+				String resetPassHref =basePath+ "/welcome/register?username="+ userInfo.getName()+"&checkcode="+userInfo.getRandomCode();
+
+				String operate="注册中租宝帐号，请点击以下链接完成注册";
+				String title="中租宝—用户注册确认";
+				String email=user.getEmail();
+				EmailTemplate.SendMail(email, resetPassHref, operate, title);
+			}else{
+				return "error";
+			}
 	        } catch (Exception e) {
-				e.printStackTrace();
+			    logger.error("error " +e);
+				return "error";
 			}
 
 		return "reg_email";
@@ -136,14 +140,14 @@ public class WelcomeController {
 		String username = (String) request.getSession().getAttribute("name");
 		TUser user = userService.getUserByAccount(username);
 		user.setEmail(mail);
+		String emailVTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+		user.setEmailVTime(emailVTime);
 		userService.addOrUpdate(user);
-		Timestamp outDate = new Timestamp(System.currentTimeMillis() + 24*30 * 60 * 1000);
-		request.getSession().setAttribute("outDate1", outDate);
 		model.addAttribute("user1", user);
 		com.mftour.spring.util.File f=ReadWirtePropertis.file();
 		String basePath =f.getBasePath();
-		String resetPassHref = basePath + "welcome/verregister?username="
-				+ user.getName();
+		String resetPassHref = basePath + "/welcome/verregister?username="
+				+ user.getName()+"&checkcode="+user.getRandomCode();
 		String operate="进行邮箱认证，请点击以下链接完成认证";
 		String title="中租宝—邮箱认证";
 		String email=user.getEmail();
@@ -158,12 +162,11 @@ public class WelcomeController {
 
 	@RequestMapping(value = "/verregister", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String verregister(@RequestParam("username") String username,
+	public String verregister(@RequestParam("username") String username,@RequestParam("checkcode") String checkcode,
 			Model model,HttpServletRequest request) throws Exception {
-		Timestamp outDate =(Timestamp)request.getSession().getAttribute("outDate1");
-
 		TUser user = userService.getUserByAccount(username);
-		if(outDate.getTime()<= System.currentTimeMillis()){ //表示已经过期
+		long t=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(user.getEmailVTime()).getTime(); 
+		if(t>= System.currentTimeMillis()+24*60*60*1000&&checkcode.equals(user.getRandomCode())){ //表示已经过期
             request.setAttribute("msg", "链接已经过期,请重新做认证！");
 		}else{
 			user.setRegState("s");
@@ -179,10 +182,14 @@ public class WelcomeController {
 			Model model,HttpServletRequest request) throws Exception {
 		TUser user = userService.getUserByAccount(username);
 		Timestamp outDate =user.getRegTime();
-		if(outDate.getTime()>= System.currentTimeMillis()&&checkcode.equals(user.getRandomCode())){ //表示已经过期
+
+		Timestamp outDate1 = new Timestamp(System.currentTimeMillis() + 24*60 * 60 * 1000);
+		if(outDate.getTime()<= outDate1.getTime()&&checkcode.equals(user.getRandomCode())){ //表示没有过期
+
 			user.setRegState("s");
 			userService.addOrUpdate(user);
 		}else{
+
 			request.setAttribute("msg", "链接已经过期,请重新做认证！");
 		}
 		model.addAttribute("regState", user.getRegState());
@@ -191,22 +198,19 @@ public class WelcomeController {
 
 	@RequestMapping(value = "/session", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String Session(Model model, TUser user, HttpServletRequest request)
+	public void Session(Model model, TUser user, HttpServletResponse response,HttpServletRequest request)
 			throws Exception {
+
 		request.getSession().setAttribute("name", user.getName());
 		TUser user1 = userService.getUserByAccount(user.getName());
 		request.getSession().setAttribute("userinfo", user1);
-		model.addAttribute("user1", user1);
-		List<TRegisterYeePay> li = gateService
-				.queryTRegisterYeePayByName(user1.getName());
-		if (li != null && li.size() != 0) {
-			TRegisterYeePay registerYeePay1 = li.get(0);
-			model.addAttribute("registerYeePay1", registerYeePay1);
+		String url=	request.getHeader("referer");
+		String path = new URL(url).getPath();
+		if(url==null || path.equals("/login.jsp") || path.equals("/welcome/logout")){
+
+			url="/gate/service";
 		}
-		// TRegisterYeePay registerYeePay1=
-		// gateService.queryTRegisterYeePayByName(user1.getName()).get(0);
-		// model.addAttribute("registerYeePay1", registerYeePay1);
-		return "user-info";
+		response.sendRedirect(url);
 	}
 
 	@RequestMapping(value = "/queryUser", method = { RequestMethod.POST,
@@ -214,8 +218,7 @@ public class WelcomeController {
 	@ResponseBody
 	public String queryUser(Model model, TUser user) throws Exception {
 
-		TUser user1 = userService.getUserByAccount(user.getName());
-		if (user1 != null) {
+		if (userService.getUserByAccount(user.getName()) != null) {
 			return "success";
 		}
 		//
@@ -409,19 +412,4 @@ public class WelcomeController {
 
 		return "PhoneVerification_success";
 	}
-
-	/*
-	 * @RequestMapping(value = "/regis" , method=RequestMethod.POST) public
-	 * String register(TUser user, Model model) throws Exception {
-	 * if(user.getName()!=null&&user.getName()!=""&&user.getPassword()!=null);
-	 * try {
-	 * 
-	 * userService.addOrUpdate(user); } catch (Exception e) {
-	 * e.printStackTrace();
-	 * 
-	 * throw e; }
-	 * 
-	 * 
-	 * return null; }
-	 */
 }

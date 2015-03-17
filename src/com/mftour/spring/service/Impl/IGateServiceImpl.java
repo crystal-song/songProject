@@ -1,6 +1,7 @@
 
 package com.mftour.spring.service.Impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.model.Yeepays;
 import com.mftour.spring.service.IGateService;
 import com.mftour.spring.util.Page;
 
@@ -91,23 +93,16 @@ public class IGateServiceImpl  implements  IGateService {
 
 
 	}
-	public List queryAllTransRecord(Page page,String sql,String platformUserNo)
+	public List<Yeepays> queryYeepaysByNumber(String Number) throws Exception{
+		return gateDao.queryYeepaysByNumber(Number);
+	}
+	public List queryAllTransRecord(Page page,String sql,Object[] para)
 			throws Exception {
-		return gateDao.queryAllTransRecord(page,sql,platformUserNo);
+		return gateDao.queryAllTransRecord(page,sql,para);
 
 	}
 
-	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception{
-		return gateDao.DrawMonetAllTransRecord(page,platformUserNo);
-	}
-	public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)throws Exception{
-		return gateDao.RechargeAllTransRecord(page,platformUserNo);
-	}
-	public List AllTransRecord(Page page, String platformUserNo)
-			throws Exception{
-		return gateDao.AllTransRecord(page, platformUserNo);
-	}
-
+	
 	@Override
 	public void addOrUpdateTEstablishmentRegistration(
 			TEstablishmentRegistration establishmentRegistration)
@@ -201,7 +196,11 @@ public class IGateServiceImpl  implements  IGateService {
 		return gateDao.queryTTransferInfoByEnterpriseNumber(transferInfo);
 		 
 	}
-
+	public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(
+			String enterpriseNumber) throws Exception {
+		return gateDao.queryTTransferInfoByEnterpriseNumber(enterpriseNumber);
+		 
+	}
 
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByName(String name)
@@ -216,16 +215,6 @@ public class IGateServiceImpl  implements  IGateService {
 			throws Exception {
 		return gateDao.queryTInvestmentInfoByName(name);
 		 
-	}
-	
-	public List<TRecharge> queryTRechargeByRequestNo(String requestno)
-			throws Exception{
-		return gateDao.queryTRechargeByRequestNo(requestno);
-	}
-	
-	public List<TDrawMoney> queryTDrawMoneyByRequestNo(String requestno)
-			throws Exception{
-		return gateDao.queryTDrawMoneyByRequestNo(requestno);
 	}
 
 
@@ -275,7 +264,9 @@ public class IGateServiceImpl  implements  IGateService {
 		gateDao.addOrUpdateTDrawMoneyNotify(drawMoneyNotify);
 		
 	}
-	
+	public List queryAvaliableRewards(String username,Date currtime) throws Exception{
+		return gateDao.queryAvaliableRewards(username, currtime);
+	}
 	
 	
 	

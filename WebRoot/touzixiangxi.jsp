@@ -5,419 +5,27 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
+ <%@ include file="/includes/taglibs.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
 <Link href="/favicon.ico" rel="Shortcut Icon">
 <title>项目：${product1.projectName} - 我要投资 - 中租宝</title>
 
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
- <%@ include file="/includes/taglibs.jsp" %> 
-<script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
 
 <link href="<%=path%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
  
- <script type="text/javascript" src="<%=path%>/js/jquery-1.8.2.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
- <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
- 
 
-<script type="text/javascript">
-
-window.onload=function(){
-
-    var myblur= document.getElementById('buyAmount');    
-       myblur.onfocus=function(){
-         if(myblur.value=="投资金额不低于200元"){        	
-           myblur.value="";
-           myblur.style.color="#000";
-           }     
-   }      
-     myblur.onblur=function(){      
-      if(myblur.value==""){
-        myblur.value="200";
-        myblur.style.color="#ccc" ;  
-    }
-      document.getElementById("preview_amount").value=myblur.value;
-  }  
-}
-
-/*提交表单*/
-
-function mysubmit(){
-	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
-		alert("投资金额不能为空！");
-		return false;
-		}
-	//if($("#buyAmount").val()%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-	/*
-	if($("#buyAmount").val()<200){
-		alert("投资金额不能低于200元！");
-		return false;
-	}*/
-	var form = document.getElementById("form");
-	    form.submit();	
-}	
-
-
- $(document).ready(function(e) { 
-	 //---------收益计算器------------
-	//console.log("-------go-------");
-	    var rate_lv=$(".lev_start").length;
-		calc();
-		$("#preview_amount").change(function(e) {
-			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
-				$(this).val(parseInt($(".lev_start").eq(0).html()));
-				}
-			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
-				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
-				}
-	        calc();
-	        
-	    });
-		function calc(){
-			//console.log("-------calc-------");
-			var t=parseInt($("#preview_amount").val());
-			var r=0;
-			var p=parseInt($("#preview_Period").html());
-			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
-			for(i=0;i<rate_lv;i++){
-				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
-					if(parseInt($(".lev_mi").eq(i).html())>0){
-					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
-					
-					}else{
-						r=parseFloat($(".lev_rate").eq(i).html());
-						}
-					r=r/100;
-					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
-					}
-				}
-			$("#preview_rate").val(parseFloat(parseInt(r*10000)/100)+"%");	
-			$("#preview_income").html(parseFloat(parseInt(t*r/365*p*100+0.5)/100)+"元");
-			//console.log("|-"+t*r);
-			}
-		$(".jisuan_btn_left").click(function(){
-			  $("#preview_amount").val(200);
-			  $("#preview_income").html(0+"元");
-			  
-			   
-		  });
-		
-		
-		//---------收益计算器结束-------------
-
-	 $("#buyAmount").keyup(function(){
-		  
-		    var str= /^[0-9]*$/;
-		    var val=$("#buyAmount").val();
-		    if(!(str.test(val))){  	   
-				   $('.neirong').html("您输入的金额不是数字,请重新输入");
-				   return false;
-			    }
-		    $('.neirong').css('display','block');
-	
-		    if(!(str.test(val))){  	   
-				   $('.neirong').html("您输入的金额不是数字,请重新输入");
-				   return false;
-			    }
-			    if(val<200){
-				   $('.neirong').html("您输入的金额小于200元,请重新输入");
-				   return false;
-			    }
-			    if(val>5000000){
-					   $('.neirong').html("您输入的金额大于五百万元,请重新输入");
-					   return false;
-				    }
-			    if(parseInt(val)%100!=0){	
-				  $('.neirong').html("输入的资金必须是100的整数倍");
-				  return false;
-				   }
-			      $('.neirong').html('您要投入的实际金额为:'+val);	   
-	 
-	 });	
- 
-	 $(".nav_big a").eq(1).addClass("bd_btom").siblings().removeClass("bd_btom");
-	 $(".nav_big a").eq(1).children("p").addClass("headwd_color");
-       $(window).on('scroll', function(){
-               checkText();
-              // alert($(this).scrollTop())
-       });
-
-       var nav_height=parseInt($('.small_nav').offset().top);
-     
-       function checkText(){
-           var top = parseInt($(this).scrollTop());
-           if(top>nav_height){
-              $(".small_nav").addClass("text");
-           }else if($(".small_nav").hasClass('text')&&(top!=nav_height)){
-              $(".small_nav").removeClass("text");
-           }
-       }
-
-      $(".small_nav li").click(function(){
-           var i=$(this).index();
-           var top = parseInt($(this).scrollTop());
-           var title_top=parseInt($('.pro_con_title').eq(i).offset().top);
-           var small_height=$(".small_nav").height();
-           $(".small_nav").addClass("text");
-           $(this).addClass('sm_nav_fir').siblings().removeClass('sm_nav_fir');
-           $(window).scrollTop(title_top-small_height-50);
-      });
-      
-      var timer=null;
-      var num=1;
-      timer=setInterval(autoplay,3000);
-      function autoplay(nn){
-        if(nn!=null)num=nn+num;
-        if(num>22){num=0}
-        if(num<0){num=22}
-        $('.ziliao_pic li').eq(num).hide().fadeIn().siblings().hide();          
-        num++; 
-        }
- 
-      $(".ban_right").click(function(){
-        autoplay(0);
-        clearInterval(timer);
-           timer=setInterval(autoplay,3000);
-        });
-      $(".ban_left").click(function(){
-
-        var index=$('.ziliao_pic li').index();
-        autoplay(-2);
-        clearInterval(timer);
-           timer=setInterval(autoplay,3000);
-        });
- 	$(".syl_table").hover(function(){
- 		$(this).css("height","auto");
- 	},function(){
- 		$(this).css("height","60px");
- 	});
- 	
- 	 $(".jisuan").click(function(){
- 		 $("#dialog01").css("display","block");
- 		 
- 		 
- 	 });
- 	$(".right_cha").click(function(){
- 		$("#dialog01").css("display","none");
- 	});
- 	
- });  
- 
-    
-</script>
 </head>
 
 <body>
-
+<div class="black_bac"></div>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
+<input type="hidden" id="now" value="${now}">
+<input type="hidden" id="open_time" value="${product1.financeTime}">
+
 <!-- top end  -->
 <div class="clear"></div>
-<!-- 
-<div class="clear"></div>
-<div class="one"></div>
-<div class="clear"></div>
-
-<div class="xx">
-	<div class="xx_fra">
-	    <div class="lactation">当前位置：<a href="<%=path%>/" >首页</a> >> <a href="<%=path%>/product/allProduct" >我要投资</a> >> 项目详情</div>
-    		<div class="clear_height"></div>
-    	<div class="xx_left">
-    		
-        	<div class="xx_one">
-            	<div class="xxo_bor">
-                	<div class="xxo_left">${product1.projectPicture}</div>
-                    <div class="xxo_right">
-                    	<div class="xxo_one">                  	   
-                        	<div class="xxo_font">项目名称：<span class="ckxq_red">${product1.projectName}</span></div>
-                            <div class="xxo_font">企业编号：${product1.enterpriseNumber}</div>
-                            <div class="xxo_font">信用等级：<img src="<%=path%>/images/qualityRate_${product1.qualityRating}.jpg" style="margin-bottom:-3px;"><span style="padding-left:120px;">融资金额:<span class="cu hong">${product1.financingMoney}万</span><br></span></div>
-                        </div>
-                         <div class="xx_font">年化收益：<span class="ckxq_red1">${product1.yearIncome}%</span>&nbsp;&nbsp; 还款日期:<span class="ckxq_red1">${product1.repaymentTime}</span>&nbsp;&nbsp;还款方式：<span class="zi14">${product1.repaymentWay}</span></div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="tzxx">
-                <div class="xxo_font">年化预期收益率：</div>
-                <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0" class="syl_table">
-                 <tr>
-                 <td bgcolor="#fff" align="center"><b>阶段起点金额</b></td>
-                 <td bgcolor="#fff" align="center"><b>起始利率</b></td>
-                 <td bgcolor="#fff" align="center"><b>投资增幅</b></td>
-                 <td bgcolor="#fff" align="center"><b>利率增幅</b></td>
-                 <td bgcolor="#fff" align="center"><b>阶段上限金额</b></td>
-                 </tr>
-                 
- 	<c:if test="${ not empty li}">
-        <c:forEach var="s" items="${li}" varStatus="i">
-        <tr>
-        <td bgcolor="#fff" align="center"><span>${s.startMoney}</span></td>
-        <td bgcolor="#fff" align="center"><span>${s.startInterestRate}</span></td>
-         <td bgcolor="#fff" align="center"><span>${s.moneyIncrease}</span></td>
-       	<td bgcolor="#fff" align="center"><span>${s.interestRateIncrease}</span></td>
-        <td bgcolor="#fff" align="center"><span>${s.highestMoney}</span></td>
-        </tr>
-         </c:forEach>
-			</c:if> 
-			</table>
-			<div class="clear_height" style="height:20px;"></div>
-                 <div class="tzxx_left">
-                    	担保机构:<span class="cu">${product1.guaranteeInstitution}</span><br>
-			100%本息保障<br>
-			距离企业还款结项还有300天<br> 
-			企业生产经营正常，还款正常
-                    </div>
-                    <div class="tzxx_right">
-
-                    </div> 
-                </div>
-                
-            </div>
-		            <div class="clear_height"></div>
-		            <div class="wenzi">
-		                <div class="con_nav">
-		                 <ul>
-		                   <li class="nav_first" style="border-left:0"><strong><a>项目描述</a></strong></li> 
-		                   <li><a>担保机构</a></li>
-		                   <li><a>资金运转</a></li>
-		                   <li><a>风险控制</a></li>
-		                   <li><a>企业背景</a></li>
-		                   <li><a>企业信息</a></li>
-		  
-		                   <li class="shu"><a>投资详情</a></li>
-		                   <li class="zheng"><a>相关证件</a></li>
-		                 </ul>
-		                </div>
-		            	<div class="wz_one">项目描述</div>
-		                <div class="wz_nr">${product1.projectIntroduce}</div>
-		                <div class="wz_one">担保机构简介及担保意见</div>
-		                <div class="wz_nr"><span class="cu">担保机构简介：</span>${product1.guaranteeInstitutionIntroduce}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">担保机构意见：</span>${product1.collateralOpinion}</div>
-						<div class="wz_one">资金运转</div>
-		                <div class="wz_nr"><span class="cu">资金用途：</span>${product1.fundUse}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">还款来源：</span>${product1.repaymentSource}</div>
-						<div class="wz_one">风险控制措施</div>
-		                <div class="wz_nr"><span class="cu">担保机构：</span>${product1.guaranteeInstitution}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">抵押物信息：</span><br>
-		&nbsp;&nbsp;&nbsp;&nbsp;${product1.guarantee}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">风险控制措施：</span><br>
-		&nbsp;&nbsp;&nbsp;&nbsp;${product1.riskControl}<br>
-		</div>
-						<div class="wz_one">企业背景</div>
-		                <div class="wz_nr">${product1.companyProfile}<br>
-		</div>
-		                <div class="wz_one">企业信息</div>
-		                <div class="wz_nr"><span class="cu">营业范围：</span>${product1.businessScope}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">经营状况：</span>&nbsp;&nbsp;${product1.stateOfOperation}<br>
-		</div>
-           <div class="wz_one" ><a>投资详情</a></div>
-                    <div class="wz_nr" >
-                    <div class="table_xiangqing" style="height:auto;">
-                    <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0">
-                              <tr>
-                                <td height="30" bgcolor="#990000" align="center" width="30%">
-                                    <strong>
-                                    <span style="font-family:'Microsoft YaHei'; color:#FFF;font-size:12px;" >投资人</span>
-                                    </strong>
-                                </td>
-                                <td bgcolor="#990000" align="center" width="40%">
-                                    <strong>
-                                    <span style="font-family:'Microsoft YaHei'; color:#FFF; font-size:12px;">投资人身份证</span>
-                                    </strong>
-                                </td>
-                                <td bgcolor="#990000" align="center" width="30%">
-                                    <strong>
-                                    <span style="font-family:'Microsoft YaHei'; color:#FFF; font-size:12px;">投资金额</span>
-                                    </strong>
-                                </td>
-                              </tr>
-                              </table>
-                       </div>             
-                       <div class="table_xiangqing">
-                            <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="0" border="0">
-                              
-                              <c:if test="${ not empty list}">
-        <c:forEach var="s" items="${list}" varStatus="i">
-                              <tr>
-                                <td height="30" bgcolor="#FFFFFF" align="center" width="30%"> fn:substring(s.investor,0,1)s.investor -->
-                              <!--   	<span >${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
-                                </td>
-                                <td bgcolor="#FFFFFF" align="center" width="40%">
-                                	<span ><c:if test="${fn:length(s.identityCard)==18}">
-											${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
-											</c:if>
-											<c:if test="${fn:length(s.identityCard)!=18}">-</c:if>
-											</span>
-                                </td>
-                                <td bgcolor="#FFFFFF" align="center" width="30%">
-                                	<span >${s.investmentAmount}万元</span>
-                                </td>
-                              </tr>                            
-                                </c:forEach>
-        </c:if>
-        </table>           
-                    </div>
-                    </div>
-            <div  class="wz_one" ><a>相关证件</a></div>
-                    <div class="wz_nr" ><br> -->
-
-        <!-- &nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">他项权证：</span><br> --><!--  ${product1.enterpriseCertificate}-->
-                   <%--  <img src="<%=path%>/images/20140708132140144014.jpg" width="581" height="800" />
-                    <img src="<%=path%>/images/20140708132035433543.jpg" width="720" height="523" />
-                    <img src="<%=path%>/images/20140708132013601360.jpg" width="720" height="989" />   --%>
-                   
-<!-- 
-                   
-                    </div>
-                   
-           <div class="btn_bottom"></div>
-            </div>
-        </div>
-        <div class="xx_right">
- -->
-        <!-- xx right -->
-<!--          
-          <div class="cr_bg" style="height:auto;" >
-            	<div class="cr_tit">
-                	<div class="cr_font">投资份额</div>
-                    <div class="cr_more"><img src="<%=path%>/images/sy_50.jpg"></div>
-                </div>
-                <div class="cr_nr" id="touzi_fir">
-                <p align="left" style="font-size:14px;">融资进度：<span class="cu hong" id="zijine">${product1.financingProgress}<c:if test='${empty product1.financingProgress}'>0</c:if>%</span><br>
-<div class="progress_160"><div class="progress_bar" style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div></div>
-</p>
-                <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
-                	<div class="fen"><span>可投资金额</span><strong><span class="fen_red">${product1.financingMoney-product1.realityMoney}</span></strong><i>元</i></div>              	
-                	<div class="neirong" style="display:none"></div>
-                	<div class="jin_input"><input type="text" class="jin_text" value="" id="buyAmount" name="buyAmount"></input>元</div>
-                	<div class="jin_"><input type="hidden" class="jin_text" value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
-                	<div class="jin_"><input type="hidden" class="jin_text" value="${product1.projectName}" id="projectName" name="projectName"></input></div>
-                	<div class="jin_"><input type="hidden" class="jin_text" value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
-                	<div class="jin_input"><a id="touzi_dialog" href="javascript:;" onclick="mysubmit();" ><strong>立即投资</strong></a><a class="jisuan" style="display:none"></a></div>
-                	</form>
-                </div>
-               <div class="clear" style="height:20px;"></div>
-            </div>
-            <div class="clear_height"></div>
- -->            
-		
-    	<!-- xx right end-->
-    	<!-- 
-    	</div>
-    	<div class="clear"></div>
-    </div>
-</div>
- -->
-
 <div class="tou_con">
     <div class="con_left">
       <!-- con_left -->
@@ -430,18 +38,16 @@ function mysubmit(){
     <p class="bianhao">
      <span class="con_pic01"><strong>项目：${product1.projectName}</strong></span>
 
-     <span class="bianhao_right">企业编号：${product1.enterpriseNumber}  </span>
+     <span class="bianhao_right">项目编号：${product1.enterpriseNumber}  </span>
     </p>
      <div class="pro_msg">
-       <div class="pro_pic">${product1.projectPicture}</div>
-       <div class="pro_con01" style="display:none;">
-       
-       
+       <div class="pro_pic">${product1.projectPicture}
+    
        </div>
        <div class="pro_con">
        <ul>
-         <li class="pro_title">还款方式：按月付息、到期还款</li>
-         <li style="padding-left:15px;">投资周期：${product1.financingPeriod*30}天</li>
+         <li class="pro_title">还款方式：${product1.repaymentWay=='1'?'按月付息、到期还本':product1.repaymentWay=='2'?'按季付息、到期还本':product1.repaymentWay=='3'?'半年付息、到期还本':product1.repaymentWay=='4'?'按年付息、到期还本':'到期付息、到期还本' }</li>
+         <li style="padding-left:15px;">投资周期：${product1.financingPeriod}天</li>
          <li><span style="margin-right:0">信用等级：</span>
            <span style="margin-left:0"><img src="<%=path%>/img/images-2014-11/star_${product1.qualityRating}.png" style="margin-bottom:-3px;"></span>
            <span class="pro_r">
@@ -452,16 +58,30 @@ function mysubmit(){
            </li>
            <li><span style="width:90px;">融资金额</span><span style="width:90px;">年化收益</span><span style="width:90px;">还款日期</span></li>
            <li class="bac_red_wd">
+           <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
               <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}万元</strong></span>
               <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
-              <span style="width:90px;"><strong>${product1.repaymentTime}</strong></span>
+              <span style="width:90px;"><strong>${currTime}</strong></span>
+           </c:if>
+           <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
+              <span style="width:90px;"><strong><i>￥</i>${product1.financingMoney}万元</strong></span>
+              <span style="width:90px;"><strong>${product1.yearIncome}%</strong></span>
+              <span style="width:90px;"><strong><fmt:formatDate value="${product1.repaymentTime}" pattern="yyyy-MM-dd" /></strong></span>
+           </c:if>
            </li>
            <li>
              <span>融资进度：</span>
              <div class="load_bar">
-               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
+             <c:if test="${product1.enterpriseNumber!='ZTH011417486977120'}">
+               <div style="width:<c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%"></div>
              </div>
-             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress<100?product1.financingProgress:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
+             <span><c:if test='${not empty product1.financingProgress}'>${product1.financingProgress*100<100?product1.financingProgress*100:100}</c:if><c:if test='${empty product1.financingProgress}'>0</c:if>%</span>
+             </c:if>
+             <c:if test="${product1.enterpriseNumber=='ZTH011417486977120'}">
+               <div style="width:100%"></div>
+             </div>
+             <span>100%</span>
+             </c:if>
            </li>
            <li class="pro_msg_bot" style="display:none">
              <div class="gray_bar1"><span>剩余天数</span><span>28</span></div>
@@ -493,12 +113,66 @@ function mysubmit(){
          <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元
          </span>
          <div class="neirong"></div>         
-         <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp">立即投资</a></span>
+         <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp" style="margin:24px 0 0 30px">立即投资</a></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+         
        </div>
        </c:if>
-       <c:if test="${ not empty product1.buyType}"><!-- 线上 -->
-       <form id="form" role="form" action="<%=path%>/gate/transfer" method="post" target="_blank" style="padding:0px;">
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==1}"><!-- 线上 -->
+       <div class="pro_right">
+         <span class="pro_right_title">
+            <strong>项目预热中</strong>
+         </span>
+         <div class="wd_pro_right"><strong>项目开启倒计时</strong></div>
+         <div class="pro_time">
+            <span id="t_d"></span> 
+            <span id="t_h"></span>
+            <span id="t_m"></span>
+            <span id="t_s"></span>
+         </div>
+         <span class="tou_btn_red"><a class="red_touzi"  style="background:#acacac;">立即投资</a><i class="jisuan"></i></span>
+         <div class="btn_blue"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+         <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+       </div> 
+       </c:if>
+         <c:if test="${ not empty product1.buyType&&product1.projectStatus==3}"><!-- 线上 -->
+       <div class="pro_right">
+         <span class="pro_right_title">
+            <strong>项目已满标</strong> 
+         </span>
+         <div class="manbiao">项目已投满</div>
+         <div class="guan_bac">谢谢亲的关注</div>
+         <a class="totouzi" href="<%=path%>/product/allProduct">更多项目</a>
+         <div class="btn_blue" style="margin-top:25px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+         <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+       </div> 
+       </c:if>
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==4}"><!-- 线上 -->
+       <div class="pro_right">
+         <span class="pro_right_title">
+            <strong>企业还款中</strong>                 
+         </span>
+         <div class="manbiao">项目融资已完成</div>
+	         <div class="guan_bac">谢谢亲的关注</div>
+	         <a class="totouzi" href="<%=path%>/product/allProduct">更多项目</a>
+	         <div class="btn_blue" style="margin-top:25px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+	         <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+       </div> 
+       </c:if>
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==5}"><!-- 线上 -->
+       <div class="pro_right">
+         <span class="pro_right_title">
+           <strong>项目已完成</strong> 
+         </span>
+         <div class="manbiao">项目已完成还款</div>
+         <div class="guan_bac">谢谢亲的关注</div>
+         <a class="totouzi" href="<%=path%>/product/allProduct">更多项目</a>
+         <div class="btn_blue" style="margin-top:25px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+       </div> 
+       </c:if>
+       <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
+       <form id="form" role="form" action="<%=path%>/gate/transfer" method="get" style="padding:0px;">
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
          <span>可投资金额： ${product1.financingMoney*10000-product1.realityMoney}元
@@ -509,8 +183,10 @@ function mysubmit(){
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
          
-         <span><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
+         <span style="margin-top:10px;"><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
+         <%-- <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a> --%>
+         <div class="btn_blue" style="margin-top:16px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
        </div>
        </form>
        </c:if>
@@ -520,7 +196,7 @@ function mysubmit(){
        <div id="dialog" title="投资金额确认" style="display:none">
         <p class="zijin">您成功投资<strong class="touzi_money">2000</strong>元</p>
        </div>
-       <div id="dialog01" title="收益计算器" style="display:none">
+       <div id="dialog01" title="收益计算器" style="display:none; height:320px;" >
          <div class="dialog_title"><strong>收益计算器</strong>
           <div class="right_cha"></div>
          </div>
@@ -534,7 +210,7 @@ function mysubmit(){
          </div>     
          <div class="touzi_text" >
           <span>投资周期：</span>
-          <span class="touz_right"><a id="preview_Period">${product1.financingPeriod*30}</a>天</span>
+          <span class="touz_right"><a id="preview_Period">${product1.financingPeriod}</a>天</span>
          </div>
          <div class="touzi_text">
           <span>预期总收益：</span>
@@ -544,6 +220,10 @@ function mysubmit(){
           <input type="reset" value="重置" class="jisuan_btn_left"></input>
           <input type="submit" value="开始计算" class="jisuan_btn_right"></input>
          </div>
+         <div class="touzi_text">         
+          <div class="font_li" id="preview_income">* 预期收益率和预期收益仅供参考。</div>
+         </div>
+         
        </div>
 
 
@@ -583,10 +263,11 @@ function mysubmit(){
       </ul>
       <div class="pro_con_title"><strong>投资记录</strong></div>
        <ul class="table_mag">
+       <c:if test="${ empty product1.buyType}"><!-- 线下 -->
        <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>状态</span></li>
-		<c:if test="${ not empty list}">
-		<c:forEach var="s" items="${list}" varStatus="i">
-		<c:if test="${ empty product1.buyType}"><!-- 线下 -->
+		<c:if test="${ not empty listoffline}">
+		<c:forEach var="s" items="${listoffline}" varStatus="i">
+		
 		<li>
 		<span>${fn:substring(s.investor,0,1)}<c:if test="${fn:length(s.investor)>2}">*</c:if>*</span>
 		<span >
@@ -598,37 +279,80 @@ function mysubmit(){
 		<span >${s.investmentAmount}万元</span>
 		<span>成功</span>
 		</li>
+		</c:forEach>
 		</c:if>
-		 <c:if test="${ not empty product1.buyType && not empty s.code}"><!-- 线上 -->
+		</c:if>
+       <c:if test="${not empty product1.buyType}"><!-- 线上 -->
+       <li><span>投资人</span><span>投资金额</span><span>状态</span></li>
+		<c:if test="${ not empty listonline}">
+		<c:forEach var="s" items="${listonline}" varStatus="i">
 		<li>
-		<span>${fn:substring(s.investor,0,2)}<c:forEach var="j" begin="1" end="${fn:length(s.investor)-3}" step="1">*</c:forEach>${fn:substring(s.investor,fn:length(s.investor)-1,fn:length(s.investor))}
+		<span>${fn:substring(s.platformUserNo,0,1)}<c:forEach var="j" begin="1" end="${fn:length(s.platformUserNo)-2}" step="1">*</c:forEach>${fn:substring(s.platformUserNo,fn:length(s.platformUserNo)-1,fn:length(s.platformUserNo))}
 		</span>
-		<span >
-			<c:if test="${fn:length(s.identityCard)==18}">${fn:substring(s.identityCard,0,7)}********${fn:substring(s.identityCard,15,18)}
-			</c:if>
-			<c:if test="${fn:length(s.identityCard)!=18}">-
-			</c:if>
-		</span>
-		<span >${s.investmentAmount}元</span>
+		<span >${s.paymentAmount+s.reward}元</span>
+		<span>成功</span>
+		</li>
+		</c:forEach>
+		<c:if test="${page.pageNo==page.totalPage&&product1.id==56 }">
+		<li>
+		<span>xi*****卡</span>
+		<span >20000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>s******l</span>
+		<span >29000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>i***0</span>
+		<span >98000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>8****l</span>
+		<span >20000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>m*****华</span>
+		<span >109000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>王**光</span>
+		<span >100000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>晓***p</span>
+		<span >30000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>a***n</span>
+		<span >68000元</span>
+		<span>成功</span>
+		</li>
+		<li>
+		<span>j**k</span>
+		<span >7800元</span>
 		<span>成功</span>
 		</li>
 		</c:if>
-		</c:forEach>
 		</c:if>
+		</c:if>
+		
 		</ul> 
-<!--       <ul class="table_mag">
-        <li><span>投资人</span><span>投资人证件号</span><span>投资金额</span><span>投资时间</span><span>状态</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-        <li><span>郭*</span><span>220************789</span><span>60万</span><span>2014-6-6</span><span>成功</span></li>
-      </ul> -->
+		<div class="clear"></div>    
+        	<div class="next_list">
+      
+             <a href="<%=path %>/product/getProductByid?pageNo=1&id=${product1.id}">首页</a> 
+				<c:if test="${page.pageNo > 1}"><a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo-1}&id=${product1.id}">上一页</a>  </c:if> 
+				<div class="pageNum"></div>								 
+				<c:if test="${page.pageNo < page.totalPage}">  <a href="<%=path %>/product/getProductByid?pageNo=${page.pageNo+1}&id=${product1.id}">下一页</a>  </c:if>  								
+		   <a href="<%=path %>/product/getProductByid?pageNo=${page.totalPage}&id=${product1.id}">末页</a>              
+        </div>       
 
    <div class="pro_con_title"><strong>项目描述</strong></div>
       <div class="zijin">
@@ -673,67 +397,31 @@ function mysubmit(){
           <p>风险控制措施</p>
           <p class="zijin_msg">${product1.riskControl}</p> 
      </div>
-     <!-- 
-         <div class="wz_one">项目描述</div>
-		                <div class="wz_nr">${product1.projectIntroduce}</div>
-		                <div class="wz_one">担保机构简介及担保意见</div>
-		                <div class="wz_nr"><span class="cu">担保机构简介：</span>${product1.guaranteeInstitutionIntroduce}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">担保机构意见：</span>${product1.collateralOpinion}</div>
-						<div class="wz_one">资金运转</div>
-		                <div class="wz_nr"><span class="cu">资金用途：</span>${product1.fundUse}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">还款来源：</span>${product1.repaymentSource}</div>
-						<div class="wz_one">风险控制措施</div>
-		                <div class="wz_nr"><span class="cu">担保机构：</span>${product1.guaranteeInstitution}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">抵押物信息：</span><br>
-		&nbsp;&nbsp;&nbsp;&nbsp;${product1.guarantee}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">风险控制措施：</span><br>
-		&nbsp;&nbsp;&nbsp;&nbsp;${product1.riskControl}<br>
-		</div>
-						<div class="wz_one">企业背景</div>
-		                <div class="wz_nr">${product1.companyProfile}<br>
-		</div>
-		                <div class="wz_one">企业信息</div>
-		                <div class="wz_nr"><span class="cu">营业范围：</span>${product1.businessScope}<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;<span class="cu">经营状况：</span>&nbsp;&nbsp;${product1.stateOfOperation}<br>
-		</div>
-           <div class="wz_one" ><a>投资详情</a></div>
-     
-      -->
+<input type="hidden" id="username" value="${name}">
+<input type="hidden" id="targetPlatformUserNo" value="${product1.targetPlatformUserNo}">
      <div class="pro_con_title"><strong>相关资料</strong></div> 
      <div class="ziliao_pic">
      ${product1.enterpriseCertificate}
-      <%--<div class="ban_left"></div>
-      <div class="ban_right"></div>
-        <ul>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132140144014.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132091019101.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132035433543.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132078307830.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132013601360.jpg" width="355px" height="500px"></li>
-
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/2014070813230369369.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/2014070813230818818.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132310561056.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132313691369.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132315781578.jpg" width="355px" height="500px"></li>
-
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132326952695.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132331613161.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132331983198.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132335753575.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132336953695.jpg" width="355px" height="500px"></li>
-
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132348994899.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132361546154.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132374447444.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132380868086.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140708132396009600.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140731170538603860.jpg" width="355px" height="500px"></li>
-         <li><img src="<%=path%>/img/images-2014-11/zhengjian/20140731170564286428.jpg" width="355px" height="500px"></li>
-       </ul> --%>
-       
+    
      </div>
     </div>
+          <div id="dialog01"  style="display:none; height:210px;" class="newye">
+	          <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	          </div>	         
+	          <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">投资金额不能为0,请重新输入!</p>          
+	          </div>
+	          <div class="touzi_text abs_tips" style="display:block">
+	           <p style="display:none"><a href="<%=path%>/gate/recharge">充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/gate/service">查看我的资产</a></p>   
+	           <p style="display:none"><a href="<%=path%>/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/welcome/reg">还没有账号？</a></p> 
+	          </div>
+	          <div class="touzi_text" style="display:none">
+	             
+	          </div>	
+	         <a class="diabtn">确定</a>                
+          </div>
 </div> 
 <!-- absolute start -->
 <%@ include file="/includes/absolute.jsp" %>
@@ -746,4 +434,206 @@ function mysubmit(){
 
 
 </body>
+
 </html>
+<script type="text/javascript">
+ var head_index=1; 
+</script>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
+ <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+ <script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?v=1"></script>
+ <script type="text/javascript">
+var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
+
+/*提交表单*/
+function mysubmit(){
+	if($("#username").val()==$("#targetPlatformUserNo").val()){
+		alert("用户不能投资自己的项目！");
+		return false;
+	}
+	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
+		//alert("投资金额不能为空！");
+		$(".newye").css("display","block")
+	    $(".black_bac").css("display","block");		
+		return false;
+	}
+	if($("#buyAmount").val()%100!=0){
+		/* alert("投资金额必须为100的整数倍！"); */
+		return false;
+	}
+	if($("#buyAmount").val()<200){
+		//alert("投资金额不能低于200元！");		
+		return false;
+	}	
+	if($("#buyAmount").val()>touzi_money){
+		//alert("投资金额不能高于可投资金额！");		
+		return false;
+	}
+	
+    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
+        success: function(resp){
+            if(resp === "success"){
+                var form = document.getElementById("form");
+                form.submit();
+            }else{
+               // alert(resp);
+            	$(".newye").css("display","block")
+        	    $(".black_bac").css("display","block");
+            	$(".p_font").text(resp) ;
+            	if(resp=="请登录"){
+            		$(".abs_tips p:eq(1)").css("display","block");
+            	}
+            	if(resp=="您的可用余额不足"){
+            		$(".abs_tips p:eq(0)").css("display","block");            		
+            	}
+            	
+            	
+            }
+        }});
+}	
+
+
+
+ $(document).ready(function(e) {
+	 
+	 //---------收益计算器------------
+
+	    var rate_lv=$(".lev_start").length;
+		calc();
+		$("#preview_amount").change(function(e) {
+			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
+				$(this).val(parseInt($(".lev_start").eq(0).html()));
+				}
+			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
+				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
+				}
+	        calc();
+	        
+	    });
+		function calc(){
+			var t=parseInt($("#preview_amount").val());
+			var r=0;
+			var p=parseInt($("#preview_Period").html());
+			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
+			for(i=0;i<rate_lv;i++){
+				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
+					if(parseInt($(".lev_mi").eq(i).html())>0){
+					r=parseFloat($(".lev_rate").eq(i).html())+parseFloat($(".lev_ri").eq(i).html())*parseInt((t-parseInt($(".lev_start").eq(i).html()))/parseInt($(".lev_mi").eq(i).html()));
+					
+					}else{
+						r=parseFloat($(".lev_rate").eq(i).html());
+						}
+					r=r/100/365*p; 
+					//console.log("-lv:"+i+"-m:"+t+"-r:"+r+"--");
+					}
+				}
+			   var b=parseFloat(parseInt(r*10000)/100);		        
+		       b=b.toFixed(2)
+		     
+		       $("#preview_rate").val(b+"%");	 
+		         
+		      var a=parseFloat(parseInt(t*r*100)/100)				     
+			      a= a.toFixed(2)			       
+		     $("#preview_income").html(a+"元"); 
+			}
+
+		//---------收益计算器结束-------------
+		
+
+
+	/*  $("#buyAmount").keyup(function(){
+		  
+		    var str= /^[0-9]*$/;
+		    var val=$("#buyAmount").val();
+		    $('.neirong').css('display','block');
+		    alert(val);
+		       if(val==""){			    
+		    	 $('.neirong').html("您输入的金额不能为空");
+				   return false;			    	
+		        }
+		        if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是整数,请重新输入");
+				   return false;
+			    }		       	
+		        if(!(str.test(val))){  	   
+				   $('.neirong').html("您输入的金额不是整数,请重新输入");
+				   return false;
+			    }
+			    if(val<200){
+				   $('.neirong').html("您输入的金额小于200元,请重新输入");
+				   return false;
+			    }
+			    if(val>touzi_money){
+					   $('.neirong').html("您的投资金额大于可投资投资金额");
+					   return false;
+				    }
+			    if(parseInt(val)%100!=0){	
+				  $('.neirong').html("输入的资金必须是100的整数倍");
+				  return false;
+				   }
+			      
+			      $('.neirong').html('您要投入的实际金额为:'+val);	 
+			       */
+			   
+
+	 
+      //---------导航浮动-----------
+       $(window).on('scroll', function(){
+               checkText();
+       });
+
+       var nav_height=parseInt($('.small_nav').offset().top);
+       function checkText(){
+           var top = parseInt($(this).scrollTop());
+           if(top>nav_height){
+              $(".small_nav").addClass("text");
+           }else if($(".small_nav").hasClass('text')&&(top!=nav_height)){
+              $(".small_nav").removeClass("text");
+           }
+       }
+
+    
+
+ 	
+       /*倒计时*/
+       function getRTime1(){
+
+	         var val01=$("#open_time").val();
+	         var a=val01.replace(/\-/g,"/");
+	             a=a.substr(0,val01.length-2);
+	         var opentime=new Date(a)
+	         //var nowtime=$("#now").val();
+	         var nowtime=new Date();
+	         var t =opentime - nowtime;
+	         var d=Math.floor(t/1000/60/60/24);        
+	         var h=Math.floor(t/1000/60/60%24);        
+	         var m=Math.floor(t/1000/60%60); 
+	         var s=Math.floor(t/1000%60);  
+	          if(d+h+m+s==0){ 
+	            document.location.reload();
+	          	clearInterval(timer); 	
+	            
+	          }        
+	          $('#t_d').text(d+"天");
+	          $('#t_h').text(h+"时");
+	          $('#t_m').text(m+"分");
+	          $('#t_s').text(s+"秒"); 
+	            if(d==0 && h<24){
+	          	$('#t_s').show();
+	          	$('#t_d').hide();
+	          	
+	          }else{
+	         	$('#t_s').hide()
+	          }  
+	     } 			 
+       
+        var timer= setInterval(getRTime1,1000);
+ });  
+
+ 
+
+	             
+    
+</script>

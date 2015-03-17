@@ -2,6 +2,8 @@ package com.mftour.spring.service.Impl;
 
 import java.util.List;
 
+import com.mftour.spring.model.Accounts;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,12 @@ public class UserServiceImpl implements IUserService {
 	public TUser getUserByEmail(String email) throws Exception {
 		List list = userDao.getUserByEmail(email);
 		return list == null || list.size() == 0 ? null : (TUser) list.get(0);
+
+	}
+
+	public Accounts getAccountByName(String name) throws Exception {
+
+		return userDao.getAccountByName(name);
 
 	}
 

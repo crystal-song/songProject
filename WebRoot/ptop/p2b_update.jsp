@@ -49,8 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </li>
                 <li>
                     <dd>还款日期：</dd>
-                    <input type="date"  value="${product1.repaymentTime}"       disabled="disabled" />
-                    <dt></dt>
+                    <input type=""  value="${product1.repaymentTime}"    class="ui_timepicker"     disabled="disabled" />
+                    <dt>请规范书写时间格式：如2015-01-01 00:00:00</dt>
                 </li>
                 <li>
                     <dd>还款方式：</dd>
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<tr>
             <td align="center">总金额</td><td align="center" id="totalMoney" colspan="2">${product1.realityMoney}万元</td>
             <td align="center">投资进度</td>
-            <td colspan="3" align="center" id="progressTd">${product1.financingProgress}%</td>
+            <td colspan="3" align="center" id="progressTd">${product1.financingProgress*100}%</td>
           </tr>
         </tfoot>
         </table>

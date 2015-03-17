@@ -7,11 +7,32 @@ public class File {
     private String onSubmit;
     private String url;
     private String basePath;
+    private String yeepayCfaFile;
+    private String restHost;
+    private String restOutHost;
+	public String getRestHost() {
+		return restHost;
+	}
+	public void setRestHost(String restHost) {
+		this.restHost = restHost;
+	}
+	public String getRestOutHost() {
+		return restOutHost;
+	}
+	public void setRestOutHost(String restOutHost) {
+		this.restOutHost = restOutHost;
+	}
 	public String getBasePath() {
 		return basePath;
 	}
 	public void setBasePath(String basePath) {
 		this.basePath = basePath;
+	}
+	public String getYeepayCfaFile() {
+		return yeepayCfaFile;
+	}
+	public void setYeepayCfaFile(String yeepayCfaFile) {
+		this.yeepayCfaFile = yeepayCfaFile;
 	}
 	public String getPlatformNo() {
 		return platformNo;

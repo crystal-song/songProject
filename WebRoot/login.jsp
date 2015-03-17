@@ -1,30 +1,80 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.mftour.spring.service.IUserService"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="renderer" content="webkit">
-<meta content="中租宝，是国内首批众筹网络平台之一，公司注册资金五千零一万元人民币， 是国内首批P2B（微信托）领域的财富投资管理公司。公司集聚了一批国内一线信托公司的精英骨干， 立志在这个全民理财时代，创造一个“公正透明，稳定高效”的财富管理平台" name="description">
-<meta content="债权,收益,信托,商券,抵押,信贷,基金,定投,担保,中小贷,微信托,投资人,理财顾问,理财经理,年化收益率,他项权证,余额宝,人人贷,人人投,宜信,陆金所,股权投资,旅居,度假,中租宝,中投汇融,众筹,理财,投资,资产管理,融资,P2B,P2P,私人银行" name="keywords">
-
-
+<%@ include file="/includes/taglibs.jsp" %>
 <title>用户登录 - 我的账户 - 中租宝</title>
 
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-<%@ include file="/includes/taglibs.jsp" %>
+<script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
+</head>
+
+
+<body onkeydown="keyLogin();">
+<div class="black_bac"></div>
+<!-- top start  -->
+<%@ include file="/includes/header.jsp" %>
+<!-- top end  -->
+<!-- <div class="clear"></div> -->
+<!-- banner start -->
+<%-- <%@ include file="/includes/banner.jsp" %> --%>
+<!-- banner end  -->
+<div class="clear"></div>
+<div class="clear_height"></div>
+
+
+ <form action="<%=path%>/welcome/session"  id="form" method="post">
+<div class="zh">
+	<div class="zh_fra">
+    	<div class="zh_left"><img src="<%=path%>/images/dl_09.jpg"></div>
+    	 
+        <div class="zh_right">
+        	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名" /></div>
+            <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码" /></div>
+            <div id="tips"></div> 
+            <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="<%=path%>/welcome/reg"><img src="<%=path%>/images/dl01_05.jpg" /></a>
+            </div>
+            <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
+        </div>
+        <div id="dialog01"  style="display:none; height:170px;">
+	         <div class="dialog_title">
+               <strong>温馨提示</strong>
+	           <div class="right_cha"></div>
+	         </div>
+	         
+	         <div class="touzi_text">
+	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">用户名或密码错误!</p>          
+	         </div>	
+	         <a class="diabtn">确定</a>                
+        </div>
+    </div>
+</div>
+</form>
+<div class="clear"></div>
+<!-- footer start -->
+<%@ include file="/includes/footer.jsp" %>
+<!-- footer end -->
+</body>
+</html>
+<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript" >
+function keyLogin(){
+    event=event || window.event;
+	  if (event.keyCode==13)  {
+		 query();
+	 } 
+
+}
+
 
 function query(){
 	/* alert("ccccccccccc"); */
- 
 	
     if($('#name').val() != ''){
     	if($('#password').val() != ''){
+
             $.ajax({
                 type: 'POST',
                 url: '<c:url value="/welcome/login"/>',
@@ -35,18 +85,23 @@ function query(){
                     if(data == '"success"') {
                     	/* alert("登陆成功"); */
                     	$('#form').submit();
+                    
                         /* window.open('<c:url value="/welcome/session"/>', '_self'); */
                     } else {
                     	$('#password').val('');
-                       alert('用户名或密码错误或用户没有激活！');
+                        //alert('用户名或密码错误或用户没有激活！');
+                        $("#tips").text('*用户名或密码错误！ ');
                     }
                 }
             });
         }else{
-             alert('请输入密码！ ');
+            // alert('请输入密码！ ');	
+             $("#tips").text('*请输入密码！ ');
         }
      }else{
-     	alert('请输入用户名！');
+            //alert('请输入用户名！');  
+            $("#tips").text("*请输入用户名");
+             
      }   
 }
 
@@ -86,45 +141,21 @@ window.onload=function(){
 	 
 		}
 }  
-                
+              $(function(){
+            	  
+            	 $(".right_cha").click(function(){
+            		 $("#dialog01").css("display","none")
+            		  $(".black_bac").css("display","none");	
+            		// window.location.reload(true);
+            	 }) 
+            	 $(".diabtn").click(function(){
+            		 $("#dialog01").css("display","none")
+            		  $(".black_bac").css("display","none");	
+            		// window.location.reload(true);
+            	 }) 
+            	  
+              })  
            
 
 </script>
 
-</head>
-
-
-<body>
-<!-- top start  -->
-<%@ include file="/includes/header.jsp" %>
-<!-- top end  -->
-<!-- <div class="clear"></div> -->
-<!-- banner start -->
-<%-- <%@ include file="/includes/banner.jsp" %> --%>
-<!-- banner end  -->
-<div class="clear"></div>
-<div class="clear_height"></div>
-
-
- <form action="<%=path%>/welcome/session"  id="form" method="post">
-<div class="zh">
-	<div class="zh_fra">
-    	<div class="zh_left"><img src="<%=path%>/images/dl_09.jpg"></div>
-    	 
-        <div class="zh_right">
-        	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名"/></div>
-            <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码"/></div>
-            <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="<%=path%>/reg.jsp"><img src="<%=path%>/images/dl01_05.jpg" /></a>
-</div>
-     <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
-        </div>
-         
-    </div>
-</div>
-</form>
-<div class="clear"></div>
-<!-- footer start -->
-<%@ include file="/includes/footer.jsp" %>
-<!-- footer end -->
-</body>
-</html>

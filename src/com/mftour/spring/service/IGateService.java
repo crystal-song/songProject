@@ -1,6 +1,7 @@
 
 package com.mftour.spring.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.mftour.spring.model.TBinding;
@@ -23,6 +24,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.model.Yeepays;
 import com.mftour.spring.util.Page;
 
 public interface IGateService {
@@ -69,6 +71,8 @@ public interface IGateService {
 	 
 	 public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(TTransferInfo transferInfo)throws Exception;
 	 
+	 public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(String enterpriseNumber)throws Exception;
+	 
 	 public void addOrUpdateTRegisterNotify(TRegisterNotify registerNotify) throws Exception;
 	 
 	 public List<TRegisterNotify> queryTRegisterNotifyByName(String name)throws Exception;
@@ -83,19 +87,8 @@ public interface IGateService {
 	 
 	 
 	 
-	 
-	 public List queryAllTransRecord(Page page,String sql,String platformUserNo)
+	 public List<Yeepays> queryYeepaysByNumber(String Number) throws Exception;
+	 public List queryAllTransRecord(Page page,String sql,Object[] para)
 				throws Exception;
-		public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)
-				throws Exception;
-		public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)
-				throws Exception;
-		public List AllTransRecord(Page page, String platformUserNo)
-				throws Exception;
-
-		public List<TRecharge> queryTRechargeByRequestNo(String requestno)
-				throws Exception;
-		public List<TDrawMoney> queryTDrawMoneyByRequestNo(String requestno)
-				throws Exception;
-
+	 public List queryAvaliableRewards(String username,Date currtime) throws Exception;
 }

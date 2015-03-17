@@ -1,12 +1,8 @@
 package com.mftour.spring.model;
 
-import com.mftour.spring.constants.enums.AuthorityEnum;
-import com.mftour.spring.util.CustomDateSerializer;
-
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.sql.Timestamp;
-import java.util.Date;
+
 
 /**
  * TUser entity. @author MyEclipse Persistence Tools
@@ -42,6 +38,58 @@ public class TUser implements java.io.Serializable {
 	private String answer; // 密码保护答案
 	private Timestamp regTime;
 	private String randomCode;
+	private String servicePhone;
+	private String ref;
+	private String findPasswordTime;
+	private String emailVTime;
+	private Boolean isborrow;
+	public Boolean getIsborrow(){
+		return isborrow;
+	}
+	public void setIsborrow(Boolean isborrow){
+		this.isborrow=isborrow;
+	}
+	public String getEmailVTime() {
+		return emailVTime;
+	}
+
+	public void setEmailVTime(String emailVTime) {
+		this.emailVTime = emailVTime;
+	}
+
+	public String getFindPasswordTime() {
+		return findPasswordTime;
+	}
+
+	public void setFindPasswordTime(String findPasswordTime) {
+		this.findPasswordTime = findPasswordTime;
+	}
+
+	public String getRandomCode1() {
+		return randomCode1;
+	}
+
+	public void setRandomCode1(String randomCode1) {
+		this.randomCode1 = randomCode1;
+	}
+
+	private String randomCode1;
+
+	public String getServicePhone() {
+		return servicePhone;
+	}
+
+	public void setServicePhone(String servicePhone) {
+		this.servicePhone = servicePhone;
+	}
+
+	public String getRef() {
+		return ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
 
 	/**
 	 * default constructor

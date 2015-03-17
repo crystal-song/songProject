@@ -15,7 +15,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-public class HttpClientTest {
+import com.mftour.spring.base.Base;
+
+public class HttpClientTest extends Base{
 	
 	
 	public String postForm(String service,String url,String s,String sign) {  
@@ -24,7 +26,7 @@ public class HttpClientTest {
    
         HttpPost httppost = new HttpPost(url);  
      
-        List formparams = new ArrayList();  
+        List<BasicNameValuePair> formparams = new ArrayList<BasicNameValuePair>();  
         formparams.add(new BasicNameValuePair("service", service));  
         formparams.add(new BasicNameValuePair("req", s));  
         formparams.add(new BasicNameValuePair("sign", sign));
@@ -63,12 +65,12 @@ public class HttpClientTest {
   
 	
 	public String doloan(String url,String s,String sign) {  
-        // ���������������httpClient������.    
+
         CloseableHttpClient httpclient = HttpClients.createDefault();  
-        // ������httppost    
+  
         HttpPost httppost = new HttpPost(url);  
-        // ������������������    
-        List formparams = new ArrayList();  
+     
+        List<BasicNameValuePair> formparams = new ArrayList<BasicNameValuePair>();  
        /* formparams.add(new BasicNameValuePair("service", service));  */
         formparams.add(new BasicNameValuePair("req", s));  
         formparams.add(new BasicNameValuePair("sign",  sign));
@@ -95,7 +97,7 @@ public class HttpClientTest {
         } catch (IOException e) {  
             e.printStackTrace();    
         } finally {  
-            // ������������,������������    
+       
             try {  
                 httpclient.close();  
             } catch (IOException e) {  

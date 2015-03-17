@@ -2,6 +2,7 @@ package com.mftour.spring.Dao.Impl;
 
 import java.util.List;
 
+import com.mftour.spring.model.Accounts;
 import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -28,6 +29,15 @@ public class IUserDaoImpl extends HibernateDaoSupport implements IUserDao {
 		Query query = getSession().createQuery(hql);
 		query.setParameter("email", email);
 		return query.list();
+
+	}
+
+	public Accounts getAccountByName(String name) throws Exception {
+		String hql = "from Accounts accounts where accounts.userId = :userId";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("userId", name);
+	
+		return (Accounts)query.list().get(0);
 
 	}
 

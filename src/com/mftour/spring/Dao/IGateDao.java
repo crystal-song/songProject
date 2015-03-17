@@ -1,5 +1,6 @@
 	package com.mftour.spring.Dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.mftour.spring.model.TBinding;
@@ -21,6 +22,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.model.Yeepays;
 import com.mftour.spring.util.Page;
 
 public interface IGateDao {
@@ -83,19 +85,13 @@ public interface IGateDao {
 	 
 	 
 	 
-	 public List queryAllTransRecord(Page page,String sql,String platformUserNo)
+	 public List queryAllTransRecord(Page page,String sql,Object[] para)
 				throws Exception;
-		public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)
-				throws Exception;
-		public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)
-				throws Exception;
-		public List AllTransRecord(Page page, String platformUserNo)
-				throws Exception;
-		public List<TRecharge> queryTRechargeByRequestNo(String requestno)
-				throws Exception;
-		public List<TDrawMoney> queryTDrawMoneyByRequestNo(String requestno)
-				throws Exception;
+	 public List queryAvaliableRewards(String username,Date currtime) throws Exception;
 
+
+	List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(String enterpriseNumber) throws Exception;
+	public List<Yeepays> queryYeepaysByNumber(String Number) throws Exception;
 }
 	 
 	

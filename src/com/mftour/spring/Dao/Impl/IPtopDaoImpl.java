@@ -7,12 +7,16 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.mftour.spring.Dao.IptopDao;
+import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TRegisterYeePay;
+import com.mftour.spring.model.TTransferInfo;
+import com.mftour.spring.util.Page;
 
 @Repository("ptopDao")
 public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
@@ -22,7 +26,27 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		getHibernateTemplate().saveOrUpdate(tproduct);
 
 	}
-
+	@Override
+	public void addOrUpdate(Communal communal) throws Exception {
+		getHibernateTemplate().saveOrUpdate(communal);
+		
+	}
+	public List<TProduct> queryHotproject(){
+		String hql="from TProduct product where product.enterpriseNumber in(select communal.valuess from Communal communal where keyss='hotProject')";
+		Query query=getSession().createQuery(hql);
+		return query.list();
+	}
+	public List<Communal> queryHotprojectFromCommunal() throws Exception{
+		String hql="from Communal communal where keyss='hotProject')";
+		Query query=getSession().createQuery(hql);
+		return query.list();
+	}
+	public List<Communal> queryCommunalByEnterpriseNumber(String enterpriseNumber) throws Exception{
+		String hql="from Communal communal where communal.valuess=:enterpriseNumber";
+		Query query=getSession().createQuery(hql);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List getAdministratorByAccount(String account) throws Exception {
@@ -46,6 +70,27 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		Query query = getSession().createQuery(hql);
 		query.setParameter("name", Number);
 		query.setParameter("state", "0");
+		return query.list();
+	}
+	@SuppressWarnings("unchecked")
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number) {
+		String hql = "from TInvestmentInfo investmentInfo where investmentInfo.enterpriseNumber = :name  and  investmentInfo.state = :state and investmentInfo.code=1";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("name", Number);
+		query.setParameter("state", "0");
+		page.setTotalRecord(query.list().size());
+		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
+		query.setMaxResults(page.getPageSize());
+		return query.list();
+	}
+	@SuppressWarnings("unchecked")
+	public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number) {
+		String hql = "from TTransferInfo transferInfo where transferInfo.enterpriseNumber = :name  and transferInfo.paymentAmount>=200 and transferInfo.code=1";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("name", Number);
+		page.setTotalRecord(query.list().size());
+		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
+		query.setMaxResults(page.getPageSize());
 		return query.list();
 	}
 
@@ -80,7 +125,7 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TNews> getNews() throws Exception {
-		String hql = "from TNews news";
+		String hql = "from TNews news order by time desc";
 		Query query = getSession().createQuery(hql);
 		return query.list();
 	}
@@ -119,7 +164,12 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 		getHibernateTemplate().delete(news);
 
 	}
+	@Override
+	public void deleteInterestRate(Long id) throws Exception {
+		TInterestRate interestRate = getHibernateTemplate().get(TInterestRate.class, id);
+		getHibernateTemplate().delete(interestRate);
 
+	}
 	@Override
 	public void deleteTChannel(Long id) throws Exception {
 		TChannel channel = getHibernateTemplate().get(TChannel.class, id);
@@ -183,7 +233,7 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 	@Override
 	public Double querySum(String number) throws Exception {
 
-		String hql = "select sum(investmentAmount)  from  TInvestmentInfo  where enterpriseNumber = :number  and  state = :state";
+		String hql = "select sum(investmentAmount)  from  TInvestmentInfo  where enterpriseNumber = :number  and  state = :state and code=1";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("number", number);
 		query.setParameter("state", "0");
@@ -207,5 +257,10 @@ public class IPtopDaoImpl extends HibernateDaoSupport implements IptopDao {
 
 		return query.list();
 	}
-
+	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo) {
+		String hql = "from TRegisterYeePay registeryeepay where registeryeepay.platformUserNo=:targetPlatformUserNo and registeryeepay.code=1";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("targetPlatformUserNo", targetPlatformUserNo);
+		return (TRegisterYeePay)query.uniqueResult();
+	}
 }

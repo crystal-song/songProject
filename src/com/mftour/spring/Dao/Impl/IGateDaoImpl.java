@@ -1,5 +1,6 @@
 	package com.mftour.spring.Dao.Impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -27,6 +28,7 @@ import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TTransferNotify;
 import com.mftour.spring.model.TTransferSucceed;
 import com.mftour.spring.model.TYeePay;
+import com.mftour.spring.model.Yeepays;
 import com.mftour.spring.util.Page;
 
 @Repository("gateDao")
@@ -48,9 +50,10 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 	@Override
 	public List<TRegisterYeePay> queryTRegisterYeePayByName(String name)
 			throws Exception {
-		String hq = "from TRegisterYeePay registerYeePay where registerYeePay.platformUserNo = :platformUserNo ";
+		String hq = "from TRegisterYeePay registerYeePay where registerYeePay.platformUserNo = :platformUserNo and registerYeePay.code = :code ";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("platformUserNo", name);
+		query.setParameter("code", "1");
 		return query.list();
 	}
 
@@ -88,7 +91,13 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("transDate", transferInfo.getTransDate());
 		return query.list();
 	}
-
+	@Override
+	public List<TTransferInfo> queryTTransferInfoByEnterpriseNumber(String enterpriseNumber) throws Exception {
+		String hq = "from TTransferInfo transferInfo where transferInfo.enterpriseNumber = :enterpriseNumber and transferInfo.transDate= :transDate";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
 	@Override
 	public List<TTransferInfo> queryTTransferInfoByNumber(String Number)
 			throws Exception {
@@ -97,7 +106,12 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("requestNo", Number);
 		return query.list();
 	}
-
+	public List<Yeepays> queryYeepaysByNumber(String Number) throws Exception {
+		String hq = "from Yeepays yeepays where yeepays.requestNo = :requestNo";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("requestNo", Number);
+		return query.list();
+	}
 	@Override
 	public void addOrUpdateTEstablishmentRegistration(
 			TEstablishmentRegistration establishmentRegistration)
@@ -177,36 +191,13 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		
 	}
 	
-	public List<TTransRecord> queryAllTransRecord(Page page,String sql,String platformUserNo)throws Exception {
+	public List<TTransRecord> queryAllTransRecord(Page page,String sql,Object[] para)throws Exception {
 		Query query = getSession().createSQLQuery(sql).addEntity(TTransRecord.class);
-		query.setString(0, platformUserNo);
-		page.setTotalRecord(query.list().size());
-		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
-		query.setMaxResults(page.getPageSize());
-		return query.list();
-	}
-	public List<TDrawMoney> DrawMonetAllTransRecord(Page page,String platformUserNo)throws Exception {
-		String hq = "from TDrawMoney drawMoney where drawMoney.platformUserNo=:platformUserNo  and drawMoney.requestNo in(select t.requestNo from TDrawMoneySucceed t)  order by drawMoney.transDate desc";
-		Query query = getSession().createQuery(hq);
-		query.setParameter("platformUserNo", platformUserNo);
-		page.setTotalRecord(query.list().size());
-		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
-		query.setMaxResults(page.getPageSize());
-		return query.list();
-	}
-	public List<TRecharge> RechargeAllTransRecord(Page page,String platformUserNo)throws Exception{
-		String hq = "from TRecharge Recharge where Recharge.platformUserNo=:platformUserNo  and Recharge.requestNo in(select t.requestNo from TRechargeSucceed t) order by Recharge.time desc";
-		Query query = getSession().createQuery(hq);
-		query.setParameter("platformUserNo", platformUserNo);
-		page.setTotalRecord(query.list().size());
-		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
-		query.setMaxResults(page.getPageSize());
-		return query.list();
-	}
-	public List  AllTransRecord(Page page,String platformUserNo)throws Exception{
-		String hq = "from TTransferInfo transferInfo where transferInfo.platformUserNo=:platformUserNo  and transferInfo.requestNo in(select t.requestNo from TTransferSucceed t) order by transferInfo.transDate desc";
-		Query query = getSession().createQuery(hq);
-		query.setParameter("platformUserNo", platformUserNo);
+		if(para!=null){
+			for(int i=0;i<para.length;i++){
+				query.setParameter(i, para[i]);
+			}
+		}
 		page.setTotalRecord(query.list().size());
 		query.setFirstResult((page.getPageNo() - 1) * page.getPageSize());
 		query.setMaxResults(page.getPageSize());
@@ -223,14 +214,6 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		return query.list();
 	}
 
-	public List<TRecharge> queryTRechargeByRequestNo(String requestno)
-			throws Exception {
-		String hq = "from TRecharge recharge where recharge.requestNo=:requestNo";
-		Query query = getSession().createQuery(hq);
-		query.setParameter("requestNo",  requestno);
-		return query.list();
-	}
-
 	@Override
 	public List<TInvestmentInfo> queryTInvestmentInfoByName(String name)
 			throws Exception {
@@ -239,14 +222,7 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		query.setParameter("requestNo",  name);
 		return query.list();
 	}
-	public List<TDrawMoney> queryTDrawMoneyByRequestNo(String requestno)
-			throws Exception{
-		String hq="from TDrawMoney drawmoney where drawmoney.requestNo=:requestNo";
-		Query query = getSession().createQuery(hq);
-		query.setParameter("requestNo",  requestno);
-		return query.list();
-	}
-
+	
 	@Override
 	public void addOrUpdateTRegisterNotify(TRegisterNotify registerNotify)
 			throws Exception {
@@ -290,7 +266,13 @@ public class IGateDaoImpl  extends HibernateDaoSupport  implements  IGateDao {
 		getHibernateTemplate().saveOrUpdate(drawMoneyNotify);
 		
 	}
-	
+	public List queryAvaliableRewards(String username,Date currtime) throws Exception{
+		String hql="  from Rewards rewards where rewards.userId=:username and rewards.expireTime>=:currtime and rewards.used=0 ";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("username",  username);
+		query.setParameter("currtime", currtime);
+		return query.list();
+	}
 	
 	
 	

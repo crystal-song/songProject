@@ -2,12 +2,16 @@ package com.mftour.spring.Dao;
 
 import java.util.List;
 
+import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TRegisterYeePay;
+import com.mftour.spring.model.TTransferInfo;
+import com.mftour.spring.util.Page;
 
 public interface IptopDao {
 
@@ -17,9 +21,11 @@ public interface IptopDao {
 
 	public void addOrUpdateInvestmentInfo(TInvestmentInfo investmentInfo)
 			throws Exception;
-
+	public List<Communal> queryHotprojectFromCommunal() throws Exception;
+	public List<Communal> queryCommunalByEnterpriseNumber(String enterpriseNumber) throws Exception;
 	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number);
-
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number);
+	public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number);
 	public void deleteTInvestmentInfo(Long id) throws Exception;
 
 	public void addOrUpdateTNews(TNews news) throws Exception;
@@ -56,4 +62,10 @@ public interface IptopDao {
 			throws Exception;
 
 	public List<TInterestRate> queryTInterestRateByNumber(String Number);
+	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo);
+
+	public void addOrUpdate(Communal communal) throws Exception;
+	public List<TProduct> queryHotproject() throws Exception;
+
+	void deleteInterestRate(Long id) throws Exception;
 }

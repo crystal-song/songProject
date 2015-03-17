@@ -1,5 +1,7 @@
 package com.mftour.spring.model;
 
+import java.math.BigDecimal;
+
 public class TTransferInfo implements java.io.Serializable {
 	private static final long serialVersionUID = -8032768954376668825L;
 	private Long id;
@@ -17,6 +19,23 @@ public class TTransferInfo implements java.io.Serializable {
 	private String enterpriseNumber;			//企业编号
 	private String projectName;					//项目名称
 	private Double interestRate;
+	private BigDecimal interest;
+
+
+	private BigDecimal reward;
+
+	public TTransferInfo() {
+		super();
+	}
+
+	public BigDecimal getReward() {
+		return reward;
+	}
+
+	public void setReward(BigDecimal reward) {
+		this.reward = reward;
+	}
+
 	private String transDate;			//交易时间
 	private Integer financingPeriod;	
 
@@ -156,7 +175,20 @@ public class TTransferInfo implements java.io.Serializable {
 		this.financingPeriod = financingPeriod;
 	}
 
-    
+	public TTransferInfo(String platformUserNo, String paymentAmount) {
+		super();
+		this.platformUserNo = platformUserNo;
+		this.paymentAmount = paymentAmount;
+	}
+
+	public BigDecimal getInterest() {
+		return interest;
+	}
+
+	public void setInterest(BigDecimal interest) {
+		this.interest = interest;
+	}
+	
 	
 	
 	

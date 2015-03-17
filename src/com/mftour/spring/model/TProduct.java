@@ -1,19 +1,34 @@
 package com.mftour.spring.model;
 
+import java.sql.Timestamp;
+import java.sql.Date;
+
+
+
+
 public class TProduct implements java.io.Serializable {
 
 	private static final long serialVersionUID = -8032736954376546625L;
 
 	
 	    private Long id;
+	    private Date  nextRepaymentDate;
 	    private String projectName;  //产品名称
 	    private String enterpriseNumber;  //企业编号
 	    private String enterpriseBusinessIicense;  //企业营业执照号码
 	    private Integer qualityRating;   //信用等级
 	    private Double yearIncome;     //年化收益率         1
-	    private String repaymentTime;  //偿还日期
+	    private Timestamp repaymentTime;  //偿还日期
 	    private String repaymentWay;    //还款方式          5
-	    private Integer financingMoney;   //融资金额         3
+	   
+		
+		public Date getNextRepaymentDate() {
+			return nextRepaymentDate;
+		}
+		public void setNextRepaymentDate(Date nextRepaymentDate) {
+			this.nextRepaymentDate = nextRepaymentDate;
+		}
+		private Integer financingMoney;   //融资金额         3
 	    private Integer financingPeriod; //融资周期         2
 	    private Double financingProgress; //融资进度        4
 	    private String projectIntroduce;  //项目介绍
@@ -40,13 +55,38 @@ public class TProduct implements java.io.Serializable {
 	    private String  enterpriseName;
 	    private Integer buyType;
 	    
+	    private Float platformFee;	//平台费用
+	    private Float margin;   //保证金
+
+	    private Timestamp financeTime; //开始融资时间
 	    
-	    
-	    
-	   
+
 	  
 	   
-	    
+	    private boolean loaned; //是否已放款
+	 
+		private boolean line; //是否上线
+	    private String hotPicture;//热门项目图片
+		
+		
+		public String getHotPicture() {
+			return hotPicture;
+		}
+		public void setHotPicture(String hotPicture) {
+			this.hotPicture = hotPicture;
+		}
+		public boolean isLine() {
+				return line;
+	    }
+		public void setLine(boolean line) {
+			this.line = line;
+		}
+		public boolean isLoaned() {
+			return loaned;
+		}
+		public void setLoaned(boolean loaned) {
+			this.loaned = loaned;
+		}
 		public Long getId() {
 			return id;
 		}
@@ -98,10 +138,10 @@ public class TProduct implements java.io.Serializable {
 		public void setYearIncome(Double yearIncome) {
 			this.yearIncome = yearIncome;
 		}
-		public String getRepaymentTime() {
+		public Timestamp getRepaymentTime() {
 			return repaymentTime;
 		}
-		public void setRepaymentTime(String repaymentTime) {
+		public void setRepaymentTime(Timestamp repaymentTime) {
 			this.repaymentTime = repaymentTime;
 		}
 		public String getRepaymentWay() {
@@ -256,20 +296,25 @@ public class TProduct implements java.io.Serializable {
 		public void setEnterpriseName(String enterpriseName) {
 			this.enterpriseName = enterpriseName;
 		}
+		public Float getPlatformFee() {
+			return platformFee;
+		}
+		public void setPlatformFee(Float platformFee) {
+			this.platformFee = platformFee;
+		}
+		public Float getMargin() {
+			return margin;
+		}
+		public void setMargin(Float margin) {
+			this.margin = margin;
+		}
+		public Timestamp getFinanceTime() {
+			return financeTime;
+		}
+		public void setFinanceTime(Timestamp financeTime) {
+			this.financeTime = financeTime;
+		}
 		
-		
-	
-	
-	
-	
-		
-		
-		
-		
-	    
-	    
-	    
-	   
 
 
 }

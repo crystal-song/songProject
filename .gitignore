@@ -1,8 +1,14 @@
 *.class
 .classpath
+/WebRoot/WEB-INF/applicationContext.xml
+/WebRoot/up/jsp/upload/
 .project
 .settings
 # Package Files #
 *.war
 *.ear
+/.idea/
 /build/
+/target/
+/src/configuration.properties/
+/WebRoot/WEB-INF/zhengshu.pfx

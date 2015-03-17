@@ -7,14 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.mftour.spring.Dao.IProductDao;
 import com.mftour.spring.Dao.IptopDao;
+import com.mftour.spring.model.Communal;
 import com.mftour.spring.model.TAdministrator;
 import com.mftour.spring.model.TChannel;
 import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TRegisterYeePay;
+import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TUser;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.Page;
 
 @Service("ptopService")
 public class PtopServiceImpl implements IptopService {
@@ -27,7 +31,18 @@ public class PtopServiceImpl implements IptopService {
 		ptopDao.addOrUpdate(tproduct);
 
 	}
-
+	public List<Communal> queryHotprojectFromCommunal() throws Exception{
+	   return 	ptopDao.queryHotprojectFromCommunal();
+	}
+	public List<Communal> queryCommunalByEnterpriseNumber(String enterpriseNumber) throws Exception{
+		return ptopDao.queryCommunalByEnterpriseNumber(enterpriseNumber);
+	}
+	public void addOrUpdate(Communal communal) throws Exception{
+		ptopDao.addOrUpdate(communal);
+	}
+	public List<TProduct> queryHotproject() throws Exception{
+		return ptopDao.queryHotproject();
+	}
 	@Override
 	public TAdministrator getAdministratorByAccount(String account)
 			throws Exception {
@@ -46,11 +61,18 @@ public class PtopServiceImpl implements IptopService {
 	}
 
 	@Override
-	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number) {
-		return ptopDao.queryInvestmentInfoByNumber(Number);
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(Page page,String Number) {
+		return ptopDao.queryInvestmentInfoByNumber(page,Number);
 
 	}
-
+	public List<TInvestmentInfo> queryInvestmentInfoByNumber(String Number) {
+		return ptopDao.queryInvestmentInfoByNumber(Number);
+		
+	}
+	public List<TTransferInfo> queryTransferInfoByNumber(Page page,String Number){
+		return ptopDao.queryTransferInfoByNumber(page, Number);
+	}
+	
 	@Override
 	public void deleteTInvestmentInfo(Long id) throws Exception {
 		ptopDao.deleteTInvestmentInfo(id);
@@ -122,7 +144,9 @@ public class PtopServiceImpl implements IptopService {
 		ptopDao.deleteTChannel(id);
 
 	}
-
+	public void deleteInterestRate(Long id) throws Exception{
+		ptopDao.deleteInterestRate(id);
+	}
 	@Override
 	public List<TNews> getNewsbyRecommend() throws Exception {
 
@@ -160,5 +184,7 @@ public class PtopServiceImpl implements IptopService {
 
 		return ptopDao.queryTInterestRateByNumber(Number);
 	}
-
+	public TRegisterYeePay queryYeePayByplatUserNo(String targetPlatformUserNo){
+		return ptopDao.queryYeePayByplatUserNo(targetPlatformUserNo);
+	}
 }

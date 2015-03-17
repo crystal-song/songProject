@@ -42,9 +42,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	<welcome-file-list>
-		<welcome-file>indextz.jsp</welcome-file>
-	</welcome-file-list>
+
 	<servlet>  
         <servlet-name>CodeServlet</servlet-name>  
         <servlet-class>com.mftour.spring.util.CodeServlet</servlet-class>  
@@ -54,7 +52,9 @@
         <url-pattern>/CodeServlet</url-pattern>  
     </servlet-mapping>  
 	
-	
+<!-- <listener>
+    <listener-class>com.mftour.spring.util.FixedBasicDataSource</listener-class>    
+</listener>   -->
 	<!-- <servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		这里可以用 / 但不能用 /* ，拦截了所有请求会导致静态资源无法访问，所以要在spring3-servlet.xml中配置mvc:resources

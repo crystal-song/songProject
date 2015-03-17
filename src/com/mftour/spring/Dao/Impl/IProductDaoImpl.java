@@ -10,8 +10,10 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.mftour.spring.Dao.IProductDao;
+import com.mftour.spring.model.ProductRepays;
 import com.mftour.spring.model.TInvestmentInfo;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.UserRepays;
 import com.mftour.spring.util.Page;
 
 import org.apache.commons.lang.StringUtils;
@@ -43,7 +45,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 		int projectStatus3 = 3;
 		int projectStatus4 = 4;
 
-		String countQuery = "select count(*) from TProduct product";
+		String countQuery = "select count(*) from TProduct product where product.line=1";
 		Map<String, Object> result = new HashMap<String, Object>(2);
 		/*
 		 * String countQuery = "select count(*) from THotel thotel"; String
@@ -52,7 +54,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 		 * ;
 		 */
 
-		String hql = "from TProduct product";
+		String hql = "from TProduct product where product.line=1";
 		/*
 		 * String hql =
 		 * "select new map(product as product) from TProduct product";
@@ -75,11 +77,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 
 				// sb.append(" and user.name like :userName");
 				// params.put("userName", "%"+user.getName()+"%");
-				if (params.size() > 0) {
 					sb.append(" and");
-				} else {
-					sb.append(" where");
-				}
 
 				if (product.getYearIncome() == 10) {
 
@@ -111,12 +109,9 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 				 * FinancingPeriod3=360;
 				 */
 
-				if (params.size() > 0) {
+			
 					sb.append(" and");
-				} else {
-					sb.append(" where");
-				}
-
+				
 				if (product.getFinancingPeriod() == 3) {
 
 					sb.append(" product.financingPeriod < :FinancingPeriod");
@@ -157,12 +152,8 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 
 				// sb.append(" and user.name like :userName");
 				// params.put("userName", "%"+user.getName()+"%");
-				if (params.size() > 0) {
 					sb.append(" and");
-				} else {
-					sb.append(" where");
-				}
-
+				
 				if (product.getFinancingMoney() == 200) {
 
 					sb.append(" product.financingMoney < :FinancingMoney");
@@ -201,12 +192,8 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 
 				// sb.append(" and user.name like :userName");
 				// params.put("userName", "%"+user.getName()+"%");
-				if (params.size() > 0) {
 					sb.append(" and");
-				} else {
-					sb.append(" where");
-				}
-
+			
 				if (product.getFinancingProgress() == 50) {
 
 					sb.append(" product.financingProgress < :FinancingProgress ");
@@ -238,12 +225,8 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 
 				// sb.append(" and user.name like :userName");
 				// params.put("userName", "%"+user.getName()+"%");
-				if (params.size() > 0) {
 					sb.append(" and");
-				} else {
-					sb.append(" where");
-				}
-
+			
 				/*
 				 * if(product.getProjectStatus()==1){
 				 * 
@@ -270,14 +253,9 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 					params.put("projectStatus4", projectStatus4);
 				}
 			}
-			if (params.size() > 0) {
 				sb.append(" and product.existType = 0 ");
 
-			} else {
-				sb.append(" where product.existType = 0 ");
-			}
-
-			sb.append(" order by product.releaseTime desc ");
+			sb.append(" order by  (case when product.buyType in (1) then 0 else 1 end),product.financingProgress asc, product.releaseTime desc ");
 
 
 		}
@@ -329,7 +307,7 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TProduct> queryProductByType(Integer type) {
-		String hql = "from TProduct tproduct where tproduct.recommendType = :recommendType and  tproduct.existType = :existType   order by tproduct.releaseTime desc";
+		String hql = "from TProduct tproduct where tproduct.recommendType = :recommendType and  tproduct.existType = :existType  and tproduct.line=1 order by (case when tproduct.buyType in (1) then 0 else 1 end),tproduct.financingProgress asc,tproduct.releaseTime desc";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("recommendType", type);
 		query.setParameter("existType", "0");
@@ -341,14 +319,14 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 	@Override
 	public List<TProduct> queryProduct(TProduct product) throws Exception {
 		if (product.getProjectName() == null || product.getProjectName() == "") {
-			String hql = "from TProduct product where product.existType = :existType";
+			String hql = "from TProduct product where product.existType = :existType order by product.releaseTime desc";
 			Query query = getSession().createQuery(hql);
 			query.setParameter("existType", "0");
 			return query.list();
 
 		}
 
-		String hq = "from TProduct product where product.projectName like :projectName and product.existType = :existType ";
+		String hq = "from TProduct product where product.projectName like :projectName and product.existType = :existType";
 		Query query = getSession().createQuery(hq);
 		query.setParameter("projectName", "%" + product.getProjectName() + "%");
 		query.setParameter("existType", "0");
@@ -365,13 +343,38 @@ public class IProductDaoImpl extends HibernateDaoSupport implements IProductDao 
 		query.setParameter("enterpriseNumber", enterpriseNumber);
 		return query.list();
 	}
-
+	public List<ProductRepays> queryProductRepaysByNumber(String enterpriseNumber) throws Exception {
+		String hq = "from ProductRepays productrepays where productrepays.enterpriseNumber = :enterpriseNumber order by productrepays.period asc";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
+	public List< UserRepays> queryUserRepaysByPeriod(int period,String enterpriseNumber) throws Exception {
+		String hq = "from UserRepays userrepays where userrepays.period = :period and userrepays.enterpriseNumber=:enterpriseNumber";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("period", period);
+		query.setParameter("enterpriseNumber", enterpriseNumber);
+		return query.list();
+	}
+	public ProductRepays queryProductRepaysByid(int id) throws Exception {
+		return getHibernateTemplate().get(ProductRepays.class, id);
+	}
 	@Override
 	public void deleteProduct(Long id) throws Exception {
 		TProduct Product = getHibernateTemplate().get(TProduct.class, id);
 		Product.setExistType("1");
 		getHibernateTemplate().saveOrUpdate(Product);
 
+	}
+	public List<TProduct> queryProductByTargetPlatformUserNo(Page page,String targetPlatformUserNo) throws Exception {
+		String hq = "from TProduct product where product.targetPlatformUserNo = :targetPlatformUserNo order by product.projectStatus asc,product.repaymentTime desc";
+		Query query = getSession().createQuery(hq);
+		query.setParameter("targetPlatformUserNo", targetPlatformUserNo);
+		page.setTotalPage(query.list().size()/page.getPageSize()+1);
+		page.setTotalRecord(query.list().size());
+		query.setMaxResults(page.getPageSize());
+		query.setFirstResult((page.getPageNo()-1)*page.getPageSize());
+		return query.list();
 	}
 
 }

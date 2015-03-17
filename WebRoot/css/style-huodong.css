@@ -278,7 +278,7 @@ ul,li{
 
 .footer{
 	width:100%-20;
-	height:350px;
+	height:400px;
 	border-top:4px solid #bd2120;
 	background:#f8f8f8;
 	margin-top:20px;
@@ -299,6 +299,7 @@ ul,li{
 	width:250px;
 	height:80px;
 	float:left;
+
 	}	
 .foo01 strong{
 	float:left;
@@ -313,11 +314,21 @@ ul,li{
 	text-align:left;
 	line-height:60px;
 	padding-bottom:15px;
+	background:pink
 	}	
-.foo02 span{
+/* .foo02 span{
 	display:inline-block;
 	margin-left:40px;
-	}		
+	} */	
+.foo02 a{
+	display:inline-block;
+	margin-left:40px;
+	float:left;
+	background:pink
+	}	
+.foo02 a:hover{
+	color:#ff453e;
+}	
 .min_label{
 	width:1100px;
 	height:50px;
@@ -350,45 +361,6 @@ ul,li{
 	font-size:14px; 
 	position:relative;
 }	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

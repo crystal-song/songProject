@@ -1,8 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -11,13 +7,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>添加新闻公告</title>
-<link href="<%=path%>/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
-<link href="<%=path%>/css/style1.css" rel="stylesheet" type="text/css" />
-    <%-- <script type="text/javascript" src="<%=path%>/up/third-party/jquery.min.js"></script> --%>
-      <script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>    
-    <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="<%=path%>/up/umeditor.min.js"></script>
-    <script type="text/javascript" src="<%=path%>/up/lang/zh-cn/zh-cn.js"></script>
+<link href="/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<link href="/css/style1.css" rel="stylesheet" type="text/css" />
+    <%-- <script type="text/javascript" src="/up/third-party/jquery.min.js"></script> --%>
+      <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>    
+    <script type="text/javascript" charset="utf-8" src="/up/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/up/umeditor.min.js"></script>
+    <script type="text/javascript" src="/up/lang/zh-cn/zh-cn.js"></script>
    
     
     
@@ -141,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   	
     	<div class="dataForm">
-    	<form  action="<%=path%>/Login/addnews" id="form" method="post"    >
+    	<form  action="/Login/addnews" id="form" method="post"    >
         	<input type="hidden"  name="depicts"  id="depicts" />
         	<input type="hidden"  name="channel"  id="channel" />
         	<input type="hidden" name="id" id="id" value="${news1.id}" />
@@ -238,12 +234,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         alert(UM.getEditor('myEditor').getAllHtml())
     }
     function getContent() {
+    	if($("#title").val=''){
+    		alert("文章标题不能为空！");
+    		return false;
+    	}
+    	if($("#myEditor").val=''){
+    		alert("文章内容不能为空！");
+    		return false;
+    	}
         var arr = [];
-       /*  var arr1 = []; */
-     /*    arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为："); */
         arr.push(UM.getEditor('myEditor').getContent());
-        /* alert(arr.join("\n")); */
         $("#depicts").val(arr.join("\n"));
         $("#channel").val( $("#chanel").val());
         
