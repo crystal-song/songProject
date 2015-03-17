@@ -13,7 +13,9 @@
 <div class="user_con">
     <div class="user_left">
       <!-- user_left start -->
-         <%@ include file="/includes/user_info_left.jsp" %>
+         <%@ include file="/includes/user_info_left.jsp"、
+         
+          %>
       <!-- user_left end -->
     </div>
     <div class="user_right">
