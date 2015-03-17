@@ -4,7 +4,8 @@
 	
 	
 
-//index.jsp add desc
+//index.jsp add descdfdsaf
+//add 
 	/*定时器*/
 	$(".nav_big a").eq(head_index).addClass("bd_btom").siblings().removeClass("bd_btom");
 	$(".nav_big a").eq(head_index).children("p").addClass("headwd_color");
