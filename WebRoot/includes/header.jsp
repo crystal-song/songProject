@@ -15,8 +15,8 @@
 			</li>
 			<li>关于我们
 				<div class="list02">
-					<a href="/help_con.jsp">企业介绍</a> <a href="/security.jsp">安全策略</a> <a
-						href="/notice.jsp">法律声明</a>
+					<a href="/help_con.jsp">企业介绍</a> <a href="/security.jsp">安全策略</a> 
+					<a href="/notice.jsp">法律声明</a>
 				</div>
 			</li>
 			<li><a href="/xinshouzhiyin.jsp" class="head_red"
