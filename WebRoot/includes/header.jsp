@@ -55,8 +55,8 @@
             <li><a href="/gate/service"><span><strong>我的账户</strong></span><p>Account</p></a></li>
             <li><a href="/hero/all"><span><strong>我要众筹</strong></span><p>Crowdfunding</p></a></li>  
             <li><a href="/guarantee/getchannel"><span><strong>新闻公告</strong></span><p>News</p></a></li>
-            <li><a href="/help_con.jsp"><span><strong>帮助中心</strong></span><p>Help</p></a></li>
-            <li><a href="/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Application</p></a></li>
+            <li><a href="/help/help_con.jsp"><span><strong>帮助中心</strong></span><p>Help</p></a></li>
+            <li><a href="/application/faqixiangmu.jsp"><span><strong>发起项目</strong></span><p>Application</p></a></li>
             
           </ul>
           <div class="login" >
