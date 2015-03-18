@@ -145,12 +145,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 </html>
 <script type="text/javascript">
-var navIndex=3;
+
 $(document).ready(function(){
-	/*$('.select_nav a').click(function(){
-		$(this).siblings().slideToggle('slow')
-		}
-	);	*/
 	
 	$(function(){
 	var num=0;
@@ -158,8 +154,6 @@ $(document).ready(function(){
 	timer=setInterval(function(){
 		num++
 		$('.red_bar').css('width',num);
-		/*$('progress').val(num)
-		$('span').html(num)*/
 		var zi=$('.view strong').text();
 		if(zi=='低' && num==40){
 			clearInterval(timer)	

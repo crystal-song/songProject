@@ -3,15 +3,9 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
 <%@ include file="/includes/taglibs.jsp" %>
-
 <title>发起项目  - 中租宝</title>
-<link href="<%=path%>/css/style-2014-11.css" rel="stylesheet" type="text/css" />
-
-
 </head>
 
 <body>
@@ -233,46 +227,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
-<script type="text/javascript">
- var head_index=6; 
-</script>
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(e) {
 
-	$(".news_ul li").click(function(e){
-        var index=$(this).index();
-        $(this).children("div").addClass("news_wd_color");
-        $(this).siblings().children("div").removeClass("news_wd_color");
-        $(".news_right ul").eq(index).css("display","block").siblings().css("display","none");
-     });
-     $(".news_ul li").click(function(e){
-        var index=$(this).index();
-        $(this).children("div").addClass("news_wd_color");
-        $(this).siblings().children("div").removeClass("news_wd_color");
-        $(".news_right ul").eq(index).css("display","block").siblings().css("display","none")
-     });
-     $(".webside li").click(function(){    	 
-       $(this).children(".news_list_hide").slideToggle();
-     });
-     
-     $(".daohang a").click(function(){
-         var index= $(this).index();
-         $(this).addClass('daohang_bac').siblings().removeClass('daohang_bac');
-         $(".webside").eq(index).css("display","block").siblings(".webside").css("display","none")
-     });
-  	$(window).on('scroll', function(){
-        if($(window).scrollTop()<500){
-            $(".absolute_bac1").hide();
-        }
-        if($(window).scrollTop()>=500){
-            $(".absolute_bac1").show(); 
-        }
-      });
-            $(".absolute_bac1").click(function(){
-               $("html,body").animate({scrollTop:0},500);  		            
-            });	 
+  
+   
+
 });
 </script>
 </html>

@@ -44,8 +44,6 @@
 							<c:if test="${ not empty li}">
 								<c:forEach var="s" items="${li}" varStatus="i">
 									<tr>
-
-
 										<td align="center" height="30">${s.projectName}</td>
 										<td align="center"><fmt:formatNumber type="number"
 												value="${s.paymentAmount + s.reward}" maxFractionDigits="2" />元</td>
@@ -57,8 +55,6 @@
 										<td align="center"><a
 											href="<%=path%>/gate/authorization?platformUserNo=${s.platformUserNo}&enterpriseNumber=${s.enterpriseNumber}&transDate=${s.transDate}"
 											title="查看投资协议" style="text-decoration: underline;">点击查看</a></td>
-
-
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -78,17 +74,12 @@
 	<!-- footer end -->
 </body>
 </html>
+
 <script type="text/javascript">
- var head_index=2; 
-</script>
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
-<script type="text/javascript">
-	var indexs = 2;
+	
 	$(document).ready(
 			function() {
-
-				$(".u_left_sec:eq(2) li:eq(2)").children("a").css("color",
-						"#fc652e");
+				$(".u_left_sec:eq(2) li:eq(2)").children("a").css("color","#fc652e");
 
 			});
 </script>

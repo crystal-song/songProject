@@ -8,6 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@ include file="/includes/taglibs.jsp" %> 
 <title>安全设置 - 我的账户 - 中租宝</title>
 <script type="text/javascript" src="<%=path%>/js/sms.js" ></script>
+
 <body>
 <!-- top start  -->
 <%@ include file="/includes/header.jsp" %>
@@ -248,252 +249,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
+
 <script type="text/javascript">
- var head_index=2; 
-</script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
-<script type="text/javascript">
-    var navIndex=3;  
-    var indexs=0; 
+ 
     $(document).ready(function(){
     	$(".u_left_sec:first li:eq(1)").children("a").css("color","#fc652e");
-    	//$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	//$(".nav_big a").eq(2).children("p").addClass("headwd_color");
-
         function onSubmit() {
     		if($("#mail").val()==""){
     			alert("邮箱不能为空!");
     			return false;
     			}
-    		var form = document.getElementById("form");
-    	    //document.getElementById("anquan_hide_btn").disabled=true;
-    	    //document.getElementById("anquan_hide_btn").innerHTML="正在提交...";
-    	    
+    		var form = document.getElementById("form");  
     		form.submit();
     	}
-   	   	
-        $(".anquan_right").click(function(){
-        	
-            $(this).parent().siblings(".anquan_hide").slideToggle();
-            
-            if($(this).text()=="认证"){
+   	   	    	  
+    });
 
-               $(this).text("取消认证");
 
-            }else if($(this).text()=="取消认证"){
-              $(this).text("认证");
-            }
-            
-            if($(this).text()=="修改"){
-
-                $(this).text("取消修改");
-
-             }else if($(this).text()=="取消修改"){
-               $(this).text("修改");
-             }
-            
-         }); 
-      
-         
-         $(".anquan_hide_btn").click(function(){
-       	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 
-       	  $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
-        });
-         
-         $(".anquan_hide input").blur(function(){
-        	 var val=$(this).val();                	        	 
-        	 if($(this).is("#answer")){
-       		  
-       		  if(val==""){
-       			  $(this).parent().siblings(".tishitext").text("您输入的答案为空！请重新输入");      			  
-       		  }       		  
-       	  }
-        	 if( $(this).is('#phone') ){
-         		
-         		if(val==""){
-         			$(this).parent().siblings(".tishitext").text("您的手机号为空，请重新填写。"); 	 
-         		 }else if(val.length!=11){
-         			$(this).parent().siblings(".tishitext").text("您的手机号填写不正确，请重新填写。"); 
-         		 }else{
-         			$(this).parent().siblings(".tishitext").text("您的手机号填写正确。").css("color","#169616"); 
-         		 } 
-         	 }          	       	 
-        	 
-        	 if($(this).is('#realName')){
-        		 var Expression=/[^\u4E00-\u9FA5]/;  
-        		 if(val==""){         			  
-         			  $(this).parent().siblings(".tishitext").text("您的姓名为空。");                     	 	                			
-         		 }else if(Expression.test(val)){
-         			 $(this).parent().siblings(".tishitext").text("您的姓名不正确！请重新填写。"); 
-         		 }else{         			
-         			  $(this).parent().siblings(".tishitext").text("您的姓名填写正确。").css("color","#169616");     		 
-         		      }  
-        		 
-         	     function checkusername(val){            	    	          	     
-         	    	       	    	
-         	    	  if(Expression.test(val)==true){           	    		        	    	
-         	    		return true;          	    		
-         	    	}         	    	
-         	      	  else{             	    	
-         	    	    return false;          	    	  
-         	    	}          	    	
-         	     } 				  				  		  
-		}
-        		        	      	 
-        	 if($(this).is('#identityCard')){
-        		 var reg = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/;  
-				  if($('#identityCard').val()==""){
-
-					   $(this).parent().siblings(".tishitext").text("您的身份证为空。");
-					   return false;
-					  }				  				  
-				  else if(!reg.test($('#identityCard').val())){
-                      $(this).parent().siblings(".tishitext").text("您的身份证填写不正确。");
-					   return false;      
-        		 }else{
-                      $(this).parent().siblings(".tishitext").text("您的身份证填写正确。").css("color","#169616");
-					   return true;      
-        		 }   				  				  
-				  			  				  				 
-			  }
-        	         	 
-        	 if($(this).is('#mail')){				 
-				   var cc= /^([a-zA-Z0-9]|[._])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;				  
-				      if($('#mail').val()==""){
-      			    	$(this).parent().siblings(".tishitext").text("您的邮箱为空！请重新填写。");     
-      			    	return false;
-      			    } else if (!(cc.test($('#mail').val()))){        			    	
-      			    	$(this).parent().siblings(".tishitext").text("您的邮箱格式不正确！请重新填写。");     
-      			    	return false;        				      			         				
-      			  }else{       			           				  
-      				   $(this).parent().siblings(".tishitext").text("您的邮箱填写正确。").css("color","#169616");
-      				      
-      				    return true;        			
-      			  }				  
-			}      	 
-        	 if( $(this).is('#file01') ){
-         		
-         		if(val==""){
-         			$(this).parent().siblings(".tishitext").text("您的正面证件照为空。"); 
-         		 }else{
-         			$(this).parent().siblings(".tishitext").text("您的正面证件照上传成功。"); 
-         		 } 
-         	 }
-        	 
-        	 
-        	 if( $(this).is('#file02') ){
-          		
-          		if(val==""){
-          			$(this).parent().siblings(".tishitext").text("您的背面证件照为空。");  
-          		 }else{
-          			$(this).parent().siblings(".tishitext").text("您的背面证件照上传成功。"); 
-          		 } 
-          	 }
-          	      	 
-        	  if($(this).is('#newpassword')){				   	   				
-					var ps = $("#password").val();
-					var pas = $("#newpassword").val();
-					if(ps=="" || pas==""){						
-					  $(this).parent().siblings(".tishitext").text("您的密码为空。");
-						  return false;
-					}else if(ps!=pas){
-
-			          $(this).parent().siblings(".tishitext").text("兩次輸入的密碼不一致。");
-						 return false;
-					}else{						
-					  $(this).parent().siblings(".tishitext").text("您的密码输入正确").css("color","#169616");
-						  return true;
-                       }
-			 }
-                   	  
-        	  if($(this).is('#new_zhifu_password')){	   				
-					var ps01 = $("#zhifu_password").val();
-					var pas01 = $("#new_zhifu_password").val();					
-					if(ps01=="" || pas01==""){						
-					  $(this).parent().siblings(".tishitext").text("您的密码为空。");
-						  return false;
-					}else if(ps01!=pas01){
-			          $(this).parent().siblings(".tishitext").text("兩次輸入的密码输入不一致。");
-						 return false;
-					}else if(ps01==pas01){						
-					  $(this).parent().siblings(".tishitext").text("兩次輸入一致。");
-						  return true;
-                     }
-			 }
-        	         	  
-         });
-          
-     	$(window).on('scroll', function(){
-	        if($(window).scrollTop()<500){
-	            $(".absolute_bac1").hide();
-	        }
-	        if($(window).scrollTop()>=500){
-	            $(".absolute_bac1").show(); 
-	        }
-	      });
-	            $(".absolute_bac1").click(function(){
-	               $("html,body").animate({scrollTop:0},500);  		            
-	            });	 
-     
-});
-
-  //js本地图片预览，兼容ie[6-9]、火狐、Chrome17+、Opera11+、Maxthon3、360浏览器
-    function PreviewImage(fileObj,imgPreviewId,divPreviewId){
-         var allowExtention=".jpg,.bmp,.gif,.png";//允许上传文件的后缀名document.getElementById("hfAllowPicSuffix").value;
-         var extention=fileObj.value.substring(fileObj.value.lastIndexOf(".")+1).toLowerCase();            
-         var browserVersion= window.navigator.userAgent.toUpperCase();
-         if(allowExtention.indexOf(extention)>-1){ 
-             if(fileObj.files){//兼容chrome、火狐7+、360浏览器5.5+等，应该也兼容ie10，HTML5实现预览
-                if(window.FileReader){
-                     var reader = new FileReader(); 
-                     reader.onload = function(e){
-                         document.getElementById(imgPreviewId).setAttribute("src",e.target.result);
-                     }  
-                     reader.readAsDataURL(fileObj.files[0]);
-                 }else if(browserVersion.indexOf("SAFARI")>-1){
-                     alert("不支持Safari浏览器6.0以下版本的图片预览!");
-                 }
-             }else if (browserVersion.indexOf("MSIE")>-1){//ie、360低版本预览
-                if(browserVersion.indexOf("MSIE 6")>-1){//ie6
-                     document.getElementById(imgPreviewId).setAttribute("src",fileObj.value);
-                 }else{//ie[7-9]
-                     fileObj.select();
-                     if(browserVersion.indexOf("MSIE 9")>-1)
-                         fileObj.blur();//不加上document.selection.createRange().text在ie9会拒绝访问
-                    var newPreview =document.getElementById(divPreviewId+"New");
-                     if(newPreview==null){
-                         newPreview =document.createElement("div");
-                         newPreview.setAttribute("id",divPreviewId+"New");
-                         newPreview.style.width = document.getElementById(imgPreviewId).width+"px";
-                         newPreview.style.height = document.getElementById(imgPreviewId).height+"px";
-                         newPreview.style.border="solid 1px #d2e2e2";
-                     }
-                     newPreview.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale',src='" + document.selection.createRange().text + "')";                            
-                     var tempDivPreview=document.getElementById(divPreviewId);
-                     tempDivPreview.parentNode.insertBefore(newPreview,tempDivPreview);
-                     tempDivPreview.style.display="none";                    
-                 }
-             }else if(browserVersion.indexOf("FIREFOX")>-1){//firefox
-                 var firefoxVersion= parseFloat(browserVersion.toLowerCase().match(/firefox\/([\d.]+)/)[1]);
-                 if(firefoxVersion<7){//firefox7以下版本
-                    document.getElementById(imgPreviewId).setAttribute("src",fileObj.files[0].getAsDataURL());
-                 }else{//firefox7.0+                    
-                     document.getElementById(imgPreviewId).setAttribute("src",window.URL.createObjectURL(fileObj.files[0]));
-                 }
-             }else{
-                 document.getElementById(imgPreviewId).setAttribute("src",fileObj.value);
-             }         
-         }else{
-             alert("仅支持"+allowExtention+"为后缀名的文件!");
-             fileObj.value="";//清空选中文件
-            if(browserVersion.indexOf("MSIE")>-1){                        
-                 fileObj.select();
-                 document.selection.clear();
-             }                
-             fileObj.outerHTML=fileObj.outerHTML;
-         }
-     }
+ 
   function updatePassword(){
 	  if($('#oldPassword').val() != ''){
 	    	if($('#password').val() != ''){

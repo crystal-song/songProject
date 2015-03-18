@@ -5,6 +5,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <%@ include file="/includes/taglibs.jsp" %>
 <title>联系我们 - 帮助中心 - 中租宝</title>
+
 </head>
 <body>
 <!-- top start -->
@@ -39,13 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html> 
+
 <script type="text/javascript">
- var head_index=5; 
-</script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="static/js/zhongzubao.js?va=4"></script>
-<script type="text/javascript">
-var index=3;
+
 $(document).ready(function(e) {
 $(".news_ul a").eq(5).addClass("aqbz").siblings().removeClass("aqbz");
 });

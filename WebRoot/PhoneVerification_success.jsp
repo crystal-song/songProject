@@ -41,9 +41,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript">
-    var navIndex=3;    
+
+<script type="text/javascript"> 
     $(document).ready(function(){
     	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
         $(".anquan_right").click(function(){

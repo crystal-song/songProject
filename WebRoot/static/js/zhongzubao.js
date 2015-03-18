@@ -6,8 +6,8 @@
 
 //index.jsp
 	/*定时器*/
-	$(".nav_big a").eq(head_index).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(head_index).children("p").addClass("headwd_color");
+	//$(".nav_big a").eq(head_index).addClass("bd_btom").siblings().removeClass("bd_btom");
+	//$(".nav_big a").eq(head_index).children("p").addClass("headwd_color");
 		
 	$(".news_title li").click(function(){
 		        var index= $(this).index();
@@ -284,9 +284,255 @@
 				   if($("#paymentAmount").val()<3000 || $(".liquan_check").val()==""){
 				       	$(".liquan_hide").css("display","none"); 	       
 			    	}  	 
-		   
-			       	
+		  //userleft
+				   
+				   $(".u_left_mian").click(function(){    	
+				    	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
+				    	  $(this).parent().siblings().children(".u_left_sec").slideUp();
+				    	  $(this).siblings().slideToggle("slow");
+				   });
+				   var indexs
+				   
+				   if(indexs!=null){
+				          $(".u_left_mian").eq(indexs).addClass("u_left_red").parent().siblings().children(".u_left_mian").removeClass("u_left_red");
+				    	  $(".u_left_mian").eq(indexs).siblings(".u_left_sec").css("display","block");
+				    		
+				   }	   
+		 //anquanshezhi	   
+				   
+				   $(".anquan_right").click(function(){        	
+			            $(this).parent().siblings(".anquan_hide").slideToggle();            
+			            if($(this).text()=="认证"){
+
+			               $(this).text("取消认证");
+
+			            }else if($(this).text()=="取消认证"){
+			              $(this).text("认证");
+			            }
+			            
+			            if($(this).text()=="修改"){
+
+			                $(this).text("取消修改");
+
+			             }else if($(this).text()=="取消修改"){
+			               $(this).text("修改");
+			             }
+			            
+			         }); 
+				   
+				   
+				   
+				   
+				   $(".anquan_hide_btn").click(function(){
+				       	  $(this).parent().parent().parent().hide().siblings(".tijiao_checkok").show(); 
+				       	  $(this).parent().parent().parent().parent().siblings(".anquan_label").children(".yishe").css("display","block").siblings(".anquan_right").css("display","none");
+				        });
+				         
+				         $(".anquan_hide input").blur(function(){
+				        	 var val=$(this).val();                	        	 
+				        	 if($(this).is("#answer")){
+				       		  
+				       		  if(val==""){
+				       			  $(this).parent().siblings(".tishitext").text("您输入的答案为空！请重新输入");      			  
+				       		  }       		  
+				       	  }
+			        	 if( $(this).is('#phone') ){
+			         		
+			         		if(val==""){
+			         			$(this).parent().siblings(".tishitext").text("您的手机号为空，请重新填写。"); 	 
+			         		 }else if(val.length!=11){
+			         			$(this).parent().siblings(".tishitext").text("您的手机号填写不正确，请重新填写。"); 
+			         		 }else{
+			         			$(this).parent().siblings(".tishitext").text("您的手机号填写正确。").css("color","#169616"); 
+			         		 } 
+			         	 }          	       	 
+			        	 
+			        	 if($(this).is('#realName')){
+			        		 var Expression=/[^\u4E00-\u9FA5]/;  
+			        		 if(val==""){         			  
+			         			  $(this).parent().siblings(".tishitext").text("您的姓名为空。");                     	 	                			
+			         		 }else if(Expression.test(val)){
+			         			 $(this).parent().siblings(".tishitext").text("您的姓名不正确！请重新填写。"); 
+			         		 }else{         			
+			         			  $(this).parent().siblings(".tishitext").text("您的姓名填写正确。").css("color","#169616");     		 
+			         		      }  
+			        		 
+			         	     function checkusername(val){            	    	          	     
+			         	    	       	    	
+			         	    	  if(Expression.test(val)==true){           	    		        	    	
+			         	    		return true;          	    		
+			         	    	}         	    	
+			         	      	  else{             	    	
+			         	    	    return false;          	    	  
+			         	    	}          	    	
+			         	     } 				  				  		  
+					}
+			        		        	      	 
+			        	 if($(this).is('#identityCard')){
+			        		 var reg = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/;  
+							  if($('#identityCard').val()==""){
+
+								   $(this).parent().siblings(".tishitext").text("您的身份证为空。");
+								   return false;
+								  }				  				  
+							  else if(!reg.test($('#identityCard').val())){
+			                      $(this).parent().siblings(".tishitext").text("您的身份证填写不正确。");
+								   return false;      
+			        		 }else{
+			                      $(this).parent().siblings(".tishitext").text("您的身份证填写正确。").css("color","#169616");
+								   return true;      
+			        		 }   				  				  
+							  			  				  				 
+						  }
+			        	         	 
+			        	 if($(this).is('#mail')){				 
+							   var cc= /^([a-zA-Z0-9]|[._])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;				  
+							      if($('#mail').val()==""){
+			      			    	$(this).parent().siblings(".tishitext").text("您的邮箱为空！请重新填写。");     
+			      			    	return false;
+			      			    } else if (!(cc.test($('#mail').val()))){        			    	
+			      			    	$(this).parent().siblings(".tishitext").text("您的邮箱格式不正确！请重新填写。");     
+			      			    	return false;        				      			         				
+			      			  }else{       			           				  
+			      				   $(this).parent().siblings(".tishitext").text("您的邮箱填写正确。").css("color","#169616");
+			      				      
+			      				    return true;        			
+			      			  }				  
+						}      	 
+			        	 if( $(this).is('#file01') ){
+			         		
+			         		if(val==""){
+			         			$(this).parent().siblings(".tishitext").text("您的正面证件照为空。"); 
+			         		 }else{
+			         			$(this).parent().siblings(".tishitext").text("您的正面证件照上传成功。"); 
+			         		 } 
+			         	 }
+			        	 
+			        	 
+			        	 if( $(this).is('#file02') ){
+			          		
+			          		if(val==""){
+			          			$(this).parent().siblings(".tishitext").text("您的背面证件照为空。");  
+			          		 }else{
+			          			$(this).parent().siblings(".tishitext").text("您的背面证件照上传成功。"); 
+			          		 } 
+			          	 }
+				          	      	 
+		        	  if($(this).is('#newpassword')){				   	   				
+							var ps = $("#password").val();
+							var pas = $("#newpassword").val();
+							if(ps=="" || pas==""){						
+							  $(this).parent().siblings(".tishitext").text("您的密码为空。");
+								  return false;
+							}else if(ps!=pas){
+
+					          $(this).parent().siblings(".tishitext").text("兩次輸入的密碼不一致。");
+								 return false;
+							}else{						
+							  $(this).parent().siblings(".tishitext").text("您的密码输入正确").css("color","#169616");
+								  return true;
+		                       }
+					 }
+		                   	  
+	        	    if($(this).is('#new_zhifu_password')){	   				
+						var ps01 = $("#zhifu_password").val();
+						var pas01 = $("#new_zhifu_password").val();					
+						if(ps01=="" || pas01==""){						
+						  $(this).parent().siblings(".tishitext").text("您的密码为空。");
+							  return false;
+						}else if(ps01!=pas01){
+				          $(this).parent().siblings(".tishitext").text("兩次輸入的密码输入不一致。");
+							 return false;
+						}else if(ps01==pas01){						
+						  $(this).parent().siblings(".tishitext").text("兩次輸入一致。");
+							  return true;
+	                     }
+				     }
+		         });
+				                  
+				         
+	    //absolute
+				         
+			         $(".absolute_bac1").hide();
+			         $(".absolute_right a").hide();
+			         $(".absolute_right span").mouseover(function(){
+			            $(this).children().show();
+
+			        }).mouseout(function(){
+			            $(this).children().css("display","none");
+			        });
+			            $(".absolute_bac2").mouseover(function(){
+			              $(this).siblings(".erweima_bac").show();
+			            }).mouseout(function(){
+			              $(this).siblings(".erweima_bac").hide();
+			            });
+			     	$(window).on('scroll', function(){
+			            if($(window).scrollTop()<500){
+			                $(".absolute_bac1").hide();
+			            }
+			            if($(window).scrollTop()>=500){
+			                $(".absolute_bac1").show(); 
+			            }
+			          });
+		                $(".absolute_bac1").click(function(){
+		                   $("html,body").animate({scrollTop:0},500);  		            
+		                });	          
+		//baozhang
+				                
+				                
+	                $(".news_ul li").click(function(e){
+	                    var index=$(this).index();
+	                    $(this).children("div").addClass("news_wd_color");
+	                    $(this).siblings().children("div").removeClass("news_wd_color");
+	                    $(".news_right ul").eq(index).css("display","block").siblings().css("display","none");
+	                 });
+	                    var news_height= $(".news_right").height();   
+	                    var left_height= $(".news_left").height();
+	                  if(news_height>260){    	
+	                  	$(".user_con_news").css("height",news_height+100);
+	                  }
+	                  var newsid=$(".newsId").val();	
+		
+		//faqixiangmu
+		                  
+		                  
+                  $(".webside li").click(function(){    	 
+                      $(this).children(".news_list_hide").slideToggle();
+                    });
+                    
+                    $(".daohang a").click(function(){
+                        var index= $(this).index();
+                        $(this).addClass('daohang_bac').siblings().removeClass('daohang_bac');
+                        $(".webside").eq(index).css("display","block").siblings(".webside").css("display","none")
+                    }); 
+                    
+        //zichan            
+                   	var ta=parseInt($("#balance_info").html());
+                	var aa=parseInt($("#availableAmount_info").html());
+                	var fa=parseInt($("#freezeAmount_info").html());
+                	if(ta==0){
+            	    	$("#availableAmount_bar").css("width","1%");
+            	    	$("#freezeAmount_bar").css("width","1%");
+                	}else{
+            	    	$("#availableAmount_bar").css("width",aa/ta*100+"%");
+            	    	$("#freezeAmount_bar").css("width",fa/ta*100+"%");
+                	}
+                    
+		                  
 })()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

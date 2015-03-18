@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- <textarea id="fe_text" cols="50" rows="3">输入需要复制的内容</textarea>
 <button id="d_clip_button" class="anquan_hide_btn" data-clipboard-target="fe_text"><b>复制到剪贴板</b></button> -->
 <!-- absolute_right start -->
-	<%@ include file="/includes/absolute.jsp" %>
+<%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->
 <div class="clear"></div>
 <!-- footer start -->
@@ -94,12 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript">
- var head_index=2; 
-</script>
-<!--复制功能js代码  -->
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+
 <script type="text/javascript" src="<%=path%>/js/ZeroClipboard.js"></script>
 <script type="text/javascript">
 // 定义一个新的复制对象
@@ -112,7 +107,7 @@ clip.on( 'complete', function(client, args) {
 	alert("复制成功");
 } );
 
-var indexs=0;
+
 $(function(){
 	$(".u_left_sec:first li:eq(3)").children("a").css("color","#fc652e");
 	$(".zichan_con .tui_li li span:odd").css("text-align","left");
@@ -127,7 +122,6 @@ $(function(){
 					window._bd_share_config = {
 						common : {
 							bdText : '理财生活两手抓！ 中租宝帮您发发发',	
-
 							bdDesc : '理财生活两手抓！ 中租宝帮您发发发。',	
 							bdUrl : '${ref_link}',
 							bdPic : 'http://ptobchina.com/img/images-2014-11/fenxiang_pic.gif'

@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
+
 <script type="text/javascript" >
 function keyLogin(){
     event=event || window.event;
@@ -70,8 +70,6 @@ function keyLogin(){
 
 
 function query(){
-	/* alert("ccccccccccc"); */
-	
     if($('#name').val() != ''){
     	if($('#password').val() != ''){
 
@@ -80,26 +78,19 @@ function query(){
                 url: '<c:url value="/welcome/login"/>',
                 data: 'name='+$('#name').val()+'&password='+$('#password').val(),
                 dataType: 'text',
-                success: function(data) {
-                	/* alert("dd"+data+'"success"'); */
+                success: function(data) {                
                     if(data == '"success"') {
-                    	/* alert("登陆成功"); */
-                    	$('#form').submit();
-                    
-                        /* window.open('<c:url value="/welcome/session"/>', '_self'); */
+                    	$('#form').submit();                    
                     } else {
                     	$('#password').val('');
-                        //alert('用户名或密码错误或用户没有激活！');
                         $("#tips").text('*用户名或密码错误！ ');
                     }
                 }
             });
-        }else{
-            // alert('请输入密码！ ');	
+        }else{	
              $("#tips").text('*请输入密码！ ');
         }
      }else{
-            //alert('请输入用户名！');  
             $("#tips").text("*请输入用户名");
              
      }   
@@ -146,16 +137,12 @@ window.onload=function(){
             	 $(".right_cha").click(function(){
             		 $("#dialog01").css("display","none")
             		  $(".black_bac").css("display","none");	
-            		// window.location.reload(true);
             	 }) 
             	 $(".diabtn").click(function(){
             		 $("#dialog01").css("display","none")
             		  $(".black_bac").css("display","none");	
-            		// window.location.reload(true);
-            	 }) 
-            	  
-              })  
-           
+            	 })            	  
+              })            
 
 </script>
 

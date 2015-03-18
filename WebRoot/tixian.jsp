@@ -170,11 +170,6 @@
 </body>
 </html>
 <script type="text/javascript">
- var head_index=5; 
-</script>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
-<script type="text/javascript">
 $("#mysubmit_btn").click(function(){
 	 $("#mysubmit_btn").attr("disabled");
 	
@@ -215,14 +210,8 @@ $("#mysubmit_btn").click(function(){
 });
 
 
-
-    var navIndex=3; 
-    var indexs=1;
     $(document).ready(function(){
-    	
-    	$(".u_left_sec:eq(1) li:eq(2)").children("a").css("color","#fc652e");
-    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");   
-    	$(".nav_big a").eq(2).children("p").addClass("headwd_color");
+
     	$(".tixian_money").focus(function(){ 
     		var tixian_val=$(".tixian_money").val();
     		if(tixian_val=="提现金额不能为0");

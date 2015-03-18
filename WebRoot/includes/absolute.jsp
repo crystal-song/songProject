@@ -20,33 +20,3 @@
         <span class="absolute_bac4"><a href="#" >意见反馈</a></span>
       </div>      
     </div>
-    
-    <script type="text/javascript">
-       
-    $(document).ready(function(){
-    $(".absolute_bac1").hide();
-    $(".absolute_right a").hide();
-    $(".absolute_right span").mouseover(function(){
-       $(this).children().show();
-
-   }).mouseout(function(){
-       $(this).children().css("display","none");
-   });
-       $(".absolute_bac2").mouseover(function(){
-         $(this).siblings(".erweima_bac").show();
-       }).mouseout(function(){
-         $(this).siblings(".erweima_bac").hide();
-       });
-	$(window).on('scroll', function(){
-       if($(window).scrollTop()<500){
-           $(".absolute_bac1").hide();
-       }
-       if($(window).scrollTop()>=500){
-           $(".absolute_bac1").show(); 
-       }
-     });
-           $(".absolute_bac1").click(function(){
-              $("html,body").animate({scrollTop:0},500);  		            
-           });	 
-    }); 
-    </script>

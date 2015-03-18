@@ -8,6 +8,7 @@
 
 <%@ include file="/includes/taglibs.jsp"%>
 <title>充值 - 我的账户 - 中租宝</title>
+
 </head>
 
 <body>
@@ -170,12 +171,10 @@
 
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>  
-<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
+
 <script type="text/javascript">
 	function onSubmit(host) {
-		if ($("#amount").val() == 0 || $("#amount").val() == "") {
-			/* //alert("充值金额不能为0!"); */
+		if ($("#amount").val() == 0 || $("#amount").val() == "") {			
 			$(".newye").css("display", "block")
 			$(".black_bac").css("display", "block");
 
@@ -190,31 +189,17 @@
 
 		form.submit();
 	}
-</script>
-<script type="text/javascript">
-	var navIndex = 3;
-	var indexs = 1;
+
+	
 	$(document).ready(
 			function() {
 				$(".u_left_sec:eq(1) li:eq(1)").children("a").css("color",
 						"#fc652e");
-				$(".nav_big a").eq(2).addClass("bd_btom").siblings()
-						.removeClass("bd_btom");
-				$(".nav_big a").eq(2).children("p").addClass("headwd_color");
-				$(".right_cha").click(function() {
-					window.location.reload(true);
-				});
-				/* 	 $(".u_left_mian").click(function(){    	
-				   	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
-				   	  $(this).parent().siblings().children(".u_left_sec").slideUp();
-				   	  $(this).siblings().slideToggle("slow");
-				     }); */
 				$(".right_cha").click(function() {
 					$(".newye").css("display", "none")
 					window.location.reload(true);
 				})
-				$(".diabtn").click(function() {
-					alert("aa")
+				$(".diabtn").click(function() {				
 					$(".newye").css("display", "none")
 					window.location.reload(true);
 				})

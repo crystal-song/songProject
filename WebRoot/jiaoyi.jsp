@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
 <title>交易记录 - 我的账户 - 中租宝</title>
+
 </head>
 
 <body>
@@ -108,69 +109,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript">
- var head_index=2; 
-</script>
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+
 <script type="text/javascript">  
-    var indexs=2;
+ 
     $(document).ready(function(){
     	$(".u_left_sec:eq(2) li:eq(3)").children("a").css("color","#fc652e");
-    	//$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	//$(".nav_big a").eq(2).children("p").addClass("headwd_color");
-    	 var url=location.search;
-	       //alert(url);
-	       var str=url.substr(1);
-	       var element=str.split("=");
-	       var canshu=element[1];
-	      //alert(canshu)
-	      /*
-	       if(canshu=="seven_all"){
-	    	   
-	    	   $(".new_fir_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
-	       }*/
-	      
-	       
-	        if(canshu=="onemonth_all"){
-	    	   $(".new_fir_one li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
-	       }
-	       else if(canshu=="threemonth_all"){
-	    	   $(".new_fir_one li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
-	       }
-	       else if(canshu=="all_all"){
-	    	   $(".new_sec_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
-	    	   $(".new_fir_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
-	    	  
-	    	   $(".label_sec li").click(function(){
-    	       if($(this).parent().hasClass("new_sec_one")){
-    	    	   $(".new_sec_one li:eq(0)").addClass('label_bak').siblings().removeClass('label_bak');
-    	       }
-    	       else if($(this).parent().hasClass("new_fir_one")){
-    	    	   $(".new_fir_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
-    	       }    	 
-	         });
-	    	  
-	       }
-	       else if(canshu=="recharge_all"){
-	    	   $(".new_sec_one li:eq(1)").addClass('label_bak').siblings().removeClass('label_bak');
-	       }
-	       else if(canshu=="drawmoney_all"){
-	    	   $(".new_sec_one li:eq(2)").addClass('label_bak').siblings().removeClass('label_bak');
-	       }
-	       else if(canshu=="transferinfo_all"){
-	    	   $(".new_sec_one li:eq(3)").addClass('label_bak').siblings().removeClass('label_bak');
-	       }  	
-                   
-
     	    	var vale=$("#time").val();
     	    	var type_vale=$("#type").val();
     	    	var num=0;
-    	    	
-    	    	//var type_fir={"timeall"};    	    	
-    	    	function bacIndex(){
-    	    		
-    	    		
-    	    	}
+
     	    	$(".new_fir_one li:eq(num)").addClass('label_bak').siblings().removeClass('label_bak');
     	    	
     	    	if(vale=="timeall"){

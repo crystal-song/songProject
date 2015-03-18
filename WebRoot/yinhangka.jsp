@@ -84,14 +84,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript">
- var head_index=2; 
-</script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+
 <script type="text/javascript">
 
-var indexs=1;
     $(document).ready(function(){
     	$(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
 

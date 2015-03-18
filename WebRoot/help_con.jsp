@@ -45,22 +45,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript">
- var head_index=5; 
-</script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>
+
 <script type="text/javascript">
 $(document).ready(function(e) {
-
-    $(".news_ul li").click(function(e){
-       var index=$(this).index();
-       $(this).children("div").addClass("news_wd_color");
-       $(this).siblings().children("div").removeClass("news_wd_color");
-       $(".news_right ul").eq(index).css("display","block").siblings().css("display","none");
-    });
     $(".news_ul a").eq(0).addClass("aqbz").siblings().removeClass("aqbz");
-
 });
 </script>
 

@@ -86,30 +86,7 @@
            </li>
          </ul>
         <input type="hidden" id="username" value="${name }"  />
-<script type="text/javascript">
-head_index = 2
-    $(document).ready(function(){
 
-     // $(".u_left_sec:first li:eq(0)").children("a").css("color","#fc652e");
-      $(".u_left_mian").click(function(){    	
-    	  $(this).addClass('u_left_red').parent().siblings().children(".u_left_mian").removeClass("u_left_red");
-    	  $(this).parent().siblings().children(".u_left_sec").slideUp();
-    	  $(this).siblings().slideToggle("slow");
-      });
-    	if(indexs!=null){
-    		$(".u_left_mian").eq(indexs).addClass("u_left_red").parent().siblings().children(".u_left_mian").removeClass("u_left_red");
-    		$(".u_left_mian").eq(indexs).siblings(".u_left_sec").css("display","block");
-    		//.css("display","block")
-    	}
-    	$(".u_left_mian").click(function(){
-         	
-    	});
-			
-		}
-    	
-    );
-</script>
-        
         
         
         

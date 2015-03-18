@@ -47,10 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript">
-var indexs=0;
-    var navIndex=3;    
+
+<script type="text/javascript">   
     $(document).ready(function(){
     	$(".u_left_sec:first li:eq(2)").children("a").css("color","#fc652e");
         $(".anquan_right").click(function(){

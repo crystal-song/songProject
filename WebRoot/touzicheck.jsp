@@ -193,11 +193,7 @@
 	<!-- footer end -->
 </body>
 </html>
-<script type="text/javascript">
- var head_index=1; 
-</script>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="/static/js/zhongzubao.js?v=1"></script>
+
 <script type="text/javascript">
 
  function onSubmit(host) {

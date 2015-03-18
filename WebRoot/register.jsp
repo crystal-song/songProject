@@ -3,23 +3,14 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <%@ include file="/includes/taglibs.jsp"%>
-
 <title>注册易宝账户 - 用户中心 - 中租宝/></title>
-
 </head>
-
-
-
-
 <body>
 	<!-- top start  -->
 	<%@ include file="/includes/header.jsp"%>
 	<!-- top end  -->
 	<div class="msg_con">
-
-
 		<div class="msg_right">
 			<div class="msg_main" id="msg_new">
 				<div class="msg_title">
@@ -108,12 +99,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- footer end -->
 
 </body>
-</html>
-<script type="text/javascript">
- var head_index=5; 
-</script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?va=4"></script>  
+</html> 
 <script type="text/javascript">
 	function allcheck(){
 		var chkNickName=document.getElementById("nickName").value;

@@ -12,7 +12,7 @@
 
 <div class="user_con">
     <div class="user_left">
-      <!-- user_left start -->
+         <!-- user_left start -->
            <%@ include file="/includes/user_info_left.jsp" %>
          <!-- user_left end -->
     </div>
@@ -56,34 +56,21 @@
 	<%@ include file="/includes/absolute.jsp" %>
 <!-- absolute_right end -->
 <div class="clear"></div>
+<script type="text/javascript"> 
+var ap=0;
+var fp=0;
+</script>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript">
- var head_index=2; 
-</script>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
-<script type="text/javascript">  
-    var indexs=1;
-    var ap=0;
-    var fp=0;
 
+
+<script type="text/javascript">  
     $(document).ready(function(){
-    	$(".u_left_sec:eq(1) li:eq(0)").children("a").css("color","#fc652e");
-    	var ta=parseInt($("#balance_info").html());
-    	var aa=parseInt($("#availableAmount_info").html());
-    	var fa=parseInt($("#freezeAmount_info").html());
-    	if(ta==0){
-	    	$("#availableAmount_bar").css("width","1%");
-	    	$("#freezeAmount_bar").css("width","1%");
-    	}else{
-	    	$("#availableAmount_bar").css("width",aa/ta*100+"%");
-	    	$("#freezeAmount_bar").css("width",fa/ta*100+"%");
-    	}
-});
+    	$(".u_left_sec:eq(1) li:eq(0)").children("a").css("color","#fc652e"); 
+}); 
         
 </script>
 

@@ -9,12 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <Link href="/favicon.ico" rel="Shortcut Icon">
 <title>项目：${product1.projectName} - 我要投资 - 中租宝</title>
-
-
 <link href="<%=path%>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link href="<%=path%>/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
- 
-
 </head>
 
 <body>
@@ -436,14 +432,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 
 </html>
-<script type="text/javascript">
- var head_index=1; 
-</script>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery-ui.min.js"></script>
  <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
- <script type="text/javascript" src="<%=path%>/static/js/zhongzubao.js?v=1"></script>
  <script type="text/javascript">
 var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
@@ -541,42 +532,6 @@ function mysubmit(){
 
 		//---------收益计算器结束-------------
 		
-
-
-	/*  $("#buyAmount").keyup(function(){
-		  
-		    var str= /^[0-9]*$/;
-		    var val=$("#buyAmount").val();
-		    $('.neirong').css('display','block');
-		    alert(val);
-		       if(val==""){			    
-		    	 $('.neirong').html("您输入的金额不能为空");
-				   return false;			    	
-		        }
-		        if(!(str.test(val))){  	   
-				   $('.neirong').html("您输入的金额不是整数,请重新输入");
-				   return false;
-			    }		       	
-		        if(!(str.test(val))){  	   
-				   $('.neirong').html("您输入的金额不是整数,请重新输入");
-				   return false;
-			    }
-			    if(val<200){
-				   $('.neirong').html("您输入的金额小于200元,请重新输入");
-				   return false;
-			    }
-			    if(val>touzi_money){
-					   $('.neirong').html("您的投资金额大于可投资投资金额");
-					   return false;
-				    }
-			    if(parseInt(val)%100!=0){	
-				  $('.neirong').html("输入的资金必须是100的整数倍");
-				  return false;
-				   }
-			      
-			      $('.neirong').html('您要投入的实际金额为:'+val);	 
-			       */
-			   
 
 	 
       //---------导航浮动-----------
