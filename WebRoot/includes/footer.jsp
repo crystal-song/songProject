@@ -43,5 +43,21 @@
 <script type="text/javascript">
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb22f51366ffad7f2637952d4acb0eade' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
+<script>
+$(".top li:eq(0)").mouseover(function(){
+    $(".list01").css("display","block")		    	
+}).mouseout(function(){
+	  $(".list01").css("display","none")
+	
+});
+$(".top li:eq(1)").mouseover(function(){
+    $(".list02").css("display","block")		    	
+}).mouseout(function(){
+	  $(".list02").css("display","none")
+	
+});
 </script>
 </div><!-- 百度统计代码end -->

@@ -1,3 +1,4 @@
+
 package com.mftour.spring.web;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +21,9 @@ import com.mftour.spring.util.ReadWirtePropertis;
 
 @Controller
 @RequestMapping("/account")
-public class AccountController {
+public class AccountsController {
 	private static final Logger logger = LoggerFactory
-			.getLogger(AccountController.class);
+			.getLogger(AccountsController.class);
 	private static final File f = ReadWirtePropertis.file();
 	@RequestMapping(value = "/liquan", method = {RequestMethod.GET }) 
 	public String liquan(TUser user, Model model, HttpServletRequest request, @RequestParam("page") int page, @RequestParam("catlog") String  catlog) throws Exception {

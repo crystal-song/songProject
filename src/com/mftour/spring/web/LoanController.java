@@ -42,7 +42,7 @@ public class LoanController {
 	@Autowired
 	private IGateService gateService;
 	private static final Logger logger = LoggerFactory
-			.getLogger(AccountController.class);
+			.getLogger(LoanController.class);
 	private static final File f = ReadWirtePropertis.file();
 
 	@RequestMapping(value = "/loanProduct", method = { RequestMethod.GET,
