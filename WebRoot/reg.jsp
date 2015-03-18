@@ -98,7 +98,7 @@
 
 </body>
 </html>
-
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>  
 <script type="text/javascript">
 	var c_name = false;
 	var c_pwd = false;
