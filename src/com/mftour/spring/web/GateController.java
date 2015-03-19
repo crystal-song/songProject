@@ -148,7 +148,7 @@ public class GateController {
 						model.addAttribute("count", 0);
 					}
 					model.addAttribute("account", account.getAccount());
-					return "zichan";
+					return "accounts/zichan";
 				} else {
 					return "error";
 				}
@@ -216,7 +216,7 @@ public class GateController {
 			model.addAttribute("li", li);
 		}
 
-		return "wodexiangmu";
+		return "accounts/wodexiangmu";
 	}
 
 	@RequestMapping(value = "/gate/authorization")
@@ -241,7 +241,7 @@ public class GateController {
 			model.addAttribute("product", product);
 			model.addAttribute("transferInfo1", transferInfo1);
 		}
-		return "touzixieyi";
+		return "accounts/touzixieyi";
 	}
 
 	@RequestMapping(value = "/gate/drawMoney")
@@ -279,7 +279,7 @@ public class GateController {
 			rest.postRestful("/rest/account/update", map);
 		}
 		model.addAttribute("account", accounts);
-		return "tixian";
+		return "accounts/tixian";
 	}
 
 	@RequestMapping(value = "/gate/dodrawMoney")
@@ -418,7 +418,7 @@ public class GateController {
 		model.addAttribute("user", user);
 		if (b) {
 
-			return "chongzhi";
+			return "accounts/chongzhi";
 		} else {
 
 			return "register";
@@ -661,7 +661,7 @@ public class GateController {
 		if (list != null && list.size() != 0) {
 			TProduct Product = list.get(0);
 			if (Product.getBuyType() == null)
-				return "xianxia";
+				return "invest/xianxia";
 		}
 
 		if (isYeepay(o.toString())) {
@@ -679,7 +679,7 @@ public class GateController {
 				model.addAttribute("li", li);
 			}
 
-			return "touzicheck";
+			return "invest/touzicheck";
 		} else {
 			TUser user = userService.getUserByAccount(o.toString());
 			model.addAttribute("user", user);
@@ -866,7 +866,7 @@ public class GateController {
 						.queryTTransferInfoByNumber(
 								m.get("requestNo").toString()).get(0);
 				model.addAttribute("transferInfo", transferInfo);
-				return "buy_ok";
+				return "invest/buy_ok";
 
 			} else {
 				rest.postRestful("/rest/yeepay/update-error", map);
@@ -901,7 +901,7 @@ public class GateController {
 				String yeepayRes = rest.getRestful("/rest/get-yeepay-by-request-no/"+m.get("requestNo"));
 				Yeepay yeepay = JSON.parseObject(yeepayRes, Yeepay.class);
 				model.addAttribute("amount",yeepay.getAmount());
-				return "/hero/zhifu_ok";
+				return "hero/zhifu_ok";
 
 			} else {
 				rest.postRestful("/rest/yeepay/update-error", map);
@@ -934,7 +934,7 @@ public class GateController {
 			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "chongzhi_ok";
+				return "accounts/chongzhi_ok";
 
 			} else {
 				rest.postRestful("/rest/yeepay/update-error", map);
@@ -969,7 +969,7 @@ public class GateController {
 			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "bangding_ok";
+				return "accounts/bangding_ok";
 			} else {
 				rest.postRestful("/rest/yeepay/update-error", map);
 
@@ -979,7 +979,7 @@ public class GateController {
 		} catch (Exception e) {
 			logger.error("error " + resp + e);
 		}
-		return "bangding_ok";
+		return "accounts/bangding_ok";
 
 	}
 
@@ -1005,7 +1005,7 @@ public class GateController {
 			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "tixian_ok";
+				return "accounts/tixian_ok";
 
 			} else {
 				rest.postRestful("/rest/yeepay/update-error", map);

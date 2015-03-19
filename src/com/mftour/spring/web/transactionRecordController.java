@@ -85,6 +85,6 @@ public class transactionRecordController {
 				
 			}
 			
-			return "jiaoyi";
+			return "accounts/jiaoyi";
 		}
 }

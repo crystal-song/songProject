@@ -36,7 +36,7 @@ public class guaranteeController {
 		model.addAttribute("list", list);
 		model.addAttribute("list1", list1);
 
-		return "baozhang";
+		return "news/baozhang";
 
 	}
 
@@ -53,7 +53,7 @@ public class guaranteeController {
         model.addAttribute("id",channel.getId());
 		model.addAttribute("list1", list1);
 
-		return "baozhang";
+		return "news/baozhang";
 
 	}
 
@@ -69,7 +69,7 @@ public class guaranteeController {
 
 		model.addAttribute("news", news1);
 
-		return "newxiangqing";
+		return "news/newxiangqing";
 
 	}
 
@@ -85,7 +85,7 @@ public class guaranteeController {
 
 		model.addAttribute("list1", list1);
 
-		return "baozhang";
+		return "news/baozhang";
 
 	}
 

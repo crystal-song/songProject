@@ -37,7 +37,7 @@ public class AccountsController {
 				model.addAttribute("catlog",catlog);
 				model.addAttribute("page", pages);
 				model.addAttribute("list", pages.getList());
-				return "liquan";
+				return "accounts/liquan";
 			}else{
 				return "error";
 			}			
@@ -69,7 +69,7 @@ public class AccountsController {
 				model.addAttribute("username",o.toString());
 				model.addAttribute("page", pages);
 				model.addAttribute("list", pages.getList());
-				return "tuijian";
+				return "accounts/tuijian";
 			}else{
 				return "error";
 			}
