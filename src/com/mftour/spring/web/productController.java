@@ -86,7 +86,7 @@ public class productController {
 			model.addAttribute("list3", list3);
 		model.addAttribute("now", System.currentTimeMillis());
 
-		return "touzi";
+		return "invest/touzi";
 
 	}
 
@@ -176,7 +176,7 @@ public class productController {
 
 		model.addAttribute("page", page);
 		model.addAttribute("now", System.currentTimeMillis());
-		return "touzixiangxi";
+		return "invest/touzixiangxi";
 		
 
 	}
