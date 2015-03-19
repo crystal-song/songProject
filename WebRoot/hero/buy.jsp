@@ -139,9 +139,7 @@
 
 </body>
 </html>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-<script>	head_index = 3;</script>
-<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
+
 <script type="text/javascript">
 
 	function onSubmit(host) {
