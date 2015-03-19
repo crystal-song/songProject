@@ -5,18 +5,19 @@
 </div>
 
 <![endif]-->
+<header>
 <div class="header">
 	<div class="top">
 		<ul>
 			<li>联系我们
 				<div class="list01">
-					<a href="/question.jsp">常见问题</a> <a href="/contact.jsp">联系客服</a>
+					<a href="/help/question.jsp">常见问题</a> <a href="/help/contact.jsp">联系客服</a>
 				</div>
 			</li>
 			<li>关于我们
 				<div class="list02">
-					<a href="/help_con.jsp">企业介绍</a> <a href="/security.jsp">安全策略</a> 
-					<a href="/notice.jsp">法律声明</a>
+					<a href="/help/help_con.jsp">企业介绍</a> <a href="/help/security.jsp">安全策略</a> 
+					<a href="/help/notice.jsp">法律声明</a>
 				</div>
 			</li>
 			<li><a href="/xinshouzhiyin.jsp" class="head_red"
@@ -48,9 +49,9 @@
 			<!--     <li><a href="/hero/all"><span><strong>我要众筹</strong></span><p>Crowdfunding</p></a></li>   -->
 			<li><a href="/guarantee/getchannel"><span><strong>新闻公告</strong></span>
 				<p>News</p></a></li>
-			<li><a href="/help_con.jsp"><span><strong>帮助中心</strong></span>
+			<li><a href="/help/help_con.jsp"><span><strong>帮助中心</strong></span>
 				<p>Help</p></a></li>
-			<li><a href="/faqixiangmu.jsp"><span><strong>发起项目</strong></span>
+			<li><a href="/application/faqixiangmu.jsp"><span><strong>发起项目</strong></span>
 				<p>Application</p></a></li>
 
 		</ul>
@@ -61,8 +62,8 @@
 					style="line-height: 40px; font-size: 16px; margin-left: 50px;"><strong>注册</strong></a>
 				<a class="wd_red a_sec" href="/login.jsp"
 					style="line-height: 40px; font-size: 16px;"><strong>登录</strong></a>
-
 			</c:if>
+
 
 			<c:if test="${!empty name}">
 				<span class="username_fir">您好，<strong>${name}</strong></span>
@@ -78,7 +79,8 @@
 		</div>
 	</div>
 	<!-- <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2::52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> -->
-</div>
 
+</div>
+</header>
 
 

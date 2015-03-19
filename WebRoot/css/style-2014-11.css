@@ -2413,7 +2413,7 @@ ul,li{
 	background:url(../img/renok.png) no-repeat;
 }
 .touzi_text p{
-	width:260px;
+	width:230px;
 	height:40px;
 	line-height:30px;
 	display:inline-block;
@@ -2869,6 +2869,12 @@ ul,li{
 	height: 40px;
 	display: inline-block;
 	float: left;
+}
+.div_new{
+	width:650px;
+	height:200px;
+	margin:5% auto 3%;
+    background:pink;
 }
 .anquan_label .anquan_right{
 	float: right;
@@ -5242,7 +5248,7 @@ ul,li{
 .fir_title{
 	width:100%;
 	height:40px;
-	font-size:18px;
+	font-size:14px;
 	text-align:left;
 	font-weight:bold;
 	margin-top:10px;
@@ -5491,6 +5497,7 @@ ul,li{
 	height:20px;
 	line-height:20px;
 	display:inline-block;
+
 }
 
 .dizhi_fir input{
@@ -6015,7 +6022,24 @@ ul,li{
 	font-size:14px;
 	cursor:pointer;
 }
-
+.diabtn1{
+	width:90px;
+	height:30px;
+	background:#ccc;
+	display:inline-block;
+	float:right;
+	margin-right:40px;
+	margin-top:13%;
+	border-radius:3px;
+	color:#fff;
+	line-height:30px;
+	font-size:14px;
+	cursor:pointer;
+}
+.diabtn1:hover{
+	color:#fff;
+	background:#999;
+}
 .diabtn:hover{
 	color:#fff;
 	background:#d11d06;
@@ -6086,7 +6110,7 @@ ul,li{
 	height:500px;
 	margin:100px auto;
 	background:url(../img/images-2014-11/502.png) 5px 0px  no-repeat;
-
+}
 .add_dizhi{
 	width:140px;
 	height:40px;
@@ -6101,7 +6125,7 @@ ul,li{
 
 .dizhi_table{
 	width:810px;
-	height:430px;
+	height:auto;
 	margin-top:5%;
 }
 
@@ -6110,24 +6134,35 @@ ul,li{
 	min-height:40px;
 	border-bottom:1px solid #ccc;
 }
+
 .dizhi_table li span{
 	width:100px;
 	height:40px;
 	line-height:40px;
 	float:left;
-	display:inline-block;
-	
+	display:inline-block;	
+	overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
+ 
+}
+.dizhi_list{
+	width:200px;
+	height:100px;
+	background:pink;
 }
 .dizhi_input{
 	width:650px;
+	height:auto;
 	margin:5% auto 3%;
 	display:none;
-	overflow:hidden;
 }
 .dizhi_input li{
 	width:100%;
 	height:40px;	
 }
+
 .m_dizhi{
 	display:none;
 }
@@ -6167,6 +6202,7 @@ ul,li{
 }
 .chose{
 	width:600px;
+	height:40px;
 	margin:10px auto;
 }
 .chose input{
@@ -6175,28 +6211,70 @@ ul,li{
     float:left;
 }
 .subbtn{
-	margin:0 50px 0 30%;
+	margin-right:80px;
 	border:none;
 	border-radius:3px;
 	background:#ff665f;
 	color:#fff;
 	cursor:pointer;
+	display:inline-block;
+	width:105px;
+	height:36px;
+	line-height:36px;
 }
 .subbtn:hover{
 	background:#c60900;
+	color:#fff;
 }
 .subbtn1{
+	display:inline-block;
 	border:none;
 	border-radius:3px;
 	background:#ccc;
+	line-height:36px;
 	color:#fff;
 	cursor:pointer;
+	width:105px;
+	height:36px;
 }
 .subbtn1:hover{
 	background:#999;
->>>>>>> zhao
+    color:#fff;
 }
-
+.silbtn{
+	width:90px;
+	height:30px;
+	background:#ff665f;
+	display:inline-block;
+	float:right;
+	margin-right:40px;
+	margin-top:13%;
+	border-radius:3px;
+	color:#fff;
+	line-height:30px;
+	font-size:14px;
+	cursor:pointer;
+}
+.silbtn:hover{
+	background:#c60900;
+	color:#fff;
+}
+.subbtn_add{
+	width:105px;
+	height:36px;
+	background:#ff665f;
+	display:inline-block;
+	margin-right:40px;
+	border-radius:3px;
+	color:#fff;
+	line-height:36px;
+	font-size:14px;
+	cursor:pointer;	
+}
+.subbtn_add:hover{
+    background:#c60900;
+	color:#fff;
+}
 #table_wid{
 	width:190px;
 }
@@ -6265,6 +6343,46 @@ ul,li{
 	background:pink;
 	
 }
+
+.dialognew{
+	display:none;
+	
+}
+.touzi_text .textpiont{
+	text-align:left;
+	color:#64b049;
+	padding-left:30px;
+	line-height:40px;
+}
+.piont_pic{
+	width:40px;
+	height:40px;
+	display:inline-block;
+	float:left;
+	margin-right:20px;
+	background:url(../img/images-2014-11/tubiao.png) -2px -91px  no-repeat;
+}
+
+.dizhi_table li li{
+	border:none
+}
+.dizhi_table li li span{
+    line-height:20px;	
+}
+
+.dialog_add{
+	display:none;
+}
+.rechange select{
+	float:left;
+	width:100px;
+}
+
+
+
+
+
+
 
 
 
