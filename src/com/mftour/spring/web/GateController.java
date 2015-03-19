@@ -198,7 +198,7 @@ public class GateController {
 			List<TTransferInfo> li = gateService.queryTTransferInfoByName(o
 					.toString());
 			model.addAttribute("li", li);
-			return "wodexiangmu";
+			return "/accounts/touziguanli/wodexiangmu";
 		} else {
 			return "login";
 		}

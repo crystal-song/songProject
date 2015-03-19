@@ -1,10 +1,11 @@
 <%@ page language="java"  pageEncoding="UTF-8"%>
 <%@ include file="/includes/taglibs.jsp" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
         <ul>
            <li class="fir_li">账户主页</li>
            <li>
-              <div class="u_left_mian u_left_red"><i class="mian_pic03"></i><span>账户管理</span></div>
+              <div class="u_left_mian "><i class="mian_pic03"></i><span>账户管理</span></div>
                <ul class="u_left_sec">
                 <li>
                   <a href="/wel/account">个人信息</a>
@@ -45,8 +46,8 @@
            </li>
 
            <li>
-              <div class="u_left_mian"><i class="mian_pic02"></i><span>投资管理</span></div>
-              <ul class="u_left_sec">
+              <div class="u_left_mian ${fn:startsWith(pageContext.request.requestURI, "/accounts/touziguanli") ? "u_left_red":""}"><i class="mian_pic02 "></i><span>投资管理</span></div>
+              <ul class="u_left_sec" style='${fn:startsWith(pageContext.request.requestURI, "/accounts/touziguanli") ? "display:block":""}'>
                 <li style="display:none;">
                   <a href="/yitou.jsp">已投项目</a>
                 </li>

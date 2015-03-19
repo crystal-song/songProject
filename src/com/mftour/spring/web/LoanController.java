@@ -61,7 +61,7 @@ public class LoanController {
 					.queryProductByTargetPlatformUserNo(page, username);
 			model.addAttribute("list", list);
 			model.addAttribute("page", page);
-			return "myLoan";
+			return "accounts/touziguanli/myLoan";
 		} catch (Exception e) {
 			logger.error("error" + e);
 			return "error";
@@ -90,10 +90,10 @@ public class LoanController {
 			for(ProductRepays  productrepays:productrepaysList){
 				if(productrepays.getRepayed()==false){
 					model.addAttribute("perioding", productrepays.getPeriod());
-					return "loanOrder";
+					return "accounts/loanOrder";
 				}
 			}
-			return "loanOrder";
+			return "accounts/touziguanli/loanOrder";
 			
 			
 		} catch (Exception e) {
@@ -137,7 +137,7 @@ public class LoanController {
 			}
 			model.addAttribute("userrepaysList", userrepaysList);
 			model.addAttribute("total", total);
-			return "loanDetail";
+			return "accounts/touziguanli/loanDetail";
 		} catch (Exception e) {
 			logger.error("error" + e);
 			return "error";
