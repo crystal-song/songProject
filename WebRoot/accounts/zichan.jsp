@@ -67,10 +67,3 @@ var fp=0;
 </html>
 
 
-<script type="text/javascript">  
-    $(document).ready(function(){
-    	$(".u_left_sec:eq(1) li:eq(0)").children("a").css("color","#fc652e"); 
-}); 
-        
-</script>
-

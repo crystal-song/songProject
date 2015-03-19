@@ -69,14 +69,5 @@
 </html>
 
 
-<script>
-    $(function(){
-        $(".u_left_sec:eq(2) li:eq(4)").children("a").css("color","#fc652e");
-    })
-
-
-</script>
-
-
 
 

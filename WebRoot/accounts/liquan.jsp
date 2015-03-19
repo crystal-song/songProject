@@ -71,7 +71,6 @@
 
 <script>
     $(function(){
-        $(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
         $(".zichan_con .tui_li li span:odd").css("text-align","left");
     })
     function jumpPage(pag){

@@ -94,7 +94,7 @@
 			             </li>
 			             <c:forEach var="a" items="${address}" varStatus="i">
 			             <input type="hidden" value="" name="addressid" id="addressid">
-			              <li style="height:auto" v="${a.id }">
+			              <li style="height:auto" v="${a.id }" class="add_hide">
 			              
 			              <div class="msglist">
 			               <span>${a.name }</span>
@@ -106,9 +106,10 @@
 			               <span>${a.phone }</span>
 			               <span><a class="m_green modify_form">修改</a>|<a id="del"  class="m_green delete" v="${a.id }">删除</a></span>
 			               <span><input type="radio" name="chbox" class="chbox"></input></span> 
-			               </div>
-			             
-			               <div class="dizhi_input" style="display:none">
+			               </div>                             			              			              
+	                      </li>	                     
+			            </c:forEach>
+			            <div class="dizhi_input" style="display:none">
 						      <form action="#" name="d_form" >						      
 				                <ul class="rechange">
 				                  <li>
@@ -127,9 +128,7 @@
 				                <a class="subbtn1 reback" >返回</a>  
 				                </div>          				                
 		                     </form>		             		             
-		                   </div>                             			              			              
-	                      </li>	                     
-			            </c:forEach>
+		                   </div>
 			           </ul>
              </div>
 						<%-- <c:forEach var="a" items="${address}" varStatus="i">
@@ -336,7 +335,13 @@ $(document).ready(
 		
 			
 			$(".modify_form").click(function(){
-				$(this).parent().parent().css("display","none").siblings(".dizhi_input").css("display","block")		
+				$(this).parent().parent().css("display","none")
+				
+				//siblings(".dizhi_input").css("display","block")	
+				//$(this).parent().parent().parent()
+				$(".dizhi_input").insertAfter("")
+				
+				
 			})
 			
 			$(".subbtn1").click(function(){

@@ -191,8 +191,7 @@
 	
 	$(document).ready(
 			function() {
-				$(".u_left_sec:eq(1) li:eq(1)").children("a").css("color",
-						"#fc652e");
+
 				$(".right_cha").click(function() {
 					$(".newye").css("display", "none")
 					window.location.reload(true);

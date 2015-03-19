@@ -85,13 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </body>
 </html>
 
-<script type="text/javascript">
-
-    $(document).ready(function(){
-    	$(".u_left_sec:eq(1) li:eq(3)").children("a").css("color","#fc652e");
-
-});
-    
+<script type="text/javascript">    
     function onSubmit(host) {
     	  document.getElementById("host").value = host;
     	  var form = document.getElementById("form");
