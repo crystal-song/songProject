@@ -230,10 +230,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
 $(document).ready(function(e) {
-
-  
-   
-
+	$(".news_ul a").eq(4).addClass("aqbz").siblings().removeClass("aqbz");
 });
 </script>
 </html>
