@@ -14,9 +14,7 @@
 <div class="user_con">
     <div class="user_left">
       <!-- user_left start -->
-         <%@ include file="/includes/user_info_left.jsp"、
-         
-          %>
+         <%@ include file="/includes/user_info_left.jsp" %>
       <!-- user_left end -->
     </div>
     <div class="user_right">
@@ -180,16 +178,8 @@
 </body>
 </html>
 
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
 <script class="resources library" src="/js/area.js" type="text/javascript"></script>
-<script type="text/javascript">_init_area();</script>
-<script type="text/javascript">area();</script>
-<script>	
-         var head_index = 2;
-         var indexs=0;
-</script>
-<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script>
-
+<script type="text/javascript">_init_area();area();</script>
 
 <script type="text/javascript">
 $(document).ready(

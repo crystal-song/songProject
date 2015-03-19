@@ -27,12 +27,8 @@
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-<script>	head_index = 3;</script>
-<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script> 
+
 <script>
-    var navIndex=2;
-    var indexs=0;
     $(function(){
     	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
     	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");

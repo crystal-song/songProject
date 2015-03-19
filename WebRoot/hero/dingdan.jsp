@@ -73,13 +73,9 @@
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-<script>	head_index = 2;</script>
-<script type="text/javascript" src="/static/js/zhongzubao.js?va=4"></script> 
+
 <script type="text/javascript">
- 
-var navIndex=3;    
-var indexs=2;
+
 var ap=0;
 var fp=0;
 
