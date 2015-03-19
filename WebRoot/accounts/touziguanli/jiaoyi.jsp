@@ -113,7 +113,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">  
  
     $(document).ready(function(){
-    	
     	    	var vale=$("#time").val();
     	    	var type_vale=$("#type").val();
     	    	var num=0;
