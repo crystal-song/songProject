@@ -69,7 +69,7 @@ public class AccountsController {
 				model.addAttribute("username",o.toString());
 				model.addAttribute("page", pages);
 				model.addAttribute("list", pages.getList());
-				return "accounts/tuijian";
+				return "accounts/user/tuijian";
 			}else{
 				return "error";
 			}

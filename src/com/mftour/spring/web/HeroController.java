@@ -186,7 +186,7 @@ public class HeroController {
 		List<Address> address =  JSON.parseObject(addressRs, ArrayList.class);
 				
 			model.addAttribute("address", address);	
-			return "hero/dizhi";
+			return "accounts/user/dizhi";
 	
 	}
 	

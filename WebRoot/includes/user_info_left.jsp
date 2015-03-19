@@ -5,16 +5,16 @@
         <ul>
            <li class="fir_li">账户主页</li>
            <li>
-              <div class="u_left_mian "><i class="mian_pic03"></i><span>账户管理</span></div>
+              <div class="u_left_mian ${fn:startsWith(pageContext.request.requestURI, "/accounts/user") ? "u_left_red":""}"><i class="mian_pic02 ""><i class="mian_pic03"></i><span>账户管理</span></div>
                <ul class="u_left_sec">
                 <li>
                   <a href="/wel/account">个人信息</a>
                 </li>
 				<li style="display:block;">
-                  <a href="/anquanshezhi.jsp">安全设置</a>
+                  <a href="/user/anquanshezhi.jsp">安全设置</a>
                 </li>
                 <li style="border-bottom:0; display:none">
-                  <a href="/tongzhishezhi.jsp" >通知设置</a>
+                  <a href="/user/tongzhishezhi.jsp" >通知设置</a>
                 </li>
                 <li style="border-bottom:0;">
                   <a href="/account/tuijian" >推荐管理</a>
@@ -55,7 +55,7 @@
                   <a href="/shoucang.jsp">收藏项目</a>
                 </li>
                 <li>
-                  <a href="/gate/userProject">我的项目</a>
+                  <a href="/gate/userProject" style='${pageContext.request.requestURI == "/accounts/touziguanli/wodexiangmu.jsp" ? "color: rgb(252, 101, 46);":""}' >我的项目</a>
                 </li>
                 <c:if test="${userinfo.isborrow==true }">
                 <li>

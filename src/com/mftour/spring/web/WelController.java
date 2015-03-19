@@ -57,7 +57,7 @@ public class WelController {
 			}
 
 			model.addAttribute("user1", user1);
-			return "accounts/user-info";
+			return "accounts/user/user-info";
 
 		}
 
