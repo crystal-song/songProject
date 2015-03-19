@@ -109,7 +109,7 @@
 			               </div>                             			              			              
 	                      </li>	                     
 			            </c:forEach>
-			            <div class="dizhi_input" style="display:none">
+			            <div class="dizhi_input xiugai" style="display:none">
 						      <form action="#" name="d_form" >						      
 				                <ul class="rechange">
 				                  <li>
@@ -335,11 +335,11 @@ $(document).ready(
 		
 			
 			$(".modify_form").click(function(){
-				$(this).parent().parent().css("display","none")
+				$(this).parent().parent().css("display","none").prepend(".xiugai")
 				
 				//siblings(".dizhi_input").css("display","block")	
 				//$(this).parent().parent().parent()
-				$(".dizhi_input").insertAfter("")
+				//$(".xiugai").insertAfter(".msglist").css("display","block")
 				
 				
 			})

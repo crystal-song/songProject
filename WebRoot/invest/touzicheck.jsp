@@ -154,8 +154,9 @@
 					</li>
 					<li>
 						<div class="que_btn">
-							<input type="submit" name="submibtn" id="mysubmit_btn" value="确定"
+							<input type="submit" name="submibtn_new" id="mysubmit_btn" value="确定"
 								onclick="onSubmit('${f.onSubmit}')" style="margin-left: 348px"></input>
+							
 						</div>
 					</li>
 					<li>
@@ -198,18 +199,28 @@
 
  function onSubmit(host) {
 	var a=document.getElementById("paymentAmount").value;
+	
 	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
     if(parseInt(a) < 200){
         alert("投资金额必须大于200");
         return false;
-    }    	    
-     $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+    }    	
+   /*  var form = document.getElementById("form");
+    document.getElementById("mysubmit_btn").value="正在提交...";
+    //document.getElementById("mysubmit_btn").disabled=true;
+    $("#dialog01").css("display","block");
+    $(".black_bac").css("display","block");
+    form.submit(); */
+    $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount=\""+a+"\",
+    		
+    //$.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
 
             success: function(resp){
                 if(resp === "success"){
                     document.getElementById("paymentAmount").value=parseInt(a);        
                     document.getElementById("mysubmit_btn").disabled=true;
                     document.getElementById("mysubmit_btn").value="正在提交...";
+                   
                     var form = document.getElementById("form");
                     $("#dialog01").css("display","block");
                     $(".black_bac").css("display","block");
@@ -217,7 +228,7 @@
                 }else{
                     alert(resp);                  
                 }
-            }});
+            }}); 
   }
 
 

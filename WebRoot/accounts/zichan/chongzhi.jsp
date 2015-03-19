@@ -106,7 +106,8 @@
 								<!--  value="http://www.ptobchina.com/spring3/gate/examRecharge" /> -->
 							</div> 
 							<div class="mar_que_top">
-							<input type="submit" name="submibtn" id="mysubmit_btn" value="确定" onclick="onSubmit('${f.onSubmit}')" ></input>
+							<input type="submit" name="submibtn" id="mysubmit_btn" value="确定" 
+							      onclick="onSubmit('${f.onSubmit}')" ></input>
 							</div>
 						</li>
 					</ul>
@@ -180,7 +181,7 @@
 		}
 		document.getElementById("host").value = host;
 		var form = document.getElementById("form");
-		document.getElementById("mysubmit_btn").disabled = true;
+		//document.getElementById("mysubmit_btn").disabled = true;
 		document.getElementById("mysubmit_btn").value = "正在提交...";
 		$(".black_bac").css("display", "block");
 		$("#dialog01").css("display", "block");

@@ -171,7 +171,7 @@
 </html>
 <script type="text/javascript">
 $("#mysubmit_btn").click(function(){
-	 $("#mysubmit_btn").attr("disabled");
+	 //$("#mysubmit_btn").attr("disabled");
 	
 		  var form = document.getElementById("form");
 		  
@@ -205,7 +205,7 @@ $("#mysubmit_btn").click(function(){
 		    		  $("#dialog01").css("display","block");
 		    		  $(".black_bac").css("display","block");
 		    		  document.getElementById("mysubmit_btn").value="正在提交...";
-		    		  $("#mysubmit_btn").removeAttr("disabled");
+		    		 // $("#mysubmit_btn").removeAttr("disabled");
 		    		  form.submit();
 });
 
