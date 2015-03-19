@@ -90,7 +90,7 @@ public class LoanController {
 			for(ProductRepays  productrepays:productrepaysList){
 				if(productrepays.getRepayed()==false){
 					model.addAttribute("perioding", productrepays.getPeriod());
-					return "accounts/loanOrder";
+					return "accounts/touziguanli/loanOrder";
 				}
 			}
 			return "accounts/touziguanli/loanOrder";

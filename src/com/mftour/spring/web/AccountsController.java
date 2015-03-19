@@ -37,7 +37,7 @@ public class AccountsController {
 				model.addAttribute("catlog",catlog);
 				model.addAttribute("page", pages);
 				model.addAttribute("list", pages.getList());
-				return "accounts/liquan";
+				return "accounts/zichan/liquan";
 			}else{
 				return "error";
 			}			

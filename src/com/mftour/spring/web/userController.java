@@ -38,7 +38,7 @@ public class userController {
 		TUser user1 = userService.getUserByAccount(user.getName());
 
 		model.addAttribute("user1", user1);
-		return "accounts/user-info-modify";
+		return "accounts/user/user-info-modify";
 
 	}
 
@@ -50,7 +50,7 @@ public class userController {
 		TUser user1 = userService.getUserByAccount(user.getName());
 
 		model.addAttribute("user1", user1);
-		return "accounts/user-info";
+		return "accounts/user/user-info";
 	}
 
 	@RequestMapping(value = "/updatePasswordajax", method = RequestMethod.POST)
@@ -86,7 +86,7 @@ public class userController {
 		TUser user1 = userService.getUserByAccount(user.getName());
 
 		model.addAttribute("user1", user1);
-		return "accounts/user-info";
+		return "accounts/user/user-info";
 
 	}
 
