@@ -339,6 +339,7 @@ $(document).ready(
 				
 				//siblings(".dizhi_input").css("display","block")	
 				//$(this).parent().parent().parent()
+				$(".dizhi_input").insertAfter("")
 				
 				
 			})

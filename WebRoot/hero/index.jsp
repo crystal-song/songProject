@@ -80,12 +80,6 @@
 	$(document).ready(
 			function() {
 
-				$(".u_left_sec:eq(0) li:eq(5)").children("a").css("color",
-						"#fc652e");
-				$(".nav_big a").eq(3).addClass("bd_btom").siblings()
-						.removeClass("bd_btom");
-				$(".nav_big a").eq(3).children("p").addClass("headwd_color");
-
 				$(".right_cha").click(function() {
 					$(".newye").css("display", "none")
 					window.location.reload(true);

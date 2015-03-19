@@ -102,11 +102,4 @@
 </body>
 </html>
 
-<script type="text/javascript">  
-   
-    $(document).ready(function(){       	  
-    	$(".u_left_sec:eq(2) li:eq(3)").children("a").css("color","#fc652e");
-});
- 
-</script>
 

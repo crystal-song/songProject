@@ -171,7 +171,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript"> 
     $(document).ready(function(){
-    	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
     	$(".tip").mouseover(function(){
             //alert("aa");
            

@@ -109,9 +109,7 @@ clip.on( 'complete', function(client, args) {
 
 
 $(function(){
-	$(".u_left_sec:first li:eq(3)").children("a").css("color","#fc652e");
 	$(".zichan_con .tui_li li span:odd").css("text-align","left");
-	
 })
   
 

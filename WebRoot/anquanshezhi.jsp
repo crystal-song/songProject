@@ -253,7 +253,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
  
     $(document).ready(function(){
-    	$(".u_left_sec:first li:eq(1)").children("a").css("color","#fc652e");
+
         function onSubmit() {
     		if($("#mail").val()==""){
     			alert("邮箱不能为空!");

@@ -160,8 +160,7 @@
 		form.submit();
 
 	}
-	var navIndex = 2;
-	var indexs = 0;
+
 	$(document)
 			.ready(
 					function(e) {

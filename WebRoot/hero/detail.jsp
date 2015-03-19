@@ -117,11 +117,6 @@
 
 $(document).ready(function(e){
     var isScroll=false;
-
-	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
-	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
-	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
-	
 	
 	$(".dizhi div").click(function(){
 		$(this).css("background","url(/img/images-2014-11/kuang.png)  no-repeat");

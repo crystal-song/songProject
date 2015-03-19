@@ -29,11 +29,7 @@
 </html>
 
 <script>
-    $(function(){
-    	$(".u_left_sec:eq(0) li:eq(0)").children("a").css("color","#fc652e");
-    	$(".nav_big a").eq(3).addClass("bd_btom").siblings().removeClass("bd_btom");
-    	$(".nav_big a").eq(3).children("p").addClass("headwd_color");
-    })
+   
    window.setInterval(" refresh()",5000);
     function refresh(){location.href='/hero/my';}
  	

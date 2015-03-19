@@ -290,12 +290,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- footer end -->
 </body>
 </html>
-<script type="text/javascript" src="<%=path%>/js/jquery-1.7.2.min.js"></script> 
-<script type="text/javascript">
-    var navIndex=3;    
-    $(document).ready(function(){
-    	$(".u_left_mian").click(function(){
-            $(this).siblings().slideToggle("slow");
-          });
-});       
-</script>
+

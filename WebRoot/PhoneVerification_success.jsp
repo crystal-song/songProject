@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript"> 
     $(document).ready(function(){
-    	$(".nav_big a").eq(2).addClass("bd_btom").siblings().removeClass("bd_btom");
+    	
         $(".anquan_right").click(function(){
         	
             $(this).parent().siblings(".anquan_hide").slideToggle();
