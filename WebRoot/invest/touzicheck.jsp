@@ -196,40 +196,37 @@
 </html>
 
 <script type="text/javascript">
-
- function onSubmit(host) {
-	var a=document.getElementById("paymentAmount").value;
+$(function(){
+	 function onSubmit(host) {
+		 
+		    $("#mysubmit_btn").attr("disabled");
+			var a=document.getElementById("paymentAmount").value;
+			
+			if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
+		    if(parseInt(a) < 200){
+		        alert("投资金额必须大于200");
+		        return false;
+		    }    	
+		    $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,    		
+		            success: function(resp){
+		                if(resp === "success"){
+		                    document.getElementById("paymentAmount").value=parseInt(a);        
+		                   // document.getElementById("mysubmit_btn").disabled=true;
+		                    document.getElementById("mysubmit_btn").value="正在提交...";
+		                   
+		                    var form = document.getElementById("form");
+		                    $("#dialog01").css("display","block");
+		                    $(".black_bac").css("display","block");
+		                    $("#mysubmit_btn").removeAttr("disabled");
+		                    form.submit();            
+		                }else{
+		                    alert(resp);                  
+		                }
+		            }}); 
+		  }
 	
-	if(a!=parseInt(a)){alert("投资金额必须为整数！");return false;}
-    if(parseInt(a) < 200){
-        alert("投资金额必须大于200");
-        return false;
-    }    	
-   /*  var form = document.getElementById("form");
-    document.getElementById("mysubmit_btn").value="正在提交...";
-    //document.getElementById("mysubmit_btn").disabled=true;
-    $("#dialog01").css("display","block");
-    $(".black_bac").css("display","block");
-    form.submit(); */
-    $.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount=\""+a+"\",
-    		
-    //$.ajax({url: "/gate/checkPay?id=${product.enterpriseNumber}&amount="+a,
+})
 
-            success: function(resp){
-                if(resp === "success"){
-                    document.getElementById("paymentAmount").value=parseInt(a);        
-                    document.getElementById("mysubmit_btn").disabled=true;
-                    document.getElementById("mysubmit_btn").value="正在提交...";
-                   
-                    var form = document.getElementById("form");
-                    $("#dialog01").css("display","block");
-                    $(".black_bac").css("display","block");
-                    form.submit();            
-                }else{
-                    alert(resp);                  
-                }
-            }}); 
-  }
 
 
 </script>
