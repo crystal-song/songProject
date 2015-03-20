@@ -38,8 +38,7 @@
 			  
 			  <span class="dizhispan"></span>
 		           <div class="dizhi_input dizhi_add">
-				      <form action="#" name="d_form" >
-				      
+				      <form action="#" name="d_form" >	      
 		                <ul>
 		                 <li>
 		                    <span>省/直辖市<strong>*</strong></span>
@@ -53,8 +52,8 @@
 		                  <li><span>手机号码<strong>*</strong></span><input type="text" id="phone"/></li>
 		                </ul> 		                		                
 		                <div class="chose">   
-		                <a class="subbtn" >确认添加</a> 
-		                <a class="subbtn1" >返回</a>  
+		                  <a class="subbtn" >确认添加</a> 
+		                  <a class="subbtn1" >返回</a>  
 		                </div> 
                      </form>		             		             
 		           </div>
@@ -106,10 +105,11 @@
 			               <span>${a.phone }</span>
 			               <span><a class="m_green modify_form">修改</a>|<a id="del"  class="m_green delete" v="${a.id }">删除</a></span>
 			               <span><input type="radio" name="chbox" class="chbox"></input></span> 
-			               </div>                             			              			              
+			               </div>    
+			                                        			              			              
 	                      </li>	                     
 			            </c:forEach>
-			            <div class="dizhi_input xiugai" style="display:none">
+			            <%-- <div class="dizhi_input xiugai" style="display:none">
 						      <form action="#" name="d_form" >						      
 				                <ul class="rechange">
 				                  <li>
@@ -128,7 +128,7 @@
 				                <a class="subbtn1 reback" >返回</a>  
 				                </div>          				                
 		                     </form>		             		             
-		                   </div>
+		                   </div> --%>
 			           </ul>
              </div>
 						<%-- <c:forEach var="a" items="${address}" varStatus="i">
@@ -333,13 +333,38 @@ $(document).ready(
 					    	});
 			});
 		
-			
+			 
 			$(".modify_form").click(function(){
-				$(this).parent().parent().css("display","none").prepend(".xiugai")
+				//$(this).parent().parent().css("display","none").prepend(".xiugai")
 				
 				//siblings(".dizhi_input").css("display","block")	
 				//$(this).parent().parent().parent()
 				//$(".xiugai").insertAfter(".msglist").css("display","block")
+				//$(".msglist").after(".xiugai").css("display","block");
+				//$(".add_hide").append(".xiugai")
+				
+				/* $(this).parent().parent().parent().append('
+						<div class="dizhi_input xiugai" style="display:none">
+					      <form action="#" name="d_form" >						      
+                <ul class="rechange">
+                  <li>
+                    <span>省/直辖市<strong>*</strong></span>
+                    <select id="province" name="province"></select> 
+                    <span>城市<strong>*</strong></span>		                  
+                    <select id="city" name="city" ></select> 		            
+                  </li> 		                   
+                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea id="detail1">${a.detail }</textarea></li>
+                  <li><span>邮编<strong>*</strong></span><input type="text" id="code1" value="${a.code }"/></li>
+                  <li><span>收货人姓名<strong>*</strong></span><input type="text" id="name1" value="${a.name }"/></li>
+                  <li><span>手机号码<strong>*</strong></span><input type="text" id="phone1" value="${a.phone }"/></li>
+                </ul> 		                		                
+                <div class="chose">   
+                <a class="subbtn_add" >确认修改</a> 
+                <a class="subbtn1 reback" >返回</a>  
+                </div>          				                
+             </form>		             		             
+           </div>') */
+				
 				
 				
 			})

@@ -107,7 +107,7 @@
 							</div> 
 							<div class="mar_que_top">
 							<input type="submit" name="submibtn" id="mysubmit_btn" value="确定" 
-							      onclick="onSubmit('${f.onSubmit}')" ></input>
+							      ></input>
 							</div>
 						</li>
 					</ul>
@@ -172,22 +172,19 @@
 </html>
 
 <script type="text/javascript">
-	function onSubmit(host) {
+	
+		$("#mysubmit_btn").click(function(){
+		var form = document.getElementById("form");
 		if ($("#amount").val() == 0 || $("#amount").val() == "") {			
 			$(".newye").css("display", "block")
 			$(".black_bac").css("display", "block");
 
 			return false;
 		}
-		document.getElementById("host").value = host;
-		var form = document.getElementById("form");
 		document.getElementById("mysubmit_btn").disabled = true;
 		document.getElementById("mysubmit_btn").value = "正在提交...";
-		$(".black_bac").css("display", "block");
-		$("#dialog01").css("display", "block");
-
 		form.submit();
-	}
+	});
 
 	
 	$(document).ready(
