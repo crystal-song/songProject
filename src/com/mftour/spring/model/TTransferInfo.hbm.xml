@@ -36,7 +36,7 @@
         <property name="targetPlatformUserNo" type="java.lang.String">
             <column name="targetPlatformUserNo" length="50" />
         </property>
-        <property name="paymentAmount" type="java.lang.String">
+        <property name="paymentAmount" type="java.lang.Integer">
             <column name="paymentAmount" length="50" />
         </property>
          <property name="expired" type="java.lang.String">

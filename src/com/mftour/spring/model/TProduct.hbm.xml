@@ -19,6 +19,9 @@
          <property name="qualityRating" type="java.lang.Integer">
             <column name="qualityRating" length="50" />
         </property>
+          <property name="reward" type="java.lang.Integer">
+            <column name="reward" length="50" />
+        </property>
         <property name="yearIncome" type="java.lang.Double">
             <column name="yearIncome" length="50" />
         </property>

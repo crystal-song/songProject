@@ -87,10 +87,10 @@
 						class="form-control" id="platformUserNo" name="platformUserNo"
 						value="${name}" />
 					<div class="form-group">
-						<label for="amount">提现金额</label><input type="text"
-							class="form-control tixian_money" id="amount" name="amount"
-							value="提现金额不能为0" style="color: #ccc" />
+						<label for="amount">提现金额</label><input type="text" value="提现金额不能为0" class="form-control tixian_money" id="amount" name="amount"
+							 style="color: #ccc" />
 							<span class="liquan_y"></span>
+							<!-- //value="提现金额不能为0" -->
 					</div>
 					<input type="hidden" class="form-control" id="notifyUrl"
 						name="notifyUrl" value="${f.notifyUrl}/gate/drawMoneyNotify" /> <input
@@ -119,7 +119,7 @@
 						<li>提现过程遇到问题，请联系客服，010-84243099/3199</li>
 					</ol>
 				</div>
-				<div id="dialog01" style="display: none; height: 210px;">
+				<div id="dialog01"  class="dialog_ok" style="display: none; height: 210px;">
 					<div class="dialog_title">
 						<strong>温馨提示</strong>
 						<div class="right_cha"></div>
@@ -138,7 +138,7 @@
 					</div>
 				</div>
 				<div id="dialog01" style="display: none; height: 210px;"
-					class="newye">
+					class="newye_one">
 					<div class="dialog_title">
 						<strong>温馨提示</strong>
 						<div class="right_cha"></div>
@@ -164,11 +164,12 @@
 	<!-- absolute_right end -->
 	<div class="clear"></div>
 	<!-- footer start -->
-	<%@ include file="/includes/footer.jsp"%>
+	<%-- <%@ include file="/includes/footer.jsp"%> --%>
 	<!-- footer end -->
 	<div class="black_bac"></div>
 </body>
 </html>
+ <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 $("#mysubmit_btn").click(function(){
 	 $("#mysubmit_btn").attr("disabled");
@@ -176,33 +177,38 @@ $("#mysubmit_btn").click(function(){
 		  var form = document.getElementById("form");
 		  
 
-		    	var tixian_val=parseInt($(".tixian_money").val());
+		    	var tixian_val=$(".tixian_money").val();
 			    var old_amount=parseInt($(".wd_org").text());
-
-		    	if(tixian_val=="提现金额不能为0" || tixian_val==""){
-		    		//alert("您输入的金额为空,请重新输入");	 
-		    		$(".newye").css("display","block")
-		    	    $(".black_bac").css("display","block");
+                
+		    	 if(tixian_val=="" || tixian_val=="提现金额不能为0"){
 		    		$(".p_font").text("提现金额不能为空，请重新输入！")
+		    		$(".newye_one").css("display","block")
+		    	    $(".black_bac").css("display","block");		
 		    		
+		    		return false;			    		 
+		    	} 
+ 
+		    	 if(tixian_val==0){	 
+		    		$(".newye_one").css("display","block")
+		    	    $(".black_bac").css("display","block");
+		    		$(".p_font").text("提现金额不能为零，请重新输入！")
+		    		return false;	
 		    		 
-		    	}    	
+		    	}
 		    	 if(tixian_val>old_amount){
-		    		//alert("您提现的金额不能超出可提现金额");
-		    		$(".newye").css("display","block")
+		    		$(".newye_one").css("display","block")
 		    	    $(".black_bac").css("display","block");
 		    		$(".p_font").text("您提现的金额不能超出可提现金额！")
 		    		return false;	    		
 		    	}
 		    	 if(tixian_val<100){
-			    		//alert("您提现的金额不能超出可提现金额");
-			    		$(".newye").css("display","block")
+			    		$(".newye_one").css("display","block")
 			    	    $(".black_bac").css("display","block");
 			    		$(".p_font").text("提现金额不能小于100元！")
 			    		return false;	    		
-			    	}
-		    
-		    		  $("#dialog01").css("display","block");
+			    	} 
+		     
+		    		  $(".dialog_ok").css("display","block");
 		    		  $(".black_bac").css("display","block");
 		    		  document.getElementById("mysubmit_btn").value="正在提交...";
 		    		  $("#mysubmit_btn").removeAttr("disabled");
@@ -228,9 +234,7 @@ $("#mysubmit_btn").click(function(){
 		 $(".newye").css("display","none")
 		 window.location.reload(true);
 	 }) 
-    	$(".right_cha").click(function(){		  
-    		 window.location.reload(true);  		  
-    	});
+
    	 
    	 var bankKey={
    			 "BOCO":"交通银行",

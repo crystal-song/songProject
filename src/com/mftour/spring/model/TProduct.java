@@ -28,7 +28,14 @@ public class TProduct implements java.io.Serializable {
 		public void setNextRepaymentDate(Date nextRepaymentDate) {
 			this.nextRepaymentDate = nextRepaymentDate;
 		}
+		public Integer getReward() {
+			return reward;
+		}
+		public void setReward(Integer reward) {
+			this.reward = reward;
+		}
 		private Integer financingMoney;   //融资金额         3
+		private Integer reward;  
 	    private Integer financingPeriod; //融资周期         2
 	    private Double financingProgress; //融资进度        4
 	    private String projectIntroduce;  //项目介绍
