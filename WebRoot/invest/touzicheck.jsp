@@ -13,6 +13,7 @@
 	<!-- top end  -->
 	<div class="clear"></div>
 	<div class="msg_con">
+	
 		<div class="queren_con" style="height: auto; overflow: hidden">
 			<div class="con_title">
 				<strong>投资信息确认</strong>
@@ -196,7 +197,7 @@
 </html>
 
 <script type="text/javascript">
-$(function(){
+
 	 function onSubmit(host) {
 		 
 		    $("#mysubmit_btn").attr("disabled");
@@ -218,6 +219,7 @@ $(function(){
 		                    $("#dialog01").css("display","block");
 		                    $(".black_bac").css("display","block");
 		                    $("#mysubmit_btn").removeAttr("disabled");
+		                    
 		                    form.submit();            
 		                }else{
 		                    alert(resp);                  
@@ -225,7 +227,7 @@ $(function(){
 		            }}); 
 		  }
 	
-})
+
 
 
 
