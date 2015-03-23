@@ -262,24 +262,41 @@
 				   $(".right_cha").click(function(){
 					   window.location.reload(true);
 			      });
-				   
+				   var acc_m=$("#validmoney").val();
+				   var vcc_tr= $("#valid_trans").val()
 				   $("#paymentAmount").keyup(function(){
 					   var payment=$(this).val();
-					   var payment=$(this).val();		   
+					   	   
 					   document.getElementById("mysubmit_btn").disabled=true;   
-
-						if(payment!=parseInt(payment)){
+					   if(payment==""){
+							$(".liquan_y").text("投资金额不能为空！");
+							return false;
+					    }
+					  					   					   
+					   else if(payment!=parseInt(payment)){
 							$(".liquan_y").text("投资金额必须为整数！");
 							return false;
 					    } 				
 						else if(parseInt(payment) < 200){
-					        $(".liquan_y").text("投资金额必须大于200！");
+					        $(".liquan_y").text("投资金额必须大于等于200！");
 					        return false;
-					    }		   
+					    }
+						else if(parseInt(payment)>vcc_tr){
+						    $(".liquan_y").text("投资金额不能超过您的项目的目标投资金额！");
+							return false;
+							   
+						}
+						else if(parseInt(payment)>acc_m || parseInt(payment)>=2100000000){
+						    $(".liquan_y").text("投资金额不能超过您的账户余额！");
+							return false;
+							   
+						}
 						else if(parseInt(payment)%100!=0){
 							$(".liquan_y").text("投资金额必须为100的整数倍！");
-							return false;			
-						}else{
+							return false;	
+							}
+
+						else{
 							document.getElementById("mysubmit_btn").disabled=false;
 							$(".liquan_y").text("投资满3000元可使用礼券！");
 						} 

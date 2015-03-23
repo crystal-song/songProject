@@ -11,7 +11,7 @@ public class TTransferInfo implements java.io.Serializable {
 	private String orderNo; // 标的号
 	private String transferAmount; // 标的金额
 	private String targetPlatformUserNo;
-	private String paymentAmount;
+	private int paymentAmount;
 	private String expired;
 	private String callbackUrl;
 	private String notifyUrl;
@@ -95,11 +95,11 @@ public class TTransferInfo implements java.io.Serializable {
 		this.targetPlatformUserNo = targetPlatformUserNo;
 	}
 
-	public String getPaymentAmount() {
+	public int getPaymentAmount() {
 		return paymentAmount;
 	}
 
-	public void setPaymentAmount(String paymentAmount) {
+	public void setPaymentAmount(int paymentAmount) {
 		this.paymentAmount = paymentAmount;
 	}
 
@@ -175,7 +175,7 @@ public class TTransferInfo implements java.io.Serializable {
 		this.financingPeriod = financingPeriod;
 	}
 
-	public TTransferInfo(String platformUserNo, String paymentAmount) {
+	public TTransferInfo(String platformUserNo, int paymentAmount) {
 		super();
 		this.platformUserNo = platformUserNo;
 		this.paymentAmount = paymentAmount;

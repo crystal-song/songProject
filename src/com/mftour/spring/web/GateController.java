@@ -504,7 +504,7 @@ public class GateController {
 			Model model, TTransferInfo TtransferInfo,
 			HttpServletRequest request1) throws Exception {
 
-		int paymentAmount = Integer.parseInt(TtransferInfo.getPaymentAmount());
+		int paymentAmount =TtransferInfo.getPaymentAmount();
 
 		List<TProduct> lis = productService.queryProductByNumber(TtransferInfo
 				.getEnterpriseNumber());
@@ -685,7 +685,7 @@ public class GateController {
 			if (li != null && li.size() != 0) {
 				model.addAttribute("li", li);
 			}
-
+			model.addAttribute("account", 	userService.getAccountByName(o.toString()));	
 			return "invest/touzicheck";
 		} else {
 			TUser user = userService.getUserByAccount(o.toString());
