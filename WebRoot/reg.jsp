@@ -254,7 +254,7 @@
 	function show() {
 		//显示验证码  
 		document.getElementById("code").src = "/CodeServlet?code="
-				+ createCode();
+				+ createCode()+ createCode();
 	}
 	window.onload = function() {
 		//document.onload=show();  

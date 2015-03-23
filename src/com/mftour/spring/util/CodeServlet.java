@@ -45,7 +45,7 @@ public class CodeServlet extends HttpServlet {
 			int yl = random.nextInt(12);
 			g.drawOval(x, y, x + xl, y + yl);
 		}
-		String code = request.getParameter("code");
+		String code = request.getParameter("code").substring(5, 10);
 		String sRand = code;
 		for (int i = 0; i < sRand.length(); i++) {
 			String rand = sRand.substring(i, i + 1);
