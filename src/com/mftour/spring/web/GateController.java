@@ -514,19 +514,26 @@ public class GateController {
 		}
 		Rest rest = new Rest();
 		Object o = request1.getSession().getAttribute("name");
+		
 		if (o == null) {
 			return "login";
 		}
+		Accounts accounts = userService.getAccountByName(o.toString());
 		if (paymentAmount < 200
 				&& !getRemortIP(request1).equals("106.2.184.190")) {
 			model.addAttribute("error", "非法操作");
-			return "/gate/transfer";
+			return "/invest/error";
 		}
 		if (t.getRealityMoney() + paymentAmount > t.getFinancingMoney() * 10000) {
 
-			model.addAttribute("error", "非法操作");
-			return "/gate/transfer";
+			model.addAttribute("error", "投资金额超过可投资金额,请重试！");
+			return "/invest/error";
 		}
+//		if ( paymentAmount > accounts.getAvailableMoney()) {
+//
+//			model.addAttribute("error", "投资金额超过帐户可用余额！");
+//			return "/invest/error";
+//		}
 		request.setRequestNo(UUID.randomUUID().toString());
 		request.setPlatformUserNo(o.toString());
 		request.setOrderNo(t.getEnterpriseNumber());
