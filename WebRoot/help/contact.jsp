@@ -22,12 +22,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- right content -->
 <div class="right_news_con">
 <div class="contaction">
-<p>名称：中投汇融投资管理有限公司</p>
-<p>地址：北京市朝阳区工体北路13号院1号楼</p>
-<p>电话：010-84243099/3199</p>
+<p>名&nbsp;&nbsp;称：中投汇融投资管理有限公司</p>
+<p>地&nbsp;&nbsp;址：北京市朝阳区工体北路13号院1号楼</p>
+<p>电&nbsp;&nbsp;话：010-84243099/3199</p>
 <p>传真号：010-84243990</p>
-<p>email：cs@ptobchina.com</p>
-<p>简介：中租宝，北京市朝阳区工体北路13号院1号楼1501-1502室。 邮编：100020</p>
+<p>Email：cs@ptobchina.com</p>
+<p>简&nbsp;&nbsp;介：中租宝，北京市朝阳区工体北路13号院1号楼1501-1502室。 邮编：100020</p>
 </div>
 <div style="width:800px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
 </div>

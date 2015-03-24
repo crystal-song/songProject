@@ -126,7 +126,7 @@
 					</ul>
 				</div>
 				<!-- class="chong_font" -->
-				<div id="dialog01" style="display: none; height: 210px;">
+				<div id="dialog01" style="display: none; height: 210px;" class="dialog_ok">
 					<div class="dialog_title">
 						<strong>温馨提示</strong>
 						<div class="right_cha"></div>
@@ -181,6 +181,8 @@
 
 			return false;
 		}
+		$(".dialog_ok").css("display","block");
+		$(".black_bac").css("display","block");
 		document.getElementById("mysubmit_btn").disabled = true;
 		document.getElementById("mysubmit_btn").value = "正在提交...";
 		form.submit();
