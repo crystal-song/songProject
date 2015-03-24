@@ -524,7 +524,7 @@ public class GateController {
 			model.addAttribute("error", "非法操作");
 			return "/invest/error";
 		}
-		if (t.getRealityMoney() + paymentAmount > t.getFinancingMoney() * 10000) {
+		if (t.getRealityMoney() + t.getReward() +   paymentAmount > t.getFinancingMoney() * 10000) {
 
 			model.addAttribute("error", "投资金额超过可投资金额,请重试！");
 			return "/invest/error";
