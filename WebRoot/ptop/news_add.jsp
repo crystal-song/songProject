@@ -147,12 +147,10 @@
         <select name="chanel" id="chanel" >
            <!-- <option value="0">全部&nbsp;&nbsp;&nbsp;</option>  -->
            <c:if test="${ not empty list1}">
-        <c:forEach var="s" items="${list1}" varStatus="i">
-          <option value="${s.name}">${s.name}&nbsp;&nbsp;</option>
-          </c:forEach>
-  
-        </c:if>
-         
+	          <c:forEach var="s" items="${list1}" varStatus="i">
+	          <option value="${s.name}">${s.name}&nbsp;&nbsp;</option>
+	          </c:forEach> 
+           </c:if>         
         </select> 
         </li>	
         	
@@ -321,6 +319,7 @@
             domUtils.removeAttributes(btn, ["disabled"]);
         }
     }
+    
 </script>
 
 </body>
