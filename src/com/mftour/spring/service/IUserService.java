@@ -15,5 +15,5 @@ public interface IUserService {
 	public List<TUser> getName(String name) throws Exception;
 	public Accounts getAccountByName(String name) throws Exception;
 	public int findAllRecord(String mobilephone);
-
+	public TUser getUserByopenId(String openId) throws Exception;
 }

@@ -103,5 +103,8 @@
          <property name="isborrow" type="boolean">
             <column name="isborrow" length="1" />
         </property>
+         <property name="openId" type="java.lang.String">
+            <column name="openId" length="100" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -42,10 +42,19 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-
+	<servlet>
+    <description>核心Servlet，用于响应请求</description>
+    <display-name>CoreServlet</display-name>
+    <servlet-name>CoreServlet</servlet-name>
+    <servlet-class>com.easy.social.servlet.CoreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoreServlet</servlet-name>
+    <url-pattern>/CoreServlet</url-pattern>
+  </servlet-mapping>
 	<servlet>  
         <servlet-name>CodeServlet</servlet-name>  
-        <servlet-class>com.mftour.spring.util.CodeServlet</servlet-class>  
+        <servlet-class>com.easy.social.servlet.CodeServlet</servlet-class>  
     </servlet>  
     <servlet-mapping>  
         <servlet-name>CodeServlet</servlet-name>  
