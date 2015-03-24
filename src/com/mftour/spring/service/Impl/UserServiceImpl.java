@@ -3,6 +3,7 @@ package com.mftour.spring.service.Impl;
 import java.util.List;
 
 import com.mftour.spring.model.Accounts;
+
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,7 @@ public class UserServiceImpl implements IUserService {
 		i = userDao.finaAllRecord(mobilephone);
 		return i;
 	}
-
+	public TUser getUserByopenId(String openId) throws Exception{
+		return userDao.getUserByopenId(openId);
+	}
 }

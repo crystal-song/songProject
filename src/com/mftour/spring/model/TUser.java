@@ -43,6 +43,14 @@ public class TUser implements java.io.Serializable {
 	private String findPasswordTime;
 	private String emailVTime;
 	private Boolean isborrow;
+	private String openId;
+	
+	public String getOpenId() {
+		return openId;
+	}
+	public void setOpenId(String openId) {
+		this.openId = openId;
+	}
 	public Boolean getIsborrow(){
 		return isborrow;
 	}

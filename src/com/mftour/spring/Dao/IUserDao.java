@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mftour.spring.model.Accounts;
 import com.mftour.spring.model.TUser;
+
 import org.hibernate.Query;
 
 public interface IUserDao {
@@ -17,5 +18,5 @@ public interface IUserDao {
 	public List<TUser> getName(String name) throws Exception;
 	public Accounts getAccountByName(String name) throws Exception;
 	public int finaAllRecord(String mobilephone);
-
+	public TUser getUserByopenId(String openId) throws Exception;
 }

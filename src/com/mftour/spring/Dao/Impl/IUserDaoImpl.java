@@ -60,5 +60,14 @@ public class IUserDaoImpl extends HibernateDaoSupport implements IUserDao {
 		Number num = (Number) query.uniqueResult();
 		return num.intValue();
 	}
+	public TUser getUserByopenId(String openId) throws Exception {
+		String hql = "from TUser user where user.openId=:openId";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("openId", openId);
+	
+		return (TUser)query.list().get(0);
+
+	}
+
 
 }
