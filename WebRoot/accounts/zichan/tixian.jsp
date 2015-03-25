@@ -169,7 +169,6 @@
 	<div class="black_bac"></div>
 </body>
 </html>
- <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 $("#mysubmit_btn").click(function(){
 	 $("#mysubmit_btn").attr("disabled");
