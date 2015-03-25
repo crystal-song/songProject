@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
    <ol class="sec_list">
     <li>前去项目中心<strong><a href="<%=path%>/product/allProduct" class="con_link">[浏览项目]</a></strong>，查看详细信息，进行投资。</li>
-    <li>去个人中心查看<strong><a href="<%=path%>/wel/account" class="con_link">[个人资产]</a></strong>。</li>
+    <li>去个人中心查看<strong><a href="/gate/service" class="con_link">[个人资产]</a></strong>。</li>
     <li><a href="<%=path%>/gate/recharge" class="sec_btn_org">去充值</a></li>
     <li><a href="<%=path%>/gate/drawMoney" class="sec_btn_org">去提现</a></li>
    </ol>
