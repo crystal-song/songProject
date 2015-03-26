@@ -122,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<div class="aim01">
 											<span style="color: #a4a4a4;">目标：</span> <span>${s.financingPeriod}天</span>
 											<%-- //${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' } --%>
-											<span style="width: 60px; margin-right: 0">￥&nbsp;${s.financingMoney}万元</span>
+											<span style="width: 80px; margin-right: 0">￥&nbsp;${s.financingMoney}万元</span>
 											<a class="pro_status">${s.projectStatus==1?'预热中':s.projectStatus==2?'融资中':s.projectStatus==3?'已满标':s.projectStatus==4?'还款中':'已完成' }</a>
 										</div>
 										<div class="loding_bar">
