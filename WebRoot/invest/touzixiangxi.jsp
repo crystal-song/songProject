@@ -496,7 +496,7 @@ function mysubmit(){
     	  form.submit();
     	}else{
     	// alert(resp);
-	    	$(".newye").css("display","blockbtn_blue")
+	    	$(".newye").css("display","block")
 	    	$(".black_bac").css("display","block");
 	    	$(".p_font").text(resp) ;
     	if(resp=="请登录"){
