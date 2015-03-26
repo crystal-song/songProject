@@ -449,7 +449,7 @@ public class GateController {
 		String s = rest.postRestful("/rest/yeepay/create", map);
 		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 		if (r.isSuccess()) {
-			return doSign(request, host + "/bha/toRecharge", model);
+			return doSign(request, f.getOnSubmit() + "/bha/toRecharge", model);
 
 		} else {
 			return "error";
@@ -976,7 +976,7 @@ public class GateController {
 			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "accounts/bangding_ok";
+				return "accounts/zichan/bangding_ok";
 			} else {
 				rest.postRestful("/rest/yeepay/update-error", map);
 
