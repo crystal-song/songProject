@@ -236,17 +236,19 @@
 			           $(window).scrollTop(title_top-small_height-50);
 			      });
 			/*计算器*/     
-			 	 $(".jisuan").click(function(){
+			 	$(".jisuan").click(function(){
 			 		 $("#dialog01").css("display","block");		 
 			 	 });			 	 
 			 	$(".right_cha").click(function(){
 			 		 $("#dialog01").css("display","none");
 					 $(".newye").css("display","none")
-					 window.location.reload(true);		
+					// window.location.reload();
+					 location.reload();
 				 }) 				 
 				 $(".diabtn").click(function(){
 					 $(".newye").css("display","none")
-					 window.location.reload(true);
+					// window.location.reload();
+					 location.reload();
 				 }) 
 				 
 /*touzicheck*/	
@@ -259,9 +261,7 @@
 					  $(".border_none").val(real_fukuan-50+"元")
 				   });	
 			 	
-				   $(".right_cha").click(function(){
-					   window.location.reload(true);
-			      });
+				  
 				   var acc_m=$("#validmoney").val();
 				   var vcc_tr= $("#valid_trans").val()
 				   $("#paymentAmount").keyup(function(){
