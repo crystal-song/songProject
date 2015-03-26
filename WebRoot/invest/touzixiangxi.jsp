@@ -182,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <span style="margin-top:10px;"><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
          <%-- <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a> --%>
-         <div class="btn_blue" style="margin-top:16px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+         <div class="btn_blue" style="margin-top:26px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
        </div>
        </form>
        </c:if>
@@ -496,7 +496,7 @@ function mysubmit(){
     	  form.submit();
     	}else{
     	// alert(resp);
-	    	$(".newye").css("display","block")
+	    	$(".newye").css("display","blockbtn_blue")
 	    	$(".black_bac").css("display","block");
 	    	$(".p_font").text(resp) ;
     	if(resp=="请登录"){
