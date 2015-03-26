@@ -241,14 +241,16 @@
 			 	 });			 	 
 			 	$(".right_cha").click(function(){
 			 		 $("#dialog01").css("display","none");
-					 $(".newye").css("display","none")
+					 $(".newye").css("display","none");
+					 $(".black_bac").css("display","none");
 					// window.location.reload();
-					 location.reload();
+					 //location.reload();
 				 }) 				 
 				 $(".diabtn").click(function(){
-					 $(".newye").css("display","none")
+					 $(".newye").css("display","none");
+					 $(".black_bac").css("display","none");
 					// window.location.reload();
-					 location.reload();
+					 //location.reload();
 				 }) 
 				 
 /*touzicheck*/	
