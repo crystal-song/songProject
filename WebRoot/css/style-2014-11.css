@@ -1490,6 +1490,7 @@ ul,li{
 .text01{
 	width:183px;
 	height:30px;
+	line-height:30px;
 	color: #ccc;
 	}	
 
@@ -4434,6 +4435,7 @@ ul,li{
 	left:3%; 
 	width:186px; 
 	height:30px; 
+	line-height:30px;
 	background:#fdd9c8; 
 	text-align:left; 
 	display:none; 
