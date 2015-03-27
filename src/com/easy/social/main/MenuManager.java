@@ -10,13 +10,15 @@ import com.easy.social.widget.ClickButton;
 import com.easy.social.widget.ComplexButton;
 import com.easy.social.widget.Menu;
 import com.easy.social.widget.ViewButton;
+import com.mftour.spring.util.File;
+import com.mftour.spring.util.ReadWirtePropertis;
 
 /**
  * 菜单管理器类
  */
 public class MenuManager {
 	private static Logger log = LoggerFactory.getLogger(MenuManager.class);
-
+	private static final File f = ReadWirtePropertis.file();
 	/**
 	 * 定义菜单结构
 	 * 
@@ -26,11 +28,11 @@ public class MenuManager {
 		ViewButton btn11 = new ViewButton();
 		btn11.setName("绑定账户");
 		btn11.setType("view");
-		btn11.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx16c3961c36049dbc&redirect_uri=http://106.2.184.190/M/getCode&response_type=code&scope=snsapi_base&state=binding#wechat_redirect");
+		btn11.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+f.getAppId()+"&redirect_uri="+f.getWeixinCallHost()+"/m/getCode&response_type=code&scope=snsapi_base&state=binding#wechat_redirect");
 		ViewButton btn12= new ViewButton();
 		btn12.setName("账户资产");
 		btn12.setType("view");
-		btn12.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx16c3961c36049dbc&redirect_uri=http://106.2.184.190/M/getCode&response_type=code&scope=snsapi_base&state=assert#wechat_redirect");
+		btn12.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+f.getAppId()+"&redirect_uri="+f.getWeixinCallHost()+"/m/getCode?path=/gate/service&response_type=code&scope=snsapi_base&state=123#wechat_redirect");
 		ViewButton btn13 = new ViewButton();
 		btn13.setName("投资记录");
 		btn13.setType("view");
@@ -62,9 +64,9 @@ public class MenuManager {
 
 	public static void main(String[] args) {
 		// 第三方用户唯一凭证
-		String appId = "wx16c3961c36049dbc";
+		String appId = f.getAppId();
 		// 第三方用户唯一凭证密钥
-		String appSecret = "9630c550f93a343f408b27af55df67c5";
+		String appSecret = f.getAppSecret();
 
 		// 调用接口获取凭证
 		Token token = CommonUtil.getToken(appId, appSecret);
