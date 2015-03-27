@@ -11,6 +11,8 @@ import com.easy.social.resp.bean.Article;
 import com.easy.social.resp.bean.ArticleMessage;
 import com.easy.social.resp.bean.TextMessage;
 import com.easy.social.util.MessageUtil;
+import com.mftour.spring.util.File;
+import com.mftour.spring.util.ReadWirtePropertis;
 
 /**
  * 核心服务类
@@ -23,6 +25,7 @@ public class CoreService {
 	 * @param request
 	 * @return xml
 	 */
+	private static final File f = ReadWirtePropertis.file();
 	public static String processRequest(HttpServletRequest request) {
 		// xml格式的消息数据
 		String respXml = null;
@@ -117,7 +120,7 @@ public class CoreService {
 							article.setTitle("中租宝新闻公告");
 							article.setDescription("为了更好的能为广大客户服务，我公司坚持“智谋优秀、财力归集、名闻海内、成就大业”的 企业愿景，坚守“诚信、务实、负责”的企业精神，牢记对社会负责、对股东负责、对客户负责、对员工负责、对企业自身负责的企业使命和社会责任，以投资领域 的需求为基础，以公司的服务水平和自身实力为保障，让公司快速健康发展，为客户高效便捷的提供服务。");
 							article.setPicUrl("http://1.star530.sinaapp.com/weather.jpg");
-							article.setUrl("http://www.ptobchina.com");
+							article.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+f.getAppId()+"&redirect_uri="+f.getWeixinCallHost()+"/m/getCode?path=/account/liquan&response_type=code&scope=snsapi_base&state={page:1,catlog:0}#wechat_redirect");
 							List<Article> articleList = new ArrayList<Article>();
 							articleList.add(article);
 							// 创建图文消息

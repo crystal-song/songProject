@@ -1,13 +1,15 @@
 package com.mftour.spring.web;
 
-import java.net.URL;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +33,7 @@ import com.mftour.spring.util.ReadWirtePropertis;
 import com.mftour.spring.util.Rest;
 
 @Controller
-@RequestMapping("/M")
+@RequestMapping("/m")
 public class WeixinController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(WeixinController.class);
@@ -42,18 +44,40 @@ public class WeixinController {
 	public String getCode(HttpServletRequest request) throws Exception {
 		String code=request.getParameter("code");
 		String state=request.getParameter("state");
+		String path=request.getParameter("path");
 		request.getSession().setAttribute("code", code);
+		 if(state.equals("binding")){
+				return "/m/login";
+			}
 		Oauth2Token oauth2Token=CommonUtil.getOauth2Token(code);
+		if(oauth2Token==null){
+			return "404";
+		}
 		TUser user=userService.getUserByopenId(oauth2Token.getOpenId());
-		if(state.equals("binding")||user==null){
-			return "/m/login";
-		}
-		if(state.equals("assert")&&user!=null){
-			request.getSession().setAttribute("name", user.getName());
+		if(user!=null){
+			request.getSession().setAttribute("name", user.getName()); 
 			request.getSession().setAttribute("userinfo", user);
-			return "redirect:/gate/service";
-		}
-		return "/m/reg";
+		}else{
+			if(!path.equals("/welcome/reg"))
+				return "/m/login";
+			}
+			if(state.equals("123")){
+				return "redirect:"+path;
+			}
+		JSONObject	jsonObject = JSONObject.fromObject(state);
+		  java.util.Iterator iterator=jsonObject.keys();
+		  boolean flag=false;
+		  while (iterator.hasNext()) {  
+		        String key = iterator.next().toString();  
+		        String value = jsonObject.getString(key);  
+		        	if(!flag){
+		        		path+="?"+key+"="+value;
+		        		flag=true;
+		        	}else{
+		        		path+="&"+key+"="+value;
+		        	}
+		    }  
+		return "redirect:"+path;
 	}
 	@RequestMapping(value = "/session", method = { RequestMethod.POST,
 			RequestMethod.GET })
@@ -109,7 +133,7 @@ public class WeixinController {
 				File f=ReadWirtePropertis.file();
 				String basePath =f.getBasePath();
 
-				String resetPassHref =basePath+ "/M/register?username="+ userInfo.getName()+"&checkcode="+userInfo.getRandomCode();
+				String resetPassHref =basePath+ "/m/register?username="+ userInfo.getName()+"&checkcode="+userInfo.getRandomCode();
 
 				String operate="注册中租宝帐号，请点击以下链接完成注册";
 				String title="中租宝—用户注册确认";

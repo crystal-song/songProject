@@ -34,6 +34,9 @@ public class ReadWirtePropertis {
 			f.setRestHost(pro.getProperty("restHost"));
 			f.setYeepayCfaFile(pro.getProperty("yeepayCfaFile"));
 			f.setRestOutHost(pro.getProperty("restOutHost"));
+			f.setWeixinCallHost(pro.getProperty("weixinCallHost"));
+			f.setAppId(pro.getProperty("appId"));
+			f.setAppSecret(pro.getProperty("appSecret"));
 			return f;
 		} catch (IOException e) {
 		

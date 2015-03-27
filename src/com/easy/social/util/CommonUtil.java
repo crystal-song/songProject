@@ -19,21 +19,23 @@ import org.slf4j.LoggerFactory;
 
 import com.easy.social.req.bean.Oauth2Token;
 import com.easy.social.req.bean.Token;
+import com.mftour.spring.util.File;
+import com.mftour.spring.util.ReadWirtePropertis;
 
 /**
  * 通用工具类
  */
 public class CommonUtil {
 	private static Logger log = LoggerFactory.getLogger(CommonUtil.class);
-
+	private static final File f = ReadWirtePropertis.file();
 	// 凭证获取（GET）
 	public final static String token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 	//获取code后，请求以下链接获取access_token：
 	public static String oauth2_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
 	 // 第三方用户唯一凭证
-	public final static String appId = "wx16c3961c36049dbc";
+	public final static String appId = f.getAppId();
 	// 第三方用户唯一凭证密钥
-	public final static String appSecret = "9630c550f93a343f408b27af55df67c5";
+	public final static String appSecret = f.getAppSecret();
 	/**
 	 * 发送https请求
 	 * 
@@ -105,13 +107,10 @@ public class CommonUtil {
 	 */
 	public static Oauth2Token getOauth2Token(String code) {
 		Oauth2Token oauth2Token = null;
-		oauth2_token_url=oauth2_token_url.replace("CODE", code);
-		oauth2_token_url=oauth2_token_url.replace("APPID", appId);
-		oauth2_token_url=oauth2_token_url.replace("SECRET", appSecret);
+		oauth2_token_url=oauth2_token_url.replace("APPID", appId).replace("SECRET", appSecret).replace("CODE", code);
 		String requestUrl = oauth2_token_url;
 		// 发起GET请求获取凭证
 		JSONObject jsonObject = httpsRequest(requestUrl, "GET", null);
-
 		if (null != jsonObject) {
 			try {
 				oauth2Token = new Oauth2Token();
