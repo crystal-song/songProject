@@ -106,8 +106,11 @@
 			               <span><a class="m_green modify_form">修改</a>|<a id="del"  class="m_green delete" v="${a.id }">删除</a></span>
 			               <span><input type="radio" name="chbox" class="chbox"></input></span> 
 			               </div>    
-			                                        			              			              
-	                      </li>	                     
+			                <iframe style="display:none; width:700px; height:400px; border:0px; scrolling:no; allowtransparency:true ;background-color:transparent" src="Mform.jsp">
+			                
+			                </iframe>                       			              			              
+	                      </li>	  
+	                                         
 			            </c:forEach>
 			            <%-- <div class="dizhi_input xiugai" style="display:none">
 						      <form action="#" name="d_form" >						      
@@ -176,9 +179,9 @@
 <!-- footer end -->
 </body>
 </html>
-
+<!-- 
 <script class="resources library" src="/js/area.js" type="text/javascript"></script>
-<script type="text/javascript">_init_area();area();</script>
+<script type="text/javascript">_init_area();area();</script> -->
 
 <script type="text/javascript">
 $(document).ready(
@@ -335,6 +338,7 @@ $(document).ready(
 		
 			 
 			$(".modify_form").click(function(){
+				$(this).parent().parent().css("display","none").siblings("iframe").css("display","block")		
 				//$(this).parent().parent().css("display","none").prepend(".xiugai")
 				
 				//siblings(".dizhi_input").css("display","block")	
@@ -384,6 +388,11 @@ $(document).ready(
 			$(".diabtn1").click(function(){
 				
 			})
+			
+			function callChild(a,b,c,d,e,f){
+				
+			}
+			
 		});
 </script>
  

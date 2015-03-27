@@ -174,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <span>可投资金额： ${product1.financingMoney*10000-product1.realityMoney}元
          </span>
          <div class="neirong"></div>
-         <span><input type="number" class="text01" value="200" id="buyAmount"  name="buyAmount" min="200"/></span>
+         <span><input type="text" class="text01" value="200" id="buyAmount"  name="buyAmount" min="200"/></span>
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
@@ -182,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <span style="margin-top:10px;"><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
          <%-- <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a> --%>
-         <div class="btn_blue" style="margin-top:16px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
+         <div class="btn_blue" style="margin-top:26px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
        </div>
        </form>
        </c:if>
@@ -416,13 +416,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	          <div class="touzi_text" style="display:none">
 	             
 	          </div>	
-	         <a class="diabtn">确定</a>                
+	          <a class="diabtn">确定</a>              
           </div>
 </div> 
 <!-- absolute start -->
 <%@ include file="/includes/absolute.jsp" %>
 <!-- absolute end -->
 <div class="clear"></div>
+ <script type="text/javascript">
+var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
+</script>
 <!-- footer start -->
 <%@ include file="/includes/footer.jsp" %>
 <!-- footer end -->
@@ -463,7 +466,7 @@ function mysubmit(){
 		return false;
 	}
 	
-    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
+    /* $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
         success: function(resp){
             if(resp === "success"){
                 var form = document.getElementById("form");
@@ -482,11 +485,30 @@ function mysubmit(){
             	
             	
             }
-        }});
-}	
-
-
-
+        }}); */
+    
+    
+    
+    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
+    	success: function(resp){
+    	  if(resp === "success"){
+    	  var form = document.getElementById("form");
+    	  form.submit();
+    	}else{
+    	// alert(resp);
+	    	$(".newye").css("display","block")
+	    	$(".black_bac").css("display","block");
+	    	$(".p_font").text(resp) ;
+    	if(resp=="请登录"){
+        	$(".abs_tips p:eq(1)").css("display","block");
+    	  }
+    	if(resp=="您的可用余额不足"){
+    	    $(".abs_tips p:eq(0)").css("display","block");
+    	  }
+    	 }
+    	}});
+    
+}
  $(document).ready(function(e) {
 	 
 	 //---------收益计算器------------
@@ -587,7 +609,7 @@ function mysubmit(){
         var timer= setInterval(getRTime1,1000);
  });  
 
- 
+
 
 	             
     

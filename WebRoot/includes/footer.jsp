@@ -40,11 +40,7 @@
        <li style="margin-top:20px; display:none"><img src="/img/images-2014-11/bottom_pic.png" width="300" height="50" /></li>
      </ul>
    </div>   
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fb22f51366ffad7f2637952d4acb0eade' type='text/javascript'%3E%3C/script%3E"));
 
-</script>
  <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>  
  <script type="text/javascript" src="/static/js/zhongzubao.js?v=${sessionScope.version}"></script>
 <script>
