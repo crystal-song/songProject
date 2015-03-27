@@ -11,7 +11,7 @@ public class MyHandlerInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 			if (request.getSession().getAttribute("version")==null){
-				request.getSession().setAttribute("version", "3");
+				request.getSession().setAttribute("version", "5");
 			}
 			
 		return true;
