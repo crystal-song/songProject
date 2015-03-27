@@ -10,6 +10,29 @@ public class File {
     private String yeepayCfaFile;
     private String restHost;
     private String restOutHost;
+    private String weixinCallHost;
+    private String appId;
+    private String appSecret;
+    
+    
+	public String getAppId() {
+		return appId;
+	}
+	public void setAppId(String appId) {
+		this.appId = appId;
+	}
+	public String getAppSecret() {
+		return appSecret;
+	}
+	public void setAppSecret(String appSecret) {
+		this.appSecret = appSecret;
+	}
+	public String getWeixinCallHost() {
+		return weixinCallHost;
+	}
+	public void setWeixinCallHost(String weixinCallHost) {
+		this.weixinCallHost = weixinCallHost;
+	}
 	public String getRestHost() {
 		return restHost;
 	}

@@ -22,7 +22,7 @@
 		<div class="blank_block_title">
 			<span class="new_reg01">新用户注册</span>
 		</div>
-		<form action="<%=path%>/M/regEmail" id="Form1" method="post"
+		<form action="<%=path%>/m/regEmail" id="Form1" method="post"
 			style="padding: 0px;">
 			<div class="blank_block_content reg">
 
@@ -120,7 +120,7 @@
 
 				$.ajax({
 					type : 'POST',
-					url : '<c:url value="/M/queryUser"/>',
+					url : '<c:url value="/m/queryUser"/>',
 					data : 'name=' + $('#name').val(),
 					dataType : 'text',
 					success : function(data) {
