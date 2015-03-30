@@ -4,7 +4,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ include file="/includes/taglibs.jsp" %>
-<title>用户注册 -发送邮件- 中租宝</title>
+<title>注册成功 - 中租宝</title>
 </head>
 <body>
 <!-- top start  -->
@@ -15,14 +15,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
     	 <table border="0" cellspacing="0" cellpadding="0" align="left"  width="100%" class="table_style">
 			<tr>
-				<td  style="color:#FF6633;font-weight:bold" width="100%">马上激活邮件完成注册</td>
+				<td  style="color:#FF6633;font-weight:bold" width="100%"></td>
 			</tr>
 			
 			<tr>
-				<td  style="color:#FF6633;font-weight:bold" width="100%">激活邮件已发送到您的 ${user1.email}邮箱， </td>
+				<td  style="color:#FF6633;font-weight:bold" width="100%">注册成功！</td>
 			</tr>
 			<tr>
-				<td  style="color:#FF6633;font-weight:bold" width="100%">请查看邮箱并完成注册 。</td>
+				<td  style="color:#FF6633;font-weight:bold" width="100%"></td>
 			</tr>
 			
 			<tr>
