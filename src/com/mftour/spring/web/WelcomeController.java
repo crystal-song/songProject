@@ -113,15 +113,6 @@ public class WelcomeController {
 
 				TUser userInfo = userService.getUserByAccount(user.getName());
 				request.getSession().setAttribute("userinfo", userInfo);
-				com.mftour.spring.util.File f=ReadWirtePropertis.file();
-				String basePath =f.getBasePath();
-
-				String resetPassHref =basePath+ "/welcome/register?username="+ userInfo.getName()+"&checkcode="+userInfo.getRandomCode();
-
-				String operate="注册中租宝帐号，请点击以下链接完成注册";
-				String title="中租宝—用户注册确认";
-				String email=user.getEmail();
-				EmailTemplate.SendMail(email, resetPassHref, operate, title);
 			}else{
 				return "error";
 			}
