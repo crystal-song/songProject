@@ -265,7 +265,8 @@
 			 	
 				  
 				   var acc_m=$("#validmoney").val();
-				   var vcc_tr= $("#valid_trans").val()
+				   var vcc_tr= $("#valid_trans").val();
+				   
 				   $("#paymentAmount").keyup(function(){
 					   var payment=$(this).val();
 					   	   
