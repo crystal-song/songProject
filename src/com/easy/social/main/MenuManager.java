@@ -28,11 +28,13 @@ public class MenuManager {
 		ViewButton btn11 = new ViewButton();
 		btn11.setName("绑定账户");
 		btn11.setType("view");
-		btn11.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+f.getAppId()+"&redirect_uri="+f.getWeixinCallHost()+"/m/getCode&response_type=code&scope=snsapi_base&state=binding#wechat_redirect");
+		btn11.setUrl(CommonUtil.OAuth2Url(f.getAppId(), f.getWeixinCallHost()+"/m/getCode", "binding"));
+		//btn11.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+f.getAppId()+"&redirect_uri="+f.getWeixinCallHost()+"/m/getCode&response_type=code&scope=snsapi_base&state=binding#wechat_redirect");
 		ViewButton btn12= new ViewButton();
 		btn12.setName("账户资产");
 		btn12.setType("view");
-		btn12.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+f.getAppId()+"&redirect_uri="+f.getWeixinCallHost()+"/m/getCode?path=/gate/service&response_type=code&scope=snsapi_base&state=123#wechat_redirect");
+		btn12.setUrl(CommonUtil.OAuth2Url(f.getAppId(), f.getWeixinCallHost()+"/m/getCode?path=/gate/service", "123"));
+		//btn12.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid="+f.getAppId()+"&redirect_uri="+f.getWeixinCallHost()+"/m/getCode?path=/gate/service&response_type=code&scope=snsapi_base&state=123#wechat_redirect");
 		ViewButton btn13 = new ViewButton();
 		btn13.setName("投资记录");
 		btn13.setType("view");

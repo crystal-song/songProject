@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="com.mftour.spring.util.File"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -23,6 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- banner end  -->
 <div class="clear"></div>
 <div class="clear_height"></div>
+<% String url=pro.file().getWeixinCallHost()+"/m/getCode?path=/welcome/reg";
+  String urll= URLEncoder.encode(url,"utf-8");
+%>
  <form action="<%=path%>/m/session"  id="form" method="post">
 <div class="zh">
 	<div class="zh_fra">
@@ -31,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<div><input name="name"  id="name" type="text" class="zh_wby" value="请输入姓名" /></div>
             <div><input name="password" id="password"  type="password" class="zh_wby" value="请输入密码" /></div>
             <div id="tips"></div> 
-            <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=<%=pro.file().getAppId() %>&redirect_uri=<%=pro.file().getWeixinCallHost() %>/m/getCode?path=/welcome/reg&response_type=code&scope=snsapi_base&state=123#wechat_redirect"><img src="<%=path%>/images/dl01_05.jpg" /></a>
+            <div class="zh_bot"><input name="imgbtn"  id="imgbtn"   type="button" onclick="query()" class="btn_login" ><a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=<%=pro.file().getAppId() %>&redirect_uri=<%=urll%>&response_type=code&scope=snsapi_base&state=123#wechat_redirect"><img src="<%=path%>/images/dl01_05.jpg" /></a>
             </div>
             <div class="forget_pwd"><a href="<%=path %>/forget.jsp" id="pwd_color">忘记密码?</a></div>
         </div>
