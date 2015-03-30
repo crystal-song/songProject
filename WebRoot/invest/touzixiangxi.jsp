@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <c:if test="${ empty product1.buyType}"><!-- 线下 -->
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
-         <span>可投资金额：${product1.financingMoney-product1.realityMoney}万元
+         <span>可投资金额：${product1.financingMoney*10000-product1.realityMoney-product1.reward}万元
          </span>
          <div class="neirong"></div>         
          <span><a class="red_touzi"  id="dialog-link" href="<%=path%>/xianxia.jsp" style="margin:24px 0 0 30px">立即投资</a></span>

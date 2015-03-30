@@ -68,22 +68,22 @@
 
 					</li>
 					<li style="height: auto;">
-						<table width="50%" bgcolor="#dedede" align="center"
-							cellspacing="1" cellpadding="2" border="0" class="new_table">
+						<table width="50%" bgcolor="#f8f8f8" align="center"
+							cellspacing="1" cellpadding="2" border="1" class="new_table">
 							<tr>
-								<td bgcolor="#fff" align="center"><b>阶段起点金额</b></td>
-								<td bgcolor="#fff" align="center"><b>起始利率</b></td>
-								<td bgcolor="#fff" align="center"><b>投资增幅</b></td>
-								<td bgcolor="#fff" align="center"><b>利率增幅</b></td>
-								<td bgcolor="#fff" align="center"><b>阶段上限金额</b></td>
+								<td  align="center"><b>阶段起点金额</b></td>
+								<td  align="center"><b>起始利率</b></td>
+								<td  align="center"><b>投资增幅</b></td>
+								<td  align="center"><b>利率增幅</b></td>
+								<td  align="center"><b>阶段上限金额</b></td>
 							</tr>
 							<c:forEach var="s" items="${li}" varStatus="i">
 								<tr>
-									<td bgcolor="#fff" align="center"><span class="lev_start">${s.startMoney}</span></td>
-									<td bgcolor="#fff" align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
-									<td bgcolor="#fff" align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
-									<td bgcolor="#fff" align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
-									<td bgcolor="#fff" align="center"><span class="lev_max">${s.highestMoney}</span></td>
+									<td  align="center"><span class="lev_start">${s.startMoney}</span></td>
+									<td  align="center"><span class="lev_rate">${s.startInterestRate}</span></td>
+									<td  align="center"><span class="lev_mi">${s.moneyIncrease}</span></td>
+									<td  align="center"><span class="lev_ri">${s.interestRateIncrease}</span></td>
+									<td  align="center"><span class="lev_max">${s.highestMoney}</span></td>
 								</tr>
 
 							</c:forEach>
@@ -229,13 +229,15 @@ $("#mysubmit_btn").click(function(){
 });
 		    
 		     
-		    $(document).ready(function(e) { 
-		   	 	
-		    
+		    $(document).ready(function(e) { 		   	 			    
 		   	   /*投资收益率*/
 		   	   var rate_lv=$(".lev_start").length;
 		   		calc1();
-
+			   	$("#paymentAmount").change(function(e) {
+			   			calc1();
+			   	}); 	
+		   		
+		   		
 		   		function calc1(){
 		   			var t=parseInt($("#paymentAmount").val());  
 		   			var r=0;                       				

@@ -449,7 +449,7 @@ public class GateController {
 		String s = rest.postRestful("/rest/yeepay/create", map);
 		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
 		if (r.isSuccess()) {
-			return doSign(request, host + "/bha/toRecharge", model);
+			return doSign(request, f.getOnSubmit() + "/bha/toRecharge", model);
 
 		} else {
 			return "error";
@@ -514,19 +514,26 @@ public class GateController {
 		}
 		Rest rest = new Rest();
 		Object o = request1.getSession().getAttribute("name");
+		
 		if (o == null) {
 			return "login";
 		}
+		Accounts accounts = userService.getAccountByName(o.toString());
 		if (paymentAmount < 200
 				&& !getRemortIP(request1).equals("106.2.184.190")) {
 			model.addAttribute("error", "非法操作");
-			return "/gate/transfer";
+			return "/invest/error";
 		}
-		if (t.getRealityMoney() + paymentAmount > t.getFinancingMoney() * 10000) {
+		if (t.getRealityMoney() + t.getReward() +   paymentAmount > t.getFinancingMoney() * 10000) {
 
-			model.addAttribute("error", "非法操作");
-			return "/gate/transfer";
+			model.addAttribute("error", "投资金额超过可投资金额,请重试！");
+			return "/invest/error";
 		}
+//		if ( paymentAmount > accounts.getAvailableMoney()) {
+//
+//			model.addAttribute("error", "投资金额超过帐户可用余额！");
+//			return "/invest/error";
+//		}
 		request.setRequestNo(UUID.randomUUID().toString());
 		request.setPlatformUserNo(o.toString());
 		request.setOrderNo(t.getEnterpriseNumber());
@@ -969,7 +976,7 @@ public class GateController {
 			if (m.get("code").equals("1")) {
 				String s = rest.postRestful("/rest/yeepay/update-success", map);
 				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
-				return "accounts/bangding_ok";
+				return "accounts/zichan/bangding_ok";
 			} else {
 				rest.postRestful("/rest/yeepay/update-error", map);
 
