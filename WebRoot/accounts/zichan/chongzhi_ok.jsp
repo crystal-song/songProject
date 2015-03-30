@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <%@ include file="/includes/taglibs.jsp" %> 
 
 <title>充值成功 - 中租宝</title>
-</head>
+
 
 <body>
 <!-- top start  -->
