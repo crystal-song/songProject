@@ -3,8 +3,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.ConnectException;
 import java.net.URL;
+import java.util.Iterator;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -111,6 +113,20 @@ public class CommonUtil {
 		String requestUrl = oauth2_token_url;
 		// 发起GET请求获取凭证
 		JSONObject jsonObject = httpsRequest(requestUrl, "GET", null);
+		Iterator iterator=jsonObject.keys();
+	     String key=	iterator.next().toString();
+		if("errmsg".equals(key)){
+			int i=3;
+			while(i>0){
+				jsonObject = httpsRequest(requestUrl, "GET", null);
+				int j=5-i;
+				--i;
+				System.out.println("第"+j+"请求");
+				if(!"errmsg".equals(key)){
+					break;
+				}
+			}
+		}
 		if (null != jsonObject) {
 			try {
 				oauth2Token = new Oauth2Token();
@@ -150,4 +166,13 @@ public class CommonUtil {
 		}
 		return token;
 	}
+	   public static String OAuth2Url(String appid, String redirect_uri,String state) {  
+	        try {  
+	            redirect_uri = java.net.URLEncoder.encode(redirect_uri, "utf-8");  
+	        } catch (UnsupportedEncodingException e) {  
+	            e.printStackTrace();  
+	        }  
+	        String oauth2Url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+redirect_uri+"&response_type=code&scope=snsapi_base&state="+state+"#wechat_redirect";  
+	        return oauth2Url;  
+	    }  
 }
