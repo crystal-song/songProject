@@ -79,14 +79,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                           <span class="border_right01"></span>
 	                        </div>
 	                    </li>
-	                    <li><span>易宝账号</span>
+	                    <%-- <li><span>易宝账号</span>
 	                      <span>${registerYeePay1.platformUserNo}</span>
 	                      <span class="tip">立即认证</span>
 	                        <div id="tishik01">
 	                           <span class="border_left01"></span>
 	                           <div class="border_cent01">您未绑定易宝账号，<a href="<%=path%>/gate/register" target="_blank">请绑定</a></div>
 	                           <span class="border_right01"></span>
-	                        </div></li>
+	                        </div></li> --%>
+	                    <li>
+	                      <span>易宝账号</span>
+	                      <span class="span_le"><%-- ${registerYeePay1.platformUserNo} --%>
+	                      <c:if test="${not empty user1.realName}"> 
+	                      ${fn:substring(user1.realName,0,1)}<c:forEach var="j" begin="1" end="${fn:length(user1.realName)-1}" step="1">*</c:forEach>
+	                      </c:if>
+	                      </span>
+	                      <c:if test='${ empty registerYeePay1.code}'>
+	                      <span class="tip"><a href="<%=path%>/gate/register" target="_blank">立即认证</a></span>
+	                        <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01"><a href="<%=path%>/gate/register" target="_blank">您未绑定易宝账号，请绑定！</a></div>
+	                           <span class="border_right01"></span>
+	                        </div>
+	                     </c:if>
+	                     <c:if test='${registerYeePay1.code==1}'>
+	                           <span class="tip" id="green_back">已认证</span>
+	                           <div id="tishik01">
+	                           <span class="border_left01"></span>
+	                           <div class="border_cent01"><a href="javascript:;">您已绑定易宝账户。</a></div>
+	                           <span class="border_right01"></span>
+	                        </div>
+	                    </c:if>
+	                  </li>  
 	                   </ul>
 	                   
              <ul class="con_name lame">

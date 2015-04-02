@@ -4,7 +4,7 @@
 
 <%@ include file="/includes/taglibs.jsp" %> 
 <title>我的地址 - 我的账户 - 中租宝</title>
-<script type="text/javascript" src="/js/sms.js" ></script>
+
 <body>
 	
 <!-- top start  -->
@@ -57,28 +57,7 @@
 		                </div> 
                      </form>		             		             
 		           </div>
-					 <!-- <div class="xinzeng">
-						<div class="textdizhi"></div>
-						<div class="dizhi_fir">
-						<span>省/直辖市<strong>*</strong></span><input
-								type="text" id="province" />
-							<span>城市/区<strong>*</strong></span><input type="text" id="city" />
-						</div>
-						<div class="dizhi_fir" style="height: 115px;">
-							<span>详细地址<strong>*</strong></span>
-							<textarea id="detail"></textarea>
-						</div>
-						<div class="dizhi_fir">
-							<span>邮编<strong>*</strong></span><input type="text"  id="code"/>
-						</div>
-						<div class="dizhi_fir">
-							<span>收货人姓名<strong>*</strong></span><input id="name" type="text" />
-						</div>
-						<div class="dizhi_fir">
-							<span>电话号码<strong>*</strong></span><input type="text" id="phone" />
-						</div>
-						<a class="zhifu">确认添加</a>
-					</div>  -->                  
+					   
 					<div class="clear"></div>			
 					<div class="dizhi_table">
 			           <ul>            
@@ -96,56 +75,21 @@
 			              <li style="height:auto" v="${a.id }" class="add_hide">
 			              
 			              <div class="msglist">
-			               <span>${a.name }</span>
-			               <span>${a.province }</span>
+			               <span class="name_frame name_${a.id }" >${a.name }</span>
+			               <span class="province_frame province_${a.id }" >${a.province }</span>
 			               <%-- <span>${a.city }</span> --%>
 			               <!-- <span id="table_wid">XX小区XX号楼XX单元XX室XX小区XX号楼XX单元XX室</span>   -->
-			               <span id="table_wid">${a.detail }</span> 			             
-			               <span>${a.code }</span>
-			               <span>${a.phone }</span>
-			               <span><a class="m_green modify_form">修改</a>|<a id="del"  class="m_green delete" v="${a.id }">删除</a></span>
+			               <span id="table_wid" class="detail_frame detail_${a.id} " >${a.detail }</span> 			             
+			               <span class="code_frame code_${a.id }" >${a.code }</span>
+			               <span class="phone_frame phone_${a.id }" >${a.phone }</span>
+			               <span><a class="m_green modify_form" >修改</a>|<a id="del"  class="m_green delete" >删除</a></span>
 			               <span><input type="radio" name="chbox" class="chbox"></input></span> 
 			               </div>    
-			                <iframe style="display:none; width:700px; height:400px; border:0px; scrolling:no; allowtransparency:true ;background-color:transparent" src="Mform.jsp">
+			                <iframe id="ii_${a.id }" style="display:none; width:700px; height:400px; border:0px; scrolling:no; allowtransparency:true ;background-color:transparent" src="Mform.jsp">
 			                
 			                </iframe>                       			              			              
 	                      </li>	  
-	                                         
-			            </c:forEach>
-			            <%-- <div class="dizhi_input xiugai" style="display:none">
-						      <form action="#" name="d_form" >						      
-				                <ul class="rechange">
-				                  <li>
-				                    <span>省/直辖市<strong>*</strong></span>
-				                    <select id="province" name="province"></select> 
-				                    <span>城市<strong>*</strong></span>		                  
-				                    <select id="city" name="city" ></select> 		            
-				                  </li> 		                   
-				                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea id="detail1">${a.detail }</textarea></li>
-				                  <li><span>邮编<strong>*</strong></span><input type="text" id="code1" value="${a.code }"/></li>
-				                  <li><span>收货人姓名<strong>*</strong></span><input type="text" id="name1" value="${a.name }"/></li>
-				                  <li><span>手机号码<strong>*</strong></span><input type="text" id="phone1" value="${a.phone }"/></li>
-				                </ul> 		                		                
-				                <div class="chose">   
-				                <a class="subbtn_add" >确认修改</a> 
-				                <a class="subbtn1 reback" >返回</a>  
-				                </div>          				                
-		                     </form>		             		             
-		                   </div> --%>
-			           </ul>
-             </div>
-						<%-- <c:forEach var="a" items="${address}" varStatus="i">
-							 <div v="${a.id }">
-								<p style="margin-top: 26px;">${a.province }${a.city }（${a.name }收）</p>
-								<p>${a.detail }</p>
-								<p>${a.phone }</p>
-							</div> 
-							
-							
-			
-						</c:forEach> --%>
-                        
-                        <div id="dialog01"  class="dialognew" style="height:170px;">
+	                           <div id="dialog01"  class="dialognew" style="height:170px;">
 							<div class="dialog_title">
 								<strong>提示</strong>
 								<div class="right_cha"></div>
@@ -153,9 +97,15 @@
 							<div class="touzi_text">
 								<p class="p_font textpiont"><i class="piont_pic"></i>确定删除吗？</p>
 							</div>
-							<a class="silbtn" v="">确定</a>
+							<a class="silbtn" v="${a.id }">确定</a>
 							<a class="diabtn1" >取消</a>
-	                     </div>
+	                     </div>              
+			            </c:forEach>
+			           
+			           </ul>
+             </div>
+										                      
+                        
                         
                        <div id="dialog01"  class="dialog_add" style="height:170px;">
 							<div class="dialog_title">
@@ -179,56 +129,40 @@
 <!-- footer end -->
 </body>
 </html>
-<!-- 
+
 <script class="resources library" src="/js/area.js" type="text/javascript"></script>
-<script type="text/javascript">_init_area();area();</script> -->
+<script type="text/javascript">_init_area();area();</script> 
 
 <script type="text/javascript">
-$(document).ready(
-		function(e) {
+
+			$(".modify_form").click(function(){
+				$(this).parent().parent().css("display","none").siblings("iframe").css("display","block");
+				var num=$(this).parent().parent().parent().attr("v");
+                var name_frame=$(this).parent().siblings(".name_frame").text();
+				var detail_frame=$(this).parent().siblings(".detail_frame").text();
+				var code_frame=$(this).parent().siblings(".code_frame").text();
+				var phone_frame=$(this).parent().siblings(".phone_frame").text();
+
+				 $('#ii_'+num).contents().find("#detail1").val(detail_frame);
+				 $('#ii_'+num).contents().find("#name1").val(name_frame);
+				 $('#ii_'+num).contents().find("#code1").val(code_frame);
+				 $('#ii_'+num).contents().find("#phone1").val(phone_frame);   	
+				 $('#ii_'+num).contents().find(".chose").attr("v",num);	
+			})		
 			
 		  $(".delete").click(function(){
-			  $(".dialognew").css("display","block")
-			  
+			  $(".dialognew").css("display","block")			  
 		  })
 		  
           $(".delete").click(function(){
-				// $(this).parent().parent().siblings(".dialognew").css("display","block");
+
 				$(".dialognew").css("display","block");
 				var delid=$(this).attr('v');
 				$(".silbtn").attr("v",delid);
 				
 			}) 
 			
-		  $(".subbtn_add").click(function(){
-			    var newId=$(this).parent().siblings(".rechange").children()
-				var pro=newId.children("#province").val();
-				var cit=newId.children("#city").val();
-				var detai=newId.children("#detail1").val();
-				var cod=newId.children("#code1").val();
-				var nam=newId.children("#name1").val();
-				var pho=newId.children("#phone1").val();
 
-				$.ajax({
-				  type: "POST",
-				  url:"/hero/del/address",
-				  data:{
-						province: pro,
-						city: cit,
-						name: nam,
-						detail: detai,
-						code: cod,
-						phone: pho},
-					  
-				 success: function(msg){
-					 $(".dialog_add").css("display","block");
-				     $(".black_bac").css("display","block");
-					 location.reload();
-				 }
-					
-				})
-			  
-		  })	
 		 
 		 $(".silbtn").click(function(){		
 			 $.ajax({
@@ -332,46 +266,12 @@ $(document).ready(
 					    	}
 					    	$(".dialog_add").css("display","block");
 					    	$(".black_bac").css("display","block");
-					    	/* location.reload();  */
+					    
 					    	});
 			});
 		
 			 
-			$(".modify_form").click(function(){
-				$(this).parent().parent().css("display","none").siblings("iframe").css("display","block")		
-				//$(this).parent().parent().css("display","none").prepend(".xiugai")
-				
-				//siblings(".dizhi_input").css("display","block")	
-				//$(this).parent().parent().parent()
-				//$(".xiugai").insertAfter(".msglist").css("display","block")
-				//$(".msglist").after(".xiugai").css("display","block");
-				//$(".add_hide").append(".xiugai")
-				
-				/* $(this).parent().parent().parent().append('
-						<div class="dizhi_input xiugai" style="display:none">
-					      <form action="#" name="d_form" >						      
-                <ul class="rechange">
-                  <li>
-                    <span>省/直辖市<strong>*</strong></span>
-                    <select id="province" name="province"></select> 
-                    <span>城市<strong>*</strong></span>		                  
-                    <select id="city" name="city" ></select> 		            
-                  </li> 		                   
-                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea id="detail1">${a.detail }</textarea></li>
-                  <li><span>邮编<strong>*</strong></span><input type="text" id="code1" value="${a.code }"/></li>
-                  <li><span>收货人姓名<strong>*</strong></span><input type="text" id="name1" value="${a.name }"/></li>
-                  <li><span>手机号码<strong>*</strong></span><input type="text" id="phone1" value="${a.phone }"/></li>
-                </ul> 		                		                
-                <div class="chose">   
-                <a class="subbtn_add" >确认修改</a> 
-                <a class="subbtn1 reback" >返回</a>  
-                </div>          				                
-             </form>		             		             
-           </div>') */
-				
-				
-				
-			})
+		
 			
 			$(".subbtn1").click(function(){
 				$(".dizhi_add").css("display","none");
@@ -385,29 +285,14 @@ $(document).ready(
 				dizhi_p.siblings(".msglist").css("display","block");
 				
 			})
-			$(".diabtn1").click(function(){
-				
+		
+			$(".diabtn").click(function(){
+				location.reload();
 			})
+		
 			
-			function callChild(a,b,c,d,e,f){
-				
-			}
 			
-		});
+	
 </script>
  
-<script type="text/javascript">
- /* $(function(){
-	
-		var Gid  = document.getElementById ;
-		var showArea = function(){
-			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 	
-			Gid('s_city').value + " - 县/区" + 
-			Gid('s_county').value + "</h3>"
-									}
-		Gid('s_county').setAttribute('onchange','showArea()');
 
-	   
-})  */
-
-</script>

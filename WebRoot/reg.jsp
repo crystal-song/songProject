@@ -68,7 +68,7 @@
 						name="servicePhone" id="servicePhone" type="text"
 						class="input_item" />
 				</p>
-				<p style="width: 480px">
+				<p style="width: 520px">
 					<span class="reg_left_style"> 验证码： </span><input type="text"
 						id="vcode" value="" class="input_item" onblur="validateCode()" />
 

@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       <div class="diannao01">
 	        <a href="<%=path%>/login.jsp" class="xin_btn01"><strong>注册登录</strong></a>
 	        <a class="jiantou_down1"></a>
-	        <a href="<%=path%>/anquanshezhi.jsp" class="xin_btn02"><strong>身份认证</strong></a>
+	        <a href="/accounts/user/anquanshezhi.jsp" class="xin_btn02"><strong>身份认证</strong></a>
 	        <a class="jiantou_down2"></a>
 	        <a href="<%=path%>/gate/recharge" class="xin_btn03"><strong>投资充值</strong></a>
 	        <a class="jiantou_down3"></a>
@@ -107,9 +107,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 </body>
 </html>
-
+ <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
-      $(function(){
+$(document).ready(function(){
     	  var timer=null;
     	  var num=-100;
     	  var add=200;
@@ -211,12 +211,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		   
     	   });
     	 
-      })
       
-</script>
- <script type="text/javascript">
-       
-    $(document).ready(function(){
+      
+
     $(".absolute_bac1").hide();
     $(".absolute_right a").hide();
     $(".absolute_right span").mouseover(function(){
