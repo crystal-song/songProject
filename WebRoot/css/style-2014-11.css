@@ -2109,6 +2109,32 @@ ul,li{
 	height: 30px;
 	text-align: right;
 }
+.zi_btn{
+	width:200px;
+	height:100px;
+	background:#f8f8f8;
+	border:1px solid #ccc;
+	margin-top:20px;
+}
+.re_login{
+	width:80px;
+	height:30px;
+	border-radius:5px;
+	font-size:14px;
+	display:inline-block;
+	color:#fff;
+	background:#ff6f74;
+	margin:12px auto;
+	cursor:pointer;
+}
+.re_login:hover{
+	background:#ec454e;
+	color:#fff;
+	
+}
+.none{
+	display:none;
+}
 /*zichan*/
 .zichan_con{
 	width: 810px;
