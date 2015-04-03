@@ -433,9 +433,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-<div>
-     <h3 id="focush2"></h3> 
-</div>
 <script type="text/javascript">
 $(function () {
     $(".ui_timepicker").datetimepicker({
@@ -451,20 +448,8 @@ $(function () {
 })
 //实例化编辑器
 var um = UM.getEditor('Editor');
-um.addListener('blur',function(){
-    $('#focush2').html('编辑器失去焦点了')
-});
-um.addListener('focus',function(){
-    $('#focush2').html('')
-});
 //实例化编辑器
 var um = UM.getEditor('hotEditor');
-um.addListener('blur',function(){
-    $('#focush2').html('编辑器失去焦点了')
-});
-um.addListener('focus',function(){
-    $('#focush2').html('')
-});
 //按钮的操作
 function insertHtml() {
     var value = prompt('插入html代码', '');
@@ -496,12 +481,7 @@ function getAllHtml() {
 
     //实例化编辑器
     var um = UM.getEditor('myEditor');
-    um.addListener('blur',function(){
-        //$('#focush2').html('编辑器失去焦点了')
-    });
-    um.addListener('focus',function(){
-        $('#focush2').html('')
-    });
+   
     //按钮的操作
     function insertHtml() {
         var value = prompt('插入html代码', '');

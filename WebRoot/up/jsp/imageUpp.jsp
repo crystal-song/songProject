@@ -1,5 +1,4 @@
     <%@page import="com.mftour.spring.util.ReadWirtePropertis"%>
-<%@page import="com.mftour.spring.util.WatermarkImage"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
              pageEncoding="utf-8"%>
          <%@ page import="com.mftour.spring.util.Uploader" %>
@@ -15,10 +14,7 @@
     up.setAllowFiles(fileType);
     up.setMaxSize(10000); //单位KB
     up.upload();
-    com.mftour.spring.util.File f =  ReadWirtePropertis.file();
-	 String fi= f.getUrl();
-    WatermarkImage.watermark( fi +"/" +up.getUrl(), fi +"/" +up.getUrl());
-     
+   
     String callback = request.getParameter("callback");
 
     String result = "{\"name\":\""+ up.getFileName() +"\", \"originalName\": \""+ up.getOriginalName() +"\", \"size\": "+ up.getSize() +", \"state\": \""+ up.getState() +"\", \"type\": \""+ up.getType() +"\", \"url\": \""+ up.getUrl() +"\"}";
