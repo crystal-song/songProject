@@ -395,10 +395,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </div>
 <input type="hidden" id="username" value="${name}">
 <input type="hidden" id="targetPlatformUserNo" value="${product1.targetPlatformUserNo}">
-     <div class="pro_con_title"><strong>相关资料</strong></div> 
-     <div class="ziliao_pic">
-     ${product1.enterpriseCertificate}
-    
+     <div class="pro_con_title"><strong>相关证件</strong></div> 
+     <div class='zi_btn ${name==null ? "":"none" }'>
+      <p>请您登陆后查看相关证件！</p>
+      <a class="re_login" href="/login.jsp">登陆</a>
+     </div>
+     <div class='ziliao_pic ${name==null ? "none":"" }'>
+         ${product1.enterpriseCertificate}    
      </div>
     </div>
           <div id="dialog01"  style="display:none; height:210px;" class="newye">
@@ -440,6 +443,9 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
  <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
  <script type="text/javascript">
 var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
+
+
+
 
 /*提交表单*/
 function mysubmit(){

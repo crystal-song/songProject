@@ -45,7 +45,7 @@
 		                    <select id="s_province" name="s_province"></select> 
 		                    <span>城市<strong>*</strong></span>		                  
 		                    <select id="s_city" name="s_city" ></select> 		            
-		                  </li>		                   
+		                  </li>		                    
 		                  <li class="di_hei"><span>详细地址<strong>*</strong></span><textarea id="detail"></textarea></li>
 		                  <li><span>邮编<strong>*</strong></span><input type="text" id="code"/></li>
 		                  <li><span>收货人姓名<strong>*</strong></span><input type="text" id="name"/></li>
@@ -72,8 +72,7 @@
 			             </li>
 			             <c:forEach var="a" items="${address}" varStatus="i">
 			             <input type="hidden" value="" name="addressid" id="addressid">
-			              <li style="height:auto" v="${a.id }" class="add_hide">
-			              
+			             <li style="height:auto" v="${a.id }" class="add_hide">			              
 			              <div class="msglist">
 			               <span class="name_frame name_${a.id }" >${a.name }</span>
 			               <span class="province_frame province_${a.id }" >${a.province }</span>
@@ -88,8 +87,8 @@
 			                <iframe id="ii_${a.id }" style="display:none; width:700px; height:400px; border:0px; scrolling:no; allowtransparency:true ;background-color:transparent" src="Mform.jsp">
 			                
 			                </iframe>                       			              			              
-	                      </li>	  
-	                           <div id="dialog01"  class="dialognew" style="height:170px;">
+	                     </li>	  
+	                      <div id="dialog01"  class="dialognew" style="height:170px;">
 							<div class="dialog_title">
 								<strong>提示</strong>
 								<div class="right_cha"></div>
