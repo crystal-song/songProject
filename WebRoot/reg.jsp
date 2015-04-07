@@ -25,12 +25,13 @@
 				已有中租宝账户? 请<a href="<%=path%>/login.jsp" style="color: #e72634">直接登录</a>
 			</div>
 		</div>
+		<div class="reg_con">
 		<form action="<%=path%>/welcome/regEmail" id="Form1" method="post"
 			style="padding: 0px;">
 			<div class="blank_block_content reg">
 
 				<p>
-					<span class="reg_left_style">用户名：</span><input name="name"
+					<span class="reg_left_style"><label>*</label>用户名：</span><input name="name"
 						id="name" type="text" class="input_item" onblur="chk_name()" /><span
 						class="green_right new1"></span>
 				</p>
@@ -39,7 +40,7 @@
 					<span class="tip_n">请输入用户名！</span>
 				</div>
 				<p>
-					<span class="reg_left_style">密 码：</span><input name="password"
+					<span class="reg_left_style"><label>*</label>密 码：</span><input name="password"
 						id="password" type="password" class="input_item"
 						onblur="chk_pwd()" /><span class="green_right new2"></span>
 				</p>
@@ -47,7 +48,7 @@
 					<span class="tip_n">请输入密码！</span>
 				</div>
 				<p>
-					<span class="reg_left_style">确认密码：</span><input name="newpassword"
+					<span class="reg_left_style"><label>*</label>确认密码：</span><input name="newpassword"
 						id="newpassword" type="password" class="input_item"
 						onblur="chk_repwd()" /><span class="green_right new3"></span>
 				</p>
@@ -55,7 +56,7 @@
 					<span class="tip_n">请重复密码！</span>
 				</div>
 				<p>
-					<span class="reg_left_style">安全邮箱：</span><input name="email"
+					<span class="reg_left_style"><label>*</label>安全邮箱：</span><input name="email"
 						id="email" type="text" class="input_item" onblur="chk_email()" /><span
 						class="green_right new4"></span>
 				</p>
@@ -69,7 +70,7 @@
 						class="input_item" />
 				</p>
 				<p style="width: 520px">
-					<span class="reg_left_style"> 验证码： </span><input type="text"
+					<span class="reg_left_style"><label>*</label>验证码： </span><input type="text"
 						id="vcode" value="" class="input_item" onblur="validateCode()" />
 
 					<img id="code" type="4" align="absmiddle" src=""
@@ -90,10 +91,13 @@
 						class="btn_reg_new" value="立即注册">
 				</p>
 			</div>
-			<div class="two_pic"></div>
+			<div class="two_pic">
+			
+			</div>
 		</form>
+		</div>
 	</div>
-	</div>
+	
 
 
 </body>

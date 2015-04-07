@@ -3582,8 +3582,11 @@ ul,li{
 	color:#bc3726;
 	}
 .two_pic{ 
-	width:1100px; 
-	height:13px;
+	width:434px; 
+	height:350px;
+	margin-top:60px;
+	float:left;
+	background:url(../img/images-2014-11/001zhuce.jpg) no-repeat;
 	}
 
 /*help_con*/
@@ -3838,17 +3841,17 @@ ul,li{
 	height:auto;
 }
 .blank_block{ 
-	width:803px; 
+	width:1100px; 
 	border:1px solid #ccc;
 	border-radius:5px;
 	min-height:160px; 
-	background:#FFF;  
+	background:#fff;  
 	padding:0px; 
 	margin:50px auto;
 	z-index:1000
 }
 .blank_block_title{ 
-	width:759px; 
+	width:1010px; 
 	height:45px; 
     border-bottom:1px solid #ccc;
 	text-align:left; 
@@ -3861,10 +3864,11 @@ ul,li{
 .blank_block_content{ 
 	padding:20px; 
 	text-align:left; 
-	margin-top:40px
+	margin-top:40px;
+	float:left;
 }
 .top_head{
-	width:1000px;
+	width:1100px;
 	height:80px;
 	margin:0 auto;
 	
@@ -3882,10 +3886,15 @@ ul,li{
     background:url(../img/images-2014-11/reg_title_bac.gif) 0 4px  no-repeat;
 }
 .reg{ 
+	width:50%;
 	font-size:14px; 
 	line-height:36px; 
 	font-family: 'Microsoft YaHei','Helvetica Neue',Helvetica,Arial,STHeiti,simsun,sans-serif;
-	padding-left:25%;
+	padding-left:5%;
+}
+.reg_con{
+	width:100%;
+	height:620px;
 }
 .reg p{ 
 	padding:3px; 
@@ -3912,6 +3921,10 @@ ul,li{
 }
 .reg .input_item:focus{ 
 	border:1px solid #0F9;
+}
+.reg label{
+	color:#e33a0d;
+	margin-right:3px;
 }
 .green_right{
 	width:30px;
