@@ -3507,6 +3507,12 @@ ul,li{
 .ban03{
 	background:url(../img/images-2014-11/banner_003.jpg) 50% 0 no-repeat;
 }
+.ban04{
+	background:url(../img/images-2014-11/banner_004.jpg) 50% 0 no-repeat;
+}
+.ban05{
+	background:url(../img/images-2014-11/banner_005.jpg) 50% 0 no-repeat;
+}
 .one{ 
 	width:100%; 
 	height:31px; 
@@ -4052,7 +4058,7 @@ ul,li{
 	color:#000
 }
 .banner_fra ol{
-	width:90px; 
+	width:135px; 
 	height:30px; 
 	position:absolute; 
 	top:82%; 
@@ -6412,6 +6418,88 @@ ul,li{
 	float:left;
 	width:100px;
 }
+.con{
+	width:100%;
+	height:1540px;
+	background:url(../img/images-2014-11/beijing.jpg)  50%  0 no-repeat;
+	padding-top:4%;
+}
+.con_ed{
+	width:750px;
+	height:220px;
+	background:url(../img/images-2014-11/wd.png) no-repeat;
+	margin:0 auto;
+	
+}
+.liquan_jin{
+	width:340px;
+	height:181px;
+	margin:16% auto;
+	display:inline-block;
+	
+}
+.li_tab{
+	width:440px;
+	height:120px;	
+	border-radius:5px;
+	background:#e33a0d;
+	margin:0 auto;
+	border:1px solid #8f0000;
+}
+.li_tab a{
+	width:440px;
+	height:120px;
+	line-height:120px;
+	display:inline-block;
+	font-size:48px;
+	color:#fff;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+.guize{
+	width:640px;
+	height:280px;
+	margin:8% auto;	
+	color:#fff;
+	text-align:left;
+}
+.guize p{
+	width:100%;
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	font-size:22px;
+}
+.guize li{
+	height:30px;
+	line-height:30px;
+	font-size:16px;	
+}
+.p_left{
+	padding-left:10px;
+}
+.yao_logo{
+	width:170px;
+	height:55px;
+	background:#1eb9ec;
+	border-radius:25px;
+	margin-left:16%;;
+}
+
+.yao_logo img{
+	margin-top:3px;
+}
+
+.kong{
+	width:100%;
+	height:535px;
+}
+
+
+
+
+
 
 
 
