@@ -36,10 +36,13 @@ import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.File;
 import com.mftour.spring.util.Page;
 import com.mftour.spring.util.ReadWirtePropertis;
+import com.mftour.spring.util.RedisUtil;
 import com.mftour.spring.util.Rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import redis.clients.jedis.Jedis;
 
 @Controller
 @RequestMapping("/Login")
@@ -66,21 +69,22 @@ public class AdminController {
 
 	}
 
-	
-
 	@RequestMapping(value = "/session", method = { RequestMethod.POST,
 			RequestMethod.GET })
-	public String Session(Model model, @RequestParam("token") String token,@RequestParam("name") String name,
-			HttpServletRequest request) throws Exception {
-		String res = rest.getRestful("/rest/valid-login-token/"+token+"/"+name);
-		Response resBean =  JSON.parseObject(res, Response.class);
+	public String Session(Model model, @RequestParam("token") String token,
+			@RequestParam("name") String name, HttpServletRequest request)
+			throws Exception {
+		String res = rest.getRestful("/rest/valid-login-token/" + token + "/"
+				+ name);
+		Response resBean = JSON.parseObject(res, Response.class);
 		if (resBean.isSuccess()) {
-			request.getSession().setAttribute("restouthost", f.getRestOutHost());
+			request.getSession()
+					.setAttribute("restouthost", f.getRestOutHost());
 			request.getSession().setAttribute("admin", name);
 			return "ptop/p2b_add";
-		}else{
-			return "redirect:"+f.getRestOutHost()+"/admin";
-		} 
+		} else {
+			return "redirect:" + f.getRestOutHost() + "/admin";
+		}
 
 	}
 
@@ -94,7 +98,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			boolean b = YeePay.doLoan(id, enterpriceNumber);
@@ -124,7 +128,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			product.setFinanceTime(Timestamp.valueOf(financeTime));
@@ -172,7 +176,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			List<TProduct> list = productService.queryProduct(product);
@@ -199,7 +203,7 @@ public class AdminController {
 	public String getProductByid(@RequestParam("id") Long id, Model model,
 			TProduct product, HttpServletRequest request) throws Exception {
 		Object o = request.getSession().getAttribute("admin");
-		if (o==null){
+		if (o == null) {
 			return "error";
 		}
 		TProduct product1 = productService.getProductById(id);
@@ -222,9 +226,9 @@ public class AdminController {
 
 		investmentInfo.setWriteTime(df.format(new Date()));
 		;
-		
+
 		Object o = request.getSession().getAttribute("admin");
-		if (o==null){
+		if (o == null) {
 			return "error";
 		}
 		investmentInfo.setAdministratorName(o.toString());
@@ -275,7 +279,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			productService.deleteProduct(id);
@@ -303,7 +307,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			TInvestmentInfo investmentInfo = ptopService
@@ -352,7 +356,7 @@ public class AdminController {
 	public String updateProduct(@RequestParam("id") Long id, Model model,
 			TProduct product, HttpServletRequest request) throws Exception {
 		Object o = request.getSession().getAttribute("admin");
-		if (o==null){
+		if (o == null) {
 			return "error";
 		}
 		TProduct product1 = productService.getProductById(id);
@@ -374,7 +378,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
@@ -404,7 +408,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			List<TChannel> list = ptopService.getChannel();
@@ -430,7 +434,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			List<TNews> list = ptopService.getNews();
@@ -458,7 +462,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
@@ -491,7 +495,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			if (channel.getId() == 0) {
@@ -529,7 +533,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			List<TChannel> list1 = ptopService.getChannel();
@@ -606,7 +610,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			ptopService.deleteTChannel(channel.getId());
@@ -633,7 +637,7 @@ public class AdminController {
 
 		try {
 			Object o = request.getSession().getAttribute("admin");
-			if (o==null){
+			if (o == null) {
 				return "error";
 			}
 			ptopService.deleteInterestRate(id);
@@ -676,7 +680,7 @@ public class AdminController {
 	public String saveInterestRate(Model model, TInterestRate InterestRate,
 			HttpServletRequest request) throws Exception {
 		Object o = request.getSession().getAttribute("admin");
-		if (o==null){
+		if (o == null) {
 			return "error";
 		}
 		ptopService.addOrUpdateTInterestRate(InterestRate);
@@ -726,7 +730,7 @@ public class AdminController {
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			TProduct product, HttpServletRequest request) throws Exception {
 		Object o = request.getSession().getAttribute("admin");
-		if (o==null){
+		if (o == null) {
 			return "error";
 		}
 		Page page = Page.newBuilder(pageNo, pageSize, "queryTransRecord");
@@ -750,4 +754,24 @@ public class AdminController {
 		return "ptop/p2b_transRecord";
 
 	}
+
+	@RequestMapping(value = "/addbanner", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String addbanner(
+			@RequestParam("bannerContext") String bannerContext, Model model)
+			throws Exception {
+		Jedis jedis = null;
+		try {
+			jedis = RedisUtil.getJedis();
+			jedis.set("bannerKey", bannerContext);
+			return "ptop/addBanner";
+		} catch (Exception e) {
+			logger.error("error" + e);
+			throw e;
+		} finally {
+			RedisUtil.returnResource(jedis);
+		}
+
+	}
+
 }

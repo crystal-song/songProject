@@ -10,10 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import redis.clients.jedis.Jedis;
+
 import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.RedisUtil;
 
 @Controller
 @RequestMapping("/")
@@ -27,7 +30,9 @@ public class RegController {
 
 	@RequestMapping(method = {
 	            RequestMethod.GET })
-	public String index(Model model) throws Exception {
+	public String index(Model model)  {
+		Jedis jedis = null;  
+		try {  
 		int recommendType = 1;
 		List<TProduct> list = productService.queryProductByType(recommendType);
 		List productList=new ArrayList();
@@ -63,6 +68,14 @@ public class RegController {
 		List<TNews> list3 = ptopService.getRepaymentNoticeByChannel();
 		model.addAttribute("list3", list3);
 		model.addAttribute("now", System.currentTimeMillis());
+	
+                jedis = RedisUtil.getJedis();    
+                model.addAttribute("bannerContext", jedis.get("bannerKey"));
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }finally{    
+            RedisUtil.returnResource(jedis);    
+        }  
 		return "index";
 	}
 

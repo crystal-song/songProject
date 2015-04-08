@@ -16,5 +16,6 @@
 			href="${sessionScope.restouthost}/admin/users" class="btn_gray">用户管理</a></li>
 		<li><a href="/Login/getChannel" class="btn_gray">添加网站文章</a></li>
 		<li><a href="/ptop/imageBed.jsp" class="btn_gray" target="_blank">图床</a></li>
+		<li><a href="/ptop/addBanner.jsp" class="btn_gray" >网站编辑</a></li>
 	</ul>
 </div>

@@ -37,6 +37,13 @@ public class ReadWirtePropertis {
 			f.setWeixinCallHost(pro.getProperty("weixinCallHost"));
 			f.setAppId(pro.getProperty("appId"));
 			f.setAppSecret(pro.getProperty("appSecret"));
+			File.setRedisIp(pro.getProperty("redisIp"));
+			File.setPORT(Integer.valueOf(pro.getProperty("port")));
+			File.setMAX_ACTIVE(Integer.valueOf(pro.getProperty("MAX_ACTIVE")));
+			File.setMAX_IDLE(Integer.valueOf(pro.getProperty("MAX_IDLE")));
+			File.setMAX_WAIT(Integer.valueOf(pro.getProperty("MAX_WAIT")));
+			File.setTEST_ON_BORROW(Boolean.getBoolean(pro.getProperty("TEST_ON_BORROW")));
+			File.setTIMEOUT(Integer.valueOf(pro.getProperty("TIMEOUT")));
 			return f;
 		} catch (IOException e) {
 		

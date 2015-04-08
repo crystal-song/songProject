@@ -13,8 +13,56 @@ public class File {
     private String weixinCallHost;
     private String appId;
     private String appSecret;
+    private static String redisIp;
+    private static int PORT = 6379;
+   private static int MAX_ACTIVE = 1024;
+    private static int MAX_IDLE = 200;
+    private static int MAX_WAIT = 10000;
+    private static int TIMEOUT = 10000;
+    private static boolean TEST_ON_BORROW = true;
     
-    
+	public static int getPORT() {
+		return PORT;
+	}
+	public static void setPORT(int pORT) {
+		PORT = pORT;
+	}
+	public static int getMAX_ACTIVE() {
+		return MAX_ACTIVE;
+	}
+	public static void setMAX_ACTIVE(int mAX_ACTIVE) {
+		MAX_ACTIVE = mAX_ACTIVE;
+	}
+	public static int getMAX_IDLE() {
+		return MAX_IDLE;
+	}
+	public static void setMAX_IDLE(int mAX_IDLE) {
+		MAX_IDLE = mAX_IDLE;
+	}
+	public static int getMAX_WAIT() {
+		return MAX_WAIT;
+	}
+	public static void setMAX_WAIT(int mAX_WAIT) {
+		MAX_WAIT = mAX_WAIT;
+	}
+	public static int getTIMEOUT() {
+		return TIMEOUT;
+	}
+	public static void setTIMEOUT(int tIMEOUT) {
+		TIMEOUT = tIMEOUT;
+	}
+	public static boolean isTEST_ON_BORROW() {
+		return TEST_ON_BORROW;
+	}
+	public static void setTEST_ON_BORROW(boolean tEST_ON_BORROW) {
+		TEST_ON_BORROW = tEST_ON_BORROW;
+	}
+	public static String getRedisIp() {
+		return redisIp;
+	}
+	public static void setRedisIp(String redisIp) {
+		File.redisIp = redisIp;
+	}
 	public String getAppId() {
 		return appId;
 	}
