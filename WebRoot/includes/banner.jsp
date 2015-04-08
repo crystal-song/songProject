@@ -9,6 +9,8 @@
           <li class="ban01 a1"><a href="http://ptobchina.com/guarantee/getTNewsById?id=42"></a></li>
           <li style="display:none" class="ban02"><a href="/security.jsp"></a></li>
           <li style="display:none" class="ban03"><a href="/zhuanti/201411guwen/first.jsp" target="_blank"></a></li>
+          <li style="display:none" class="ban04"><a href="/zhuanti/yaoqing/yaoqing.jsp"></a></li>
+          <li style="display:none" class="ban05"><a href="" target="_blank"></a></li>
      </ul> 
      </c:if>
      <c:if test="${bannerContext!=''}">
@@ -16,6 +18,8 @@
      </c:if>
      <ol>
        <li class="current"></li>
+       <li></li>
+       <li></li>
        <li></li>
        <li></li>
      </ol>

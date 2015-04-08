@@ -84,20 +84,4 @@
            </li>
          </ul>
         <input type="hidden" id="username" value="${name }"  />
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+      
