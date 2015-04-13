@@ -8,6 +8,7 @@ import java.util.*;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXB;
+
 import com.alibaba.fastjson.JSON;
 import com.mftour.spring.base.JsonBaseBean;
 import com.mftour.spring.logic.YeePay;
@@ -18,6 +19,7 @@ import com.mftour.spring.rest.bean.ResponseReward;
 import com.mftour.spring.rest.bean.Reward;
 import com.mftour.spring.rest.bean.Yeepay;
 import com.mftour.spring.rest.bean.YeepayAccountInfo;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,7 @@ import com.mftour.spring.service.ITransRecordService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
 import com.mftour.spring.util.File;
+import com.mftour.spring.util.PDFTool;
 import com.mftour.spring.util.ReadWirtePropertis;
 import com.mftour.spring.util.Rest;
 import com.mftour.spring.util.Xml;
@@ -54,7 +57,6 @@ public class GateController {
 			.getLogger(GateController.class);
 	private static final File f = ReadWirtePropertis.file();
 	private Rest rest = new Rest();
-	private ServletContext servletContext = null;
 
 	@Autowired
 	private IGateService gateService;
@@ -193,11 +195,19 @@ public class GateController {
 			throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
 		Object o = request.getSession().getAttribute("name");
-
+        List<TTransferInfo> transferinfoList=new ArrayList();
 		if (o != null) {
 			List<TTransferInfo> li = gateService.queryTTransferInfoByName(o
 					.toString());
-			model.addAttribute("li", li);
+			for(TTransferInfo transferinfo:li){
+		      	List<TProduct> productlist	=productService.queryProductByNumber(transferinfo.getEnterpriseNumber());
+		      	if(productlist.size()>0){
+				TProduct product=productlist.get(0);
+				transferinfo.setLoaned(product.isLoaned());
+		      	}
+				transferinfoList.add(transferinfo);
+			}
+			model.addAttribute("li", transferinfoList);
 			return "/accounts/touziguanli/wodexiangmu";
 		} else {
 			return "login";
@@ -220,9 +230,10 @@ public class GateController {
 	}
 
 	@RequestMapping(value = "/gate/authorization")
-	public String authorization(Model model, TTransferInfo transferInfo)
+	public String authorization(Model model,@RequestParam("requestNo") String requestNo,HttpServletRequest request)
 			throws Exception {
 		model.addAttribute("now", System.currentTimeMillis());
+		 TTransferInfo transferInfo=gateService.queryTTransferInfoByNumber(requestNo).get(0);
 		model.addAttribute("transferInfo", transferInfo);
 		List<TRegisterYeePay> list = gateService
 				.queryTRegisterYeePayByName(transferInfo.getPlatformUserNo());
@@ -241,7 +252,13 @@ public class GateController {
 			model.addAttribute("product", product);
 			model.addAttribute("transferInfo1", transferInfo1);
 		}
-		return "accounts/touziguanli/touzixieyi";
+		String filePath=f.getUrl()+"/contract/"+transferInfo.getEnterpriseNumber()+".jsp";
+		java.io.File file=new java.io.File(filePath);
+		String returnPath="/up/jsp/contract/"+transferInfo.getEnterpriseNumber();
+		if(file.exists()){
+			return returnPath;
+		}
+		return "accounts/touziguanli/touzixieyi-download";
 	}
 
 	@RequestMapping(value = "/gate/drawMoney")

@@ -37,7 +37,7 @@
 								<td align="center">投资时间</td>
 								<td align="center">投资周期</td>
 								<td align="center">预期收益</td>
-								<td align="center">投资协议</td>
+								<td align="center">下载协议</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -52,9 +52,15 @@
 										<td align="center"><fmt:formatNumber type="number"
 											value="${s.interest}"
 												maxFractionDigits="2" />元</td>
-										<td align="center"><a
-											href="<%=path%>/gate/authorization?platformUserNo=${s.platformUserNo}&enterpriseNumber=${s.enterpriseNumber}&transDate=${s.transDate}"
-											title="查看投资协议" style="text-decoration: underline;">点击查看</a></td>
+												<c:if test="${s.loaned==true }">
+										<td align="center"><a  href="<%=path %>/PDFServlet?htmlFileName=/gate/authorization?requestNo=${s.requestNo}&id=${s.id}"
+											 style="text-decoration: underline;" target="_blank">下载</a>
+
+											 </td>
+											</c:if>
+											<c:if test="${s.loaned==false }">
+										<td align="center">项目结束，才可下载！</td>
+											</c:if>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -74,3 +80,6 @@
 	<!-- footer end -->
 </body>
 </html>
+<script type="text/javascript" >
+
+</script>  
