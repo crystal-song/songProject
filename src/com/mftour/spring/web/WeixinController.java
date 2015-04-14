@@ -1,5 +1,7 @@
 package com.mftour.spring.web;
 
+import java.io.StringWriter;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,10 +9,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.JAXB;
 
 import net.sf.json.JSONObject;
 
@@ -29,12 +33,16 @@ import com.easy.social.req.bean.Oauth2Token;
 import com.easy.social.util.CommonUtil;
 import com.mftour.spring.base.JsonBaseBean;
 import com.mftour.spring.model.Accounts;
+import com.mftour.spring.model.Rewards;
 import com.mftour.spring.model.TInterestRate;
 import com.mftour.spring.model.TInvestmentInfo;
-import com.mftour.spring.model.TNews;
 import com.mftour.spring.model.TProduct;
+import com.mftour.spring.model.TRegisterNotify;
+import com.mftour.spring.model.TRegisterYeePay;
 import com.mftour.spring.model.TTransferInfo;
 import com.mftour.spring.model.TUser;
+import com.mftour.spring.rest.bean.ResponseReward;
+import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.IUserService;
 import com.mftour.spring.service.IptopService;
@@ -43,18 +51,110 @@ import com.mftour.spring.util.File;
 import com.mftour.spring.util.Page;
 import com.mftour.spring.util.ReadWirtePropertis;
 import com.mftour.spring.util.Rest;
+import com.mftour.spring.util.Xml;
+import com.yeepay.bha.example.bean.BHATransferRequest;
+import com.yeepay.g3.utils.security.cfca.SignUtil;
 
 @Controller
 @RequestMapping("/m")
 public class WeixinController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(WeixinController.class);
+	private static final File f = ReadWirtePropertis.file();
+	private Rest rest = new Rest();
+	private String notifyUrl= f.getNotifyUrl() + "/m/notify";
 	@Autowired
 	private IUserService userService;
 	@Autowired
 	private IProductService productService;
 	@Autowired
 	private IptopService ptopService;
+	@Autowired
+	private IGateService gateService;
+	private String doSign(String xml, String url, Model model, String service) {
+
+		String pfx = f.getYeepayCfaFile();
+
+		String s = xml;
+		s = s.replaceAll("[\\r\\n]", "");
+
+		model.addAttribute("service", service);
+		model.addAttribute("url", url);
+		model.addAttribute("req", s);
+		model.addAttribute("sign", SignUtil.sign(s, pfx, "liukai123"));
+
+		return "/m/post";
+
+	}
+
+	private String doSign(Object obj, String url, Model model) {
+
+		StringWriter w = new StringWriter();
+		JAXB.marshal(obj, w);
+		return doSign(w.toString(), url, model, "");
+	}
+	@RequestMapping(value = "/notify", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String transferNotify(String notify, String sign, Model model)
+			throws Exception {
+		try {
+			Thread.sleep(10000);
+			Map<String, Object> m = Xml.Dom2Map(notify);
+			Rest rest = new Rest();
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("request-no", m.get("requestNo"));
+			
+			map.put("code", m.get("code"));
+			map.put("response-xml", notify);
+			if (m.get("code").equals("1")) {
+				String s = rest.postRestful("/rest/yeepay/update-success", map);
+				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+				return "accounts/chongzhi_ok";
+
+			} else {
+				rest.postRestful("/rest/yeepay/update-error", map);
+
+				return "error";
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error" + e);
+			return "error";
+		}
+	}
+	public String getRemortIP(HttpServletRequest request) {
+		if (request.getHeader("x-forwarded-for") == null) {
+			return request.getRemoteAddr();
+		}
+		return request.getHeader("x-forwarded-for");
+	}
+	boolean isYeepay(String userName) throws Exception {
+		boolean b = false;
+		List<TRegisterYeePay> li = gateService
+				.queryTRegisterYeePayByName(userName);
+		List<TRegisterNotify> list = gateService
+				.queryTRegisterNotifyByName(userName);
+
+		if (li != null && li.size() != 0) {
+			String code = li.get(0).getCode();
+			if (code != null && code.equals("1")) {
+
+				b = true;
+			}
+		}
+		if (list != null && list.size() != 0) {
+			String code = list.get(0).getCode();
+			if (code != null && code.equals("1")) {
+
+				if (li != null && li.size() != 0) {
+					b = true;
+				}
+			}
+		}
+		return b;
+	}
 	@RequestMapping(value = "/getCode", method = { RequestMethod.POST,
 			RequestMethod.GET })
 	public String getCode(HttpServletRequest request) throws Exception {
@@ -62,22 +162,22 @@ public class WeixinController {
 		String state=request.getParameter("state");
 		String path=request.getParameter("path");
 		request.getSession().setAttribute("code", code);
-		 if(state.equals("binding")){
+		 if("binding".equals(state)){
 				return "/m/login";
 			}
 		Oauth2Token oauth2Token=CommonUtil.getOauth2Token(code);
 		if(oauth2Token==null){
-			return "404";
+			return "/m/404";
 		}
 		TUser user=userService.getUserByopenId(oauth2Token.getOpenId());
 		if(user!=null){
 			request.getSession().setAttribute("name", user.getName()); 
 			request.getSession().setAttribute("userinfo", user);
 		}else{
-			if(!path.equals("/welcome/reg"))
+			if(!"/welcome/reg".equals(path))
 				return "/m/login";
 			}
-			if(state.equals("123")){
+			if("123".equals(state)){
 				return "redirect:"+path;
 			}
 		JSONObject	jsonObject = JSONObject.fromObject(state);
@@ -201,10 +301,12 @@ public class WeixinController {
 			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			TProduct product,HttpServletRequest request) throws Exception {
+		File f = ReadWirtePropertis.file();
+		model.addAttribute("f", f);
 		Page page = Page.newBuilder(pageNo, pageSize, "getProductByid");
 		TProduct product1 = productService.getProductById(id);
 		if(product1!=null&&product1.isLine()==false){
-			return "404";
+			return "/m/404";
 		}
 		if(product1.getFinanceTime()!=null){
 			long financeTime=product1.getFinanceTime().getTime();
@@ -237,16 +339,162 @@ public class WeixinController {
 		}
 
 		Object o = request.getSession().getAttribute("name");
-		if (o!=null){
-			Accounts account = userService.getAccountByName(o.toString());
-			model.addAttribute("account",account);
-		}
+		Accounts account = userService.getAccountByName(o.toString());
+		model.addAttribute("account",account);
+		model.addAttribute("targetPlatformUserNo",product1.getTargetPlatformUserNo());
 		model.addAttribute("product1", product1);
 		model.addAttribute("currTime",new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 		model.addAttribute("page", page);
-		model.addAttribute("now", System.currentTimeMillis());
-		return "m/touzixiangxi";
-		
 
+			String s = rest.getRestful("/rest/reward/get-valid-by-user-id/"+ o.toString() + "/" +3000);
+			ResponseReward r = JSON.parseObject(s, ResponseReward.class);
+			if (!r.isSuccess()) {
+				logger.error("error get reward ");
+				return "/m/error";
+			}
+
+			Rewards reward = r.getReward();
+			model.addAttribute("reward", reward);
+		
+		
+			model.addAttribute("now", UUID.randomUUID().toString());
+		
+		return "/m/invest/touzixiangxi";
 	}
+
+	@RequestMapping(value = "/doTransfer")
+	public String doTransfer(BHATransferRequest request, String rewardCheck,
+			Model model, TTransferInfo TtransferInfo,
+			HttpServletRequest request1) throws Exception {
+
+		int paymentAmount =TtransferInfo.getPaymentAmount();
+
+		List<TProduct> lis = productService.queryProductByNumber(TtransferInfo
+				.getEnterpriseNumber());
+		TProduct t = lis.get(0);
+		Rest rest = new Rest();
+		Object o = request1.getSession().getAttribute("name");
+		
+		if (o == null) {
+			return "/m/login";
+		}
+		Accounts accounts = userService.getAccountByName(o.toString());
+		if (paymentAmount < 200
+				&& !getRemortIP(request1).equals("106.2.184.190")) {
+			model.addAttribute("error", "非法操作");
+			return "/invest/error";
+		}
+		if (t.getRealityMoney() + t.getReward() +   paymentAmount > t.getFinancingMoney() * 10000) {
+
+			model.addAttribute("error", "投资金额超过可投资金额,请重试！");
+			return "/invest/error";
+		}
+		request.setRequestNo(UUID.randomUUID().toString());
+		request.setPlatformUserNo(o.toString());
+		request.setOrderNo(t.getEnterpriseNumber());
+		request.setPlatformUserNo(o.toString());
+		request.setPlatformNo(f.getPlatformNo());
+		request.setNotifyUrl(notifyUrl);
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (rewardCheck != null && rewardCheck.equals("on")
+				&& paymentAmount >= 3000) {
+			request.setPaymentAmount(String.valueOf(paymentAmount - 50));
+			map.put("amount", paymentAmount - 50);
+			map.put("reward", "50");
+		} else {
+			map.put("reward", "0");
+			map.put("amount", paymentAmount);
+		}
+
+		StringWriter w = new StringWriter();
+		JAXB.marshal(request, w);
+		map.put("request-no", request.getRequestNo());
+		map.put("service", "toTransfer");
+		map.put("username", o.toString());
+
+		map.put("project-name", t.getProjectName());
+		map.put("project-id", t.getEnterpriseNumber());
+
+		request.setOrderNo(t.getEnterpriseNumber());
+		map.put("request-xml", w.toString());
+		String s = rest.postRestful("/rest/yeepay/create", map);
+		JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+		if (r.isSuccess()) {
+			return doSign(request, f.getOnSubmit() + "/bha/toTransfer", model);
+		} else {
+			return "/m/404";
+		}
+	}
+	@RequestMapping(value = "/transferSucceed", method = {
+			RequestMethod.POST, RequestMethod.GET })
+	public String transferSucceed(Model model, String resp, String sign,
+			HttpServletRequest request) throws Exception {
+		model.addAttribute("resp", resp);
+		model.addAttribute("sign", sign);
+		try {
+			Map<String, Object> m = Xml.Dom2Map(resp);
+			Rest rest = new Rest();
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("request-no", m.get("requestNo"));
+			map.put("service", "toTransfer");
+			map.put("code", m.get("code"));
+			map.put("response-xml", resp);
+			if (m.get("code").equals("1")) {
+				String s = rest.postRestful("/rest/yeepay/update-success", map);
+				JsonBaseBean r = JSON.parseObject(s, JsonBaseBean.class);
+				TTransferInfo transferInfo = gateService
+						.queryTTransferInfoByNumber(
+								m.get("requestNo").toString()).get(0);
+				model.addAttribute("transferInfo", transferInfo);
+				return "m/invest/buy_ok";
+
+			} else {
+				rest.postRestful("/rest/yeepay/update-error", map);
+
+				return "error";
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error" + e);
+			return "error";
+		}
+	}
+	@RequestMapping(value = "/checkPay", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	@ResponseBody
+	public String checkPay(@RequestParam("amount") int amount,
+			@RequestParam("id") String id, HttpServletRequest request)
+			throws Exception {
+
+		try {
+
+			Object o = request.getSession().getAttribute("name");
+			if (o == null) {
+				return "请登录";
+			}
+			BigDecimal bamount = new BigDecimal(amount);
+			Accounts accounts = userService.getAccountByName(o.toString());
+			int bool = accounts.getAvailableMoney().compareTo(bamount);
+			if (bool < 0) {
+				return "您的可用余额不足";
+			}
+			List<TProduct> lis = productService.queryProductByNumber(id);
+			TProduct t = lis.get(0);
+			if (t.isLine() == false) {
+				return "redirect:/product/allProduct";
+			}
+			if (t.getRealityMoney() + amount > t.getFinancingMoney() * 10000) {
+				return "投资金额不能超过可投资金额";
+			} else {
+				return "success";
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("error" + e);
+			return "服务器错误";
+		}
+	}
+	
 }
