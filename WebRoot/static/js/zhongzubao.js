@@ -169,29 +169,29 @@
 				    
 				    
 				    if(!(str.test(val))){  	   
-						   $('.neirong').html("您输入的金额不是数字,请重新输入");
+						   $('.wd_font').html("您输入的金额不是数字,请重新输入");
 						   return false;
 					    }
-				    $('.neirong').css('display','block');
+				   
 			
 				    if(!(str.test(val))){  	   
-						   $('.neirong').html("您输入的金额不是数字,请重新输入");
+						   $('.wd_font').html("您输入的金额不是数字,请重新输入");
 						   return false;
 					    }
 					    if(val<200){
-						   $('.neirong').html("您输入的金额小于200元,请重新输入");
+						   $('.wd_font').html("您输入的金额小于200元,请重新输入");
 						   return false;
 					    }
 					    if(val>touzi_money){
-							   $('.neirong').html("您的投资金额大于可投资投资金额");
+							   $('.wd_font').html("您的投资金额大于可投资投资金额");
 							   return false;
 						    }
 					    if(parseInt(val)%100!=0){	
-						  $('.neirong').html("输入的资金必须是100的整数倍");
+						  $('.wd_font').html("输入的资金必须是100的整数倍");
 						  return false;
 						   }
-					      $('.neirong').html('您要投入的实际金额为:'+val);	   
-			 
+					      $('.wd_font').html('您输入的金额正常有效');  
+					    
 			 });	
 		 		
 		      
@@ -259,8 +259,10 @@
 				 
 				 $("#reward").click(function(){
 					  $(".fukuan").css("display","block");
-					  var real_fukuan=$("#paymentAmount").val()
-					  $(".border_none").val(real_fukuan-50+"元")
+					  var real_fukuan=$("#buyAmount").val();
+					  var num= $(".border_none").html(real_fukuan-50+"元")
+					  // $("#buyAmount").val(real_fukuan-50)
+					  
 				   });	
 			 	
 				  

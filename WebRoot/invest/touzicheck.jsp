@@ -288,5 +288,3 @@ $("#mysubmit_btn").click(function(){
 
 
 </script>
-
-

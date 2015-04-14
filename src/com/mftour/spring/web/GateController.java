@@ -641,7 +641,7 @@ public class GateController {
 	
 	@RequestMapping(value = "/gate/transfer")
 	public String Transfer(Model model, HttpServletRequest request,
-			String buyAmount, TProduct product) throws Exception {
+		String buyAmount, TProduct product) throws Exception {
 		File f = ReadWirtePropertis.file();
 		model.addAttribute("f", f);
 		Object o = request.getSession().getAttribute("name");
