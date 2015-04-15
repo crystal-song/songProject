@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>添加焦点图</title>
+<title>网站编辑</title>
 <link href="/up/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
 <link href="/css/style1.css" rel="stylesheet" type="text/css" />
       <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>    
@@ -21,16 +21,34 @@
  <!-- header end -->
     <div class="cl"></div>
   <div class="content">
-  	<h2>添加焦点图</h2>
-  	
-  	
-    	<div class="dataForm">
+    	<div >
     	<form  action="/Login/addbanner" id="form" method="post"    >
         	
         	
                  <li>
                     <dd>焦点图内容：</dd>
-                    <textarea rows="10" cols="20" id="bannerContext" name="bannerContext"></textarea> 
+                    <textarea rows="10" cols="150" id="bannerContext" name="bannerContext"></textarea> 
+                    <dt></dt>
+                </li>
+                <input type="submit" value="提交" />
+              </form>
+   	  
+             <form  action="/Login/addCustomerService" id="form" method="post">
+        	
+                 <li>
+                    <dd>联系客服内容：</dd>
+                    <textarea rows="10" cols="150" id="Context" name="Context"></textarea> 
+                    <dt></dt>
+                </li>
+      
+                 <input type="submit" value="提交" />
+                
+             </form>
+             <form  action="/Login/addfooter" id="form" method="post"    >
+        	
+                 <li>
+                    <dd>footer内容：</dd>
+                    <textarea rows="10" cols="150" id="Context" name="Context"></textarea> 
                     <dt></dt>
                 </li>
       

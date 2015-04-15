@@ -1,5 +1,14 @@
+<%@page import="com.mftour.spring.util.RedisUtil"%>
+<%@page import="redis.clients.jedis.Jedis"%>
 <%@ page language="java"  pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+Jedis jedis = null; 
+jedis = RedisUtil.getJedis();  
+String content=jedis.get("footerKey");
+%>
+<c:if test="<%=content!=null %>"><%out.println(content); %></c:if>
+<c:if test="<%=content==null %>">
 <div class="footer">
      <ul>
        <li class="foo01"><strong>合作伙伴</strong>
@@ -40,7 +49,7 @@
        <li style="margin-top:20px; display:none"><img src="/img/images-2014-11/bottom_pic.png" width="300" height="50" /></li>
      </ul>
    </div>   
-
+</c:if>
  <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>  
  <script type="text/javascript" src="/static/js/zhongzubao.js?v=${sessionScope.version}"></script>
 <script>

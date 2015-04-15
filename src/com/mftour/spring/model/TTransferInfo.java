@@ -20,9 +20,17 @@ public class TTransferInfo implements java.io.Serializable {
 	private String projectName;					//项目名称
 	private Double interestRate;
 	private BigDecimal interest;
-
+	private boolean loaned; //是否已放款
 
 	private BigDecimal reward;
+
+	public boolean isLoaned() {
+		return loaned;
+	}
+
+	public void setLoaned(boolean loaned) {
+		this.loaned = loaned;
+	}
 
 	public TTransferInfo() {
 		super();

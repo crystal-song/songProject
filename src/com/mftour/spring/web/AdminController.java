@@ -773,5 +773,40 @@ public class AdminController {
 		}
 
 	}
+	@RequestMapping(value = "/addCustomerService", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String addCustomerService(
+			@RequestParam("Context") String Context, Model model)
+			throws Exception {
+		Jedis jedis = null;
+		try {
+			jedis = RedisUtil.getJedis();
+			jedis.set("CustomerServiceKey", Context);
+			return "ptop/addBanner";
+		} catch (Exception e) {
+			logger.error("error" + e);
+			throw e;
+		} finally {
+			RedisUtil.returnResource(jedis);
+		}
 
+	}
+	@RequestMapping(value = "/addfooter", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public String addfooter(
+			@RequestParam("Context") String Context, Model model)
+			throws Exception {
+		Jedis jedis = null;
+		try {
+			jedis = RedisUtil.getJedis();
+			jedis.set("footerKey", Context);
+			return "ptop/addBanner";
+		} catch (Exception e) {
+			logger.error("error" + e);
+			throw e;
+		} finally {
+			RedisUtil.returnResource(jedis);
+		}
+
+	}
 }

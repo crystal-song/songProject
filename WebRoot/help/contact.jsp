@@ -1,4 +1,7 @@
+<%@page import="com.mftour.spring.util.RedisUtil"%>
+<%@page import="redis.clients.jedis.Jedis"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,7 +25,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- right content -->
 
 <div class="right_news_con">
-<div class="contaction">
+
+<%
+Jedis jedis = null; 
+jedis = RedisUtil.getJedis();  
+String content=jedis.get("CustomerServiceKey");
+%>
+<c:if test="<%=content!=null %>"><%out.println(content); %></c:if>
+<c:if test="<%=content==null %>">
+ <div class="contaction">
 <p>名&nbsp;&nbsp;称：中投汇融投资管理有限公司</p>
 <p>地&nbsp;&nbsp;址：北京市朝阳区工体北路13号院1号楼</p>
 <p>电&nbsp;&nbsp;话：010-84243099/3199</p>
@@ -31,7 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <p>简&nbsp;&nbsp;介：中租宝，北京市朝阳区工体北路13号院1号楼1501-1502室。 邮编：100020</p>
 </div>
 <iframe style="width:800px; height:550px; border:0px; scrolling:auto; allowtransparency:true ;background-color:transparent" src="map.jsp">
-</iframe>
+</iframe> 
+</c:if>
 </div>
 <!-- right end -->
 </div>
