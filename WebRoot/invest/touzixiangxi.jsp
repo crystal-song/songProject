@@ -160,36 +160,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          <span class="pro_right_title">
            <strong>项目已完成</strong> 
          </span>
-         <div class="manbiao">项目已完成还款</div>
+         <div class="manbiao">项目已完成还款</div> 
          <div class="guan_bac">谢谢亲的关注</div>
          <a class="totouzi" href="<%=path%>/product/allProduct">更多项目</a>
          <div class="btn_blue" style="margin-top:25px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
           <span class="pro_right_label">200元起投<i class="label_min"></i></span>
        </div> 
        </c:if>
-       <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
+        <%-- <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
        <form id="form" role="form" action="<%=path%>/gate/transfer" method="get" style="padding:0px;">
        <div class="pro_right">
          <span class="pro_right_title"><strong>投资金额</strong></span>
+         
          <span>可投资金额： ${product1.financingMoney*10000-product1.realityMoney}元
          </span>
          <div class="neirong"></div>
          <span><input type="text" class="text01" value="200" id="buyAmount"  name="buyAmount" min="200"/></span>
          <div class="jin_"><input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input></div>
                 	<div class="jin_"><input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input></div>
-                	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>
-         
-         <span style="margin-top:10px;"><a class="red_touzi"  id="dialog-link" href="javascript:;" onclick="mysubmit();" >立即投资</a><i class="jisuan"></i></span>
+                	<div class="jin_"><input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input></div>                 
+              <span style="margin-top:10px;"><input class="red_touzi"  id="dialog-link" type="submit" value="立即投资"></input><i class="jisuan"></i></span> 
          <span class="pro_right_label">200元起投<i class="label_min"></i></span>
-         <%-- <a class="chong_link" href="<%=path%>/gate/service">浏览个人资产</a><a class="chong_link" href="<%=path%>/gate/recharge">去充值&nbsp;&nbsp;&nbsp;/</a> --%>
+         
          <div class="btn_blue" style="margin-top:26px"><a href="<%=path%>/gate/service">个人资产</a><a href="<%=path%>/gate/recharge">充值</a></div>
        </div>
        </form>
-       </c:if>
+       </c:if>  --%>
       </div>   
  <!--弹出窗口 -->   
  
-       <div id="dialog" title="投资金额确认" style="display:none">
+ <%--       <div id="dialog" title="投资金额确认" style="display:none">
         <p class="zijin">您成功投资<strong class="touzi_money">2000</strong>元</p>
        </div>
        <div id="dialog01" title="收益计算器" style="display:none; height:320px;" >
@@ -220,9 +220,84 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div class="font_li" id="preview_income">* 预期收益率和预期收益仅供参考。</div>
          </div>
          
-       </div>
+       </div> --%>
 
+ <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
+       <form id="form" role="form" action="<%=path%>/m/doTransfer" method="get" style="padding:0px;" target="_blank">
+          <div class="touziContent">
+                    <input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input>
+                	<input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input>
+                	<input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input>
+		    <ul>
+		      <li class="t_fir">
+		        <span>可投资金额：<strong class="t_wdb">${product1.financingMoney*10000-product1.realityMoney}</strong>元</span>
+		        <span>预期收益：<strong class="t_wdr" id="preview_income">00.00</strong>元</span>
+		        <span><input type="text" value="200" class="t_input" id="paymentAmount" name="paymentAmount"/></span>
+		      </li>
+		       <li class="t_fir">
+		        <span>账户余额：<label>10000</label>元 <label class="t_chong">[<a href="<%=path%>/gate/recharge">充值</a>]</label></span>
+		        <span ><input type="checkbox" id="reward" name="rewardCheck"/>使用50元礼券</span>
+		        <span class="wd_font"></span>
+		      </li>
+		       <li  class="t_fir">		        
+		        <span><input type="checkbox"/>同意《<a class="touzixie">投资协议</a>》</span>
+		        <span class="fukuan">实际付款金额:<label class="border_none"></label></span>
+		        <!-- 如果有易宝账号显示立即投资。没有易宝就开通第三方账户 -->
+		         <span class="wd_rig"><input type="submit" class="wd_tijiao" value="立即投资"/></span> 
+		        <!--<span class="wd_rig">请先<a class="kai_org">开通</a>第三方支付账户</span>  --> 
+		       </li>
+		       <li style="display:none">
+						<div class="form-group">
+							<%-- ${product.financingPeriod} --%>
+							<%-- //${product.financingPeriod*30} --%>
 
+							<label for="#">投资周期：</label> <input type="text"
+								disabled="disabled" class="form-control pre_bac"
+								id="preview_Period" name="preview_Period"
+								value="${product1.financingPeriod}天" />
+						</div>
+					</li>
+		       <li style="display:none">
+						<div class="form-group" style="display: none; height: 0px;">
+							<label for="targetPlatformUserNo">借款人会员编号</label><input
+								type="text" class="form-control" id="targetPlatformUserNo"
+								name="targetPlatformUserNo" value="${targetPlatformUserNo}" />
+						</div>
+					</li>
+		        <li style="display:none">
+						<div class="form-group" style="display: none">
+							<label for="transferAmount">标的金额</label><input type="text"
+								class="form-control jin_font" id="transferAmount"
+								name="transferAmount" value="${product1.financingMoney*10000}" />
+								
+								<%-- //<input type="hidden" id="validmoney" value="${account.availableMoney }">
+								//<input type="hidden" id="valid_trans" value="${product.financingMoney*10000 - product.realityMoney - product.reward }"> --%>
+						</div>
+					</li> 
+					<li style="display:none">
+						<div class="form-group" style="display: none; height: 0px;">
+							<label for="targetPlatformUserNo">借款人会员编号</label><input
+								type="text" class="form-control" id="targetPlatformUserNo"
+								name="targetPlatformUserNo" value="${targetPlatformUserNo}" />
+						</div>
+					</li>
+					<li style="display:none">
+						<div class="form-group">
+							<label for="projectName">项目名称：</label><span id="protext">${product.projectName}</span>
+							<div style="display: none">
+								<input type="text" readonly="readonly" class="form-control"
+									id="projectName" name="projectName"
+									value="${product.projectName}" />
+							</div>
+						</div>
+					</li>
+		       
+		    </ul>
+         </div>
+       </form>
+ </c:if> 
+
+    
 	<div class="syl_table" style="clear:both;">
      <table width="100%"  bgcolor="#dedede" align="center" cellspacing="1" cellpadding="2" border="0">
                  <tr>
@@ -404,24 +479,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          ${product1.enterpriseCertificate}    
      </div>
     </div>
-          <div id="dialog01"  style="display:none; height:210px;" class="newye">
+          <div id="dialog01"  style="display:none; height:240px;" class="newye">
 	          <div class="dialog_title">
                <strong>温馨提示</strong>
 	           <div class="right_cha"></div>
 	          </div>	         
 	          <div class="touzi_text">
-	           <p style="background:url('../img/images-2014-11/renzheng02.png') 26px 7px no-repeat" class="p_font">投资金额不能为0,请重新输入!</p>          
+	           <p class="p_font">注册成功</p>     	                
 	          </div>
-	          <div class="touzi_text abs_tips" style="display:block">
-	           <p style="display:none"><a href="<%=path%>/gate/recharge">充值</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/gate/service">查看我的资产</a></p>   
-	           <p style="display:none"><a href="<%=path%>/login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<%=path%>/welcome/reg">还没有账号？</a></p> 
-	          </div>
-	          <div class="touzi_text" style="display:none">
-	             
-	          </div>	
-	          <a class="diabtn">确定</a>              
+	         
+	          <p class="abs_tips">请开通第三方资金托管账户，保证资金安全。</p>   	
+	          <a class="ab_btn" href="<%=path%>/gate/register">立即注册</a>
+	          <p class=""><a>暂不开通</a></p>                        
           </div>
-</div> 
+          
+          <div id="dialog" class="xieyi">
+             <div class="dialog_title">
+               <strong>投资协议</strong>
+	           <div class="right_cha"></div>
+	          </div>	
+	          <iframe style="width:700px; height:500px; border:0px;">   
+	                 
+	             <!-- 预览协议内容 --> 
+	             
+	          </iframe>                 
+          </div>
+
 <!-- absolute start -->
 <%@ include file="/includes/absolute.jsp" %>
 <!-- absolute end -->
@@ -444,23 +527,27 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
  <script type="text/javascript">
 var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
-
-
-
 /*提交表单*/
-function mysubmit(){
+
+	$(".wd_tijiao").click(function(){
+		
+		
+		
+		var str= /^[0-9]*$/;
+	    var val=$("#paymentAmount").val();
 	if($("#username").val()==$("#targetPlatformUserNo").val()){
 		alert("用户不能投资自己的项目！");
 		return false;
 	}
-	if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
+	/*if($("#buyAmount").val()==0||$("#buyAmount").val()=="投资金额不低于200元"){
 		//alert("投资金额不能为空！");
-		$(".newye").css("display","block")
+		 $(".newye").css("display","block")
 	    $(".black_bac").css("display","block");		
 		return false;
 	}
-	if($("#buyAmount").val()%100!=0){
-		/* alert("投资金额必须为100的整数倍！"); */
+	 if($("#buyAmount").val()%100!=0){
+		$('.wd_font').html("输入的资金必须是100的整数倍");
+		// alert("投资金额必须为100的整数倍！"); 
 		return false;
 	}
 	if($("#buyAmount").val()<200){
@@ -470,35 +557,43 @@ function mysubmit(){
 	if($("#buyAmount").val()>touzi_money){
 		//alert("投资金额不能高于可投资金额！");		
 		return false;
-	}
+	} 
+	*/
 	
-    /* $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
-        success: function(resp){
-            if(resp === "success"){
-                var form = document.getElementById("form");
-                form.submit();
-            }else{
-               // alert(resp);
-            	$(".newye").css("display","block")
-        	    $(".black_bac").css("display","block");
-            	$(".p_font").text(resp) ;
-            	if(resp=="请登录"){
-            		$(".abs_tips p:eq(1)").css("display","block");
-            	}
-            	if(resp=="您的可用余额不足"){
-            		$(".abs_tips p:eq(0)").css("display","block");            		
-            	}
-            	
-            	
-            }
-        }}); */
+	if(!(str.test(val))){  	   
+		   $('.wd_font').html("您输入的金额不是数字,请重新输入");
+		   return false;
+	    }
+
+    if(!(str.test(val))){  	   
+		   $('.wd_font').html("您输入的金额不是数字,请重新输入");
+		   return false;
+	    }
+	    if(val<200){
+		   $('.wd_font').html("您输入的金额小于200元,请重新输入");
+		   return false;
+	    }
+	    if(val>touzi_money){
+			   $('.wd_font').html("您的投资金额大于可投资投资金额");
+			   return false;
+		    }
+	    if(parseInt(val)%100!=0){	
+		  $('.wd_font').html("输入的资金必须是100的整数倍");
+		  return false;
+	}
+	    if ($("#reward").is(":checked")) { 		
+    		   var num=val-50;   		  
+    		  $("#paymentAmount").val(num); 
+              
+        		 
+  		 }
     
-    
-    
-    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
+    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#paymentAmount").val(),
     	success: function(resp){
     	  if(resp === "success"){
     	  var form = document.getElementById("form");
+    	  
+    	 
     	  form.submit();
     	}else{
     	// alert(resp);
@@ -506,35 +601,32 @@ function mysubmit(){
 	    	$(".black_bac").css("display","block");
 	    	$(".p_font").text(resp) ;
     	if(resp=="请登录"){
-        	$(".abs_tips p:eq(1)").css("display","block");
+        	//$(".abs_tips p:eq(1)").css("display","block");
+    		 $('.wd_font').html("请登录");
     	  }
     	if(resp=="您的可用余额不足"){
-    	    $(".abs_tips p:eq(0)").css("display","block");
+    	   // $(".abs_tips p:eq(0)").css("display","block");
+    		 $('.wd_font').html("您的可用余额不足");
     	  }
     	 }
     	}});
     
-}
- $(document).ready(function(e) {
+	})
+ 
 	 
 	 //---------收益计算器------------
 
 	    var rate_lv=$(".lev_start").length;
-		calc();
-		$("#preview_amount").change(function(e) {
-			if($(this).val()<parseInt($(".lev_start").eq(0).html())){
-				$(this).val(parseInt($(".lev_start").eq(0).html()));
-				}
-			if($(this).val()>parseInt($(".lev_max").eq(rate_lv-1).html())){
-				$(this).val(parseInt($(".lev_max").eq(rate_lv-1).html()));
-				}
+	 	calc();
+	 $("#paymentAmount").change(function(e) {
 	        calc();
 	        
-	    });
+	    });   
 		function calc(){
-			var t=parseInt($("#preview_amount").val());
+			var t=parseInt($("#paymentAmount").val());
+			
 			var r=0;
-			var p=parseInt($("#preview_Period").html());
+			var p=parseInt($("#preview_Period").val());
 			if(t%100!=0){alert("投资金额必须为100的整数倍！");return false;}
 			for(i=0;i<rate_lv;i++){
 				if(t>=parseInt($(".lev_start").eq(i).html())&&t<=parseInt($(".lev_max").eq(i).html())){
@@ -551,11 +643,12 @@ function mysubmit(){
 			   var b=parseFloat(parseInt(r*10000)/100);		        
 		       b=b.toFixed(2)
 		     
-		       $("#preview_rate").val(b+"%");	 
+		      // $("#preview_rate").val(b+"%");	 
 		         
 		      var a=parseFloat(parseInt(t*r*100)/100)				     
-			      a= a.toFixed(2)			       
-		     $("#preview_income").html(a+"元"); 
+			      a= a.toFixed(2)	
+			     
+		     $("#preview_income").html(a); 
 			}
 
 		//---------收益计算器结束-------------
@@ -613,10 +706,15 @@ function mysubmit(){
 	     } 			 
        
         var timer= setInterval(getRTime1,1000);
- });  
+ 
+        $(".touzixie").click(function(){
+        	$("#dialog").css("display","block")
+        	
+        })
 
-
-
+        $(".kai_org").click(function(){
+        	$(".newye").css("display","block")
+        })
 	             
     
 </script>

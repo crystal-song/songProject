@@ -109,8 +109,7 @@ public class CommonUtil {
 	 */
 	public static Oauth2Token getOauth2Token(String code) {
 		Oauth2Token oauth2Token = null;
-		oauth2_token_url=oauth2_token_url.replace("APPID", appId).replace("SECRET", appSecret).replace("CODE", code);
-		String requestUrl = oauth2_token_url;
+		String requestUrl =oauth2_token_url.replace("APPID", appId).replace("SECRET", appSecret).replace("CODE", code);
 		// 发起GET请求获取凭证
 		JSONObject jsonObject = httpsRequest(requestUrl, "GET", null);
 		Iterator iterator=jsonObject.keys();
@@ -136,6 +135,7 @@ public class CommonUtil {
 				oauth2Token = null;
 				// 获取oauth2Token失败
 				log.error("获取oauth2Token失败 errcode:{} errmsg:{}", jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
+				
 			}
 		}
 		return oauth2Token;

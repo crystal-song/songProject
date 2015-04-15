@@ -1510,6 +1510,7 @@ ul,li{
 	font-size:12px;
 	cursor: pointer;
 	margin-top:10px;
+	border:none;
 	}	
 .red_touzi:hover{
 	background:#ec454e;
@@ -1641,8 +1642,90 @@ ul,li{
    width: 430px; 
    height: 500px;
 }
+.touziContent{
+	width:100%;
+	height:165px;
+	border-top:1px dashed #eee;
+	border-bottom:1px dashed #eee;
+	margin-top:20px;
+}
+.touziContent li{
+	width:100%;
+	height:40px;
+	text-align:left;
 
+}
+.t_fir span{
+    width:33%;
+    font-size:16px;
+    float:left;
+    color:#666;
+    height:100%;
+    display:inline-block;
+	
+}
 
+.t_fir .t_wdb{
+	color:#666;
+	font-size:18px;
+}
+.t_fir .t_wdr{
+	color:#da022f;
+	font-size:18px;
+	
+}
+.t_chong{
+	float:right;
+	margin-right:30px;
+}
+.t_fir .wd_font{
+	font-size:14px;
+    color:#da022f;
+}
+.t_sec span{
+	width:20%;
+	float:left;
+	font-size:16px;
+	color:#666;
+}
+.t_fir input{
+	color:#ccc;
+	display:inline-block;
+}
+.t_input{
+	width:240px;
+	height:25px;
+	border:1px solid #ccc;
+}
+.wd_cen{
+	text-align:center;
+	
+}
+.wd_rig{
+	text-align:right;
+}
+.t_sec label{
+	font-size:18px;
+}
+.t_fir a{
+	display:inline-block;
+	color:#1489be;
+	cursor:pointer;
+	
+}
+.t_fir .wd_tijiao{
+	width:119px;
+	height:36px;
+	border-radius:5px;
+	background:#ff9a00;
+	color:#fff;
+	display:inline-block;
+	border:none;
+	font-weight:bold;
+	font-size:20px;
+	margin-right:5%;
+	cursor:pointer;
+}
 /*touzixiangxi---end*/	
 
 
@@ -2444,12 +2527,11 @@ ul,li{
 	background:url(../img/renok.png) no-repeat;
 }
 .touzi_text p{
-	width:230px;
-	height:40px;
+    font-size:20px;
+    color:#219623;
+	height:30px;
 	line-height:30px;
-	display:inline-block;
-	padding-left:60px;
-	text-align:left;
+    margin:0 auto;
 }
 .touzi_text p a{
 	display:inline-block;
@@ -3225,6 +3307,19 @@ ul,li{
 }
 
 /*tanchukuangkou*/
+#dialog{
+	width:700px;
+	height:500px;
+	background:#fff;
+	position:fixed;
+	left:25%;
+	top:20%;
+	border-radius:5px;
+	border:1px solid #ccc;
+	z-index:1100;
+	display:none;
+	
+}
 #dialog01{
 	width:300px;
 	height:285px;
@@ -3238,7 +3333,7 @@ ul,li{
 	
 }
 .dialog_title{
-	width:280px;
+	width:auto;
 	height:40px;
 	background:#fc7f7d;
 	color:#fff;
@@ -3260,6 +3355,15 @@ ul,li{
 	right:10px; 
 	top:9px;
 	background:url("../img/images-2014-11/right_cha.png") no-repeat;
+}
+.tiaokuan{
+	width:90%;
+	padding-left:5%;
+	padding-right:5%;
+	height:30px;
+	font-size:14px;
+	line-height:30px;
+	text-align:left;
 }
 .jisuan_btn{
 	width:300px;
@@ -3358,8 +3462,8 @@ ul,li{
     cursor:pointer;
 }
 .touzi_text{
-	width: 280px;
-	height: 20px;
+	width: auto;
+	height: 30px;
 	margin-top: 20px;
 	
 }
@@ -4399,10 +4503,7 @@ ul,li{
 	margin-left:360px;
 	border:none;
 }
-.border_none{
-	border:none;
-	background:#f8f8f8;
-}
+
 .new_table{
 	width:586px;
 	float:left;
@@ -4428,7 +4529,7 @@ ul,li{
 	line-height:30px;
 }
 .fukuan{
-	display:none
+	display:block
 }
 .mar_chong{
 	padding-left:200px;
@@ -5106,12 +5207,7 @@ ul,li{
 	font-weight:bold;
 }
 
-#reward{
-	width:10px;
-	height:10px;
-	margin-top:10px;
-	margin-left:106px;
-}
+
 .chong_link{
 	width:auto;
 	height:20px;
@@ -6076,6 +6172,21 @@ ul,li{
 	font-size:14px;
 	cursor:pointer;
 }
+.ab_btn{
+	width:120px;
+	height:35px;
+	line-height:35px;
+	color:#fff;
+	background:#fd6463;
+	border-radius:5px;
+	display:inline-block;
+	margin-top:18px;
+	font-size:14px;
+	cursor:pointer;
+}
+.ab_btn:hover{
+	color:#fff;
+}
 .diabtn1{
 	width:90px;
 	height:30px;
@@ -6146,7 +6257,16 @@ ul,li{
 	text-align:left;
 	padding-left:37px;
 }
-
+.wd_rig .kai_org{
+	width:60px;
+	height:30px;
+	line-height:30px;
+	color:#fff;
+	border-radius:5px;
+	background:#fd9825;
+	margin:0 5px;
+	text-align:center;
+}
 #jin_pad{
 	padding-left:20%
 }
@@ -6155,9 +6275,9 @@ ul,li{
 	display:none;
 }
 .abs_tips{
-	margin-top:30px;
+	font-size:14px;
+	color:#666;
 }
-
 
 .back_pic{
 	width:700px;

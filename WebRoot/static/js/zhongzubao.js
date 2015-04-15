@@ -162,43 +162,41 @@
 		 
 		      
 		     /*验证输入的投资金额是否正确*/
-		      $("#buyAmount").keyup(function(){
+		      $("#paymentAmount").keyup(function(){
 				  
 				    var str= /^[0-9]*$/;
-				    var val=$("#buyAmount").val();
+				    var val=$("#paymentAmount").val();
 				    
 				    
-				    if(!(str.test(val))){  	   
-						   $('.neirong').html("您输入的金额不是数字,请重新输入");
+				       if(!(str.test(val))){  	   
+						   $('.wd_font').html("您输入的金额不是数字,请重新输入");
 						   return false;
-					    }
-				    $('.neirong').css('display','block');
-			
-				    if(!(str.test(val))){  	   
-						   $('.neirong').html("您输入的金额不是数字,请重新输入");
+					    }				   			
+				       if(!(str.test(val))){  	   
+						   $('.wd_font').html("您输入的金额不是数字,请重新输入");
 						   return false;
 					    }
 					    if(val<200){
-						   $('.neirong').html("您输入的金额小于200元,请重新输入");
+						   $('.wd_font').html("您输入的金额小于200元,请重新输入");
 						   return false;
 					    }
 					    if(val>touzi_money){
-							   $('.neirong').html("您的投资金额大于可投资投资金额");
-							   return false;
+						   $('.wd_font').html("您的投资金额大于可投资投资金额");
+						   return false;
 						    }
 					    if(parseInt(val)%100!=0){	
-						  $('.neirong').html("输入的资金必须是100的整数倍");
-						  return false;
+						   $('.wd_font').html("输入的资金必须是100的整数倍");
+						   return false;
 						   }
-					      $('.neirong').html('您要投入的实际金额为:'+val);	   
-			 
+					      $('.wd_font').html('您输入的金额正常有效');  
+					    
 			 });	
 		 		
 		      
 		      /*获取投资额焦点*/		      
-		      $("#buyAmount").focus(function(){
-		    	 	var tixian_val=$("#buyAmount").val();
-		    	 	$("#buyAmount").val("");	  	
+		      $("#paymentAmount").focus(function(){
+		    	 	var tixian_val=$("#paymentAmount").val();
+		    	 	$("#paymentAmount").val("");	  	
 		    	 });
 		      /*导航浮动*/
 		      function checkText(){
@@ -245,7 +243,14 @@
 					 $(".black_bac").css("display","none");
 					// window.location.reload();
 					 //location.reload();
-				 }) 				 
+				 }) 
+				 $(".right_cha").click(function(){
+			 		 $("#dialog").css("display","none");
+					
+					 $(".black_bac").css("display","none");
+					// window.location.reload();
+					 //location.reload();
+				 })
 				 $(".diabtn").click(function(){
 					 $(".newye").css("display","none");
 					 $(".black_bac").css("display","none");
@@ -259,8 +264,10 @@
 				 
 				 $("#reward").click(function(){
 					  $(".fukuan").css("display","block");
-					  var real_fukuan=$("#paymentAmount").val()
-					  $(".border_none").val(real_fukuan-50+"元")
+					  var real_fukuan=$("#paymentAmount").val();
+					  var num= $(".border_none").html(real_fukuan-50+"元")
+					  // $("#buyAmount").val(real_fukuan-50)
+					  
 				   });	
 			 	
 				  
@@ -270,7 +277,7 @@
 				   $("#paymentAmount").keyup(function(){
 					   var payment=$(this).val();
 					   	   
-					   document.getElementById("mysubmit_btn").disabled=true;   
+					 //  document.getElementById("mysubmit_btn").disabled=true;   
 					   if(payment==""){
 							$(".liquan_y").text("投资金额不能为空！");
 							return false;
@@ -300,7 +307,7 @@
 							}
 
 						else{
-							document.getElementById("mysubmit_btn").disabled=false;
+							//document.getElementById("mysubmit_btn").disabled=false;
 							$(".liquan_y").text("投资满3000元可使用礼券！");
 						} 
 					   
