@@ -2527,12 +2527,11 @@ ul,li{
 	background:url(../img/renok.png) no-repeat;
 }
 .touzi_text p{
-	width:230px;
-	height:40px;
+    font-size:20px;
+    color:#219623;
+	height:30px;
 	line-height:30px;
-	display:inline-block;
-	padding-left:60px;
-	text-align:left;
+    margin:0 auto;
 }
 .touzi_text p a{
 	display:inline-block;
@@ -3308,6 +3307,19 @@ ul,li{
 }
 
 /*tanchukuangkou*/
+#dialog{
+	width:700px;
+	height:500px;
+	background:#fff;
+	position:fixed;
+	left:25%;
+	top:20%;
+	border-radius:5px;
+	border:1px solid #ccc;
+	z-index:1100;
+	display:none;
+	
+}
 #dialog01{
 	width:300px;
 	height:285px;
@@ -3321,7 +3333,7 @@ ul,li{
 	
 }
 .dialog_title{
-	width:280px;
+	width:auto;
 	height:40px;
 	background:#fc7f7d;
 	color:#fff;
@@ -3343,6 +3355,15 @@ ul,li{
 	right:10px; 
 	top:9px;
 	background:url("../img/images-2014-11/right_cha.png") no-repeat;
+}
+.tiaokuan{
+	width:90%;
+	padding-left:5%;
+	padding-right:5%;
+	height:30px;
+	font-size:14px;
+	line-height:30px;
+	text-align:left;
 }
 .jisuan_btn{
 	width:300px;
@@ -3441,8 +3462,8 @@ ul,li{
     cursor:pointer;
 }
 .touzi_text{
-	width: 280px;
-	height: 20px;
+	width: auto;
+	height: 30px;
 	margin-top: 20px;
 	
 }
@@ -6151,6 +6172,21 @@ ul,li{
 	font-size:14px;
 	cursor:pointer;
 }
+.ab_btn{
+	width:120px;
+	height:35px;
+	line-height:35px;
+	color:#fff;
+	background:#fd6463;
+	border-radius:5px;
+	display:inline-block;
+	margin-top:18px;
+	font-size:14px;
+	cursor:pointer;
+}
+.ab_btn:hover{
+	color:#fff;
+}
 .diabtn1{
 	width:90px;
 	height:30px;
@@ -6221,7 +6257,16 @@ ul,li{
 	text-align:left;
 	padding-left:37px;
 }
-
+.wd_rig .kai_org{
+	width:60px;
+	height:30px;
+	line-height:30px;
+	color:#fff;
+	border-radius:5px;
+	background:#fd9825;
+	margin:0 5px;
+	text-align:center;
+}
 #jin_pad{
 	padding-left:20%
 }
@@ -6230,9 +6275,9 @@ ul,li{
 	display:none;
 }
 .abs_tips{
-	margin-top:30px;
+	font-size:14px;
+	color:#666;
 }
-
 
 .back_pic{
 	width:700px;

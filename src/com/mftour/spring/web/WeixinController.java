@@ -382,12 +382,12 @@ public class WeixinController {
 		if (paymentAmount < 200
 				&& !getRemortIP(request1).equals("106.2.184.190")) {
 			model.addAttribute("error", "非法操作");
-			return "/invest/error";
+			return "/m/404";
 		}
 		if (t.getRealityMoney() + t.getReward() +   paymentAmount > t.getFinancingMoney() * 10000) {
 
 			model.addAttribute("error", "投资金额超过可投资金额,请重试！");
-			return "/invest/error";
+			return "/m/404";
 		}
 		request.setRequestNo(UUID.randomUUID().toString());
 		request.setPlatformUserNo(o.toString());
