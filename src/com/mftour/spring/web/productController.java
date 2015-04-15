@@ -1,13 +1,18 @@
 package com.mftour.spring.web;
 
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.mftour.spring.model.*;
 import com.mftour.spring.service.IUserService;
@@ -20,17 +25,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mftour.spring.service.IGateService;
 import com.mftour.spring.service.IProductService;
 import com.mftour.spring.service.IptopService;
+import com.mftour.spring.util.File;
+import com.mftour.spring.util.PDFServlet;
+import com.mftour.spring.util.PDFTool;
 import com.mftour.spring.util.Page;
+import com.mftour.spring.util.ReadWirtePropertis;
 
 @Controller
 @RequestMapping("/product")
 public class productController {
-
+	private static final File f = ReadWirtePropertis.file();
 	@Autowired
 	private IProductService productService;
-
+	@Autowired
+	private IGateService  gateService;
 	@Autowired
 
     private IptopService ptopService;
@@ -194,5 +205,29 @@ public class productController {
 	
 
 	}
-
+	@RequestMapping(value = "/checkContract")
+	public String checkContract(Model model ,HttpServletRequest request,HttpServletResponse response)
+			throws Exception {
+		String enterpriseNumber=request.getParameter("enterpriseNumber");
+		model.addAttribute("now", System.currentTimeMillis());
+		Object o = request.getSession().getAttribute("name");
+		List<TRegisterYeePay> list = gateService
+				.queryTRegisterYeePayByName(o.toString());
+		if (list != null && list.size() != 0) {
+			TRegisterYeePay registerYeePay = list.get(0);
+			model.addAttribute("registerYeePay", registerYeePay);
+		}
+		List<TProduct> li = productService.queryProductByNumber(enterpriseNumber);
+		if (li != null && li.size() != 0) {
+			TProduct product = li.get(0);
+			model.addAttribute("product", product);
+		}
+		String filePath=f.getUrl()+"/contract/"+enterpriseNumber+".jsp";
+		java.io.File file=new java.io.File(filePath);
+		String returnPath="/up/jsp/contract/"+enterpriseNumber;
+		if(file.exists()){
+			return returnPath;
+		}
+		return "accounts/touziguanli/touzixieyi-download";
+	}
 }

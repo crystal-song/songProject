@@ -27,12 +27,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="right_news_con">
 
 <%
-Jedis jedis = null; 
-jedis = RedisUtil.getJedis();  
-String content=jedis.get("CustomerServiceKey");
+Jedis jedis1 = null; 
+jedis1 = RedisUtil.getJedis();  
+String content1=jedis1.get("CustomerServiceKey");
 %>
-<c:if test="<%=content!=null %>"><%out.println(content); %></c:if>
-<c:if test="<%=content==null %>">
+<c:if test="<%=content1!=null %>"><%out.println(content1); %></c:if>
+<c:if test="<%=content1==null %>">
  <div class="contaction">
 <p>名&nbsp;&nbsp;称：中投汇融投资管理有限公司</p>
 <p>地&nbsp;&nbsp;址：北京市朝阳区工体北路13号院1号楼</p>
