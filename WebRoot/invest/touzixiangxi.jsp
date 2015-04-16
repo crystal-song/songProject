@@ -223,8 +223,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div> --%>
 
  <c:if test="${ not empty product1.buyType&&product1.projectStatus==2}"><!-- 线上  投资中-->
-       <form id="form" role="form" action="<%=path%>/m/doTransfer" method="get" style="padding:0px;" target="_blank">
+       <form id="form" role="form" action="<%=path%>/gate/doTransfer" method="post" style="padding:0px;" >
           <div class="touziContent">
+         		    <input type="hidden" id="host" name="host">
                     <input type="hidden"  value="${product1.enterpriseNumber}" id="enterpriseNumber" name="enterpriseNumber"></input>
                 	<input type="hidden"  value="${product1.projectName}" id="projectName" name="projectName"></input>
                 	<input type="hidden"  value="${product1.financingMoney}" id="financingMoney" name="financingMoney"></input>
@@ -232,63 +233,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		      <li class="t_fir">
 		        <span>可投资金额：<strong class="t_wdb">${product1.financingMoney*10000-product1.realityMoney}</strong>元</span>
 		        <span>预期收益：<strong class="t_wdr" id="preview_income">00.00</strong>元</span>
-		        <span><input type="text" value="200" class="t_input" id="paymentAmount" name="paymentAmount"/></span>
+		        <span><input type="text" value="200" class="t_input" id="buyAmount" name="buyAmount"/></span>
 		      </li>
+		      <c:if test="${empty name}"> <li  class="t_fir"> <span class="wd_rig"><input type="submit" class="wd_tijiao" value="立即投资"/></span> </li></c:if>
+		      <c:if test="${not empty name }">
 		       <li class="t_fir">
-		        <span>账户余额：<label>10000</label>元 <label class="t_chong">[<a href="<%=path%>/gate/recharge">充值</a>]</label></span>
-		        <span ><input type="checkbox" id="reward" name="rewardCheck"/>使用50元礼券</span>
+		        <span>账户余额：<label>${account.availableMoney}</label>元 <label class="t_chong">[<a href="<%=path%>/gate/recharge">充值</a>]</label></span>
+		        <c:if test="${account.availableReward>=50.00 }"><span ><input type="checkbox" id="reward" name="rewardCheck"/>使用50元礼券</span></c:if>
 		        <span class="wd_font"></span>
 		      </li>
-		       <li  class="t_fir">		        
+		      <li class="t_fir">
 		        <span><input type="checkbox"/>同意《<a class="touzixie">投资协议</a>》</span>
-		        <span class="fukuan">实际付款金额:<label class="border_none"></label></span>
-		        <!-- 如果有易宝账号显示立即投资。没有易宝就开通第三方账户 -->
-		         <span class="wd_rig"><input type="submit" class="wd_tijiao" value="立即投资"/></span> 
-		        <!--<span class="wd_rig">请先<a class="kai_org">开通</a>第三方支付账户</span>  --> 
+		        <span class="fukuan">实际付款金额:<label class="border_none" ></label></span>
+		        <input type="hidden" name="paymentAmount" value="200">
+		        <c:if test="${yeepay==true}"> <span class="wd_rig"><input type="submit" class="wd_tijiao" value="立即投资"/></span> </c:if>
+		        <c:if test="${yeepay==false }"><span class="wd_rig">请先<a class="kai_org">开通</a>第三方支付账户</span> </c:if>
 		       </li>
-		       <li style="display:none">
-						<div class="form-group">
-							<%-- ${product.financingPeriod} --%>
-							<%-- //${product.financingPeriod*30} --%>
-
-							<label for="#">投资周期：</label> <input type="text"
-								disabled="disabled" class="form-control pre_bac"
-								id="preview_Period" name="preview_Period"
-								value="${product1.financingPeriod}天" />
-						</div>
-					</li>
-		       <li style="display:none">
-						<div class="form-group" style="display: none; height: 0px;">
-							<label for="targetPlatformUserNo">借款人会员编号</label><input
-								type="text" class="form-control" id="targetPlatformUserNo"
-								name="targetPlatformUserNo" value="${targetPlatformUserNo}" />
-						</div>
-					</li>
-		        <li style="display:none">
+		        </c:if>
+		       <li>
 						<div class="form-group" style="display: none">
 							<label for="transferAmount">标的金额</label><input type="text"
 								class="form-control jin_font" id="transferAmount"
 								name="transferAmount" value="${product1.financingMoney*10000}" />
-								
-								<%-- //<input type="hidden" id="validmoney" value="${account.availableMoney }">
-								//<input type="hidden" id="valid_trans" value="${product.financingMoney*10000 - product.realityMoney - product.reward }"> --%>
 						</div>
-					</li> 
-					<li style="display:none">
+					</li>
+		       
+		      <li>
 						<div class="form-group" style="display: none; height: 0px;">
 							<label for="targetPlatformUserNo">借款人会员编号</label><input
 								type="text" class="form-control" id="targetPlatformUserNo"
-								name="targetPlatformUserNo" value="${targetPlatformUserNo}" />
+								name="targetPlatformUserNo" value="${product1.targetPlatformUserNo}" />
 						</div>
 					</li>
-					<li style="display:none">
-						<div class="form-group">
-							<label for="projectName">项目名称：</label><span id="protext">${product.projectName}</span>
-							<div style="display: none">
-								<input type="text" readonly="readonly" class="form-control"
-									id="projectName" name="projectName"
-									value="${product.projectName}" />
-							</div>
+		      <li>
+						<div class="form-group" style="display: none; height: 0px;">
+							<label for="expired">投标过期时间</label><input type="text"
+								class="form-control" id="expired" name="expired"
+								value="2016-12-01 22:22:31" />
+						</div>
+					</li>
+		      <li>
+						<div class="form-group" style="display: none; height: 0px;">
+							<label for="notifyUrl">notifyUrl</label><input type="text"
+								class="form-control" id="notifyUrl" name="notifyUrl"
+								value="${f.notifyUrl}/gate/transferNotify" />
+						</div>
+					</li>
+					<li>
+						<div class="form-group" style="display: none; height: 0px;">
+							<label for="callbackUrl">callbackUrl</label><input type="text"
+								class="form-control" id="callbackUrl" name="callbackUrl"
+								value="${f.callbackUrl}/gate/transferSucceed" />
+							<!--  name="callbackUrl" value="http://www.ptobchina.com/spring3/gate/transferSucceed" /> -->
 						</div>
 					</li>
 		       
@@ -469,7 +465,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <p class="zijin_msg">${product1.riskControl}</p> 
      </div>
 <input type="hidden" id="username" value="${name}">
-<input type="hidden" id="targetPlatformUserNo" value="${product1.targetPlatformUserNo}">
+
      <div class="pro_con_title"><strong>相关证件</strong></div> 
      <div class='zi_btn ${name==null ? "":"none" }'>
       <p>请您登陆后查看相关证件！</p>
@@ -534,7 +530,7 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 		
 		
 		var str= /^[0-9]*$/;
-	    var val=$("#paymentAmount").val();
+	    var val=$("#buyAmount").val();
 	if($("#username").val()==$("#targetPlatformUserNo").val()){
 		alert("用户不能投资自己的项目！");
 		return false;
@@ -583,12 +579,12 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 	}
 	    if ($("#reward").is(":checked")) { 		
     		   var num=val-50;   		  
-    		  $("#paymentAmount").val(num); 
+    		  $("#buyAmount").val(num); 
               
         		 
   		 }
     
-    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#paymentAmount").val(),
+    $.ajax({url: "/gate/checkPay?id=${product1.enterpriseNumber}&amount="+$("#buyAmount").val(),
     	success: function(resp){
     	  if(resp === "success"){
     	  var form = document.getElementById("form");
@@ -618,12 +614,12 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
 
 	    var rate_lv=$(".lev_start").length;
 	 	calc();
-	 $("#paymentAmount").change(function(e) {
+	 $("#buyAmount").change(function(e) {
 	        calc();
 	        
 	    });   
 		function calc(){
-			var t=parseInt($("#paymentAmount").val());
+			var t=parseInt($("#buyAmount").val());
 			
 			var r=0;
 			var p=parseInt($("#preview_Period").val());

@@ -519,8 +519,27 @@ public class GateController {
 	@RequestMapping(value = "/gate/doTransfer")
 	public String doTransfer(BHATransferRequest request, String rewardCheck,
 			Model model, TTransferInfo TtransferInfo,
-			HttpServletRequest request1) throws Exception {
+			HttpServletRequest request1,String buyAmount, TProduct product) throws Exception {
 
+		Object o=request1.getSession().getAttribute("name");
+		Rest rest = new Rest();
+		if (o == null) {
+			return "login";
+		}
+		List<TProduct> list = productService.queryProductByNumber(product
+				.getEnterpriseNumber());
+		if (list != null && list.size() != 0) {
+			TProduct Product = list.get(0);
+			if (Product.getBuyType() == null)
+				return "invest/xianxia";
+		}
+		if (!isYeepay(o.toString())) {
+			TUser user = userService.getUserByAccount(o.toString());
+			model.addAttribute("user", user);
+			model.addAttribute("now", UUID.randomUUID().toString());
+			return "register";
+		}
+		
 		int paymentAmount =TtransferInfo.getPaymentAmount();
 
 		List<TProduct> lis = productService.queryProductByNumber(TtransferInfo
@@ -529,28 +548,14 @@ public class GateController {
 		if (t.isLine() == false) {
 			return "redirect:/product/allProduct";
 		}
-		Rest rest = new Rest();
-		Object o = request1.getSession().getAttribute("name");
-		
-		if (o == null) {
-			return "login";
-		}
+	
 		Accounts accounts = userService.getAccountByName(o.toString());
-		if (paymentAmount < 200
-				&& !getRemortIP(request1).equals("106.2.184.190")) {
-			model.addAttribute("error", "非法操作");
-			return "/invest/error";
-		}
+	
 		if (t.getRealityMoney() + t.getReward() +   paymentAmount > t.getFinancingMoney() * 10000) {
 
 			model.addAttribute("error", "投资金额超过可投资金额,请重试！");
 			return "/invest/error";
 		}
-//		if ( paymentAmount > accounts.getAvailableMoney()) {
-//
-//			model.addAttribute("error", "投资金额超过帐户可用余额！");
-//			return "/invest/error";
-//		}
 		request.setRequestNo(UUID.randomUUID().toString());
 		request.setPlatformUserNo(o.toString());
 		request.setOrderNo(t.getEnterpriseNumber());
@@ -656,7 +661,7 @@ public class GateController {
 		
 	}
 	
-	@RequestMapping(value = "/gate/transfer")
+/*	@RequestMapping(value = "/gate/transfer")
 	public String Transfer(Model model, HttpServletRequest request,
 		String buyAmount, TProduct product) throws Exception {
 		File f = ReadWirtePropertis.file();
@@ -712,7 +717,7 @@ public class GateController {
 			return "register";
 		}
 
-	}
+	}*/
 
 	@RequestMapping(value = "/gate/exam", method = { RequestMethod.POST,
 			RequestMethod.GET })

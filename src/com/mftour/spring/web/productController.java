@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -125,6 +126,31 @@ public class productController {
 	
 
 	}
+	boolean isYeepay(String userName) throws Exception {
+		boolean b = false;
+		List<TRegisterYeePay> li = gateService
+				.queryTRegisterYeePayByName(userName);
+		List<TRegisterNotify> list = gateService
+				.queryTRegisterNotifyByName(userName);
+
+		if (li != null && li.size() != 0) {
+			String code = li.get(0).getCode();
+			if (code != null && code.equals("1")) {
+
+				b = true;
+			}
+		}
+		if (list != null && list.size() != 0) {
+			String code = list.get(0).getCode();
+			if (code != null && code.equals("1")) {
+
+				if (li != null && li.size() != 0) {
+					b = true;
+				}
+			}
+		}
+		return b;
+	}
 
 	@RequestMapping(value = "/getProductByid", method = { RequestMethod.POST,
 			RequestMethod.GET })
@@ -132,6 +158,9 @@ public class productController {
 			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
 			TProduct product,HttpServletRequest request) throws Exception {
+		File f = ReadWirtePropertis.file();
+		model.addAttribute("f", f);
+		
 		Page page = Page.newBuilder(pageNo, pageSize, "getProductByid");
 		TProduct product1 = productService.getProductById(id);
 		if(product1!=null&&product1.isLine()==false){
@@ -173,6 +202,11 @@ public class productController {
 		if (o!=null){
 			Accounts account = userService.getAccountByName(o.toString());
 			model.addAttribute("account",account);
+			if (isYeepay(o.toString())) {
+				model.addAttribute("yeepay", "true");
+			}else{
+				model.addAttribute("yeepay", "false");
+			}
 		}
 		model.addAttribute("product1", product1);
 		model.addAttribute("currTime",new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
@@ -187,6 +221,8 @@ public class productController {
 
 		model.addAttribute("page", page);
 		model.addAttribute("now", System.currentTimeMillis());
+		
+		
 		return "invest/touzixiangxi";
 		
 
