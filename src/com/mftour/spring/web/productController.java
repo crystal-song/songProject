@@ -15,9 +15,13 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
 import com.mftour.spring.model.*;
+import com.mftour.spring.rest.bean.ResponseReward;
 import com.mftour.spring.service.IUserService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,10 +38,13 @@ import com.mftour.spring.util.PDFServlet;
 import com.mftour.spring.util.PDFTool;
 import com.mftour.spring.util.Page;
 import com.mftour.spring.util.ReadWirtePropertis;
+import com.mftour.spring.util.Rest;
 
 @Controller
 @RequestMapping("/product")
 public class productController {
+	private static final Logger logger = LoggerFactory
+			.getLogger(productController.class);
 	private static final File f = ReadWirtePropertis.file();
 	@Autowired
 	private IProductService productService;
@@ -200,8 +207,14 @@ public class productController {
 
 		Object o = request.getSession().getAttribute("name");
 		if (o!=null){
-			Accounts account = userService.getAccountByName(o.toString());
-			model.addAttribute("account",account);
+			Date currDate = new Date();
+			List avaliableRewards = gateService.queryAvaliableRewards(
+					o.toString(), currDate);
+			if (avaliableRewards != null) {
+				model.addAttribute("count", avaliableRewards.size());
+			} else {
+				model.addAttribute("count", 0);
+			}
 			if (isYeepay(o.toString())) {
 				model.addAttribute("yeepay", "true");
 			}else{

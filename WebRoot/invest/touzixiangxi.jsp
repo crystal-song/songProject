@@ -239,7 +239,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		      <c:if test="${not empty name }">
 		       <li class="t_fir">
 		        <span>账户余额：<label>${account.availableMoney}</label>元 <label class="t_chong">[<a href="<%=path%>/gate/recharge">充值</a>]</label></span>
-		        <c:if test="${account.availableReward>=50.00 }"><span ><input type="checkbox" id="reward" name="rewardCheck"/>使用50元礼券</span></c:if>
+		        <c:if test="${count>0 }"><span ><input type="checkbox" id="reward" name="rewardCheck"/>使用50元礼券</span></c:if>
 		        <span class="wd_font"></span>
 		      </li>
 		      <li class="t_fir">
@@ -494,9 +494,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <strong>投资协议</strong>
 	           <div class="right_cha"></div>
 	          </div>	
-	          <iframe style="width:700px; height:500px; border:0px;">   
+	          <iframe style="width:700px; height:500px; border:0px;" id="xieyi">   
 	                 
-	             <!-- 预览协议内容 --> 
 	             
 	          </iframe>                 
           </div>
@@ -705,6 +704,7 @@ var touzi_money=${product1.financingMoney*10000-product1.realityMoney};
  
         $(".touzixie").click(function(){
         	$("#dialog").css("display","block")
+        	$("#xieyi").attr("src","/product/checkContract?enterpriseNumber="+$("#enterpriseNumber").val())
         	
         })
 
